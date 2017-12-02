@@ -1,0 +1,39 @@
+# Local/private config pulled from include
+[include]
+	path = ~/.gitconfig.local
+[hub]
+	protocol = https
+[color]
+	ui = always
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+[apply]
+	whitespace = nowarn
+[mergetool]
+	keepBackup = false
+[difftool]
+	prompt = false
+[help]
+	autocorrect = 1
+[push]
+	default = current
+[branch "master"]
+	mergeoptions = --ff-only
+[alias]
+	a = add
+	b = branch
+	c = commit
+	d = diff
+	l = log
+	r = rebase
+	s = status
+	ct = checkout
+	st = stash
+
+	count   = !git shortlog -sn
+	last    = log -1 HEAD
+	ol = log --pretty=format:\"%h %ad%x20%s%x20%x28%an%x29\" --date=short

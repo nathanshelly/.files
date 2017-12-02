@@ -1,0 +1,30 @@
+syntax on
+set viminfo+=n~/.viminfo
+
+" disable sounds
+set visualbell
+
+" appearance
+set number
+set relativenumber
+set background=dark
+colorscheme desert
+set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+set incsearch
+
+" wrap correctly on commit messages
+au FileType gitcommit set tw=72
+
+" escape with rolling jk 
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+" remap movement to home row
+noremap ; l
+noremap l k
+noremap k j
+noremap j h
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>

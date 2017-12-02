@@ -1,0 +1,31 @@
+# change prefix to Alt-Space
+unbind C-b
+set -g prefix M-Space
+
+# number windows from 1
+set -g base-index 1
+
+# enable mouse mode
+set -g mouse on
+
+# remap pane splits and open
+# panes/windows in current directory
+unbind '"'
+unbind %
+
+bind -n M-\ split-window -h -c "#{pane_current_path}"
+bind -n M-- split-window -v -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+# Use Alt with home-row keys to
+# navigate between and resize panes
+setw -g mode-keys vi
+bind -n M-j select-pane -L
+bind -n M-k select-pane -D
+bind -n M-l select-pane -U
+bind -n M-\; select-pane -R
+
+bind -n M-J resize-pane -L
+bind -n M-K resize-pane -D
+bind -n M-L resize-pane -U
+bind -n M-: resize-pane -R

@@ -1,0 +1,32 @@
+# setup
+
+# path to dotfiles
+export ZSH=$HOME/.files
+
+# all zsh files
+typeset -U config_files
+config_files=($ZSH/**/*.zsh)
+
+# load path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
+# load !path && !completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+do
+  source $file
+done
+
+# start autocomplete
+autoload -Uz compinit
+compinit
+
+# load completion files
+for file in ${(M)config_files:#*/completion.zsh}
+do
+  source $file
+done
+
+unset config_files
