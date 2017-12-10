@@ -8,6 +8,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # Vi mode
+# see keymap.zsh for modifications
 bindkey -v
 
 # prompt

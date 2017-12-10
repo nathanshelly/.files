@@ -29,3 +29,6 @@ bind -n M-J resize-pane -L
 bind -n M-K resize-pane -D
 bind -n M-L resize-pane -U
 bind -n M-: resize-pane -R
+
+# Remove delay when hitting esc in zsh vi mode
+set -sg escape-time 0
