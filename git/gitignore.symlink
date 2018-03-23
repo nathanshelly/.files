@@ -1,4 +1,5 @@
 # Python
+.mypy_cache
 *.pyc
 
 # Node
@@ -23,3 +24,6 @@ Thumbs.db
 
 # vim swap files
 .*.sw?
+
+# VSCode
+.vscode
