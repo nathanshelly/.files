@@ -37,3 +37,8 @@
 	count   = !git shortlog -sn
 	last    = log -1 HEAD
 	ol = log --pretty=format:\"%h %ad%x20%s%x20%x28%an%x29\" --date=short
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
