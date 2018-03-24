@@ -11,5 +11,5 @@ SAVEHIST=10000
 # see keymap.zsh for modifications
 bindkey -v
 
-# prompt
-export PS1="%d >> "
+# set prompt
+export ZSH_THEME="spaceship"
