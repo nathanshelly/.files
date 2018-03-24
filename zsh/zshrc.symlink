@@ -3,6 +3,18 @@
 # path to dotfiles
 export DOTFILES=$HOME/.files
 
+# source spectrum_ls function then
+# prompt options in zsh folder
+# to apply on oh-my-zsh loading
+# kinda hacky, do better in the future
+source $DOTFILES/zsh/fpath.zsh
+source $DOTFILES/zsh/prompt.zsh
+
+# source oh-my-zsh
+plugins=( git )
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
 # all zsh files
 typeset -U config_files
 config_files=($DOTFILES/**/*.zsh)
@@ -29,9 +41,5 @@ do
   source $file
 done
 
-# source oh-my-zsh
-plugins=( git )
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 unset config_files

@@ -9,7 +9,8 @@ SAVEHIST=10000
 
 # Vi mode
 # see keymap.zsh for modifications
+# Note: spaceship vi mode also enabled
+# in prompt.zsh
 bindkey -v
 
-# set prompt
-export ZSH_THEME="spaceship"
+spaceship_vi_mode_enable

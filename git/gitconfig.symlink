@@ -42,3 +42,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[color "status"]
+  added = cyan
+  untracked = blue
+  changed = magenta
