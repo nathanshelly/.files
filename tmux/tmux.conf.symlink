@@ -32,3 +32,6 @@ bind -n M-: resize-pane -R
 
 # Remove delay when hitting esc in zsh vi mode
 set -sg escape-time 0
+
+# use 256 colors
+set -g default-terminal "screen-256color"
