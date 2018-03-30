@@ -44,6 +44,7 @@
 	required = true
 
 [color "status"]
-  added = cyan
-  untracked = blue
-  changed = magenta
+  added = 045
+  changed = 212
+  untracked = 004
+	branch = 135 
