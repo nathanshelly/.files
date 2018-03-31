@@ -14,7 +14,7 @@ SPACESHIP_PROMPT_ORDER=(
   venv          # virtualenv section
   exec_time     # execution time
   line_sep      # line break
-  vi_mode       # vi-mode indicator
+  vi_mode       # vi mode indicator
   jobs          # background jobs indicator
   exit_code     # exit code
   char          # prompt character
@@ -96,6 +96,6 @@ SPACESHIP_BATTERY_SHOW=charged
 SPACESHIP_BATTERY_THRESHOLD=15
 
 # vi mode 
-SPACESHIP_VI_MODE_INSERT=I
-SPACESHIP_VI_MODE_NORMAL=N
+SPACESHIP_VI_MODE_INSERT="$FG[159]•%F{red}"
+SPACESHIP_VI_MODE_NORMAL="$FG[166]•%F{red}"
 SPACESHIP_VI_MODE_COLOR=249
