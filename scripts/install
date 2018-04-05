@@ -18,3 +18,7 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 
 # tpm - tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# .tmux settings - https://github.com/gpakosz/.tmux
+cp $DOTFILES/tmux/gpakosz/.tmux $DOTFILES/tmux/tmux.conf.symlink
+
