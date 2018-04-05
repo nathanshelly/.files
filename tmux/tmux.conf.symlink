@@ -35,3 +35,11 @@ set -sg escape-time 0
 
 # use 256 colors
 set -g default-terminal "screen-256color"
+
+
+# plugins
+set -g @plugin 'tmux-plugins/tpm'
+
+# initialize tpm, must be at bottom of file
+run '~/.tmux/plugins/tpm/tpm'
+
