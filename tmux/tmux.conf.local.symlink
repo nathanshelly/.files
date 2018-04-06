@@ -52,9 +52,6 @@ bind -r p next-window
 unbind C-b
 set -g prefix M-Space
 
-# number windows from 1
-set -g base-index 1
-
 # enable mouse mode
 set -g mouse on
 
@@ -75,21 +72,17 @@ bind -n M-k select-pane -D
 bind -n M-l select-pane -U
 bind -n M-\; select-pane -R
 
-bind -n M-J resize-pane -L
-bind -n M-K resize-pane -D
-bind -n M-L resize-pane -U
-bind -n M-: resize-pane -R
-
-# Remove delay when hitting esc in zsh vi mode
-set -sg escape-time 0
-
-# use 256 colors
-set -g default-terminal "screen-256color"
+bind -n M-J resize-pane -L 3
+bind -n M-K resize-pane -D 3
+bind -n M-L resize-pane -U 3
+bind -n M-: resize-pane -R 3
 
 
 # plugins
+
 set -g @plugin 'tmux-plugins/tpm'
 
 # initialize tpm, must be at bottom of file
 run '~/.tmux/plugins/tpm/tpm'
+
 
