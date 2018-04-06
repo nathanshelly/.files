@@ -104,7 +104,7 @@ tmux_conf_theme_prefix_bg='none'
 tmux_conf_theme_prefix_attr='none'
 
 # battery bar symbols
-tmux_conf_battery_bar_symbol_full='⬤'
+tmux_conf_battery_bar_symbol_full='●'
 tmux_conf_battery_bar_symbol_empty='◯'
 
 # battery bar palette, possible values are:
