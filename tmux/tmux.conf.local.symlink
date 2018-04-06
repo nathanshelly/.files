@@ -1,3 +1,53 @@
+# unset .tmux options
+
+# unset secondary prefix
+set -ug prefix2
+unbind C-a
+
+# unset edit configuration shortcut
+unbind e
+
+# unbind window splitting
+unbind -
+unbind _
+
+# unbind window movement
+unbind h
+unbind j
+unbind k
+unbind l
+
+# unbind window resizing
+unbind H
+unbind J
+unbind K
+unbind L
+
+# unbind utilities - return to this
+# if I end up installing them
+unbind U
+unbind F
+
+# override .tmux options
+
+# window title
+set -g set-titles-string '#h ❐ #S ● #W'
+
+# remove delay when hitting esc in zsh vi
+# mode (overwrite tmux.config setting to 10)
+set -g escape-time 0
+
+# remap clearing screen and history
+unbind C-l
+bind -n C-L send-keys C-l \; run 'sleep 0.1' \; clear-history
+
+# rebind n and p to switching windows
+bind -r n next-window
+bind -r p next-window
+
+# separate settings
+# unrelated to settings in .tmux
+
 # change prefix to Alt-Space
 unbind C-b
 set -g prefix M-Space
