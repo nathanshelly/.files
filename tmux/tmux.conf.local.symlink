@@ -1,4 +1,4 @@
-# unset .tmux options
+# UNSET .tmux options
 
 # unset secondary prefix
 set -ug prefix2
@@ -28,7 +28,7 @@ unbind L
 unbind U
 unbind F
 
-# override .tmux options
+# OVERRIDE .tmux options
 
 # window title
 set -g set-titles-string '#h ❐ #S ● #W'
@@ -45,7 +45,9 @@ bind -n C-L send-keys C-l \; run 'sleep 0.1' \; clear-history
 bind -r n next-window
 bind -r p next-window
 
-# separate settings
+# CONFIGURE .tmux
+
+# SEPARATE settings
 # unrelated to settings in .tmux
 
 # change prefix to Alt-Space
