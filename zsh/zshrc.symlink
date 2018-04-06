@@ -8,6 +8,10 @@ export DOTFILES=$HOME/.files
 # to apply on oh-my-zsh loading
 # kinda hacky, do better in the future
 source $DOTFILES/zsh/fpath.zsh
+
+# load functions written as basic scripts
+autoload -U $DOTFILES/functions/*(:t)
+
 source $DOTFILES/zsh/prompt.zsh
 
 # source oh-my-zsh
