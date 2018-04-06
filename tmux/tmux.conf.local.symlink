@@ -43,7 +43,7 @@ bind -n C-L send-keys C-l \; run 'sleep 0.1' \; clear-history
 
 # rebind n and p to switching windows
 bind -r n next-window
-bind -r p next-window
+bind -r p previous-window
 
 # CONFIGURE .tmux
 tmux_conf_new_session_prompt=true
