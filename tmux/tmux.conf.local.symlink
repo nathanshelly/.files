@@ -31,7 +31,7 @@ unbind F
 # OVERRIDE .tmux options
 
 # window title
-set -g set-titles-string '#h ❐ #S ● #W'
+set -g set-titles-string '#h ⟺  #S ⟺  #W'
 
 # remove delay when hitting esc in zsh vi
 # mode (overwrite tmux.config setting to 10)
