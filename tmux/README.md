@@ -1,0 +1,1 @@
+This tmux configuration uses [gpakosz's configuration](https://github.com/gpakosz/.tmux). gpakosz's repo is added as a submodule and uses tmux.config.local to overwrite and modify the base settings of that tmux config.
