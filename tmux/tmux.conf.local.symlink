@@ -46,6 +46,82 @@ bind -r n next-window
 bind -r p next-window
 
 # CONFIGURE .tmux
+tmux_conf_new_session_prompt=true
+
+# colors
+# light blue - '#00afff'
+
+# status line
+tmux_conf_theme_status_fg='#8a8a8a' # light gray
+tmux_conf_theme_status_bg='#000000' # black
+tmux_conf_theme_status_attr='none'
+
+# status line messages
+tmux_conf_theme_message_fg='#000000' # black
+tmux_conf_theme_message_bg='#00afff' # light blue
+tmux_conf_theme_message_attr='bold'
+
+# window status style
+tmux_conf_theme_window_status_fg='#8a8a8a' # light gray
+tmux_conf_theme_window_status_bg='#080808' # dark gray
+tmux_conf_theme_window_status_attr='none'
+tmux_conf_theme_window_status_format='#I #W'
+
+# window last status style
+tmux_conf_theme_window_status_last_fg='#00afff' # light blue
+tmux_conf_theme_window_status_last_bg='default'
+tmux_conf_theme_window_status_last_attr='none'
+
+# window current status style
+tmux_conf_theme_window_status_current_fg='#000000'      # black
+tmux_conf_theme_window_status_current_bg='#00afff'      # light blue
+tmux_conf_theme_window_status_current_attr='bold'
+tmux_conf_theme_window_status_current_format='#I #W'
+
+# status left/right sections separators
+tmux_conf_theme_left_separator_main=''
+tmux_conf_theme_left_separator_sub=''
+tmux_conf_theme_right_separator_main=''
+tmux_conf_theme_right_separator_sub=''
+
+tmux_conf_theme_status_left=' #S | ↑#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} '
+tmux_conf_theme_status_right='#{prefix}#{pairing} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} '
+
+# status left style
+tmux_conf_theme_status_left_fg='#e4e4e4,#e4e4e4,#e4e4e4'  # white, white, white
+tmux_conf_theme_status_left_bg='#d75fd7,#ff87af,#00afff'  # yellow, pink, white blue
+tmux_conf_theme_status_left_attr='bold,none,none'
+
+# status right style
+tmux_conf_theme_status_right_fg='#8a8a8a,#e4e4e4,#000000' # grey, white, black
+tmux_conf_theme_status_right_bg='#080808,#5b2c70,#e4e4e4' # black, purple, white
+tmux_conf_theme_status_right_attr='none,none,bold'
+
+# prefix indicator (U+2328)
+tmux_conf_theme_prefix='⌨'
+tmux_conf_theme_prefix_fg='none'
+tmux_conf_theme_prefix_bg='none'
+tmux_conf_theme_prefix_attr='none'
+
+# battery bar symbols
+tmux_conf_battery_bar_symbol_full='⬤'
+tmux_conf_battery_bar_symbol_empty='◯'
+
+# battery bar palette, possible values are:
+#   - gradient (default)
+#   - heat
+#   - 'colour_full_fg,colour_empty_fg,colour_bg'
+tmux_conf_battery_bar_palette='heat'
+
+# symbols used to indicate whether battery is charging or discharging
+tmux_conf_battery_status_charging='↑'       # U+2191
+tmux_conf_battery_status_discharging='↓'    # U+2193
+
+# clock style
+tmux_conf_theme_clock_colour='#00afff'
+tmux_conf_theme_clock_style='24'
+
+
 
 # SEPARATE settings
 # unrelated to settings in .tmux
