@@ -1,0 +1,7 @@
+#! /bin/zsh
+
+function jl() {
+	local dir
+  dir=$(fd -t d | fzf +m) &&
+  cd "$dir"
+}
