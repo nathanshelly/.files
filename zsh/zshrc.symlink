@@ -3,15 +3,9 @@
 # path to dotfiles
 export DOTFILES=$HOME/.files
 
-# source spectrum_ls function then
-# prompt options in zsh folder
-# to apply on oh-my-zsh loading
-# kinda hacky, do better in the future
-source $DOTFILES/zsh/fpath.zsh
-
-# load functions written as basic scripts
-autoload -U $DOTFILES/functions/*(:t)
-
+# source prompt
+# need to set theme before
+# sourcing oh my zsh
 source $DOTFILES/zsh/prompt.zsh
 
 # source oh-my-zsh
