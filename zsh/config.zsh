@@ -17,3 +17,8 @@ spaceship_vi_mode_enable
 
 # turn on fasd
 eval "$(fasd --init auto)"
+
+# fzf configuration
+export FZF_DEFAULT_OPTS="--height 50% --reverse --bind ctrl-k:down,ctrl-l:up"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
