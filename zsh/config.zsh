@@ -14,3 +14,6 @@ SAVEHIST=10000
 bindkey -v
 
 spaceship_vi_mode_enable
+
+# turn on fasd
+eval "$(fasd --init auto)"
