@@ -24,7 +24,9 @@ do
 done
 
 # load !path && !completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+# don't double load fpath file
+# (sourced earlier for prompt)
+for file in ${${${config_files:#*/path.zsh}:#*/completion.zsh}:#*/fpath.zsh}
 do
   source $file
 done
