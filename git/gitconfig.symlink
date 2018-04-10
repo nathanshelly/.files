@@ -42,9 +42,15 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
 [color "status"]
   added = 045
   changed = 212
   untracked = 004
 	branch = 135 
+[advice]
+	pushNonFastForward = false
+	statusHints        = false
+	commitBeforeMerge  = false
+	resolveConflict    = false
+	implicitIdentity   = false
+	detachedHead       = false
