@@ -16,6 +16,7 @@ source $ZSH/oh-my-zsh.sh
 # load functions written as basic scripts
 autoload -Uz $DOTFILES/functions/*(:t)
 
+
 # all zsh files
 typeset -U config_files
 config_files=($DOTFILES/**/*.zsh)
@@ -31,6 +32,11 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
 done
+
+# after setting fpath
+# load functions (such as manydots)
+# that need to be run to take effect
+_execute_functions
 
 # start autocomplete
 autoload -Uz compinit
