@@ -1,0 +1,12 @@
+#! /bin/zsh
+# Assorted git functions
+
+# move forward linearly a given number of commits
+function gforw() {
+	git checkout $(git rev-list --topo-order HEAD..master | tail -$1 | head -1)
+}
+
+# move back linearly a given number of commits
+function gback() {
+	git checkout HEAD~$1
+}
