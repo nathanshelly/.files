@@ -1,0 +1,1 @@
+alias fdi='fd -I'
