@@ -22,3 +22,11 @@ function gfix() {
 
 	git checkout -b fix
 }
+
+# rebase given branch (or master)
+# on just made fix
+function gffix() {
+	git checkout "${1:-"master"}"
+	git rebase -i fix
+	git branch -d fix
+}
