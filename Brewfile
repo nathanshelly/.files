@@ -4,6 +4,7 @@ brew fasd
 brew fzf
 brew ripgrep
 brew fd
+brew hub
 
 
 # in future use cask to install applications
