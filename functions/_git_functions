@@ -10,3 +10,15 @@ function gforw() {
 function gback() {
 	git checkout HEAD~$1
 }
+
+# make a quick fix at a previous commit
+function gfix() {
+	gback "$1"
+
+	# attempts to delete fix if already merged
+	if [ -n "$(git show-ref refs/heads/fix)" ]; then
+		git branch -d fix
+	fi
+
+	git checkout -b fix
+}
