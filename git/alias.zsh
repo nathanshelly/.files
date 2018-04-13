@@ -1,3 +1,7 @@
+# use hub - https://github.com/github/hub
+alias git=hub
+
+# set some git aliases
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
