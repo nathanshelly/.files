@@ -30,7 +30,7 @@
 	d = diff
 	r = rebase
 	s = status
-	ct = checkout
+	co = checkout
 	st = stash
 
 	count = !git shortlog -sn
