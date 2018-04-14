@@ -164,6 +164,12 @@ bind -n M-K resize-pane -D 3
 bind -n M-L resize-pane -U 3
 bind -n M-: resize-pane -R 3
 
+# enable dimming, strikethrough and italics
+# see https://github.com/tmux/tmux/issues/135
+#  & https://github.com/Atcold/Unix-dot-files/blob/master/Tmux/tmux.conf#L38-L39
+set -sa terminal-overrides ',*:dim=\E[2m'
+set -as terminal-overrides ',*:smxx=\E[9m'
+set -as terminal-overrides ',*:sitm=\E[3m'
 
 # plugins
 
