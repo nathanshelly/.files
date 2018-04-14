@@ -142,9 +142,18 @@ bind -n M-\ split-window -h -c "#{pane_current_path}"
 bind -n M-- split-window -v -c "#{pane_current_path}"
 bind c new-window -c "#{pane_current_path}"
 
+# use vi navigation paradigm
+# remap movement keys when in copy mode
+# see valid key tables:
+# https://github.com/tmux/tmux/blob/master/CHANGES#L235
+setw -g mode-keys vi
+bind-key -T copy-mode-vi 'j'  send -X cursor-left # switch to panel Left
+bind-key -T copy-mode-vi 'k'  send -X cursor-down # switch to panel Left
+bind-key -T copy-mode-vi 'l'  send -X cursor-up # switch to panel Left
+bind-key -T copy-mode-vi '\;' send -X cursor-right # switch to panel Left
+
 # Use Alt with home-row keys to
 # navigate between and resize panes
-setw -g mode-keys vi
 bind -n M-j select-pane -L
 bind -n M-k select-pane -D
 bind -n M-l select-pane -U
