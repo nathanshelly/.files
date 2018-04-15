@@ -37,9 +37,8 @@ set -g set-titles-string '#h ⟺  #S ⟺  #W'
 # mode (overwrite tmux.config setting to 10)
 set -g escape-time 0
 
-# remap clearing screen and history
-unbind C-l
-bind -n C-L send-keys C-l \; run 'sleep 0.1' \; clear-history
+# remap clearing screen
+unbind -n C-l
 
 # rebind n and p to switching windows
 bind -r n next-window
@@ -183,5 +182,3 @@ set -g @plugin 'tmux-plugins/tpm'
 
 # initialize tpm, must be at bottom of file
 run '~/.tmux/plugins/tpm/tpm'
-
-
