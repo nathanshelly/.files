@@ -1,8 +1,9 @@
 syntax on
 set viminfo+=n~/.viminfo
 
-" disable sounds
+" disable beeping and screen flash on error
 set visualbell
+set t_vb=
 
 " appearance
 set number
