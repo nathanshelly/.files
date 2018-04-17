@@ -10,7 +10,7 @@ set number
 set relativenumber
 set background=dark
 colorscheme desert
-set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set incsearch
 
 " wrap correctly on commit messages
