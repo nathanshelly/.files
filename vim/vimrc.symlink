@@ -1,28 +1,44 @@
-syntax on
+" <<<<<<<< General >>>>>>>>
+
+" specify viminfo path
 set viminfo+=n~/.viminfo
 
 " disable beeping and screen flash on error
 set visualbell
 set t_vb=
 
-" appearance
+" syntax coloring
+syntax on
+
+" line numbers
 set number
 set relativenumber
-set background=dark
-colorscheme desert
+
+" indentation
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+" search
 set incsearch
 
-" wrap correctly on commit messages
+" colors
+set background=dark
+colorscheme desert
+
+" <<<<<<<< File Specific >>>>>>>>
+
+" << git >>
+
+" commit message subject line wrap and color
 au FileType gitcommit set tw=72
-" set commit message colors
 au FileType gitcommit hi gitcommitSummary ctermfg=blue
+
+" <<<<<<<< Remappings >>>>>>>>
 
 " escape with rolling jk 
 inoremap jk <esc>
 inoremap <esc> <nop>
 
-" remap movement to home row
+" home row keys for movement
 noremap ; l
 noremap l k
 noremap k j
