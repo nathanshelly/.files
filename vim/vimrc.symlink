@@ -23,9 +23,17 @@ set backspace=indent,eol,start
 " indentation
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-" search
+" << search >>
+" show matches as you type
 set incsearch
+" highlight all matches
 set hlsearch
+" case sensitive if the search contains
+" capitals (ignorecase needs to be set for this)
+" whole word -> /\<word\>
+" lowercase sensitive -> /word\C (`\C` can be anywhere)
+set ignorecase
+set smartcase
 
 " <<<<<<<< Colors >>>>>>>>
 
