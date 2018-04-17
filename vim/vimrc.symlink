@@ -51,10 +51,17 @@ colorscheme desert
 " 256 color
 set t_Co=256
 
-" highlighting
+" << highlighting >>
+
+" search
 hi Search cterm=NONE ctermfg=black ctermbg=cyan
 hi IncSearch cterm=NONE ctermfg=black ctermbg=cyan
+
+" matching
 hi MatchParen cterm=NONE ctermfg=black ctermbg=cyan
+
+" transparent background
+hi Normal ctermbg=NONE
 
 " <<<<<<<< File Specific >>>>>>>>
 
