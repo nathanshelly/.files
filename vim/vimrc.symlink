@@ -87,5 +87,15 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
+" jump paragraphs with K/L
+nnoremap K }
+vnoremap K }
+nnoremap L {
+vnoremap L {
+
+" for now remap old bindings (just in normal mode)
+nnoremap { K
+nnoremap } J
+
 " quickly turn off highlighting
 nmap <leader>n :noh<CR>
