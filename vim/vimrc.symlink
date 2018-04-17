@@ -67,6 +67,15 @@ hi MatchParen cterm=NONE ctermfg=black ctermbg=cyan
 " transparent background
 hi Normal ctermbg=NONE
 
+" whitespace
+highlight ExtraWhitespace ctermbg=magenta
+" keep through color scheme change
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta
+" trailing whitespace
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" highlight on load and leaving insert mode
+autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+
 " <<<<<<<< File Specific >>>>>>>>
 
 " << git >>
