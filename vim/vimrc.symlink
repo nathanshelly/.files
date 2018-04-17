@@ -97,5 +97,9 @@ vnoremap L {
 nnoremap { K
 nnoremap } J
 
+" start/end of line movement
+noremap h ^
+noremap H $
+
 " quickly turn off highlighting
 nmap <leader>n :noh<CR>
