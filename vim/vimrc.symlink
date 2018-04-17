@@ -33,6 +33,7 @@ set linebreak
 set display+=lastline
 
 " << search >>
+
 " show matches as you type
 set incsearch
 " highlight all matches
@@ -75,6 +76,11 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 " highlight on load and leaving insert mode
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+
+" highlight tabs on file open
+syntax match Tab /\t/
+hi Tab gui=underline guifg=blue ctermbg=blue
+autocmd BufRead * match Tab /\t/
 
 " <<<<<<<< File Specific >>>>>>>>
 
