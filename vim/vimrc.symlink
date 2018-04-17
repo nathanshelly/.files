@@ -25,6 +25,7 @@ set backspace=indent,eol,start
 
 " indentation
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set autoindent
 
 " wrap on linebreak (show as much as possible)
 set wrap
