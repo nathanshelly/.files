@@ -24,8 +24,12 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set incsearch
 set hlsearch
 
-" colors
+" <<<<<<<< Colors >>>>>>>>
+
+" background
 set background=dark
+
+" colorscheme
 colorscheme desert
 
 " <<<<<<<< File Specific >>>>>>>>
