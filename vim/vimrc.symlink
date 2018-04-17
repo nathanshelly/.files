@@ -22,6 +22,7 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " search
 set incsearch
+set hlsearch
 
 " colors
 set background=dark
