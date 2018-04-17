@@ -66,3 +66,6 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
+
+" quickly turn off highlighting
+nmap <leader>n :noh<CR>
