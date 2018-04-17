@@ -17,6 +17,9 @@ syntax on
 set number
 set relativenumber
 
+" scrolloff
+set scrolloff=10
+
 " normal backspace
 set backspace=indent,eol,start
 
