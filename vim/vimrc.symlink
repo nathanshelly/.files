@@ -32,6 +32,11 @@ set background=dark
 " colorscheme
 colorscheme desert
 
+" highlighting
+hi Search cterm=NONE ctermfg=black ctermbg=cyan
+hi IncSearch cterm=NONE ctermfg=black ctermbg=cyan
+hi MatchParen cterm=NONE ctermfg=black ctermbg=cyan
+
 " <<<<<<<< File Specific >>>>>>>>
 
 " << git >>
