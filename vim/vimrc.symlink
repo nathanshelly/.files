@@ -86,7 +86,7 @@ au FileType gitcommit hi gitcommitSummary ctermfg=blue
 
 " <<<<<<<< Remappings >>>>>>>>
 
-" escape with rolling jk 
+" escape with rolling jk
 inoremap jk <esc>
 inoremap <esc> <nop>
 

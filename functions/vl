@@ -1,7 +1,7 @@
 #! /bin/zsh
 
 function vl() {
-	local fle
+  local fle
   fle=$(fd -t f | fzf +m) &&
   vim "$fle"
 }

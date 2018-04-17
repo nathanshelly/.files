@@ -4,7 +4,7 @@
 # file or folder in current
 # directory or subdirectory
 function ol() {
-	local el
+  local el
   el=$(fd | fzf +m) &&
   open "$el"
 }

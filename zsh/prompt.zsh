@@ -86,7 +86,7 @@ SPACESHIP_GIT_STATUS_BEHIND="$FG[247]⬇%F{red}"
 # come back to this
 
 # venv
-# come back to this 
+# come back to this
 
 # exec time
 SPACESHIP_EXEC_TIME_ELAPSED=10
@@ -95,7 +95,7 @@ SPACESHIP_EXEC_TIME_ELAPSED=10
 # SPACESHIP_BATTERY_SHOW=charged
 # SPACESHIP_BATTERY_THRESHOLD=15
 
-# vi mode 
+# vi mode
 SPACESHIP_VI_MODE_INSERT="$FG[159]•%F{red}"
 SPACESHIP_VI_MODE_NORMAL="$FG[166]•%F{red}"
 SPACESHIP_VI_MODE_COLOR=249

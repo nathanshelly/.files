@@ -2,7 +2,7 @@
 setopt hist_find_no_dups
 
 # cd
-setopt auto_cd 
+setopt auto_cd
 
 # completion
 setopt complete_in_word no_list_beep complete_aliases

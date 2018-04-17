@@ -1,59 +1,59 @@
 # Local/private config pulled from include
 [include]
-	path = ~/.gitconfig.local
+  path = ~/.gitconfig.local
 [hub]
-	protocol = https
+  protocol = https
 [color]
-	ui = always
-	diff = auto
-	status = auto
-	branch = auto
+  ui = always
+  diff = auto
+  status = auto
+  branch = auto
 [core]
-	excludesfile = ~/.gitignore
-	editor = vim
+  excludesfile = ~/.gitignore
+  editor = vim
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [difftool]
-	prompt = false
+  prompt = false
 [help]
-	autocorrect = 1
+  autocorrect = 1
 [push]
-	default = current
+  default = current
 [branch "master"]
-	mergeoptions = --ff-only
+  mergeoptions = --ff-only
 [alias]
-	a = add
-	b = branch
-	c = commit
-	d = diff
-	r = rebase
-	s = status
-	co = checkout
-	st = stash
-	undo = reset HEAD~
+  a = add
+  b = branch
+  c = commit
+  d = diff
+  r = rebase
+  s = status
+  co = checkout
+  st = stash
+  undo = reset HEAD~
 
-	count = !git shortlog -sn
-	last  = log -1 HEAD
+  count = !git shortlog -sn
+  last  = log -1 HEAD
 
-	l = log --graph --abbrev-commit --decorate --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
-	lg = !"git l --all"
-	log = log --stat
+  l = log --graph --abbrev-commit --decorate --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+  lg = !"git l --all"
+  log = log --stat
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [color "status"]
   added = 045
   changed = 212
   untracked = 004
-	branch = 135 
+  branch = 135 
 [advice]
-	pushNonFastForward = false
-	statusHints        = false
-	commitBeforeMerge  = false
-	resolveConflict    = false
-	implicitIdentity   = false
-	detachedHead       = false
+  pushNonFastForward = false
+  statusHints        = false
+  commitBeforeMerge  = false
+  resolveConflict    = false
+  implicitIdentity   = false
+  detachedHead       = false
