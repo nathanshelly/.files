@@ -7,6 +7,9 @@ set viminfo+=n~/.viminfo
 set visualbell
 set t_vb=
 
+" map leader -> comma
+let mapleader=","
+
 " syntax coloring
 syntax on
 
