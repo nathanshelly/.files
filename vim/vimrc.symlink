@@ -32,6 +32,9 @@ set background=dark
 " colorscheme
 colorscheme desert
 
+" 256 color
+set t_Co=256
+
 " highlighting
 hi Search cterm=NONE ctermfg=black ctermbg=cyan
 hi IncSearch cterm=NONE ctermfg=black ctermbg=cyan
