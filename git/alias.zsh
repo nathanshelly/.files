@@ -5,6 +5,7 @@ alias git=hub
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
+alias gca='git commit --amend'
 alias gco='git checkout'
 alias gd='git diff'
 alias gdc='git diff --cached'
