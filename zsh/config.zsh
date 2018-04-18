@@ -19,8 +19,10 @@ command -v spaceship_vi_mode_enable >/dev/null 2>&1 && {
   spaceship_vi_mode_enable
 }
 
-# turn on fasd
-eval "$(fasd --init auto)"
+# turn on fasd if installed
+command -v fasd >/dev/null 2>&1 && {
+  eval "$(fasd --init auto)"
+}
 
 # fzf configuration
 export FZF_DEFAULT_OPTS="--height 50% --reverse --bind ctrl-k:down,ctrl-l:up"
