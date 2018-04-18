@@ -13,7 +13,11 @@ SAVEHIST=10000
 # in prompt.zsh
 bindkey -v
 
-spaceship_vi_mode_enable
+# turn on spaceship prompt vi mode
+# if using spaceship prompt
+command -v spaceship_vi_mode_enable >/dev/null 2>&1 && {
+  spaceship_vi_mode_enable
+}
 
 # turn on fasd
 eval "$(fasd --init auto)"
