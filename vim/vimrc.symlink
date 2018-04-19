@@ -105,6 +105,10 @@ au FileType gitcommit hi gitcommitSummary ctermfg=blue
 inoremap jk <esc>
 inoremap <esc> <nop>
 
+" disable command mode
+" Note: come back to later
+nnoremap q: <nop>
+
 " << home row keys for movement >>
 
 " left/right
