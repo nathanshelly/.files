@@ -137,8 +137,10 @@ nnoremap { K
 nnoremap } J
 
 " start/end of line movement
-noremap h ^
-noremap H $
+" Note: this overwrites jumping to marks
+" may remap this in the future
+noremap " ^
+noremap ' $
 
 " <<<< leader >>>>
 
