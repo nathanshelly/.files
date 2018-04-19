@@ -105,15 +105,26 @@ au FileType gitcommit hi gitcommitSummary ctermfg=blue
 inoremap jk <esc>
 inoremap <esc> <nop>
 
-" home row keys for movement
-noremap ; l
-noremap l k
-noremap k j
+" << home row keys for movement >>
+
+" left/right
 noremap j h
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
+noremap ; l
+
+" up/down
+" shift keys right (+ move by display line only in normal mode)
+" remap k -> j (+ g only in normal mode)
+" remap l -> k (+ g only in normal mode)
+
+" up
+nnoremap k gj
+onoremap k j
+vnoremap k j
+
+" up
+nnoremap l gk
+onoremap l k
+vnoremap l k
 
 " jump paragraphs with K/L
 nnoremap K }
