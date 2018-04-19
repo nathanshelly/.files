@@ -59,14 +59,14 @@ set t_Co=256
 " << highlighting >>
 
 " search
-hi Search cterm=NONE ctermfg=black ctermbg=cyan
-hi IncSearch cterm=NONE ctermfg=black ctermbg=cyan
+hi Search cterm=None ctermfg=black ctermbg=cyan
+hi IncSearch cterm=None ctermfg=black ctermbg=cyan
 
 " matching
-hi MatchParen cterm=NONE ctermfg=black ctermbg=cyan
+hi MatchParen cterm=None ctermfg=black ctermbg=cyan
 
 " transparent background
-hi Normal ctermbg=NONE
+hi Normal ctermbg=None
 
 " whitespace
 highlight ExtraWhitespace ctermbg=magenta
@@ -79,8 +79,9 @@ autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 
 " highlight tabs on file open
 syntax match Tab /\t/
-hi Tab gui=underline guifg=blue ctermbg=blue
+hi Tab ctermbg=blue
 autocmd BufRead * match Tab /\t/
+command NoHiTab hi Tab ctermbg=None
 
 " <<<<<<<< File Specific >>>>>>>>
 
