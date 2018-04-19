@@ -45,6 +45,11 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" <<<<<<<< Syntax Groups >>>>>>>>
+
+" Tab
+syntax match Tab /\t/
+
 " <<<<<<<< Colors >>>>>>>>
 
 " background
@@ -77,11 +82,11 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 " highlight on load and leaving insert mode
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 
-" highlight tabs on file open
-syntax match Tab /\t/
-hi Tab ctermbg=blue
-autocmd BufRead * match Tab /\t/
-command NoHiTab hi Tab ctermbg=None
+" <<<<<<<< Commands >>>>>>>>
+
+" tab highlight and unhighlight
+command! HiTab hi Tab ctermbg=blue
+command! NoHiTab hi Tab ctermbg=None
 
 " <<<<<<<< File Specific >>>>>>>>
 
