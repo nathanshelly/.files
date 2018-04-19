@@ -73,14 +73,17 @@ hi MatchParen cterm=None ctermfg=black ctermbg=cyan
 " transparent background
 hi Normal ctermbg=None
 
-" whitespace
-highlight ExtraWhitespace ctermbg=magenta
+" << whitespace >>
+
+" whitespace group coloring
+hi ExtraWhitespace ctermbg=magenta
 " keep through color scheme change
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta
-" trailing whitespace
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-" highlight on load and leaving insert mode
-autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+au ColorScheme * hi ExtraWhitespace ctermbg=magenta
+" highlight all trailing whitespace
+au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+" highlight trailing whitespace except on current line
+" if editing at the end of it
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
 " <<<<<<<< Commands >>>>>>>>
 
