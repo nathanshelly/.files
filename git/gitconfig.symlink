@@ -33,6 +33,7 @@
   co = checkout
   st = stash
   undo = reset HEAD~
+  track = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
 
   count = !git shortlog -sn
   last  = log -1 HEAD
