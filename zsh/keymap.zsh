@@ -14,4 +14,4 @@ bindkey -M vicmd 'l' up-line-or-history
 bindkey -M vicmd ';' vi-forward-char
 
 # reenable incremental search
-bindkey -M vicmd '/' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-pattern-search-backward
