@@ -140,5 +140,11 @@ nnoremap } J
 noremap h ^
 noremap H $
 
-" quickly turn off highlighting
-nmap <leader>n :noh<CR>
+" <<<< leader >>>>
+
+" quickly turn off search highlighting
+nmap <silent> <leader>n  :noh<CR>
+
+" quickly turn off tab highlighting
+nmap <silent> <leader>ht :HiTab<CR>
+nmap <silent> <leader>htn :NoHiTab<CR>
