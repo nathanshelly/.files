@@ -142,6 +142,9 @@ noremap H $
 
 " <<<< leader >>>>
 
+" source vimrc
+nmap <silent> <leader>s  :source ~/.vimrc<CR>
+
 " quickly turn off search highlighting
 nmap <silent> <leader>n  :noh<CR>
 
