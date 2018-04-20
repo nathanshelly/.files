@@ -47,8 +47,9 @@ set smartcase
 
 " <<<<<<<< Syntax Groups >>>>>>>>
 
-" Tab
-syntax match Tab /\t/
+" match Tabs on file load
+" (just matches, no highlighting yet)
+au BufRead * syntax match Tab /\t/
 
 " <<<<<<<< Colors >>>>>>>>
 
