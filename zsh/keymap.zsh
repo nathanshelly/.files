@@ -17,3 +17,6 @@ bindkey -M vicmd ';' vi-forward-char
 bindkey -M vicmd '/' history-incremental-pattern-search-backward
 bindkey -M viins '^r' history-incremental-pattern-search-backward
 bindkey -M viins '^f' history-incremental-pattern-search-forward
+
+# enable normal backspace behavior
+bindkey "^?" backward-delete-char
