@@ -26,6 +26,7 @@
 [alias]
   a = add
   b = branch
+  bt = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
   c = commit
   d = diff
   r = rebase
@@ -33,7 +34,6 @@
   co = checkout
   st = stash
   undo = reset HEAD~
-  track = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
 
   count = !git shortlog -sn
   last  = log -1 HEAD
@@ -50,7 +50,7 @@
   added = 045
   changed = 212
   untracked = 004
-  branch = 135 
+  branch = 135
 [advice]
   pushNonFastForward = false
   statusHints        = false
