@@ -51,6 +51,8 @@
   changed = 212
   untracked = 004
   branch = 135
+  localBranch = 135
+  remoteBranch = 159
 [advice]
   pushNonFastForward = false
   statusHints        = false
@@ -58,3 +60,4 @@
   resolveConflict    = false
   implicitIdentity   = false
   detachedHead       = false
+  waitingForEditor   = false
