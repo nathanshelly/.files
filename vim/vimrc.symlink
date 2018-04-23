@@ -57,7 +57,7 @@ au BufRead * syntax match Tab /\t/
 set background=dark
 
 " colorscheme
-colorscheme desert
+colorscheme onedark
 
 " 256 color
 set t_Co=256
