@@ -47,6 +47,10 @@ bind -r p previous-window
 # CONFIGURE .tmux
 tmux_conf_new_session_prompt=true
 
+# open new panes & windows in current directory
+tmux_conf_new_window_retain_current_path=true
+tmux_conf_new_pane_retain_current_path=true
+
 # colors
 # light blue - '#00afff'
 
@@ -138,7 +142,6 @@ unbind %
 
 bind -n M-\ split-window -h -c "#{pane_current_path}"
 bind -n M-- split-window -v -c "#{pane_current_path}"
-bind c new-window -c "#{pane_current_path}"
 
 # use home row vi navigation paradigm
 # remap movement keys when in copy mode
