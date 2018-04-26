@@ -33,6 +33,8 @@
   s = status
   co = checkout
   st = stash
+  stl = stash list
+  stsp = stash show -p
   undo = reset HEAD~
 
   count = !git shortlog -sn
