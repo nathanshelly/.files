@@ -5,19 +5,21 @@ command -v hub >/dev/null 2>&1 && {
 }
 
 # set some git aliases
-alias ga='git add'
-alias gb='git branch'
-alias gba='git branch -a'
+# use gitconfig aliases
+# to avoid duplication
+alias ga='git a'
+alias gb='git b'
+alias gba='git b -a'
 alias gbt='git bt'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gco='git checkout'
-alias gd='git diff'
-alias gdc='git diff --cached'
+alias gc='git c'
+alias gca='git c --amend'
+alias gco='git co'
+alias gd='git d'
+alias gdc='git d --cached'
 alias gl='git l'
 alias glg='git lg'
-alias gr='git rebase -i'
-alias grc='git rebase --continue'
-alias gs='git status -sb'
-alias gst='git stash'
+alias gr='git r -i'
+alias grc='git r --continue'
+alias gs='git s -sb'
+alias gst='git st'
 alias gu='git undo'
