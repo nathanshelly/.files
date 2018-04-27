@@ -11,6 +11,7 @@ command -v hub >/dev/null 2>&1 && {
 alias g='git'
 
 alias ga='git a'
+alias gap='git a -p'
 alias gb='git b'
 alias gba='git b -a'
 alias gbt='git bt'
