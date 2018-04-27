@@ -33,6 +33,7 @@ alias gl='git l'
 alias glg='git lg'
 
 alias gr='git r -i'
+alias gra='git r --abort'
 alias grc='git r --continue'
 
 alias gs='git s -sb'
