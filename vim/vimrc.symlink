@@ -152,9 +152,13 @@ noremap ' $
 " source vimrc
 nmap <silent> <leader>s  :source ~/.vimrc<CR>
 
-" quickly turn off search highlighting
+" turn off search highlighting
 nmap <silent> <leader>n  :noh<CR>
 
-" quickly turn off tab highlighting
-nmap <silent> <leader>ht :HiTab<CR>
+" toggle tab highlighting
+nmap <silent> <leader>ht  :HiTab<CR>
 nmap <silent> <leader>htn :NoHiTab<CR>
+
+" toggle paste mode
+nmap <silent> <leader>p  :set paste<CR>
+nmap <silent> <leader>pn :set nopaste<CR>
