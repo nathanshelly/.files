@@ -28,7 +28,9 @@
   b = branch
   bt = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
   c = commit
-  d = diff
+  # `--color` needed when piped to
+  # other commands like sed
+  d = diff --color
   r = rebase
   s = status
   co = checkout

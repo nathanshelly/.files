@@ -14,8 +14,10 @@ alias gbt='git bt'
 alias gc='git c'
 alias gca='git c --amend'
 alias gco='git co'
-alias gd='git d'
-alias gdc='git d --cached'
+# sed removes -/+ from
+# diffs, use only color
+alias gd='git d | _slice_plus_minus'
+alias gdc='git d --cached | _slice_plus_minus'
 alias gl='git l'
 alias glg='git lg'
 alias gr='git r -i'
