@@ -18,6 +18,10 @@ alias gco='git co'
 # diffs, use only color
 alias gd='git d | _slice_plus_minus'
 alias gdc='git d --cached | _slice_plus_minus'
+# `-R` shows additions as deletions and
+# vice versa, use to see deleted whitespace
+alias gdr='git d -R | _slice_plus_minus'
+alias gdcr='git d --cached -R | _slice_plus_minus'
 alias gl='git l'
 alias glg='git lg'
 alias gr='git r -i'
