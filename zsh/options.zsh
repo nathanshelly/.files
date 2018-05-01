@@ -13,8 +13,8 @@ setopt extended_glob no_match
 # history
 setopt append_history extended_history hist_ignore_all_dups hist_reduce_blanks inc_append_history share_history hist_verify
 
-#input
-setopt correct
+# input
+setopt nocorrect
 
 # job control
 setopt no_bg_nice no_hup notify
