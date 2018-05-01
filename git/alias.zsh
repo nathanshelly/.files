@@ -20,14 +20,12 @@ alias gc='git c'
 alias gca='git c --amend'
 alias gco='git co'
 
-# sed removes -/+ from
-# diffs, use only color
-alias gd='git d | _slice_plus_minus'
-alias gdc='git d --cached | _slice_plus_minus'
+alias gd='git d'
+alias gdc='git d --cached'
 # `-R` shows additions as deletions and
 # vice versa, use to see deleted whitespace
-alias gdr='git d -R | _slice_plus_minus'
-alias gdcr='git d --cached -R | _slice_plus_minus'
+alias gdr='git d -R'
+alias gdcr='git d --cached -R'
 
 alias gl='git l'
 alias glg='git lg'

@@ -1,7 +1,0 @@
-#! /bin/zsh
-# removes +/- from output
-# currently used on git diffs
-# read piped input, remove +/-, display with less
-while read data; do
-  sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r
-done
