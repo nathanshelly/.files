@@ -19,10 +19,14 @@
   prompt = false
 [help]
   autocorrect = 1
+# for compatibility reasons
+# [pull] covers this need in v >= 2.0
+[merge]
+  ff = only
+[pull]
+	ff = only
 [push]
   default = current
-[branch "master"]
-  mergeoptions = --ff-only
 [alias]
   a = add
   b = branch
