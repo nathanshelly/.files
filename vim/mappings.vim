@@ -45,6 +45,10 @@ nnoremap } J
 noremap " ^
 noremap ' $
 
+" use Ctrl-k/l to scroll screen
+noremap <c-k> <c-e>
+noremap <c-l> <c-y>
+
 " <<<< leader >>>>
 
 " source vimrc
