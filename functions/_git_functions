@@ -30,3 +30,12 @@ function gffix() {
   git rebase -i fix
   git branch -d fix
 }
+
+# delete given branch locally & remotely
+function gdel() {
+  # abort if no branch given
+  [[ -z $1 ]] && return 1
+
+  git branch -D $1
+  git push origin -d $1
+}
