@@ -7,9 +7,7 @@ function gforw() {
 }
 
 # move back linearly a given number of commits
-function gback() {
-  git checkout HEAD~$1
-}
+function gback() { git checkout HEAD~$1 }
 
 # make a quick fix at a previous commit
 function gfix() {
@@ -23,10 +21,12 @@ function gfix() {
   git checkout -b fix
 }
 
-# rebase given branch (or master)
-# on just made fix
+# rebase given branch on fix branch
 function gffix() {
-  git checkout "${1:-"master"}"
+  # abort if no branch given
+  [[ -z $1 ]] && return 1
+
+  git checkout "$1"
   git rebase -i fix
   git branch -d fix
 }
