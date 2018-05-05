@@ -7,6 +7,9 @@ set viminfo+=n~/.viminfo
 set visualbell
 set t_vb=
 
+" shorter timeouts
+set timeoutlen=1000 ttimeoutlen=0
+
 " map leader -> h
 let mapleader="h"
 
