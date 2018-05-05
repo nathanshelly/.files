@@ -7,6 +7,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+# set default editor
+export EDITOR=vim
+
 # Vi mode
 # see keymap.zsh for modifications
 # Note: spaceship vi mode also enabled
