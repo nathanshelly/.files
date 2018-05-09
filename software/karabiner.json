@@ -63,38 +63,6 @@
                         ]
                     },
                     {
-                        "description": "Disable ( key (learn to use shifts)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "9",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Disable ) key (learn to use shifts)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "0",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Disable 1 key with left shift (relearn touch typing)",
                         "manipulators": [
                             {
