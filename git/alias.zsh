@@ -30,7 +30,6 @@ alias gdcr='git d --cached -R'
 
 alias gl='git l'
 alias glv='git lv'
-alias glg='git lg'
 
 alias gr='git r -i'
 alias gra='git r --abort'
