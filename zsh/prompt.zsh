@@ -21,7 +21,7 @@ SPACESHIP_PROMPT_ORDER=(
 )
 
 # SPACESHIP_RPROMPT_ORDER=(
-# 	battery
+#   battery
 # )
 
 # prompt options

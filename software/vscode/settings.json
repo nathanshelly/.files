@@ -1,108 +1,105 @@
 {
-	// <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
-	// <<<<<<<<<<<<<<< base >>>>>>>>>>>>>>>
-	// <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
+  // <<<<<< workbench >>>>>>
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.editor.tabSizing": "shrink",
 
-	// <<<<<< workbench >>>>>>
-	"workbench.editor.tabCloseButton": "off",
-	"workbench.editor.tabSizing": "shrink",
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreview": false,
+  "workbench.activityBar.visible": false,
+  "workbench.statusBar.visible": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "vscode-icons",
 
-	"workbench.startupEditor": "none",
-	"workbench.editor.enablePreview": false,
-	"workbench.activityBar.visible": false,
-	"workbench.statusBar.visible": true,
-	"workbench.colorTheme": "One Dark Pro",
-	"workbench.iconTheme": "vscode-icons",
+  // <<<<<< editor >>>>>>
 
-	// <<<<<< editor >>>>>>
+  // appearance
+  "editor.minimap.enabled": false,
+  "editor.rulers": [80, 100, 120],
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorStyle": "line-thin",
+  "editor.renderIndentGuides": true,
+  "editor.renderLineHighlight": "gutter",
 
-	// appearance
-	"editor.minimap.enabled": false,
-	"editor.rulers": [80],
-	"editor.cursorBlinking": "smooth",
-	"editor.cursorStyle": "line-thin",
-	"editor.renderIndentGuides": true,
-	"editor.renderLineHighlight": "gutter",
+  // font
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
 
-	// font
-	"editor.fontFamily": "Fira Code",
-	"editor.fontLigatures": true,
+  // whitespace
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": true,
 
-	// whitespace
-	"editor.insertSpaces": true,
-	"editor.tabSize": 2,
-	"editor.detectIndentation": true,
+  // action
+  "editor.emptySelectionClipboard": false,
 
-	// action
-	"editor.emptySelectionClipboard": false,
+  // <<<<<< exclusions >>>>>>
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.pyc": true
+  },
 
-	// <<<<<< exclusions >>>>>>
-	"files.exclude": {
-		"**/.git": true,
-		"**/.svn": true,
-		"**/.hg": true,
-		"**/CVS": true,
-		"**/.DS_Store": true,
-		"**/*.pyc": true
-	},
+  // <<<<<< zen mode >>>>>>
+  "zenMode.hideTabs": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.centerLayout": false,
 
-	// <<<<<< zen mode >>>>>>
-	"zenMode.hideTabs": false,
-	"zenMode.hideStatusBar": false,
-	"zenMode.centerLayout": false,
+  // <<<<<< window >>>>>>
+  "window.openFilesInNewWindow": "off",
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "window.newWindowDimensions": "maximized",
+  "window.zoomLevel": 0,
 
-	// <<<<<< window >>>>>>
-	"window.openFilesInNewWindow": "off",
-	"window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
-	"window.newWindowDimensions": "maximized",
-	"window.zoomLevel": 0,
+  // <<<<<< explorer >>>>>>
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
 
-	// <<<<<< explorer >>>>>>
-	"explorer.confirmDelete": false,
-	"explorer.confirmDragAndDrop": false,
+  // <<<<<< files >>>>>>
+  "files.eol": "\n",
+  "files.autoSave": "off",
+  "files.insertFinalNewline": true,
 
-	// <<<<<< files >>>>>>
-	"files.eol": "\n",
-	"files.autoSave": "off",
+  // <<<<<< colors >>>>>>
+  "workbench.colorCustomizations": {
+    "[One Dark Pro]": {
+      "statusBar.background": "#3e8c9b",
+      "statusBar.foreground": "#dbdddd",
 
-	// <<<<<< colors >>>>>>
-	"workbench.colorCustomizations": {
-		"[One Dark Pro]": {
-			"statusBar.background": "#3e8c9b",
-			"statusBar.foreground": "#dbdddd",
+      "editor.background": "#232323",
+      "editorGroup.background": "#232323",
+      "editorGroupHeader.noTabsBackground": "#232323",
+      "editorGroupHeader.tabsBackground": "#232323",
+      "tab.activeBackground": "#303030",
+      "tab.inactiveBackground": "#232323",
 
-			"editor.background": "#232323",
-			"editorGroup.background": "#232323",
-			"editorGroupHeader.noTabsBackground": "#232323",
-			"editorGroupHeader.tabsBackground": "#232323",
-			"tab.activeBackground": "#303030",
-			"tab.inactiveBackground": "#232323",
+      "titleBar.activeBackground": "#232323",
+      "titleBar.inactiveBackground": "#232323",
 
-			"titleBar.activeBackground": "#232323",
-			"titleBar.inactiveBackground": "#232323",
+      "sideBar.background": "#232323",
 
-			"sideBar.background": "#232323",
+      "panel.border": "#232323",
+      "panel.background": "#232323",
+    }
+  },
 
-			"panel.border": "#232323",
-			"panel.background": "#232323",
-		}
-	},
+  // <<<<<< markdown >>>>>>
+  "markdownlint.config": {
+    "default": true,
+    "MD004": false,
+    "MD007": false,
+    "MD024": false,
+    "MD029": { "style": "ordered" },
+    "MD041": false,
+    "no-hard-tabs": false
+  },
 
-	// <<<<<< markdown >>>>>>
-	"markdownlint.config": {
-		"default": true,
-		"MD004": false,
-		"MD007": false,
-		"MD024": false,
-		"MD029": { "style": "ordered" },
-		"MD041": false,
-		"no-hard-tabs": false
-	},
-
-	// <<<<<< integrated terminal >>>>>>
-	"terminal.integrated.cursorStyle": "underline",
-	"terminal.integrated.scrollback": 5000,
-	"terminal.integrated.commandsToSkipShell": [
+  // <<<<<< integrated terminal >>>>>>
+  "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.scrollback": 5000,
+  "terminal.integrated.commandsToSkipShell": [
     "editor.action.toggleTabFocusMode",
     "workbench.action.debug.continue",
     "workbench.action.debug.restart",
@@ -139,45 +136,47 @@
     "workbench.action.terminal.scrollUp",
     "workbench.action.terminal.scrollUpPage",
 
-		// toggling panels
+    // toggling panels
     "workbench.action.terminal.toggleTerminal",
-		"workbench.action.output.toggleOutput",
-		"workbench.actions.view.problems",
-		"workbench.debug.action.toggleRepl",
+    "workbench.action.output.toggleOutput",
+    "workbench.actions.view.problems",
+    "workbench.debug.action.toggleRepl",
 
-		// focusing on other components
-		"workbench.action.focusActiveEditorGroup",
-		"workbench.action.focusSideBar",
-		"workbench.action.focusPanel",
-		"workbench.action.terminal.focus",
-		"workbench.action.toggleMaximizedPanel",
-		"workbench.action.maximizeEditor",
-		"workbench.action.toggleZenMode"
-	],
+    // focusing on other components
+    "workbench.action.focusActiveEditorGroup",
+    "workbench.action.focusSideBar",
+    "workbench.action.focusPanel",
+    "workbench.action.terminal.focus",
+    "workbench.action.toggleMaximizedPanel",
+    "workbench.action.maximizeEditor",
+    "workbench.action.toggleZenMode"
+  ],
 
-	// <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
-	// <<<<<<<<<<<< extensions >>>>>>>>>>>>
-	// <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
+  // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
+  // <<<<<<<<<<<< extensions >>>>>>>>>>>>
+  // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
 
-	// <<<<<< general >>>>>>
-	"extensions.autoUpdate": true,
+  // <<<<<< general >>>>>>
+  "extensions.autoUpdate": true,
 
-	// <<<<<< project >>>>>>
-	"projectManager.openInNewWindowWhenClickingInStatusBar": true,
+  // <<<<<< project >>>>>>
+  "projectManager.openInNewWindowWhenClickingInStatusBar": true,
 
-	// <<<<<< scroll off >>>>>>
-	"scrolloff.alwaysCenter": true,
+  // <<<<<< scroll off >>>>>>
+  "scrolloff.alwaysCenter": true,
 
-	// <<<<<< python >>>>>>
-	"python.pythonPath": "/usr/local/bin/python3",
+  // <<<<<< python >>>>>>
+  "python.pythonPath": "/usr/local/bin/python3",
+  "python.venvPath": "~/envs/python",
 
-	// linting
-	"python.linting.mypyEnabled": true,
-	"python.linting.pylintEnabled": false,
+  // linting
+  "python.linting.enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": false,
 
-	// <<<<<< trailng spaces >>>>>>
-	"trailing-spaces.highlightCurrentLine": false,
+  // <<<<<< trailng spaces >>>>>>
+  "trailing-spaces.highlightCurrentLine": false,
 
-	// <<<<<< vs icons >>>>>>
-	"vsicons.dontShowNewVersionMessage": true,
+  // <<<<<< vs icons >>>>>>
+  "vsicons.dontShowNewVersionMessage": true,
 }

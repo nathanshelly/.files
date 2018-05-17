@@ -24,7 +24,7 @@
 [merge]
   ff = only
 [pull]
-	ff = only
+  ff = only
 [push]
   default = current
 [alias]
