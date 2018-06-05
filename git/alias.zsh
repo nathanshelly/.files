@@ -30,6 +30,7 @@ alias gdr='git d -R'
 alias gdcr='git d --cached -R'
 
 alias gl='git l'
+alias glp='git l -p'
 alias glv='git lv'
 
 alias gr='git r -i'
