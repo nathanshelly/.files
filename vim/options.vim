@@ -35,6 +35,9 @@ set wrap
 set linebreak
 set display+=lastline
 
+" show rulers @ 80, 100, 120
+set colorcolumn=80,100,120
+
 " << search >>
 
 " show matches as you type
