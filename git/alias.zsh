@@ -39,7 +39,9 @@ alias grc='git r --continue'
 
 alias gs='git s -sb'
 alias gst='git st'
+alias gsta='git st apply'
 alias gstl='git st list'
+alias gstp='git st pop'
 alias gstsp='git st show -p'
 
 alias gu='git undo'
