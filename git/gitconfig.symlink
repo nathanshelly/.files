@@ -2,7 +2,7 @@
 [include]
   path = ~/.gitconfig.local
 [hub]
-  protocol = https
+  protocol = ssh
 [color]
   ui = always
   diff = auto
