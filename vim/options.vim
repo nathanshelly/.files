@@ -13,8 +13,8 @@ set noswapfile
 " shorter timeouts
 set timeoutlen=1000 ttimeoutlen=0
 
-" map leader -> h
-let mapleader="h"
+" map leader -> space
+let mapleader=" "
 
 " syntax coloring
 syntax on
