@@ -7,6 +7,9 @@ set viminfo+=n~/.viminfo
 set visualbell
 set t_vb=
 
+" prevent swap files
+set noswapfile
+
 " shorter timeouts
 set timeoutlen=1000 ttimeoutlen=0
 
