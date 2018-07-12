@@ -51,8 +51,15 @@ noremap <c-l> <c-y>
 
 " <<<< leader >>>>
 
+" save, quit, reload, save & quit, exit w/ error
+nmap <silent> <leader>w :w<CR>
+nmap <silent> <leader>q :q<CR>
+nmap <silent> <leader>e :e<CR>
+nmap <silent> <leader>x :x<CR>
+nmap <silent> <leader>cq :cq<CR>
+
 " source vimrc
-nmap <silent> <leader>s  :source ~/.vimrc<CR>
+nmap <silent> <leader>r  :source ~/.vimrc<CR>
 
 " turn off search highlighting
 nmap <silent> <leader>n  :noh<CR>
