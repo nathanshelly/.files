@@ -62,3 +62,8 @@ set smartcase
 " commit message subject line wrap and color
 au FileType gitcommit set tw=72
 au FileType gitcommit hi gitCommitSummary ctermfg=blue
+
+" << makefile >>
+
+" insert tabs, not 2 spaces
+au FileType make set noexpandtab
