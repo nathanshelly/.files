@@ -39,3 +39,9 @@ function gdel() {
   git branch -D $1
   git push origin -d $1
 }
+
+# add directory except given files/directories
+function gae() {
+  git add .
+  git reset -- $@
+}

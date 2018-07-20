@@ -42,10 +42,8 @@
   stl = stash list
   stsp = stash show -p
   undo = reset HEAD~
-
   count = !git shortlog -sn
   last  = log -1 HEAD
-
   # base alias to build on
   lb = log --graph --abbrev-commit --decorate
   l = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
