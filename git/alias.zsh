@@ -1,6 +1,6 @@
 # use hub if installed
 # https://github.com/github/hub
-command -v hub >/dev/null 2>&1 && {
+command -v hub > /dev/null 2>&1 && {
   alias git=hub
 }
 

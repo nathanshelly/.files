@@ -18,12 +18,12 @@ bindkey -v
 
 # turn on spaceship prompt vi mode
 # if using spaceship prompt
-command -v spaceship_vi_mode_enable >/dev/null 2>&1 && {
+command -v spaceship_vi_mode_enable > /dev/null 2>&1 && {
   spaceship_vi_mode_enable
 }
 
 # turn on fasd if installed
-command -v fasd >/dev/null 2>&1 && {
+command -v fasd > /dev/null 2>&1 && {
   eval "$(fasd --init auto)"
 }
 
