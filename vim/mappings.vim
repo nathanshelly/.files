@@ -59,6 +59,9 @@ nnoremap R <nop>
 nnoremap x <nop>
 nnoremap X <nop>
 
+" use `s` for buffer selection (instead of `"`)
+noremap s "
+
 " <<<<<< leader >>>>>>
 
 " save, quit, reload, save & quit, exit w/ error
