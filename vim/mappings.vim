@@ -51,6 +51,14 @@ noremap ' $
 noremap <c-k> <c-e>
 noremap <c-l> <c-y>
 
+" disable character level manipulation
+nnoremap s <nop>
+nnoremap S <nop>
+nnoremap r <nop>
+nnoremap R <nop>
+nnoremap x <nop>
+nnoremap X <nop>
+
 " <<<<<< leader >>>>>>
 
 " save, quit, reload, save & quit, exit w/ error
