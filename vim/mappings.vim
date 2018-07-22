@@ -42,8 +42,6 @@ nnoremap } J
 " <<<< end of home row movement keys remapping >>>>
 
 " start/end of line movement
-" Note: this overwrites jumping to marks
-" may remap this in the future
 noremap " ^
 noremap ' $
 
@@ -61,6 +59,9 @@ nnoremap X <nop>
 
 " use `s` for buffer selection (instead of `"`)
 noremap s "
+
+" use `x` for jumping to marks (instead of `'`)
+noremap x '
 
 " <<<<<< leader >>>>>>
 
