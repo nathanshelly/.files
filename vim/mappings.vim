@@ -71,3 +71,6 @@ nmap <silent> <leader>htn :NoHiTab<CR>
 " toggle paste mode
 nmap <silent> <leader>p  :set paste<CR>
 nmap <silent> <leader>pn :set nopaste<CR>
+
+" look up word under cursor
+nmap <silent> <leader>d {
