@@ -8,7 +8,7 @@ inoremap <esc> <nop>
 " Note: come back to later
 nnoremap q: <nop>
 
-" << home row keys for movement >>
+" <<<< home row keys for movement >>>>
 
 " left/right
 noremap j h
@@ -16,8 +16,8 @@ noremap ; l
 
 " up/down
 " shift keys right (+ move by display line only in normal mode)
-" remap k -> j (+ g only in normal mode)
-" remap l -> k (+ g only in normal mode)
+" k -> j (+ g only in normal mode)
+" l -> k (+ g only in normal mode)
 
 " up
 nnoremap k gj
@@ -39,6 +39,8 @@ vnoremap L {
 nnoremap { K
 nnoremap } J
 
+" <<<< end of home row movement keys remapping >>>>
+
 " start/end of line movement
 " Note: this overwrites jumping to marks
 " may remap this in the future
@@ -49,7 +51,7 @@ noremap ' $
 noremap <c-k> <c-e>
 noremap <c-l> <c-y>
 
-" <<<< leader >>>>
+" <<<<<< leader >>>>>>
 
 " save, quit, reload, save & quit, exit w/ error
 nmap <silent> <leader>w :w<CR>
