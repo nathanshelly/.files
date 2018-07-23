@@ -59,6 +59,8 @@ nnoremap X <nop>
 
 " use `s` for buffer selection (instead of `"`)
 noremap s "
+" z -> _ register (more accessible black hole register)
+noremap sz "_
 
 " use `x` for jumping to marks (instead of `'`)
 noremap x '
