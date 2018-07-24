@@ -147,6 +147,11 @@ unbind %
 bind -n M-\ split-window -h -c "#{pane_current_path}"
 bind -n M-- split-window -v -c "#{pane_current_path}"
 
+# kill pane/window w/o confirmation & add shortcut to kill session
+bind x kill-pane
+bind X kill-window
+bind & kill-session
+
 # use home row vi navigation paradigm
 # remap movement keys when in copy mode
 # see valid key tables:
