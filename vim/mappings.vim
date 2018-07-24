@@ -15,7 +15,7 @@ noremap j h
 noremap ; l
 
 " up/down
-" shift keys right (+ move by display line only in normal mode)
+" shift keys right (+ move by screen line only in normal mode)
 " k -> j (+ g only in normal mode)
 " l -> k (+ g only in normal mode)
 
@@ -90,3 +90,7 @@ nmap <silent> <leader>pn :set nopaste<CR>
 
 " look up word under cursor
 nmap <silent> <leader>d {
+
+" start/end of screen line movement
+nmap <silent> <leader>' g$
+nmap <silent> <leader>" g0
