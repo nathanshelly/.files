@@ -28,3 +28,7 @@ bindkey -rM vicmd 'x'
 bindkey -rM vicmd 'X'
 bindkey -rM vicmd 'r'
 bindkey -rM vicmd 'R'
+
+# start/end of line movement
+bindkey -M vicmd "'" vi-end-of-line
+bindkey -M vicmd '"' vi-digit-or-beginning-of-line
