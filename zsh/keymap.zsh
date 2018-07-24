@@ -20,3 +20,11 @@ bindkey -M viins '^f' history-incremental-pattern-search-forward
 
 # enable normal backspace behavior
 bindkey "^?" backward-delete-char
+
+# disable character level manipulation
+bindkey -rM vicmd 's'
+bindkey -rM vicmd 'S'
+bindkey -rM vicmd 'x'
+bindkey -rM vicmd 'X'
+bindkey -rM vicmd 'r'
+bindkey -rM vicmd 'R'
