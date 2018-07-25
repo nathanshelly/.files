@@ -95,3 +95,6 @@ nmap <silent> <leader>d {
 " start/end of screen line movement
 nmap <silent> <leader>' g$
 nmap <silent> <leader>" g0
+
+" sort w/ leader
+nmap <leader>so :sort<CR>
