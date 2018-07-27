@@ -67,9 +67,10 @@ noremap x '
 
 " <<<<<< leader >>>>>>
 
-" save, quit, reload, save & quit, exit w/ error, close buffer
+" save, quit, force quit, reload, save & quit, exit w/ error, close buffer
 nmap <silent> <leader>w :w<CR>
 nmap <silent> <leader>q :q<CR>
+nmap <silent> <leader>! :q!<CR>
 nmap <silent> <leader>e :e<CR>
 nmap <silent> <leader>x :x<CR>
 nmap <silent> <leader>cq :cq<CR>
