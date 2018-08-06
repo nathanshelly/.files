@@ -41,6 +41,10 @@ nnoremap } J
 
 " <<<< end of home row movement keys remapping >>>>
 
+" remap `;` -> , (repeat last `tf` movement) since its part of home row movement
+" overwriting `,` (repeat last `tf` movement in opposite direction)
+nnoremap , ;
+
 " start/end of line movement
 noremap " ^
 noremap ' $
