@@ -21,6 +21,7 @@ alias gc='git c'
 alias gca='git c --amend'
 alias gco='git co'
 alias gcob='git co -b'
+alias gcom='git co master'
 
 alias gd='git d'
 alias gdc='git d --cached'
