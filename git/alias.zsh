@@ -19,6 +19,7 @@ alias gbt='git bt'
 
 alias gc='git c'
 alias gca='git c --amend'
+alias gcm='git c -m'
 alias gco='git co'
 alias gcob='git co -b'
 alias gcom='git co master'
