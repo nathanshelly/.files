@@ -72,6 +72,8 @@ nnoremap x '
 " use `r` instead of `q` for recording macros
 nnoremap r q
 nnoremap q <nop>
+" use `R` to repeat last macro
+nnoremap R @@
 
 " <<<<<< leader >>>>>>
 
