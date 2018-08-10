@@ -36,7 +36,7 @@ alias gls='git ls'
 alias glp='git l -p'
 alias glv='git lv'
 
-alias gr='git r -i'
+alias gr='git ri'
 alias gra='git r --abort'
 alias grc='git r --continue'
 alias grst='git reset'

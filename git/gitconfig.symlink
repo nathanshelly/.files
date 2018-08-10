@@ -36,6 +36,7 @@
   # other commands like sed
   d = diff --color
   r = rebase
+  ri = rebase -i
   s = status
   co = checkout
   st = stash
