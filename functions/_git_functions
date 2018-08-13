@@ -40,10 +40,29 @@ function gfix() {
 # rebase given branch on fix branch
 function gffix() {
   # abort if no branch given
-  [[ -z $1 ]] && return 1
+  git rev-parse --quiet --verify "$1" > /dev/null 2>&1 || {
+    maybe_err=$?
+    echo "Sorry, that branch doesn't seem to exist"
+    return $maybe_err
+  }
 
-  git checkout "$1"
+  # abort if there are unstaged changes as this will cause rebase to fail
+  git diff-index --quiet HEAD -- || {
+    maybe_err=$?
+    echo 'You have unstaged changes, stash or commit them, then run again'
+    return $maybe_err
+  }
+
+  # checkout branch to rebase on fix
+  git checkout "$1" || {
+    maybe_err=$?
+    echo 'Checkout failed, please fix the error then try again'
+    return $maybe_err
+  }
+
+  # should not fail due to untracked changes as we checked previously
   git rebase -i fix
+  # deletes branch regardless of merge conflicts during interactive rebase
   git branch -d fix
 }
 
