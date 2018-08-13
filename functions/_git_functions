@@ -10,19 +10,29 @@ function gforw() {
 function gback() { git checkout HEAD~$1 }
 
 # make a quick fix at a previous commit
+# currently assuming if user enters number > 50 (or gives an
+# alphanumeric value) that they want to jump to a commit hash
+# known issue - inaccurate comparisons for parameters beginning with `0`
+# e.g. `gfix 0759` will print out an error as `(( 0759 < 50 ))` exits with a 0
+# the function still works as the failure of gback triggers execution after ||
 function gfix() {
-  # currently assuming if user enters number > 50 (or gives an
-  # alphanumeric value) that they want to jump to a commit hash
-  # known issue - inaccurate comparisons for parameters beginning with `0`
-  # e.g. `gfix 0759` will print out an error as `(( 0759 < 50 ))` exits with a 0
-  # the function still works as the failure of gback triggers execution after ||
-  # <-> matches any number of digits
-  [[ $1 = <-> && (( $1 < 50 )) ]] && gback "$1" || git checkout "$1";
-
-  # attempts to delete fix if already merged
-  if [ -n "$(git show-ref refs/heads/fix)" ]; then
-    git branch -d fix
+  # attempt to delete `fix` branch if it exists
+  if git rev-parse --quiet --verify fix > /dev/null 2>&1; then
+    git branch -d fix || {
+      # if deletion fails, echo reason then return with exit code
+      maybe_err=$?
+      echo 'Deletion of `fix` branch failed, delete it manually then try again'
+      return $maybe_err
+    }
   fi
+
+  # checkout out # commits back or specific hash depending on user input
+  # <-> matches any number of digits
+  { { [[ $1 = <-> ]] && (( $1 < 50 )) } && gback "$1" || git checkout "$1" } || {
+    maybe_err=$?
+    echo 'Checkout failed, please fix the error then try again'
+    return $maybe_err
+  }
 
   git checkout -b fix
 }
