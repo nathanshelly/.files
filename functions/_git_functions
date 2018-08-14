@@ -3,15 +3,16 @@
 
 # move forward linearly a given number of commits
 function gforw() {
-  git checkout $(git rev-list --topo-order HEAD..master | tail -$1 | head -1)
+  git checkout \
+    $(git rev-list --topo-order HEAD..${2:-master} | tail -$1 | head -1)
 }
 
 # move back linearly a given number of commits
 function gback() { git checkout HEAD~$1 }
 
 # make a quick fix at a previous commit
-# currently assuming if user enters number > 50 (or gives an
-# alphanumeric value) that they want to jump to a commit hash
+# currently assuming if user enters number > 50 (or gives an alphanumeric
+# value) that they want to jump to a commit hash
 # known issue - inaccurate comparisons for parameters beginning with `0`
 # e.g. `gfix 0759` will print out an error as `(( 0759 < 50 ))` exits with a 0
 # the function still works as the failure of gback triggers execution after ||
