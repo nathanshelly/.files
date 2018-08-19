@@ -27,3 +27,6 @@ Thumbs.db
 
 # VSCode
 .vscode
+
+# terraform
+.terraform
