@@ -2,6 +2,7 @@
 typeset -U path
 # zsh conveniently links path array and PATH env var (along with other pairs)
 path=(
+  /Applications/Racket\ v7.0/bin
   /usr/local/bin
   $HOME/Library/Python/3.6/bin
   /usr/local/opt/python/libexec/bin
