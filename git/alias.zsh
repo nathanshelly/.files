@@ -15,6 +15,8 @@ alias gap='git a -p'
 
 alias gb='git b'
 alias gba='git b -a'
+alias gbd='git b -d'
+alias gbD='git b -D'
 alias gbt='git bt'
 
 alias gc='git c'
