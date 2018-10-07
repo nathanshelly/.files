@@ -29,7 +29,7 @@
   default = current
 [alias]
   a = add
-  b = branch
+  b = -P branch
   bt = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
   c = commit
   # `--color` needed when piped to
