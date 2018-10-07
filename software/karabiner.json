@@ -1058,7 +1058,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1090,7 +1091,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1122,7 +1124,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1154,7 +1157,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1186,7 +1190,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1221,7 +1226,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1256,7 +1262,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1291,7 +1298,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1326,7 +1334,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1361,7 +1370,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1397,7 +1407,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "com.contextsformac.Contexts"
+                                            "com.contextsformac.Contexts",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1432,7 +1443,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
+                                            "com.googlecode.iterm2",
+                                            "io.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
