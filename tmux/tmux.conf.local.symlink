@@ -32,6 +32,11 @@ unbind F
 
 # <<<< override .tmux options >>>>
 
+# colors
+# it says 256 but actually true color (along with `terminal-overrides` `:Tc`
+# flag below. also enables italics
+set -g default-terminal "tmux-256color"
+
 # window title
 set -g set-titles-string '#h ⟺  #S ⟺  #W'
 
