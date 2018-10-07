@@ -194,7 +194,6 @@ bind -n M-: resize-pane -R 3
 # - [example config](https://github.com/Atcold/Unix-dot-files/blob/master/Tmux/tmux.conf#L38-L39)
 # - [setting terminal overrides](https://stackoverflow.com/questions/41783367/tmux-tmux-true-color-is-not-working-properly)
 set -sa terminal-overrides ',xterm*:dim=\E[2m'
-set -as terminal-overrides ',xterm*:smxx=\E[9m'
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 set -as terminal-overrides ',xterm*:Tc'
 
