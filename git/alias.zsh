@@ -17,6 +17,7 @@ alias gb='git b'
 alias gba='git b -a'
 alias gbd='git b -d'
 alias gbD='git b -D'
+alias gbf='git b -f'
 alias gbm='git b -m'
 alias gbt='git bt'
 
