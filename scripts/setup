@@ -127,6 +127,12 @@ install_dotfiles () {
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
+
+  for src in $DOTFILES_ROOT/config/*
+  do
+    dst="$HOME/.config/$(basename $src)"
+    link_file "$src" "$dst"
+  done
 }
 
 setup_gitconfig
