@@ -1,0 +1,1 @@
+alias vimn='vim --clean'
