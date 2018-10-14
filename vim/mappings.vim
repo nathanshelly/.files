@@ -13,21 +13,9 @@ nnoremap q: <nop>
 " left/right
 noremap j h
 noremap ; l
-
 " up/down
-" shift keys right (+ move by screen line only in normal mode)
-" k -> j (+ g only in normal mode)
-" l -> k (+ g only in normal mode)
-
-" up
-nnoremap k gj
-onoremap k j
-vnoremap k j
-
-" up
-nnoremap l gk
-onoremap l k
-vnoremap l k
+noremap l k
+noremap k j
 
 " jump paragraphs with K/L
 nnoremap K }
