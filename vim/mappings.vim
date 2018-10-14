@@ -17,6 +17,11 @@ noremap ; l
 noremap l k
 noremap k j
 
+" remap up/down screen line movement in normal mode
+" up/down
+nnoremap gl gk
+nnoremap gk gj
+
 " jump paragraphs with K/L
 nnoremap K }
 vnoremap K }
