@@ -29,8 +29,8 @@ hi ExtraWhitespace ctermbg=magenta
 au ColorScheme * hi ExtraWhitespace ctermbg=magenta
 " highlight all trailing whitespace
 au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
-" highlight trailing whitespace except on current line
-" if editing at the end of it
+" avoid highlighting trailing whitespace on current line
+" when editing at the end of it
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
 " << Syntax Groups >>

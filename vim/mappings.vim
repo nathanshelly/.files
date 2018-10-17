@@ -5,7 +5,7 @@ inoremap jk <esc>
 inoremap <esc> <nop>
 
 " disable command mode
-" Note: come back to later
+" TODO: maybe come up with a nicer solution here
 nnoremap q: <nop>
 
 " <<<< home row keys for movement >>>>

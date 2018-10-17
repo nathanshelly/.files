@@ -27,13 +27,25 @@ set relativenumber
 set scrolloff=10
 
 " normal backspace
+" refs:
+" https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
+" http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set backspace=indent,eol,start
 
 " indentation
+" explanation:
+" tabstop - # of columns a tab counts for
+" softtabstop - # of columns to use when hitting Tab in insert mode (see refs)
+" shiftwidth - # of columns text is indented w/ `<<` & `>>`
+" expandtab - insert spaces on Tab
+" refs:
+" http://vim.wikia.com/wiki/Indenting_source_code
+" https://tedlogan.com/techblog3.html
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent
 
 " wrap on linebreak (show as much as possible)
+" ref - http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
 set wrap
 set linebreak
 set display+=lastline
