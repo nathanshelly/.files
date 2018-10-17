@@ -38,9 +38,9 @@ set wrap
 set linebreak
 set display+=lastline
 
-" show rulers @ 80, 100, 120
+" show ruler @ 80
 " (write up to line, not on top of it)
-set colorcolumn=81,101,121
+set colorcolumn=81
 
 " << search >>
 
