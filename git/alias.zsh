@@ -42,10 +42,12 @@ alias gdr='git d -R'
 alias gdcr='git d --cached -R'
 
 alias gl='git l'
+alias gln='gp ln'
 alias glp='git lv -p'
 alias glps='git lv -p --stat'
 alias gls='git lv --stat'
 alias glv='git lv'
+alias glvn='gp lvn'
 
 alias gm='git m'
 
