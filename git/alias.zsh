@@ -18,6 +18,9 @@ alias gba='git b -a'
 alias gbd='git b -d'
 alias gbD='git b -D'
 alias gbf='git b -f'
+# using `-P` w/ `branch` by default
+# this alias provides the bare git behavior
+alias gbl='git branch'
 alias gbm='git b -m'
 alias gbt='git bt'
 
