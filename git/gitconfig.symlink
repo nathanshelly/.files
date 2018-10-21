@@ -35,6 +35,7 @@
   # `--color` needed when piped to
   # other commands like sed
   d = diff --color
+  m = merge
   r = rebase
   ri = rebase -i
   s = status

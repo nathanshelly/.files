@@ -43,6 +43,8 @@ alias glps='git lv -p --stat'
 alias gls='git lv --stat'
 alias glv='git lv'
 
+alias gm='git m'
+
 alias gr='git ri'
 alias gra='git r --abort'
 alias grc='git r --continue'
