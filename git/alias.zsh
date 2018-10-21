@@ -49,6 +49,13 @@ alias glv='git lv'
 
 alias gm='git m'
 
+# aliases using `-P` (`gp`) (no pagination)
+# currently just `git log` variants w/ hardcoded `-n` #s
+# not a comprehensive list of aliases using `-P`
+alias gpl='gp ln 15'
+alias gpls='gp lvn 5 --stat'
+alias gplv='gp lvn 15'
+
 alias gr='git ri'
 alias gra='git r --abort'
 alias grc='git r --continue'
