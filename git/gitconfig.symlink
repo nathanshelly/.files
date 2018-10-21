@@ -48,7 +48,6 @@
   # base alias to build on
   lb = log --graph --abbrev-commit --decorate
   l = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
-  ls = log --stat
   lv = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 [filter "lfs"]
   clean = git-lfs clean -- %f
