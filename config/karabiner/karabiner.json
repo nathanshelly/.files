@@ -16,7 +16,7 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Change right_command to Cmd+Ctrl+Alt",
+                                "description": "Change right_command to Cmd-Ctrl-Alt",
                                 "from": {
                                     "key_code": "right_command",
                                     "modifiers": {
@@ -41,7 +41,7 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Change right_option to Cmd+Ctrl",
+                                "description": "Change right_option to Cmd-Ctrl",
                                 "from": {
                                     "key_code": "right_option",
                                     "modifiers": {
