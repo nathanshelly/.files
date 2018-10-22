@@ -604,14 +604,16 @@
                         ]
                     },
                     {
-                        "description": "Alt-D to Cmd-L in Chrome & Postman",
+                        "description": "Alt-D to Cmd-L in Chrome, Postman, Firefox & Vivaldi",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
                                             "com.google.Chrome",
-                                            "com.postmanlabs.mac"
+                                            "com.postmanlabs.mac",
+                                            "org.mozilla.firefox",
+                                            "com.vivaldi.Vivaldi"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
