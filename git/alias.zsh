@@ -54,6 +54,8 @@ alias gm='git m'
 # aliases using `-P` (`gp`) (no pagination)
 # currently just `git log` variants w/ hardcoded `-n` #s
 # not a comprehensive list of aliases using `-P`
+alias gpd='gp d'
+alias gpdc='gp d --cached'
 alias gpl='gp ln 15'
 alias gpls='gp lvn 5 --stat'
 alias gplv='gp lvn 15'
