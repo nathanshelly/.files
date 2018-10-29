@@ -9,7 +9,7 @@ command -v hub > /dev/null 2>&1 && {
 # use gitconfig aliases
 # to avoid duplication
 alias g='git'
-alias gp='git -P'
+alias gp='git --no-pager'
 
 alias ga='git a'
 alias gap='git a -p'
