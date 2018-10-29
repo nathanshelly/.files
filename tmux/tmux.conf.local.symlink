@@ -186,6 +186,11 @@ bind -n M-K resize-pane -D 3
 bind -n M-L resize-pane -U 3
 bind -n M-: resize-pane -R 3
 
+bind J resize-pane -L 1
+bind K resize-pane -D 1
+bind L resize-pane -U 1
+bind : resize-pane -R 1
+
 # enable true color (RGB color), dimming, strikethrough and italics
 #
 # refs:
