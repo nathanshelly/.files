@@ -545,3 +545,5 @@ key_bindings:
   - { key: Key6,      mods: Alt|Shift, chars: "\x1b^"                       } # Alt + ^
   - { key: Backslash, mods: Alt,       chars: "\x1b\\"                      } # Alt + \
   - { key: Backslash, mods: Alt|Shift, chars: "\x1b|"                       } # Alt + |
+  # allow Ctrl+6 to toggle last two buffers Vim
+  - { key: Key6,      mods: Control,   chars: "\x1e"                        } # Ctrl + 6
