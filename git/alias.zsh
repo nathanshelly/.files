@@ -41,24 +41,28 @@ alias gdc='git d --cached'
 alias gdr='git d -R'
 alias gdcr='git d --cached -R'
 
-alias gl='git l'
+alias gl='gp ln 15'
 alias gln='gp ln'
 alias glp='git lv -p'
 alias glps='git lv -p --stat'
 alias gls='git lv --stat'
-alias glv='git lv'
+alias glsn='git lvn --stat'
+alias glv='gp lvn 15'
 alias glvn='gp lvn'
 
 alias gm='git m'
 
-# aliases using `-P` (`gp`) (no pagination)
-# currently just `git log` variants w/ hardcoded `-n` #s
-# not a comprehensive list of aliases using `-P`
+# aliases using `--no-pager` (`gp`)
+# not a comprehensive list of aliases using `--no-pager`
 alias gpd='gp d'
 alias gpdc='gp d --cached'
-alias gpl='gp ln 15'
 alias gpls='gp lvn 5 --stat'
-alias gplv='gp lvn 15'
+
+# aliases to avoid `--no-pager` default
+# uses `gp<command>` to avoid `--no-pager`
+# unfortunate confusing shadowing of aliases using `gp` for no pagination
+alias gpl='g l'
+alias gplv='g lv'
 
 alias gr='git ri'
 alias gra='git r --abort'
