@@ -262,7 +262,7 @@ hide_cursor_when_typing: true
 #   - Block
 #   - Underline
 #   - Beam
-cursor_style: Underline
+cursor_style: Block
 
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
