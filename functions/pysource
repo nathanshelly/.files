@@ -2,5 +2,5 @@
 
 # source a python virtual environment
 function pysource() {
-  source $HOME/envs/python/$1/bin/activate
+  source $HOME/.virtualenvs/$1/bin/activate
 }
