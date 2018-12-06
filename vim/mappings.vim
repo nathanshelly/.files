@@ -70,6 +70,10 @@ nnoremap R @@
 
 " <<<<<< leader >>>>>>
 
+" disable Space
+" to avoid moving cursor on space (not a prereq to using Space as leader)
+nnoremap <Space> <NOP>
+
 " save, quit, force quit, reload, save & quit, exit w/ error, close buffer
 nmap <silent> <leader>w :w<CR>
 nmap <silent> <leader>q :q<CR>
