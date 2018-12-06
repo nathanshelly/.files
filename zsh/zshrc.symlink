@@ -21,7 +21,14 @@ autoload -Uz $DOTFILES/functions/*(:t)
 
 # all zsh files
 typeset -U config_files
-config_files=($DOTFILES/**/*.zsh)
+
+# enable `extended_glob` to pattern match & exclude `submodules` directory
+# disable immediately after to respect options in `options.zsh`
+# TODO: avoid `extended_glob` hack
+# must be some way to exclude `submodules` directory w/o `extended_glob` set
+setopt extended_glob
+config_files=($DOTFILES/**/*.zsh~*submodules*)
+setopt noextended_glob
 
 # load path files
 for file in ${(M)config_files:#*/path.zsh}
