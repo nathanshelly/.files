@@ -1,5 +1,26 @@
 " <<<<<<<< Remappings >>>>>>>>
 
+" <<<< temporary remapping to break habit of hitting `u` >>>>
+
+" I've got a bad habit of hitting `u` after operators like `d` in an attempt to
+" abort when I realize I don't actually want to perform the action. This
+" doesn't always work (like if the operator is `t|f`) and regardless is
+" nonsensical. So this is an attempt to break that habit by making doing so
+" delete everything in the file
+
+nnoremap du ggdG
+nnoremap diu ggdG
+nnoremap cu ggdG
+nnoremap ciu ggdG
+nnoremap yu ggdG
+nnoremap yiu ggdG
+nnoremap tu ggdG
+nnoremap Tu ggdG
+nnoremap fu ggdG
+nnoremap Fu ggdG
+
+" <<<< end of temporary remapping to break habit of hitting `u` >>>>
+
 " escape with rolling jk
 inoremap jk <esc>
 inoremap <esc> <nop>
