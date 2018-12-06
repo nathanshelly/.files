@@ -1,3 +1,0 @@
-[submodule "gpakosz/.tmux"]
-	path = tmux/gpakosz
-	url = git@github.com:gpakosz/.tmux.git
