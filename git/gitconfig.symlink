@@ -30,7 +30,7 @@
 [alias]
   a = add
   b = --no-pager branch
-  bt = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
+  bt = for-each-ref --format='%(refname:short) -> %(upstream:short)' refs/heads
   c = commit
   # `--color` needed when piped to
   # other commands like sed

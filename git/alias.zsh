@@ -14,16 +14,22 @@ alias gp='git --no-pager'
 alias ga='git a'
 alias gap='git a -p'
 
-alias gb='git b'
-alias gba='git b -a'
+# base, default to verbose
+alias gb='git b -v'
+alias gba='gb -a'
+# non-verbose
+alias gbas='git b -a'
 alias gbd='git b -d'
 alias gbD='git b -D'
 alias gbf='git b -f'
 # using `-P` w/ `branch` by default
-# this alias provides the bare git behavior
+# this alias provides bare git behavior
 alias gbl='git branch'
 alias gbm='git b -m'
+# non-verbose
+alias gbs='git b'
 alias gbt='git bt'
+alias gbv='git b -vv'
 
 alias gc='git c'
 alias gca='git c --amend'
