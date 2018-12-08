@@ -531,8 +531,10 @@ hi link gitcommitUnmergedArrow gitcommitUnmergedFile
 
 " }}}
 
+
 " Neovim terminal colors {{{
 
+" TODO: understand what this does/if necessary
 if has("nvim")
   let g:terminal_color_0 =  s:black.gui
   let g:terminal_color_1 =  s:red.gui
