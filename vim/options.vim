@@ -1,8 +1,5 @@
 " <<<<<<<< General Options >>>>>>>>
 
-" specify viminfo path
-set viminfo+=n~/.viminfo
-
 " disable beeping and screen flash on error
 set visualbell
 set t_vb=
