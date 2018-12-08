@@ -33,6 +33,11 @@ command -v fasd > /dev/null 2>&1 && {
   eval "$(fasd --init auto)"
 }
 
+# alias `vim` to `nvim` if installed
+if command -v nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
 # fzf configuration
 export FZF_DEFAULT_OPTS="--height 50% --reverse --bind ctrl-k:down,ctrl-l:up"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
