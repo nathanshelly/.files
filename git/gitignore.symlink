@@ -30,3 +30,7 @@ Thumbs.db
 
 # terraform
 .terraform
+
+# tmux symlink
+# TODO: improve symlink handling here
+tmux/tmux.conf.symlink
