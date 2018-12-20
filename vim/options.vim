@@ -49,7 +49,8 @@ set display+=lastline
 
 " show ruler @ 80
 " (write up to line, not on top of it)
-set colorcolumn=81
+" TODO: set based on filetype
+set colorcolumn=81,89
 
 " << search >>
 
