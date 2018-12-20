@@ -52,11 +52,6 @@
   ln = l -n
   lv = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
   lvn = lv -n
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
 [color "status"]
   added = 045
   changed = 212
