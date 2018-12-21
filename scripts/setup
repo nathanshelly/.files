@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#! /usr/bin/env bash
 # why set things up manually when other
 # people have written nice scripts :)
 

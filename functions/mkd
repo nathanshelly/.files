@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # Create a new directory and enter it
 mkdir -p "$@" && cd "$_";
