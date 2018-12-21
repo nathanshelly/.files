@@ -1,4 +1,4 @@
-#! /bin/zsh
+#! /usr/bin/env zsh
 
 # Usage: cdl <directory>
 # perform cd and then ls

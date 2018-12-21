@@ -1,4 +1,4 @@
-#! /bin/zsh
+#! /usr/bin/env zsh
 # manydots - zle tweak for emulating "..."=="../.." etc.
 # Credit - https://github.com/knu/zsh-manydots-magic
 

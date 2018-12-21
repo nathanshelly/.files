@@ -1,4 +1,4 @@
-#! /bin/zsh
+#! /usr/bin/env zsh
 
 # open local folder or file
 # file or folder in current

@@ -1,4 +1,4 @@
-#! /bin/zsh
+#! /usr/bin/env zsh
 # Assorted git functions
 
 # move forward linearly a given number of commits

@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env sh
 
 # Usage: extract <file>
 # Description: extracts archived files / mounts disk images
