@@ -1,6 +1,6 @@
 #! /bin/zsh
 
-function vl() {
+vl() {
   local fle
   fle=$(fd -t f | fzf +m) &&
   vim "$fle"

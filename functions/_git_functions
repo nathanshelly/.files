@@ -2,13 +2,13 @@
 # Assorted git functions
 
 # move forward linearly a given number of commits
-function gforw() {
+gforw() {
   git checkout \
     $(git rev-list --topo-order HEAD..${2:-master} | tail -$1 | head -1)
 }
 
 # move back linearly a given number of commits
-function gback() { git checkout HEAD~$1 }
+gback() { git checkout HEAD~$1 }
 
 # make a quick fix at a previous commit
 # currently assuming if user enters number > 50 (or gives an alphanumeric
@@ -16,7 +16,7 @@ function gback() { git checkout HEAD~$1 }
 # known issue - inaccurate comparisons for parameters beginning with `0`
 # e.g. `gfix 0759` will print out an error as `(( 0759 < 50 ))` exits with a 0
 # the function still works as the failure of gback triggers execution after ||
-function gfix() {
+gfix() {
   # attempt to delete `fix` branch if it exists
   if git rev-parse --quiet --verify fix > /dev/null 2>&1; then
     git branch -d fix || {
@@ -39,7 +39,7 @@ function gfix() {
 }
 
 # rebase given branch on fix branch
-function gffix() {
+gffix() {
   # abort if no branch given
   git rev-parse --quiet --verify "$1" > /dev/null 2>&1 || {
     maybe_err=$?
@@ -68,7 +68,7 @@ function gffix() {
 }
 
 # delete given branch locally & remotely
-function gdel() {
+gdel() {
   # abort if no branch given
   [[ -z $1 ]] && echo 'No branch given, aborting' && return 1
 
@@ -77,7 +77,7 @@ function gdel() {
 }
 
 # add directory except given files/directories
-function gae() {
+gae() {
   git add .
   git reset -- $@
 }

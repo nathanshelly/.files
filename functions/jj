@@ -2,7 +2,7 @@
 
 # list directories with fzf
 # jump to
-function jj() {
+jj() {
   local dir
   dir=$(fasd -Rdl |\
     sed "s:$HOME:~:" |\
