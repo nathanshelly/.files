@@ -1,47 +1,35 @@
 #! /usr/bin/env bash
-# why set things up manually when other
-# people have written nice scripts :)
 
-cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd -P)
-set -e
+source $DOTFILES/setup/lib/prompts.sh
 
-echo ''
+# symlink scheme
 
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+symlink () {
+  info "symlinking dotfiles according to scheme in $DOTFILES/setup/bin/symlink"
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  # write all files ending in .symlink
+  for src in $(find -H "$DOTFILES" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
+  do
+    dst="$HOME/.$(basename "${src%.*}")"
+    link_file "$src" "$dst"
+  done
+
+  for src in $DOTFILES/config/*
+  do
+    dst="$HOME/.config/$(basename $src)"
+    link_file "$src" "$dst"
+  done
 }
 
-user () {
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
-}
-
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
-}
-
-setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
-  then
-    info 'setup gitconfig'
-
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
-
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
-
-    success 'gitconfig'
-  fi
-}
-
+# link single file between `src` & `dst`
+# takes user input (potentially modified by `<option>_all` flags defined in
+# calling scope
+#
+# Args:
+#   - src - source path
+#   - dst - destination path
 link_file () {
   local src=$1 dst=$2
 
@@ -117,23 +105,4 @@ link_file () {
   fi
 }
 
-install_dotfiles () {
-  info 'installing dotfiles'
-
-  local overwrite_all=false backup_all=false skip_all=false
-
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
-  do
-    dst="$HOME/.$(basename "${src%.*}")"
-    link_file "$src" "$dst"
-  done
-
-  for src in $DOTFILES_ROOT/config/*
-  do
-    dst="$HOME/.config/$(basename $src)"
-    link_file "$src" "$dst"
-  done
-}
-
-setup_gitconfig
-install_dotfiles
+symlink

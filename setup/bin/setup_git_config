@@ -1,0 +1,21 @@
+#! /usr/bin/env bash
+
+# set up local gitconfig (author name & email) @
+# $DOTFILES/git/gitconfig.local.symlink if it does not exist
+
+source $DOTFILES/setup/lib/prompts.sh
+
+if ! [ -f $DOTFILES/git/gitconfig.local.symlink ]; then
+  info 'setting up local gitconfig'
+
+  user ' - What is your github author name?'
+  read -e git_authorname
+  user ' - What is your github author email?'
+  read -e git_authoremail
+
+  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $DOTFILES/git/gitconfig.local.symlink.example > $DOTFILES/git/gitconfig.local.symlink
+
+  success "created local gitconfig @ $DOTFILES/git/gitconfig.local.symlink"
+else
+  success "skipped local gitconfig creation - already exists @ $DOTFILES/git/gitconfig.local.symlink"
+fi
