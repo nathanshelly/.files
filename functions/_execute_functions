@@ -1,2 +1,7 @@
+#! /usr/bin/env zsh
+
+# need these calls to initialize the functions defined in each script
+# see references to `KSH_AUTOLOAD` in the reference
+# ref - http://zsh.sourceforge.net/Doc/Release/Functions.html
 manydots
 _git_functions
