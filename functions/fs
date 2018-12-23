@@ -1,6 +1,6 @@
 #! /usr/bin/env sh
 
-# Determine size of a file or total size of a directory
+# determine size of a file or total size of a directory
 if du -b /dev/null > /dev/null 2>&1; then
   local arg=-sbh;
 else

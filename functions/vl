@@ -1,7 +1,6 @@
 #! /usr/bin/env zsh
 
-vl() {
-  local fle
-  fle=$(fd -t f | fzf +m) &&
-  vim "$fle"
-}
+# `vim` on local file listed by fzf
+local fle
+fle=$(fd -t f | fzf +m) &&
+vim "$fle"

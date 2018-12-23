@@ -1,12 +1,10 @@
 #! /usr/bin/env zsh
 
 # list directories with fzf
-# jump to
-jj() {
-  local dir
-  dir=$(fasd -Rdl |\
-    sed "s:$HOME:~:" |\
-    fzf --no-sort +m -q "$*" |\
-    sed "s:~:$HOME:")\
-  && cd "$dir"
-}
+# jump to selected
+local dir
+dir=$(fasd -Rdl |\
+  sed "s:$HOME:~:" |\
+  fzf --no-sort +m -q "$*" |\
+  sed "s:~:$HOME:")\
+&& cd "$dir"

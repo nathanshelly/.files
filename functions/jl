@@ -1,7 +1,6 @@
 #! /usr/bin/env zsh
 
-jl() {
-  local dir
-  dir=$(fd -t d | fzf +m) &&
-  cd "$dir"
-}
+# jump to local directory listed by fzf
+local dir
+dir=$(fd -t d | fzf +m) &&
+cd "$dir"

@@ -1,9 +1,10 @@
 #! /usr/bin/env sh
 
-# Usage: extract <file>
-# Description: extracts archived files / mounts disk images
-# Note: .dmg/hdiutil is Mac OS X-specific.
-#
+# usage: extract <file>
+# description: extracts archived files / mounts disk images
+
+# note: .dmg/hdiutil is Mac OS X-specific.
+
 # ref - http://nparikh.org/notes/zshrc.txt
 
 if [ -f $1 ]; then

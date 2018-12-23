@@ -1,13 +1,9 @@
 #! /usr/bin/env zsh
-# manydots - zle tweak for emulating "..."=="../.." etc.
-# Credit - https://github.com/knu/zsh-manydots-magic
 
-# Copyright (c) 2011, 2012 Akinori MUSHA
-# Licensed under the 2-clause BSD license.
-#
-# This tweak helps input ancestor directories beyond the parent (`..')
-# in a handy way.  You can just type triple dots to input `../..',
-# quadruple dots to `../../..', etc..
+# manydots - zle tweak for emulating "..."=="../.." etc.
+# type triple dots to input `../..', quadruple dots to `../../..', etc..
+
+# ref - https://github.com/knu/zsh-manydots-magic
 
 manydots.self-insert() {
   emulate -L zsh

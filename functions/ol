@@ -3,8 +3,6 @@
 # open local folder or file
 # file or folder in current
 # directory or subdirectory
-ol() {
-  local el
-  el=$(fd | fzf +m) &&
-  open "$el"
-}
+local el
+el=$(fd | fzf +m) &&
+open "$el"

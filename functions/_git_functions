@@ -1,5 +1,6 @@
 #! /usr/bin/env zsh
-# Assorted git functions
+
+# assorted git functions
 
 # move forward linearly a given number of commits
 gforw() {

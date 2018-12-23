@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-# Usage: cdl <directory>
+# usage: cdl <directory>
 # perform cd and then ls
 builtin cd "$1";
 ls;
