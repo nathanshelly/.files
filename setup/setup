@@ -1,14 +1,7 @@
 #! /usr/bin/env bash
 
-# why set things up manually when other
-# people have written nice scripts :)
-
 set -e
 
-# import prompts
-# technically not necessary currently
-source $DOTFILES/setup/lib/prompts.sh
-
-echo ''
-source $DOTFILES/setup/bin/symlink
-source $DOTFILES/setup/bin/setup_git_config
+# run in separate subshell
+$DOTFILES/setup/bin/symlink
+$DOTFILES/setup/bin/setup_git_config
