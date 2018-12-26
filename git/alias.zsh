@@ -52,7 +52,7 @@ alias gln='gp ln'
 alias glp='git lv -p'
 alias glps='git lv -p --stat'
 alias gls='git lv --stat'
-alias glsn='git lvn --stat'
+alias glsn='git lv --stat -n'
 alias glv='gp lvn 15'
 alias glvn='gp lvn'
 
