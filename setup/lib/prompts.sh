@@ -1,7 +1,17 @@
 #! /usr/bin/env bash
 
+# <<<< purpose >>>>
+#
 # define colored prompts for helpful messages
-
+#
+# to see all possible styles source this file and call the
+# `_prompts_display_supported` function
+#
+# ```shell
+# source $DOTFILES/setup/lib/prompts.sh && _prompts_display_supported
+# ```
+#
+# see bottom of this file for `_prompts_display_supported` definition
 
 # << escape sequences >>
 # refs
@@ -31,9 +41,10 @@ warn() {
 }
 
 fail() {
+  local exit=${2:$(false)}
+
   printf "  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
+  [[ $exit == true ]] && exit
 }
 
 # repeats the given string `count` times
@@ -55,4 +66,16 @@ indent() {
   local count=${3:-1}
   _print_repeat '  ' $count
   $formatter $msg
+}
+
+# solely for displaying supported styles
+_prompts_display_supported() {
+  header '<< Heading >>'
+  user 'user interaction'
+  info 'info'
+  success 'success'
+  warn 'warning'
+  indent user 'nested user'
+  indent success 'nested success'
+  fail 'failure (NOTE: this also sends `exit` if called w/ `true`)'
 }
