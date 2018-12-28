@@ -71,7 +71,7 @@ _symlink_based_on_filename() {
     echo 'directory!'
   else
     echo 'file!'
-    if $_direct; then
+    if [[ $_direct == true ]]; then
       warn 'Invalid flag'
     else
       # dst="$HOME/.$(basename "${src%.*}")"
@@ -206,25 +206,25 @@ link_file () {
     backup=${backup:-$backup_all}
     skip=${skip:-$skip_all}
 
-    if [ "$overwrite" == "true" ]
+    if [ "$overwrite" == true ]
     then
       rm -rf "$dst"
       success "removed $dst"
     fi
 
-    if [ "$backup" == "true" ]
+    if [ "$backup" == true ]
     then
       mv "$dst" "${dst}.backup"
       success "moved $dst to ${dst}.backup"
     fi
 
-    if [ "$skip" == "true" ]
+    if [ "$skip" == true ]
     then
       success "skipped $src"
     fi
   fi
 
-  if [ "$skip" != "true" ]  # "false" or empty
+  if [ "$skip" != true ]  # "false" or empty
   then
     ln -s "$1" "$2"
     success "linked $1 to $2"
