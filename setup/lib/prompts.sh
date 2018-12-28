@@ -35,3 +35,24 @@ fail() {
   echo ''
   exit
 }
+
+# repeats the given string `count` times
+#
+# ref - https://stackoverflow.com/questions/38868665/multiplying-strings-in-bash-script
+_print_repeat() {
+  local input=$1 count=$2
+  repeated="$(printf "%${count}s")"
+  printf "${repeated// /$input}"
+}
+
+# indents by '  '*count (2*count spaces) given message printed
+indent() {
+  local formatter=$1
+  local msg=$2
+  # always writing indented one level (headers occupy left wall)
+  # so most commom use case (therefore default) is to create a sublist, indented
+  # one level deeper (two levels total)
+  local count=${3:-1}
+  _print_repeat '  ' $count
+  $formatter $msg
+}
