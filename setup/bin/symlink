@@ -1,13 +1,30 @@
 #! /usr/bin/env bash
 
 # <<<< motivation/design doc >>>>
+#
 # see writeup of motivation & methodology @ $DOTFILES/setup/symlink.md
+
+# note: values returned by setting variables, usually namespaced with `_`. for
+# scoping purposes, the calling function should define local variables with the
+# expected name. that is, if your function is named `foo` and returns in the
+# variable `_ret_val`, your calling function should look something like this:
+#
+# ```
+# # define local to hold return value
+# local _ret_val
+# ... # whatever code your heart desires (don't shadow `_ret_val`)
+# # call function
+# foo
+# # use `_ret_val` with returned value
+# echo $_ret_val
+# ```
 
 source $DOTFILES/setup/lib/prompts.sh
 source $DOTFILES/setup/lib/util.sh
 
-
-symlink () {
+# perform symlinking according to scheme specified in design doc (path -
+# `$DOTFILES/setup/symlink.md`)
+symlink() {
   info "symlinking dotfiles according to scheme in $DOTFILES/setup/bin/symlink"
 
   local overwrite_all=false backup_all=false skip_all=false
@@ -26,7 +43,7 @@ symlink () {
     [[ $filename =~ $_symlink_regex ]] && {
       echo "valid - $filename"
       header 'Symlinking'
-      _symlink_based_on_filename $filename $src
+      _symlink_based_on_filename $src $filename
     } || {
       info "skipped symlinking file w/ invalid syntax - $filename";
     }
@@ -48,21 +65,26 @@ check_regex() {
   }
 }
 
+# symlink individual file/directory based on name
+#
+# Args:
+#   - {string} src - path to source file
+#   - {string} filename - filename of source file
 _symlink_based_on_filename() {
-  local filename=$1 src=$2
-  local _path="" _name="" _direct=false _hidden=false
+  local src=$1 filename=$2
+  local _path="" _name="" _direct=false _unhidden=false
 
-  # extracts destination name and optional path from target filename
-  _extract_path
-  _extract_name
+  # extract target name and optional path from target filename
+  _extract_path $filename
+  _extract_name $filename
 
   echo "path: $_path"
   echo "name: $_name"
 
-  # extracts and checks values of each possible flag
-  _check_flags
+  # extract and check values of each possible flag
+  _check_flags $filename
   echo "direct: $_direct"
-  echo "hidden: $_hidden"
+  echo "_unhidden: $_unhidden"
 
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
@@ -80,11 +102,23 @@ _symlink_based_on_filename() {
   fi
 }
 
-# regex to apply in `$1`, string to apply to in `$2`
-# save/return in `_regex_matches`
+# applies given regex to given string, returning matches in `_regex_matches`
+#
+# calling function should define local `_regex_matches` that function saves into
+# variable
+#
+# Args:
+#   - {string} regex_to_apply - the regex to apply
+#   - {string} input_to_apply_regex_to - input on which to apply regex
+#
+# Returns:
+#   {string[]} _regex_matches - matches of the applied regex (either
+#   `BASH_REMATCH` or `match` depending on your shell)
 _apply_regex() {
+  local regex_to_apply=$1 input_to_apply_regex_to=$2
+
   # not using for conditional, solely to populate match array
-  [[ $2 =~ $1 ]]
+  [[ $input_to_apply_regex_to =~ $regex_to_apply ]]
 
   # outer parens, `(...)`, ensure copying as array, not string
   # TODO: more portable answer? currently defaulting to `BASH_REMATCH` if it
@@ -92,7 +126,19 @@ _apply_regex() {
   _regex_matches=(${BASH_REMATCH[@]:-${match[@]}})
 }
 
+# extract target path relative to `~` at which to symlink
+#
+# described in more detail in the design doc (see top of this file for more)
+#
+# TODO: handle windows paths?
+#
+# Args:
+#   - {string} filename - source file/directory name
+#
+# Returns:
+#   {string} _path - extracted path (joined w/ `/`)
 _extract_path() {
+  local filename=$1
   # path capture group @ _regex_matches[1] (if _regex_matches length 2 or
   # greater)
   local _path_regex='^(([-._a-zA-Z]+~)*).*'
@@ -117,21 +163,46 @@ _extract_path() {
   fi
 }
 
+# extract file/directory name from input
+#
+# described in more detail in the design doc (see top of this file for more)
+#
+# target name of file/directory to symlink
+#
+# Args:
+#   - {string} filename - source file/directory name
+#
+# Returns:
+#   {string} _name - extracted name
 _extract_name() {
+  local filename=$1
+
   # file/directory name capture group
   local _name_regex='~?([-._a-zA-Z]+)\.symlink.*$';
   _apply_regex $_name_regex $filename
-
-  # not using for conditional, solely to populate match array
-  [[ $filename =~ $_name_regex ]];
-  # outer parens, `(...)`, ensure copying as array, not string
-  local _regex_matches=(${BASH_REMATCH[@]:-${match[@]}});
 
   # outer path capture group @ index 1 (index 0 holds entire matched string)
   _name=${_regex_matches[1]};
 }
 
+# check flags set through filename
+#
+# described in more detail in the design doc (see top of this file for more)
+#
+# Flags (`.<flags>`) (can be specified in any order):
+#   - `.d` (direct, return variable - `_direct`) - only valid for directories,
+#     symlink whole folder w/ one symlink instead of recuresively traversing and
+#     symlinking
+#   - `._` (unhidden, return variable - `_unhidden`) - avoid prepending `.`
+#
+# Args:
+#   - {string} filename - source file/directory name
+#
+# Returns:
+#   {bool(s)} `_direct`, `_unhidden` - flags
 _check_flags() {
+  local filename=$1
+
   # flags capture group @ _regex_matches[1] (if _regex_matches length 2)
   local _flags_regex='^.*\.symlink(\.[_d]{1,2})?$';
   _apply_regex $_flags_regex $filename
@@ -145,40 +216,40 @@ _check_flags() {
     # if `d` & `_` in `_flags`
     # ref - https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
     [[ $_flags == *"d"* ]] && { _direct=true; }
-    [[ $_flags == *"_"* ]] && { _hidden=true; };
+    [[ $_flags == *"_"* ]] && { _unhidden=true; };
   fi
 }
 
 # link single file between `src` & `dst`
+#
 # takes user input (potentially modified by `<option>_all` flags defined in
 # calling scope)
 #
 # Args:
-#   - src - source path
-#   - dst - destination path
-link_file () {
-  local src=$1 dst=$2
+#   - {string} src - source path
+#   - {string} dst - target path
+#   - {string} [indentation_level=0] - level of indentation to print to
+#       (Default: 0)
+link_file() {
+  # parameters
+  local src=$1 dst=$2 indentation_level=${3:-0}
 
-  local overwrite= backup= skip=
-  local action=
+  # flags set by user interaction
+  local overwrite= backup= skip= action=
 
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
-  then
-
-    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
+    if [ "$overwrite_all" == "false" ] \
+      && [ "$backup_all" == "false" ] \
+      && [ "$skip_all" == "false" ];
     then
-
       local currentSrc="$(readlink $dst)"
 
-      if [ "$currentSrc" == "$src" ]
-      then
-
+      if [ "$currentSrc" == "$src" ]; then
         skip=true;
-
       else
-
-        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
-        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        user "File already exists: $dst ($(basename "$src")), what do you want \
+          to do?\n[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup,\
+          [B]ackup all?"
         read -n 1 action
 
         case "$action" in
@@ -197,41 +268,29 @@ link_file () {
           * )
             ;;
         esac
-
       fi
-
     fi
 
     overwrite=${overwrite:-$overwrite_all}
     backup=${backup:-$backup_all}
     skip=${skip:-$skip_all}
 
-    if [ "$overwrite" == true ]
-    then
+    if [ "$overwrite" == true ]; then
       rm -rf "$dst"
       success "removed $dst"
     fi
 
-    if [ "$backup" == true ]
-    then
+    if [ "$backup" == true ]; then
       mv "$dst" "${dst}.backup"
       success "moved $dst to ${dst}.backup"
     fi
 
-    if [ "$skip" == true ]
-    then
-      success "skipped $src"
-    fi
+    [ "$skip" == true ] && success "skipped $src"
   fi
 
-  if [ "$skip" != true ]  # "false" or empty
-  then
+  # "false" or empty
+  if [ "$skip" != true ]; then
     ln -s "$1" "$2"
     success "linked $1 to $2"
   fi
 }
-
-# TODO: remove this
-# echo 'remove me'
-# check_regex $DOTFILES/config/one-one~two.two~file-name.extension.symlink.d
-symlink
