@@ -35,33 +35,33 @@ symlink() {
   do
     filename=$(basename $src)
 
-    local path_components='([-._a-zA-Z]+~)*';
-    local name='[-._a-zA-Z]+';
-    local flags='[_d]{1,2}';
-    local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$";
+    local path_components='([-._a-zA-Z]+~)*'
+    local name='[-._a-zA-Z]+'
+    local flags='[_d]{1,2}'
+    local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
 
     [[ $filename =~ $_symlink_regex ]] && {
       echo "valid - $filename"
       header 'Symlinking'
       _symlink_based_on_filename $src $filename
     } || {
-      info "skipped symlinking file w/ invalid syntax - $filename";
+      info "skipped symlinking file w/ invalid syntax - $filename"
     }
   done
 }
 
 check_regex() {
-  local path_components='([-._a-zA-Z]+~)*';
-  local name='[-._a-zA-Z]+';
-  local flags='[_d]{1,2}';
-  local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$";
+  local path_components='([-._a-zA-Z]+~)*'
+  local name='[-._a-zA-Z]+'
+  local flags='[_d]{1,2}'
+  local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
 
   filename=$(basename $1)
   [[ $filename =~ $_symlink_regex ]] && {
     echo "valid - $filename"
     _symlink_based_on_filename $filename $1
   } || {
-    info "skipped symlinking file w/ invalid syntax - $filename";
+    info "skipped symlinking file w/ invalid syntax - $filename"
   }
 }
 
@@ -151,7 +151,7 @@ _extract_path() {
     # `local IFS='<delimiter>' scopes any interference w/ `IFS`
     # `(<string>)` - parens trigger splitting `<string>` on `IFS` value
     # ref - https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash#tab-top
-    local IFS='~';
+    local IFS='~'
     # outer path capture group @ index 1 (index 0 holds entire matched string)
     path_components=(${_regex_matches[1]})
 
@@ -178,11 +178,11 @@ _extract_name() {
   local filename=$1
 
   # file/directory name capture group
-  local _name_regex='~?([-._a-zA-Z]+)\.symlink.*$';
+  local _name_regex='~?([-._a-zA-Z]+)\.symlink.*$'
   _apply_regex $_name_regex $filename
 
   # outer path capture group @ index 1 (index 0 holds entire matched string)
-  _name=${_regex_matches[1]};
+  _name=${_regex_matches[1]}
 }
 
 # check flags set through filename
@@ -204,19 +204,19 @@ _check_flags() {
   local filename=$1
 
   # flags capture group @ _regex_matches[1] (if _regex_matches length 2)
-  local _flags_regex='^.*\.symlink(\.[_d]{1,2})?$';
+  local _flags_regex='^.*\.symlink(\.[_d]{1,2})?$'
   _apply_regex $_flags_regex $filename
 
   # _regex_matches will only have length 2 if capture groups triggered, meaning
   # we have flags
   if [ "${#_regex_matches[@]}" -eq 2 ]; then
-    local _flags=${_regex_matches[1]};
+    local _flags=${_regex_matches[1]}
 
     # check for substrings
     # if `d` & `_` in `_flags`
     # ref - https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
     [[ $_flags == *"d"* ]] && { _direct=true; }
-    [[ $_flags == *"_"* ]] && { _unhidden=true; };
+    [[ $_flags == *"_"* ]] && { _unhidden=true; }
   fi
 }
 
@@ -240,12 +240,12 @@ link_file() {
   if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
     if [ "$overwrite_all" == "false" ] \
       && [ "$backup_all" == "false" ] \
-      && [ "$skip_all" == "false" ];
+      && [ "$skip_all" == "false" ]
     then
       local currentSrc="$(readlink $dst)"
 
       if [ "$currentSrc" == "$src" ]; then
-        skip=true;
+        skip=true
       else
         user "File already exists: $dst ($(basename "$src")), what do you want \
           to do?\n[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup,\
