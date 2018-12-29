@@ -25,7 +25,7 @@ source $DOTFILES/setup/lib/util.sh
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/setup/symlink.md`)
 symlink() {
-  info "symlinking dotfiles according to scheme in $DOTFILES/setup/bin/symlink"
+  header "Symlinking\nfollowing scheme detailed @ $DOTFILES/setup/symlink.md"
 
   local overwrite_all=false backup_all=false skip_all=false
 
@@ -42,10 +42,10 @@ symlink() {
 
     [[ $filename =~ $_symlink_regex ]] && {
       echo "valid - $filename"
-      header 'Symlinking'
       _symlink_based_on_filename $src $filename
     } || {
-      info "skipped symlinking file w/ invalid syntax - $filename"
+      info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
+match symlinking syntax)"
     }
   done
 }
@@ -78,23 +78,22 @@ _symlink_based_on_filename() {
   _extract_path $filename
   _extract_name $filename
 
-  echo "path: $_path"
-  echo "name: $_name"
-
   # extract and check values of each possible flag
   _check_flags $filename
-  echo "direct: $_direct"
-  echo "_unhidden: $_unhidden"
+
+  # debugging
+  echo "src, filename <> $src, $filename"
+  echo "name; path; flags (direct, unhidden) <> $_name; $_path; ($_direct,\
+ $_unhidden)"
 
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
-  echo $src
   if [[ -d $src ]]; then
     echo 'directory!'
   else
     echo 'file!'
     if [[ $_direct == true ]]; then
-      warn 'Invalid flag'
+      warn "Invalid flag `d` (direct) for non-directory '$src'"
     else
       # dst="$HOME/.$(basename "${src%.*}")"
       link_file $src "$HOME/.$(basename "${src%.*}")"
@@ -247,9 +246,8 @@ link_file() {
       if [ "$currentSrc" == "$src" ]; then
         skip=true
       else
-        user "File already exists: $dst ($(basename "$src")), what do you want \
-          to do?\n[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup,\
-          [B]ackup all?"
+        user "file exists: $dst ($(basename "$src")), what do you want to do?\n\
+\t[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
