@@ -96,7 +96,10 @@ _symlink_based_on_filename() {
       warn "Invalid flag `d` (direct) for non-directory '$src'"
     else
       # dst="$HOME/.$(basename "${src%.*}")"
-      link_file $src "$HOME/.$(basename "${src%.*}")"
+      link_file \
+        $src \
+        # relative path from home, w/ or w/o `.` based on `_unhidden`
+        "$HOME/$([[ $_unhidden != true ]] && echo '.')$(basename "${src%.*}")"
     fi
   fi
 }
