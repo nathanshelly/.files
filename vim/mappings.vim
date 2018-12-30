@@ -1,6 +1,7 @@
 " <<<<<<<< Remappings >>>>>>>>
 
 " <<<< temporary remapping to break habit of hitting `u` >>>>
+" TODO: remove this
 
 " I've got a bad habit of hitting `u` after operators like `d` in an attempt to
 " abort when I realize I don't actually want to perform the action. This

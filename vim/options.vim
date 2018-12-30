@@ -77,3 +77,9 @@ au FileType gitcommit hi gitCommitSummary ctermfg=blue
 
 " insert tabs, not 2 spaces
 au FileType make set noexpandtab
+
+" << markdown >>
+
+" don't set `colorcolumn`s for `.md` files
+" TODO: better way of specifiying this?
+au FileType markdown set colorcolumn=
