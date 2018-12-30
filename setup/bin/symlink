@@ -41,7 +41,6 @@ symlink() {
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
 
     [[ $filename =~ $_symlink_regex ]] && {
-      echo "valid - $filename"
       _symlink_based_on_filename $src $filename
     } || {
       info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
@@ -90,12 +89,19 @@ _symlink_based_on_filename() {
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
   if [[ -d $src ]]; then
     echo 'directory!'
+    if [[ $direct == true ]]; then
+      link_file \
+        $src \
+        # relative path from home, w/ or w/o `.` based on `_unhidden`
+        "$HOME/$([[ $_unhidden == true ]] || echo '.')$(basename "${src%.*}")"
+    else
+      info 'in future handle non-direct case'
+    fi
   else
     echo 'file!'
     if [[ $_direct == true ]]; then
       warn "Invalid flag `d` (direct) for non-directory '$src'"
     else
-      # dst="$HOME/.$(basename "${src%.*}")"
       link_file \
         $src \
         # relative path from home, w/ or w/o `.` based on `_unhidden`
