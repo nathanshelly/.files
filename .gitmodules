@@ -1,6 +1,0 @@
-[submodule "gpakosz-tmux"]
-	path = submodules/gpakosz-tmux
-	url = git@github.com:gpakosz/.tmux.git
-[submodule "zsh-syntax-highlighting"]
-	path = submodules/zsh-syntax-highlighting
-	url = git@github.com:zdharma/fast-syntax-highlighting.git
