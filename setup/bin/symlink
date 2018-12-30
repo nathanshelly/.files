@@ -71,7 +71,7 @@ check_regex() {
 #   - {string} filename - filename of source file
 _symlink_based_on_filename() {
   local src=$1 filename=$2
-  local _path="" _name="" _direct=false _unhidden=false
+  local _path='' _name='' _direct=false _unhidden=false
 
   # extract target name and optional path from target filename
   _extract_path $filename
@@ -81,6 +81,7 @@ _symlink_based_on_filename() {
   _check_flags $filename
 
   # debugging
+  echo ''
   echo "src, filename <> $src, $filename"
   echo "name; path; flags (direct, unhidden) <> $_name; $_path; ($_direct,\
  $_unhidden)"
@@ -90,10 +91,14 @@ _symlink_based_on_filename() {
   if [[ -d $src ]]; then
     echo 'directory!'
     if [[ $direct == true ]]; then
-      link_file \
-        $src \
-        # relative path from home, w/ or w/o `.` based on `_unhidden`
-        "$HOME/$([[ $_unhidden == true ]] || echo '.')$(basename "${src%.*}")"
+      local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
+      # if `_path` is empty, keep '', else append '/'
+      local maybe_path="$([[ ! -z $_path ]] && echo "$_path/")"
+
+      # relative path from home, w/ or w/o `.` based on `_unhidden`
+      local dst="$HOME/${maybe_path}${maybe_dot}$(basename "${src%.*}")"
+
+      link_file $src $dst
     else
       info 'in future handle non-direct case'
     fi
@@ -102,10 +107,14 @@ _symlink_based_on_filename() {
     if [[ $_direct == true ]]; then
       warn "Invalid flag `d` (direct) for non-directory '$src'"
     else
-      link_file \
-        $src \
-        # relative path from home, w/ or w/o `.` based on `_unhidden`
-        "$HOME/$([[ $_unhidden != true ]] && echo '.')$(basename "${src%.*}")"
+      local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
+      # if `_path` is empty, keep '', else append '/'
+      local maybe_path="$([[ ! -z $_path ]] && echo "$_path/")"
+
+      # relative path from home, w/ or w/o `.` based on `_unhidden`
+      local dst="$HOME/${maybe_path}${maybe_dot}$(basename "${src%.*}")"
+
+      link_file $src $dst
     fi
   fi
 }
@@ -165,7 +174,7 @@ _extract_path() {
 
     # join array back w/ `join_by` function (return value saved in `_joined`)
     # `join_by` defined in $DOTFILES/setup/lib/util.sh
-    local _joined=""
+    local _joined=''
     join_by '/' "${path_components[@]}"
     _path=$_joined
   fi
