@@ -32,19 +32,20 @@ symlink() {
 
   # write all files within depth w/ `.symlink` in their name, excluding `.git` &
   # `submodules` directories
-  for src in $( \
+  # use while loops, not for loops
+  # ref - https://mywiki.wooledge.org/BashFAQ/001
+  (
     find \
       -H "$DOTFILES" \
       -maxdepth 3 \
       -name '*.symlink*' \
       -not -path '*.git/*' \
       -not -path '*/submodules/*' \
-  )
-  do
-    filename=$(basename $src)
-
-    local path_components='([-._a-zA-Z]+~)*'
-    local name='[-._a-zA-Z]+'
+      -print0
+  ) | while IFS= read -r -d '' src; do
+    filename=$(basename "$src")
+    local path_components='([-._ 0-9a-zA-Z]+~)*'
+    local name='[-._ 0-9a-zA-Z]+'
     local flags='[_d]{1,2}'
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
 
@@ -260,7 +261,9 @@ link_file() {
       else
         user "file exists: $dst ($(basename "$src")), what do you want to do?\n\
 \t[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        read -n 1 action
+        # need to directly read from user controller since this is executing
+        # in a nested read of all `*.symlink*` files
+        read -n 1 action </dev/tty
 
         case "$action" in
           o )
