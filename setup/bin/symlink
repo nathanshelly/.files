@@ -110,28 +110,26 @@ _symlink_based_on_filename() {
   fi
 }
 
-# applies given regex to given string, returning matches in `_regex_matches`
+# applies given regex to given string, returning matches in `_REGEX_MATCHES`
 #
-# calling function should define local `_regex_matches` that function saves into
-# variable
+# calling function should define local `_REGEX_MATCHES` to capture return
 #
 # Args:
 #   - {string} regex_to_apply - the regex to apply
 #   - {string} input_to_apply_regex_to - input on which to apply regex
 #
 # Returns:
-#   {string[]} _regex_matches - matches of the applied regex (either
-#   `BASH_REMATCH` or `match` depending on your shell)
+#   {string[]} `_REGEX_MATCHES` - any matches
 _apply_regex() {
   local regex_to_apply=$1 input_to_apply_regex_to=$2
+  _REGEX_MATCHES=
 
-  # not using for conditional, solely to populate match array
-  [[ $input_to_apply_regex_to =~ $regex_to_apply ]]
-
-  # outer parens, `(...)`, ensure copying as array, not string
-  # TODO: more portable answer? currently defaulting to `BASH_REMATCH` if it
-  # exists. `match` is `zsh` version of same environment variable
-  _regex_matches=(${BASH_REMATCH[@]:-${match[@]}})
+  # if regex matches then populate `_REGEX_MATCHES` to return
+  [[ $input_to_apply_regex_to =~ $regex_to_apply ]] && {
+    # outer parens, `(...)`, ensure copying as array, not string
+    # internal `""` prevents splitting of individual array elements on IFS
+    _REGEX_MATCHES=("${BASH_REMATCH[@]}")
+  }
 }
 
 # extract target path relative to `~` at which to symlink
@@ -147,21 +145,24 @@ _apply_regex() {
 #   {string} _path - extracted path (joined w/ `/`)
 _extract_path() {
   local filename=$1
-  # path capture group @ _regex_matches[1] (if _regex_matches length 2 or
+  local _REGEX_MATCHES=
+
+  # path capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES length 2 or
   # greater)
-  local _path_regex='^(([-._a-zA-Z]+~)*).*'
-  _apply_regex $_path_regex $filename
+  local _path_regex='^(([-._[:space:][:alnum:]]+~)*).*'
+  _apply_regex "$_path_regex" "$filename"
 
   # _regex_matches will only have length >= 2 if capture groups triggered,
   # meaning we have path components
-  if [ "${#_regex_matches[@]}" -ge 2 ]; then
+  if [ "${#_REGEX_MATCHES[@]}" -ge 2 ]; then
     # split array on delimiter
     # `local IFS='<delimiter>' scopes any interference w/ `IFS`
     # `(<string>)` - parens trigger splitting `<string>` on `IFS` value
     # ref - https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash#tab-top
     local IFS='~'
+
     # outer path capture group @ index 1 (index 0 holds entire matched string)
-    path_components=(${_regex_matches[1]})
+    path_components=(${_REGEX_MATCHES[1]})
 
     # join array back w/ `join_by` function (return value saved in `_joined`)
     # `join_by` defined in $DOTFILES/setup/lib/util.sh
@@ -184,13 +185,14 @@ _extract_path() {
 #   {string} _name - extracted name
 _extract_name() {
   local filename=$1
+  local _REGEX_MATCHES=
 
   # file/directory name capture group
-  local _name_regex='~?([-._a-zA-Z]+)\.symlink.*$'
-  _apply_regex $_name_regex $filename
+  local _name_regex='~?([-._ 0-9a-zA-Z]+)\.symlink.*$'
+  _apply_regex "$_name_regex" "$filename"
 
   # outer path capture group @ index 1 (index 0 holds entire matched string)
-  _name=${_regex_matches[1]}
+  _name=${_REGEX_MATCHES[1]}
 }
 
 # check flags set through filename
@@ -210,15 +212,16 @@ _extract_name() {
 #   {bool(s)} `_direct`, `_unhidden` - flags
 _check_flags() {
   local filename=$1
+  local _REGEX_MATCHES=
 
-  # flags capture group @ _regex_matches[1] (if _regex_matches length 2)
+  # flags capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES has length 2)
   local _flags_regex='^.*\.symlink(\.[_d]{1,2})?$'
   _apply_regex "$_flags_regex" "$filename"
 
-  # _regex_matches will only have length 2 if capture groups triggered, meaning
+  # _REGEX_MATCHES will only have length 2 if capture groups triggered, meaning
   # we have flags
-  if [ "${#_regex_matches[@]}" -eq 2 ]; then
-    local _flags=${_regex_matches[1]}
+  if [ "${#_REGEX_MATCHES[@]}" -eq 2 ]; then
+    local _flags=${_REGEX_MATCHES[1]}
 
     # check for substrings
     # if `d` & `_` in `_flags`
