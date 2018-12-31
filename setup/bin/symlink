@@ -82,9 +82,9 @@ _symlink_based_on_filename() {
 
   # debugging
   echo ''
-  echo "src, filename <> $src, $filename"
-  echo "name; path; flags (direct, unhidden) <> $_name; $_path; ($_direct,\
- $_unhidden)"
+  echo "src, source filename <> $src, $filename"
+  echo "target name; path; flags (direct, unhidden) <> $_name; $_path; \
+($_direct, $_unhidden)"
 
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
@@ -96,7 +96,7 @@ _symlink_based_on_filename() {
       local maybe_path="$([[ ! -z $_path ]] && echo "$_path/")"
 
       # relative path from home, w/ or w/o `.` based on `_unhidden`
-      local dst="$HOME/${maybe_path}${maybe_dot}$(basename "${src%.*}")"
+      local dst="$HOME/${maybe_path}${maybe_dot}${_name}"
 
       link_file $src $dst
     else
@@ -112,7 +112,7 @@ _symlink_based_on_filename() {
       local maybe_path="$([[ ! -z $_path ]] && echo "$_path/")"
 
       # relative path from home, w/ or w/o `.` based on `_unhidden`
-      local dst="$HOME/${maybe_path}${maybe_dot}$(basename "${src%.*}")"
+      local dst="$HOME/${maybe_path}${maybe_dot}${_name}"
 
       link_file $src $dst
     fi
