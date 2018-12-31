@@ -289,13 +289,15 @@ link_file() {
     skip=${skip:-$skip_all}
 
     if [ "$overwrite" == true ]; then
-      rm -rf "$dst"
-      success "removed $dst"
+      rm -r "$dst" \
+        && success "removed $dst" \
+        || fail "failed to remove $dst"
     fi
 
     if [ "$backup" == true ]; then
-      mv "$dst" "${dst}.backup"
-      success "moved $dst to ${dst}.backup"
+      mv "$dst" "${dst}.backup" \
+        && success "moved $dst to ${dst}.backup" \
+        || fail "failed to move $dst to ${dst}.backup"
     fi
 
     [ "$skip" == true ] && success "skipped $src"
@@ -303,8 +305,9 @@ link_file() {
 
   # "false" or empty
   if [ "$skip" != true ]; then
-    ln -s "$src" "$dst"
-    success "linked $src to $dst"
+    ln -s "$src" "$dst" \
+      && success "linked $src to $dst" \
+      || fail "failed to link $src to $dst"
   fi
 }
 
