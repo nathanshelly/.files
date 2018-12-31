@@ -80,16 +80,16 @@ _symlink_based_on_filename() {
   echo "target name; path; flags (direct, unhidden) <> $_name; $_path; \
 ($_direct, $_unhidden)"
 
+
+
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
   if [[ -d "$src" ]]; then
     if [[ $direct == true ]]; then
       local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
-      # if `_path` is empty, keep '', else append '/'
-      local maybe_path="$([[ ! -z $_path ]] && echo "$_path/")"
 
       # relative path from home, w/ or w/o `.` based on `_unhidden`
-      local dst="$HOME/${maybe_path}${maybe_dot}${_name}"
+      local dst="$HOME/${_path}${maybe_dot}${_name}"
 
       link_file "$src" "$dst"
     else
@@ -100,11 +100,9 @@ _symlink_based_on_filename() {
       warn "Invalid flag \`d\` (direct) for non-directory '$src'"
     else
       local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
-      # if `_path` is empty, keep '', else append '/'
-      local maybe_path="$([[ ! -z $_path ]] && echo "$_path/")"
 
       # relative path from home, w/ or w/o `.` based on `_unhidden`
-      local dst="$HOME/${maybe_path}${maybe_dot}${_name}"
+      local dst="$HOME/${_path}${maybe_dot}${_name}"
 
       link_file "$src" "$dst"
     fi
@@ -143,7 +141,7 @@ _apply_regex() {
 #   - {string} filename - source file/directory name
 #
 # Returns:
-#   {string} _path - extracted path (joined w/ `/`)
+#   {string} _path - extracted path (joined w/ `/` & appended w/ `/`)
 _extract_path() {
   local filename=$1
   local _REGEX_MATCHES=
@@ -169,7 +167,7 @@ _extract_path() {
     # `join_by` defined in $DOTFILES/setup/lib/util.sh
     local _joined=''
     join_by '/' "${path_components[@]}"
-    _path=$_joined
+    _path="${_joined}/"
   fi
 }
 
