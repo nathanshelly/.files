@@ -57,21 +57,6 @@ match symlinking syntax)"
   done
 }
 
-check_regex() {
-  local path_components='([-._a-zA-Z]+~)*'
-  local name='[-._a-zA-Z]+'
-  local flags='[_d]{1,2}'
-  local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
-
-  filename=$(basename $1)
-  [[ $filename =~ $_symlink_regex ]] && {
-    echo "valid - $filename"
-    _symlink_based_on_filename $filename $1
-  } || {
-    info "skipped symlinking file w/ invalid syntax - $filename"
-  }
-}
-
 # symlink individual file/directory based on name
 #
 # Args:
