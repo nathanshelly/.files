@@ -19,8 +19,8 @@
 # echo $_ret_val
 # ```
 
-source $DOTFILES/setup/lib/prompts.sh
-source $DOTFILES/setup/lib/util.sh
+source "$DOTFILES/setup/lib/prompts.sh"
+source "$DOTFILES/setup/lib/util.sh"
 
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/setup/symlink.md`)
@@ -48,7 +48,7 @@ symlink() {
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
 
     [[ $filename =~ $_symlink_regex ]] && {
-      _symlink_based_on_filename $src $filename
+      _symlink_based_on_filename "$src" "$filename"
     } || {
       info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
 match symlinking syntax)"
@@ -81,11 +81,11 @@ _symlink_based_on_filename() {
   local _path='' _name='' _direct=false _unhidden=false
 
   # extract target name and optional path from target filename
-  _extract_path $filename
-  _extract_name $filename
+  _extract_path "$filename"
+  _extract_name "$filename"
 
   # extract and check values of each possible flag
-  _check_flags $filename
+  _check_flags "$filename"
 
   # debugging
   echo ''
@@ -95,8 +95,7 @@ _symlink_based_on_filename() {
 
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
-  if [[ -d $src ]]; then
-    echo 'directory!'
+  if [[ -d "$src" ]]; then
     if [[ $direct == true ]]; then
       local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
       # if `_path` is empty, keep '', else append '/'
@@ -105,12 +104,11 @@ _symlink_based_on_filename() {
       # relative path from home, w/ or w/o `.` based on `_unhidden`
       local dst="$HOME/${maybe_path}${maybe_dot}${_name}"
 
-      link_file $src $dst
+      link_file "$src" "$dst"
     else
       info 'in future handle non-direct case'
     fi
   else
-    echo 'file!'
     if [[ $_direct == true ]]; then
       warn "Invalid flag \`d\` (direct) for non-directory '$src'"
     else
@@ -121,7 +119,7 @@ _symlink_based_on_filename() {
       # relative path from home, w/ or w/o `.` based on `_unhidden`
       local dst="$HOME/${maybe_path}${maybe_dot}${_name}"
 
-      link_file $src $dst
+      link_file "$src" "$dst"
     fi
   fi
 }
@@ -229,7 +227,7 @@ _check_flags() {
 
   # flags capture group @ _regex_matches[1] (if _regex_matches length 2)
   local _flags_regex='^.*\.symlink(\.[_d]{1,2})?$'
-  _apply_regex $_flags_regex $filename
+  _apply_regex "$_flags_regex" "$filename"
 
   # _regex_matches will only have length 2 if capture groups triggered, meaning
   # we have flags
@@ -266,9 +264,9 @@ link_file() {
       && [ "$backup_all" == "false" ] \
       && [ "$skip_all" == "false" ]
     then
-      local currentSrc="$(readlink $dst)"
+      local current_src="$(readlink "$dst")"
 
-      if [ "$currentSrc" == "$src" ]; then
+      if [ "$current_src" == "$src" ]; then
         skip=true
       else
         user "file exists: $dst ($(basename "$src")), what do you want to do?\n\
@@ -313,8 +311,8 @@ link_file() {
 
   # "false" or empty
   if [ "$skip" != true ]; then
-    ln -s "$1" "$2"
-    success "linked $1 to $2"
+    ln -s "$src" "$dst"
+    success "linked $src to $dst"
   fi
 }
 

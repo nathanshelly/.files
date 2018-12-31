@@ -64,8 +64,8 @@ indent() {
   # so most commom use case (therefore default) is to create a sublist, indented
   # one level deeper (two levels total)
   local count=${3:-1}
-  _print_repeat '  ' $count
-  $formatter $msg
+  _print_repeat '  ' "$count"
+  "$formatter" "$msg"
 }
 
 # solely for displaying supported styles
