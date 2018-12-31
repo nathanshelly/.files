@@ -38,6 +38,7 @@ alias gcm='git c -m'
 alias gco='git co'
 alias gcob='git co -b'
 alias gcom='git co master'
+alias gcop='git co -p'
 alias gcp='git cherry-pick'
 
 alias gd='git d'
