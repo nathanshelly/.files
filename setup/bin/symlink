@@ -105,7 +105,7 @@ _symlink_based_on_filename() {
   else
     echo 'file!'
     if [[ $_direct == true ]]; then
-      warn "Invalid flag `d` (direct) for non-directory '$src'"
+      warn "Invalid flag \`d\` (direct) for non-directory '$src'"
     else
       local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
       # if `_path` is empty, keep '', else append '/'
