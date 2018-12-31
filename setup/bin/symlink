@@ -29,9 +29,16 @@ symlink() {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  # write all files ending in .symlink
-  for src in \
-    $(find -H "$DOTFILES" -maxdepth 2 -name '*.symlink*' -not -path '*.git*')
+  # write all files within depth w/ `.symlink` in their name, excluding `.git` &
+  # `submodules` directories
+  for src in $( \
+    find \
+      -H "$DOTFILES" \
+      -maxdepth 3 \
+      -name '*.symlink*' \
+      -not -path '*.git/*' \
+      -not -path '*/submodules/*' \
+  )
   do
     filename=$(basename $src)
 
