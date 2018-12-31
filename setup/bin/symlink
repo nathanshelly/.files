@@ -25,7 +25,8 @@ source "$DOTFILES/setup/lib/util.sh"
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/setup/symlink.md`)
 symlink() {
-  header "Symlinking\nfollowing scheme detailed @ $DOTFILES/setup/symlink.md"
+  header "<< Symlinking >>\nfollowing scheme detailed @\
+ $DOTFILES/setup/symlink.md"
 
   local overwrite_all=false backup_all=false skip_all=false
 

@@ -70,7 +70,7 @@ indent() {
 
 # solely for displaying supported styles
 _prompts_display_supported() {
-  header '<< Heading >>'
+  header 'Heading'
   user 'user interaction'
   info 'info'
   success 'success'
