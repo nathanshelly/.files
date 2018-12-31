@@ -1,0 +1,74 @@
+[
+  {
+    "shortcut_key_binding" : null,
+    "shortcut_name" : "RedoLastMove"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+-",
+    "shortcut_name" : "MakeSmaller"
+  },
+  {
+    "shortcut_key_binding" : null,
+    "shortcut_name" : "MoveToPreviousThird"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+i",
+    "shortcut_name" : "MoveToUpperRight"
+  },
+  {
+    "shortcut_key_binding" : null,
+    "shortcut_name" : "MoveToBottomHalf"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+o",
+    "shortcut_name" : "MoveToNextDisplay"
+  },
+  {
+    "shortcut_key_binding" : null,
+    "shortcut_name" : "MoveToTopHalf"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+n",
+    "shortcut_name" : "MoveToLowerLeft"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+=",
+    "shortcut_name" : "MakeLarger"
+  },
+  {
+    "shortcut_key_binding" : null,
+    "shortcut_name" : "UndoLastMove"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+p",
+    "shortcut_name" : "MoveToPreviousDisplay"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+l",
+    "shortcut_name" : "MoveToFullscreen"
+  },
+  {
+    "shortcut_key_binding" : null,
+    "shortcut_name" : "MoveToNextThird"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+j",
+    "shortcut_name" : "MoveToLeftHalf"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+c",
+    "shortcut_name" : "MoveToCenter"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+;",
+    "shortcut_name" : "MoveToRightHalf"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+m",
+    "shortcut_name" : "MoveToLowerRight"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+u",
+    "shortcut_name" : "MoveToUpperLeft"
+  }
+]
