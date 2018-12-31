@@ -1093,7 +1093,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1126,7 +1127,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1159,7 +1161,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1192,7 +1195,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1225,7 +1229,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1261,7 +1266,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1297,7 +1303,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1333,7 +1340,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1369,7 +1377,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1442,7 +1451,8 @@
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
                                             "com.contextsformac.Contexts",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1478,7 +1488,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2",
-                                            "io.alacritty"
+                                            "io.alacritty",
+                                            "com.apple.Terminal"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
