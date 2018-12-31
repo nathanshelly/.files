@@ -210,4 +210,5 @@ to symlink individual files.
 
 - nested symlinks? like currently created for gpakosz/.tmux?
 - allow symlinking inner directory of outer created directory? Any use case?
-- allow truly arbitrary paths? not just off of `~`? would require sudo
+- allow truly arbitrary paths? not just off of `~`? could require sudo
+- allow environment variables in paths?
