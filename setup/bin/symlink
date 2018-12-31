@@ -80,7 +80,13 @@ _symlink_based_on_filename() {
   echo "target name; path; flags (direct, unhidden) <> $_name; $_path; \
 ($_direct, $_unhidden)"
 
-
+  [[ ! -d "$HOME/${_path}" ]] && {
+    mkdir -p "$HOME/${_path}" \
+    && success "Created directory '"$HOME/${_path}"' (and any non-existent\
+ parent directories)" \
+    || fail  "Failed to create directory '"$HOME/${_path}"' (or a\
+ non-existent parent directory)"
+  }
 
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
