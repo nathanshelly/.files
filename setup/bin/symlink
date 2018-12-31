@@ -91,7 +91,7 @@ _symlink_based_on_filename() {
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
   if [[ -d "$src" ]]; then
-    if [[ $direct == true ]]; then
+    if [[ $_direct == true ]]; then
       local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
 
       # relative path from home, w/ or w/o `.` based on `_unhidden`
