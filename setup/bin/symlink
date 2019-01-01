@@ -19,6 +19,9 @@
 # echo $_ret_val
 # ```
 
+# check that DOTFILES variable is defined
+source './lib/check_dotfiles_variable.sh'
+
 source "$DOTFILES/setup/lib/prompts.sh"
 source "$DOTFILES/setup/lib/util.sh"
 

@@ -3,6 +3,9 @@
 # set up local gitconfig (author name & email) @
 # $DOTFILES/git/gitconfig.local.symlink if it does not exist
 
+# check that DOTFILES variable is defined
+source './lib/check_dotfiles_variable.sh'
+
 source $DOTFILES/setup/lib/prompts.sh
 
 if ! [ -f $DOTFILES/git/gitconfig.local.symlink ]; then

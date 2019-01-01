@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+# check that DOTFILES variable is defined
+source './lib/check_dotfiles_variable.sh'
+
 source $DOTFILES/setup/lib/prompts.sh
 
 # add `zsh` to allowed shells

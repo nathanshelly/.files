@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+# check that DOTFILES variable is defined
+source './lib/check_dotfiles_variable.sh'
+
 # installation script
 # ref - https://brew.sh/
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
