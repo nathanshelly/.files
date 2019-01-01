@@ -5,8 +5,6 @@ set -e
 # check that DOTFILES variable is defined
 source './lib/check_dotfiles_variable.sh'
 
-exit
-
 # run in separate subshells
 
 # install Homebrew and packages, casks & mas apps in `$DOTFILES/Brewfile`
