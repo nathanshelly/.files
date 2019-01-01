@@ -1,5 +1,10 @@
 #! /usr/bin/env bash
 
+# add `zsh` to allowed shells
+sudo sh -c "echo $(which zsh) >> /etc/shells"
+# change login shell to `zsh`
+chsh -s "$(which zsh)"
+
 # install oh my zsh
 # ref - https://github.com/robbyrussell/oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
