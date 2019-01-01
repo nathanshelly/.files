@@ -7,7 +7,7 @@ else
   local arg=-sh;
 fi
 if [[ -n "$@" ]]; then
-  du $arg -- "$@";
+  du "$arg" -- "$@";
 else
-  du $arg .[^.]* ./*;
+  du "$arg" .[^.]* ./*;
 fi;

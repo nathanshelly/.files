@@ -1,4 +1,4 @@
 #! /usr/bin/env sh
 
 # source a python virtual environment
-source $HOME/.virtualenvs/$1/bin/activate
+source "$HOME/.virtualenvs/$1/bin/activate"
