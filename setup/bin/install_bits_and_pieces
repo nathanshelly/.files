@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+# install oh my zsh
+# ref - https://github.com/robbyrussell/oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# set up git submodules
+git submodule update --init
+
+# link spaceship theme from submodule to `oh-my-zsh` themes directory
+# TODO: confirm value of $ZSH_CUSTOM @ this moment
+ln -s \
+  "$DOTFILES/submodules/spaceship-prompt/spaceship.zsh-theme" \
+  "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+# add custom terminfo for tmux sessions
+# `-x` to treat unknown capabilities as user defined
+# ref - `man tic`
+tic -x tmux-256color.terminfo
