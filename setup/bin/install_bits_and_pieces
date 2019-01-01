@@ -1,24 +1,31 @@
 #! /usr/bin/env bash
 
+source $DOTFILES/setup/lib/prompts.sh
+
 # add `zsh` to allowed shells
 sudo sh -c "echo $(which zsh) >> /etc/shells"
 # change login shell to `zsh`
-chsh -s "$(which zsh)"
+chsh -s "$(which zsh)" && info "Changed login shell to $(which zsh)"
 
 # install oh my zsh
 # ref - https://github.com/robbyrussell/oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
+  && info "Installed oh-my-zsh"
 
 # set up git submodules
-git submodule update --init
+git submodule update --init && info "Initialized submodules"
 
 # link spaceship theme from submodule to `oh-my-zsh` themes directory
 # TODO: confirm value of $ZSH_CUSTOM @ this moment
 ln -s \
   "$DOTFILES/submodules/spaceship-prompt/spaceship.zsh-theme" \
-  "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+  "$ZSH_CUSTOM/themes/spaceship.zsh-theme" \
+  && info "Linked 'spaceship' theme \
+($DOTFILES/submodules/spaceship-prompt/spaceship.zsh-theme -> \
+$ZSH_CUSTOM/themes/spaceship.zsh-theme)"
 
 # add custom terminfo for tmux sessions
 # `-x` to treat unknown capabilities as user defined
 # ref - `man tic`
-tic -x tmux-256color.terminfo
+tic -x tmux-256color.terminfo \
+  && info "Installed $DOTFILES/tmux/tmux-256color.terminfo"
