@@ -15,7 +15,7 @@ alias ga='git a'
 alias gap='git a -p'
 
 # base, default to verbose
-alias gb='git b -v'
+alias gb='git b -vv'
 alias gba='gb -a'
 # non-verbose
 alias gbas='git b -a'
