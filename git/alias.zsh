@@ -72,6 +72,7 @@ alias gpl='g l'
 alias gplv='g lv'
 
 alias gr='git ri'
+alias grm='git ri master'
 alias gra='git r --abort'
 alias grc='git r --continue'
 alias grst='git reset'
