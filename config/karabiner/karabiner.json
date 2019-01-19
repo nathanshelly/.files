@@ -39,30 +39,6 @@
                         ]
                     },
                     {
-                        "manipulators": [
-                            {
-                                "description": "Change right_option to Cmd-Ctrl",
-                                "from": {
-                                    "key_code": "right_option",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_command",
-                                        "modifiers": [
-                                            "control"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Disable ( key (relearn to use shifts)",
                         "manipulators": [
                             {
@@ -1651,6 +1627,14 @@
                 {
                     "from": {
                         "key_code": "caps_lock"
+                    },
+                    "to": {
+                        "key_code": "right_control"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "right_option"
                     },
                     "to": {
                         "key_code": "right_control"
