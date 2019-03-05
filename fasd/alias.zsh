@@ -1,3 +1,4 @@
-alias v='f -e vim' # open file with vim
+alias v='f -e $EDITOR' # open file with $EDITOR
+alias e='f -e $EDITOR' # open file with $EDITOR
 alias j='fasd_cd -d' # j alias instead of default z
 alias o='fasd -e open' # open folder or file

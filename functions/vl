@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-# `vim` on local file listed by fzf
+# `$EDITOR` on local file listed by fzf
 local fle
 fle=$(fd -t f | fzf +m) &&
-vim "$fle"
+$EDITOR "$fle"

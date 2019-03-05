@@ -14,7 +14,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # set default editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # Vi mode
 # see keymap.zsh for modifications
