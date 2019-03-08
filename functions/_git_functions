@@ -82,3 +82,6 @@ gae() {
   git add .
   git reset -- $@
 }
+
+# `cd` to repo root if in a git repo
+cdrr() { cd $(rr) }

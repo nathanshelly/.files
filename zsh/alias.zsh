@@ -10,7 +10,6 @@ alias ll='ls -AFhl'
 alias brewupdate='brew update && brew upgrade && brew cleanup && brew doctor && brew prune'
 
 # repo root
-alias cdrr="cd $(git rev-parse --show-toplevel)"
 alias rr="git rev-parse --show-toplevel"
 
 # shortened utilities
