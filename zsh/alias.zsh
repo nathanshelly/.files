@@ -7,7 +7,6 @@ alias l='ls -CF'
 alias la='ls -AF'
 alias ll='ls -AFhl'
 
-alias brewupdate='brew update && brew upgrade && brew cleanup && brew doctor && brew prune'
 
 # repo root
 alias rr="git rev-parse --show-toplevel"
@@ -17,3 +16,8 @@ alias op=open
 
 alias rm='echo "use trash primarily, /bin/rm when needed"'
 alias t=trash
+
+# << homebrew >>
+alias b='brew'
+alias bc='brew cask'
+alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
