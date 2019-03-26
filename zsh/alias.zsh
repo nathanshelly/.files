@@ -14,3 +14,6 @@ alias rr="git rev-parse --show-toplevel"
 
 # shortened utilities
 alias op=open
+
+alias rm='echo "use trash primarily, /bin/rm when needed"'
+alias t=trash
