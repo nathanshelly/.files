@@ -59,7 +59,10 @@ alias glvn='gp lvn'
 
 alias gm='git m'
 
-# aliases using `--no-pager` (`gp`)
+alias gpl='git pull'
+alias gpla='git pull --all'
+
+# << aliases using `--no-pager` (`gp`) >>
 # not a comprehensive list of aliases using `--no-pager`
 alias gpd='gp d'
 alias gpdc='gp d --cached'
