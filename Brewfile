@@ -75,6 +75,7 @@ brew "zsh"
 # <<<< apps >>>>
 
 cask "1password"
+cask "1password-cli"
 cask "alacritty"
 cask "alfred"
 cask "backblaze"
