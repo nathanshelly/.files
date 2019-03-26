@@ -70,7 +70,6 @@ gffix() {
 
 # delete given branch locally & remotely
 gdel() {
-  # abort if no branch given
   [[ -z $1 ]] && echo 'No branch given, aborting' && return 1
 
   git branch -D $1
@@ -85,3 +84,13 @@ gae() {
 
 # `cd` to repo root if in a git repo
 cdrr() { cd $(rr) }
+
+# force pull tracking branch & reset to `origin/$1`
+# passing a branch that is not a tracking of the checked out local branch will
+# work though may be unintuitive
+gpuf() {
+  [[ -z $1 ]] && echo 'No branch given, aborting' && return 1
+
+  # only reset if we can't fastfforward
+  git pull --all || git reset --hard "origin/$1"
+}
