@@ -5,7 +5,9 @@ source './lib/check_dotfiles_variable.sh'
 
 # installation script
 # ref - https://brew.sh/
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+command -v brew > /dev/null 2>&1 || {
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
 
 cd "$DOTFILES"
 brew bundle
