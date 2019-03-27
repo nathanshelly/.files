@@ -48,6 +48,9 @@ alias gdc='git d --cached'
 alias gdr='git d -R'
 alias gdcr='git d --cached -R'
 
+# cleanup - https://git-scm.com/docs/git-gc
+alias ggc='g gc'
+
 alias gl='gp ln 15'
 alias gln='gp ln'
 alias glp='git lv -p'
