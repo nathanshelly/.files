@@ -9,7 +9,7 @@ windows:
         - #bash
         - yarn test
         - yarn start
-        - #bash
-        - #bash
-        - #bash
-        - #bash
+        - # $SHELL
+        - # $SHELL
+        - # $SHELL
+        - # $SHELL
