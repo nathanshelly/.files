@@ -6,10 +6,10 @@ command -v hub > /dev/null 2>&1 && {
 
 # some git aliases
 # sorted alphabetically
-# use gitconfig aliases
-# to avoid duplication
+# uses gitconfig aliases to avoid duplication
 alias g='git'
-alias gp='git --no-pager'
+# used in constructing other aliases
+alias gnp='git --no-pager'
 
 alias ga='git a'
 alias gap='git a -p'
@@ -49,34 +49,29 @@ alias gdr='git d -R'
 alias gdcr='git d --cached -R'
 
 # cleanup - https://git-scm.com/docs/git-gc
-alias ggc='g gc'
+alias ggc='git gc'
 
-alias gl='gp ln 15'
-alias gln='gp ln'
+alias gl='gnp ln 15'
+alias gln='gnp ln'
 alias glp='git lv -p'
 alias glps='git lv -p --stat'
 alias gls='git lv --stat'
 alias glsn='git lv --stat -n'
-alias glv='gp lvn 15'
-alias glvn='gp lvn'
+alias glv='gnp lvn 15'
+alias glvn='gnp lvn'
 
 alias gm='git m'
+
+# << assorted aliases using `--no-pager` (`gnp`) >>
+# not a comprehensive list of aliases using `--no-pager`
+alias gnpd='gnp d'
+alias gnpdc='gnp d --cached'
+alias gnpls='gnp lvn 5 --stat'
+
 
 alias gpl='git pull'
 alias gpla='git pull --all'
 alias gps='git push'
-
-# << aliases using `--no-pager` (`gp`) >>
-# not a comprehensive list of aliases using `--no-pager`
-alias gpd='gp d'
-alias gpdc='gp d --cached'
-alias gpls='gp lvn 5 --stat'
-
-# aliases to avoid `--no-pager` default
-# uses `gp<command>` to avoid `--no-pager`
-# unfortunate confusing shadowing of aliases using `gp` for no pagination
-alias gpl='g l'
-alias gplv='g lv'
 
 alias gr='git ri'
 alias grm='git ri master'
@@ -92,3 +87,12 @@ alias gstp='git st pop'
 alias gstsp='git st show -p'
 
 alias gu='git undo'
+
+# aliases to avoid `--no-pager` default
+# uses `gwp<command>` ("with pager" mnemonic) to avoid `--no-pager`
+alias gwpl='git l'
+alias gwplv='git lv'
+
+# while using `oh-my-zsh` remove some excessive git aliases
+# TODO: remove this after switching off of `oh-my-zsh`
+unalias gpu
