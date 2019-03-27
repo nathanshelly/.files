@@ -1,0 +1,9 @@
+name: dot
+root: ~/.files
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - # $SHELL
+        - # $SHELL

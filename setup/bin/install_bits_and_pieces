@@ -32,3 +32,7 @@ $ZSH_CUSTOM/themes/spaceship.zsh-theme)"
 # ref - `man tic`
 tic -x "$DOTFILES/tmux/tmux-256color.terminfo" \
   && info "Installed $DOTFILES/tmux/tmux-256color.terminfo"
+
+# install `tmuxinator`
+# ref - https://github.com/tmuxinator/tmuxinator
+command -v gem > /dev/null 2>&1 || gem install --user-install tmuxinator

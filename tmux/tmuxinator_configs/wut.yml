@@ -1,0 +1,15 @@
+name: wut
+root: ~/projects/wut
+
+windows:
+  - main:
+      # ref - https://stackoverflow.com/questions/9812000/specify-pane-percentage-in-tmuxinator-project/9976282#9976282
+      layout: f63a,426x107,0,0{82x107,0,0[82x52,0,0,25,82x31,0,53,31,82x22,0,85,30],85x107,83,0,29,85x107,169,0,27,85x107,255,0,28,85x107,341,0,33}
+      panes:
+        - #bash
+        - yarn test
+        - yarn start
+        - #bash
+        - #bash
+        - #bash
+        - #bash

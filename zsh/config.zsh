@@ -9,6 +9,14 @@ path=(
   $path
 )
 
+# add local gems to path if ruby is installed
+command -v ruby > /dev/null 2>&1 && {
+  path=(
+    "$(ruby -r rubygems -e 'puts Gem.user_dir')/bin"
+    $path
+  )
+}
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
