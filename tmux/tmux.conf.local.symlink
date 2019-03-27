@@ -157,32 +157,32 @@ bind x kill-pane
 bind X kill-window
 bind & kill-session
 
-# use home row vi navigation paradigm
-# remap movement keys when in copy mode
+# use home row vi navigation paradigm when in copy mode
 # see valid key tables:
 # https://github.com/tmux/tmux/blob/master/CHANGES#L235
 setw -g mode-keys vi
-bind-key -T copy-mode-vi 'j'  send -X cursor-left  # switch to panel Left
-bind-key -T copy-mode-vi 'k'  send -X cursor-down  # switch to panel Left
-bind-key -T copy-mode-vi 'l'  send -X cursor-up    # switch to panel Left
-bind-key -T copy-mode-vi '\;' send -X cursor-right # switch to panel Left
+bind -T copy-mode-vi 'j'  send -X cursor-left
+bind -T copy-mode-vi 'k'  send -X cursor-down
+bind -T copy-mode-vi 'l'  send -X cursor-up
+bind -T copy-mode-vi '\;' send -X cursor-right
 
-# Use Alt with home-row keys to
-# navigate between and resize panes
+# use alt+(j|k|l|;) to navigate between panes
 bind -n M-j select-pane -L
 bind -n M-k select-pane -D
 bind -n M-l select-pane -U
 bind -n M-\; select-pane -R
 
+# use alt+shift+(j|k|l|;) to quickly resize panes
 bind -n M-J resize-pane -L 3
 bind -n M-K resize-pane -D 3
 bind -n M-L resize-pane -U 3
 bind -n M-: resize-pane -R 3
 
-bind J resize-pane -L 1
-bind K resize-pane -D 1
-bind L resize-pane -U 1
-bind : resize-pane -R 1
+# use <prefix> alt+(j|k|l|;) to precisely resize panes
+bind M-j resize-pane -L 1
+bind M-k resize-pane -D 1
+bind M-l resize-pane -U 1
+bind M-\; resize-pane -R 1
 
 # enable true color (RGB color), dimming, strikethrough and italics
 #
