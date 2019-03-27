@@ -61,6 +61,7 @@ alias gm='git m'
 
 alias gpl='git pull'
 alias gpla='git pull --all'
+alias gps='git push'
 
 # << aliases using `--no-pager` (`gp`) >>
 # not a comprehensive list of aliases using `--no-pager`
