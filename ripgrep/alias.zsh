@@ -10,6 +10,9 @@ alias rgf='rg --fixed-strings'
 # show only matching filenames
 alias rgl='rg -l'
 
+# ignore tests - exclude any filename/directory matching the given patterns
+alias rgnt="rg -g '!*test*' -g '!*spec*'"
+
 # force case sensitivity
 alias rgs='rg -s'
 alias rgus='rg -uuu -s'
