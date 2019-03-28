@@ -13,6 +13,9 @@ alias rgl='rg -l'
 # ignore tests - exclude any filename/directory matching the given patterns
 alias rgnt="rg -g '!*test*' -g '!*spec*'"
 
+# search only tests - any filename/directory matching the given patterns
+alias rgt="rg -g '*test*' -g '*spec*'"
+
 # force case sensitivity
 alias rgs='rg -s'
 alias rgus='rg -uuu -s'
