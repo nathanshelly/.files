@@ -12,6 +12,8 @@ alias g='git'
 alias gnp='git --no-pager'
 
 alias ga='git a'
+# add only tracked files
+alias gat='git a --update'
 alias gap='git a -p'
 
 # base, default to verbose
