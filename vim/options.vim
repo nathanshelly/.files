@@ -52,6 +52,10 @@ set display+=lastline
 " TODO: set based on filetype
 set colorcolumn=81,89
 
+" enable filetype detecion, plugin and indentation file loading
+" ref - https://vi.stackexchange.com/questions/10124/what-is-the-difference-between-filetype-plugin-indent-on-and-filetype-indent
+filetype plugin indent on
+
 " << search >>
 
 " show matches as you type
