@@ -1,6 +1,6 @@
-" <<<< installation >>>>
+" <<<<<<<< installation >>>>>>>>
 "
-" using vim plug  >>>>
+" <<<< using vim plug  >>>>
 " ref - https://github.com/junegunn/vim-plug
 
 " automatic installation
@@ -10,6 +10,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+" <<<< plugins >>>>
 
 call plug#begin()
 
@@ -43,3 +45,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 call plug#end()
+
+" <<<< config >>>>
+
+" << git-p.nvim (git info) >>
+
+" use <leader>d to display change
+" TODO: figure out what's going wrong here
+nmap <leader>d <Plug>(git-p-diff-preview)

@@ -2,4 +2,4 @@ source $DOTFILES/vim/options.vim
 source $DOTFILES/vim/colors.vim
 source $DOTFILES/vim/mappings.vim
 source $DOTFILES/vim/commands.vim
-source $DOTFILES/vim/plugins/index.vim
+source $DOTFILES/vim/plugins.vim
