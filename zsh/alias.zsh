@@ -7,7 +7,6 @@ alias l='ls -CF'
 alias la='ls -AF'
 alias ll='ls -AFhl'
 
-
 # repo root
 alias rr="git rev-parse --show-toplevel"
 
@@ -21,3 +20,6 @@ alias t=trash
 alias b='brew'
 alias bc='brew cask'
 alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
+
+# open another alacritty instance
+alias alac="open -n /Applications/Alacritty.app"
