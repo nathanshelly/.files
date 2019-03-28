@@ -76,6 +76,7 @@ alias gnpls='gnp lvn 5 --stat'
 alias gpl='git pull'
 alias gpla='git pull --all'
 alias gps='git push'
+alias gpsd='git push --dry-run'
 
 alias gr='git ri'
 alias grm='git ri master'
