@@ -98,3 +98,21 @@ gpuf() {
   # only reset if we can't fastfforward
   git pull --all || git reset --hard "origin/$1"
 }
+
+# creates a commit w/ given message (default `wip`) with all changes starting at
+# root. similar to `git stash`, except adds untracked files
+# mnemonic - `git commit wip`
+gcw() {
+  # add all changes starting at root
+  git add "$(git rev-parse --show-toplevel)"
+  git commit -m "${1:-wip}"
+}
+
+# creates a commit w/ given message (default `wip`) with all changes to tracked
+# files starting at root. similar to `git stash`
+# mnemonic - `git commit wip tracked`
+gcwt() {
+  # add any tracked files starting at root
+  git add -u "$(git rev-parse --show-toplevel)"
+  git commit -m wip
+}
