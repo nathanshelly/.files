@@ -30,4 +30,8 @@ Plug 'iamcco/git-p.nvim'
 " ref - https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
 
+" repeat plugin actions
+" ref - https://github.com/tpope/vim-repeat
+Plug 'tpope/vim-repeat'
+
 call plug#end()
