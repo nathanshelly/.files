@@ -21,20 +21,11 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-# set default editor
+# set default editors
+# technically only aliasing $VISUAL is necessary but $EDITOR is used elsewhere
+# in these dotfiles and should be `nvim`
+export VISUAL=nvim
 export EDITOR=nvim
-
-# Vi mode
-# see keymap.zsh for modifications
-# Note: spaceship vi mode also enabled
-# in prompt.zsh
-bindkey -v
-
-# turn on spaceship prompt vi mode
-# if using spaceship prompt
-command -v spaceship_vi_mode_enable > /dev/null 2>&1 && {
-  spaceship_vi_mode_enable
-}
 
 # turn on fasd if installed
 command -v fasd > /dev/null 2>&1 && {

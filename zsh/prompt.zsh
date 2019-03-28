@@ -1,3 +1,9 @@
+# turn on spaceship prompt vi mode
+# if using spaceship prompt
+command -v spaceship_vi_mode_enable > /dev/null 2>&1 && {
+  spaceship_vi_mode_enable
+}
+
 # use spaceship prompt
 export ZSH_THEME="spaceship"
 
