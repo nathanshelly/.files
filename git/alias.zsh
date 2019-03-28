@@ -68,6 +68,8 @@ alias gm='git m'
 
 # << assorted aliases using `--no-pager` (`gnp`) >>
 # not a comprehensive list of aliases using `--no-pager`
+# could set option in future (`git config --global pager.<command> <bool>`)
+# ref - https://stackoverflow.com/a/18129365
 alias gnpd='gnp d'
 alias gnpdc='gnp d --cached'
 alias gnpls='gnp lvn 5 --stat'
