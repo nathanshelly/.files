@@ -70,10 +70,14 @@ gffix() {
 
 # delete given branch locally & remotely
 gdel() {
-  [[ -z $1 ]] && echo 'No branch given, aborting' && return 1
+  [[ -z $1 ]] && {
+    echo 'No branch given, aborting'
+    return 1
+  }
 
-  git branch -D $1
-  git push origin -d $1
+  # `$@` holds all arguments
+  git branch -D $@
+  git push origin -d $@
 }
 
 # add directory except given files/directories
