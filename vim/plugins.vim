@@ -16,4 +16,9 @@ Plug 'prettier/vim-prettier', {
 " ref - https://github.com/iamcco/markdown-preview.nvim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
+" git information (blame, diff) in Vim
+" ref - https://github.com/iamcco/git-p.nvim
+Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
+Plug 'iamcco/git-p.nvim'
+
 call plug#end()
