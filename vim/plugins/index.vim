@@ -26,4 +26,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
 Plug 'iamcco/git-p.nvim'
 
+" edit surrounding characters
+" ref - https://github.com/tpope/vim-surround
+Plug 'tpope/vim-surround'
+
 call plug#end()
