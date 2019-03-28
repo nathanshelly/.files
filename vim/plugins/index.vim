@@ -1,3 +1,8 @@
+" <<<< installation >>>>
+"
+" using vim plug  >>>>
+" ref - https://github.com/junegunn/vim-plug
+
 call plug#begin()
 
 " typescript support
