@@ -63,6 +63,8 @@ nnoremap , ;
 " start/end of line movement
 noremap " ^
 noremap ' $
+" used in conjunction with `virtualedit` option
+noremap $ g$
 
 " use Ctrl-k/l to scroll screen
 noremap <c-k> <c-e>

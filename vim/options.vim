@@ -47,6 +47,10 @@ set wrap
 set linebreak
 set display+=lastline
 
+" allow cursor past end of line
+" ref - https://groups.google.com/forum/#!topic/vim_use/XYY1qsv82NM
+set virtualedit=onemore
+
 " show ruler @ 80
 " (write up to line, not on top of it)
 " TODO: set based on filetype
