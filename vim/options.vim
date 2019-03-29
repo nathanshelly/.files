@@ -51,10 +51,9 @@ set display+=lastline
 " ref - https://groups.google.com/forum/#!topic/vim_use/XYY1qsv82NM
 set virtualedit=onemore
 
-" show ruler @ 80
+" default to line length of 80, show ruler @ 81
 " (write up to line, not on top of it)
-" TODO: set based on filetype
-set colorcolumn=81,89
+set colorcolumn=81
 
 " enable filetype detection, plugin and indentation file loading
 " ref - https://vi.stackexchange.com/questions/10124/what-is-the-difference-between-filetype-plugin-indent-on-and-filetype-indent
@@ -88,6 +87,8 @@ au FileType make set noexpandtab
 
 " << markdown >>
 
-" don't set `colorcolumn`s for `.md` files
-" TODO: better way of specifiying this?
 au FileType markdown set colorcolumn=
+
+" << python >>
+
+au Filetype python set colorcolumn=89
