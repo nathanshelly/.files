@@ -99,8 +99,3 @@ alias gu='git undo'
 # uses `gwp<command>` ("with pager" mnemonic) to avoid `--no-pager`
 alias gwpl='git l'
 alias gwplv='git lv'
-
-# while using `oh-my-zsh` remove some excessive git aliases
-# TODO: remove this after switching off of `oh-my-zsh`
-unalias gp
-unalias gpu

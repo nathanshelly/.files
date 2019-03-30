@@ -3,18 +3,21 @@
 # path to dotfiles
 export DOTFILES=$HOME/.files
 
+# source colors & prompt separate from rest of sourcing due to strict ordering
+# results in redundant second sourcing but neglible performance hit
+# source colors used in prompt
+source $DOTFILES/zsh/spectrum.zsh
 # source prompt
-# need to set theme before
-# sourcing oh my zsh
 source $DOTFILES/zsh/prompt.zsh
 
-# source oh-my-zsh
-# if installed @ ~/.oh-my-zsh
-if [ -d $HOME/.oh-my-zsh ]; then
-  plugins=( git )
-  export ZSH="$HOME/.oh-my-zsh"
-  source $ZSH/oh-my-zsh.sh
-fi
+# source antibody - static method
+# loads static file that must be regenerated any time a new plugin is added
+# regenerate by running:
+#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > $DOTFILES/zsh/plugins.sh`
+# refs:
+#   - https://getantibody.github.io/#static-loading
+#   - https://github.com/getantibody/antibody
+source $DOTFILES/zsh/plugins.sh
 
 # load functions written as basic scripts
 autoload -Uz $DOTFILES/functions/*(:t)
@@ -27,6 +30,7 @@ typeset -U config_files
 # TODO: avoid `extended_glob` hack
 # must be some way to exclude `submodules` directory w/o `extended_glob` set
 setopt extended_glob
+# TODO: exclude `spectrum.zsh` & `prompt.zsh` to avoid unnecessary double source
 config_files=($DOTFILES/**/*.zsh~*submodules*)
 setopt noextended_glob
 
@@ -53,7 +57,8 @@ autoload -Uz compinit
 # use cache for compinit
 # TODO: profile this to see how much of a difference it actually makes
 # ref - https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
+typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null \
+  || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
 if [ $(date +'%j') != $updated_at ]; then
   compinit -i
 else

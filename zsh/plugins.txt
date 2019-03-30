@@ -1,0 +1,9 @@
+# antibody plugin file
+# using static loading method
+# ref - https://getantibody.github.io/#plugins-file
+
+# ref - https://github.com/denysdovhan/spaceship-prompt
+denysdovhan/spaceship-prompt
+
+# ref - https://github.com/zdharma/fast-syntax-highlighting
+zdharma/fast-syntax-highlighting

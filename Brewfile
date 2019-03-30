@@ -42,6 +42,7 @@ tap "homebrew/cask-fonts"
 # <<<<<<<< packages (formulae) >>>>>>>>
 
 brew "awscli"
+brew "getantibody/tap/antibody"
 brew "coreutils"
 brew "fasd"
 brew "fd"

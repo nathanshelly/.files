@@ -10,11 +10,6 @@ sudo sh -c "echo $(which zsh) >> /etc/shells"
 # change login shell to `zsh`
 chsh -s "$(which zsh)" && info "Changed login shell to $(which zsh)"
 
-# install oh my zsh
-# ref - https://github.com/robbyrussell/oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
-  && info "Installed oh-my-zsh"
-
 # set up git submodules
 git submodule update --init && info "Initialized submodules"
 
