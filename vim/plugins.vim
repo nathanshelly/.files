@@ -58,19 +58,31 @@ Plug 'junegunn/limelight.vim'
 
 call plug#end()
 
-" <<<< config >>>>
+" <<<<<<<< config >>>>>>>>
 
-" << git-p.nvim (git info) >>
+" <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config
 
+" << keymap >>
+
 " use <leader>d to display change
-" TODO: figure out what's going wrong here
+" TODO: figure out what's going wrong here, start by not shadowing shortcut
 nmap <leader>d <Plug>(git-p-diff-preview)
 
-" << limelight.vim >>
+" <<<< limelight.vim >>>>
 " ref - https://github.com/junegunn/limelight.vim#options
+
+" << options >>
 
 " TODO: figure out why I can't pass an argument, what passing an argument should
 " do, and how to background text fully dark
 " https://github.com/junegunn/limelight.vim/issues/27
 let g:limelight_conceal_ctermfg = 'Black'
+
+" goyo integration
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" << keymap >>
+nmap <leader>g :Goyo<CR>
+nmap <leader>l :Limelight!!<CR>
