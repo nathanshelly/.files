@@ -63,6 +63,10 @@ call plug#end()
 " <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config
 
+" << options >>
+
+let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
+
 " << keymap >>
 
 " use <leader>d to display change
