@@ -12,12 +12,19 @@ source $DOTFILES/zsh/prompt.zsh
 
 # source antibody - static method
 # loads static file that must be regenerated any time a new plugin is added
-# regenerate by running:
-#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > $DOTFILES/zsh/plugins.sh`
+# regenerate by running the following (aliased to `antibundle` below):
+#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
 # refs:
 #   - https://getantibody.github.io/#static-loading
 #   - https://github.com/getantibody/antibody
 source $DOTFILES/zsh/plugins.sh
+
+# alias generation of plugins file (installation of new plugins)
+local ANTIBUNDLE_IN="$DOTFILES/zsh/plugins.txt"
+local ANTIBUNDLE_OUT="$DOTFILES/zsh/plugins.sh"
+alias antibundle="antibody bundle < $ANTIBUNDLE_IN > $ANTIBUNDLE_OUT"
+# remove created variables to avoid littering global scope
+unset ANTIBUNDLE_IN ANTIBUNDLE_OUT
 
 # load functions written as basic scripts
 autoload -Uz $DOTFILES/functions/*(:t)
