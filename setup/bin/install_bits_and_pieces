@@ -19,6 +19,10 @@ git submodule update --init && info "Initialized submodules"
 tic -x "$DOTFILES/tmux/tmux-256color.terminfo" \
   && info "Installed $DOTFILES/tmux/tmux-256color.terminfo"
 
+# install zsh plugins
+antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"
+  && info "Installed zsh plugins w/ antibody"
+
 # install `tmuxinator`
 # ref - https://github.com/tmuxinator/tmuxinator
 command -v gem > /dev/null 2>&1 || gem install --user-install tmuxinator
