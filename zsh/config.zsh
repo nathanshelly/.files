@@ -18,8 +18,8 @@ command -v ruby > /dev/null 2>&1 && {
 }
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
 
 # set default editors
 # technically only aliasing $VISUAL is necessary but $EDITOR is used elsewhere
