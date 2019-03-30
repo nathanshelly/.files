@@ -18,15 +18,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # set up git submodules
 git submodule update --init && info "Initialized submodules"
 
-# link spaceship theme from submodule to `oh-my-zsh` themes directory
-# TODO: confirm value of $ZSH_CUSTOM @ this moment
-ln -s \
-  "$DOTFILES/submodules/spaceship-prompt/spaceship.zsh-theme" \
-  "$ZSH_CUSTOM/themes/spaceship.zsh-theme" \
-  && info "Linked 'spaceship' theme \
-($DOTFILES/submodules/spaceship-prompt/spaceship.zsh-theme -> \
-$ZSH_CUSTOM/themes/spaceship.zsh-theme)"
-
 # add custom terminfo for tmux sessions
 # `-x` to treat unknown capabilities as user defined
 # ref - `man tic`
