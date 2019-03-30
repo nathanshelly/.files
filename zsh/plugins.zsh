@@ -17,3 +17,12 @@ ZSH_AUTOSUGGEST_STRATEGY=(history)
 bindkey -M viins '^a' autosuggest-accept # until end of suggestion
 bindkey -M viins '^ ' autosuggest-execute
 bindkey -M viins '^w' forward-word # next word, how `vim` `w` would advance
+
+# <<<< history-substring-search >>>>
+# similar to `jk/`, convenient when query already typed out
+# ref - https://github.com/zsh-users/zsh-history-substring-search
+
+# << keymappings >>
+bindkey '^u' history-substring-search-up
+bindkey '^y' history-substring-search-down
+

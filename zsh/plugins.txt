@@ -16,3 +16,7 @@ zdharma/fast-syntax-highlighting
 # provide autosuggestions as you type
 # ref - https://github.com/zsh-users/zsh-autosuggestions
 zsh-users/zsh-autosuggestions
+
+# fuzzy search history
+# ref - https://github.com/zsh-users/zsh-history-substring-search
+zsh-users/zsh-history-substring-search
