@@ -1,9 +1,18 @@
 # antibody plugin file
 # using static loading method
+# plugins customized by options in `$DOTFILES/zsh/plugins.zsh`
+# run below command to regenerate plugins file (installing new plugins):
+#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
 # ref - https://getantibody.github.io/#plugins-file
 
+# prompt
 # ref - https://github.com/denysdovhan/spaceship-prompt
 denysdovhan/spaceship-prompt
 
+# colorful zle syntax highlighting
 # ref - https://github.com/zdharma/fast-syntax-highlighting
 zdharma/fast-syntax-highlighting
+
+# provide autosuggestions as you type
+# ref - https://github.com/zsh-users/zsh-autosuggestions
+zsh-users/zsh-autosuggestions
