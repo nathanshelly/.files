@@ -21,7 +21,8 @@ call plug#begin()
 "   - https://github.com/peitalin/vim-jsx-typescript
 Plug 'leafgarland/typescript-vim' | Plug 'peitalin/vim-jsx-typescript'
 
-" post install (yarn install | npm install) then load plugin only for editing supported files
+" post install (yarn install | npm install) then load plugin only for editing
+" supported files
 " ref - https://github.com/prettier/vim-prettier
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -44,12 +45,32 @@ Plug 'tpope/vim-surround'
 " ref - https://github.com/tpope/vim-repeat
 Plug 'tpope/vim-repeat'
 
+" distraction free writing
+" ref - https://github.com/junegunn/goyo.vim
+" TODO: figure out color issue on exit:
+"   - https://github.com/junegunn/goyo.vim/issues/160
+"   - https://github.com/junegunn/goyo.vim/issues?utf8=%E2%9C%93&q=exit
+Plug 'junegunn/goyo.vim'
+
+" highlight currently editing text
+" ref - https://github.com/junegunn/limelight.vim
+Plug 'junegunn/limelight.vim'
+
 call plug#end()
 
 " <<<< config >>>>
 
 " << git-p.nvim (git info) >>
+" ref - https://github.com/iamcco/git-p.nvim#usage--config
 
 " use <leader>d to display change
 " TODO: figure out what's going wrong here
 nmap <leader>d <Plug>(git-p-diff-preview)
+
+" << limelight.vim >>
+" ref - https://github.com/junegunn/limelight.vim#options
+
+" TODO: figure out why I can't pass an argument, what passing an argument should
+" do, and how to background text fully dark
+" https://github.com/junegunn/limelight.vim/issues/27
+let g:limelight_conceal_ctermfg = 'Black'
