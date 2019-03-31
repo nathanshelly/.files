@@ -56,6 +56,10 @@ Plug 'junegunn/goyo.vim'
 " ref - https://github.com/junegunn/limelight.vim
 Plug 'junegunn/limelight.vim'
 
+" Powershell syntax highlighting
+" ref - https://github.com/PProvost/vim-ps1
+Plug 'PProvost/vim-ps1'
+
 call plug#end()
 
 " <<<<<<<< config >>>>>>>>
