@@ -14,7 +14,10 @@ ZSH_AUTOSUGGEST_STRATEGY=(history)
 # << keymappings >>
 # ref - https://github.com/zsh-users/zsh-autosuggestions#key-bindings
 
+# see which option I like better
 bindkey -M viins '^a' autosuggest-accept # until end of suggestion
+bindkey -M viins '^e' autosuggest-accept # until end of suggestion
+
 bindkey -M viins '^ ' autosuggest-execute
 bindkey -M viins '^w' forward-word # next word, how `vim` `w` would advance
 
