@@ -26,3 +26,6 @@ bindkey -M viins '^w' forward-word # next word, how `vim` `w` would advance
 bindkey '^u' history-substring-search-up
 bindkey '^y' history-substring-search-down
 
+# <<< zsh-system-clipboard
+# https://github.com/kutsan/zsh-system-clipboard#options
+typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX='true'

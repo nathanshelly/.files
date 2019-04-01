@@ -20,3 +20,9 @@ zsh-users/zsh-autosuggestions
 # fuzzy search history
 # ref - https://github.com/zsh-users/zsh-history-substring-search
 zsh-users/zsh-history-substring-search
+
+# synchronize system clipboard
+# theoretically you might need to source this after other keymappings, have not
+# yet seen a need for enforcing that
+# ref - https://github.com/kutsan/zsh-system-clipboard
+kutsan/zsh-system-clipboard
