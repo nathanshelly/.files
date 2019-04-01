@@ -74,7 +74,6 @@ alias gnpd='gnp d'
 alias gnpdc='gnp d --cached'
 alias gnpls='gnp lvn 5 --stat'
 
-
 alias gpl='git pull'
 alias gpla='git pull --all'
 alias gps='git push'

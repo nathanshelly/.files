@@ -95,7 +95,7 @@ cdrr() { cd $(rr) }
 gplf() {
   [[ -z $1 ]] && echo 'No branch given, aborting' && return 1
 
-  # only reset if we can't fastfforward
+  # only reset if we can't fast-forward
   git pull --all || git reset --hard "origin/$1"
 }
 
@@ -114,5 +114,5 @@ gcw() {
 gcwt() {
   # add any tracked files starting at root
   git add -u "$(git rev-parse --show-toplevel)"
-  git commit -m wip
+  git commit -m "${1:-wip}"
 }
