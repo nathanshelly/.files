@@ -6,6 +6,7 @@ path=(
   $HOME/.cargo/bin
   /Applications/Racket\ v7.0/bin
   /usr/local/bin
+  /usr/local/sbin
   $path
 )
 
