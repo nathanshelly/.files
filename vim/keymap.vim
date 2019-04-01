@@ -78,10 +78,13 @@ nnoremap R <nop>
 nnoremap x <nop>
 nnoremap X <nop>
 
+" << registers (copy/paste) >>
 " use `s` for buffer selection (instead of `"`)
 nnoremap s "
 " z -> _ register (more accessible black hole register)
 noremap sz "_
+" s -> + register (more accessible system clipboard)
+noremap ss "+
 
 " use `x` for jumping to marks (instead of `'`)
 nnoremap x '
