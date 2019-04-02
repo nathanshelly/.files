@@ -9,6 +9,14 @@ colorscheme onedark
 " 256 color
 set t_Co=256
 
+" << miscellaneous >>
+
+" lighten line numbers for increased visibility
+hi LineNr ctermfg=240
+
+" darken colorcolumn for decreased visibility
+hi ColorColumn ctermbg=235
+
 " << highlighting >>
 
 " search
@@ -33,7 +41,7 @@ au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 " when editing at the end of it
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
-" << Syntax Groups >>
+" << syntax groups >>
 
 " match Tabs on file load
 " (just matches, no highlighting yet)
