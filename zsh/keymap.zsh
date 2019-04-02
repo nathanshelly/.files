@@ -37,6 +37,12 @@ bindkey -rM vicmd 'R'
 bindkey -M vicmd "'" vi-end-of-line
 bindkey -M vicmd '"' vi-digit-or-beginning-of-line
 
+# edit zsh commands in $EDITOR
+# ref - https://nuclearsquid.com/writings/edit-long-commands/
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # << inner & surround extensions >>
 # ref - https://www.reddit.com/r/vim/comments/7wj81e/you_can_get_vim_bindings_in_zsh_and_bash/du3tx3z?utm_source=share&utm_medium=web2x
 
