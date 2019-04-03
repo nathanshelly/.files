@@ -65,7 +65,13 @@ Plug 'PProvost/vim-ps1'
 Plug 'tpope/vim-commentary'
 
 " highlight whitespace
+" ref - https://github.com/ntpeters/vim-better-whitespace
 Plug 'ntpeters/vim-better-whitespace'
+
+" open current line in github
+" opens most recent blob so only works if you are downstream of remote
+" ref - https://github.com/ruanyl/vim-gh-line
+Plug 'ruanyl/vim-gh-line'
 
 call plug#end()
 
@@ -112,3 +118,8 @@ let g:surround_{char2nr('S')} = "< \r >"
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
 let g:strip_whitelines_at_eof=1
+
+" <<<< vim-gh-line >>>>
+" ref - https://github.com/ruanyl/vim-gh-line#how-to-use
+let g:gh_line_map = '<leader>mgl' " `mgl` for `misc git link`
+let g:gh_line_blame_map = '<leader>mgb' " `mgb` for `misc git blame`
