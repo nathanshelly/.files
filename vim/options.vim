@@ -63,6 +63,12 @@ filetype plugin indent on
 " avoids inconsistent buffer widths & jarring transition
 set signcolumn=yes
 
+" open full urls w/ `gx`
+" Use whole words when opening URLs, avoids cutting off query parameters
+" (`?<query parameter>`) and and anchors (`#<anchor>`)
+" ref - http://vi.stackexchange.com/q/2801/1631
+let g:netrw_gx="<cWORD>"
+
 " << search >>
 
 " show matches as you type
