@@ -22,4 +22,4 @@ alias bc='brew cask'
 alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
 
 # open another alacritty instance
-alias alac="open -n /Applications/Alacritty.app"
+alias alac="open --new /Applications/Alacritty.app"

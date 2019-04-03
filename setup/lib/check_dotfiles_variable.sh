@@ -24,6 +24,7 @@ check_dotfiles_variable() {
     printf "This script requires a DOTFILES environment variable holding the \
 path\nto the repo this script is running form. This path appears to be\n\
 '$_COMPUTED_DOTFILES'.\n\nIs this correct (y/any other key)? "
+    # `-r` treats backslash as a literal, `-n` accepts one character of input
     read -r -n 1 maybe_continue
 
     [[ "$maybe_continue" == 'y' ]] && {

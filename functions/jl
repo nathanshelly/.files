@@ -2,5 +2,5 @@
 
 # jump to local directory listed by fzf
 local dir
-dir=$(fd -t d | fzf +m) &&
+dir=$(fd --type d | fzf +m) &&
 cd "$dir"

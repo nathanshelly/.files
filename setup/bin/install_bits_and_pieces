@@ -15,7 +15,7 @@ git submodule update --init && info "Initialized submodules"
 
 # add custom terminfo for tmux sessions
 # `-x` to treat unknown capabilities as user defined
-# ref - `man tic`
+# ref - `man tic` or `tic --help`
 tic -x "$DOTFILES/tmux/tmux-256color.terminfo" \
   && info "Installed $DOTFILES/tmux/tmux-256color.terminfo"
 

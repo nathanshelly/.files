@@ -2,5 +2,5 @@
 
 # `$EDITOR` on local file listed by fzf
 local fle
-fle=$(fd -t f | fzf +m) &&
+fle=$(fd --type f | fzf +m) &&
 $EDITOR "$fle"

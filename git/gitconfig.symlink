@@ -36,21 +36,21 @@
   d = diff --color
   m = merge
   r = rebase
-  ri = rebase -i
+  ri = rebase --interactive
   s = status
   co = checkout
   st = stash
   stl = stash list
-  stsp = stash show -p
+  stsp = stash show --patch
   undo = reset HEAD~
-  count = !git shortlog -sn
+  count = !git shortlog --summary
   last  = log -1 HEAD
   # base alias to build on
   lb = log --graph --abbrev-commit --decorate
   l = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
-  ln = l -n
+  ln = l --max-count
   lv = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
-  lvn = lv -n
+  lvn = lv --max-count
 [color "status"]
   added = 045
   changed = 212

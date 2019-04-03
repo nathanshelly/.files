@@ -5,7 +5,7 @@
 # move forward linearly a given number of commits
 gforw() {
   git checkout \
-    $(git rev-list --topo-order HEAD..${2:-master} | tail -$1 | head -1)
+    "$(git rev-list --topo-order HEAD..${2:-master} | tail -$1 | head -1)"
 }
 
 # move back linearly a given number of commits
@@ -20,7 +20,7 @@ gback() { git checkout HEAD~$1 }
 gfix() {
   # attempt to delete `fix` branch if it exists
   if git rev-parse --quiet --verify fix > /dev/null 2>&1; then
-    git branch -d fix || {
+    git branch --delete fix || {
       # if deletion fails, echo reason then return with exit code
       maybe_err=$?
       echo 'Deletion of `fix` branch failed, delete it manually then try again'
@@ -36,7 +36,7 @@ gfix() {
     return $maybe_err
   }
 
-  git checkout -b fix
+  git checkout -b fix # `-b <branch>`
 }
 
 # rebase given branch on fix branch
@@ -63,9 +63,9 @@ gffix() {
   }
 
   # should not fail due to untracked changes as we checked previously
-  git rebase -i fix
+  git rebase --interactive fix
   # deletes branch regardless of merge conflicts during interactive rebase
-  git branch -d fix
+  git branch --delete fix
 }
 
 # delete given branch locally & remotely
@@ -76,8 +76,8 @@ gdel() {
   }
 
   # `$@` holds all arguments
-  git branch -D $@
-  git push origin -d $@
+  git branch --delete --force $@
+  git push origin --delete $@
 }
 
 # add directory except given files/directories
@@ -105,7 +105,7 @@ gplf() {
 gcw() {
   # add all changes starting at root
   git add "$(git rev-parse --show-toplevel)"
-  git commit -m "${1:-wip}"
+  git commit --message "${1:-wip}"
 }
 
 # creates a commit w/ given message (default `wip`) with all changes to tracked
@@ -113,6 +113,6 @@ gcw() {
 # mnemonic - `git commit wip tracked`
 gcwt() {
   # add any tracked files starting at root
-  git add -u "$(git rev-parse --show-toplevel)"
-  git commit -m "${1:-wip}"
+  git add --update "$(git rev-parse --show-toplevel)"
+  git commit --message "${1:-wip}"
 }

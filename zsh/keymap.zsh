@@ -1,3 +1,11 @@
+# ref - http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
+# `bindkey`
+#   - `-M <keymap>` -> specify keymap for keybinding
+# `zle`
+#   - `-n <widget> [function]` -> create new widget (bound to optional function)
+# `autoload`
+#   - `-U` -> alias expansion is supressed when the function is loaded
+
 # turn on vim mode
 # Note: spaceship vi mode enabled in prompt.zsh
 bindkey -v
@@ -69,7 +77,7 @@ autoload -Uz surround
 zle -N delete-surround surround
 zle -N add-surround surround
 zle -N change-surround surround
-bindkey -a cs change-surround
-bindkey -a ds delete-surround
-bindkey -a ys add-surround
+bindkey -M vicmd cs change-surround
+bindkey -M vicmd ds delete-surround
+bindkey -M vicmd ys add-surround
 bindkey -M visual S add-surround

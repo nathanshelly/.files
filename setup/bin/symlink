@@ -39,13 +39,13 @@ symlink() {
   # ref - https://mywiki.wooledge.org/BashFAQ/001
   (
     find \
-      -H "$DOTFILES" \
+      -H "$DOTFILES" \ # do not follow symbolic links
       -maxdepth 3 \
       -name '*.symlink*' \
       -not -path '*.git/*' \
       -not -path '*/submodules/*' \
       -print0
-  ) | while IFS= read -r -d '' src; do
+  ) | while IFS= read -r -d '' src; do # `-d <delimiter>`
     filename=$(basename "$src")
     local path_components='([-._ 0-9a-zA-Z]+~)*'
     local name='[-._ 0-9a-zA-Z]+'
@@ -298,7 +298,7 @@ link_file() {
     skip=${skip:-$skip_all}
 
     if [ "$overwrite" == true ]; then
-      rm -r "$dst" \
+      /bin/rm --recursive "$dst" \
         && success "removed $dst" \
         || fail "failed to remove $dst"
     fi
@@ -314,7 +314,7 @@ link_file() {
 
   # "false" or empty
   if [ "$skip" != true ]; then
-    ln -s "$src" "$dst" \
+    ln -s "$src" "$dst" \ # `-s` for symbolic link
       && success "linked $src to $dst" \
       || fail "failed to link $src to $dst"
   fi

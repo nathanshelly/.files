@@ -1,5 +1,17 @@
 # <<<< unset .tmux options >>>>
 
+# from man page
+#
+# `set` -> `set-option`
+#   - `-g` -> global context
+#   - `setw` -> `set-window-options` - set options of the current window
+# `bind` -> `bindkey` (`unbind` -> `unbindkey`)
+#   - `-r` -> key may repeat
+#   - `-T <table>` -> bind to specific table
+#   - `n` -> `-T root`
+# `send` -> `send -keys`
+#   - `X` -> send a command to copy mode
+
 # unset secondary prefix
 set -ug prefix2
 unbind C-a

@@ -14,20 +14,20 @@ alias gnp='git --no-pager'
 alias ga='git a'
 # add only tracked files
 alias gat='git a --update'
-alias gap='git a -p'
+alias gap='git a --patch'
 
 # base, default to verbose
 alias gb='git b -vv'
-alias gba='gb -a'
+alias gba='gb --all'
 # non-verbose
-alias gbas='git b -a'
-alias gbd='git b -d'
-alias gbD='git b -D'
-alias gbf='git b -f'
+alias gbas='git b --all'
+alias gbd='git b --delete'
+alias gbD='git b --delete --force'
+alias gbf='git b --force'
 # using `-P` w/ `branch` by default
 # this alias provides bare git behavior
 alias gbl='git branch'
-alias gbm='git b -m'
+alias gbm='git b --move'
 # non-verbose
 alias gbs='git b'
 alias gbt='git bt'
@@ -38,17 +38,16 @@ alias gca='git c --amend'
 alias gcan='git c --amend --no-edit'
 alias gcl='git clone'
 alias gclr='git clone --recurse'
-alias gcm='git c -m'
+alias gcm='git c --message'
 alias gco='git co'
-alias gcob='git co -b'
+alias gcob='git co -b' # `-b <branch>`
 alias gcom='git co master'
-alias gcop='git co -p'
+alias gcop='git co --patch'
 alias gcp='git cherry-pick'
 
 alias gd='git d'
 alias gdc='git d --cached'
-# `-R` shows additions as deletions and
-# vice versa, use to see deleted whitespace
+# `-R` shows additions as deletions & vice versa, use to see deleted whitespace
 alias gdr='git d -R'
 alias gdcr='git d --cached -R'
 
@@ -57,10 +56,10 @@ alias ggc='git gc'
 
 alias gl='gnp ln 15'
 alias gln='gnp ln'
-alias glp='git lv -p'
-alias glps='git lv -p --stat'
+alias glp='git lv --patch'
+alias glps='git lv --patch --stat'
 alias gls='git lv --stat'
-alias glsn='git lv --stat -n'
+alias glsn='git lv --stat --max-count'
 alias glv='gnp lvn 15'
 alias glvn='gnp lvn'
 
@@ -85,12 +84,12 @@ alias gra='git r --abort'
 alias grc='git r --continue'
 alias grst='git reset'
 
-alias gs='git s -sb'
+alias gs='git s --short --branch'
 alias gst='git st'
 alias gsta='git st apply'
 alias gstl='git st list'
 alias gstp='git st pop'
-alias gstsp='git st show -p'
+alias gstsp='git st show --patch'
 
 alias gu='git undo'
 

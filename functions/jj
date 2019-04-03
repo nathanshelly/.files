@@ -5,6 +5,6 @@
 local dir
 dir=$(fasd -Rdl |\
   sed "s:$HOME:~:" |\
-  fzf --no-sort +m -q "$*" |\
+  fzf --no-sort --no-multi --query "$*" |\
   sed "s:~:$HOME:")\
 && cd "$dir"
