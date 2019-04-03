@@ -1,3 +1,6 @@
+# replacement for `grep`
+# ref - https://github.com/BurntSushi/ripgrep
+
 # use smart case by default
 alias rg='rg --smart-case'
 
