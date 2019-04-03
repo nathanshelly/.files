@@ -64,6 +64,9 @@ Plug 'PProvost/vim-ps1'
 " https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
 
+" highlight whitespace
+Plug 'ntpeters/vim-better-whitespace'
+
 call plug#end()
 
 " <<<<<<<< config >>>>>>>>
@@ -98,3 +101,9 @@ autocmd! User GoyoLeave Limelight!
 " << keymap >>
 nmap <leader>g :Goyo<CR>
 nmap <leader>l :Limelight!!<CR>
+
+" <<<< vim-better-whitespace >>>>
+" ref - https://github.com/ntpeters/vim-better-whitespace#usage
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+let g:strip_whitelines_at_eof=1
