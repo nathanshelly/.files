@@ -73,6 +73,10 @@ Plug 'ntpeters/vim-better-whitespace'
 " ref - https://github.com/ruanyl/vim-gh-line
 Plug 'ruanyl/vim-gh-line'
 
+" syntax highlight code blocks in markdown filess
+" ref - https://github.com/tpope/vim-markdown
+Plug 'tpope/vim-markdown'
+
 call plug#end()
 
 " <<<<<<<< config >>>>>>>>
@@ -123,3 +127,12 @@ let g:strip_whitelines_at_eof=1
 " ref - https://github.com/ruanyl/vim-gh-line#how-to-use
 let g:gh_line_map = '<leader>mgl' " `mgl` for `misc git link`
 let g:gh_line_blame_map = '<leader>mgb' " `mgb` for `misc git blame`
+
+" <<<< vim-markdown >>>>
+let g:markdown_fenced_languages = [
+      \'javascript',
+      \'typescript',
+      \'python',
+      \'bash=sh',
+      \'sh'
+\]
