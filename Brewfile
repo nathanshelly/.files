@@ -43,6 +43,7 @@ tap "homebrew/cask-fonts"
 
 brew "asciinema"
 brew "awscli"
+brew "bat"
 brew "getantibody/tap/antibody"
 brew "coreutils"
 brew "fasd"
