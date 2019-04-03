@@ -60,6 +60,10 @@ Plug 'junegunn/limelight.vim'
 " ref - https://github.com/PProvost/vim-ps1
 Plug 'PProvost/vim-ps1'
 
+" comment code
+" https://github.com/tpope/vim-commentary
+Plug 'tpope/vim-commentary'
+
 call plug#end()
 
 " <<<<<<<< config >>>>>>>>
