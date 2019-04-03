@@ -102,6 +102,11 @@ autocmd! User GoyoLeave Limelight!
 nmap <leader>g :Goyo<CR>
 nmap <leader>l :Limelight!!<CR>
 
+" <<<< vim-surround >>>>
+" add keystrokes to surround with `<>`
+let g:surround_{char2nr('s')} = "<\r>"
+let g:surround_{char2nr('S')} = "< \r >"
+
 " <<<< vim-better-whitespace >>>>
 " ref - https://github.com/ntpeters/vim-better-whitespace#usage
 let g:strip_whitespace_on_save=1
