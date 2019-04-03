@@ -31,9 +31,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 # turn on fasd if installed
-command -v fasd > /dev/null 2>&1 && {
-  eval "$(fasd --init auto)"
-}
+command -v fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 
 # fzf configuration
 export FZF_DEFAULT_OPTS="--height 50% --reverse --bind ctrl-k:down,ctrl-l:up"

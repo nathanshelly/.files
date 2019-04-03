@@ -1,1 +1,1 @@
-export BAT_CONFIG_PATH="$DOTFILES/misc/bat.conf"
+export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
