@@ -178,6 +178,11 @@ bind -T copy-mode-vi 'k'  send -X cursor-down
 bind -T copy-mode-vi 'l'  send -X cursor-up
 bind -T copy-mode-vi '\;' send -X cursor-right
 
+# TODO: figure out why 'L` won't seem to successfully bind here (swap 'J' for
+# 'L' and things work fine)
+# bind -T copy-mode-vi 'K' send -X scroll-down
+# bind -T copy-mode-vi 'L' send -X scroll-up
+
 # use alt+(j|k|l|;) to navigate between panes
 bind -n M-j select-pane -L
 bind -n M-k select-pane -D
