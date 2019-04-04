@@ -57,29 +57,26 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/goyo.vim'
 
 " highlight currently editing text
-" ref - https://github.com/junegunn/limelight.vim
 Plug 'junegunn/limelight.vim'
 
 " Powershell syntax highlighting
-" ref - https://github.com/PProvost/vim-ps1
 Plug 'PProvost/vim-ps1'
 
 " comment code
-" https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
 
 " highlight whitespace
-" ref - https://github.com/ntpeters/vim-better-whitespace
 Plug 'ntpeters/vim-better-whitespace'
 
 " open current line in github
 " opens most recent blob so only works if you are downstream of remote
-" ref - https://github.com/ruanyl/vim-gh-line
 Plug 'ruanyl/vim-gh-line'
 
 " syntax highlight code blocks in markdown filess
-" ref - https://github.com/tpope/vim-markdown
 Plug 'tpope/vim-markdown'
+
+" black code formatting (python)
+Plug 'ambv/black'
 
 call plug#end()
 
@@ -149,3 +146,7 @@ let g:markdown_fenced_languages = [
       \'bash=sh',
       \'sh'
 \]
+
+" <<<< black >>>>
+" ref - https://github.com/ambv/black#vim
+autocmd BufWritePre *.py execute ':Black'
