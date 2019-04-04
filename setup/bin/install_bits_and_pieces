@@ -26,3 +26,12 @@ antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"
 # install `tmuxinator`
 # ref - https://github.com/tmuxinator/tmuxinator
 command -v gem > /dev/null 2>&1 || gem install --user-install tmuxinator
+
+# install python module for neovim (used by `black` plugin)
+command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8" && {
+  pip install neovim
+} || {
+  command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8" && {
+    pip3 install neovim
+  }
+}
