@@ -69,6 +69,10 @@ set signcolumn=yes
 " ref - http://vi.stackexchange.com/q/2801/1631
 let g:netrw_gx="<cWORD>"
 
+" have vim highlight `<>`
+" ref - http://vim.1045645.n5.nabble.com/Highlighting-matching-angle-brackets-lt-gt-td1188629.html
+set matchpairs+=<:>
+
 " << search >>
 
 " show matches as you type
