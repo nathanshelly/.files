@@ -26,7 +26,11 @@ Plug 'leafgarland/typescript-vim' | Plug 'peitalin/vim-jsx-typescript'
 " ref - https://github.com/prettier/vim-prettier
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+  \ 'for': [
+    \ 'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql',
+    \ 'markdown', 'vue', 'yaml', 'html'
+  \]
+\}
 
 " Neovim markdown previewer (opens preview in browser)
 " ref - https://github.com/iamcco/markdown-preview.nvim
@@ -80,6 +84,15 @@ Plug 'tpope/vim-markdown'
 call plug#end()
 
 " <<<<<<<< config >>>>>>>>
+
+" <<<< vim-prettier >>>>
+" ref - https://github.com/prettier/vim-prettier#configuration
+
+" force async
+let g:prettier#exec_cmd_async = 1
+" run pre save
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config
