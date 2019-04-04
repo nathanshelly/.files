@@ -207,11 +207,4 @@ set -sa terminal-overrides ',xterm*:dim=\E[2m'
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 set -as terminal-overrides ',xterm*:Tc'
 
-# plugins
-
-set -g @plugin 'tmux-plugins/tpm'
-
-# initialize tpm, must be at bottom of file
-run '~/.tmux/plugins/tpm/tpm'
-
 # <<<< end of configuring tmux separate from .tmux >>>>
