@@ -29,6 +29,13 @@ unset ANTIBUNDLE_IN ANTIBUNDLE_OUT
 # load functions written as basic scripts
 autoload -Uz $DOTFILES/functions/*(:t)
 
+
+# set default editors (source here before other files that make use of these)
+# technically only aliasing $VISUAL is necessary but $EDITOR is used elsewhere
+# in these dotfiles and should be `nvim`
+export VISUAL=nvim
+export EDITOR=nvim
+
 # all zsh files
 typeset -U config_files
 

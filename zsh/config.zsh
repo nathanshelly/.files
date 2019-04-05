@@ -24,12 +24,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
-# set default editors
-# technically only aliasing $VISUAL is necessary but $EDITOR is used elsewhere
-# in these dotfiles and should be `nvim`
-export VISUAL=nvim
-export EDITOR=nvim
-
 # turn on fasd if installed
 command -v fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 
