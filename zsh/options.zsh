@@ -1,3 +1,5 @@
+# ref - http://zsh.sourceforge.net/Doc/Release/Options.html
+
 # beta testing
 setopt hist_find_no_dups
 
@@ -11,7 +13,7 @@ setopt complete_in_word no_list_beep complete_aliases
 setopt extended_glob no_match
 
 # history
-setopt append_history extended_history hist_ignore_all_dups hist_reduce_blanks inc_append_history share_history hist_verify
+setopt hist_ignore_all_dups hist_reduce_blanks share_history hist_verify
 
 # input
 setopt nocorrect
