@@ -31,13 +31,17 @@ tap "homebrew/bundle"
 # ref - https://github.com/Homebrew/homebrew-cask-drivers
 tap "homebrew/cask-drivers"
 
-# alternate versions - betas
-# ref - https://github.com/Homebrew/homebrew-cask-fonts
+# alternate versions - betas (e.g. Chrome Canary)
+# ref - https://github.com/Homebrew/homebrew-cask-versions
 tap "homebrew/cask-versions"
 
 # fonts repository
 # ref - https://github.com/Homebrew/homebrew-cask-fonts
 tap "homebrew/cask-fonts"
+
+# zsh plugin manager
+# ref - https://github.com/getantibody/antibody
+tap "getantibody/tap"
 
 # <<<<<<<< packages (formulae) >>>>>>>>
 
