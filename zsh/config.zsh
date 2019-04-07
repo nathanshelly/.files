@@ -31,3 +31,7 @@ command -v fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 export FZF_DEFAULT_OPTS="--height 50% --reverse --bind ctrl-k:down,ctrl-l:up"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# case insensitive completion
+# ref - https://superuser.com/questions/1092033/how-can-i-make-zsh-tab-completion-fix-capitalization-errors-for-directorys-and
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
