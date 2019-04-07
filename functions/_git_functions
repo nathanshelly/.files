@@ -87,16 +87,26 @@ gae() {
 }
 
 # `cd` to repo root if in a git repo
-cdrr() { cd $(rr) }
+cdrr() { cd "$(rr)" }
 
 # force pull tracking branch & reset to `origin/$1`
-# passing a branch that is not a tracking of the checked out local branch will
+# passing a branch that is not a tracking branch of the checked out local branch will
 # work though may be unintuitive
 gplf() {
   [[ -z $1 ]] && echo 'No branch given, aborting' && return 1
 
   # only reset if we can't fast-forward
   git pull --all || git reset --hard "origin/$1"
+}
+
+# fetch latest changes, rebase current branch on `origin/$1`
+# passing a branch that is not a tracking branch of the checked out local branch
+# will work though may be unintuitive
+gplr() {
+  [[ -z $1 ]] && echo 'No branch given, aborting' && return 1
+
+  # only reset if we can't fast-forward
+  git pull --all || git rebase --interactive "origin/$1"
 }
 
 # creates a commit w/ given message (default `wip`) with all changes starting at
