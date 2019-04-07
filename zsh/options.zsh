@@ -29,3 +29,6 @@ setopt local_options local_traps
 
 # zle
 setopt no_beep
+
+# allow comments in zle
+setopt interactive_comments
