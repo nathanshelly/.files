@@ -16,7 +16,6 @@ SPACESHIP_PROMPT_ORDER=(
   package       # package version
   node          # node.js section
   venv          # virtualenv section
-  exec_time     # execution time
   line_sep      # line break
   vi_mode       # vi mode indicator
   jobs          # background jobs indicator
@@ -24,9 +23,9 @@ SPACESHIP_PROMPT_ORDER=(
   char          # prompt character
 )
 
-# SPACESHIP_RPROMPT_ORDER=(
-#   battery
-# )
+SPACESHIP_RPROMPT_ORDER=(
+  exec_time     # execution time
+)
 
 # prompt options
 SPACESHIP_PROMPT_ADD_NEWLINE=false
