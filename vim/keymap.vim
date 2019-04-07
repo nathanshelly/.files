@@ -45,14 +45,9 @@ nnoremap gl gk
 nnoremap gk gj
 
 " jump paragraphs with K/L
-nnoremap K }
-vnoremap K }
-nnoremap L {
-vnoremap L {
-
-" for now remap old bindings (just in normal mode)
-nnoremap { K
-nnoremap } J
+" TODO: remove noops here once muscle memory has adjusted
+nnoremap K <NOP>
+nnoremap L <NOP>
 
 " <<<< end of home row movement keys remapping >>>>
 
