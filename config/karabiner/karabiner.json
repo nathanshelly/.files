@@ -19,11 +19,7 @@
                 "description": "Disable Cmd-V in terminal to use Vim keybindings",
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "com.googlecode.iterm2",
-                      "io.alacritty",
-                      "com.apple.Terminal"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
