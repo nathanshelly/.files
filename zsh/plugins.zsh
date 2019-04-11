@@ -14,6 +14,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history)
 # << keymappings >>
 # ref - https://github.com/zsh-users/zsh-autosuggestions#key-bindings
 
+# count only alphanumeric characters as part of a word
+WORDCHARS=
+
 # see which option I like better
 bindkey -M viins '^a' autosuggest-accept # until end of suggestion
 bindkey -M viins '^e' autosuggest-accept # until end of suggestion
