@@ -201,6 +201,9 @@ bind M-k resize-pane -D 1
 bind M-l resize-pane -U 1
 bind M-\; resize-pane -R 1
 
+# switch to last session
+bind l switch-client -l
+
 # enable true color (RGB color), dimming, strikethrough and italics
 #
 # refs:
