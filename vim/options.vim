@@ -106,3 +106,4 @@ au FileType markdown set colorcolumn=
 " << python >>
 
 au Filetype python set colorcolumn=89
+au Filetype python set textwidth=88
