@@ -90,7 +90,10 @@ let g:ale_fixers = {
 \   'python': ['black'],
 \}
 
-" appearance of gutter signs - https://github.com/w0rp/ale#faq-change-signs
+" appearance of gutter signs
+" refs:
+"   - https://github.com/w0rp/ale#faq-change-signs
+"   - https://github.com/w0rp/ale/issues/249
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_error = '•'
@@ -159,8 +162,10 @@ let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
 " TODO: figure out what's going wrong here, start by not shadowing shortcut
 nmap <leader>d <Plug>(git-p-diff-preview)
 
-" <<<< limelight.vim >>>>
-" ref - https://github.com/junegunn/limelight.vim#options
+" <<<< goyo.vim & limelight.vim >>>>
+" refs:
+"   - https://github.com/junegunn/limelight.vim#options
+"   - https://github.com/junegunn/goyo.vim#configuration
 
 " << options >>
 
@@ -178,6 +183,9 @@ autocmd! User GoyoLeave Limelight!
 "   - https://github.com/junegunn/goyo.vim/issues/160
 "   - https://github.com/junegunn/goyo.vim/pull/195
 autocmd! User GoyoLeave source $HOME/.vimrc
+
+let g:goyo_height = '66%'
+let g:goyo_width = '100%'
 
 " << keymap >>
 
