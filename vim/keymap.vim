@@ -107,7 +107,7 @@ nmap <silent> <leader>cq :cq<CR>
 nmap <silent> <leader>bd :bd<CR>
 
 " source vimrc
-nmap <silent> <leader>r  :source ~/.vimrc<CR>
+nmap <silent> <leader>r  :source $HOME/.vimrc<CR>
 
 " turn off search highlighting
 nmap <silent> <leader>n  :noh<CR>

@@ -60,9 +60,6 @@ Plug 'iamcco/git-p.nvim'
 Plug 'ntpeters/vim-better-whitespace'
 
 " distraction free writing
-" TODO: figure out color issue on exit:
-"   - https://github.com/junegunn/goyo.vim/issues/160
-"   - https://github.com/junegunn/goyo.vim/issues?utf8=%E2%9C%93&q=exit
 Plug 'junegunn/goyo.vim'
 
 " highlight currently editing text
@@ -155,6 +152,12 @@ let g:limelight_conceal_ctermfg = 'Black'
 " goyo integration
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" reset colors on exiting goyo (workaround)
+" refs:
+"   - https://github.com/junegunn/goyo.vim/issues/160
+"   - https://github.com/junegunn/goyo.vim/pull/195
+autocmd! User GoyoLeave source $HOME/.vimrc
 
 " << keymap >>
 
