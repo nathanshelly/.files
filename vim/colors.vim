@@ -1,4 +1,4 @@
-" <<<<<<<< Colors >>>>>>>>
+" <<<<<<<< color scheme >>>>>>>>
 
 " background
 set background=dark
@@ -28,6 +28,18 @@ hi MatchParen cterm=None ctermfg=cyan ctermbg=None
 
 " transparent background
 hi Normal ctermbg=None
+
+" << whitespace >>
+
+ " whitespace group coloring
+hi ExtraWhitespace ctermbg=magenta
+" keep through color scheme change
+au ColorScheme * hi ExtraWhitespace ctermbg=magenta
+" highlight all trailing whitespace
+au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+" avoid highlighting trailing whitespace on current line
+" when editing at the end of it
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
 " << syntax groups >>
 
