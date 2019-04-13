@@ -25,6 +25,9 @@ Plug 'tpope/vim-markdown'
 
 " << formatting/linting >>
 
+" ale
+Plug 'w0rp/ale'
+
 " post install load plugin only for editing supported files
 " ref - https://github.com/prettier/vim-prettier
 Plug 'prettier/vim-prettier', {
@@ -56,9 +59,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
 Plug 'iamcco/git-p.nvim'
 
-" highlight whitespace
-Plug 'ntpeters/vim-better-whitespace'
-
 " distraction free writing
 Plug 'junegunn/goyo.vim'
 
@@ -75,14 +75,43 @@ call plug#end()
 
 " <<<<<< formatting/linting >>>>>>
 
-" <<<< vim-prettier >>>>
-" ref - https://github.com/prettier/vim-prettier#configuration
+" <<<< ale >>>>
+" ref - https://github.com/w0rp/ale
 
-" force async
-let g:prettier#exec_cmd_async = 1
-" run pre save
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" << options >>
+
+let g:ale_linters = {
+\   'typescript': ['tslint', 'tsserver'],
+\}
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'typescript': ['prettier', 'tslint'],
+\   'python': ['black'],
+\}
+
+" appearance of gutter signs - https://github.com/w0rp/ale#faq-change-signs
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
+hi link ALEErrorSign    Error
+hi link ALEWarningSign  Warning
+
+
+" https://github.com/w0rp/ale#5vii-how-can-i-change-the-format-for-echo-messages
+let g:ale_echo_msg_format = '[%linter%] - %s'
+
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+
+" << keymap >>
+
+" navigate between lines with errors and warnings
+nnoremap <leader>an :ALENextWrap<cr>
+nnoremap <leader>ap :ALEPreviousWrap<cr>
+
+" << keymap >>
 
 " <<<< black >>>>
 " ref - https://github.com/ambv/black#vim
@@ -129,15 +158,6 @@ let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
 " use <leader>d to display change
 " TODO: figure out what's going wrong here, start by not shadowing shortcut
 nmap <leader>d <Plug>(git-p-diff-preview)
-
-" <<<< vim-better-whitespace >>>>
-" ref - https://github.com/ntpeters/vim-better-whitespace#usage
-
-" << options >>
-
-let g:strip_whitespace_on_save=1
-let g:strip_whitespace_confirm=0
-let g:strip_whitelines_at_eof=1
 
 " <<<< limelight.vim >>>>
 " ref - https://github.com/junegunn/limelight.vim#options
