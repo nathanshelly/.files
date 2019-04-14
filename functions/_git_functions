@@ -63,9 +63,9 @@ gffix() {
   }
 
   # should not fail due to untracked changes as we checked previously
-  git rebase --interactive fix
-  # deletes branch regardless of merge conflicts during interactive rebase
-  git branch --delete fix
+  # delete branch only if merging succeeds
+  git rebase --interactive fix && git branch --delete fix
+
 }
 
 # delete given branch locally & remotely
