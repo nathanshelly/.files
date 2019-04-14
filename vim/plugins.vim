@@ -23,23 +23,17 @@ Plug 'PProvost/vim-ps1'
 " code blocks in markdown files
 Plug 'tpope/vim-markdown'
 
+" << autocompletion >>
+
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+\ }
+
 " << formatting/linting >>
 
 " ale
-Plug 'w0rp/ale'
-
-" post install load plugin only for editing supported files
-" ref - https://github.com/prettier/vim-prettier
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': [
-    \ 'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql',
-    \ 'markdown', 'vue', 'yaml', 'html'
-  \]
-\}
-
-" black code formatting (python)
-Plug 'ambv/black'
+" Plug 'w0rp/ale'
 
 " << motions/operators >>
 
@@ -73,6 +67,52 @@ call plug#end()
 
 " <<<<<<<< config >>>>>>>>
 
+" <<<<<< autocompletion >>>>>>
+
+Plug 'Shougo/deoplete.nvim'
+
+" <<<< language-client >>>>
+
+let g:LanguageClient_serverCommands = {
+  \ 'typescript.tsx': ['typescript-language-server', '--stdio']
+\ }
+
+" << options >>
+
+" lighten line numbers for increased visibility
+hi LanguageClientError ctermfg=196
+hi LanguageClientWarning ctermfg=219
+hi LanguageClientHint ctermfg=180
+
+let g:LanguageClient_diagnosticsDisplay = {
+  \ 1: {
+    \ "name": "Error",
+    \ "texthl": "LanguageClientError",
+    \ "signText": "◉",
+    \ "signTexthl": "LanguageClientError",
+    \ "virtualTexthl": "LanguageClientError",
+  \ },
+  \ 2: {
+    \ "name": "Warning",
+    \ "texthl": "LanguageClientWarning",
+    \ "signText": "◉",
+    \ "signTexthl": "LanguageClientWarning",
+    \ "virtualTexthl": "LanguageClientWarning",
+  \ },
+  \ 4: {
+    \ "name": "Hint",
+    \ "texthl": "LanguageClientHint",
+    \ "signText": "◉",
+    \ "signTexthl": "LanguageClientHint",
+    \ "virtualTexthl": "LanguageClientHint",
+  \ }
+\ }
+
+" << keymap >>
+
+nnoremap <leader>c :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
 " <<<<<< formatting/linting >>>>>>
 
 " <<<< ale >>>>
@@ -80,48 +120,37 @@ call plug#end()
 
 " << options >>
 
-let g:ale_linters = {
-\   'typescript': ['tslint', 'tsserver'],
-\}
+" let g:ale_linters = {
+"   \ 'typescript': ['tslint', 'tsserver'],
+" \}
 
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'typescript': ['prettier', 'tslint'],
-\   'python': ['black'],
-\}
+" let g:ale_fixers = {
+"   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+"   \ 'typescript': ['prettier', 'tslint'],
+"   \ 'python': ['black'],
+" \}
 
-" appearance of gutter signs
-" refs:
-"   - https://github.com/w0rp/ale#faq-change-signs
-"   - https://github.com/w0rp/ale/issues/249
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_sign_error = '•'
-let g:ale_sign_warning = '•'
-hi link ALEErrorSign    Error
-hi link ALEWarningSign  Warning
+" " appearance of gutter signs
+" " refs:
+" "   - https://github.com/w0rp/ale#faq-change-signs
+" "   - https://github.com/w0rp/ale/issues/249
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
+" let g:ale_sign_error = '•'
+" let g:ale_sign_warning = '•'
 
 
-" https://github.com/w0rp/ale#5vii-how-can-i-change-the-format-for-echo-messages
-let g:ale_echo_msg_format = '[%linter%] - %s'
+" " https://github.com/w0rp/ale#5vii-how-can-i-change-the-format-for-echo-messages
+" let g:ale_echo_msg_format = '[%linter%] - %s'
 
-let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 1
+" let g:ale_linters_explicit = 1
+" let g:ale_fix_on_save = 1
 
-" << keymap >>
+" " << keymap >>
 
-" navigate between lines with errors and warnings
-nnoremap <leader>an :ALENextWrap<cr>
-nnoremap <leader>ap :ALEPreviousWrap<cr>
-
-" << keymap >>
-
-" <<<< black >>>>
-" ref - https://github.com/ambv/black#vim
-
-" << options >>
-
-autocmd BufWritePre *.py execute ':Black'
+" " navigate between lines with errors and warnings
+" nnoremap <leader>an :ALENextWrap<cr>
+" nnoremap <leader>ap :ALEPreviousWrap<cr>
 
 " <<<<<< motions/operators >>>>>>
 
@@ -142,11 +171,11 @@ let g:surround_{char2nr('S')} = "< \r >"
 " << options >>
 
 let g:markdown_fenced_languages = [
-      \'javascript',
-      \'typescript',
-      \'python',
-      \'bash=sh',
-      \'sh'
+  \ 'javascript',
+  \ 'typescript',
+  \ 'python',
+  \ 'bash=sh',
+  \ 'sh'
 \]
 
 " <<<< git-p.nvim (git info) >>>>
@@ -189,8 +218,8 @@ let g:goyo_width = '100%'
 
 " << keymap >>
 
-nmap <leader>g :Goyo<CR>
-nmap <leader>l :Limelight!!<CR>
+nmap <leader>jg :Goyo<CR>
+nmap <leader>jl :Limelight!!<CR>
 
 " <<<< vim-gh-line >>>>
 " ref - https://github.com/ruanyl/vim-gh-line#how-to-use
