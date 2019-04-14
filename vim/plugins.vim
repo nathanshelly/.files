@@ -63,6 +63,10 @@ Plug 'junegunn/limelight.vim'
 " note: opens most recent blob so only works if you are downstream of remote
 Plug 'ruanyl/vim-gh-line'
 
+" << colors >>
+
+Plug 'joshdick/onedark.vim'
+
 call plug#end()
 
 " <<<<<<<< config >>>>>>>>
