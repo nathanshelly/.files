@@ -33,7 +33,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 " << formatting/linting >>
 
 " ale
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " << motions/operators >>
 
@@ -117,40 +117,22 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " <<<< ale >>>>
 " ref - https://github.com/w0rp/ale
+" NOTE: currently using only for formatting. May add back linting in the
+" future. May switch to using language servers for formatting and remove this
+" altogether or use for linting only.
 
 " << options >>
 
-" let g:ale_linters = {
-"   \ 'typescript': ['tslint', 'tsserver'],
-" \}
+" only apply explicitly specified linters (currently none, effectively disabled)
+let g:ale_linters_explicit = 1
 
-" let g:ale_fixers = {
-"   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-"   \ 'typescript': ['prettier', 'tslint'],
-"   \ 'python': ['black'],
-" \}
+let g:ale_fix_on_save = 1
 
-" " appearance of gutter signs
-" " refs:
-" "   - https://github.com/w0rp/ale#faq-change-signs
-" "   - https://github.com/w0rp/ale/issues/249
-" highlight clear ALEErrorSign
-" highlight clear ALEWarningSign
-" let g:ale_sign_error = '•'
-" let g:ale_sign_warning = '•'
-
-
-" " https://github.com/w0rp/ale#5vii-how-can-i-change-the-format-for-echo-messages
-" let g:ale_echo_msg_format = '[%linter%] - %s'
-
-" let g:ale_linters_explicit = 1
-" let g:ale_fix_on_save = 1
-
-" " << keymap >>
-
-" " navigate between lines with errors and warnings
-" nnoremap <leader>an :ALENextWrap<cr>
-" nnoremap <leader>ap :ALEPreviousWrap<cr>
+let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'typescript': ['prettier'],
+  \ 'python': ['black'],
+\}
 
 " <<<<<< motions/operators >>>>>>
 
