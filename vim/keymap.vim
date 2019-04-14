@@ -127,5 +127,12 @@ nmap <silent> <leader>d {
 nmap <silent> <leader>' g$
 nmap <silent> <leader>" g0
 
-" sort w/ leader
+" sort
 nmap <leader>so :sort<CR>
+
+" navigate between vim splits
+" TODO: figure out how to map arrow keys
+" nnoremap <leader>pj <c-w>
+" nnoremap <leader>pk
+" nnoremap <leader>pl
+" nnoremap <leader>p;
