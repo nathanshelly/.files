@@ -13,16 +13,6 @@ endif
 
 call plug#begin()
 
-" << languages >>
-
-" typescript/javascript
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-" powershell
-Plug 'PProvost/vim-ps1'
-" code blocks in markdown files
-Plug 'tpope/vim-markdown'
-
 " << autocompletion >>
 
 Plug 'autozimu/LanguageClient-neovim', {
@@ -63,9 +53,13 @@ Plug 'junegunn/limelight.vim'
 " note: opens most recent blob so only works if you are downstream of remote
 Plug 'ruanyl/vim-gh-line'
 
-" << colors >>
+" << colors/syntax >>
 
 Plug 'joshdick/onedark.vim'
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'tpope/vim-markdown'
 
 call plug#end()
 
@@ -151,19 +145,6 @@ let g:surround_{char2nr('S')} = "< \r >"
 
 " <<<<<< utilities >>>>>>
 
-" <<<< vim-markdown >>>>
-" ref - tpope/vim-markdown
-
-" << options >>
-
-let g:markdown_fenced_languages = [
-  \ 'javascript',
-  \ 'typescript',
-  \ 'python',
-  \ 'bash=sh',
-  \ 'sh'
-\]
-
 " <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config
 
@@ -214,3 +195,24 @@ nmap <leader>jl :Limelight!!<CR>
 
 let g:gh_line_map = '<leader>mgl' " `mgl` for `misc git link`
 let g:gh_line_blame_map = '<leader>mgb' " `mgb` for `misc git blame`
+
+" <<<<<< colors/syntaxlanguages
+
+" <<<< vim-polyglot >>>>
+" use `tpope`, not `plasticboy` from `vim-polyglot`
+
+" << options >>
+let g:polyglot_disabled = ['markdown']
+
+" <<<< vim-markdown >>>>
+" ref - tpope/vim-markdown
+
+" << options >>
+
+let g:markdown_fenced_languages = [
+  \ 'javascript',
+  \ 'typescript',
+  \ 'python',
+  \ 'bash=sh',
+  \ 'sh'
+\]
