@@ -19,6 +19,12 @@ syntax on
 " line numbers
 set number
 set relativenumber
+
+" numbers in all buffers
+" ref - https://vi.stackexchange.com/questions/6436/how-to-show-line-numbers-for-all-buffers-windows-tabs/6441
+au BufWinEnter * set number
+au BufWinEnter * set relativenumber
+
 " absolute number in insert mode, otherwise hybrid
 " ref - https://jeffkreeftmeijer.com/vim-number/
 augroup numbertoggle
