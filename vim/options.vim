@@ -19,6 +19,13 @@ syntax on
 " line numbers
 set number
 set relativenumber
+" absolute number in insert mode, otherwise hybrid
+" ref - https://jeffkreeftmeijer.com/vim-number/
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " scrolloff
 set scrolloff=10
