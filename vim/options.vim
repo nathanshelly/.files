@@ -7,8 +7,15 @@ set t_vb=
 " prevent swap files
 set noswapfile
 
+" resolves `coc.nvim` issue - https://github.com/neoclide/coc.nvim/issues/649
+set nobackup nowritebackup
+
 " shorter timeouts
-set timeoutlen=1000 ttimeoutlen=0
+" updatetime - CursorHold & CursorHoldI
+set timeoutlen=1000 ttimeoutlen=0 updatetime=300
+
+" increase display for message
+set cmdheight=2
 
 " map leader -> space
 let mapleader=" "

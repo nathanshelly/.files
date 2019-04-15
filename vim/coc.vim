@@ -2,10 +2,17 @@
 " ref - https://github.com/neoclide/coc.nvim/wiki/Using-configuration-file
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
+" TODO: understand this
+" highlight symbol under cursor on CursorHold
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " << completion >>
 " ref - https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-completion-experience
 
-" confirm completion with <c-space>
+" trigger completion w/ <c-space>
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" confirm completion w/ <c-space>
 " `<c-g>u` means break undo chain at current position
 inoremap <expr> <c-space> pumvisible() ? "\<c-y>" : "\<c-g>u\<c-space>"
 
@@ -35,7 +42,7 @@ nmap <silent> gt <Plug>(coc-type-definition)
 " go to references
 nmap <silent> grf <Plug>(coc-references)
 " rename value at cursor
-nmap <silent> gre <Plug>(coc-rename)
+nmap <silent> grn <Plug>(coc-rename)
 " format buffer
 nmap <silent> gf <Plug>(coc-format)
 " format selection (w/ motion, e.g. `gfmap` to format a paragraph
@@ -66,8 +73,14 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 " refresh completion at cursor
 inoremap <silent><expr> <c-e> coc#refresh()
 
+" use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+" use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+
 " TODO: look into below configuration options
 "
 " float window? - coc#util#has_float()
 " locations? - CocLocationsAsync({id}, {method}, [{params}, {openCommand}])
-"
+" don't give |ins-completion-menu| messages -  `set shortmess+=c`
