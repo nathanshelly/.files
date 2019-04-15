@@ -1,0 +1,10 @@
+// this file must be symlinked to `$HOME/.config/nvim/coc-settings.json`
+// this symlinking should occur through the install script
+//
+// can also be done manually:
+// `ln -s $DOTFILES/vim/coc.json $HOME/.config/nvim/coc-settings.json`
+//
+// Note: install script symlinking works by symlinking the existing symlink in
+// `$DOTFILES/config/nvim`
+{
+}
