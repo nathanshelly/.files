@@ -9,7 +9,7 @@ command -v exa > /dev/null && {
   # TODO: get newer version of `exa` that supports this
   # alias ld='l --list-dirs'
   alias li='l --git-ignore'
-  alias ll='l --long'
+  alias ll='l --long --all'
 } || {
   # exa not installed
 
