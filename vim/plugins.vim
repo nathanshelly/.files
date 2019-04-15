@@ -34,6 +34,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " comment code
 Plug 'tpope/vim-commentary'
+" line
+" dependency - https://github.com/kana/vim-textobj-line/issues/5
+Plug 'kana/vim-textobj-user' | Plug 'kana/vim-textobj-line'
 
 " << utilities >>
 
