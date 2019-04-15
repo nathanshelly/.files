@@ -40,7 +40,6 @@ noremap l k
 noremap k j
 
 " remap up/down screen line movement in normal mode
-" up/down
 nnoremap gl gk
 nnoremap gk gj
 
@@ -107,22 +106,19 @@ nmap <silent> <leader>x :x<CR>
 nmap <silent> <leader>cq :cq<CR>
 nmap <silent> <leader>bd :bd<CR>
 
-" source vimrc
-nmap <silent> <leader>r  :source $HOME/.vimrc<CR>
+" source vimrc (`reload` mnemonic)
+nmap <silent> <leader>rld  :source $HOME/.vimrc<CR>
 
 " turn off search highlighting
-nmap <silent> <leader>n  :noh<CR>
+nmap <silent> <leader>hn  :noh<CR>
 
 " toggle tab highlighting
 nmap <silent> <leader>ht  :HiTab<CR>
 nmap <silent> <leader>htn :NoHiTab<CR>
 
-" toggle paste mode
-nmap <silent> <leader>p  :set paste<CR>
+" toggle paste mode (`paste yes`, `paste no` mnemonic)
+nmap <silent> <leader>py  :set paste<CR>
 nmap <silent> <leader>pn :set nopaste<CR>
-
-" look up word under cursor
-nmap <silent> <leader>d {
 
 " start/end of screen line movement
 nmap <silent> <leader>' g$

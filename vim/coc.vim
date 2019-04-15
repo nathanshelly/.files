@@ -47,18 +47,19 @@ nmap <silent> grn <Plug>(coc-rename)
 nmap <silent> gf <Plug>(coc-format)
 " format selection (w/ motion, e.g. `gfmap` to format a paragraph
 nmap <silent> gfs <Plug>(coc-format-selected)
+" TODO: evaluate use of `co` namespace depending on usage patterns
 " TODO: understand what code actions are (and code lens actions below)
 " apply code action for current line
-nmap <silent> gca <Plug>(coc-codeaction)
+nmap <silent> coa <Plug>(coc-codeaction)
 " apply code action to selection
-nmap <silent> gcas <Plug>(coc-codeaction-selected)
+nmap <silent> coas <Plug>(coc-codeaction-selected)
 
 " open link
 " TODO: figure out what's wrong with below line (same problem as above)
 " nmap  gx <Plug>(coc-openlink)
 
 " apply code lens action on current line
-nmap <silent> gcl <Plug>(coc-codelens-action)
+nmap <silent> col <Plug>(coc-codelens-action)
 " run quickfix action on current line
 nmap <silent> gfc <Plug>(coc-fix-current)
 
