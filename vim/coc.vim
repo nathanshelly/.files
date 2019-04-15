@@ -2,128 +2,72 @@
 " ref - https://github.com/neoclide/coc.nvim/wiki/Using-configuration-file
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-" " if hidden is not set, TextEdit might fail.
-" set hidden
+" << completion >>
+" ref - https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-completion-experience
 
-" " Some server have issues with backup files, see #649
-" set nobackup
-" set nowritebackup
+" confirm completion with <c-space>
+" `<c-g>u` means break undo chain at current position
+inoremap <expr> <c-space> pumvisible() ? "\<c-y>" : "\<c-g>u\<c-space>"
 
-" " Better display for messages
-" set cmdheight=2
+" move up and down preview window
+inoremap <expr> <c-k> pumvisible() ? "\<C-n>" : "\<c-k>"
+inoremap <expr> <c-l> pumvisible() ? "\<C-p>" : "\<c-l>"
 
-" " Smaller updatetime for CursorHold & CursorHoldI
-" set updatetime=300
+" NOTE: namespace less important command with `<leader>c`
+" NOTE: `<Plug>` mappings used to route command to plugins
+" ref - https://www.reddit.com/r/vim/comments/78izt4/please_help_understand_how_to_use_plug_mapping/
 
-" " don't give |ins-completion-menu| messages.
-" set shortmess+=c
+" show diagnostic information
+" TODO: figure out what's wrong with below line
+" nmap <leader>cd <Plug>(coc-diagnostic-info)
+" move between diagnostics
+nmap <leader>cn <Plug>(coc-diagnostic-next)
+nmap <leader>cp <Plug>(coc-diagnostic-prev)
 
-" " always show signcolumns
-" set signcolumn=yes
+" go to definition
+nmap <silent> gd <Plug>(coc-definition)
+" go to declaration
+nmap <silent> gi <Plug>(coc-declaration)
+" go to implentation
+nmap <silent> gi <Plug>(coc-implementation)
+" go to type definition
+nmap <silent> gt <Plug>(coc-type-definition)
+" go to references
+nmap <silent> grf <Plug>(coc-references)
+" rename value at cursor
+nmap <silent> gre <Plug>(coc-rename)
+" format buffer
+nmap <silent> gf <Plug>(coc-format)
+" format selection (w/ motion, e.g. `gfmap` to format a paragraph
+nmap <silent> gfs <Plug>(coc-format-selected)
+" TODO: understand what code actions are (and code lens actions below)
+" apply code action for current line
+nmap <silent> gca <Plug>(coc-codeaction)
+" apply code action to selection
+nmap <silent> gcas <Plug>(coc-codeaction-selected)
 
-" " Use tab for trigger completion with characters ahead and navigate.
-" " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" open link
+" TODO: figure out what's wrong with below line (same problem as above)
+" nmap  gx <Plug>(coc-openlink)
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+" apply code lens action on current line
+nmap <silent> gcl <Plug>(coc-codelens-action)
+" run quickfix action on current line
+nmap <silent> gfc <Plug>(coc-fix-current)
 
-" " Use <c-space> for trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
+" TODO: test this
+" trigger key for going to the next snippet position,
+" applied in insert and select mode.
+" let g:coc_snippet_next = <c-n>
+" let g:coc_snippet_prev = <c-p>
+" expand snippet if possible (check out related options)
+" inoremap <silent><expr> <c-e> coc#expandable()
 
-" " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" " Coc only does snippet and additional edit on confirm.
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" refresh completion at cursor
+inoremap <silent><expr> <c-e> coc#refresh()
 
-" " Use `[c` and `]c` for navigate diagnostics
-" nmap <silent> [c <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" " Remap keys for gotos
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-
-" " Use K for show documentation in preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" function! s:show_documentation()
-"   if &filetype == 'vim'
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
-
-" " Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" " Remap for rename current word
-" nmap <leader>rn <Plug>(coc-rename)
-
-" " Remap for format selected region
-" vmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-
-" augroup mygroup
-"   autocmd!
-"   " Setup formatexpr specified filetype(s).
-"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"   " Update signature help on jump placeholder
-"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-" augroup end
-
-" " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-" vmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" " Remap for do codeAction of current line
-" nmap <leader>ac  <Plug>(coc-codeaction)
-" " Fix autofix problem of current line
-" nmap <leader>qf  <Plug>(coc-fix-current)
-
-" " Use `:Format` for format current buffer
-" command! -nargs=0 Format :call CocAction('format')
-
-" " Use `:Fold` for fold current buffer
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-
-" " Add diagnostic info for https://github.com/itchyny/lightline.vim
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ 'active': {
-"       \   'left': [ [ 'mode', 'paste' ],
-"       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-"       \ },
-"       \ 'component_function': {
-"       \   'cocstatus': 'coc#status'
-"       \ },
-"       \ }
-
-
-
-" " Using CocList
-" " Show all diagnostics
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" " Manage extensions
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" " Show commands
-" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document
-" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" " Search workspace symbols
-" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" " Do default action for next item.
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" " Do default action for previous item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" " Resume latest coc list
-" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" TODO: look into below configuration options
+"
+" float window? - coc#util#has_float()
+" locations? - CocLocationsAsync({id}, {method}, [{params}, {openCommand}])
+"

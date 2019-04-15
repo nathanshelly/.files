@@ -7,4 +7,6 @@
 // Note: install script symlinking works by symlinking the existing symlink in
 // `$DOTFILES/config/nvim`
 {
+	"suggest.noselect": false,
+	"suggest.enablePreview": true
 }
