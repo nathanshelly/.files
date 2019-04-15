@@ -67,12 +67,13 @@ noremap <c-k> <c-e>
 noremap <c-l> <c-y>
 
 " disable character level manipulation
-nnoremap s <nop>
 nnoremap S <nop>
-nnoremap r <nop>
+nnoremap X <nop>
+
+" remapped below
+nnoremap s <nop>
 nnoremap R <nop>
 nnoremap x <nop>
-nnoremap X <nop>
 
 " << registers (copy/paste) >>
 " use `s` for buffer selection (instead of `"`)
