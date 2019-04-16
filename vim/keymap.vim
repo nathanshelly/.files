@@ -130,8 +130,10 @@ nmap <leader>so :sort<CR>
 " vim split actions
 nnoremap <leader>p <c-w>
 " navigate between vim splits
-" TODO: figure out how to map arrow keys
 nnoremap <leader>pj <c-w><Left>
 nnoremap <leader>pk <c-w><Down>
 nnoremap <leader>pl <c-w><Up>
 nnoremap <leader>p; <c-w><Right>
+
+" clear line
+nnoremap <leader>d 0D
