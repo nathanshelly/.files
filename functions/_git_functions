@@ -115,7 +115,7 @@ gplr() {
 gcw() {
   # add all changes starting at root
   git add "$(git rev-parse --show-toplevel)"
-  git commit --message "${1:-wip}"
+  git commit --message "${1:-wip}" --no-verify
 }
 
 # creates a commit w/ given message (default `wip`) with all changes to tracked
@@ -124,5 +124,5 @@ gcw() {
 gcwt() {
   # add any tracked files starting at root
   git add --update "$(git rev-parse --show-toplevel)"
-  git commit --message "${1:-wip}"
+  git commit --message "${1:-wip}" --no-verify
 }
