@@ -60,7 +60,7 @@ brew "git"
 # line must come above usage at end of file
 # ref - https://github.com/mas-cli/mas
 brew "mas"
-brew "neovim"
+brew "neovim", args: ["HEAD"]
 brew "node"
 brew "pandoc"
 brew "python"
