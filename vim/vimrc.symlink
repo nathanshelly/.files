@@ -1,7 +1,7 @@
 " source plugins first so that resources such as colorschemes are available
 source $DOTFILES/vim/plugins.vim
-source $DOTFILES/vim/coc.vim
 source $DOTFILES/vim/options.vim
 source $DOTFILES/vim/colors.vim
 source $DOTFILES/vim/keymap.vim
 source $DOTFILES/vim/commands.vim
+source $DOTFILES/vim/coc.vim

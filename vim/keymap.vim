@@ -43,11 +43,6 @@ noremap k j
 nnoremap gl gk
 nnoremap gk gj
 
-" jump paragraphs with K/L
-" TODO: remove noops here once muscle memory has adjusted
-nnoremap K <NOP>
-nnoremap L <NOP>
-
 " <<<< end of home row movement keys remapping >>>>
 
 " remap `;` -> `,` (repeat last `tfTF` movement) `;` used for home row movement

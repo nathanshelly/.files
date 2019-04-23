@@ -17,10 +17,6 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-" < coc extensions >
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-
 " << formatting/linting >>
 
 " ale

@@ -23,6 +23,11 @@ let mapleader=" "
 " syntax coloring
 syntax on
 
+" highlight json comments
+" note: must come after turning on syntax coloring
+" ref - https://github.com/neoclide/coc.nvim/wiki/Using-configuration-file
+autocmd Filetype json syntax match Comment +\/\/.*$+
+
 " line numbers
 set number
 set relativenumber
@@ -36,8 +41,8 @@ au BufWinEnter * set relativenumber
 " ref - https://jeffkreeftmeijer.com/vim-number/
 augroup numbertoggle
   autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd InsertLeave,BufEnter,FocusGained * set relativenumber
+  autocmd InsertEnter,BufLeave,FocusLost   * set norelativenumber
 augroup END
 
 " scrolloff

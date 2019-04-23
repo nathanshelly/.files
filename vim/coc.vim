@@ -1,7 +1,3 @@
-" support comments in json
-" ref - https://github.com/neoclide/coc.nvim/wiki/Using-configuration-file
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
 " TODO: understand this
 " highlight symbol under cursor on CursorHold
 " autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -9,16 +5,19 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " << completion >>
 " ref - https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-completion-experience
 
-" trigger completion w/ <c-space>
-inoremap <silent><expr> <c-space> coc#refresh()
+" trigger completion w/ <c-s>
+inoremap <silent><expr> <c-s> coc#refresh()
 
 " confirm completion w/ <c-space>
 " `<c-g>u` means break undo chain at current position
-inoremap <expr> <c-space> pumvisible() ? "\<c-y>" : "\<c-g>u\<c-space>"
+inoremap <expr> <c-space> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<c-space>"
 
 " move up and down preview window
-inoremap <expr> <c-k> pumvisible() ? "\<C-n>" : "\<c-k>"
-inoremap <expr> <c-l> pumvisible() ? "\<C-p>" : "\<c-l>"
+" TODO: understand why `pumvisible` behavior seems different here vs `<c-space>`
+inoremap <expr> <c-k> "\<c-n>"
+inoremap <expr> <c-l> "\<c-p>"
+" inoremap <expr> <c-k> pumvisible() ? "\<C-n>" : "\<c-k>"
+" inoremap <expr> <c-l> pumvisible() ? "\<C-p>" : "\<c-l>"
 
 " NOTE: namespace less important command with `<leader>c`
 " NOTE: `<Plug>` mappings used to route command to plugins
@@ -34,7 +33,7 @@ nmap <leader>cp <Plug>(coc-diagnostic-prev)
 " go to definition
 nmap <silent> gd <Plug>(coc-definition)
 " go to declaration
-nmap <silent> gi <Plug>(coc-declaration)
+nmap <silent> gr <Plug>(coc-declaration)
 " go to implentation
 nmap <silent> gi <Plug>(coc-implementation)
 " go to type definition
@@ -63,6 +62,31 @@ nmap <silent> col <Plug>(coc-codelens-action)
 " run quickfix action on current line
 nmap <silent> gfc <Plug>(coc-fix-current)
 
+" << variables >>
+
+" extensions
+"
+" ref - https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+"
+" can also install through plugin manager, here's an example w/ vim plug
+" `Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}`
+"
+" available extensions - https://www.npmjs.com/search?q=keywords%3Acoc.nvim
+"
+" TODO: configure extensions, set up required language servers
+" `coc-rls`: rust
+" `coc-solargraph`: ruby
+let g:coc_global_extensions = [
+  \ 'coc-json',
+  \ 'coc-tsserver',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-python',
+  \ 'coc-rls',
+  \ 'coc-jest',
+  \ 'coc-solargraph',
+\ ]
+
 " TODO: test this
 " trigger key for going to the next snippet position,
 " applied in insert and select mode.
@@ -71,17 +95,44 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 " expand snippet if possible (check out related options)
 " inoremap <silent><expr> <c-e> coc#expandable()
 
-" refresh completion at cursor
-inoremap <silent><expr> <c-e> coc#refresh()
-
-" use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-" use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-
 " TODO: look into below configuration options
-"
-" float window? - coc#util#has_float()
-" locations? - CocLocationsAsync({id}, {method}, [{params}, {openCommand}])
 " don't give |ins-completion-menu| messages -  `set shortmess+=c`
+" coc#on_enter (also smart braces?)
+" coc#status (statusline integration)
+" coc#util#float_scrollable - (how to scroll floating window?)
+" locations? - CocLocationsAsync({id}, {method}, [{params}, {openCommand}])
+" CocActionAsync ("Available Actions") (how does this map to `<Plug>` actions,
+" 1:1?)
+"   -  `pickColor`? `colorPresentation`?
+
+" TODO: look at CocList commands, configuration, mappings & sources
+nmap <silent> S :CocList<CR>
+
+" TODO: possible keybindings below
+" " Show all diagnostics
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" " Manage extensions
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" " Show commands
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" " Find symbol of current document
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" " Search workspace symbols
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" " Do default action for next item.
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" " Do default action for previous item.
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" " Resume latest coc list
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
