@@ -1,3 +1,5 @@
+// configuration file for `coc.nvim` - https://github.com/neoclide/coc.nvim
+//
 // this file must be symlinked to `$HOME/.config/nvim/coc-settings.json`
 // this symlinking should occur through the install script
 //
@@ -6,7 +8,35 @@
 //
 // Note: install script symlinking works by symlinking the existing symlink in
 // `$DOTFILES/config/nvim`
+//
+// Note II: if you're using `coc` and have the json extension installed you may
+// see errors due to these comments. To have `coc` treat them correctly use the
+// command `:CocConfig` (`coc` seems to use the full path of the opened file as
+// a heuristic for file behavior). This will also enable intelligent
+// automcompletion of the possible configuration options
+//
+// ref - https://github.com/neoclide/coc.nvim/blob/master/data/schema.json
 {
+	"suggest.enablePreview": true,
 	"suggest.noselect": false,
-	"suggest.enablePreview": true
+  // "suggest.completionItemKindLabels": {}
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": " ~  ",
+  "diagnostic.errorSign": "◉",
+  "diagnostic.warningSign": "◉",
+  "diagnostic.infoSign": "◉",
+  "diagnostic.hintSign": "◉",
+  // virtual text listing references & implementations
+  "codeLens.enable": true,
+  "codeLens.separator": "  ‣ ",
+  "list.indicator": "λ",
+  "list.nextKeymap": "<C-k>",
+  "list.previousKeymap": "<C-l>",
+  // "coc.preferences.jumpCommand": "drop", // or something else
+  // "coc.preferences.bracketEnterImprove", // how is this supposed to work
+  // "coc.preferences.formatOnType": true,
+  // "coc.source.around" // TODO: understand sources better (buffer source?)
+  // how to disable LS suggestions in comments like possible for other sources?
+  // ref - https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
+  "coc.source.file.ignoreHidden": false
 }
