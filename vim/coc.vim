@@ -72,6 +72,7 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 " `Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}`
 "
 " available extensions - https://www.npmjs.com/search?q=keywords%3Acoc.nvim
+" extra sources - https://github.com/neoclide/coc-sources
 "
 " TODO: configure extensions, set up required language servers
 " `coc-rls`: rust
@@ -106,7 +107,7 @@ let g:coc_global_extensions = [
 "   -  `pickColor`? `colorPresentation`?
 
 " TODO: look at CocList commands, configuration, mappings & sources
-nmap <silent> S :CocList<CR>
+nmap <silent> <c-s> :CocList<CR>
 
 " TODO: possible keybindings below
 " " Show all diagnostics

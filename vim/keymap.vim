@@ -53,7 +53,7 @@ nnoremap h ,
 " start/end of line movement
 noremap " ^
 noremap ' $
-" used in conjunction with `virtualedit` option
+" used in conjunction with `virtualedit` option to move past end of line
 noremap $ g$
 
 " use Ctrl-k/l to scroll screen
