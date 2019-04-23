@@ -53,13 +53,17 @@ Plug 'junegunn/limelight.vim'
 " note: opens most recent blob so only works if you are downstream of remote
 Plug 'ruanyl/vim-gh-line'
 
-" << colors/syntax >>
+" << colors/syntax/languages >>
 
+" color scheme
 Plug 'joshdick/onedark.vim'
 
+" language pack
 Plug 'sheerun/vim-polyglot'
 
+" individual languages/syntax
 Plug 'tpope/vim-markdown'
+Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
@@ -192,16 +196,15 @@ nmap <leader>jl :Limelight!!<CR>
 let g:gh_line_map = '<leader>mgl' " `mgl` for `misc git link`
 let g:gh_line_blame_map = '<leader>mgb' " `mgb` for `misc git blame`
 
-" <<<<<< colors/syntaxlanguages
+" <<<<<< colors/syntax/languages >>>>>>
 
 " <<<< vim-polyglot >>>>
-" use `tpope`, not `plasticboy` from `vim-polyglot`
 
 " << options >>
 let g:polyglot_disabled = ['markdown']
 
 " <<<< vim-markdown >>>>
-" ref - tpope/vim-markdown
+" use `tpope`, not `plasticboy` from `vim-polyglot`
 
 " << options >>
 
