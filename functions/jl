@@ -1,6 +1,0 @@
-#! /usr/bin/env zsh
-
-# jump to local directory listed by fzf
-local dir
-dir=$(fd --type d | fzf +m) &&
-cd "$dir"

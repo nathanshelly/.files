@@ -1,6 +1,5 @@
 #! /usr/bin/env zsh
 
 # usage: cdl <directory>
-# perform cd and then ls
-builtin cd "$1";
-ls;
+builtin cd "$1"
+command -v exa > /dev/null && exa || ls

@@ -1,6 +1,0 @@
-#! /usr/bin/env zsh
-
-# `$EDITOR` on local file listed by fzf
-local fle
-fle=$(fd --type f | fzf +m) &&
-$EDITOR "$fle"
