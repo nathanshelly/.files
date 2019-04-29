@@ -25,11 +25,6 @@ bindkey -M vicmd 'k' down-line-or-history
 bindkey -M vicmd 'l' up-line-or-history
 bindkey -M vicmd ';' vi-forward-char
 
-# reenable incremental search
-bindkey -M vicmd '/' history-incremental-pattern-search-backward
-bindkey -M viins '^r' history-incremental-pattern-search-backward
-bindkey -M viins '^f' history-incremental-pattern-search-forward
-
 # enable normal backspace behavior
 bindkey "^?" backward-delete-char
 

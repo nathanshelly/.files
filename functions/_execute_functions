@@ -5,3 +5,4 @@
 # ref - http://zsh.sourceforge.net/Doc/Release/Functions.html
 manydots
 _git_functions
+_fzf_functions
