@@ -53,6 +53,10 @@ Plug 'junegunn/limelight.vim'
 " note: opens most recent blob so only works if you are downstream of remote
 Plug 'ruanyl/vim-gh-line'
 
+" fuzzy finder
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
 " << colors/syntax/languages >>
 
 " color scheme
