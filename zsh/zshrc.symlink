@@ -1,14 +1,15 @@
-# setup
-
 # path to dotfiles
-export DOTFILES=$HOME/.files
+export DOTFILES="$HOME/.files"
 
-# source colors & prompt separate from rest of sourcing due to strict ordering
-# results in redundant second sourcing but neglible performance hit
-# source colors used in prompt
-source $DOTFILES/zsh/spectrum.zsh
-# source prompt
-source $DOTFILES/zsh/prompt.zsh
+source "$DOTFILES/zsh/env_vars.zsh"
+
+# make colors defined by spectrum available in other files
+source "$DOTFILES/zsh/spectrum.zsh"
+source "$DOTFILES/zsh/prompt.zsh"
+source "$DOTFILES/zsh/config.zsh"
+source "$DOTFILES/zsh/fpath.zsh"
+source "$DOTFILES/zsh/keymap.zsh"
+source "$DOTFILES/zsh/options.zsh"
 
 # source antibody - static method
 # loads static file that must be regenerated any time a new plugin is added
@@ -17,35 +18,24 @@ source $DOTFILES/zsh/prompt.zsh
 # refs:
 #   - https://getantibody.github.io/#static-loading
 #   - https://github.com/getantibody/antibody
-source $DOTFILES/zsh/plugins.sh
+source "$DOTFILES/zsh/plugins.sh"
 
-# alias generation of plugins file (installation of new plugins)
-local ANTIBUNDLE_IN="$DOTFILES/zsh/plugins.txt"
-local ANTIBUNDLE_OUT="$DOTFILES/zsh/plugins.sh"
-alias antibundle="antibody bundle < $ANTIBUNDLE_IN > $ANTIBUNDLE_OUT"
-# remove created variables to avoid littering global scope
-unset ANTIBUNDLE_IN ANTIBUNDLE_OUT
+# source plugins configuration after sourcing plugins themselves
+source "$DOTFILES/zsh/plugins.zsh"
+
+source "$DOTFILES/zsh/alias.zsh"
 
 # load functions written as basic scripts
 autoload -Uz $DOTFILES/functions/*(:t)
 
-
-# set default editors (source here before other files that make use of these)
-# technically only aliasing $VISUAL is necessary but $EDITOR is used elsewhere
-# in these dotfiles and should be `nvim`
-export VISUAL=nvim
-export EDITOR=nvim
-
-# all zsh files
+# define variable to store list of files to source
 typeset -U config_files
 
-# enable `extended_glob` to pattern match & exclude `submodules` directory
+# enable `extended_glob` to exclude directories (submodules, zsh) in match
 # disable immediately after to respect options in `options.zsh`
-# TODO: avoid `extended_glob` hack
-# must be some way to exclude `submodules` directory w/o `extended_glob` set
+# TODO: avoid `extended_glob` hack, exclude directories w/o `extended_glob` set
 setopt extended_glob
-# TODO: exclude `spectrum.zsh` & `prompt.zsh` to avoid unnecessary double source
-config_files=($DOTFILES/**/*.zsh~*submodules*)
+config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
 setopt noextended_glob
 
 # load path files
@@ -59,11 +49,6 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
 done
-
-# after setting fpath
-# load functions (such as manydots)
-# that need to be run to take effect
-_execute_functions
 
 # start autocomplete
 autoload -Uz compinit
@@ -86,3 +71,8 @@ do
 done
 
 unset config_files
+
+# files defining multiple functions must be run to make those functions
+# available
+# performed after setting fpath to make functions available to execute
+_execute_functions

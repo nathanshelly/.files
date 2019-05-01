@@ -1,4 +1,4 @@
-alias srczsh='. ~/.zshrc'
+alias srczsh="source $HOME/.zshrc"
 
 # launch w/o sourcing configs
 alias zshn='zsh -f'

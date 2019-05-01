@@ -35,3 +35,12 @@ bindkey '^y' history-substring-search-down
 # <<< zsh-system-clipboard
 # https://github.com/kutsan/zsh-system-clipboard#options
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX='true'
+
+# << end of configuration >>
+
+# alias generation of plugins file (installation of new plugins)
+local ANTIBUNDLE_IN="$DOTFILES/zsh/plugins.txt"
+local ANTIBUNDLE_OUT="$DOTFILES/zsh/plugins.sh"
+alias antibundle="antibody bundle < $ANTIBUNDLE_IN > $ANTIBUNDLE_OUT"
+# remove created variables to avoid littering global scope
+unset ANTIBUNDLE_IN ANTIBUNDLE_OUT
