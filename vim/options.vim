@@ -1,4 +1,6 @@
 " <<<<<<<< General Options >>>>>>>>
+" NOTE: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
+" bindings defined in that file work)
 
 " disable beeping and screen flash on error
 set visualbell
@@ -16,9 +18,6 @@ set timeoutlen=1000 ttimeoutlen=0 updatetime=300
 
 " increase display for message
 set cmdheight=2
-
-" map leader -> space
-let mapleader=" "
 
 " syntax coloring
 syntax on

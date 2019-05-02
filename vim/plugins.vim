@@ -6,7 +6,7 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  autocmd VimEnter * plugInstall --sync | source $MYVIMRC
 endif
 
 " <<<<<<<< plugins >>>>>>>>
@@ -26,7 +26,7 @@ Plug 'w0rp/ale'
 
 " edit surrounding characters
 Plug 'tpope/vim-surround'
-" repeat plugin actions
+" repeat Plugin actions
 Plug 'tpope/vim-repeat'
 " comment code
 Plug 'tpope/vim-commentary'
@@ -72,6 +72,10 @@ Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " <<<<<<<< config >>>>>>>>
+
+" map leader -> space
+" NOTE: done here to enable defining <leader> for plugins
+let mapleader=" "
 
 " <<<< language-client >>>>
 
@@ -149,6 +153,76 @@ let g:surround_{char2nr('S')} = "< \r >"
 
 " <<<<<< utilities >>>>>>
 
+" <<<< fzf.vim >>>>
+" ref - https://github.com/junegunn/fzf.vim#customization
+
+" << options >>
+
+" :Commits - match `git lv` defined in $DOFTILES/git/gitconfig.symlink
+let g:fzf_commits_log_options = '--graph --color=always --decorate --format=
+\"%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)"'
+
+" :Commands - keybindings to accept and execute
+let g:fzf_commands_expect = 'ctrl-space'
+
+" :Rg - add toggleable (w/ Space) preview w/ context
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" :Files - add toggleable (w/ Space) preview
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" << keymap >>
+
+" TODO: customize colors
+" TODO:
+"   - hide w/o changing UI - https://github.com/junegunn/fzf.vim#hide-statusline
+"   - customize - https://github.com/junegunn/fzf.vim#custom-statusline
+" TODO: understand why the following plug commands don't seem to work
+"   - `nmap <leader>fzf <plug>(fzf-complete-word)`
+"   - `nmap <leader>fzf <plug>(fzf-complete-line)`
+"   - `nmap <leader>fki <plug>(fzf-maps-i)`
+" TODO: maybe add completions? - https://github.com/junegunn/fzf.vim#usage
+
+" files below current shell directory (same as `fzf`)
+nmap <c-p> :Files<cr>
+
+" commands below namespaced w/ `<leader>f` (for `fzf`)
+" files listed by `git status`
+nmap <leader>fg :GFiles?<cr>
+" all buffers
+nmap <leader>fb :Buffers<cr>
+" lines of files below current shell directory (same as `rg`)
+nmap <leader>fr :Rg<cr>
+" lines in open buffers
+nmap <leader>fli :Lines<cr>
+" lines in current buffer
+nmap <leader>flb :BLines<cr>
+nmap <leader>fmr :Marks<cr>
+" `v:oldfiles` and open buffers
+nmap <leader>fhi :History<cr>
+" command history
+nmap <leader>fh: :History:<cr>
+" search history
+nmap <leader>fh/ :History/<cr>
+" ultisnips provided snippets
+" TODO: install ultisnips
+nmap <leader>fs :Snippets<cr>
+" commits
+" TODO: install fugitive.vim to enable jumping to commits
+" all commits (same as `git log`)
+nmap <leader>fct :Commits<cr>
+" commits for the current buffer
+nmap <leader>fcb :BCommits<cr>
+nmap <leader>fcd :Commands<cr>
+" normal mode mappings
+nmap <leader>fmp :Maps<cr>
+
 " <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config
 
@@ -160,7 +234,7 @@ let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
 
 " use <leader>d to display change
 " TODO: figure out what's going wrong here, start by not shadowing shortcut
-nmap <leader>d <Plug>(git-p-diff-preview)
+nmap <leader>d <plug>(git-p-diff-preview)
 
 " <<<< goyo.vim & limelight.vim >>>>
 " refs:
