@@ -102,6 +102,53 @@ fzf_rg_edit() {
     fi
 }
 
+# list directories in $PATH, press `enter` on an entry to list contained
+# executables.  press `escape` to go back to directory listing, `escape` again
+# to exit completely
+# ref - https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/fp
+fzf_find_path() {
+  local loc=$(echo $PATH | sed -e $'s/:/\\\n/g' | eval "fzf ${FZF_DEFAULT_OPTS} --header='[find:path]'")
+
+  if [[ -d $loc ]]; then
+    echo "$(\
+        rg --files $loc |\
+        rev |\
+        cut -d"/" -f1 |\
+        rev\
+      )" |\
+      eval "fzf ${FZF_DEFAULT_OPTS} ='[find:exe] => ${loc}' >/dev/null"
+
+    fzf_find_path
+  fi
+}
+
+# fuzzily install brew packages
+# ref - https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/bip
+fzf_brew_install() {
+  local inst=$(brew search | eval "fzf ${FZF_DEFAULT_OPTS} -m")
+
+  [[ "$inst" ]] && for prog in $(echo "$inst"); do brew install "$prog"; done
+}
+
+# fuzzily upgrade brew packages
+# ref - https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/bup
+fzf_brew_upgrade() {
+  local upd=$(brew outdated | eval "fzf ${FZF_DEFAULT_OPTS} -m")
+
+  [[ "$upd" ]] && for prog in $(echo "$upd"); do brew upgrade "$prog"; done
+}
+
+
+# fuzzily uninstall brew packages
+# ref - https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/bcp
+fzf_brew_uninstall() {
+  local uninst=$(brew leaves | eval "fzf ${FZF_DEFAULT_OPTS} -m")
+
+  [[ "$uninst" ]] && {
+    for prog in $(echo "$uninst"); do brew uninstall "$prog"; done
+  }
+}
+
 # <<<< fzf ❤️ git >>>>
 
 # useful combinations of git & fzf
