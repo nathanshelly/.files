@@ -188,6 +188,7 @@ command! -bang -nargs=? -complete=dir Files
 "   - `nmap <leader>fzf <plug>(fzf-complete-line)`
 "   - `nmap <leader>fki <plug>(fzf-maps-i)`
 " TODO: maybe add completions? - https://github.com/junegunn/fzf.vim#usage
+" TODO: map most used command to <leader><space>
 
 " files below current shell directory (same as `fzf`)
 nmap <c-p> :Files<cr>
@@ -222,6 +223,11 @@ nmap <leader>fcb :BCommits<cr>
 nmap <leader>fcd :Commands<cr>
 " normal mode mappings
 nmap <leader>fmp :Maps<cr>
+
+" various third party commands
+" TODO: use any of these navigation ideas?
+" ref - https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html#project-navigation
+" TODO: add `mru` searching? - https://github.com/pbogut/fzf-mru.vim
 
 " <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config

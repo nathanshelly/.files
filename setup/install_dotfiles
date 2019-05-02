@@ -3,7 +3,7 @@
 set -e
 
 # check that DOTFILES variable is defined
-source './lib/check_dotfiles_variable.sh'
+source 'setup/lib/check_dotfiles_variable.sh'
 
 # run in separate subshells
 

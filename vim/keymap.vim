@@ -64,6 +64,9 @@ noremap <c-l> <c-y>
 nnoremap S <nop>
 nnoremap X <nop>
 
+" switch between most recent buffers
+nnoremap <c-e> <c-^>
+
 " remapped below
 nnoremap s <nop>
 nnoremap R <nop>

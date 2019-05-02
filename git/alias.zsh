@@ -95,3 +95,6 @@ alias gu='git undo'
 # uses `gwp<command>` ("with pager" mnemonic) to avoid `--no-pager`
 alias gwpl='git l'
 alias gwplv='git lv'
+
+# TODO: add function aliases (from $DOTFILES/functions/_git_functions) for
+# discoverability
