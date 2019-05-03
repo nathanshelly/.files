@@ -10,6 +10,7 @@ inoremap <silent><expr> <c-s> coc#refresh()
 
 " confirm completion w/ <c-space>
 " `<c-g>u` means break undo chain at current position
+" TODO: make space a completion character when an option is selected
 inoremap <expr> <c-space> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<c-space>"
 
 " move up and down preview window
