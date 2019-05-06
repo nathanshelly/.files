@@ -16,8 +16,8 @@ set nobackup nowritebackup
 " updatetime - CursorHold & CursorHoldI
 set timeoutlen=1000 ttimeoutlen=0 updatetime=300
 
-" increase display for message
-set cmdheight=2
+" be less verbose (especially redundant due to status line)
+set noshowmode
 
 " syntax coloring
 syntax on

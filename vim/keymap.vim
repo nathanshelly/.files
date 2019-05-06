@@ -115,7 +115,7 @@ nmap <silent> <leader>ht  :HiTab<CR>
 nmap <silent> <leader>htn :NoHiTab<CR>
 
 " toggle paste mode (`paste yes`, `paste no` mnemonic)
-nmap <silent> <leader>py  :set paste<CR>
+nmap <silent> <leader>py :set paste<CR>
 nmap <silent> <leader>pn :set nopaste<CR>
 
 " start/end of screen line movement

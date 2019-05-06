@@ -43,6 +43,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
 Plug 'iamcco/git-p.nvim'
 
+" fuzzy finder
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
 " distraction free writing
 Plug 'junegunn/goyo.vim'
 
@@ -53,9 +57,8 @@ Plug 'junegunn/limelight.vim'
 " note: opens most recent blob so only works if you are downstream of remote
 Plug 'ruanyl/vim-gh-line'
 
-" fuzzy finder
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+" status line
+Plug 'itchyny/lightline.vim'
 
 " << colors/syntax/languages >>
 
@@ -153,6 +156,19 @@ let g:surround_{char2nr('S')} = "< \r >"
 
 " <<<<<< utilities >>>>>>
 
+" <<<< git-p.nvim (git info) >>>>
+" ref - https://github.com/iamcco/git-p.nvim#usage--config
+
+" << options >>
+
+let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
+
+" << keymap >>
+
+" use <leader>d to display change
+" TODO: figure out what's going wrong here, start by not shadowing shortcut
+nmap <leader>d <plug>(git-p-diff-preview)
+
 " <<<< fzf.vim >>>>
 " ref - https://github.com/junegunn/fzf.vim#customization
 
@@ -229,18 +245,6 @@ nmap <leader>fmp :Maps<cr>
 " ref - https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html#project-navigation
 " TODO: add `mru` searching? - https://github.com/pbogut/fzf-mru.vim
 
-" <<<< git-p.nvim (git info) >>>>
-" ref - https://github.com/iamcco/git-p.nvim#usage--config
-
-" << options >>
-
-let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
-
-" << keymap >>
-
-" use <leader>d to display change
-" TODO: figure out what's going wrong here, start by not shadowing shortcut
-nmap <leader>d <plug>(git-p-diff-preview)
 
 " <<<< goyo.vim & limelight.vim >>>>
 " refs:
@@ -279,6 +283,25 @@ nmap <leader>jl :Limelight!!<CR>
 
 let g:gh_line_map = '<leader>mgl' " `mgl` for `misc git link`
 let g:gh_line_blame_map = '<leader>mgb' " `mgb` for `misc git blame`
+
+" <<<< lightline >>>>
+" ref - https://github.com/itchyny/lightline.vim#colorscheme-configuration
+let g:lightline = {
+  \ 'colorscheme': 'seoul256',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'readonly': 'LightlineReadonly',
+  \ },
+\ }
+
+" hide readonly component in help pages
+" https://github.com/itchyny/lightline.vim#can-i-hide-the-readonly-component-in-the-help-buffer
+function! LightlineReadonly()
+  return &readonly && &filetype !=# 'help' ? 'RO' : ''
+endfunction
 
 " <<<<<< colors/syntax/languages >>>>>>
 

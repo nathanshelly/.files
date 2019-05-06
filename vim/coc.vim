@@ -89,11 +89,11 @@ let g:coc_global_extensions = [
   \ 'coc-solargraph',
 \ ]
 
-" TODO: test this
 " trigger key for going to the next snippet position,
 " applied in insert and select mode.
-" let g:coc_snippet_next = <c-n>
-" let g:coc_snippet_prev = <c-p>
+let g:coc_snippet_next = '<c-n>'
+let g:coc_snippet_prev = '<c-p>'
+
 " expand snippet if possible (check out related options)
 " inoremap <silent><expr> <c-e> coc#expandable()
 
