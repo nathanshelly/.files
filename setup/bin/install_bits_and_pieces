@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
 
 # check that DOTFILES variable is defined
-source './lib/check_dotfiles_variable.sh'
+source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
-source $DOTFILES/setup/lib/prompts.sh
+source "$DOTFILES/setup/lib/prompts.sh"
 
 # TODO: not necessary, slight improvement
 # check tic, submodule and zsh plugins to avoid rerunning when unnecessary

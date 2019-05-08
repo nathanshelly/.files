@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # check that DOTFILES variable is defined
-source './lib/check_dotfiles_variable.sh'
+source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
 # installation script
 # ref - https://brew.sh/

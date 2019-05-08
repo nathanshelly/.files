@@ -4,7 +4,7 @@
 # $DOTFILES/git/gitconfig.local.symlink if it does not exist
 
 # check that DOTFILES variable is defined
-source "$DOTFILES/setup/lib/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
 source "$DOTFILES/setup/lib/prompts.sh"
 
