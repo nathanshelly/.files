@@ -14,7 +14,7 @@ brew_prefix="$(brew --prefix)"
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
 [[ $- == *i* ]] && {
-  source "$brew_prefix/opt/fzf/shell/completion.zsh" 2> /dev/null
+  source "$brew_prefix/opt/fzf/shell/completion.zsh" 2>/dev/null
 }
 
 # keybindings

@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
 
-set -e
-
 # check that DOTFILES variable is defined
 source 'setup/lib/check_dotfiles_variable.sh'
 

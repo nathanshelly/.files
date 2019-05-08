@@ -5,22 +5,34 @@ source './lib/check_dotfiles_variable.sh'
 
 source $DOTFILES/setup/lib/prompts.sh
 
-# add `zsh` to allowed shells
-sudo sh -c "echo $(which zsh) >> /etc/shells"
-# change login shell to `zsh`
-chsh -s "$(which zsh)" && info "Changed login shell to $(which zsh)"
+# TODO: not necessary, slight improvement
+# check tic, submodule and zsh plugins to avoid rerunning when unnecessary
+
+# add `zsh` to allowed shells if not already added
+grep -q "$(which zsh)" /etc/shells || {
+  info "Using sudo access to add '$(which zsh)' to /etc/shells\n"
+  sudo sh -c "echo $(which zsh) >> /etc/shells" && {
+    info "Added $(which zsh) to /etc/shells"
+  }
+}
+
+# change login shell to `zsh` if $SHELL env variable isn't already zsh
+[ "$SHELL" = "$(which zsh)" ] || {
+  chsh -s "$(which zsh)" && info "Changed login shell to $(which zsh)"
+}
 
 # set up git submodules
 git submodule update --init && info "Initialized submodules"
 
 # add custom terminfo for tmux sessions
 # `-x` to treat unknown capabilities as user defined
+# note: this command is idempotent so no need to check anything before running
 # ref - `man tic` or `tic --help`
 tic -x "$DOTFILES/tmux/tmux-256color.terminfo" \
   && info "Installed $DOTFILES/tmux/tmux-256color.terminfo"
 
 # install zsh plugins
-antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"
+antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh" \
   && info "Installed zsh plugins w/ antibody"
 
 # install `tmuxinator`
@@ -29,14 +41,14 @@ command -v gem > /dev/null 2>&1 || gem install --user-install tmuxinator
 
 # install python module for neovim (used by `black` plugin)
 command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8" && {
-  pip install neovim ptpython black
+  pip install --quiet neovim ptpython black
 } || {
   command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8" && {
-    pip3 install neovim ptpython black
+    pip3 install --quiet neovim ptpython black
   }
 }
 
-command -v npm > /dev/null 2>&1 {
+command -v npm > /dev/null 2>&1 || {
   # https://github.com/theia-ide/typescript-language-server
   npm install -g typescript-language-server
 }
