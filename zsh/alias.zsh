@@ -7,7 +7,7 @@ alias zshn='zsh -f'
 alias rr="git rev-parse --show-toplevel"
 
 # shortened utilities
-alias op=open
+alias o=open
 
 alias rm='echo "use trash primarily, /bin/rm when needed"'
 alias t=trash
