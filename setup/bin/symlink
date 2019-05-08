@@ -314,9 +314,12 @@ link_file() {
 
   # "false" or empty
   if [ "$skip" != true ]; then
-    ln -s "$src" "$dst" \ # `-s` for symbolic link
-      && success "linked $src to $dst" \
-      || fail "failed to link $src to $dst"
+    # `-s` for symbolic link
+    ln -s "$src" "$dst" && {
+      success "linked $src to $dst"
+    } || {
+      fail "failed to link $src to $dst"
+    }
   fi
 }
 
