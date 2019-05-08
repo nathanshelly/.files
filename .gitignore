@@ -1,6 +1,6 @@
 git/gitconfig.local.symlink
 temp.*
-secret.*
+secrets.*
 
 # should be generated from `zsh/plugins.txt`
 zsh/plugins.sh
