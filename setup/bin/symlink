@@ -39,7 +39,7 @@ symlink() {
   # ref - https://mywiki.wooledge.org/BashFAQ/001
   (
     find \
-      -H "$DOTFILES" \ # do not follow symbolic links
+      -H "$DOTFILES" \
       -maxdepth 3 \
       -name '*.symlink*' \
       -not -path '*.git/*' \
