@@ -24,6 +24,8 @@ source "$DOTFILES/zsh/plugins.sh"
 source "$DOTFILES/zsh/plugins.zsh"
 
 source "$DOTFILES/zsh/alias.zsh"
+# store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
+source "$DOTFILES/zsh/secrets.zsh"
 
 # load functions written as basic scripts
 autoload -Uz $DOTFILES/functions/*(:t)
