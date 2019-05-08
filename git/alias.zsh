@@ -29,7 +29,6 @@ alias gbm='git b --move'
 # non-verbose
 alias gbs='git b'
 alias gbt='git bt'
-alias gbv='git b -vv'
 
 alias gc='git c'
 alias gca='git c --amend'
