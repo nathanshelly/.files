@@ -47,7 +47,7 @@ symlink() {
       -print0
   ) | while IFS= read -r -d '' src; do # `-d <delimiter>`
     filename=$(basename "$src")
-    local path_components='([-._ 0-9a-zA-Z]+~)*'
+    local path_components='([-._ 0-9a-zA-Z]+<>)*'
     local name='[-._ 0-9a-zA-Z]+'
     local flags='[_d]{1,2}'
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
@@ -140,7 +140,7 @@ _apply_regex() {
   }
 }
 
-# extract target path relative to `~` at which to symlink
+# extract target path relative to `$HOME` at which to symlink
 #
 # described in more detail in the design doc (see top of this file for more)
 #
@@ -159,7 +159,7 @@ _extract_path() {
 
   # path capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES length 2 or
   # greater)
-  local _path_regex='^(([-._[:space:][:alnum:]]+~)+).*'
+  local _path_regex='^(([-._[:space:][:alnum:]]+<>)+).*'
   _apply_regex "$_path_regex" "$filename"
 
   # _regex_matches will only have length >= 2 if capture groups triggered,
@@ -169,7 +169,7 @@ _extract_path() {
     # `local IFS='<delimiter>' scopes any interference w/ `IFS`
     # `(<string>)` - parens trigger splitting `<string>` on `IFS` value
     # ref - https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash#tab-top
-    local IFS='~'
+    local IFS='<>'
 
     # outer path capture group @ index 1 (index 0 holds entire matched string)
     path_components=(${_REGEX_MATCHES[1]})
@@ -198,7 +198,7 @@ _extract_name() {
   local _REGEX_MATCHES=
 
   # file/directory name capture group
-  local _name_regex='~?([-._ 0-9a-zA-Z]+)\.symlink.*$'
+  local _name_regex='<>?([-._ 0-9a-zA-Z]+)\.symlink.*$'
   _apply_regex "$_name_regex" "$filename"
 
   # outer path capture group @ index 1 (index 0 holds entire matched string)
