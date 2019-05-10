@@ -198,7 +198,7 @@ _extract_name() {
   local _REGEX_MATCHES=
 
   # file/directory name capture group
-  local _name_regex='<?>?([-._ 0-9a-zA-Z]+)\.symlink.*$'
+  local _name_regex='>?([-._ 0-9a-zA-Z]+)\.symlink.*$'
   _apply_regex "$_name_regex" "$filename"
 
   # outer path capture group @ index 1 (index 0 holds entire matched string)
