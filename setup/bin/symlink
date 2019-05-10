@@ -52,7 +52,7 @@ symlink() {
     local flags='[_d]{1,2}'
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
 
-    [[ "$filename" =~ "$_symlink_regex" ]] && {
+    [[ $filename =~ $_symlink_regex ]] && {
       _symlink_based_on_filename "$src" "$filename"
     } || {
       info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
@@ -133,7 +133,7 @@ _apply_regex() {
   _REGEX_MATCHES=
 
   # if regex matches then populate `_REGEX_MATCHES` to return
-  [[ "$input_to_apply_regex_to" =~ "$regex_to_apply" ]] && {
+  [[ $input_to_apply_regex_to =~ $regex_to_apply ]] && {
     # outer parens, `(...)`, ensure copying as array, not string
     # internal `""` prevents splitting of individual array elements on IFS
     _REGEX_MATCHES=("${BASH_REMATCH[@]}")
