@@ -46,13 +46,13 @@ symlink() {
       -not -path '*/submodules/*' \
       -print0
   ) | while IFS= read -r -d '' src; do # `-d <delimiter>`
-    filename=$(basename "$src")
+    filename="$(basename "$src")"
     local path_components='([-._ 0-9a-zA-Z]+<>)*'
     local name='[-._ 0-9a-zA-Z]+'
     local flags='[_d]{1,2}'
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
 
-    [[ $filename =~ $_symlink_regex ]] && {
+    [[ "$filename" =~ "$_symlink_regex" ]] && {
       _symlink_based_on_filename "$src" "$filename"
     } || {
       info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
@@ -67,7 +67,7 @@ match symlinking syntax)"
 #   - {string} src - path to source file
 #   - {string} filename - filename of source file
 _symlink_based_on_filename() {
-  local src=$1 filename=$2
+  local src="$1" filename="$2"
   local _path='' _name='' _direct=false _unhidden=false
 
   # extract target name and optional path from target filename
@@ -129,11 +129,11 @@ _symlink_based_on_filename() {
 # Returns:
 #   {string[]} `_REGEX_MATCHES` - any matches
 _apply_regex() {
-  local regex_to_apply=$1 input_to_apply_regex_to=$2
+  local regex_to_apply="$1" input_to_apply_regex_to="$2"
   _REGEX_MATCHES=
 
   # if regex matches then populate `_REGEX_MATCHES` to return
-  [[ $input_to_apply_regex_to =~ $regex_to_apply ]] && {
+  [[ "$input_to_apply_regex_to" =~ "$regex_to_apply" ]] && {
     # outer parens, `(...)`, ensure copying as array, not string
     # internal `""` prevents splitting of individual array elements on IFS
     _REGEX_MATCHES=("${BASH_REMATCH[@]}")
@@ -154,7 +154,7 @@ _apply_regex() {
 # Returns:
 #   {string} _path - extracted path (joined w/ `/` & appended w/ `/`)
 _extract_path() {
-  local filename=$1
+  local filename="$1"
   local _REGEX_MATCHES=
 
   # path capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES length 2 or
@@ -194,11 +194,11 @@ _extract_path() {
 # Returns:
 #   {string} _name - extracted name
 _extract_name() {
-  local filename=$1
+  local filename="$1"
   local _REGEX_MATCHES=
 
   # file/directory name capture group
-  local _name_regex='<>?([-._ 0-9a-zA-Z]+)\.symlink.*$'
+  local _name_regex='<?>?([-._ 0-9a-zA-Z]+)\.symlink.*$'
   _apply_regex "$_name_regex" "$filename"
 
   # outer path capture group @ index 1 (index 0 holds entire matched string)
@@ -221,7 +221,7 @@ _extract_name() {
 # Returns:
 #   {bool(s)} `_direct`, `_unhidden` - flags
 _check_flags() {
-  local filename=$1
+  local filename="$1"
   local _REGEX_MATCHES=
 
   # flags capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES has length 2)
@@ -253,7 +253,7 @@ _check_flags() {
 #       (Default: 0)
 link_file() {
   # parameters
-  local src=$1 dst=$2 indentation_level=${3:-0}
+  local src="$1" dst="$2" indentation_level="${3:-0}"
 
   # flags set by user interaction
   local overwrite= backup= skip= action=
