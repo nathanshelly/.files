@@ -298,7 +298,7 @@ link_file() {
     skip=${skip:-$skip_all}
 
     if [ "$overwrite" == true ]; then
-      /bin/rm --recursive "$dst" \
+      /bin/rm -r "$dst" \
         && success "removed $dst" \
         || fail "failed to remove $dst"
     fi
