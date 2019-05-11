@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.jrejaud.airpods</string>
+	<key>connections</key>
+	<dict>
+		<key>E6183F7A-B71A-4C62-8D5E-0520FEFA00F0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DAE43EC4-9DBB-436F-9387-A3BBF644A854</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jordan Rejaud</string>
+	<key>description</key>
+	<string>Connect/ Disconnect to Bluetooth devices</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Bluetooth connect</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+	activate application "SystemUIServer"tell application "System Events"	tell process "SystemUIServer"		-- Working CONNECT Script.  Goes through the following:		-- Clicks on Bluetooth Menu (OSX Top Menu Bar)		--    =&gt; Clicks on SX-991 Item		--      =&gt; Clicks on Connect Item		set btMenu to (menu bar item 1 of menu bar 1 whose description contains "bluetooth")		tell btMenu			click			tell (menu item q of menu 1)				click				if exists menu item "Connect" of menu 1 then					click menu item "Connect" of menu 1					return "Connecting..."				else if exists menu item "Disconnect" of menu 1 then					click menu item "Disconnect" of menu 1					return "Disconnecting..."				else					click btMenu -- Close main BT drop down if Connect wasn't present					return "Connect menu was not found, are you already connected?"				end if			end tell		end tell	end tellend tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>DAE43EC4-9DBB-436F-9387-A3BBF644A854</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>bt</string>
+				<key>subtext</key>
+				<string>Connect/ Disconnect from Bluetooth devices</string>
+				<key>text</key>
+				<string>bt</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E6183F7A-B71A-4C62-8D5E-0520FEFA00F0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>DAE43EC4-9DBB-436F-9387-A3BBF644A854</key>
+		<dict>
+			<key>xpos</key>
+			<integer>410</integer>
+			<key>ypos</key>
+			<integer>300</integer>
+		</dict>
+		<key>E6183F7A-B71A-4C62-8D5E-0520FEFA00F0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>240</integer>
+			<key>ypos</key>
+			<integer>300</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://www.studiocorsair.com/</string>
+</dict>
+</plist>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.stephenoakman.forcequit</string>
+	<key>connections</key>
+	<dict>
+		<key>587471EE-119D-4161-A444-475F50BBD3B8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5A2D6EEE-60B5-445B-8D31-702685FE4A3B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B64934A4-BFB6-49F8-8D8E-B468FC2B4A43</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Restart application</string>
+			</dict>
+		</array>
+		<key>5A2D6EEE-60B5-445B-8D31-702685FE4A3B</key>
+		<array/>
+	</dict>
+	<key>createdby</key>
+	<string>Stephen Oakman</string>
+	<key>description</key>
+	<string>Force quit (hold alt to restart) an application</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Force quit</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>query = "{query}"
+
+path = query + '/Contents/Info.plist'
+info_plist = File.read(path)
+app_exe = info_plist.scan(/&lt;key&gt;CFBundleExecutable&lt;\/key&gt;\s+&lt;string&gt;(.+)&lt;\/string&gt;/).flatten.first
+
+exec("killall '" + app_exe + "'")
+</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>5A2D6EEE-60B5-445B-8D31-702685FE4A3B</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>fq</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>loading</string>
+				<key>script</key>
+				<string>apps = `osascript -e 'tell application "System Events" to get the file of every process whose background only is false'`
+apps = apps.strip.split(",").collect {|line| line.strip.gsub(/^alias Macintosh HD/, '').gsub(/:/, '/')[0..-2]}.sort
+
+puts "&lt;items&gt;"
+apps.each do |line|
+  app_path = line
+  app_name = File.basename(app_path, ".app")
+  query = "{query}"
+  if ! app_name.downcase[query]
+    next
+  end
+  if !(app_path =~ /^\/System\//) &amp;&amp; !(app_path =~ /^\/Library\//)
+  puts &lt;&lt;ENDS_HERE
+  &lt;item uid="status" arg="#{app_path}"&gt;
+	&lt;title&gt;#{app_name}&lt;/title&gt;
+	&lt;subtitle&gt;Press Enter to quit (hold Alt to restart)&lt;/subtitle&gt;
+	&lt;icon type="fileicon"&gt;#{app_path}&lt;/icon&gt;
+  &lt;/item&gt;
+ENDS_HERE
+  end
+end
+puts "&lt;/items&gt;"
+</string>
+				<key>subtext</key>
+				<string>Force quit running app (hold alt to restart it)</string>
+				<key>title</key>
+				<string>Force quit</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>587471EE-119D-4161-A444-475F50BBD3B8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>query = "{query}"
+
+path = query + '/Contents/Info.plist'
+info_plist = File.read(path)
+app_exe = info_plist.scan(/&lt;key&gt;CFBundleExecutable&lt;\/key&gt;\s+&lt;string&gt;(.+)&lt;\/string&gt;/).flatten.first
+
+exec("killall '" + app_exe + "' &amp;&amp; open -a '" + query + "'")
+</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B64934A4-BFB6-49F8-8D8E-B468FC2B4A43</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>587471EE-119D-4161-A444-475F50BBD3B8</key>
+		<dict>
+			<key>ypos</key>
+			<real>80</real>
+		</dict>
+		<key>5A2D6EEE-60B5-445B-8D31-702685FE4A3B</key>
+		<dict>
+			<key>ypos</key>
+			<real>30</real>
+		</dict>
+		<key>B64934A4-BFB6-49F8-8D8E-B468FC2B4A43</key>
+		<dict>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
