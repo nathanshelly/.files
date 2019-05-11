@@ -93,29 +93,42 @@ _symlink_based_on_filename() {
 
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
+  local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
+  # relative path from home, w/ or w/o `.` based on `_unhidden`
+  local dst="$HOME/${_path}${maybe_dot}${_name}"
+
   if [[ -d "$src" ]]; then
     if [[ $_direct == true ]]; then
-      local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
-
-      # relative path from home, w/ or w/o `.` based on `_unhidden`
-      local dst="$HOME/${_path}${maybe_dot}${_name}"
-
       link_file "$src" "$dst"
     else
-      info 'in future handle non-direct case'
+      recursively_link_directory "$src" "${maybe_dot}${_path}" "$_name"
     fi
   else
     if [[ $_direct == true ]]; then
       warn "Invalid flag \`d\` (direct) for non-directory '$src'"
     else
-      local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
-
-      # relative path from home, w/ or w/o `.` based on `_unhidden`
-      local dst="$HOME/${_path}${maybe_dot}${_name}"
-
       link_file "$src" "$dst"
     fi
   fi
+}
+
+recursively_link_directory() {
+  local source_base_path="$1" target_path="$2" directory_name="$3"
+  local target_base_path="$HOME/${target_path}${directory_name}"
+
+  # use parens to group conditions
+  # ref - https://stackoverflow.com/questions/7190565/unix-find-multiple-file-types
+  find -H "$source_base_path" \( -type file -or -type l \) -print0 \
+  | while IFS= read -r -d '' src; do
+    local target_path="$target_base_path${src#$source_base_path}"
+
+    echo "source path: $src"
+    echo "target path: $target_path"
+    echo "target folder: $(dirname $target_base_path${src#$source_base_path})"
+
+    mkdir -p "$(dirname "$target_path")"
+    link_file "$src" "$target_path"
+  done
 }
 
 # applies given regex to given string, returning matches in `_REGEX_MATCHES`
