@@ -181,6 +181,8 @@ let g:fzf_commits_log_options = '--graph --color=always --decorate --format=
 " :Commands - keybindings to accept and execute
 let g:fzf_commands_expect = 'ctrl-space'
 
+let g:fzf_layout = { 'down': '75%' }
+
 " :Rg - add toggleable (w/ Space) preview w/ context
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(

@@ -34,10 +34,10 @@ _fzf_compgen_dir() {
 
 # <<<< options >>>>
 
-export FZF_DEFAULT_OPTS="--height 75% --reverse --no-mouse --cycle --ansi\
+export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle --ansi\
  --select-1 --exit-0\
- --bind ctrl-k:down,ctrl-l:up,space:toggle-preview,alt-d:preview-page-down,\
-alt-u:preview-page-up,ctrl-a:select-all+accept"
+ --bind ctrl-k:down,ctrl-l:up,space:toggle-preview,ctrl-d:preview-page-down,\
+ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 _fzf_bat_preview="--preview='bat --style=numbers --color=always {}'"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview --preview-window=hidden"
 export FZF_EDIT_OPTS="$_fzf_bat_preview"
