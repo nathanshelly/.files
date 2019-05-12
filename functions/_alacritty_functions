@@ -4,10 +4,10 @@
 
 # mnemonic - `alacritty font up`
 alfup() {
-  sed -i '' 's/size: .*/size: 16.0/g' "$DOTFILES/config/alacritty/alacritty.yml"
+  sed -i '' 's/size: .*/size: 16.0/g' "$DOTFILES/config.symlink/alacritty/alacritty.yml"
 }
 
 # mnemonic - `alacritty font down`
 alfdo() {
-  sed -i '' 's/size: .*/size: 13.0/g' "$DOTFILES/config/alacritty/alacritty.yml"
+  sed -i '' 's/size: .*/size: 13.0/g' "$DOTFILES/config.symlink/alacritty/alacritty.yml"
 }
