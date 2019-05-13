@@ -80,48 +80,6 @@ call plug#end()
 " NOTE: done here to enable defining <leader> for plugins
 let mapleader=" "
 
-" <<<< language-client >>>>
-
-" let g:LanguageClient_serverCommands = {
-"   \ 'typescript.tsx': ['typescript-language-server', '--stdio']
-" \ }
-
-" " << options >>
-
-" " lighten line numbers for increased visibility
-" hi LanguageClientError ctermfg=196
-" hi LanguageClientWarning ctermfg=219
-" hi LanguageClientHint ctermfg=180
-
-" let g:LanguageClient_diagnosticsDisplay = {
-"   \ 1: {
-"     \ "name": "Error",
-"     \ "texthl": "LanguageClientError",
-"     \ "signText": "◉",
-"     \ "signTexthl": "LanguageClientError",
-"     \ "virtualTexthl": "LanguageClientError",
-"   \ },
-"   \ 2: {
-"     \ "name": "Warning",
-"     \ "texthl": "LanguageClientWarning",
-"     \ "signText": "◉",
-"     \ "signTexthl": "LanguageClientWarning",
-"     \ "virtualTexthl": "LanguageClientWarning",
-"   \ },
-"   \ 4: {
-"     \ "name": "Hint",
-"     \ "texthl": "LanguageClientHint",
-"     \ "signText": "◉",
-"     \ "signTexthl": "LanguageClientHint",
-"     \ "virtualTexthl": "LanguageClientHint",
-"   \ }
-" \ }
-
-" " << keymap >>
-
-" nnoremap <leader>c :call LanguageClient_contextMenu()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-
 " <<<<<< formatting/linting >>>>>>
 
 " <<<< ale >>>>
