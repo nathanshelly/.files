@@ -17,7 +17,7 @@
 //
 // ref - https://github.com/neoclide/coc.nvim/blob/master/data/schema.json
 {
-	"suggest.enablePreview": true,
+  "suggest.enablePreview": true,
   // "suggest.completionItemKindLabels": {}
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " ~  ",
