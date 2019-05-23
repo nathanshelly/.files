@@ -24,6 +24,9 @@ inoremap <expr> <c-l> "\<c-p>"
 " NOTE: `<Plug>` mappings used to route command to plugins
 " ref - https://www.reddit.com/r/vim/comments/78izt4/please_help_understand_how_to_use_plug_mapping/
 
+" double `<cr>` to skip confirmation prompt
+nmap <leader>cr :CocRestart<cr><cr>
+
 " show diagnostic information
 " TODO: figure out what's wrong with below line
 " nmap <leader>cd <Plug>(coc-diagnostic-info)
