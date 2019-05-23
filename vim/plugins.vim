@@ -169,25 +169,25 @@ command! -bang -nargs=? -complete=dir Files
 
 " files below current shell directory (same as `fzf`)
 nmap <c-p> :Files<cr>
+" all buffers
+nmap <c-b> :Buffers<cr>
+" lines of files below current shell directory (same as `rg`)
+nmap <c-f> :Rg<cr>
+" lines in current buffer
+nmap <c-j> :BLines<cr>
+" command history
+nmap <c-w> :History:<cr>
+" search history
+nmap <c-y> :History/<cr>
 
 " commands below namespaced w/ `<leader>f` (for `fzf`)
 " files listed by `git status`
 nmap <leader>fg :GFiles?<cr>
-" all buffers
-nmap <leader>fb :Buffers<cr>
-" lines of files below current shell directory (same as `rg`)
-nmap <leader>fr :Rg<cr>
 " lines in open buffers
 nmap <leader>fli :Lines<cr>
-" lines in current buffer
-nmap <leader>flb :BLines<cr>
 nmap <leader>fmr :Marks<cr>
 " `v:oldfiles` and open buffers
 nmap <leader>fhi :History<cr>
-" command history
-nmap <leader>fh: :History:<cr>
-" search history
-nmap <leader>fh/ :History/<cr>
 " ultisnips provided snippets
 " TODO: install ultisnips
 nmap <leader>fs :Snippets<cr>
