@@ -174,20 +174,21 @@ nmap <c-b> :Buffers<cr>
 " lines of files below current shell directory (same as `rg`)
 nmap <c-f> :Rg<cr>
 " lines in current buffer
-nmap <c-j> :BLines<cr>
-" command history
-nmap <c-w> :History:<cr>
-" search history
-nmap <c-y> :History/<cr>
-
-" commands below namespaced w/ `<leader>f` (for `fzf`)
+nmap <c-l> :BLines<cr>
 " files listed by `git status`
-nmap <leader>fg :GFiles?<cr>
+nmap <c-g> :GFiles?<cr>
+
+" command history
+nmap <leader>hc :History:<cr>
+" search history
+nmap <leader>h/ :History/<cr>
+" `v:oldfiles` and open buffers
+nmap <leader>hi :History<cr>
+
+" less used commands below namespaced w/ `<leader>f` (for `fzf`)
 " lines in open buffers
 nmap <leader>fli :Lines<cr>
 nmap <leader>fmr :Marks<cr>
-" `v:oldfiles` and open buffers
-nmap <leader>fhi :History<cr>
 " ultisnips provided snippets
 " TODO: install ultisnips
 nmap <leader>fs :Snippets<cr>

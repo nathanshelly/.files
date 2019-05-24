@@ -56,16 +56,12 @@ noremap ' $
 " used in conjunction with `virtualedit` option to move past end of line
 noremap $ g$
 
-" use Ctrl-k/l to scroll screen
-noremap <c-k> <c-e>
-noremap <c-l> <c-y>
-
 " disable character level manipulation
 nnoremap S <nop>
 nnoremap X <nop>
 
 " switch between most recent buffers
-nnoremap <c-e> <c-^>
+nnoremap <c-w> <c-^>
 
 " remapped below
 nnoremap s <nop>
