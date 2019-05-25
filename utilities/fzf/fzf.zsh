@@ -32,45 +32,52 @@ _fzf_compgen_dir() {
   fd --type directory --hidden --follow --exclude ".git" . "$1"
 }
 
-# <<<< options >>>>
+# <<<< config >>>>
 
-export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle --ansi\
- --select-1 --exit-0\
- --bind ctrl-k:down,ctrl-l:up,space:toggle-preview,ctrl-d:preview-page-down,\
-ctrl-u:preview-page-up,ctrl-a:select-all+accept"
-_fzf_bat_preview="--preview='bat --style=numbers --color=always {}'"
-export FZF_CTRL_T_OPTS="$_fzf_bat_preview --preview-window=hidden"
-export FZF_EDIT_OPTS="$_fzf_bat_preview"
-
-
-# <<<< commands >>>>
-
-export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow --exclude .git"
-# NOTE: actually mapped to `C-f`
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# NOTE: actually mapped to `C-t`
-export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git"
-
-# <<<< keybindings >>>>
 # NOTE: corresponding widgets defined in `$DOTFILES/functions/_fzf_functions` &
 # `$(brew --prefix)/opt/fzf/shell/key-bindings.zsh`
 
 # << zsh functions -> widgets >>
+# zsh requires explicit marking of functions that will be mapped as widgets
 zle -N fzf-edit-widget
 zle -N fzf-history-widget-accept
 zle -N fzf-modified-history-widget
 
+# << shared >>
+_fzf_bat_preview="--preview='bat --style=numbers --color=always {}'"
+_fzf_preview_window="--preview-window=down:75%"
+_fzf_hidden_preview_window="${_fzf_preview_window}:hidden"
+
+export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow --exclude .git"
+export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle --ansi\
+ --select-1 --exit-0\
+ $_fzf_preview_window\
+ --bind ctrl-k:down,ctrl-l:up,space:toggle-preview,ctrl-d:preview-page-down,\
+ctrl-u:preview-page-up,ctrl-a:select-all+accept"
+
+# << list files >>
+# NOTE: mapped to `C-f` instead of default `C-t`
+
 # paste selected files
 bindkey '^f' fzf-file-widget
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
 
-# cd into selected folder
-# Note: overrides default of '^t' being bound to `fzf-file-widget`
+# << navigate to directory (`cd` into selected folder) >>
+# NOTE: mapped to `C-t` instead of default `M-c`
+
+# note: overrides default of '^t' being bound to `fzf-file-widget`
 bindkey '^t' fzf-cd-widget
+export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git"
+export FZF_ALT_C_OPTS="--preview='exa --color always {}'"
+
+# << edit w/ $EDITOR >>
 
 # edit selected file (same as `e <c-f>`)
 bindkey '^p' fzf-edit-widget
+export FZF_EDIT_OPTS="$_fzf_bat_preview"
 
-# shell history
+# << shell history >>
 # ref - https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
 bindkey -M vicmd '/' fzf-modified-history-widget
 bindkey '^r' fzf-modified-history-widget
