@@ -131,3 +131,6 @@ nnoremap <leader>p; <c-w><Right>
 
 " clear line
 nnoremap <leader>d 0D
+
+" strip whitespace
+:noremap <leader>tw :TrimWhitespace<cr>

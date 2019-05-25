@@ -1,4 +1,4 @@
-" <<<<<<<< color scheme >>>>>>>>
+" <<<<<<<< colors >>>>>>>>
 
 " background
 set background=dark
@@ -37,12 +37,11 @@ hi ExtraWhitespace ctermbg=magenta
 au ColorScheme * hi ExtraWhitespace ctermbg=magenta
 " highlight all trailing whitespace
 au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
-" avoid highlighting trailing whitespace on current line
-" when editing at the end of it
+" avoid highlighting trailing whitespace on current line when editing at the end
+" of it
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
 " << syntax groups >>
 
-" match Tabs on file load
-" (just matches, no highlighting yet)
+" match Tabs on file load (just matches, no highlighting yet)
 au BufRead * syntax match Tab /\t/
