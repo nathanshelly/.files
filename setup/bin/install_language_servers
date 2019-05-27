@@ -32,3 +32,11 @@ command -v npm > /dev/null 2>&1 || npm install --global bash-language-server
 # ruby - a little flaky, switch if a better option appears
 # ref - https://github.com/castwide/solargraph
 command -v gem > /dev/null 2>&1 || gem install solargraph
+
+# rust - flaky, issues w/ formatting & linting, return to
+# install rustup, then requisite packages
+# ref - https://rustup.rs/
+command -v rustup > /dev/null 2>&1 || {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  rustup component add rls rust-analysis rust-src
+}
