@@ -1,6 +1,29 @@
 # path to dotfiles
 export DOTFILES="$HOME/.files"
 
+# define variable to store list of files to source
+# note: -U ensures path does not contain duplicates
+typeset -U config_files
+
+# enable `extended_glob` to exclude directories (submodules, zsh) in match
+# disable immediately after to respect options in `options.zsh`
+# TODO: avoid `extended_glob` hack, exclude directories w/o `extended_glob` set
+setopt extended_glob
+config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
+setopt noextended_glob
+
+# zsh conveniently links path array and PATH env var (along with other pairs)
+# to add to path, write `path=(<new-addition> $path)`
+typeset -U path
+
+source "$DOTFILES/zsh/path.zsh"
+
+# load path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
 source "$DOTFILES/zsh/env_vars.zsh"
 
 # make colors defined by spectrum available in other files
@@ -24,27 +47,12 @@ source "$DOTFILES/zsh/plugins.sh"
 source "$DOTFILES/zsh/plugins.zsh"
 
 source "$DOTFILES/zsh/alias.zsh"
+
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
 # load functions written as basic scripts
 autoload -Uz $DOTFILES/functions/*(:t)
-
-# define variable to store list of files to source
-typeset -U config_files
-
-# enable `extended_glob` to exclude directories (submodules, zsh) in match
-# disable immediately after to respect options in `options.zsh`
-# TODO: avoid `extended_glob` hack, exclude directories w/o `extended_glob` set
-setopt extended_glob
-config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
-setopt noextended_glob
-
-# load path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
-done
 
 # load !path && !completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
