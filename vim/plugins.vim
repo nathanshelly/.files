@@ -17,11 +17,6 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-" << formatting/linting >>
-
-" ale
-Plug 'w0rp/ale'
-
 " << motions/operators >>
 
 " edit surrounding characters
@@ -80,25 +75,6 @@ call plug#end()
 " map leader -> space
 " NOTE: done here to enable defining <leader> for plugins
 let mapleader=" "
-
-" <<<<<< formatting/linting >>>>>>
-
-" <<<< ale >>>>
-" ref - https://github.com/w0rp/ale
-" NOTE: currently using only for formatting. May add back linting in the
-" future. May switch to using language servers for formatting and remove this
-" altogether or use for linting only.
-
-" << options >>
-
-" only apply explicitly specified linters (currently none, effectively disabled)
-let g:ale_linters_explicit = 1
-
-let g:ale_fix_on_save = 1
-
-let g:ale_fixers = {
-  \ 'python': ['black'],
-\}
 
 " <<<<<< motions/operators >>>>>>
 
