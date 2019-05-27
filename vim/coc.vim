@@ -82,14 +82,15 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 " `coc-rls`: rust
 " `coc-solargraph`: ruby
 let g:coc_global_extensions = [
-  \ 'coc-json',
-  \ 'coc-tsserver',
-  \ 'coc-html',
   \ 'coc-css',
-  \ 'coc-python',
-  \ 'coc-rls',
+  \ 'coc-html',
   \ 'coc-jest',
+  \ 'coc-json',
+  \ 'coc-python',
+  \ 'coc-prettier',
+  \ 'coc-rls',
   \ 'coc-solargraph',
+  \ 'coc-tsserver',
 \ ]
 
 " trigger key for going to the next snippet position,
@@ -141,3 +142,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" << commands >>
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
