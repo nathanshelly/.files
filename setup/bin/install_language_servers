@@ -1,0 +1,4 @@
+#! /usr/bin/env zsh
+
+# ruby
+command -v gem > /dev/null 2>&1 || gem install solargraph

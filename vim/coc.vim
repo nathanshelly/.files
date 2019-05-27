@@ -80,7 +80,8 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 "
 " TODO: configure extensions, set up required language servers
 " `coc-rls`: rust
-" `coc-solargraph`: ruby
+" `coc-solargraph`: ruby, `solargraph` language server installed as gem
+" `coc-tsserver`: requires no separate language server
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-html',
