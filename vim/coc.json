@@ -39,6 +39,40 @@
   // ref - https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
   "coc.source.file.ignoreHidden": false,
   "coc.preferences.formatOnSaveFiletypes": [
-    "css", "markdown", "typescript", "typescriptreact", "json", "graphql"
-  ]
+    "css",
+    "graphql",
+    "json",
+    "markdown",
+    "python",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // <<<<<<<< language server specific settings >>>>>>>>
+
+  // <<<< custom language servers >>>>
+  // ref - https://github.com/neoclide/coc.nvim/wiki/Language-servers#register-custom-language-servers
+  "languageserver": {
+    // https://github.com/mads-hartmann/bash-language-server
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+
+  // <<<< tsserver >>>>
+  // ref - https://github.com/neoclide/coc-tsserver#configuration-options
+  "tsserver.enableJavascript": false,
+
+  // <<<< python >>>>
+  // ref - https://github.com/neoclide/coc-python#options
+
+  // enables Microsoft PLS
+  // ref - https://github.com/neoclide/coc-python#optional-steps
+  "python.jediEnabled": false,
+  "python.formatting.provider": "black",
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": false
 }

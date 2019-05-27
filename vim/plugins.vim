@@ -226,10 +226,13 @@ let g:lightline = {
   \ 'colorscheme': 'seoul256',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'readonly', 'filename', 'modified' ] ]
+  \             [ 'readonly', 'filename', 'modified' ],
+  \             [ 'cocstatus', 'currentfunction' ] ]
   \ },
   \ 'component_function': {
   \   'readonly': 'LightlineReadonly',
+  \   'cocstatus': 'coc#status',
+  \   'currentfunction': 'CocCurrentFunction'
   \ },
 \ }
 

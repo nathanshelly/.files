@@ -8,17 +8,26 @@
 #
 # currently used languages:
 #
-# - ruby (kinda flaky server in limited testing)
-# - typescript (`coc-tsserver` works well, though does not conform to LSP)
-# - rust
-# - bash
+# - bash (WIP, lots of room to improve (first off needs to compile...))
 # - python
+# - ruby (kinda flaky server in limited testing)
+# - rust
+# - typescript (`coc-tsserver` works well, though does not conform to LSP)
 #
 # note: Typescript language knowledge provided through the `coc-tsserver`
 # extension which installs its own server that does not conform to the LSP (used
 # in VSCode too, Microsoft forgoing it's own protocol for now, probably tech
 # debt).
 # ref - https://github.com/microsoft/language-server-protocol-inspector/issues/42#issuecomment-479995275
+#
+# note II: `coc-python` installs its own LS
+# ref - https://github.com/neoclide/coc-python#optional-steps
+
+# bash
+# TODO: set this up, installing currently fails while compiling
+#   - https://github.com/mads-hartmann/bash-language-server/issues/131
+# ref - https://github.com/mads-hartmann/bash-language-server
+command -v npm > /dev/null 2>&1 || npm install --global bash-language-server
 
 # ruby - a little flaky, switch if a better option appears
 # ref - https://github.com/castwide/solargraph
