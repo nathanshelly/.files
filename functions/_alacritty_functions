@@ -19,3 +19,8 @@ alfupup() {
 alfdo() {
   sed -i '' 's/size: .*/size: 13.0/g' "$DOTFILES/config.symlink/alacritty/alacritty.yml"
 }
+
+# adjust font to given size
+alf() {
+  sed -i '' "s/size: .*/size: $1/g" "$DOTFILES/config.symlink/alacritty/alacritty.yml"
+}
