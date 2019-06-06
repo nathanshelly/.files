@@ -50,7 +50,7 @@ _fzf_hidden_preview_window="${_fzf_preview_window}:hidden"
 
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle --ansi\
- --select-1 --exit-0\
+ --select-1 --exit-0 --multi\
  $_fzf_preview_window\
  --bind ctrl-k:down,ctrl-l:up,space:toggle-preview,ctrl-d:preview-page-down,\
 ctrl-u:preview-page-up,ctrl-a:select-all+accept"
