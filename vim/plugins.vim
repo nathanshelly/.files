@@ -15,7 +15,7 @@ call plug#begin()
 
 " << autocompletion >>
 
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " << motions/operators >>
 
