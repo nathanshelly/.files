@@ -1,9 +1,9 @@
 # <<<< Disclaimer >>>>
 #
 # this brewfile will error for you unless you are signed in with an apple id
-# that has purchased Super Easy Timer, Bear & Canary Mail. Delete or tweak the
-# final block with `mas` installations to avoid these errors (in addition to
-# whatever other tweaking you like)
+# that has purchased Super Easy Timer & Bear. Delete or tweak the final block
+# with `mas` installations to avoid these errors (in addition to whatever other
+# tweaking you like)
 #
 # this Brewfile is opinionated in the sense that it's order/comments do not
 # exactly match the output of `brew bundle dump`
@@ -132,5 +132,4 @@ cask "font-fira-code"
 
 # << delete/tweak these lines to avoid errors if you have not purchased these >>
 mas "Super Easy Timer", id: 1353137878
-mas "Canary Mail", id: 1236045954
 mas "Bear", id: 1091189122
