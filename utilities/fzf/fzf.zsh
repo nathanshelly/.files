@@ -58,10 +58,22 @@ ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 # << list files >>
 # NOTE: mapped to `C-f` instead of default `C-t`
 
-# paste selected files
-bindkey '^f' fzf-file-widget
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Establish ^f to do a file-search in the usual way, that ignores certain files
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
+function fzf_std_file_widget {
+   FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+   zle fzf-file-widget
+ }
+zle -N fzf_std_file_widget
+bindkey '^f' fzf_std_file_widget
+
+# Establish ^g to do a file search that includes usually-ignored files
+function fzf_ignore_file_widget {
+   FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND} --no-ignore"
+   zle fzf-file-widget
+ }
+zle -N fzf_ignore_file_widget
+bindkey '^g' fzf_ignore_file_widget
 
 # << navigate to directory (`cd` into selected folder) >>
 # NOTE: mapped to `C-t` instead of default `M-c`
