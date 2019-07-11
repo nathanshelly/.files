@@ -21,7 +21,7 @@ source "$DOTFILES/zsh/path.zsh"
 # load path files
 for file in ${(M)config_files:#*/path.zsh}
 do
-  source $file
+  source "$file"
 done
 
 source "$DOTFILES/zsh/env_vars.zsh"
@@ -57,7 +57,7 @@ autoload -Uz $DOTFILES/functions/*(:t)
 # load !path && !completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
-  source $file
+  source "$file"
 done
 
 # start autocomplete
@@ -68,7 +68,7 @@ autoload -Uz compinit
 # ref - https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null \
   || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != $updated_at ]; then
+if [ $(date +'%j') != "$updated_at" ]; then
   compinit -i
 else
   compinit -C -i
@@ -77,7 +77,7 @@ fi
 # load completion files
 for file in ${(M)config_files:#*/completion.zsh}
 do
-  source $file
+  source "$file"
 done
 
 unset config_files
