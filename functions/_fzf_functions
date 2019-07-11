@@ -1,6 +1,14 @@
 #! /usr/bin/env sh
 
+# default fzf functions - `$(brew --prefix)/opt/fzf/shell/key-bindings.zsh`
+
 # <<<< widgets >>>>
+
+# list ignored files
+# basically just `fzf-file-widget` with `--no-ignore`
+fzf-ignored-file-widget() {
+  FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND} --no-ignore" fzf-file-widget
+}
 
 # edit selected file
 # lightly adapted from `fzf-cd-widget`

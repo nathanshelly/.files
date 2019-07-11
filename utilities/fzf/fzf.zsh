@@ -40,6 +40,7 @@ _fzf_compgen_dir() {
 # << zsh functions -> widgets >>
 # zsh requires explicit marking of functions that will be mapped as widgets
 zle -N fzf-edit-widget
+zle -N fzf-ignored-file-widget
 zle -N fzf-history-widget-accept
 zle -N fzf-modified-history-widget
 
@@ -59,7 +60,11 @@ ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 # NOTE: mapped to `C-f` instead of default `C-t`
 
 # paste selected files
+# `^f` ignores files/directories listed in .(git)ignore files
 bindkey '^f' fzf-file-widget
+# `^g` lists all files/directories (including those listed in (git)ignore files)
+bindkey '^g' fzf-ignored-file-widget
+
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
 
