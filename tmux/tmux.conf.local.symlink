@@ -44,6 +44,9 @@ unbind F
 
 # <<<< override .tmux options >>>>
 
+# boost history
+set -g history-limit 10000
+
 # colors
 # it says 256 but actually true color (when combined w/ `terminal-overrides`
 # `:Tc` flag below), also enables italics
