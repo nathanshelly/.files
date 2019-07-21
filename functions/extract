@@ -6,7 +6,7 @@
 # note: .dmg/hdiutil is Mac OS X-specific.
 
 # ref - http://nparikh.org/notes/zshrc.txt
-path="$file"
+file="$1"
 
 if [ -f "$file" ]; then
   case "$file" in
