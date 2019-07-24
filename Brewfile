@@ -1,6 +1,6 @@
 # <<<< Disclaimer >>>>
 #
-# This Brewfile is opinionated in the sense that it's order/comments do not
+# This Brewfile is opinionated in the sense that its order/comments do not
 # exactly match the output of `brew bundle dump`
 #
 # Homebrew recommends against hand editing Brewfiles, advising using
