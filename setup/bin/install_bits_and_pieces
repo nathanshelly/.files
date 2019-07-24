@@ -47,3 +47,8 @@ command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8" && {
     pip3 install neovim ptpython black
   }
 }
+
+# this line will error unless you have purchased Super Easy Timer. Delete or
+# or comment this line out to avoid errors.
+# TODO: check for apple account first?
+mas "Super Easy Timer", id: 1353137878

@@ -1,11 +1,6 @@
 # <<<< Disclaimer >>>>
 #
-# this brewfile will error for you unless you are signed in with an apple id
-# that has purchased Super Easy Timer. Delete or tweak the final block
-# with `mas` installations to avoid these errors (in addition to whatever other
-# tweaking you like)
-#
-# this Brewfile is opinionated in the sense that it's order/comments do not
+# This Brewfile is opinionated in the sense that it's order/comments do not
 # exactly match the output of `brew bundle dump`
 #
 # Homebrew recommends against hand editing Brewfiles, advising using
@@ -124,10 +119,3 @@ cask "google-chrome-canary"
 # <<<< fonts >>>>
 
 cask "font-fira-code"
-
-# <<<<<<<< mas (mac app store) applications >>>>>>>>
-
-# for future portability concerns could attempt to match on `mas account`
-
-# << delete/tweak these lines to avoid errors if you have not purchased these >>
-mas "Super Easy Timer", id: 1353137878
