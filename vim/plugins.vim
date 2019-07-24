@@ -40,7 +40,10 @@ Plug 'iamcco/git-p.nvim'
 
 " fuzzy finder
 Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+" Use Sasha's fork which enables previewing of full files based on community's
+" fix - https://github.com/junegunn/fzf.vim/issues/751
+" TODO: check that this fork stays up to date with upstream
+Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
 
 " distraction free writing
 Plug 'junegunn/goyo.vim'
