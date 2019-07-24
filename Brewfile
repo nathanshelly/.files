@@ -116,7 +116,6 @@ cask "spectacle"
 cask "subler"
 cask "visual-studio-code"
 cask "vivaldi"
-cask "vlc"
 
 # << alternate versions >>
 
