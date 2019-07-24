@@ -45,7 +45,7 @@ unbind F
 # <<<< override .tmux options >>>>
 
 # boost history
-set -g history-limit 10000
+set -g history-limit 1000000
 
 # colors
 # it says 256 but actually true color (when combined w/ `terminal-overrides`
