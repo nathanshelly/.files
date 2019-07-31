@@ -67,7 +67,7 @@ fzf_kill_by_port() {
 
   # TODO: switch to alternate `&>/dev/null` in future
   # ref - https://askubuntu.com/questions/474556/hiding-output-of-a-command
-  lsof -i :"$port" > /dev/null 2>&1 || {
+  lsof -i ":$port" > /dev/null 2>&1 || {
     echo 'Port has no attached processes, aborting'
     return 1
   }
@@ -84,9 +84,9 @@ fzf_kill_by_port() {
   # avoid race condition between next `lsof` call and processes shutting down
   sleep 0.01
 
-  lsof -i :"$port" > /dev/null 2>&1 && {
+  lsof -i ":$port" > /dev/null 2>&1 && {
     echo "Remaining attached processes:\n"
-    lsof -i:"$port"
+    lsof -i ":$port"
   }
 }
 
