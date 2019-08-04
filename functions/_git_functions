@@ -118,6 +118,12 @@ gcw() {
   git commit --message "${1:-wip}" --no-verify
 }
 
+# add root and ammend without verifying or editing commit message
+gcaw() {
+  git add "$(git rev-parse --show-toplevel)"
+  git commit --amend --no-edit --no-verify
+}
+
 # creates a commit w/ given message (default `wip`) with all changes to tracked
 # files starting at root. similar to `git stash`
 # mnemonic - `git commit wip tracked`
@@ -125,4 +131,10 @@ gcwt() {
   # add any tracked files starting at root
   git add --update "$(git rev-parse --show-toplevel)"
   git commit --message "${1:-wip}" --no-verify
+}
+
+# add root and ammend without verifying or editing commit message
+gcawt() {
+  git add --update "$(git rev-parse --show-toplevel)"
+  git commit --amend --no-edit --no-verify
 }
