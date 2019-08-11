@@ -7,9 +7,10 @@ alias zshn='zsh -f'
 alias rr="git rev-parse --show-toplevel"
 
 # shortened utilities
-alias o=open
+alias e="$EDITOR"
 
-alias rm='echo "use trash primarily, /bin/rm when needed"'
+alias o=open
+alias pm="$(package_manager)"
 alias t=trash
 
 # << homebrew >>
@@ -20,4 +21,5 @@ alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
 # open another alacritty instance
 alias alac="open --new /Applications/Alacritty.app"
 
-alias e="$EDITOR"
+# discourage usage of rm (in favor of `t` alias for trash)
+alias rm='echo "use trash primarily, /bin/rm when needed"'

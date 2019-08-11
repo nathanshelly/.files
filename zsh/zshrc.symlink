@@ -46,13 +46,14 @@ source "$DOTFILES/zsh/plugins.sh"
 # source plugins configuration after sourcing plugins themselves
 source "$DOTFILES/zsh/plugins.zsh"
 
-source "$DOTFILES/zsh/alias.zsh"
-
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
 # load functions written as basic scripts
 autoload -Uz $DOTFILES/functions/*(:t)
+
+# allow aliases to use defined functions
+source "$DOTFILES/zsh/alias.zsh"
 
 # load !path && !completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
