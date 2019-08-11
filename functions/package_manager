@@ -1,0 +1,11 @@
+#! /usr/bin/env sh
+
+if command -v brew > /dev/null 2>&1; then
+  echo 'brew'
+elif command -v apt > /dev/null 2>&1; then
+  # not necessarily the best idea but yolo
+  echo 'sudo apt'
+else
+  echo 'No expected package manager found'
+  return
+fi
