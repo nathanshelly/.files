@@ -2,6 +2,6 @@ Host github.com
   IdentityFile ~/.ssh/github
 
 Host pi
-  HostName 192.168.1.14
+  HostName 192.168.1.2
   User nathan
   IdentityFile ~/.ssh/pi
