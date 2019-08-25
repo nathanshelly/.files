@@ -51,9 +51,6 @@ brew "fd"
 brew "fzf"
 brew "hub"
 brew "git"
-# for installing from mac app store
-# line must come above usage at end of file
-# ref - https://github.com/mas-cli/mas
 brew "mas"
 brew "neovim", args: ["HEAD"]
 brew "node"

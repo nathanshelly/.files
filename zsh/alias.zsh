@@ -23,3 +23,5 @@ alias alac="open --new /Applications/Alacritty.app"
 
 # discourage usage of rm (in favor of `t` alias for trash)
 alias rm='echo "use trash primarily, /bin/rm when needed"'
+
+alias antibundle='antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"'
