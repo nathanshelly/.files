@@ -25,6 +25,12 @@
   "diagnostic.warningSign": "◉",
   "diagnostic.infoSign": "◉",
   "diagnostic.hintSign": "◉",
+
+  // TODO: add more of these? - https://github.com/iamcco/coc-diagnostic
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
+
   // virtual text listing references & implementations
   "codeLens.enable": true,
   "codeLens.separator": "  ‣ ",
@@ -81,6 +87,7 @@
   },
 
   // <<<<<<<< language server specific settings >>>>>>>>
+
 
   // <<<< custom language servers >>>>
   // ref - https://github.com/neoclide/coc.nvim/wiki/Language-servers#register-custom-language-servers

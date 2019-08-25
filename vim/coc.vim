@@ -84,6 +84,7 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 " `coc-tsserver`: requires no separate language server
 let g:coc_global_extensions = [
   \ 'coc-css',
+  \ 'coc-diagnostic',
   \ 'coc-html',
   \ 'coc-jest',
   \ 'coc-json',

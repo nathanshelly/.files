@@ -24,8 +24,9 @@
 # ref - https://github.com/neoclide/coc-python#optional-steps
 
 # bash
-# TODO: set this up, installing currently fails while compiling
-#   - https://github.com/mads-hartmann/bash-language-server/issues/131
+# TODO: automate workaround here. Fails to compile with latest `npm`. Can
+# successfully install by switching node version to 11.14.0
+# - https://github.com/mads-hartmann/bash-language-server/issues/131
 # ref - https://github.com/mads-hartmann/bash-language-server
 command -v npm > /dev/null 2>&1 || npm install --global bash-language-server
 
