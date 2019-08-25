@@ -9,16 +9,16 @@ source "$DOTFILES/setup/lib/prompts.sh"
 # check tic, submodule and zsh plugins to avoid rerunning when unnecessary
 
 # add `zsh` to allowed shells if not already added
-grep -q "$(which zsh)" /etc/shells || {
-  info "Using sudo access to add '$(which zsh)' to /etc/shells\n"
-  sudo sh -c "echo $(which zsh) >> /etc/shells" && {
-    info "Added $(which zsh) to /etc/shells"
+grep -q "$(command -v zsh)" /etc/shells || {
+  info "Using sudo access to add '$(command -v zsh)' to /etc/shells\n"
+  sudo sh -c "echo $(command -v zsh) >> /etc/shells" && {
+    info "Added $(command -v zsh) to /etc/shells"
   }
 }
 
-# change login shell to `zsh` if $SHELL env variable isn't already zsh
-[ "$SHELL" = "$(which zsh)" ] || {
-  chsh -s "$(which zsh)" && info "Changed login shell to $(which zsh)"
+# change login shell to brew `zsh` if it isn't already
+[ "$SHELL" = "$(command -v zsh)" ] || {
+  chsh -s "$(command -v zsh)" && info "Changed login shell to $(command -v zsh)"
 }
 
 # set up git submodules
@@ -40,15 +40,14 @@ antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh" \
 command -v gem > /dev/null 2>&1 || gem install --user-install tmuxinator
 
 # install python module for neovim (used by `black` plugin)
-command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8" && {
+if command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8"; then
   pip install neovim ptpython black
-} || {
-  command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8" && {
-    pip3 install neovim ptpython black
-  }
-}
+elif command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8"; then
+  pip3 install neovim ptpython black
+fi
 
 # this line will error unless you have purchased Super Easy Timer. Delete or
 # or comment this line out to avoid errors.
 # TODO: check for apple account first?
+# ref - https://github.com/mas-cli/mas
 mas "Super Easy Timer", id: 1353137878

@@ -36,7 +36,7 @@ source "$DOTFILES/zsh/options.zsh"
 
 # source antibody - static method
 # loads static file that must be regenerated any time a new plugin is added
-# regenerate by running the following (aliased to `antibundle` below):
+# regenerate by running the following (aliased to `antibundle` in alias.zsh):
 #   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
 # refs:
 #   - https://getantibody.github.io/#static-loading
