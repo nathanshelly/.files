@@ -1,4 +1,4 @@
-#! /usr/bin/env sh
+#! /usr/bin/env bash
 
 # default fzf functions - `$(brew --prefix)/opt/fzf/shell/key-bindings.zsh`
 
@@ -24,7 +24,7 @@ fzf-edit-widget() {
     return 0
   fi
 
-  "$EDITOR" "$file"
+  "${EDITOR:-nvim}" "$file"
 
   local ret=$?
   zle fzf-redraw-prompt
@@ -184,7 +184,7 @@ fzf_gf() {
 fzf_gr() {
   is_in_git_repo || return
   local bindings preview
-  bindings='space:toggle-preview'
+  bindings='ctrl-space:toggle-preview'
   preview='git log --oneline --graph --date=short --color=always'
   preview+=' --pretty="format:%C(auto)%cd %h%d %s"'
   preview+=' $(sed s/^..// <<< {} | cut -d" " -f1) | bat'
@@ -200,7 +200,7 @@ fzf_gh() {
   is_in_git_repo || return
   local format bindings preview
   format='%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)'
-  bindings='ctrl-s:toggle-sort,space:toggle-preview'
+  bindings='ctrl-s:toggle-sort,ctrl-space:toggle-preview'
   preview='grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | bat'
 
   git log --date=short --format="$format" --graph --color=always |
