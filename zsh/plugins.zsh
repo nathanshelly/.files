@@ -28,12 +28,12 @@ ZSH_AUTOSUGGEST_STRATEGY=(history)
 # count only alphanumeric characters as part of a word
 WORDCHARS=
 
-# see which option I like better
-bindkey -M viins '^a' autosuggest-accept # until end of suggestion
-bindkey -M viins '^e' autosuggest-accept # until end of suggestion
-
-bindkey -M viins '^ ' autosuggest-execute
-bindkey -M viins '^w' forward-word # next word, how `vim` `w` would advance
+# accept until end of line (same as right arrow)
+bindkey '^e' autosuggest-accept
+# accept until end of line and immediately execute
+bindkey '^ ' autosuggest-execute
+# accept next word
+bindkey '^w' forward-word
 
 # <<<< history-substring-search >>>>
 # similar to `jk/`, convenient when query already typed out
