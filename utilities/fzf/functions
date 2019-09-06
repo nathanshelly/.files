@@ -54,29 +54,6 @@ fzf-repo-file-widget() {
   return $ret
 }
 
-# edit any file in current git repo
-# TODO: give nicer error when running not in a git repo
-fzf-repo-file-widget() {
-  setopt localoptions pipefail 2> /dev/null
-  local file="$(
-  # search for all files starting from current repo root
-  eval "$FZF_DEFAULT_COMMAND . $(rr)" \
-    | sed "s~^$(rr)/~~" \
-    |  FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_EDIT_OPTS" $(__fzfcmd) +m
-  )"
-
-  if [[ -z "$file" ]]; then
-    zle redisplay
-    return 0
-  fi
-
-  "${EDITOR:-nvim}" "$file"
-
-  local ret=$?
-  zle fzf-redraw-prompt
-  return $ret
-}
-
 # modified version of default `fzf-history-widget` to allow dynamic editing or
 # execution of selected history line
 # ref - https://github.com/junegunn/fzf/issues/477#issuecomment-444053054
