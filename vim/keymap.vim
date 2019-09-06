@@ -128,6 +128,7 @@ nnoremap <leader>pj <c-w><Left>
 nnoremap <leader>pk <c-w><Down>
 nnoremap <leader>pl <c-w><Up>
 nnoremap <leader>p; <c-w><Right>
+nnoremap <leader>p= <c-w>=
 
 " clear line
 nnoremap <leader>d 0D
