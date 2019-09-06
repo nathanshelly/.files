@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /usr/bin/env zsh
 
 # default fzf functions - `$(brew --prefix)/opt/fzf/shell/key-bindings.zsh`
 
@@ -18,6 +18,52 @@ fzf-edit-widget() {
     eval "$FZF_DEFAULT_COMMAND" \
       | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_EDIT_OPTS" $(__fzfcmd) +m
     )"
+
+  if [[ -z "$file" ]]; then
+    zle redisplay
+    return 0
+  fi
+
+  "${EDITOR:-nvim}" "$file"
+
+  local ret=$?
+  zle fzf-redraw-prompt
+  return $ret
+}
+
+# addapted from `fzf-file-widget`
+# TODO: clean up opts
+__fsel_repo() {
+  local cmd="${FZF_CTRL_T_COMMAND}"
+  setopt localoptions pipefail 2> /dev/null
+  eval "$FZF_CTRL_T_COMMAND . $(rr)" \
+    | sed "s~^$(rr)/~~" \
+    | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS --preview='bat --style=numbers --color=always $(rr)/{}'" $(__fzfcmd) -m "$@" \
+    | while read item; do
+    echo -n "${(q)item} "
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+fzf-repo-file-widget() {
+  LBUFFER="${LBUFFER}$(__fsel_repo)"
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+
+# edit any file in current git repo
+# TODO: give nicer error when running not in a git repo
+fzf-repo-file-widget() {
+  setopt localoptions pipefail 2> /dev/null
+  local file="$(
+  # search for all files starting from current repo root
+  eval "$FZF_DEFAULT_COMMAND . $(rr)" \
+    | sed "s~^$(rr)/~~" \
+    |  FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_EDIT_OPTS" $(__fzfcmd) +m
+  )"
 
   if [[ -z "$file" ]]; then
     zle redisplay

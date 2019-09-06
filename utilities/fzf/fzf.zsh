@@ -40,6 +40,7 @@ _fzf_compgen_dir() {
 # << zsh functions -> widgets >>
 # zsh requires explicit marking of functions that will be mapped as widgets
 zle -N fzf-edit-widget
+zle -N fzf-repo-file-widget
 zle -N fzf-ignored-file-widget
 zle -N fzf-history-widget-accept
 zle -N fzf-modified-history-widget
@@ -50,7 +51,7 @@ _fzf_preview_window="--preview-window=down:75%"
 _fzf_hidden_preview_window="${_fzf_preview_window}:hidden"
 
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow --exclude .git"
-export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle --ansi\
+export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
  --select-1 --exit-0 --multi\
  $_fzf_preview_window\
  --bind ctrl-k:down,ctrl-l:up,ctrl-space:toggle-preview,\
@@ -62,8 +63,10 @@ ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 # paste selected files
 # `^f` ignores files/directories listed in .(git)ignore files
 bindkey '^f' fzf-file-widget
-# `^g` lists all files/directories (including those listed in (git)ignore files)
-bindkey '^g' fzf-ignored-file-widget
+# `^a` lists all files/directories (including those listed in (git)ignore files)
+bindkey '^a' fzf-ignored-file-widget
+# `^g` lists files starting from root of current repo
+bindkey '^g' fzf-repo-file-widget
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
