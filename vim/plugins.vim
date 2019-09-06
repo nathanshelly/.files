@@ -58,6 +58,9 @@ Plug 'ruanyl/vim-gh-line'
 " status line
 Plug 'itchyny/lightline.vim'
 
+" universal REPL
+Plug 'metakirby5/codi.vim'
+
 " << colors/syntax/languages >>
 
 " color scheme

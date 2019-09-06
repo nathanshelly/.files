@@ -51,3 +51,7 @@ fi
 # TODO: check for apple account first?
 # ref - https://github.com/mas-cli/mas
 mas "Super Easy Timer", id: 1353137878
+
+# typescript repl
+# ref - https://github.com/HerringtonDarkholme/typescript-repl
+command -v npm > /dev/null 2>&1 || npm install --global tsun
