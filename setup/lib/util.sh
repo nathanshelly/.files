@@ -14,5 +14,6 @@ join_by() {
   shift;
   # `IFS` expansion due to `$*` (see third ref above)
   # save in `_joined` as return variable
+  # TODO: test exporting this
   _joined="$*";
 }

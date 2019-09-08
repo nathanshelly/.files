@@ -1,4 +1,4 @@
-# corresponding functions defined in `./functions`
+# corresponding functions defined in `./functions.zsh`
 alias rgz='fzf_rg_edit'
 alias killp='fzf_kill_by_port'
 alias findpath='fzf_find_path'

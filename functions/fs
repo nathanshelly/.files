@@ -1,14 +1,14 @@
-#! /usr/bin/env sh
+#! /usr/bin/env bash
 
 # determine size of a file or total size of a directory
 if du -b /dev/null > /dev/null 2>&1; then
-  local arg=-sbh;
+  _fs_arg=-sbh;
 else
-  local arg=-sh;
+  _fs_arg=-sh;
 fi
 
-if [[ -n "$@" ]]; then
-  du "$arg" -- "$@";
+if [[ -n "$*" ]]; then
+  du "$_fs_arg" -- "$@";
 else
-  du "$arg" .[^.]* ./*;
+  du "$_fs_arg" .[^.]* ./*;
 fi;

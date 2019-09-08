@@ -20,6 +20,7 @@
 # ```
 
 # check that DOTFILES variable is defined
+# shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
 source "$DOTFILES/setup/lib/prompts.sh"
@@ -52,12 +53,12 @@ symlink() {
     local flags='[_d]{1,2}'
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
 
-    [[ $filename =~ $_symlink_regex ]] && {
+    if [[ $filename =~ $_symlink_regex ]]; then
       _symlink_based_on_filename "$src" "$filename"
-    } || {
+    else
       info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
 match symlinking syntax)"
-    }
+    fi
   done
 }
 
@@ -84,16 +85,19 @@ _symlink_based_on_filename() {
 ($_direct, $_unhidden)"
 
   [[ ! -d "$HOME/${_path}" ]] && {
-    mkdir -p "$HOME/${_path}" \
-    && success "Created directory '"$HOME/${_path}"' (and any non-existent\
- parent directories)" \
-    || fail  "Failed to create directory '"$HOME/${_path}"' (or a\
- non-existent parent directory)"
+    if mkdir -p "$HOME/${_path}"; then
+      success "Created directory '$HOME/${_path}' (and any non-existent parent \
+directories)"
+    else
+      fail  "Failed to create directory '$HOME/${_path}' (or a non-existent \
+parent directory)"
+   fi
   }
 
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
-  local maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
+  local maybe_dot
+  maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
   # relative path from home, w/ or w/o `.` based on `_unhidden`
   local dst="$HOME/${_path}${maybe_dot}${_name}"
 
@@ -124,7 +128,7 @@ recursively_link_directory() {
 
     echo "source path: $src"
     echo "target path: $target_path"
-    echo "target folder: $(dirname $target_base_path${src#$source_base_path})"
+    echo "target folder: $(dirname "$target_base_path${src#$source_base_path}")"
 
     mkdir -p "$(dirname "$target_path")"
     link_file "$src" "$target_path"
@@ -168,7 +172,7 @@ _apply_regex() {
 #   {string} _path - extracted path (joined w/ `/` & appended w/ `/`)
 _extract_path() {
   local filename="$1"
-  local _REGEX_MATCHES=
+  local _REGEX_MATCHES=()
 
   # path capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES length 2 or
   # greater)
@@ -185,7 +189,7 @@ _extract_path() {
     local IFS='>'
 
     # outer path capture group @ index 1 (index 0 holds entire matched string)
-    path_components=(${_REGEX_MATCHES[1]})
+    path_components=("${_REGEX_MATCHES[1]}")
 
     # join array back w/ `join_by` function (return value saved in `_joined`)
     # `join_by` defined in $DOTFILES/setup/lib/util.sh
@@ -208,7 +212,7 @@ _extract_path() {
 #   {string} _name - extracted name
 _extract_name() {
   local filename="$1"
-  local _REGEX_MATCHES=
+  local _REGEX_MATCHES=()
 
   # file/directory name capture group
   local _name_regex='>?([-._ 0-9a-zA-Z]+)\.symlink.*$'
@@ -235,7 +239,7 @@ _extract_name() {
 #   {bool(s)} `_direct`, `_unhidden` - flags
 _check_flags() {
   local filename="$1"
-  local _REGEX_MATCHES=
+  local _REGEX_MATCHES=()
 
   # flags capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES has length 2)
   local _flags_regex='^.*\.symlink(\.[_d]{1,2})?$'
@@ -262,21 +266,20 @@ _check_flags() {
 # Args:
 #   - {string} src - source path
 #   - {string} dst - target path
-#   - {string} [indentation_level=0] - level of indentation to print to
-#       (Default: 0)
 link_file() {
   # parameters
-  local src="$1" dst="$2" indentation_level="${3:-0}"
+  local src="$1" dst="$2"
 
   # flags set by user interaction
-  local overwrite= backup= skip= action=
+  local overwrite='' backup='' skip='' action=''
 
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
+  if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]; then
     if [ "$overwrite_all" == "false" ] \
       && [ "$backup_all" == "false" ] \
       && [ "$skip_all" == "false" ]
     then
-      local current_src="$(readlink "$dst")"
+      local current_src
+      current_src="$(readlink "$dst")"
 
       if [ "$current_src" == "$src" ]; then
         skip=true
@@ -311,15 +314,19 @@ link_file() {
     skip=${skip:-$skip_all}
 
     if [ "$overwrite" == true ]; then
-      /bin/rm -r "$dst" \
-        && success "removed $dst" \
-        || fail "failed to remove $dst"
+      if /bin/rm -r "$dst"; then
+        success "removed $dst"
+      else
+        fail "failed to remove $dst"
+      fi
     fi
 
     if [ "$backup" == true ]; then
-      mv "$dst" "${dst}.backup" \
-        && success "moved $dst to ${dst}.backup" \
-        || fail "failed to move $dst to ${dst}.backup"
+      if mv "$dst" "${dst}.backup"; then
+        success "moved $dst to ${dst}.backup"
+      else
+        fail "failed to move $dst to ${dst}.backup"
+      fi
     fi
 
     [ "$skip" == true ] && success "skipped $src"
@@ -328,11 +335,11 @@ link_file() {
   # "false" or empty
   if [ "$skip" != true ]; then
     # `-s` for symbolic link
-    ln -s "$src" "$dst" && {
+    if ln -s "$src" "$dst"; then
       success "linked $src to $dst"
-    } || {
+    else
       fail "failed to link $src to $dst"
-    }
+    fi
   fi
 }
 

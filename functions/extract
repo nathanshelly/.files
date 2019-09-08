@@ -20,7 +20,7 @@ if [ -f "$file" ]; then
     *.tgz)      tar -zxvf "$file"                    ;;
     *.zip)      unzip "$file"                        ;;
     *.ZIP)      unzip "$file"                        ;;
-    *.pax)      cat "$file" | pax -r                 ;;
+    *.pax)      pax -r < "$file"                     ;;
     *.pax.Z)    uncompress "$file" --stdout | pax -r ;;
     *.rar)      unrar x "$file"                      ;;
     *.Z)        uncompress "$file"                   ;;

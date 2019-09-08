@@ -1,5 +1,9 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # usage: cdl <directory>
-builtin cd "$1"
-command -v exa > /dev/null && exa || ls
+cd "$1" || exit
+if command -v exa > /dev/null; then
+  exa
+else
+  ls
+fi

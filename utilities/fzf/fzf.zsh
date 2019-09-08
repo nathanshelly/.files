@@ -34,11 +34,11 @@ _fzf_compgen_dir() {
 
 # <<<< config >>>>
 
-# NOTE: corresponding widgets defined in `./functions` &
+# NOTE: corresponding widgets defined in `./functions.zsh` &
 # `$(brew --prefix)/opt/fzf/shell/key-bindings.zsh`
 
 # execute `functions` to make functions available
-source "$DOTFILES/utilities/fzf/functions"
+source "$DOTFILES/utilities/fzf/functions.zsh"
 
 # << zsh functions -> widgets >>
 # zsh requires explicit marking of functions that will be mapped as widgets

@@ -1,6 +1,6 @@
 # fzf ❤️ git
 # useful combinations of git & fzf
-# this file specifies keybinding for functions defined in `./functions`
+# this file specifies keybinding for functions defined in `./functions.zsh`
 # refs:
 #   - https://junegunn.kr/2016/07/fzf-git
 #   - https://gist.github.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236

@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 # check that DOTFILES variable is defined
+# shellcheck disable=1090
 source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
 # installation script
@@ -9,5 +10,5 @@ command -v brew > /dev/null 2>&1 || {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
-cd "$DOTFILES"
+cd "$DOTFILES" || exit
 brew bundle

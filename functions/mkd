@@ -1,4 +1,5 @@
-#! /usr/bin/env sh
+#! /usr/bin/env bash
 
 # create a new directory & enter it
+# shellcheck disable=2164
 mkdir -p "$@" && cd "$_";
