@@ -7,7 +7,7 @@
 # to distinguish between apps installed through it's API vs manually through
 # the app store
 
-brew cask uninstall --force $(brew cask list)
+brew cask uninstall --force "$(brew cask list)"
 
 # uninstall script
 # ref - https://docs.brew.sh/FAQ

@@ -1,13 +1,3 @@
 #! /usr/bin/env bash
 
-# check that DOTFILES variable is defined
-source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
-
-# installation script
-# ref - https://brew.sh/
-command -v brew > /dev/null 2>&1 || {
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-}
-
-cd "$DOTFILES"
-brew bundle
+# TODO: set up macOS settings configuration

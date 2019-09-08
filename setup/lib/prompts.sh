@@ -20,30 +20,30 @@
 # - http://ascii-table.com/ansi-escape-sequences.php
 
 header() {
-  printf "\n\r\033[0;1m$1\033[0m\n\n"
+  printf "\n\r\033[0;1m%s\033[0m\n\n" "$1"
 }
 
 info() {
-  printf "  [ \033[00;36m..\033[0m ] $1\n"
+  printf "  [ \033[00;36m..\033[0m ] %s\n" "$1"
 }
 
 # user interaction
 user() {
-  printf "  [ \033[0;35m??\033[0m ] $1\n"
+  printf "  [ \033[0;35m??\033[0m ] %s\n" "$1"
 }
 
 success() {
-  printf "  [ \033[00;32mOK\033[0m ] $1\n"
+  printf "  [ \033[00;32mOK\033[0m ] %s\n" "$1"
 }
 
 warn() {
-  printf "  [\033[0;33mWARN\033[0m] $1\n"
+  printf "  [\033[0;33mWARN\033[0m] %s\n" "$1"
 }
 
 fail() {
   local exit=${2:$(false)}
 
-  printf "  [\033[0;31mFAIL\033[0m] $1\n"
+  printf "  [\033[0;31mFAIL\033[0m] %s\n" "$1"
   [[ $exit == true ]] && exit
 }
 
@@ -53,7 +53,7 @@ fail() {
 _print_repeat() {
   local input=$1 count=$2
   repeated="$(printf "%${count}s")"
-  printf "${repeated// /$input}"
+  printf "%s" "${repeated// /$input}"
 }
 
 # indents by '  '*count (2*count spaces) given message printed
@@ -77,5 +77,6 @@ _prompts_display_supported() {
   warn 'warning'
   indent user 'nested user'
   indent success 'nested success'
+  # shellcheck disable=SC2016
   fail 'failure (NOTE: this also sends `exit` if called w/ `true`)'
 }
