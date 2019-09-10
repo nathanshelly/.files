@@ -1,3 +1,6 @@
+# path to dotfiles
+export DOTFILES="$HOME/.files"
+
 # << homebrew >>
 # ref - https://github.com/Homebrew/brew/blob/master/docs/Manpage.md#environment
 
@@ -13,3 +16,4 @@ export TMUXINATOR_CONFIG="$DOTFILES/tmux/tmuxinator_configs"
 # in these dotfiles and should be `nvim`
 export VISUAL=nvim
 export EDITOR=nvim
+

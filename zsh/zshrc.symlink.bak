@@ -1,31 +1,3 @@
-# path to dotfiles
-export DOTFILES="$HOME/.files"
-
-# define variable to store list of files to source
-# note: -U ensures path does not contain duplicates
-typeset -U config_files
-
-# enable `extended_glob` to exclude directories (submodules, zsh) in match
-# disable immediately after to respect options in `options.zsh`
-# TODO: avoid `extended_glob` hack, exclude directories w/o `extended_glob` set
-setopt extended_glob
-config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
-setopt noextended_glob
-
-# zsh conveniently links path array and PATH env var (along with other pairs)
-# to add to path, write `path=(<new-addition> $path)`
-typeset -U path
-
-source "$DOTFILES/zsh/path.zsh"
-
-# load path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source "$file"
-done
-
-source "$DOTFILES/zsh/env_vars.zsh"
-
 # make colors defined by spectrum available in other files
 source "$DOTFILES/zsh/spectrum.zsh"
 source "$DOTFILES/zsh/prompt.zsh"
