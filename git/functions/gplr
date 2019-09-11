@@ -1,0 +1,9 @@
+#! /usr/bin/env zsh
+
+# fetch latest changes, rebase current branch on `origin/$1`
+# passing a branch that is not a tracking branch of the checked out local branch
+# will work though may be unintuitive
+[[ -z $1 ]] && echo 'No branch given, aborting' && return 1
+
+# only reset if we can't fast-forward
+git pull --all || git rebase --interactive "origin/$1"

@@ -1,0 +1,5 @@
+#! /usr/bin/env zsh
+
+# add tracked files from root and ammend w/o verifying or editing commit message
+git add --update "$(git rev-parse --show-toplevel)"
+git commit --amend --no-edit --no-verify

@@ -1,0 +1,5 @@
+#! /usr/bin/env zsh
+
+# move forward linearly a given number of commits
+git checkout \
+  "$(git rev-list --topo-order HEAD..${2:-master} | tail -$1 | head -1)"
