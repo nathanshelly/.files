@@ -1,22 +1,9 @@
-# make colors defined by spectrum available in other files
-source "$DOTFILES/zsh/spectrum.zsh"
 source "$DOTFILES/zsh/prompt.zsh"
 source "$DOTFILES/zsh/config.zsh"
 source "$DOTFILES/zsh/fpath.zsh"
 source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/options.zsh"
 
-# source antibody - static method
-# loads static file that must be regenerated any time a new plugin is added
-# regenerate by running the following (aliased to `antibundle` in alias.zsh):
-#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
-# refs:
-#   - https://getantibody.github.io/#static-loading
-#   - https://github.com/getantibody/antibody
-source "$DOTFILES/zsh/plugins.sh"
-
-# source plugins configuration after sourcing plugins themselves
-source "$DOTFILES/zsh/plugins.zsh"
 
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"

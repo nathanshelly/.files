@@ -1,5 +1,10 @@
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# This zshrc sources files in $DOTFILES/zsh & any `.zsh` files in the directory
+# specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 # define variable to store list of files to source
-# note: -U ensures path does not contain duplicates
+# note: -U ensures uniqueness
 typeset -U config_files
 
 # enable `extended_glob` to exclude directories (submodules, zsh) in match
@@ -9,14 +14,30 @@ setopt extended_glob
 config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
 setopt noextended_glob
 
-# zsh conveniently links path array and PATH env var (along with other pairs)
+# zsh conveniently links path array and PATH env var
 # to add to path, write `path=(<new-addition> $path)`
 typeset -U path
 
-source "$DOTFILES/zsh/path.zsh"
-
 # load path files
+source "$DOTFILES/zsh/path.zsh"
 for file in ${(M)config_files:#*/path.zsh}
 do
   source "$file"
 done
+
+# make colors defined by spectrum available in other files
+source "$DOTFILES/zsh/spectrum.zsh"
+
+# << plugins >>
+# source antibody - static (faster) method
+# sources static file that must be regenerated any time a new plugin is added
+# regenerate by running the following (aliased to `antibundle` in alias.zsh):
+#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
+# refs:
+#   - https://getantibody.github.io/#static-loading
+#   - https://github.com/getantibody/antibody
+source "$DOTFILES/zsh/plugins.sh"
+
+# source plugins config after sourcing plugins themselves
+source "$DOTFILES/zsh/plugins.zsh"
+source "$DOTFILES/zsh/prompt.zsh"
