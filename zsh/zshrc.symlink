@@ -9,7 +9,6 @@ source "$DOTFILES/zsh/path.zsh"
 
 source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/options.zsh"
-source "$DOTFILES/zsh/fpath.zsh"
 
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
@@ -35,8 +34,22 @@ source "$DOTFILES/zsh/spectrum.zsh"
 #   - https://github.com/getantibody/antibody
 source "$DOTFILES/zsh/plugins.sh"
 
-# load functions written as basic scripts
-autoload -Uz $DOTFILES/functions/*(:t)
+# functions grouped by topic (as opposed to miscellaneous functions defined in
+# $DOTFILES/functions)
+typeset -u topic_functions
+topic_functions=($DOTFILES/**/functions/*(:t))
+for function in $topic_functions
+do
+  autoload -Uz "$function"
+done
+
+# add topic_folder/functions to fpath to enable functions and completion scripts
+typeset -u topic_functions_folders
+topic_functions_folders=($DOTFILES/**/functions)
+for topic_functions_folder in $topic_functions_folders
+do
+  fpath=("$topic_functions_folder" $fpath);
+done
 
 # <<<< after dependencies >>>>
 
@@ -46,8 +59,6 @@ source "$DOTFILES/zsh/prompt.zsh"
 
 # allow aliases to use defined functions
 source "$DOTFILES/zsh/alias.zsh"
-
-# <<<<<<<< files elsewhere in repo >>>>>>>>
 
 # define variable to store list of files to source
 # note: -U ensures uniqueness
@@ -64,14 +75,18 @@ setopt noextended_glob
 # to add to path, write `path=(<new-addition> $path)`
 typeset -U path
 
-# load path files
-for file in ${(M)config_files:#*/path.zsh}
+typeset -U path_files
+path_files=(${(M)config_files:#*/path.zsh})
+for path_file in $path_files
 do
-  source "$file"
+  source "$path_file"
 done
 
-# load !path && !completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+
+# load files that are not completion, path or functions
+typeset -u all_other_files
+all_other_files=(${${config_files:#*/path.zsh}:#*/completion.zsh})
+for file in $all_other_files
 do
   source "$file"
 done
@@ -79,4 +94,4 @@ done
 # files defining multiple functions must be run to make those functions
 # available
 # performed after setting fpath to make functions available to execute
-_execute_functions
+# _execute_functions

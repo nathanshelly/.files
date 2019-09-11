@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+# set alacritty to font size for 15 inch, 2k resolution laptop
+# mnemonic - `alacritty font down`
+sed -i '' 's/size: .*/size: 13.0/g' "$DOTFILES/config.symlink/alacritty/alacritty.yml"
