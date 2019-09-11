@@ -9,6 +9,7 @@ source "$DOTFILES/zsh/path.zsh"
 
 source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/options.zsh"
+source "$DOTFILES/zsh/manydots.zsh"
 
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
@@ -82,7 +83,6 @@ do
   source "$path_file"
 done
 
-
 # load files that are not completion, path or functions
 typeset -u all_other_files
 all_other_files=(${${config_files:#*/path.zsh}:#*/completion.zsh})
@@ -90,8 +90,3 @@ for file in $all_other_files
 do
   source "$file"
 done
-
-# files defining multiple functions must be run to make those functions
-# available
-# performed after setting fpath to make functions available to execute
-# _execute_functions
