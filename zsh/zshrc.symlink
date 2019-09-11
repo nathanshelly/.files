@@ -3,8 +3,6 @@
 # specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# <<<<<<<< files in this folder >>>>>>>>
-
 # <<<< without dependencies >>>>
 source "$DOTFILES/zsh/config.zsh"
 source "$DOTFILES/zsh/path.zsh"
@@ -12,6 +10,9 @@ source "$DOTFILES/zsh/path.zsh"
 source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/options.zsh"
 source "$DOTFILES/zsh/fpath.zsh"
+
+# store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
+[ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
 # <<<< dependencies >>>>
 
@@ -28,11 +29,17 @@ source "$DOTFILES/zsh/spectrum.zsh"
 #   - https://github.com/getantibody/antibody
 source "$DOTFILES/zsh/plugins.sh"
 
+# load functions written as basic scripts
+autoload -Uz $DOTFILES/functions/*(:t)
+
 # <<<< after dependencies >>>>
 
 # source plugins config after sourcing plugins themselves
 source "$DOTFILES/zsh/plugins.zsh"
 source "$DOTFILES/zsh/prompt.zsh"
+
+# allow aliases to use defined functions
+source "$DOTFILES/zsh/alias.zsh"
 
 # <<<<<<<< files elsewhere in repo >>>>>>>>
 
@@ -54,5 +61,6 @@ typeset -U path
 # load path files
 for file in ${(M)config_files:#*/path.zsh}
 do
+  echo "$file"
   source "$file"
 done

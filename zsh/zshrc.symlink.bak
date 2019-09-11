@@ -1,18 +1,3 @@
-# store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
-[ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
-
-# load functions written as basic scripts
-autoload -Uz $DOTFILES/functions/*(:t)
-
-# allow aliases to use defined functions
-source "$DOTFILES/zsh/alias.zsh"
-
-# load !path && !completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source "$file"
-done
-
 # start autocomplete
 # TODO: revisit caching here?
 # ref - https://htr3n.github.io/2018/07/faster-zsh/#optimising-shell-prompts
