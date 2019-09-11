@@ -14,6 +14,12 @@ source "$DOTFILES/zsh/fpath.zsh"
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
+# start autocomplete
+# TODO: revisit caching here?
+# ref - https://htr3n.github.io/2018/07/faster-zsh/#optimising-shell-prompts
+autoload -Uz compinit
+compinit -C
+
 # <<<< dependencies >>>>
 
 # make colors defined by spectrum available in other files

@@ -1,8 +1,3 @@
-# start autocomplete
-# TODO: revisit caching here?
-# ref - https://htr3n.github.io/2018/07/faster-zsh/#optimising-shell-prompts
-autoload -Uz compinit
-compinit -C
 
 # load completion files
 for file in ${(M)config_files:#*/completion.zsh}
