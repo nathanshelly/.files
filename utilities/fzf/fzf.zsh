@@ -9,7 +9,9 @@
 
 # <<<< completion >>>>
 
-brew_prefix="$(brew --prefix)"
+# NOTE: if this is causing issues, try seeing if `brew --prefix` returns a
+# different value. Using static "/usr/local" for speed
+brew_prefix="/usr/local"
 
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
