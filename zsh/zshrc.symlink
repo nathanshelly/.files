@@ -3,6 +3,35 @@
 # specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+# <<<<<<<< files in this folder >>>>>>>>
+
+# <<<< without dependencies >>>>
+source "$DOTFILES/zsh/config.zsh"
+source "$DOTFILES/zsh/path.zsh"
+
+# <<<< dependencies >>>>
+
+# make colors defined by spectrum available in other files
+source "$DOTFILES/zsh/spectrum.zsh"
+
+# << plugins >>
+# source antibody - static (faster) method
+# sources static file that must be regenerated any time a new plugin is added
+# regenerate by running the following (aliased to `antibundle` in alias.zsh):
+#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
+# refs:
+#   - https://getantibody.github.io/#static-loading
+#   - https://github.com/getantibody/antibody
+source "$DOTFILES/zsh/plugins.sh"
+
+# <<<< after dependencies >>>>
+
+# source plugins config after sourcing plugins themselves
+source "$DOTFILES/zsh/plugins.zsh"
+source "$DOTFILES/zsh/prompt.zsh"
+
+# <<<<<<<< files elsewhere in repo >>>>>>>>
+
 # define variable to store list of files to source
 # note: -U ensures uniqueness
 typeset -U config_files
@@ -19,25 +48,7 @@ setopt noextended_glob
 typeset -U path
 
 # load path files
-source "$DOTFILES/zsh/path.zsh"
 for file in ${(M)config_files:#*/path.zsh}
 do
   source "$file"
 done
-
-# make colors defined by spectrum available in other files
-source "$DOTFILES/zsh/spectrum.zsh"
-
-# << plugins >>
-# source antibody - static (faster) method
-# sources static file that must be regenerated any time a new plugin is added
-# regenerate by running the following (aliased to `antibundle` in alias.zsh):
-#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
-# refs:
-#   - https://getantibody.github.io/#static-loading
-#   - https://github.com/getantibody/antibody
-source "$DOTFILES/zsh/plugins.sh"
-
-# source plugins config after sourcing plugins themselves
-source "$DOTFILES/zsh/plugins.zsh"
-source "$DOTFILES/zsh/prompt.zsh"
