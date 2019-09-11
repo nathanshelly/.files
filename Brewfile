@@ -51,6 +51,7 @@ brew "fasd"
 brew "fd"
 brew "fzf"
 brew "hub"
+brew "hyperfine"
 brew "git"
 brew "mas"
 brew "neovim", args: ["HEAD"]
