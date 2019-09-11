@@ -9,6 +9,10 @@
 source "$DOTFILES/zsh/config.zsh"
 source "$DOTFILES/zsh/path.zsh"
 
+source "$DOTFILES/zsh/keymap.zsh"
+source "$DOTFILES/zsh/options.zsh"
+source "$DOTFILES/zsh/fpath.zsh"
+
 # <<<< dependencies >>>>
 
 # make colors defined by spectrum available in other files
