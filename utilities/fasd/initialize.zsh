@@ -1,4 +1,4 @@
-command -v fuck || return
+command -v fasd > /dev/null 2>&1 || return
 
 # turn on fasd if installed
 # use a cache to reduce hit on shell performance
