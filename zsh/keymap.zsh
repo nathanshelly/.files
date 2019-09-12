@@ -49,7 +49,7 @@ bindkey -M vicmd v edit-command-line
 # << inner & surround extensions >>
 # ref - https://www.reddit.com/r/vim/comments/7wj81e/you_can_get_vim_bindings_in_zsh_and_bash/du3tx3z?utm_source=share&utm_medium=web2x
 
-# ci"
+# ci", ci', ci`
 autoload -U select-quoted
 zle -N select-quoted
 for m in visual viopp; do
