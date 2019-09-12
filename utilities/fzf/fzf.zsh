@@ -17,7 +17,11 @@ brew_prefix="$(brew --prefix)"
   source "$brew_prefix/opt/fzf/shell/completion.zsh" 2>/dev/null
 }
 
-# keybindings
+# default keybindings
+# `^t` - pastes selected files
+# `M-c` - navigate to directory (`cd` into selected folder) 
+# `^r` - overridden below (still history search but slightly different from
+# default behavior)
 source "$brew_prefix/opt/fzf/shell/key-bindings.zsh"
 
 # use `fd` for `**` path completion
@@ -61,24 +65,16 @@ export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
 ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 
 # << list files >>
-# NOTE: mapped to `C-f` instead of default `C-t`
 
-# paste selected files
-# `^f` ignores files/directories listed in .(git)ignore files
-bindkey '^f' fzf-file-widget
+# `^f` lists files starting from root of current repo
+bindkey '^f' fzf-repo-file-widget
 # `^a` lists all files/directories (including those listed in (git)ignore files)
 bindkey '^a' fzf-ignored-file-widget
-# `^g` lists files starting from root of current repo
-bindkey '^g' fzf-repo-file-widget
-
+# `^t` ignores files/directories listed in .(git)ignore files
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
 
 # << navigate to directory (`cd` into selected folder) >>
-# NOTE: mapped to `C-t` instead of default `M-c`
-
-# note: overrides default of '^t' being bound to `fzf-file-widget`
-bindkey '^t' fzf-cd-widget
 export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git"
 export FZF_ALT_C_OPTS="--preview='exa --color always {}'"
 
