@@ -66,9 +66,9 @@ ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 # << list files >>
 
 # `^f` lists files starting from root of current repo
-bindkey '^f' fzf-repo-file-widget
+bindkey '^f' fzf_repo_file_widget
 # `^a` lists all files/directories (including those listed in (git)ignore files)
-bindkey '^a' fzf-ignored-file-widget
+bindkey '^a' fzf_ignored_file_widget
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
