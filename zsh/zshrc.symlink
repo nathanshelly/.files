@@ -35,16 +35,6 @@ unset _comp_files
 # make colors defined by spectrum available in other files
 source "$DOTFILES/zsh/spectrum.zsh"
 
-# << plugins >>
-# source antibody - static (faster) method
-# sources static file that must be regenerated any time a new plugin is added
-# regenerate by running the following (aliased to `antibundle` in alias.zsh):
-#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
-# refs:
-#   - https://getantibody.github.io/#static-loading
-#   - https://github.com/getantibody/antibody
-source "$DOTFILES/zsh/plugins.sh"
-
 # functions grouped by topic (as opposed to miscellaneous functions defined in
 # $DOTFILES/functions)
 typeset -u topic_functions
@@ -64,9 +54,6 @@ done
 
 # <<<< after dependencies >>>>
 
-# source plugins config after sourcing plugins themselves
-source "$DOTFILES/zsh/plugins.zsh"
-source "$DOTFILES/zsh/prompt.zsh"
 
 # allow aliases to use defined functions
 source "$DOTFILES/zsh/alias.zsh"
@@ -100,3 +87,8 @@ for file in $all_other_files
 do
   source "$file"
 done
+
+# load and configure plugins
+source "$DOTFILES/zsh/plugins.zsh"
+# configure prompt after enabling
+source "$DOTFILES/zsh/prompt.zsh"

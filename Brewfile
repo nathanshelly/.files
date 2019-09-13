@@ -34,16 +34,11 @@ tap "homebrew/cask-versions"
 # ref - https://github.com/Homebrew/homebrew-cask-fonts
 tap "homebrew/cask-fonts"
 
-# zsh plugin manager
-# ref - https://github.com/getantibody/antibody
-tap "getantibody/tap"
-
 # <<<<<<<< packages (formulae) >>>>>>>>
 
 brew "asciinema"
 brew "awscli"
 brew "bat"
-brew "getantibody/tap/antibody"
 brew "coreutils"
 brew "exa"
 brew "exiftool"

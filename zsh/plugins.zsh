@@ -1,5 +1,29 @@
-# customizing plugins specified in `$DOTFILES/zsh/plugins.txt`, installed from
-# `$DOTFILES/zsh/plugins.sh` using `antibody`
+# <<<<<<<<<<<<<<<<<<< start of zplugin installer-added chunk >>>>>>>>>>>>>>>>>>>
+source "$HOME/.zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+# <<<<<<<<<<<<<<<<<<< start of zplugin installer-added chunk >>>>>>>>>>>>>>>>>>>
+
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+zplugin ice wait atload'_zsh_autosuggest_start' lucid
+zplugin light zsh-users/zsh-autosuggestions
+
+# TODO: see if this would benefit from asynchronicity
+zplugin light zdharma/fast-syntax-highlighting
+
+# synchronize system clipboard
+# theoretically you might need to source this after other keymappings, have not
+# yet seen a need for enforcing that
+# TODO: see if this would benefit from asynchronicity
+zplugin light kutsan/zsh-system-clipboard
+
+# prompt
+# ref - https://github.com/denysdovhan/spaceship-prompt
+# TODO: figure out how to load this asynchnously
+zplugin light denysdovhan/spaceship-prompt
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<< syntax highlighting >>>>
 # TODO: understand why this doesn't seem to be working
@@ -35,23 +59,8 @@ bindkey '^ ' autosuggest-execute
 # accept next word
 bindkey '^w' forward-word
 
-# <<<< history-substring-search >>>>
-# similar to `jk/`, convenient when query already typed out
-# ref - https://github.com/zsh-users/zsh-history-substring-search
-
-# << keymappings >>
-bindkey '^u' history-substring-search-up
-bindkey '^y' history-substring-search-down
-
 # <<< zsh-system-clipboard
 # https://github.com/kutsan/zsh-system-clipboard#options
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX='true'
 
-# << end of configuration >>
-
-# alias generation of plugins file (installation of new plugins)
-local ANTIBUNDLE_IN="$DOTFILES/zsh/plugins.txt"
-local ANTIBUNDLE_OUT="$DOTFILES/zsh/plugins.sh"
-alias antibundle="antibody bundle < $ANTIBUNDLE_IN > $ANTIBUNDLE_OUT"
-# remove created variables to avoid littering global scope
-unset ANTIBUNDLE_IN ANTIBUNDLE_OUT
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>>
