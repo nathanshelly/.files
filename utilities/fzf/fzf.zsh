@@ -57,7 +57,7 @@ _fzf_bat_preview="--preview='bat --style=numbers --color=always {}'"
 _fzf_preview_window="--preview-window=down:75%"
 _fzf_hidden_preview_window="${_fzf_preview_window}:hidden"
 
-export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
  --select-1 --exit-0 --multi\
  $_fzf_preview_window\
