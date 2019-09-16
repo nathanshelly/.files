@@ -91,4 +91,4 @@ done
 # load and configure plugins
 source "$DOTFILES/zsh/plugins.zsh"
 # configure prompt after enabling
-source "$DOTFILES/zsh/prompt.zsh"
+source "$DOTFILES/zsh/prompt_new.zsh"

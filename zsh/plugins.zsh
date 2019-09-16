@@ -19,9 +19,11 @@ zplugin ice wait"0" lucid
 zplugin light kutsan/zsh-system-clipboard
 
 # prompt
-# ref - https://github.com/denysdovhan/spaceship-prompt
-# TODO: figure out how to load this asynchnously
-zplugin light denysdovhan/spaceship-prompt
+# TODO: load asyncronously here?
+# zplugin ice atclone'curl -fsSL https://gist.githubusercontent.com/romkatv/7cbab80dcbc639003066bb68b9ae0bbf/raw/pure10k.zsh -o pure10k.zsh' \
+#     atpull'%atclone' run-atpull atload"powerlevel9k_prepare_prompts" \
+#     src"pure10k.zsh" wait"0" lucid reset-prompt
+zplugin light romkatv/powerlevel10k
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
