@@ -8,13 +8,14 @@ autoload -Uz _zplugin
 zplugin ice wait atload'_zsh_autosuggest_start' lucid
 zplugin light zsh-users/zsh-autosuggestions
 
-# TODO: see if this would benefit from asynchronicity
+zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
 # synchronize system clipboard
 # theoretically you might need to source this after other keymappings, have not
 # yet seen a need for enforcing that
 # TODO: see if this would benefit from asynchronicity
+zplugin ice wait"0" lucid
 zplugin light kutsan/zsh-system-clipboard
 
 # prompt
