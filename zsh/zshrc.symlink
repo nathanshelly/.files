@@ -3,6 +3,10 @@
 # specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+# zsh conveniently links path array and PATH env var
+# to add to path, write `path=(<new-addition> $path)`
+typeset -U path
+
 # <<<< without dependencies >>>>
 source "$DOTFILES/zsh/config.zsh"
 source "$DOTFILES/zsh/path.zsh"
@@ -43,6 +47,7 @@ for function in $topic_functions
 do
   autoload -Uz "$function"
 done
+unset topic_functions
 
 # add topic_folder/functions to fpath to enable functions and completion scripts
 typeset -u topic_functions_folders
@@ -51,9 +56,9 @@ for topic_functions_folder in $topic_functions_folders
 do
   fpath=("$topic_functions_folder" $fpath);
 done
+unset topic_functions_folders
 
 # <<<< after dependencies >>>>
-
 
 # allow aliases to use defined functions
 source "$DOTFILES/zsh/alias.zsh"
@@ -69,16 +74,13 @@ setopt extended_glob
 config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
 setopt noextended_glob
 
-# zsh conveniently links path array and PATH env var
-# to add to path, write `path=(<new-addition> $path)`
-typeset -U path
-
 typeset -U path_files
 path_files=(${(M)config_files:#*/path.zsh})
 for path_file in $path_files
 do
   source "$path_file"
 done
+unset path_files
 
 # load files that are not completion, path or functions
 typeset -u all_other_files
@@ -87,6 +89,9 @@ for file in $all_other_files
 do
   source "$file"
 done
+unset all_other_files
+
+unset config_files
 
 # load and configure plugins
 source "$DOTFILES/zsh/plugins.zsh"
