@@ -40,6 +40,7 @@ au BufWinEnter * set number
 au BufWinEnter * set relativenumber
 
 " absolute number in insert mode, otherwise hybrid
+" TODO: handle exiting insert mode w/ C-c?
 " ref - https://jeffkreeftmeijer.com/vim-number/
 augroup numbertoggle
   autocmd!
