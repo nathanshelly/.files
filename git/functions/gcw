@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+# create a commit w/ given message (default `wip`) with all changes starting at
+# root. similar to `git stash`, except adds untracked files
+# mnemonic - `git commit wip`
+git add "$(git rev-parse --show-toplevel)"
+git commit --message "${1:-wip}" --no-verify

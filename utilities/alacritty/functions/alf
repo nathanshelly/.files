@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+# set alacritty font size
+sed -i '' "s/size: .*/size: $1/g" "$DOTFILES/config.symlink/alacritty/alacritty.yml"

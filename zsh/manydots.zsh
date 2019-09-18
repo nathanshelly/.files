@@ -61,22 +61,8 @@ manydots.on() {
   return 0
 }
 
-manydots.off() {
-  emulate -L zsh
-  local self_insert_function backward_delete_char_function
-  zstyle -s ':manydots' self-insert-function self_insert_function
-
-  [[ -n "$self_insert_function" ]] &&
-    zle -A "$self_insert_function" self-insert
-
-  zstyle ':manydots' magic-count 0
-
-  return 0
-}
-
 zle -N manydots.self-insert
 zle -N manydots.on
-zle -N manydots.off
 
 manydots() {
   manydots.on

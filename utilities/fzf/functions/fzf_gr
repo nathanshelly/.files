@@ -1,0 +1,14 @@
+#! /usr/bin/env zsh
+
+is_in_git_repo || return
+local bindings preview
+bindings='ctrl-space:toggle-preview'
+preview='git log --oneline --graph --date=short --color=always'
+preview+=' --pretty="format:%C(auto)%cd %h%d %s"'
+preview+=' $(sed s/^..// <<< {} | cut -d" " -f1) | bat'
+
+git branch -a --color=always | grep -v '/HEAD\s' | sort |
+fzf --ansi --multi --tac --preview-window right:70% --bind="$bindings" \
+  --preview "$preview" |
+sed 's/^..//' | cut -d' ' -f1 |
+sed 's#^remotes/##'

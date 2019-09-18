@@ -1,0 +1,4 @@
+#! /usr/bin/env zsh
+
+# move back linearly a given number of commits
+git checkout HEAD~$1

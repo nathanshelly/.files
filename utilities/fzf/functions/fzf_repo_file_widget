@@ -1,0 +1,22 @@
+#! /usr/bin/env zsh
+
+# adapted from `fzf-file-widget`
+# TODO: clean up opts
+__fsel_repo() {
+  local cmd="${FZF_CTRL_T_COMMAND}"
+  setopt localoptions pipefail 2> /dev/null
+  eval "$FZF_CTRL_T_COMMAND . $(rr)" \
+    | sed "s~^$(rr)/~~" \
+    | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS --preview='bat --style=numbers --color=always $(rr)/{}'" $(__fzfcmd) -m "$@" \
+    | while read item; do
+    echo -n "${(q)item} "
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+LBUFFER="${LBUFFER}$(__fsel_repo)"
+local ret=$?
+zle reset-prompt
+return $ret

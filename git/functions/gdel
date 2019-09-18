@@ -1,0 +1,11 @@
+#! /usr/bin/env zsh
+
+# delete given branch locally & remotely
+[[ -z $1 ]] && {
+  echo 'No branch given, aborting'
+  return 1
+}
+
+# `$@` holds all arguments
+git branch --delete --force $@
+git push origin --delete $@

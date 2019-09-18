@@ -1,3 +1,6 @@
+# path to dotfiles
+export DOTFILES="$HOME/.files"
+
 # << homebrew >>
 # ref - https://github.com/Homebrew/brew/blob/master/docs/Manpage.md#environment
 

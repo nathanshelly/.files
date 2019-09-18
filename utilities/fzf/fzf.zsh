@@ -9,7 +9,9 @@
 
 # <<<< completion >>>>
 
-brew_prefix="$(brew --prefix)"
+# NOTE: if this is causing issues, try seeing if `brew --prefix` returns a
+# different value. Using static "/usr/local" for speed
+brew_prefix="/usr/local"
 
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
@@ -41,16 +43,13 @@ _fzf_compgen_dir() {
 # NOTE: corresponding widgets defined in `./functions.zsh` &
 # `$(brew --prefix)/opt/fzf/shell/key-bindings.zsh`
 
-# execute `functions` to make functions available
-source "$DOTFILES/utilities/fzf/functions.zsh"
-
 # << zsh functions -> widgets >>
 # zsh requires explicit marking of functions that will be mapped as widgets
-zle -N fzf-edit-widget
-zle -N fzf-repo-file-widget
-zle -N fzf-ignored-file-widget
-zle -N fzf-history-widget-accept
-zle -N fzf-modified-history-widget
+zle -N fzf_edit_widget
+zle -N fzf_repo_file_widget
+zle -N fzf_ignored_file_widget
+zle -N fzf_history_widget_accept
+zle -N fzf_modified_history_widget
 
 # << shared >>
 _fzf_bat_preview="--preview='bat --style=numbers --color=always {}'"
@@ -67,10 +66,10 @@ ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 # << list files >>
 
 # `^f` lists files starting from root of current repo
-bindkey '^f' fzf-repo-file-widget
+bindkey '^f' fzf_repo_file_widget
 # `^a` lists all files/directories (including those listed in (git)ignore files)
-bindkey '^a' fzf-ignored-file-widget
-# `^t` ignores files/directories listed in .(git)ignore files
+bindkey '^a' fzf_ignored_file_widget
+
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
 
@@ -81,10 +80,10 @@ export FZF_ALT_C_OPTS="--preview='exa --color always {}'"
 # << edit w/ $EDITOR >>
 
 # edit selected file (same as `e <c-f>`)
-bindkey '^p' fzf-edit-widget
+bindkey '^p' fzf_edit_widget
 export FZF_EDIT_OPTS="$_fzf_bat_preview"
 
 # << shell history >>
 # ref - https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
-bindkey -M vicmd '/' fzf-modified-history-widget
-bindkey '^r' fzf-modified-history-widget
+bindkey -M vicmd '/' fzf_modified_history_widget
+bindkey '^r' fzf_modified_history_widget
