@@ -26,9 +26,15 @@ done
 ZSH_SPECTRUM_TEXT=${ZSH_SPECTRUM_TEXT:-Arma virumque cano Troiae qui primus ab oris}
 
 # Show all 256 colors with color number
-function spectrum_ls() {
+function spectrum_vls() {
   for code in {000..255}; do
     print -P -- "$code: %{$FG[$code]%}$ZSH_SPECTRUM_TEXT%{$reset_color%}"
+  done
+}
+
+function spectrum_ls() {
+  for i in {0..255}; do
+    print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'};
   done
 }
 
