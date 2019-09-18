@@ -1,8 +1,65 @@
-# path to dotfiles
-export DOTFILES="$HOME/.files"
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# This zshrc sources files in $DOTFILES/zsh & any `.zsh` files in the directory
+# specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# <<<< without dependencies >>>>
+source "$DOTFILES/zsh/config.zsh"
+source "$DOTFILES/zsh/path.zsh"
+
+source "$DOTFILES/zsh/keymap.zsh"
+source "$DOTFILES/zsh/options.zsh"
+source "$DOTFILES/zsh/manydots.zsh"
+
+# store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
+[ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
+
+# Load and initialize the completion system ignoring insecure directories with a
+# cache time of 20 hours, so it should almost always regenerate the first time a
+# shell is opened each day.
+#
+# Below code taken from comment by `laggardkernel` at bottom of the `htr3n` ref
+#
+# ref - https://htr3n.github.io/2018/07/faster-zsh/#optimising-shell-prompts
+autoload -Uz compinit
+_comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
+if (( $#_comp_files )); then
+  compinit -i -C
+else
+  compinit -i
+fi
+unset _comp_files
+
+# <<<< dependencies >>>>
+
+# make colors defined by spectrum available in other files
+source "$DOTFILES/zsh/spectrum.zsh"
+
+# functions grouped by topic (as opposed to miscellaneous functions defined in
+# $DOTFILES/functions)
+typeset -u topic_functions
+topic_functions=($DOTFILES/**/functions/*(:t))
+for function in $topic_functions
+do
+  autoload -Uz "$function"
+done
+
+# add topic_folder/functions to fpath to enable functions and completion scripts
+typeset -u topic_functions_folders
+topic_functions_folders=($DOTFILES/**/functions)
+for topic_functions_folder in $topic_functions_folders
+do
+  fpath=("$topic_functions_folder" $fpath);
+done
+
+# <<<< after dependencies >>>>
+
+
+# allow aliases to use defined functions
+source "$DOTFILES/zsh/alias.zsh"
 
 # define variable to store list of files to source
-# note: -U ensures path does not contain duplicates
+# note: -U ensures uniqueness
 typeset -U config_files
 
 # enable `extended_glob` to exclude directories (submodules, zsh) in match
@@ -12,78 +69,26 @@ setopt extended_glob
 config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
 setopt noextended_glob
 
-# zsh conveniently links path array and PATH env var (along with other pairs)
+# zsh conveniently links path array and PATH env var
 # to add to path, write `path=(<new-addition> $path)`
 typeset -U path
 
-source "$DOTFILES/zsh/path.zsh"
+typeset -U path_files
+path_files=(${(M)config_files:#*/path.zsh})
+for path_file in $path_files
+do
+  source "$path_file"
+done
 
-# load path files
-for file in ${(M)config_files:#*/path.zsh}
+# load files that are not completion, path or functions
+typeset -u all_other_files
+all_other_files=(${${config_files:#*/path.zsh}:#*/completion.zsh})
+for file in $all_other_files
 do
   source "$file"
 done
 
-source "$DOTFILES/zsh/env_vars.zsh"
-
-# make colors defined by spectrum available in other files
-source "$DOTFILES/zsh/spectrum.zsh"
-source "$DOTFILES/zsh/prompt.zsh"
-source "$DOTFILES/zsh/config.zsh"
-source "$DOTFILES/zsh/fpath.zsh"
-source "$DOTFILES/zsh/keymap.zsh"
-source "$DOTFILES/zsh/options.zsh"
-
-# source antibody - static method
-# loads static file that must be regenerated any time a new plugin is added
-# regenerate by running the following (aliased to `antibundle` in alias.zsh):
-#   `antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"`
-# refs:
-#   - https://getantibody.github.io/#static-loading
-#   - https://github.com/getantibody/antibody
-source "$DOTFILES/zsh/plugins.sh"
-
-# source plugins configuration after sourcing plugins themselves
+# load and configure plugins
 source "$DOTFILES/zsh/plugins.zsh"
-
-# store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
-[ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
-
-# load functions written as basic scripts
-autoload -Uz $DOTFILES/functions/*(:t)
-
-# allow aliases to use defined functions
-source "$DOTFILES/zsh/alias.zsh"
-
-# load !path && !completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source "$file"
-done
-
-# start autocomplete
-autoload -Uz compinit
-
-# use cache for compinit
-# TODO: profile this to see how much of a difference it actually makes
-# ref - https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null \
-  || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != "$updated_at" ]; then
-  compinit -i
-else
-  compinit -C -i
-fi
-
-# load completion files
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source "$file"
-done
-
-unset config_files
-
-# files defining multiple functions must be run to make those functions
-# available
-# performed after setting fpath to make functions available to execute
-_execute_functions
+# configure prompt after enabling
+source "$DOTFILES/zsh/prompt.zsh"

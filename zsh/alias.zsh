@@ -23,5 +23,3 @@ alias i=exiftool # metadata info
 alias o=open # macOS open command
 alias pm="$(package_manager)"
 alias t=trash # macOS trash command
-
-alias antibundle='antibody bundle < "$DOTFILES/zsh/plugins.txt" > "$DOTFILES/zsh/plugins.sh"'

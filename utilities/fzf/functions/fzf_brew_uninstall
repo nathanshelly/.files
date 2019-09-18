@@ -1,0 +1,9 @@
+#! /usr/bin/env zsh
+
+# fuzzily uninstall brew packages
+# ref - https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/bcp
+local uninst=$(brew leaves | eval "fzf ${FZF_DEFAULT_OPTS} -m")
+
+[[ "$uninst" ]] && {
+  for prog in $(echo "$uninst"); do brew uninstall "$prog"; done
+}

@@ -1,0 +1,4 @@
+#! /usr/bin/env zsh
+
+# `cd` to repo root if in a git repo
+cd "$(rr)"

@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+# fuzzily upgrade brew packages
+# ref - https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/bup
+local upd=$(brew outdated | eval "fzf ${FZF_DEFAULT_OPTS} -m")
+
+[[ "$upd" ]] && for prog in $(echo "$upd"); do brew upgrade "$prog"; done
