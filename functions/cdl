@@ -1,9 +1,0 @@
-#! /usr/bin/env bash
-
-# usage: cdl <directory>
-cd "$1" || exit
-if command -v exa > /dev/null; then
-  exa
-else
-  ls
-fi
