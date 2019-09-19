@@ -1,7 +1,0 @@
-#! /usr/bin/env zsh
-
-# fuzzily install brew packages
-# ref - https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/bip
-local inst=$(brew search | eval "fzf ${FZF_DEFAULT_OPTS} -m")
-
-[[ "$inst" ]] && for prog in $(echo "$inst"); do brew install "$prog"; done
