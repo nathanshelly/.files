@@ -80,7 +80,7 @@ for path_file in $path_files
 do
   source "$path_file"
 done
-unset path_files
+unset path_files path_file
 
 # load files that are not completion, path or functions
 typeset -u all_other_files
@@ -89,7 +89,7 @@ for file in $all_other_files
 do
   source "$file"
 done
-unset all_other_files
+unset all_other_files file
 
 unset config_files
 

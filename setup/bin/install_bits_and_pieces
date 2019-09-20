@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # check that DOTFILES variable is defined
-# shellcheck disable=1090
+# shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
 source "$DOTFILES/setup/lib/prompts.sh"

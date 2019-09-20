@@ -1,4 +1,4 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # add tracked files from root and ammend w/o verifying or editing commit message
 git add --update "$(git rev-parse --show-toplevel)"

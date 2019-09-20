@@ -2,6 +2,8 @@
 
 # modified version of default `fzf-history-widget` to allow dynamic editing or
 # execution of selected history line
+# TODO: look at shellcheck results when switching shebang to bash (anything to
+# fix in zsh land?)
 # ref - https://github.com/junegunn/fzf/issues/477#issuecomment-444053054
 local selected num
 setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
@@ -13,7 +15,7 @@ if [ -n "$selected" ]; then
     accept=1
     shift selected
   fi
-  num=$selected[1]
+  num=${selected[1]}
   if [ -n "$num" ]; then
     zle vi-fetch-history -n $num
     [[ $accept = 0 ]] && zle accept-line

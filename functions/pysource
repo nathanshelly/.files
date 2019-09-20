@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
 
 # source a python virtual environment
-# shellcheck disable=1090
+# shellcheck disable=SC1090
 source "$HOME/.virtualenvs/$1/bin/activate"

@@ -1,5 +1,5 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # add all files below $PWD except given files/directories
 git add .
-git reset -- $@
+git reset -- "$@"

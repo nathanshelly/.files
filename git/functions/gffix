@@ -1,4 +1,4 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # rebase given branch on fix branch
 # abort if no branch given

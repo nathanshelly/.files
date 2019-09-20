@@ -1,4 +1,4 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # create a commit w/ given message (default `wip`) with all changes starting at
 # root. similar to `git stash`, except adds untracked files

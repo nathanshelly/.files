@@ -11,13 +11,14 @@ if git rev-parse --quiet --verify fix > /dev/null 2>&1; then
   git branch --delete fix || {
     # if deletion fails, echo reason then return with exit code
     maybe_err=$?
-    echo 'Deletion of `fix` branch failed, delete it manually then try again'
+    echo "Deletion of 'fix' branch failed, delete it manually then try again"
     return $maybe_err
   }
 fi
 
 # checkout out # commits back or specific hash depending on user input
 # <-> matches any number of digits
+# TODO: clean this up
 { { [[ $1 = <-> ]] && (( $1 < 50 )) } && gback "$1" || git checkout "$1" } || {
   maybe_err=$?
   echo 'Checkout failed, please fix the error then try again'
