@@ -123,6 +123,7 @@ let g:fzf_commands_expect = 'ctrl-space'
 let g:fzf_layout = { 'down': '75%' }
 
 " :Rg - add toggleable (w/ Space) preview w/ context
+" TODO: allow searching without filename? `--no-filename` Rg
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
