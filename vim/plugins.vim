@@ -187,7 +187,6 @@ nmap <leader>fmp :Maps<cr>
 " ref - https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html#project-navigation
 " TODO: add `mru` searching? - https://github.com/pbogut/fzf-mru.vim
 
-
 " <<<< goyo.vim & limelight.vim >>>>
 " refs:
 "   - https://github.com/junegunn/limelight.vim#options
