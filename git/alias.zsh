@@ -5,7 +5,6 @@ command -v hub > /dev/null 2>&1 && alias git=hub
 # some git aliases
 # sorted alphabetically
 # uses gitconfig aliases to avoid duplication
-alias g='git'
 # used in constructing other aliases
 alias gnp='git --no-pager'
 
