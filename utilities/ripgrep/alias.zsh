@@ -11,7 +11,7 @@ alias rgc='rg --context 3'
 alias rgf='rg --fixed-strings'
 
 # show only matching filenames
-alias rgl='rg --file-with-matches'
+alias rgl='rg --files-with-matches'
 
 # ignore tests - exclude any filename/directory matching the given patterns
 alias rgnt="rg --glob '!*test*' --glob '!*spec*'"
