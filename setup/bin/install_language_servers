@@ -30,9 +30,9 @@
 # ref - https://github.com/mads-hartmann/bash-language-server
 command -v npm > /dev/null 2>&1 || npm install --global bash-language-server
 
-# ruby - a little flaky, switch if a better option appears
+# ruby - too flaky currently, TODO: look at other ruby options
 # ref - https://github.com/castwide/solargraph
-command -v gem > /dev/null 2>&1 || gem install solargraph
+# command -v gem > /dev/null 2>&1 || gem install solargraph
 
 # rust - flaky, issues w/ formatting & linting, return to
 # install rustup, then requisite packages
