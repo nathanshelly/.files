@@ -1,10 +1,10 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 is_in_git_repo || return
 
-local preview
 preview='(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | bat'
 
 git -c color.status=always status --short |
 fzf -m --ansi --nth 2..,.. --preview "$preview" |
 cut -c4- | sed 's/.* -> //'
+unset preview

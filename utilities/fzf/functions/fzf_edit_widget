@@ -3,7 +3,7 @@
 # edit selected file
 # lightly adapted from `fzf-cd-widget`
 setopt localoptions pipefail 2> /dev/null
-local file="$(
+file="$(
   eval "$FZF_DEFAULT_COMMAND" \
     | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_EDIT_OPTS" $(__fzfcmd) +m
   )"
@@ -15,6 +15,8 @@ fi
 
 "${EDITOR:-nvim}" "$file"
 
-local ret=$?
+unset file
+
+_fzf_edit_widget_ret=$?
 zle fzf-redraw-prompt
-return $ret
+return "$_fzf_edit_widget_ret"

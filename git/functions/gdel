@@ -1,4 +1,4 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # delete given branch locally & remotely
 [[ -z $1 ]] && {
@@ -7,5 +7,5 @@
 }
 
 # `$@` holds all arguments
-git branch --delete --force $@
-git push origin --delete $@
+git branch --delete --force "$@"
+git push origin --delete "$@"

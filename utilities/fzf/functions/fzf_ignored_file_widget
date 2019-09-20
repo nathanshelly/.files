@@ -1,4 +1,4 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # list ignored files - `fzf-file-widget` with `--no-ignore`
 FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND} --no-ignore" fzf-file-widget

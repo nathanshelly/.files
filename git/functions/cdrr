@@ -1,4 +1,5 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # `cd` to repo root if in a git repo
+# shellcheck disable=SC2164
 cd "$(rr)"

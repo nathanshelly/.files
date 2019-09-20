@@ -1,5 +1,3 @@
-#! /usr/bin/env zsh
-#
 # makes using color codes less painful. Apply a color code with "$FG[...]<text>"
 # (or "$BG[...]<text>") where "..." is the corresponding 3 digit color code
 # (e.g. 001, 089, 127)

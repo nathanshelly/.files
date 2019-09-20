@@ -1,6 +1,6 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
-local port="$1"
+port="$1"
 
 [[ -z $port ]] && {
   echo 'No port given, aborting'
@@ -16,6 +16,9 @@ lsof -i ":$port" > /dev/null 2>&1 || {
 
 # `sed '1d'` removes header line
 # `sed -nE ...` filters out only PIDs
+# don't quote to split multiple port selections (ports should never have a space
+# inside them so this shouldn't ever cause an issue 🤞)
+# shellcheck disable=SC2046
 kill -9 $(\
   lsof -i :"$port" \
   | sed '1d' \
@@ -27,6 +30,8 @@ kill -9 $(\
 sleep 0.01
 
 lsof -i ":$port" > /dev/null 2>&1 && {
-  echo "Remaining attached processes:\n"
+  printf "Remaining attached processes:\n"
   lsof -i ":$port"
 }
+
+unset port

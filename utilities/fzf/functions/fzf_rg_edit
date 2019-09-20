@@ -1,4 +1,4 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # fuzzy select files containing given term
 # TODO: see if search term can be changed interactively
@@ -8,12 +8,14 @@ if [[ $# == 0 ]]; then
     echo 'Error: search term was not provided.'
     return
 fi
-local match=$(
+# TODO: allow multi select here
+match=$(
   rg --color=never --line-number "$1" |
     fzf --no-multi --delimiter : \
         --preview "bat --color=always --line-range {2}: {1}"
-  )
-local file=$(echo "$match" | cut -d':' -f1)
+)
+file=$(echo "$match" | cut -d':' -f1)
 if [[ -n $file ]]; then
-    $EDITOR $file +$(echo "$match" | cut -d':' -f2)
+    "$EDITOR" "$file" +"$(echo "$match" | cut -d':' -f2)"
 fi
+unset match file
