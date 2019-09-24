@@ -14,7 +14,7 @@ A few of the notable configs set here:
 
 ## [`gitconfig.local.symlink.example`](./gitconfig.local.symlink.example)
 
-A template to be filled in locally with the appropriate name and email. This template is filled in during the setup process (specifically via [`$DOTFILES/setup/bin/setup_git_config`](../setup/bin/setup_git_config)). The filled-in template is then symlinked to `$HOME`.
+A template to be filled in locally with the appropriate name and email. This template is filled in during the setup process (specifically via [`$DOTFILES/setup/bin/setup_git_config`](../setup/bin/setup_git_config)). The filled-in template is then symlinked to `$HOME` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink).
 
 ## [`alias.zsh`](./alias.zsh)
 
