@@ -1,8 +1,13 @@
 #! /usr/bin/env bash
 
-# force pull tracking branch & reset to `origin/$1`
-# passing a branch that is not a tracking branch of the checked out local branch will
-# work though may be unintuitive
+# Pull all remotes & hard reset to `origin/$1`
+#
+# For example, `gplf master` will pull all remotes and reset current branch to
+# `origin/master`.
+#
+# Passing a branch that is not a tracking branch of the checked out local branch
+# will still hard reset the current branch to the given branch.
+
 [[ -z $1 ]] && {
   echo 'No branch given, aborting'
   return 1
