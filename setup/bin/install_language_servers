@@ -34,8 +34,9 @@ command -v npm > /dev/null 2>&1 || npm install --global bash-language-server
 # ref - https://github.com/castwide/solargraph
 # command -v gem > /dev/null 2>&1 || gem install solargraph
 
-# rust - flaky, issues w/ formatting & linting, return to
+# rust - flaky, issues w/ formatting & linting
 # install rustup, then requisite packages
+# TODO: figure out best language server here
 # ref - https://rustup.rs/
 command -v rustup > /dev/null 2>&1 || {
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
