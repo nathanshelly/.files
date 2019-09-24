@@ -1,8 +1,12 @@
 #! /usr/bin/env bash
 
-# fetch latest changes, rebase current branch on `origin/$1`
-# passing a branch that is not a tracking branch of the checked out local branch
-# will work though may be unintuitive
+# Pull all remotes & rebase current branch on `origin/$1`
+#
+# For example, `gplr master` rebases the current branch on `origin/master`
+#
+# Passing a branch that is not a tracking branch of the checked out local branch
+# will still rebase the current branch on the given branch.
+
 [[ -z $1 ]] && {
   echo 'No branch given, aborting'
   return 1

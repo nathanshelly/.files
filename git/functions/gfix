@@ -1,18 +1,17 @@
 #! /usr/bin/env zsh
 
-# make a quick fix at a previous commit
-# currently assuming if user enters number > 50 (or gives an alphanumeric
-# value) that they want to jump to a commit hash
-# known issue - inaccurate comparisons for parameters beginning with `0`
-# e.g. `gfix 0759` will print out an error as `(( 0759 < 50 ))` exits with a 0
-# the function still works as the failure of gback triggers execution after ||
+# Create a `fix` branch at the given hash or the given number of commits back
+# based on argument. If argument is a # < 50 it's treated as a number of commits
+# back, otherwise treated as a hash.
+#
+# First part of 2 part workflow (w/ `gffix`) to quickly fix up a previous commit
+
 # attempt to delete `fix` branch if it exists
 if git rev-parse --quiet --verify fix > /dev/null 2>&1; then
   git branch --delete fix || {
     # if deletion fails, echo reason then return with exit code
-    maybe_err=$?
     echo "Deletion of 'fix' branch failed, delete it manually then try again"
-    return $maybe_err
+    return 1
   }
 fi
 
@@ -20,9 +19,8 @@ fi
 # <-> matches any number of digits
 # TODO: clean this up
 { { [[ $1 = <-> ]] && (( $1 < 50 )) } && gback "$1" || git checkout "$1" } || {
-  maybe_err=$?
   echo 'Checkout failed, please fix the error then try again'
-  return $maybe_err
+  return 1
 }
 
 git checkout -b fix # `-b <branch>`

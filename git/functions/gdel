@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 # delete given branch locally & remotely
+
 [[ -z $1 ]] && {
   echo 'No branch given, aborting'
   return 1
