@@ -4,7 +4,7 @@
 # lightly adapted from `fzf-cd-widget`
 setopt localoptions pipefail 2> /dev/null
 file="$(
-  eval "$FZF_DEFAULT_COMMAND" \
+  eval "$FZF_DEFAULT_COMMAND --type file" \
     | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_EDIT_OPTS" $(__fzfcmd) +m
   )"
 
