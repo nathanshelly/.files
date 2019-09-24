@@ -40,7 +40,6 @@
   stsp = stash show --patch
   undo = reset HEAD~
   count = !git shortlog --summary
-  prune=!"git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D"
   last  = log -1 HEAD
   # base alias to build on
   lb = log --graph --abbrev-commit --decorate
