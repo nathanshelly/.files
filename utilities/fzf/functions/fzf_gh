@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+# filter `git log` commits and output hash to shell
+
 is_in_git_repo || return
 format='%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)'
 bindings='ctrl-s:toggle-sort,ctrl-space:toggle-preview'

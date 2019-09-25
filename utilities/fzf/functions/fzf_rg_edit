@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-# fuzzy select files containing given term
+# filter and edit (w/ `$EDITOR`) lines containing given query
 # TODO: see if search term can be changed interactively
 #
 # ref - https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html#find-file-and-edit

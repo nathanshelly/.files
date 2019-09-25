@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+# filter all (local and remote) git branches and output to shell
+
 is_in_git_repo || return
 bindings='ctrl-space:toggle-preview'
 preview='git log --oneline --graph --date=short --color=always'

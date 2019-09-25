@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+# filter and kill processes running on the given port
+
 port="$1"
 
 [[ -z $port ]] && {
