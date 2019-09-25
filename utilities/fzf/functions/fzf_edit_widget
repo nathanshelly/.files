@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-# edit selected file
+# edit selected file w/ `$EDITOR` (falling back to `nvim` if not set)
 # lightly adapted from `fzf-cd-widget`
 setopt localoptions pipefail 2> /dev/null
 file="$(

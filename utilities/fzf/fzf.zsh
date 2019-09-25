@@ -26,6 +26,9 @@ brew_prefix="/usr/local"
 # default behavior)
 source "$brew_prefix/opt/fzf/shell/key-bindings.zsh"
 
+
+# TODO: handle `fd` not being installed
+
 # use `fd` for `**` path completion
 # `$1` is the base path to start traversal
 _fzf_compgen_path() {

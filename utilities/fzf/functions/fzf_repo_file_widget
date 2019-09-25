@@ -1,5 +1,7 @@
 #! /usr/bin/env zsh
 
+# filter and output files from the root of the current repo
+
 # adapted from `fzf-file-widget`
 # TODO: clean up opts
 __fsel_repo() {
