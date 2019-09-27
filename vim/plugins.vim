@@ -93,6 +93,8 @@ let mapleader=" "
 let g:surround_{char2nr('s')} = "<\r>"
 let g:surround_{char2nr('S')} = "< \r >"
 
+" <<<<<< end of config >>>>>>
+
 " <<<<<< utilities >>>>>>
 
 " <<<< git-p.nvim (git info) >>>>
@@ -248,6 +250,12 @@ function! LightlineReadonly()
   return &readonly && &filetype !=# 'help' ? 'RO' : ''
 endfunction
 
+" <<<< markdown-preview >>>>
+
+nmap <leader>mp :MarkdownPreview<CR>
+
+" <<<<<< end of utilities >>>>>>
+
 " <<<<<< colors/syntax/languages >>>>>>
 
 " <<<< vim-polyglot >>>>
@@ -267,3 +275,5 @@ let g:markdown_fenced_languages = [
   \ 'bash=sh',
   \ 'sh'
 \]
+
+" <<<<<< end of colors/syntax/languages >>>>>>
