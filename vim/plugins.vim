@@ -19,17 +19,43 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " << motions/operators >>
 
+
+" < operators >
+
 " edit surrounding characters
 Plug 'tpope/vim-surround'
-" repeat Plugin actions
-Plug 'tpope/vim-repeat'
 " comment code
 Plug 'tpope/vim-commentary'
-" line
-" dependency - https://github.com/kana/vim-textobj-line/issues/5
+" converts between number representations - decimal <> hex <> octal <> binary
+" - `gA` shows all representations of the number under the cursor
+" - `crd`, `crx`, `cro` & `crb` convert the number under the cursor to decimal,
+"    hex, octal & binary, respectively
+Plug 'glts/vim-magnum' | Plug 'glts/vim-radical'
+
+" < motions >
+
+" line (inner `il` & around `al`)
+"
+" adds two text objects:
+" <operator>il - delete line from level of indentation. For example:
+" ```
+" // `dal` & `dil` do the same on the below line
+" text here
+"   // on example 'some indented text here' line below
+"   // `dal` deletes whole line including whitespace (same effect as `cc`)
+"   // `dil` preserves the white space and deletes everything else
+"   some indented text here
+" more text here
+" ```
+"
+" this line object depends on `kana/vim-textobj-user`
+" ref - https://github.com/kana/vim-textobj-line/issues/5
 Plug 'kana/vim-textobj-user' | Plug 'kana/vim-textobj-line'
 
 " << utilities >>
+
+" repeats plugin actions (vim-commentary,  vim-surround, etc.)
+Plug 'tpope/vim-repeat'
 
 " Neovim markdown previewer (opens preview in browser)
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
