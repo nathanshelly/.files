@@ -53,6 +53,7 @@ hi ExtraWhitespace ctermbg=magenta
 " keep through color scheme change
 au ColorScheme * hi ExtraWhitespace ctermbg=magenta
 " highlight all trailing whitespace
+" TODO: check why this seemed to break
 au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 " avoid highlighting trailing whitespace on current line when editing at the end
 " of it
