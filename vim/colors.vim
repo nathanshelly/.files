@@ -1,5 +1,7 @@
 " <<<<<<<< colors >>>>>>>>
 
+" TODO: look into changes to colors from true color support
+
 " true color support
 " ref - https://github.com/joshdick/onedark.vim#installation
 if (has("termguicolors"))
