@@ -57,9 +57,6 @@ noremap ss "+
 " use `x` for jumping to marks (instead of `'`)
 nnoremap x '
 
-" use `r` instead of `q` for recording macros
-nnoremap r q
-nnoremap q <nop>
 " use `R` to repeat last macro
 nnoremap R @@
 
