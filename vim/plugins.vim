@@ -72,6 +72,16 @@ Plug 'christoomey/vim-sort-motion'
 
 " < motions >
 
+" this plugin is a dependency for other `kana/vim-textobj-*`
+"
+" see issue explaining for vim-textobj-line
+" - https://github.com/kana/vim-textobj-line/issues/5
+"
+" dependent plugins:
+" - kana/vim-textobj-line
+" - kana/vim-textobj-indent
+Plug 'kana/vim-textobj-user'
+
 " line (inner `il` & around `al`)
 "
 " adds two text objects:
@@ -88,10 +98,26 @@ Plug 'christoomey/vim-sort-motion'
 "   some indented text here
 " more text here
 " ```
+Plug 'kana/vim-textobj-line'
+
+" indents
 "
-" this line object depends on `kana/vim-textobj-user`
-" ref - https://github.com/kana/vim-textobj-line/issues/5
-Plug 'kana/vim-textobj-user' | Plug 'kana/vim-textobj-line'
+" `<operator>ii` - operates on all lines at same indentation above and below
+"   cursor line. Selection stops at empty lines or lines with different
+"   indentation.
+" `<operator>ai` - operates on all lines at same or greater indentation above
+"   and below cursor line. Selection stops at lines with lesser indentation, NOT
+"   at empty lines or lines with greater indentation.
+"
+" See more details and helpful detailed diagrams of the effect of different
+" selections w/ code examples:
+" ref - http://kana.github.io/config/vim/textobj-indent.html
+Plug 'kana/vim-textobj-indent'
+
+" entire document - `<operator>ae`
+" `ae` - entire contents of buffer (slightly shorter version of `ggdG`)
+" `ie` - contents of buffer minus leading/trailing whitespace
+Plug 'kana/vim-textobj-entire'
 
 " << utilities >>
 
