@@ -1,4 +1,6 @@
 " <<<<<<<< Remappings >>>>>>>>
+" NOTE: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
+" bindings defined in that file work)
 
 " escape with rolling jk
 inoremap jk <esc>
