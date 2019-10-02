@@ -135,3 +135,6 @@ au FileType markdown set colorcolumn=
 
 au Filetype python set colorcolumn=89
 au Filetype python set textwidth=88
+
+" << vim >>
+au Filetype vim set textwidth=80
