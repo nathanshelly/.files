@@ -43,13 +43,23 @@ Plug 'tpope/vim-unimpaired'
 " < operators >
 
 " edit surrounding characters
+"
+" - `ys<motion><character>` - surround with a character, e.g. `ysiw"` surrounds
+"     the inner word with `"`
+" - `ds<motion>` - delete any valid character pairing surrounding the motion,
+"     e.g. `ds"` deletes the nearest (innermost) surrounding pair of `"`
+" - `cs<character-to-change><new-character>` - change any valid surrounding
+"     character pairing into any other valid surrounding character pairing,
+"     e.g.  `cs'"` changes the nearest (innermost) surrounding pair of `'`
+"     into `"`
 Plug 'tpope/vim-surround'
-" comment code
+" comment code - `gc<motion>`
 Plug 'tpope/vim-commentary'
 " converts between number representations - decimal <> hex <> octal <> binary
 " - `gA` shows all representations of the number under the cursor
 " - `crd`, `crx`, `cro` & `crb` convert the number under the cursor to decimal,
 "    hex, octal & binary, respectively
+" note: `vim-magnum` is a dependency of `vim-radical`
 Plug 'glts/vim-magnum' | Plug 'glts/vim-radical'
 
 " < motions >
@@ -57,7 +67,10 @@ Plug 'glts/vim-magnum' | Plug 'glts/vim-radical'
 " line (inner `il` & around `al`)
 "
 " adds two text objects:
-" <operator>il - delete line from level of indentation. For example:
+" - `<operator>il` - delete line from level of indentation
+" - `<operator>al` - delete full line (including whitespace, `dal` <> `dd`)
+"
+" usage:
 " ```
 " // `dal` & `dil` do the same on the below line
 " text here
@@ -125,7 +138,7 @@ call plug#end()
 " <<<<<<<< config >>>>>>>>
 
 " map leader -> space
-" NOTE: done here to enable defining <leader> for plugins
+" NOTE: done here to enable using <leader> in plugin keymappings
 let mapleader=" "
 
 " <<<<<< motions/operators >>>>>>
@@ -136,6 +149,8 @@ let mapleader=" "
 " << keymap >>
 
 " add keystrokes to surround with `<>`
+" e.g. `ysss` surrounds the current line w/ `<>` w/o spaces, `yssS` surrounds w/
+" `<>` w/ spaces
 let g:surround_{char2nr('s')} = "<\r>"
 let g:surround_{char2nr('S')} = "< \r >"
 
