@@ -62,6 +62,14 @@ Plug 'tpope/vim-commentary'
 " note: `vim-magnum` is a dependency of `vim-radical`
 Plug 'glts/vim-magnum' | Plug 'glts/vim-radical'
 
+" replace - `<register>gr<motion>`, replaces motion text with contents of given
+" register (unnamed register (`_`) if none given)
+Plug 'vim-scripts/ReplaceWithRegister'
+
+" sort w/ `gs<motion>`
+" e.g. `gs2k` sorts down two lines (current + 2 below)
+Plug 'christoomey/vim-sort-motion'
+
 " < motions >
 
 " line (inner `il` & around `al`)
