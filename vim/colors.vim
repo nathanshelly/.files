@@ -46,9 +46,6 @@ hi IncSearch cterm=None ctermfg=black ctermbg=cyan
 " matching
 hi MatchParen cterm=None ctermfg=cyan ctermbg=None
 
-" transparent background
-hi Normal ctermbg=None
-
 " << whitespace >>
 
  " whitespace group coloring
