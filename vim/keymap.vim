@@ -25,10 +25,8 @@ nnoremap gk gj
 
 " <<<< end of home row movement keys remapping >>>>
 
-" remap `;` -> `,` (repeat last `tfTF` movement) `;` used for home row movement
-nnoremap , ;
-" remap `,` -> `h` (repeat last `tfTF` movement in opposite direction)
-nnoremap h ,
+" remap `;` -> `h` (repeat last `tfTF` movement) `;` used for home row movement
+nnoremap h ;
 
 " start/end of line movement
 noremap " ^
