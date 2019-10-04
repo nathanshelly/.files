@@ -1,8 +1,10 @@
 # replacement for `grep`
 # ref - https://github.com/BurntSushi/ripgrep
 
-# use smart case by default
-alias rg='rg --smart-case'
+# TODO: remove once habit broken
+alias rg='echo "use generic g, not specific rg (use /usr/local/bin/rg if needed)"'
+# # use smart case by default
+# alias rg='rg --smart-case'
 
 # increase context around match
 alias rgc='rg --context 3'
