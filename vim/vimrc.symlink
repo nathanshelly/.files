@@ -1,4 +1,5 @@
-" source plugins first so that resources such as colorschemes are available
+" plugins.vim must be sourced first so that resources such as colorschemes
+" are available for use in other config files
 source $DOTFILES/vim/plugins.vim
 source $DOTFILES/vim/options.vim
 source $DOTFILES/vim/colors.vim
