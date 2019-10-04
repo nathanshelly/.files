@@ -70,7 +70,8 @@ Plug 'vim-scripts/ReplaceWithRegister'
 " e.g. `gs2k` sorts down two lines (current + 2 below)
 Plug 'christoomey/vim-sort-motion'
 
-" < motions >
+" < text objects >
+" note: curently no motion plugins installed
 
 " this plugin is a dependency for other `kana/vim-textobj-*`
 "
@@ -128,6 +129,7 @@ Plug 'tpope/vim-repeat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " git information (blame, diff) in Vim
+" note: `sran.vim` is a dependency of `git-p.nvim`
 Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
 Plug 'iamcco/git-p.nvim'
 
@@ -163,6 +165,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 
 " individual languages/syntax
+"
 Plug 'tpope/vim-markdown'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -187,8 +190,6 @@ let mapleader=" "
 " `<>` w/ spaces
 let g:surround_{char2nr('s')} = "<\r>"
 let g:surround_{char2nr('S')} = "< \r >"
-
-" <<<<<< end of config >>>>>>
 
 " <<<<<< utilities >>>>>>
 
@@ -356,6 +357,7 @@ nmap <leader>mp :MarkdownPreview<CR>
 " <<<< vim-polyglot >>>>
 
 " << options >>
+" disable `markdown` to use `tpop/vim-markdown` configured below
 let g:polyglot_disabled = ['markdown']
 
 " <<<< vim-markdown >>>>
@@ -371,4 +373,4 @@ let g:markdown_fenced_languages = [
   \ 'sh'
 \]
 
-" <<<<<< end of colors/syntax/languages >>>>>>
+" <<<<<<<< end of config >>>>>>>>

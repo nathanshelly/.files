@@ -25,11 +25,6 @@ set noshowmode
 " syntax coloring
 syntax on
 
-" highlight json comments
-" note: must come after turning on syntax coloring
-" ref - https://github.com/neoclide/coc.nvim/wiki/Using-configuration-file
-autocmd Filetype json syntax match Comment +\/\/.*$+
-
 " line numbers
 set number
 set relativenumber
@@ -138,3 +133,11 @@ au Filetype python set textwidth=88
 
 " << vim >>
 au Filetype vim set textwidth=80
+
+" << json >>
+
+" highlight `//` comments in json files
+" note: must come after turning on syntax coloring
+" ref - https://github.com/neoclide/coc.nvim/wiki/Using-configuration-file
+autocmd Filetype json syntax match Comment +\/\/.*$+
+

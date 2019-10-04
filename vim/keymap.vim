@@ -38,7 +38,7 @@ noremap $ g$
 nnoremap S <nop>
 nnoremap X <nop>
 
-" switch between most recent buffers
+" switch to last buffer
 nnoremap <c-w> <c-^>
 
 " remapped below
@@ -47,7 +47,7 @@ nnoremap R <nop>
 nnoremap x <nop>
 
 " << registers (copy/paste) >>
-" use `s` for buffer selection (instead of `"`)
+" use `s` for register selection (instead of `"`)
 nnoremap s "
 " z -> _ register (more accessible black hole register)
 noremap sz "_
@@ -92,9 +92,6 @@ nmap <silent> <leader>pn :set nopaste<CR>
 " start/end of screen line movement
 nmap <silent> <leader>' g$
 nmap <silent> <leader>" g0
-
-" sort
-nmap <leader>so :sort<CR>
 
 " vim split actions
 nnoremap <leader>p <c-w>
