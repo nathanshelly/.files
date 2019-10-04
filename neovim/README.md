@@ -1,4 +1,4 @@
-# [`neovim`](https://github.com/neovim/neovim) (`nvim`)
+# [`neovim` (`nvim`)](https://github.com/neovim/neovim)
 
 A modal text editor forked from [`vim`](https://github.com/vim/vim) focused on extensibility and usability.
 
@@ -18,7 +18,7 @@ Here are several far more eloquent arguments for using `vim` (which also apply t
 
 TODO: add examples here
 
-### considered alternatives
+### alternatives considered
 
 #### [`vim`](https://github.com/vim/vim)
 
