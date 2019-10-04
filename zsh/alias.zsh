@@ -23,7 +23,7 @@ alias i=exiftool # metadata info
 alias o=open # macOS open command
 # search (TODO: maybe use ternary here?)
 if command -v rg > /dev/null 2>&1; then
-  alias g=rg
+  alias g='/usr/local/bin/rg --smart-case'
 else
   # TODO: make function here to really abstract out difference?
   alias g='grep -R'
