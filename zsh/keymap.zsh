@@ -7,7 +7,6 @@
 #   - `-U` -> alias expansion is supressed when the function is loaded
 
 # turn on vim mode
-# Note: spaceship vi mode enabled in prompt.zsh
 bindkey -v
 
 # shorten key delay to .2 seconds
@@ -58,7 +57,7 @@ for m in visual viopp; do
   done
 done
 
-# ci{, ci(
+# ci{, ci(, ci[, ci<
 autoload -U select-bracketed
 zle -N select-bracketed
 for m in visual viopp; do
