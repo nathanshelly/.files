@@ -3,84 +3,64 @@
 # specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# Load and initialize the completion system ignoring insecure directories with a
-# cache time of 20 hours, so it should almost always regenerate the first time a
-# shell is opened each day.
-#
-# Below code taken from comment by `laggardkernel` at bottom of the `htr3n` ref
-#
-# ref - https://htr3n.github.io/2018/07/faster-zsh/#optimising-shell-prompts
-autoload -Uz compinit
-_comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
-if (( $#_comp_files )); then
-  compinit -i -C
-else
-  compinit -i
-fi
-unset _comp_files
-
-# <<<< without dependencies >>>>
-source "$DOTFILES/zsh/path.zsh"
-source "$DOTFILES/zsh/config.zsh"
-
-source "$DOTFILES/zsh/keymap.zsh"
-source "$DOTFILES/zsh/options.zsh"
-source "$DOTFILES/zsh/manydots.zsh"
+# <<<< files that don't have any dependencies >>>>
 
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
-# <<<< dependencies >>>>
+source "$DOTFILES/zsh/asdf.zsh"
+source "$DOTFILES/zsh/completion.zsh"
+source "$DOTFILES/zsh/config.zsh"
+source "$DOTFILES/zsh/keymap.zsh"
+source "$DOTFILES/zsh/manydots.zsh"
+source "$DOTFILES/zsh/options.zsh"
+
+# <<<< files that define dependencies for usage in other files >>>>
 
 # make colors defined by spectrum available in other files
 source "$DOTFILES/zsh/spectrum.zsh"
 
-# <<<< after dependencies >>>>
+# <<<< files that have dependencies >>>>
+# note: some files here also define dependencies for later files so the ordering
+# in this section matters (unlike in the previous two sections)
+
 source "$DOTFILES/zsh/functions.zsh"
 
-# allow aliases to use defined functions
+# source after $DOTFILES/zsh/functions.zsh to allow aliasing those functions
 source "$DOTFILES/zsh/alias.zsh"
-
-# define variable to store list of files to source
-# note: -U ensures uniqueness
-typeset -U config_files
-
-# enable `extended_glob` to exclude directories (submodules, zsh) in match
-# disable immediately after to respect options in `options.zsh`
-# TODO: avoid `extended_glob` hack, exclude directories w/o `extended_glob` set
-setopt extended_glob
-config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
-setopt noextended_glob
-
-typeset -U path_files
-path_files=(${(M)config_files:#*/path.zsh})
-for path_file in $path_files
-do
-  source "$path_file"
-done
-unset path_files path_file
-
-# load files that are not completion, path or functions
-typeset -u all_other_files
-all_other_files=(${${config_files:#*/path.zsh}:#*/completion.zsh})
-for file in $all_other_files
-do
-  source "$file"
-done
-unset all_other_files file
-
-unset config_files
 
 # load and configure plugins
 source "$DOTFILES/zsh/plugins.zsh"
 # configure prompt after enabling
 source "$DOTFILES/zsh/prompt.zsh"
 
-# use hardcoded path here because $(brew --prefix asdf) is horribly slow
-# may need to update hardcoded path if homebrew installation location changes
-# could also write this as `$(brew --prefix)/opt/asdf` since generic brew prefix
-# is much faster than package specific but still takes ~30ms when timed with
-# `hyperfine` so taking the tradeoff of speed/fragility
-_asdf_initialization="/usr/local/opt/asdf/asdf.sh"
-[ -f "$_asdf_initialization" ] && source "$_asdf_initialization"
-unset _asdf_initialization
+# define variable to store list of files to source
+# note: -U ensures uniqueness
+typeset -U config_files
+
+# all *.zsh files throughout this repo exluding the $DOTFILES/zsh &
+# $DOTFILES/submodules directories (technically excludes $DOTFILES/**/zsh &
+# $DOTFILES/**/submodules however the only matching directories are those two)
+#
+# x~y matches anything that matches the pattern x but does not match y
+# ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Operators
+# (search "x~y" to find documentation for the above described behavior)
+config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
+
+# $config_files referenced in this file
+source "$DOTFILES/zsh/path.zsh"
+
+# `.zsh` files that are not `path.zsh`
+typeset -u non_path_files
+# `:#<pattern>` removes any strings that match the given pattern
+# ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
+# (search "(M)" to find the relevant documentation (though note this is NOT 
+# actually using the "(M)" flag here))
+non_path_files=(${config_files:#*/path.zsh})
+for non_path_file in $non_path_files
+do
+  source "$non_path_file"
+done
+unset non_path_files non_path_file
+
+unset config_files
