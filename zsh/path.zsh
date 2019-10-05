@@ -7,3 +7,15 @@ path=(
   /usr/local/sbin
   $path
 )
+
+# source all `path.zsh` files throughout this repo
+typeset -U path_files
+# `(M)...:#<pattern>` filters an array to strings that match the given pattern
+# ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
+# (search "(M)" to find the relevant documentation)
+path_files=(${(M)config_files:#*/path.zsh})
+for path_file in $path_files
+do
+  source "$path_file"
+done
+unset path_files path_file
