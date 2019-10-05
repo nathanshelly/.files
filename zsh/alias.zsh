@@ -23,10 +23,10 @@ alias i=exiftool # metadata info
 alias o=open # macOS open command
 # search (TODO: maybe use ternary here?)
 if command -v rg > /dev/null 2>&1; then
-  alias g='/usr/local/bin/rg --smart-case'
+  alias f='/usr/local/bin/rg --smart-case'
 else
   # TODO: make function here to really abstract out difference?
-  alias g='grep -R'
+  alias f='grep -R'
 fi
 # if `fd` not installed alias `fd` to `find` (uses `fd` alias instead of `f` as
 # that is already used by `fasd`)
