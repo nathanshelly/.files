@@ -207,9 +207,8 @@ let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
 
 " << keymap >>
 
-" use <leader>d to display change
-" TODO: figure out what's going wrong here, start by not shadowing shortcut
-nmap <leader>d <plug>(git-p-diff-preview)
+" use <leader>gd to display change
+nmap <leader>gd <plug>(git-p-diff-preview)
 
 " <<<< fzf.vim >>>>
 " ref - https://github.com/junegunn/fzf.vim#customization
