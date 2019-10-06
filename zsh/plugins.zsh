@@ -1,3 +1,9 @@
+# install `zplugin` if not already installed
+# ref - https://github.com/zdharma/zplugin
+if ! [ -d "$HOME/.zplugin" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+fi
+
 # <<<<<<<<<<<<<<<<<<< start of zplugin installer-added chunk >>>>>>>>>>>>>>>>>>>
 source "$HOME/.zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
