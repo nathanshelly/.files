@@ -217,6 +217,22 @@ call plug#end()
 
 #### notable configuration
 
+> `c` here means `Ctrl`, e.g. `<c-p>` -> `<Ctrl-p>`
+
+- map leader to `<Space>`
+- `<leader>gd` to display diff at current line
+- `fzf.vim` mappings
+  - `<c-p>` - fuzzy open files below current shell directory (same as `fzf`)
+  - `<c-b>` - fuzzy select from open buffers
+  - `<c-f>` - fuzzy select lines of files below current shell directory (interactive version of `rg`)
+  - `<c-l>` - fuzzy select lines of current buffer
+  - `<c-g>` - fuzzy select from `git status` files
+  - `<leader>hc` - fuzzy select from command history
+- `<leader>jg` to trigger Goyo (minimal writing mode)
+- statusline appearance (using [`lightline`](https://github.com/itchyny/lightline.vim)
+- `<leader>mp` to launch `MarkdownPreview`
+- disable vim-polyglot's Markdown support to use `vim-markdown` for Markdown files
+
 ### [`vimrc.symlink`](./vimrc.symlink)
 
 Sources every other `*.vim` file in this folder to set up config.
