@@ -11,8 +11,8 @@
 # nodejs 10.15.3
 # ```
 #
-# The first time you work in that project run `asdf install` to set up those
-# and you're all done.
+# The first time you work in that project run `asdf install` to set up your
+# environment and you're all done.
 #
 # refs:
 # - https://asdf-vm.com
