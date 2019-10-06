@@ -138,6 +138,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
 Plug 'iamcco/git-p.nvim'
 
+" show git commit for line under cursor (`<leader>gm`)
+Plug 'rhysd/git-messenger.vim'
+
 " fuzzy finder
 Plug '/usr/local/opt/fzf'
 " Use Sasha's fork which enables previewing of full files based on community's
@@ -209,6 +212,10 @@ let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
 
 " use <leader>gd to display change
 nmap <leader>gd <plug>(git-p-diff-preview)
+
+" <<<< rhysd/git-messenger.vim (view git blame commit) >>>>
+" show diff of current file in popup
+let g:git_messenger_include_diff = "current"
 
 " <<<< fzf.vim >>>>
 " ref - https://github.com/junegunn/fzf.vim#customization
