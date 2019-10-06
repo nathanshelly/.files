@@ -16,7 +16,10 @@ I enjoy living in a terminal (as this repo might make clear) and appreciate the 
 
 Here are a few other peoples' reasons for using `vim` (which also apply to `neovim`):
 
-TODO: add examples here
+- [Why I use Vim](https://pascalprecht.github.io/posts/why-i-use-vim)
+- [Coming Home to Vim](http://stevelosh.com/blog/2010/09/coming-home-to-vim/)
+- [Vim Novice Videos](http://derekwyatt.org/vim/tutorials/novice/)
+- [Your problem with Vim is that you don't grok vi](https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118)
 
 ### alternatives considered
 
@@ -28,7 +31,7 @@ At this point I'm sticking with `neovim` primarily because in my experience, `ne
 
 #### [`vscode`](https://github.com/microsoft/vscode/)
 
-Excluding brief experiments with [`sublime`](TODO: add link here), [`atom`](TODO: add link here) & [Jetbrains IDEs](TODO: add link here), `vscode` was my main editor until switching to `vim`. If I weren't using `neovim` (or `vim`) `vscode` would be my next choice.
+Excluding brief experiments with [Sublime Text](https://www.sublimetext.com/3), [Atom](https://atom.io) & [Jetbrains IDEs](https://www.jetbrains.com), `vscode` was my main editor until switching to `vim`. If I weren't using `neovim` (or `vim`) `vscode` would be my next choice.
 
 I appreciate the community's support, its rapid pace of improvement and features such as the debugger & native plugin support.
 
@@ -43,7 +46,7 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 ## skimmable list of files
 
 - [`alias.zsh`](#alias.zsh) - defines shell-level aliases (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
-- [`coc.json`](#coc.json) & [`coc.nvim`](#coc.nvim) - configuration of [`coc.nvim`](https://github.com/neoclide/coc.nvim). [`coc.json`](#coc.json) is similar to `settings.json` for `VSCode`.
+- [`coc.json`](#coc.json-%26-coc.nvim) & [`coc.nvim`](#coc.json-%26-coc.nvim) - configuration of [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc.json` is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colors.vim) - configuration of colors, (e.g. enable true color, set dark background, set color scheme)
 - [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
 - [`keymap.vim`](#keymap.vim) - define keymappings (e.g. `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings (and leader key) defined in `plugins.vim`.
@@ -60,15 +63,11 @@ Define shell-level aliases.
 - `enc <file>` - open file w/o config. Mnemonic - `edit no config`.
 - `emp <file>` - open file (must be `*.md`) and immediately trigger `MarkdownPreview` (must have [`MarkdownPreview`](https://github.com/iamcco/markdown-preview.nvim) plugin installed). Mnemonic - `edit MarkdownPreview`.
 
-### [`coc.json`](./coc.json)
-
-### [`coc.nvim`](./coc.nvim)
-
-> awkward back to back headings used to enable correct relative links. TODO: figure out how to relatively link to `coc.json & coc.nvim`.
+### [`coc.json`](./coc.json) & [`coc.nvim`](./coc.nvim)
 
 Configure [`Conquer of Completion` (`coc`)](https://github.com/neoclide/coc.nvim).
 
-Conquer of Completion is a multipurpose client for language servers (e.g. intellisense, compilation errors, formatting), linters, formatters (e.g. [`prettier`](TODO: add add link here) or [`black`](TODO: add link here)) and various other external shell programs (e.g. [`shellcheck`](https://github.com/koalaman/shellcheck). The [documentation](TODO: add link here) goes into more detail about its capabilities.
+Conquer of Completion is a multipurpose client for language servers (e.g. intellisense, compilation errors, formatting), linters, formatters (e.g. [`prettier`](https://prettier.io) or [`black`](https://github.com/psf/black)) and various other external shell programs (e.g. [`shellcheck`](https://github.com/koalaman/shellcheck). The [documentation](https://github.com/neoclide/coc.nvim) goes into more detail about its capabilities.
 
 This is by far the most valuable plugin I use. `coc` fills in most of the gaps I experience between `neovim` and more IDE-like editors in terms of completion, linting, etc. (without it there's a decent chance I'd be using `vscode`).
 
@@ -187,7 +186,7 @@ call plug#end()
 
 #### notable plugins
 
-- [`coc.nvim`](#coc.nvim) - multipurpose client, see more detail in the [`coc.nvim`](#coc.nvim) section
+- [`coc.nvim`](https://github.com/neoclide/coc.nvim) - multipurpose client, see more detail in the [`coc.nvim`](#coc.json-%26-coc.nvim) section
 - operators
   - [`vim-surround`](https://github.com/tpope/vim-surround) - add/modify/delete surrounding characters (see documentation in [`./plugins.vim`](./plugins.vim) or the [`vim-surround` repo](https://github.com/tpope/vim-surround))
   - [`vim-commentary`](https://github.com/tpope/vim-commentary) - comment lines/motions w/ `gcc`/`<motion>gc`
