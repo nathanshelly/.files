@@ -44,17 +44,22 @@ Plug 'tpope/vim-unimpaired'
 
 " edit surrounding characters
 "
-" - `ys<motion><character>` - surround with a character, e.g. `ysiw"` surrounds
-"     the inner word with `"`
-" - `ds<motion>` - delete any valid character pairing surrounding the motion,
-"     e.g. `ds"` deletes the nearest (innermost) surrounding pair of `"`
-" - `cs<character-to-change><new-character>` - change any valid surrounding
-"     character pairing into any other valid surrounding character pairing,
-"     e.g.  `cs'"` changes the nearest (innermost) surrounding pair of `'`
-"     into `"`
+" - `ys<motion/text object><character>` - surround with given character. For 
+"     example, `ysiw'` on `word` will add surrounding `'`s -> `'word'`.
+" - `ds<character>` - delete nearest (innermost) surrounding pair of given
+"     character. For example, `ds(` on `(word)` will delete surrounding `()`s ->
+"     `word`.
+" - `cs<character-to-replace><new-character>` - change nearest (innermost) 
+"     surrounding pair of valid surrounding characters into any other valid 
+"     surrounding character pairing. For example, `cs"<` on `"word"` changes the 
+"     `"`s into `<>` -> `<word>`
+"
+" See further usage examples - https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
+
 " comment code - `gc<motion>`
 Plug 'tpope/vim-commentary'
+
 " converts between number representations - decimal <> hex <> octal <> binary
 " - `gA` shows all representations of the number under the cursor
 " - `crd`, `crx`, `cro` & `crb` convert the number under the cursor to decimal,
