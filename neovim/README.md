@@ -14,7 +14,7 @@ A language for editing along with the related idea of modal editing provide a fa
 
 I enjoy living in a terminal (as this repo might make clear) and appreciate the journey of building my own `neovim` configuration.
 
-Here are several far more eloquent arguments for using `vim` (which also apply to `neovim`):
+Here are a few other peoples' reasons for using `vim` (which also apply to `neovim`):
 
 TODO: add examples here
 
@@ -40,22 +40,22 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 
 `neovim` has none of the chrome of `vscode` that I prefer to avoid (I know much, if not all, of that chrome can be hidden with settings but I'd rather my editor simply not have it).
 
-## skimmable list
+## skimmable list of files
 
-- [`alias.zsh`](#alias.zsh) - defines shell-level aliases for `nvim` (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
+- [`alias.zsh`](#alias.zsh) - defines shell-level aliases (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
 - [`coc.json`](#coc.json) & [`coc.nvim`](#coc.nvim) - configuration of [`coc.nvim`](https://github.com/neoclide/coc.nvim). [`coc.json`](#coc.json) is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colors.vim) - configuration of colors, (e.g. enable true color, set dark background, set color scheme)
-- [`commands.vim`](#commands.vim) - add `nvim` commands, used exclusively through keybindings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
-- [`keymap.vim`](#keymap.vim) - define keybindings (e.g. `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keybindings (and leader key) defined in `plugins.vim`.
-- [`options.vim`](#options.vim) - set `nvim` options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
-- [`plugins.vim`](#plugins.vim) - enable and configure `nvim` plugins. Managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
+- [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
+- [`keymap.vim`](#keymap.vim) - define keymappings (e.g. `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings (and leader key) defined in `plugins.vim`.
+- [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
+- [`plugins.vim`](#plugins.vim) - enable and configure plugins. Managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
 - [`vimrc.symlink`](#vimrc.symlink) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv.symlink`](../zsh/zshenv.symlink)).
 
-## in more detail
+## each file in more detail
 
 ### [`alias.zsh`](./alias.zsh)
 
-Shell-level aliases.
+Define shell-level aliases.
 
 - `enc <file>` - open file w/o config. Mnemonic - `edit no config`.
 - `emp <file>` - open file (must be `*.md`) and immediately trigger `MarkdownPreview` (must have [`MarkdownPreview`](https://github.com/iamcco/markdown-preview.nvim) plugin installed). Mnemonic - `edit MarkdownPreview`.
@@ -76,7 +76,9 @@ This is by far the most valuable plugin I use. `coc` fills in most of the gaps I
 
 ### [`colors.vim`](./colors.vim)
 
-Configure colors. A few notable configurations:
+Configure colors.
+
+Notable configurations:
 
 - enable true color
 - set dark background
@@ -86,36 +88,42 @@ Configure colors. A few notable configurations:
 
 ### [`commands.vim`](./commands.vim)
 
-Add `nvim` commands, used exclusively through keybindings.
+Add commands, used exclusively through keymappings.
 
 - `HiTab`/`NoHiTab` - highlight/unhighlight tabs. Mapped to `<leader>ht`/`<leader>htn`.
 - `TrimWhitespace` - strip extraneous whitespace from current file. Mapped to `<leader>tw`.
 
 ### [`keymap.vim`](./keymap.vim)
 
-Define keybindings. Plugin keybindings (and leader key) defined in `plugins.vim`.
+Define keymappings.
 
-Notable highlights:
+Plugin keymappings (and leader key) defined in `plugins.vim`.
+
+Notable keymappings:
 
 > `c-<character>` means `Ctrl-<character>`
 
-- `jk` to escape insert mode
-- remap movement keys to home row - `hjkl` -> `jkl;`
-  - additionally remap repeating last `tfTF` motion to `h` since that functionality provided by `;` is now overwritten
-- remap start/end of line movement
-  - `'` moves to end of line (remapped from `$`)
-    - original behavior of jumping to marks performed with `x` instead (see below)
-  - `"` moves to start of line ignoring leading whitespace (remapped from `^`)
-    - original behavior of register selection performed with `s` (see below)
-- `c-w` switches to last buffer (remapped from `c-^`)
-- `s` selects registers (remapped from `"`)
-  - `ss` selects system register (more accessible alternative to `s+`)
-  - `sz` selects unnamed (black hole) register (more accessible alternative to `s_`)
-- `x` to jump to marks (remapped from `'`)
+- insert mode
+  - `jk` to escape insert mode
+- normal mode
+  - movement keys to home row - `hjkl` -> `jkl;`
+    - additionally remap repeating last `tfTF` motion to `h` since that functionality provided by `;` is now overwritten
+  - start/end of line movement
+    - `'` moves to end of line (remapped from `$`)
+      - original behavior of jumping to marks performed with `x` instead (see below)
+    - `"` moves to start of line ignoring leading whitespace (remapped from `^`)
+      - original behavior of register selection performed with `s` (see below)
+  - `c-w` switches to last buffer (remapped from `c-^`)
+  - `s` selects registers (remapped from `"`)
+    - `ss` selects system register (more accessible alternative to `s+`)
+    - `sz` selects unnamed (black hole) register (more accessible alternative to `s_`)
+  - `x` to jump to marks (remapped from `'`)
 
 ### [`options.vim`](./options.vim)
 
-Set `nvim` options. Notable highlights:
+Set options.
+
+Notable options:
 
 - `backspace=indent,eol,start`
   - enable deleting characters behind where insertion mode is entered
@@ -145,7 +153,9 @@ Set `nvim` options. Notable highlights:
 
 ### [`plugins.vim`](./plugins.vim)
 
-Enable and configure `nvim` plugins. Managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
+Enable and configure plugins.
+
+Managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
 
 Here's the format of this file:
 
@@ -168,7 +178,7 @@ call plug#end()
 " <<<<<<<< config >>>>>>>>
 # set `<leader>` key to be used in plugin configuration
 ... # leader setting
-# configure plugins (set options & add keybindings)
+# configure plugins (set options & add keymappings)
 
 ... # configuration of plugins
 
@@ -179,7 +189,7 @@ call plug#end()
 
 - [`coc.nvim`](#coc.nvim) - multipurpose client, see more detail in the [`coc.nvim`](#coc.nvim) section
 - operators
-  - [`vim-surround`](https://github.com/tpope/vim-surround) - add/modify/delete surrounding characters (see documentation in [`./plugins.vim`](./plugins.vim))
+  - [`vim-surround`](https://github.com/tpope/vim-surround) - add/modify/delete surrounding characters (see documentation in [`./plugins.vim`](./plugins.vim) or the [`vim-surround` repo](https://github.com/tpope/vim-surround))
   - [`vim-commentary`](https://github.com/tpope/vim-commentary) - comment lines/motions w/ `gcc`/`<motion>gc`
   - [`ReplaceWithRegister`](https://github.com/vim-scripts/ReplaceWithRegister) - replace motion w/ given register (unnamed register by default) - `<register>gr<motion>`
   - [`vim-sort-motion`](https://github.com/christoomey/vim-sort-motion) - sort lines w/ `gs<motion>` (can also be used within a line, e.g. `gsi(` to sort within parens - `(b, c, a) -> (a, b, c)`)
@@ -210,6 +220,8 @@ call plug#end()
 
 ### [`vimrc.symlink`](./vimrc.symlink)
 
-Sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv.symlink`](../zsh/zshenv.symlink)).
+Sources every other `*.vim` file in this folder to set up config.
+
+Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv.symlink`](../zsh/zshenv.symlink)).
 
 This file symlinked to `$HOME/.vimrc` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
