@@ -145,6 +145,8 @@ Define environment variables, loaded before any other file in this folder.
 
 This file defines the `$DOTFILES` environment variable used throughout `zsh` configuration. It also defines `$EDITOR` used in various aliases/keybindings.
 
+This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
+
 ### [`zshrc.symlink`](./zshrc.symlink)
 
 Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and autoload any functions in `functions` folders throughout this repo. Here is the loading order:
@@ -164,3 +166,5 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh` excluding those in this directory (`$DOTFILES/zsh`) and `$DOTFILES/submodules`). Also excludes any `path.zsh` files which are sourced by the `path.zsh` file in this directory.
 
 This file itself is loaded after `zshenv.symlink` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
+
+This file symlinked to `$HOME/.zshrc` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
