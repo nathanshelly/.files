@@ -1,3 +1,9 @@
+# this file uses `zplugin` to manage `zsh` plugins
+#
+# refs:
+# - http://zdharma.org/zplugin/wiki/INTRODUCTION/
+# - https://github.com/zdharma/zplugin#zplugin-wiki
+
 # install `zplugin` if not already installed
 # ref - https://github.com/zdharma/zplugin
 if ! [ -d "$HOME/.zplugin" ]; then
@@ -11,25 +17,38 @@ autoload -Uz _zplugin
 # <<<<<<<<<<<<<<<<<<< start of zplugin installer-added chunk >>>>>>>>>>>>>>>>>>>
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# `zplugin` has a concept called ice modifiers which applies single-use
+# modifiers to the next loaded plugin.
+#
+# the `ice` name communicates that the modifiers last for only the next zplugin
+# command
+#
+# here are the modifiers used in this file:
+#
+# - wait - load asynchronously
+# - atload - command to run when the plugin finishes loading
+# - lucid - skip `Loaded ...` message
+#
+# refs:
+# - https://github.com/zdharma/zplugin#ice-modifiers
+# - http://zdharma.org/zplugin/wiki/INTRODUCTION/#some_ice-modifiers
+
 zplugin ice wait atload'_zsh_autosuggest_start' lucid
 zplugin light zsh-users/zsh-autosuggestions
 
-zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
+zplugin ice wait atload'zpcompinit; zpcdreplay' lucid
 zplugin light zdharma/fast-syntax-highlighting
 
 # synchronize system clipboard
 # theoretically you might need to source this after other keymappings, have not
 # yet seen a need for enforcing that
-# TODO: see if this would benefit from asynchronicity
-zplugin ice wait"0" lucid
+zplugin ice wait lucid
 zplugin light kutsan/zsh-system-clipboard
 
 # prompt
-# TODO: load asyncronously here?
-# zplugin ice atclone'curl -fsSL https://gist.githubusercontent.com/romkatv/7cbab80dcbc639003066bb68b9ae0bbf/raw/pure10k.zsh -o pure10k.zsh' \
-#     atpull'%atclone' run-atpull atload"powerlevel9k_prepare_prompts" \
-#     src"pure10k.zsh" wait"0" lucid reset-prompt
 zplugin light romkatv/powerlevel10k
+
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
