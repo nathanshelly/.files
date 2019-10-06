@@ -3,7 +3,7 @@
 # specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# <<<< files that don't have any dependencies >>>>
+# <<<< files without dependencies >>>>
 
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
@@ -15,12 +15,7 @@ source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/manydots.zsh"
 source "$DOTFILES/zsh/options.zsh"
 
-# <<<< files that define dependencies for usage in other files >>>>
-
-# make colors defined by spectrum available in other files
-source "$DOTFILES/zsh/spectrum.zsh"
-
-# <<<< files that have dependencies >>>>
+# <<<< files with dependencies >>>>
 # note: some files here also define dependencies for later files so the ordering
 # in this section matters (unlike in the previous two sections)
 
