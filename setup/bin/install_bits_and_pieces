@@ -52,3 +52,6 @@ mas "Super Easy Timer", id: 1353137878
 # typescript repl
 # ref - https://github.com/HerringtonDarkholme/typescript-repl
 command -v npm > /dev/null 2>&1 || npm install --global tsun
+
+# install vim plugins
+nvim -c PlugInstall -c qa
