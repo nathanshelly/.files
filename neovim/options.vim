@@ -96,6 +96,9 @@ let g:netrw_gx="<cWORD>"
 " ref - http://vim.1045645.n5.nabble.com/Highlighting-matching-angle-brackets-lt-gt-td1188629.html
 set matchpairs+=<:>
 
+set undodir=~/.vim/undodir
+set undofile
+
 " << search >>
 
 " show matches as you type
