@@ -4,7 +4,7 @@ A modal text editor forked from [`vim`](https://github.com/vim/vim) focused on e
 
 ## why neovim
 
-Here are a few (non-exhaustive) reasons I use `neovim`. These reasons apply equally well to `vim` (see the [considered alternatives](#considered-alternatives) section for my reasoning for `neovim` over `vim`).
+Here are a few (non-exhaustive) reasons I use `neovim`. These reasons apply equally well to `vim` (see the [alternatives considered](#alternatives-considered) section for my reasoning for `neovim` over `vim`).
 
 A language for editing along with the related idea of modal editing provide a far nice (in my personal experience) for writing and editing code. `neovim` definitely has a steeper learning curve than other editors I've used but with some practice I find it more intuitive and powerful.
 
