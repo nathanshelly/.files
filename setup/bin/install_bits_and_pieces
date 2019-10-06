@@ -52,6 +52,3 @@ mas "Super Easy Timer", id: 1353137878
 # typescript repl
 # ref - https://github.com/HerringtonDarkholme/typescript-repl
 command -v npm > /dev/null 2>&1 || npm install --global tsun
-
-# `zplugin` - zsh plugin manager
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
