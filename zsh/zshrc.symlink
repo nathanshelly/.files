@@ -49,7 +49,7 @@ source "$DOTFILES/zsh/path.zsh"
 typeset -u non_path_files
 # `:#<pattern>` removes any strings that match the given pattern
 # ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
-# (search "(M)" to find the relevant documentation (though note this is NOT 
+# (search "(M)" to find the relevant documentation (though note this is NOT
 # actually using the "(M)" flag here))
 non_path_files=(${config_files:#*/path.zsh})
 for non_path_file in $non_path_files
