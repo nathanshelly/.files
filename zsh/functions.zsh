@@ -44,3 +44,11 @@ do
   fpath=("$topic_functions_folder" $fpath);
 done
 unset topic_functions_folders
+
+# enable completions
+# ref - https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+if command -v brew &> /dev/null; then
+  # hardcoding path given by following command for performance
+  # `$(brew --prefix)/share/zsh/site-functions`
+  fpath=("/usr/local/share/zsh/site-functions" $fpath)
+fi
