@@ -87,9 +87,10 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-jest',
   \ 'coc-json',
-  \ 'coc-python',
   \ 'coc-prettier',
+  \ 'coc-python',
   \ 'coc-rls',
+  \ 'coc-tabnine',
   \ 'coc-tsserver',
 \ ]
 
