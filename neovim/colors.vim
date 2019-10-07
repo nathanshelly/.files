@@ -3,55 +3,38 @@
 " TODO: look into changes to colors from true color support
 
 " true color support
+" note: with true color support on, must specify highlights with guifg/bf
 " ref - https://github.com/joshdick/onedark.vim#installation
 if (has("termguicolors"))
   set termguicolors
 endif
 
+colorscheme onedark
+
 " background
 set background=dark
-
-" << colorscheme >>
-
-" onedark.vim override: Don't set a background color when running in a terminal;
-" just use the terminal's background color
-" `gui` is the hex color code used in GUI mode/nvim true-color mode
-" `cterm` is the color code used in 256-color mode
-" `cterm16` is the color code used in 16-color mode
-if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    " `bg` will not be styled since there is no `bg` setting
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
-  augroup END
-endif
-
-colorscheme onedark
+" disable background color potentially set by colorscheme
+" ref - https://vi.stackexchange.com/a/16136
+hi Normal ctermbg=None guibg=None
 
 " << miscellaneous >>
 
-" lighten line numbers for increased visibility
-hi LineNr ctermfg=240
-
 " darken colorcolumn for decreased visibility
-hi ColorColumn ctermbg=235
-
-" << highlighting >>
+hi ColorColumn ctermbg=235 guibg=#111112
 
 " search
-hi Search cterm=None ctermfg=black ctermbg=cyan
-hi IncSearch cterm=None ctermfg=black ctermbg=cyan
+hi Search cterm=None ctermfg=black ctermbg=cyan guibg=#89CFF0 guifg=#000000
+hi IncSearch cterm=None ctermfg=black ctermbg=cyan guibg=#89CFF0 guifg=#000000
 
 " matching
-hi MatchParen cterm=None ctermfg=cyan ctermbg=None
+hi MatchParen cterm=None ctermfg=cyan ctermbg=None guibg=#808080 guifg=#89CFF0 gui=none
 
 " << whitespace >>
 
  " whitespace group coloring
-hi ExtraWhitespace ctermbg=magenta
+hi ExtraWhitespace ctermbg=magenta guibg=#ff00ff
 " keep through color scheme change
-au ColorScheme * hi ExtraWhitespace ctermbg=magenta
+au ColorScheme * hi ExtraWhitespace ctermbg=magenta guibg=#ff00ff
 " highlight all trailing whitespace
 " TODO: check why this seemed to break
 au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
