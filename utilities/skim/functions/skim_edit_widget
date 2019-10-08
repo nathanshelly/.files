@@ -1,0 +1,22 @@
+#! /usr/bin/env zsh
+
+# edit selected file w/ `$EDITOR` (falling back to `nvim` if not set)
+# lightly adapted from `fzf-cd-widget`
+setopt localoptions pipefail 2> /dev/null
+file="$(
+  eval "$SKIM_DEFAULT_COMMAND --type file" \
+    | SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS $SKIM_EDIT_OPTS" $(__skimcmd) --no-multi
+  )"
+
+if [[ -z "$file" ]]; then
+  zle redisplay
+  return 0
+fi
+
+"${EDITOR:-nvim}" "$file"
+
+unset file
+
+_skim_edit_widget_ret=$?
+zle skim-redraw-prompt
+return "$_skim_edit_widget_ret"

@@ -1,0 +1,30 @@
+#! /usr/bin/env zsh
+
+# filter and output files from the root of the current repo
+
+# adapted from `skim-file-widget`
+# TODO: clean up opts
+__fsel_repo() {
+  # get absolute path to repo in order to reference files not below current
+  # directory
+  # TODO: maybe do this relatively? would be cleaner usage, not sure it's worth
+  # implementation complexity
+  local _repo_root="$(rr)"
+  local cmd="${SKIM_CTRL_T_COMMAND}"
+  setopt localoptions pipefail 2> /dev/null
+  eval "$SKIM_CTRL_T_COMMAND . $_repo_root" \
+    | sed "s~^$(rr)/~~" \
+    | SKIM_DEFAULT_OPTIONS="--height ${SKIM_TMUX_HEIGHT:-40%} --reverse $SKIM_DEFAULT_OPTS $SKIM_CTRL_T_OPTS --preview='bat --style=numbers --color=always $_repo_root/{}'" $(__skimcmd) -m "$@" \
+    | while read item; do
+      echo -n "$_repo_root/${(q)item} "
+  done
+  # TODO: fix above `while` syntax
+  local ret=$?
+  echo
+  return $ret
+}
+
+LBUFFER="${LBUFFER}$(__fsel_repo)"
+local ret=$?
+zle reset-prompt
+return $ret

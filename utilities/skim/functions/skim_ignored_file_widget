@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+
+# filter and output files below current directory including ignored (by
+# `.gitignore` or `.ignore` files) files
+#
+# `sk-file-widget` with `--no-ignore`
+SKIM_CTRL_T_COMMAND="${SKIM_DEFAULT_COMMAND} --no-ignore" skim-file-widget

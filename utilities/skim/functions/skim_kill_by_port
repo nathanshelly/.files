@@ -1,0 +1,39 @@
+#! /usr/bin/env bash
+
+# filter and kill processes running on the given port
+
+port="$1"
+
+[[ -z $port ]] && {
+  echo 'No port given, aborting'
+  return 1
+}
+
+# TODO: switch to alternate `&>/dev/null` in future
+# ref - https://askubuntu.com/questions/474556/hiding-output-of-a-command
+lsof -i ":$port" > /dev/null 2>&1 || {
+  echo 'Port has no attached processes, aborting'
+  return 1
+}
+
+# `sed '1d'` removes header line
+# `sed -nE ...` filters out only PIDs
+# don't quote to split multiple port selections (ports should never have a space
+# inside them so this shouldn't ever cause an issue 🤞)
+# shellcheck disable=SC2046
+kill -9 $(\
+  lsof -i :"$port" \
+  | sed '1d' \
+  | skim -m \
+  | sed -nE 's/^[[:alnum:]]+[[:space:]]+([[:digit:]]+)[[:space:]]+.*$/\1/p' \
+)
+
+# avoid race condition between next `lsof` call and processes shutting down
+sleep 0.01
+
+lsof -i ":$port" > /dev/null 2>&1 && {
+  printf "Remaining attached processes:\n"
+  lsof -i ":$port"
+}
+
+unset port
