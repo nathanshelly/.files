@@ -1,7 +1,0 @@
-#! /usr/bin/env bash
-
-# filter and output files below current directory including ignored (by
-# `.gitignore` or `.ignore` files) files
-# 
-# `fzf-file-widget` with `--no-ignore`
-FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND} --no-ignore" fzf-file-widget
