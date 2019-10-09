@@ -1,7 +1,7 @@
 " plugins.vim must be sourced first so that resources such as colorschemes
 " are available for use in other config files
 source $DOTFILES/neovim/plugins.vim
-source $DOTFILES/neovim/fzf.vim
+source $DOTFILES/neovim/skim.vim
 source $DOTFILES/neovim/options.vim
 source $DOTFILES/neovim/colors.vim
 source $DOTFILES/neovim/keymap.vim

@@ -49,10 +49,10 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 - [`coc.json`](#coc.json-%26-coc.nvim) & [`coc.nvim`](#coc.json-%26-coc.nvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc.json` is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colors.vim) - configure colors, (e.g. enable true color, set dark background, set color scheme)
 - [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
-- [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
 - [`keymap.vim`](#keymap.vim) - define keymappings (e.g. `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings (and leader key) defined in `plugins.vim`.
 - [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
 - [`plugins.vim`](#plugins.vim) - enable and configure plugins. Managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
+- [`skim.vim`](#skim.vim) - configure [`skim.vim`](https://github.com/lotabout/skim.vim), a plugin for fuzzy searching files, buffers, lines, etc.
 - [`vimrc.symlink`](#vimrc.symlink) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv.symlink`](../zsh/zshenv.symlink)).
 
 ## each file in more detail
@@ -92,21 +92,6 @@ Add commands, used exclusively through keymappings.
 
 - `HiTab`/`NoHiTab` - highlight/unhighlight tabs. Mapped to `<leader>ht`/`<leader>htn`.
 - `TrimWhitespace` - strip extraneous whitespace from current file. Mapped to `<leader>tw`.
-
-### [`fzf.vim`](./fzf.vim)
-
-Configure [`fzf.vim`](https://github.com/junegunn/fzf.vim).
-
-`fzf.vim` is a `neovim` plugin for fuzzy searching files, buffers, lines, etc using [`fzf`](https://github.com/junegunn/fzf) as the backend.
-
-Notable keymappings:
-
-- `<c-p>` - fuzzy open files below current shell directory (same as `fzf`)
-- `<c-b>` - fuzzy select from open buffers
-- `<c-f>` - fuzzy select lines of files below current shell directory (interactive version of `rg`)
-- `<c-l>` - fuzzy select lines of current buffer
-- `<c-g>` - fuzzy select from `git status` files
-- `<leader>hc` - fuzzy select from command history
 
 ### [`keymap.vim`](./keymap.vim)
 
@@ -216,7 +201,7 @@ call plug#end()
   - [`vim-repeat`](https://github.com/tpope/vim-repeat) - live preview of currently open markdown file
   - [`markdown-preview.nvim`](https://github.com/iamcco/markdown-preview.nvim) - live preview of currently open markdown file
   - [`git-p.nvim`](https://github.com/iamcco/git-p.nvim) - show git blame/diff information in gutter and on current line
-  - [`fzf.vim`](https://github.com/junegunn/fzf.vim) - fuzzy search files, buffers, lines, etc. Configuration is complex enough to be broken out into its own file - [`fzf.vim`](#fzf.vim)
+  - [`skim.vim`](https://github.com/lotabout/skim.vim) - fuzzy search files, buffers, lines, etc. Configuration is complex enough to be broken out into its own file - [`skim.vim`](#skim.vim)
   - [`limelight.vim`](https://github.com/junegunn/limelight.vim) - prettier/more functional statusline
 - colors/syntax/languages
   - [`onedark.vim`](https://github.com/joshdick/onedark.vim) - color scheme
@@ -241,6 +226,21 @@ call plug#end()
 - statusline appearance (using [`lightline`](https://github.com/itchyny/lightline.vim)
 - `<leader>mp` to launch `MarkdownPreview`
 - disable vim-polyglot's Markdown support to use `vim-markdown` for Markdown files
+
+### [`skim.vim`](./skim.vim)
+
+Configure [`skim.vim`](https://github.com/lotabout/skim.vim).
+
+`skim.vim` is a plugin for fuzzy searching files, buffers, lines, etc. It is based off [`fzf.vim`](https://github.com/junegunn/fzf.vim) using [`skim`](https://github.com/lotabout/skim) as the backend.
+
+Notable keymappings:
+
+- `<c-p>` - fuzzy open files below current shell directory (same as `sk`)
+- `<c-b>` - fuzzy select from open buffers
+- `<c-f>` - fuzzy select lines of files below current shell directory (interactive version of `rg`)
+- `<c-l>` - fuzzy select lines of current buffer
+- `<c-g>` - fuzzy select from `git status` files
+- `<leader>hc` - fuzzy select from command history
 
 ### [`vimrc.symlink`](./vimrc.symlink)
 
