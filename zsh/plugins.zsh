@@ -34,6 +34,8 @@ autoload -Uz _zplugin
 # - https://github.com/zdharma/zplugin#ice-modifiers
 # - http://zdharma.org/zplugin/wiki/INTRODUCTION/#some_ice-modifiers
 
+# TODO: install `fzf` & `fasd` with `zplugin`?
+
 zplugin ice wait atload'_zsh_autosuggest_start' lucid
 zplugin light zsh-users/zsh-autosuggestions
 
