@@ -47,6 +47,9 @@ zplugin ice wait lucid
 zplugin light kutsan/zsh-system-clipboard
 
 # prompt
+# could load async in the future though this causes the default zsh prompt to
+# flash on screen temporarily before being overwritten
+# zplugin ice wait'!' lucid atload'true; _p9k_precmd' nocd
 zplugin light romkatv/powerlevel10k
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
