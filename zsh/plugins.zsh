@@ -52,6 +52,16 @@ zplugin light kutsan/zsh-system-clipboard
 # zplugin ice wait'!' lucid atload'true; _p9k_precmd' nocd
 zplugin light romkatv/powerlevel10k
 
+# provide `yarn remove` & `yarn add` completions
+# TODO: make this async
+# zplugin ice wait lucid
+zplugin light buonomo/yarn-completion
+
+# TODO: figure this out
+# type `fuck` to correct last typed command
+# zplugin ice wait lucid
+# zplugin light laggardkernel/zsh-thefuck
+
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
