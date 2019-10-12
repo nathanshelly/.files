@@ -2,6 +2,8 @@
 # Using Powerlevel10k - https://github.com/romkatv/powerlevel10k
 #
 # adapted from https://github.com/romkatv/powerlevel10k/blob/master/config/p10k-lean.zsh
+# TODO: update to latest version
+# TODO: https://github.com/romkatv/powerlevel10k/commits/master/config/p10k-lean.zsh
 # see the config there for more details on configuration options & other
 # possible prompt elements
 #
