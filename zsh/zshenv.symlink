@@ -16,3 +16,8 @@ export TMUXINATOR_CONFIG="$DOTFILES/tmux/tmuxinator_configs"
 # in these dotfiles and should be `nvim`
 export VISUAL=nvim
 export EDITOR=nvim
+
+# shorten key delay to .2 seconds
+# most important for quickly exiting
+# vi insert mode
+export KEYTIMEOUT=20
