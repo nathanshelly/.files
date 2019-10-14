@@ -39,6 +39,10 @@ bindkey -rM vicmd 'R'
 bindkey -M vicmd "'" vi-end-of-line
 bindkey -M vicmd '"' vi-digit-or-beginning-of-line
 
+# repeat `tfTF` motions (find next char)
+bindkey -M vicmd "h" vi-repeat-find
+bindkey -M vicmd "," vi-rev-repeat-find
+
 # edit zsh commands in $EDITOR
 # ref - https://nuclearsquid.com/writings/edit-long-commands/
 autoload -U edit-command-line
