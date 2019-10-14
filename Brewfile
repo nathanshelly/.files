@@ -50,7 +50,6 @@ brew "hyperfine"
 brew "git"
 brew "mas"
 brew "neovim", args: ["HEAD"]
-brew "node"
 brew "pandoc"
 brew "python"
 brew "redis"
@@ -65,7 +64,6 @@ brew "trash"
 brew "tree"
 brew "vim"
 brew "wget"
-brew "yarn"
 brew "zsh"
 
 # <<<<<<<< casks >>>>>>>>

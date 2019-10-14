@@ -23,6 +23,6 @@
 # could also write this as `$(brew --prefix)/opt/asdf` since generic brew prefix
 # is much faster than package specific but still takes ~30ms when timed with
 # `hyperfine` so taking the tradeoff of speed/fragility
-_asdf_initialization="/usr/local/opt/asdf/asdf.sh"
-[ -f "$_asdf_initialization" ] && source "$_asdf_initialization"
-unset _asdf_initialization
+asdf_initialization="/usr/local/opt/asdf/asdf.sh"
+[ -f "$asdf_initialization" ] && source "$asdf_initialization"
+unset asdf_initialization
