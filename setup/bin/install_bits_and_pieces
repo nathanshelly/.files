@@ -55,3 +55,7 @@ command -v npm > /dev/null 2>&1 || npm install --global tsun
 
 # install vim plugins
 nvim -c PlugInstall -c qa
+
+# install poetry (Python dependency management)
+# ref - https://github.com/sdispater/poetry#installation
+curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
