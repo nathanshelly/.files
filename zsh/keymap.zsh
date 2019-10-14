@@ -9,11 +9,6 @@
 # turn on vim mode
 bindkey -v
 
-# shorten key delay to .2 seconds
-# most important for quickly exiting
-# vi insert mode
-export KEYTIMEOUT=20
-
 # map jk to esc in insert mode
 bindkey -M viins 'jk' vi-cmd-mode
 
