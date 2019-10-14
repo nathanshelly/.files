@@ -92,15 +92,12 @@ ZSH_AUTOSUGGEST_STRATEGY=(history)
 # << keymappings >>
 # ref - https://github.com/zsh-users/zsh-autosuggestions#key-bindings
 
-# count only alphanumeric characters as part of a word
-WORDCHARS=
-
 # accept until end of line (same as right arrow)
 bindkey '^e' autosuggest-accept
 # accept until end of line and immediately execute
 bindkey '^ ' autosuggest-execute
 # accept next word
-bindkey '^w' forward-word
+bindkey '^w' vi-forward-word
 
 # <<< zsh-system-clipboard
 # https://github.com/kutsan/zsh-system-clipboard#options
