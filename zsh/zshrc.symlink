@@ -8,7 +8,6 @@
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
-source "$DOTFILES/zsh/asdf.zsh"
 source "$DOTFILES/zsh/completion.zsh"
 source "$DOTFILES/zsh/config.zsh"
 source "$DOTFILES/zsh/keymap.zsh"
@@ -59,3 +58,6 @@ done
 unset non_path_files non_path_file
 
 unset config_files
+
+# source asdf to give it final say on package versions
+source "$DOTFILES/zsh/asdf.zsh"
