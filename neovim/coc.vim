@@ -52,8 +52,6 @@ nmap <silent> gfb <Plug>(coc-format)
 " TODO: understand what code actions are (and code lens actions below)
 " apply code action for current line
 nmap <silent> coa <Plug>(coc-codeaction)
-" apply code action to selection
-nmap <silent> coas <Plug>(coc-codeaction-selected)
 
 " open link
 " TODO: figure out what's wrong with below line (same problem as above)
