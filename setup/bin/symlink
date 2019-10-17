@@ -48,7 +48,7 @@ symlink() {
       -print0
   ) | while IFS= read -r -d '' src; do # `-d <delimiter>`
     filename="$(basename "$src")"
-    local path_components='([-._ 0-9a-zA-Z]+>)*'
+    local path_components='([-._ 0-9a-zA-Z]+_._)*'
     local name='[-._ 0-9a-zA-Z]+'
     local flags='[_d]{1,2}'
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"

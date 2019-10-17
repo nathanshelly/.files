@@ -4,27 +4,27 @@ This script attempts to enable clean symlinking of arbitrary paths in your `$DOT
 
 Allows for symlinking individual files or whole directory (either by directly linking the directory or recursively linking contained files).
 
-Searches for files/directories w/ depth 2 @ path defined by `$DOTFILES` environment variable for files/directories that contain `.symlink` in their path, specifically the file/directory must have the syntax given in the next section.
+Searches for files/directories that contain `.symlink` in their path starting at `$DOTFILES` environment with a depth of three. The next section is more specific about valid syntax.
 
-*Note:* files/directories to symlink can be placed in `$DOTFILES`, or one directory below that.
+> This search descends three directories (e.g. it applies to files at a path `$DOTFILES/<directory_one>/<directory_two>/<directory_three>` and all shallower directories)
 
 ## Syntax
 
 ```shell
-^(([-._a-zA-Z]+>)*)([-._a-zA-Z]+)\.symlink(\.([_d]{1,2}))?$
+^(([-._a-zA-Z]+_._)*)([-._a-zA-Z]+)\.symlink(\.([_d]{1,2}))?$
 ```
 
 Allows specifying a path through the file or directory name, using `.symlink` to identify target symlinks. Optional flags can be specified through `._` or `.d` (or their combination).
 
-*Note:* if you'd like to easily check which names are allowed, define the below function (can copy and paste into terminal) then call it with the potential path like so: `$ check_regex '<path>'`.
+_Note:_ if you'd like to easily check which names are allowed, define the below function (can copy and paste into terminal) then call it with the potential path like so: `$ check_regex '<path>'`.
 
 ```shell
 check_regex() {
-  re="^(([-._a-zA-Z]+>)*)([-._a-zA-Z]+)\.symlink(\.([_d]{1,2}))?$"
+  re="^(([-._a-zA-Z]+_._)*)([-._a-zA-Z]+)\.symlink(\.([_d]{1,2}))?$"
   [[ $1 =~ $re ]] && echo "valid" || echo "invalid";
 }
 
-check_regex 'one.one>two_two>tmux.conf.symlink._d'
+check_regex 'one.one_._two_two_._tmux.conf.symlink._d'
 ```
 
 ### Syntax Breakdown
@@ -37,7 +37,7 @@ The first capture group - `(([-._a-zA-Z]+>)*)` - allows for specification of a t
 
 The second capture group - `([-._a-zA-Z]+)` (the string following the final `>` (or from the start if no path components) up to `.symlink`) specifies the file or directory name for the target.
 
-Combining these, to symlink a file to `$HOME/.vim/colors/.randomfile.zsh` you would name the target file - `.vim>colors>randomfile.zsh` where the first capture group would capture `.vim>colors>` and the second group `randomfile.zsh` (see *Examples* heading below for more).
+Combining these, to symlink a file to `$HOME/.vim/colors/.randomfile.zsh` you would name the target file - `.vim>colors>randomfile.zsh` where the first capture group would capture `.vim>colors>` and the second group `randomfile.zsh` (see _Examples_ heading below for more).
 
 By default the path has `.` appended to the front, prior to appending to `$HOME` (see `._` option to prevent this). for example:
 
