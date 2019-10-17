@@ -141,8 +141,8 @@ au Filetype vim set textwidth=80
 
 " << json >>
 
-" highlight `//` comments in json files
-" note: must come after turning on syntax coloring
-" ref - https://github.com/neoclide/coc.nvim/wiki/Using-configuration-file
-autocmd Filetype json syntax match Comment +\/\/.*$+
-
+" mark json files as jsonc by default
+" refs:
+" - https://github.com/neoclide/jsonc.vim
+" - https://github.com/neoclide/jsonc.vim/blob/master/ftdetect/jsonc.vim
+autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc
