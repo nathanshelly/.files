@@ -47,6 +47,8 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "graphql",
+    "javascript",
+    "javascriptreact",
     "json",
     "markdown",
     "rust",
