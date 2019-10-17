@@ -36,10 +36,14 @@ autoload -Uz _zplugin
 
 # TODO: install `fzf` & `fasd` with `zplugin`?
 
-zplugin ice wait atload'_zsh_autosuggest_start' lucid
+# ref - search zsh-autosuggestions
+# http://zdharma.org/zplugin/wiki/GALLERY/#plugins
+zplugin ice wait lucid atload'_zsh_autosuggest_start'
 zplugin light zsh-users/zsh-autosuggestions
 
-zplugin ice wait atload'zpcompinit; zpcdreplay' lucid
+# ref - serach fast-syntax-highlighting
+# http://zdharma.org/zplugin/wiki/GALLERY/#plugins
+zplugin ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zplugin light zdharma/fast-syntax-highlighting
 
 # synchronize system clipboard
@@ -49,9 +53,8 @@ zplugin ice wait lucid
 zplugin light kutsan/zsh-system-clipboard
 
 # prompt
-# could load async in the future though this causes the default zsh prompt to
-# flash on screen temporarily before being overwritten
-# zplugin ice wait'!' lucid atload'true; _p9k_precmd' nocd
+# ref - https://github.com/romkatv/powerlevel10k#zplugin
+zplugin ice depth=1
 zplugin light romkatv/powerlevel10k
 
 # provide `yarn remove` & `yarn add` completions
