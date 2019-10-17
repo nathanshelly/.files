@@ -9,12 +9,6 @@
 // Note: install script symlinking works by symlinking the existing symlink in
 // `$DOTFILES/config/nvim`
 //
-// Note II: if you're using `coc` and have the json extension installed you may
-// see errors due to these comments. To have `coc` treat them correctly use the
-// command `:CocConfig` (`coc` seems to use the full path of the opened file as
-// a heuristic for file behavior). This will also enable intelligent
-// automcompletion of the possible configuration options
-//
 // ref - https://github.com/neoclide/coc.nvim/blob/master/data/schema.json
 {
   "suggest.enablePreview": true,
