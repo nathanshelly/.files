@@ -47,9 +47,7 @@ nmap <silent> grf <Plug>(coc-references)
 " rename value at cursor
 nmap <silent> grn <Plug>(coc-rename)
 " format buffer
-nmap <silent> gf <Plug>(coc-format)
-" format selection (w/ motion, e.g. `gfmap` to format a paragraph
-nmap <silent> gfs <Plug>(coc-format-selected)
+nmap <silent> gfb <Plug>(coc-format)
 " TODO: evaluate use of `co` namespace depending on usage patterns
 " TODO: understand what code actions are (and code lens actions below)
 " apply code action for current line
