@@ -173,6 +173,9 @@ Plug 'metakirby5/codi.vim'
 
 " << colors/syntax/languages >>
 
+" jsonc filetype - JSON w/ comments
+Plug 'neoclide/jsonc.vim'
+
 " color scheme
 Plug 'joshdick/onedark.vim'
 
