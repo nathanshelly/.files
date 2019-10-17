@@ -82,6 +82,7 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-diagnostic',
+  \ 'coc-eslint',
   \ 'coc-html',
   \ 'coc-jest',
   \ 'coc-json',
