@@ -41,7 +41,7 @@ autoload -Uz _zplugin
 zplugin ice wait lucid atload'_zsh_autosuggest_start'
 zplugin light zsh-users/zsh-autosuggestions
 
-# ref - serach fast-syntax-highlighting
+# ref - search fast-syntax-highlighting
 # http://zdharma.org/zplugin/wiki/GALLERY/#plugins
 zplugin ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zplugin light zdharma/fast-syntax-highlighting
@@ -51,6 +51,10 @@ zplugin light zdharma/fast-syntax-highlighting
 # yet seen a need for enforcing that
 zplugin ice wait lucid
 zplugin light kutsan/zsh-system-clipboard
+
+# similar to `jk/`, convenient when query already typed out
+# ref - https://github.com/zsh-users/zsh-history-substring-search
+zplugin light zsh-users/zsh-history-substring-search
 
 # prompt
 # ref - https://github.com/romkatv/powerlevel10k#zplugin
@@ -101,6 +105,12 @@ bindkey '^e' autosuggest-accept
 bindkey '^ ' autosuggest-execute
 # accept next word
 bindkey '^w' vi-forward-word
+
+# <<<< history-substring-search >>>>
+
+# << keymappings >>
+bindkey '^u' history-substring-search-up
+bindkey '^y' history-substring-search-down
 
 # <<< zsh-system-clipboard
 # https://github.com/kutsan/zsh-system-clipboard#options
