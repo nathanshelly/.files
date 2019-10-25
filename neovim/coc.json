@@ -88,7 +88,12 @@
   // <<<< eslint >>>>
   "eslint.autoFix": true,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript","javascriptreact", "typescript", "typescriptreact"],
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
 
   // <<<< custom language servers >>>>
   // ref - https://github.com/neoclide/coc.nvim/wiki/Language-servers#register-custom-language-servers
