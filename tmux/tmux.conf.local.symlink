@@ -218,4 +218,7 @@ set -sa terminal-overrides ',xterm*:dim=\E[2m'
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 set -as terminal-overrides ',xterm*:Tc'
 
+# clear screen (similar to Ctrl-l but can be used during running applications)
+bind C-l send-keys -R
+
 # <<<< end of configuring tmux separate from .tmux >>>>
