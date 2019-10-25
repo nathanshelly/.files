@@ -38,6 +38,14 @@
   // how to disable LS suggestions in comments like possible for other sources?
   // ref - https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
   "coc.source.file.ignoreHidden": false,
+
+  "coc.preferences.rootPatterns": [
+    "tsconfig.json",
+    ".projectroot",
+    ".vim",
+    ".git"
+  ],
+
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "graphql",
