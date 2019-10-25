@@ -9,6 +9,12 @@ set t_vb=
 " prevent swap files
 set noswapfile
 
+" update open files as they change
+set autoread
+" workaround
+" ref - https://github.com/neovim/neovim/issues/1936
+au FocusGained * :checktime
+
 " save on buffer switch
 set autowrite
 
