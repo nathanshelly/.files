@@ -5,7 +5,10 @@
 # see the config there for more details on configuration options & other
 # possible prompt elements
 #
-# Note: in order to more easily keep this file up to date with the template
+# Note: run `spectrum_ls` (../functions/spectrum_ls) to see possible colors and
+# their corresponding codes
+#
+# Note II: in order to more easily keep this file up to date with the template
 # avoid editing formatting/comments as much as possible. In general most changes
 # should be solely additions/deletions (avoid modifications) since resulting
 # conflicts should be easier to resolve.
