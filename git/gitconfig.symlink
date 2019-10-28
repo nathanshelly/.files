@@ -10,7 +10,7 @@
   branch = auto
 [core]
   excludesfile = ~/.gitignore
-  pager = delta --dark --highlight-removed --theme="TwoDark" --plus-color="#0e4e6c" --plus-emph-color="#1990c7" --minus-emph-color="#df1089" --minus-color="#80094e"
+  pager = delta --dark --highlight-removed --theme="TwoDark" --plus-color="#1c3428" --plus-emph-color="#37664e" --minus-color="#5f0008" --minus-emph-color="#af0d6c"
 [apply]
   whitespace = nowarn
 [mergetool]
