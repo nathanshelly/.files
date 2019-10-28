@@ -34,12 +34,17 @@ tap "homebrew/cask-versions"
 # ref - https://github.com/Homebrew/homebrew-cask-fonts
 tap "homebrew/cask-fonts"
 
+# alt
+# ref - https://github.com/uptech/alt
+tap "uptech/homebrew-oss"
+
 # delta
 # ref - https://github.com/dandavison/delta
 tap "dandavison/delta", "https://github.com/dandavison/delta"
 
 # <<<<<<<< packages (formulae) >>>>>>>>
 
+brew "alt"
 brew "asciinema"
 brew "awscli"
 brew "bat"
