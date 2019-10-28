@@ -107,3 +107,7 @@ nnoremap <leader>d 0D
 
 " strip whitespace
 :noremap <leader>tw :TrimWhitespace<cr>
+
+" find the alternate file for the current path and open it
+" ref - https://github.com/uptech/alt/#use-with-vim
+nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
