@@ -133,6 +133,8 @@ Plug 'kana/vim-textobj-entire'
 
 " << utilities >>
 
+Plug 'scrooloose/nerdtree'
+
 " repeats plugin actions (vim-commentary,  vim-surround, etc.)
 Plug 'tpope/vim-repeat'
 
@@ -210,6 +212,10 @@ let g:surround_{char2nr('s')} = "<\r>"
 let g:surround_{char2nr('S')} = "< \r >"
 
 " <<<<<< utilities >>>>>>
+
+" <<<< nerdtree >>>>
+" ref - https://github.com/scrooloose/nerdtree#faq-here-and-in-the-wiki
+map <c-n> :NERDTreeToggle<CR>
 
 " <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config
