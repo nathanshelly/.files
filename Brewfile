@@ -34,6 +34,10 @@ tap "homebrew/cask-versions"
 # ref - https://github.com/Homebrew/homebrew-cask-fonts
 tap "homebrew/cask-fonts"
 
+# delta
+# ref - https://github.com/dandavison/delta
+tap "dandavison/delta", "https://github.com/dandavison/delta"
+
 # <<<<<<<< packages (formulae) >>>>>>>>
 
 brew "asciinema"
@@ -48,6 +52,7 @@ brew "fzf"
 brew "hub"
 brew "hyperfine"
 brew "git"
+brew "git-delta"
 brew "mas"
 brew "mdcat"
 brew "neovim", args: ["HEAD"]
