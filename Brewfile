@@ -49,6 +49,7 @@ brew "hub"
 brew "hyperfine"
 brew "git"
 brew "mas"
+brew "mdcat"
 brew "neovim", args: ["HEAD"]
 brew "pandoc"
 brew "python"
