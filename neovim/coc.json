@@ -94,8 +94,9 @@
   // <<<<<<<< extension/language server specific settings >>>>>>>>
 
   // <<<< eslint >>>>
-  "eslint.autoFix": true,
-  "eslint.autoFixOnSave": true,
+  // TODO: re-enable these
+  /* "eslint.autoFix": true, */
+  /* "eslint.autoFixOnSave": true, */
   "eslint.filetypes": [
     "javascript",
     "javascriptreact",
