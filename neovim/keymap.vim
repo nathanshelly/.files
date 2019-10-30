@@ -94,13 +94,11 @@ nmap <silent> <leader>' g$
 nmap <silent> <leader>" g0
 
 " vim split actions
-nnoremap <leader>p <c-w>
 " navigate between vim splits
-nnoremap <leader>pj <c-w><Left>
-nnoremap <leader>pk <c-w><Down>
-nnoremap <leader>pl <c-w><Up>
-nnoremap <leader>p; <c-w><Right>
-nnoremap <leader>p= <c-w>=
+nnoremap <c-w>j <c-w><Left>
+nnoremap <c-w>k <c-w><Down>
+nnoremap <c-w>l <c-w><Up>
+nnoremap <c-w>; <c-w><Right>
 
 " clear line
 nnoremap <leader>d 0D
