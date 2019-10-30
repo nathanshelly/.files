@@ -39,7 +39,7 @@ nnoremap S <nop>
 nnoremap X <nop>
 
 " switch to last buffer
-nnoremap <c-w> <c-^>
+nnoremap <leader>l <c-^>
 
 " remapped below
 nnoremap s <nop>
