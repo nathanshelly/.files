@@ -52,10 +52,9 @@ alias ggc='git gc'
 
 alias gl='gnp ln 15'
 alias gln='gnp ln'
-alias glp='git lv --patch'
-alias glps='git lv --patch --stat'
-alias gls='git lv --stat'
-alias glsn='git lv --stat --max-count'
+alias glp='git lv --patch --stat'
+alias gls='git lv --stat --graph'
+alias glsn='git lv --stat --graph --max-count'
 alias glv='gnp lvn 15'
 alias glvn='gnp lvn'
 
