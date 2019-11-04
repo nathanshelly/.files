@@ -43,7 +43,7 @@
   count = !git shortlog --summary
   last  = log -1 HEAD
   # base alias to build on
-  lb = log --graph --abbrev-commit --decorate
+  lb = log --abbrev-commit --decorate
   l = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
   ln = l --max-count
   lv = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
