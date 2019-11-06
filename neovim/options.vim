@@ -107,6 +107,9 @@ set undofile
 " place to store persistent history
 set undodir=~/.vim/undodir
 
+" be as terse as possible
+set shortmess+=a
+
 " << search >>
 
 " show matches as you type
