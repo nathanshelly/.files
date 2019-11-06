@@ -129,8 +129,8 @@ nmap <silent> <c-s> :CocList<CR>
 " " Resume latest coc list
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use D for show documentation in preview window
+nnoremap <silent> D :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if &filetype == 'vim'
