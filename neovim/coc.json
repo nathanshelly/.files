@@ -93,18 +93,7 @@
 
   // <<<<<<<< extension/language server specific settings >>>>>>>>
 
-  // <<<< eslint >>>>
-  // TODO: re-enable these
-  /* "eslint.autoFix": true, */
-  /* "eslint.autoFixOnSave": true, */
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-
-  // <<<< custom language servers >>>>
+  // <<<< custom (w/o extension) language servers >>>>
   // ref - https://github.com/neoclide/coc.nvim/wiki/Language-servers#register-custom-language-servers
   "languageserver": {
     // https://github.com/mads-hartmann/bash-language-server
@@ -116,9 +105,16 @@
     }
   },
 
-  // <<<< tsserver >>>>
-  // ref - https://github.com/neoclide/coc-tsserver#configuration-options
-  "tsserver.enableJavascript": false,
+  // <<<< eslint >>>>
+  // TODO: re-enable these
+  /* "eslint.autoFix": true, */
+  /* "eslint.autoFixOnSave": true, */
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
 
   // <<<< python >>>>
   // ref - https://github.com/neoclide/coc-python#options
@@ -128,5 +124,9 @@
   "python.jediEnabled": false,
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": true,
-  "python.linting.pylintEnabled": false
+  "python.linting.pylintEnabled": false,
+
+  // <<<< tsserver >>>>
+  // ref - https://github.com/neoclide/coc-tsserver#configuration-options
+  "tsserver.enableJavascript": false
 }
