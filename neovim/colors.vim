@@ -15,7 +15,7 @@ colorscheme onedark
 set background=dark
 " disable background color potentially set by colorscheme
 " ref - https://vi.stackexchange.com/a/16136
-hi Normal ctermbg=None guibg=None
+hi Normal ctermbg=NONE guibg=NONE
 
 " << miscellaneous >>
 
@@ -23,11 +23,11 @@ hi Normal ctermbg=None guibg=None
 hi ColorColumn ctermbg=235 guibg=#111112
 
 " search
-hi Search cterm=None ctermfg=black ctermbg=cyan guibg=#89CFF0 guifg=#000000
-hi IncSearch cterm=None ctermfg=black ctermbg=cyan guibg=#89CFF0 guifg=#000000
+hi Search cterm=NONE ctermfg=black ctermbg=cyan guibg=#89CFF0 guifg=#000000
+hi IncSearch cterm=NONE ctermfg=black ctermbg=cyan guibg=#89CFF0 guifg=#000000
 
 " matching
-hi MatchParen cterm=None ctermfg=cyan ctermbg=None guibg=#808080 guifg=#89CFF0 gui=none
+hi MatchParen cterm=NONE ctermfg=cyan ctermbg=NONE guibg=#808080 guifg=#89CFF0 gui=none
 
 " << whitespace >>
 
