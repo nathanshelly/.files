@@ -9,6 +9,10 @@ path=(
   /usr/local/bin
   /usr/local/sbin
   $HOME/.cargo/bin
+  # gitignored build folder
+  # currently used only for the rust lsp -
+  # $DOTFILES/setup/bin/install_language_servers
+  $DOTFILES/target
   $path
 )
 
