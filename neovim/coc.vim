@@ -76,6 +76,7 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 "
 " TODO: configure extensions, set up required language servers
 " `coc-tsserver`: requires no separate language server
+" `coc-marketplace`: install extensions from within vim
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-diagnostic',
@@ -83,6 +84,7 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-jest',
   \ 'coc-json',
+  \ 'coc-marketplace',
   \ 'coc-prettier',
   \ 'coc-python',
   \ 'coc-rust-analyzer',
