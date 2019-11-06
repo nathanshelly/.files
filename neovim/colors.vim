@@ -11,8 +11,6 @@ endif
 
 colorscheme onedark
 
-" background
-set background=dark
 " disable background color potentially set by colorscheme
 " ref - https://vi.stackexchange.com/a/16136
 hi Normal ctermbg=NONE guibg=NONE

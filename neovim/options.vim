@@ -2,15 +2,9 @@
 " NOTE: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
 " bindings defined in that file work)
 
-" disable beeping and screen flash on error
-set visualbell
-set t_vb=
-
 " prevent swap files
 set noswapfile
 
-" update open files as they change
-set autoread
 " workaround
 " ref - https://github.com/neovim/neovim/issues/1936
 au FocusGained * :checktime
@@ -52,11 +46,6 @@ augroup END
 " scrolloff
 set scrolloff=10
 
-" normal backspace
-" refs:
-" https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
-" http://vim.wikia.com/wiki/Backspace_and_delete_problems
-set backspace=indent,eol,start
 
 " indentation
 " explanation:
@@ -68,13 +57,11 @@ set backspace=indent,eol,start
 " http://vim.wikia.com/wiki/Indenting_source_code
 " https://tedlogan.com/techblog3.html
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-set autoindent
 
 " wrap on linebreak (show as much as possible)
 " ref - http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
 set wrap
 set linebreak
-set display+=lastline
 
 " allow cursor past end of line
 " ref - https://groups.google.com/forum/#!topic/vim_use/XYY1qsv82NM
@@ -104,18 +91,12 @@ set matchpairs+=<:>
 
 " persists history across opens
 set undofile
-" place to store persistent history
-set undodir=~/.vim/undodir
 
 " be as terse as possible
 set shortmess+=a
 
 " << search >>
 
-" show matches as you type
-set incsearch
-" highlight all matches
-set hlsearch
 " case sensitive if the search contains
 " capitals (ignorecase needs to be set for this)
 " whole word -> /\<word\>
