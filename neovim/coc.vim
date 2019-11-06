@@ -75,7 +75,6 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 " extra sources - https://github.com/neoclide/coc-sources
 "
 " TODO: configure extensions, set up required language servers
-" `coc-rls`: rust
 " `coc-tsserver`: requires no separate language server
 let g:coc_global_extensions = [
   \ 'coc-css',
@@ -86,7 +85,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-prettier',
   \ 'coc-python',
-  \ 'coc-rls',
+  \ 'coc-rust-analyzer',
   \ 'coc-tsserver',
 \ ]
 
