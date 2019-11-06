@@ -119,6 +119,9 @@
   // <<<< rust >>>>
   // ref - https://github.com/fannheyward/coc-rust-analyzer#configurations
   "rust-analyzer.enableCargoWatchOnStartup": "enabled",
+  "rust-analyzer.featureFlags": {
+    "notifications.workspace-loaded": false
+  },
 
   // <<<< python >>>>
   // ref - https://github.com/neoclide/coc-python#options
