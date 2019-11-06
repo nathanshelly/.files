@@ -20,10 +20,8 @@
 # << installation in this file >>
 #
 # - bash - https://github.com/mads-hartmann/bash-language-server
-# - rust
-#   - `rls` (https://github.com/rust-lang/rls) works though is a little flaky
-#   - `rust-analyzer` (https://github.com/rust-analyzer/rust-analyzer) seems
-#     like the future of rust language-server support
+# - rust - `rust-analyzer` (https://github.com/rust-analyzer/rust-analyzer)
+# works well
 #
 # <<<< currently explicitly NOT used languages >>>>
 #
@@ -32,11 +30,32 @@
 # bash
 command -v npm > /dev/null 2>&1 || npm install --global bash-language-server
 
-# rust - flaky, issues w/ formatting & linting
-# install rustup, then requisite packages
-# TODO: figure out best language server here
-# ref - https://rustup.rs/
-command -v rustup > /dev/null 2>&1 || {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  rustup component add rls rust-analysis rust-src
+# rust - using `rust-analyzer`
+# install rustup and then rust analyzer language server respectively if not
+# already installed
+#
+# refs:
+# - https://rustup.rs/
+# - https://github.com/fannheyward/coc-rust-analyzer#quick-start
+# - https://github.com/rust-analyzer/rust-analyzer#language-server-quick-start
+TARGET="$DOTFILES/target"
+command -v ra_lsp_server > /dev/null 2>&1 || {
+  command -v rustup || {
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  }
+
+  mkdir -p "$TARGET"
+  git clone \
+    https://github.com/rust-analyzer/rust-analyzer \
+    "$TARGET/rust-analyzer"
+  cd "$TARGET/rust-analyzer" || {
+    # shellcheck disable=SC2016
+    echo 'Failed to install `rust-analyzer` in `install_language_servers`'
+    exit 1
+  }
+
+  # run from /tmp/rust-analyzer
+  rustup component add rust-src
+  cargo xtask install --server
 }
+unset TARGET
