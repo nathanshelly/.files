@@ -41,6 +41,8 @@ autoload -Uz _zplugin
 zplugin ice wait lucid atload'_zsh_autosuggest_start'
 zplugin light zsh-users/zsh-autosuggestions
 
+# note: any plugins that define widgets the syntax highlighting might need to
+# color (such as `zsh-autosuggestions`) must be loaded prior
 # ref - search fast-syntax-highlighting
 # http://zdharma.org/zplugin/wiki/GALLERY/#plugins
 zplugin ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"

@@ -8,6 +8,10 @@
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
+# this should be one of the first files sourced, see explanation at the top of
+# the file
+source "$DOTFILES/zsh/instant_prompt.zsh"
+
 source "$DOTFILES/zsh/completion.zsh"
 source "$DOTFILES/zsh/config.zsh"
 source "$DOTFILES/zsh/keymap.zsh"
