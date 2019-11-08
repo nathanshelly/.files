@@ -11,6 +11,13 @@
 [core]
   excludesfile = ~/.gitignore
   pager = delta --dark --highlight-removed --tabs=2 --hunk-style=plain --theme="TwoDark" --plus-color="#1c3428" --plus-emph-color="#37664e" --minus-color="#390423" --minus-emph-color="#af0d6c"
+[pager]
+  # " = true" means use pager defined in [core]
+  add      = true
+  diff     = true
+  difftool = true
+  log      = true
+  show     = true
 [apply]
   whitespace = nowarn
 [mergetool]
