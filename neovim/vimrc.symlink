@@ -1,6 +1,7 @@
 " plugins.vim must be sourced first so that resources such as colorschemes
 " are available for use in other config files
 source $DOTFILES/neovim/plugins.vim
+source $DOTFILES/neovim/plugin_config.vim
 
 if !has('nvim')
   source $DOTFILES/neovim/vim_only.vim
