@@ -133,6 +133,10 @@ Plug 'kana/vim-textobj-entire'
 
 " << utilities >>
 
+" git wrapper
+Plug 'tpope/vim-fugitive'
+
+" file explorer
 Plug 'scrooloose/nerdtree'
 
 " repeats plugin actions (vim-commentary,  vim-surround, etc.)
