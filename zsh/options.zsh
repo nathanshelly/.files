@@ -16,7 +16,7 @@ setopt extended_glob no_match
 setopt hist_ignore_all_dups hist_reduce_blanks share_history hist_verify
 
 # input
-setopt nocorrect
+setopt no_correct
 
 # job control
 setopt no_bg_nice no_hup notify
