@@ -75,6 +75,10 @@ nmap <silent> <leader>x :x<CR>
 nmap <silent> <leader>cq :cq<CR>
 nmap <silent> <leader>bd :bd<CR>
 
+" refresh
+" ref - https://stackoverflow.com/a/17189261
+nmap <silent> <leader>r :syntax sync fromstart<cr>
+
 " source vimrc (`reload` mnemonic)
 nmap <silent> <leader>rld  :source $HOME/.vimrc<CR>
 
