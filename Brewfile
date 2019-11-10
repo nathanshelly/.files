@@ -44,6 +44,10 @@ tap "dandavison/delta", "https://github.com/dandavison/delta"
 
 # <<<<<<<< packages (formulae) >>>>>>>>
 
+# install a modern version of `gcc`
+# installed first so that it's used to compile later packages
+brew "gcc"
+
 brew "alt"
 brew "asciinema"
 brew "awscli"
