@@ -46,6 +46,8 @@ augroup END
 " scrolloff
 set scrolloff=10
 
+" enable mouse
+set mouse=a
 
 " indentation
 " explanation:
