@@ -3,10 +3,9 @@
 
 " <<<< automatic installation >>>>
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * plugInstall --sync | source $MYVIMRC
+if empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
+  !curl -fLo "$XDG_DATA_HOME/nvim/site/autoload/plug.vim" --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " <<<<<<<< plugins >>>>>>>>
