@@ -63,3 +63,6 @@ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.p
 # set poetry to create virtualenvs in project root
 # ref - https://github.com/sdispater/poetry/issues/108
 poetry config settings.virtualenvs.in-project true
+
+# install zplugin & its associated plugins
+zsh -i -c exit
