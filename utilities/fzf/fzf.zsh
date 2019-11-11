@@ -9,6 +9,9 @@
 
 # <<<< completion >>>>
 
+# don't run unless `fzf` is installed
+command -v fzf > /dev/null 2>&1 || return
+
 # NOTE: if this is causing issues, try seeing if `brew --prefix` returns a
 # different value. Using static "/usr/local" for speed
 brew_prefix="/usr/local"
@@ -21,7 +24,7 @@ brew_prefix="/usr/local"
 
 # default keybindings
 # `^t` - pastes selected files
-# `M-c` - navigate to directory (`cd` into selected folder) 
+# `M-c` - navigate to directory (`cd` into selected folder)
 # `^r` - overridden below (still history search but slightly different from
 # default behavior)
 source "$brew_prefix/opt/fzf/shell/key-bindings.zsh"
