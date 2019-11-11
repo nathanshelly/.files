@@ -122,7 +122,7 @@ recursively_link_directory() {
 
   # use parens to group conditions
   # ref - https://stackoverflow.com/questions/7190565/unix-find-multiple-file-types
-  find -H "$source_base_path" \( -type file -or -type l \) -print0 \
+  find -H "$source_base_path" -type f,l -print0 \
   | while IFS= read -r -d '' src; do
     local target_path="$target_base_path${src#$source_base_path}"
 
