@@ -13,7 +13,7 @@
 command -v fzf > /dev/null 2>&1 || return
 
 # NOTE: hardcoding here instead of `brew --prefix` for performance
-brew_prefix="/usr/local"
+brew_prefix="/home/dot/.linuxbrew"
 
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables

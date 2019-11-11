@@ -14,9 +14,6 @@ alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
 # open another alacritty instance
 alias alac="open --new /Applications/Alacritty.app"
 
-# discourage usage of rm (in favor of `t` alias for trash)
-alias rm='echo "use trash primarily, /bin/rm when needed"'
-
 # <<<< generics >>>>
 alias e="$EDITOR" # text editor
 alias i=exiftool # metadata info
@@ -33,4 +30,3 @@ fi
 # TODO: make function here to really abstract out difference?
 command -v fd > /dev/null 2>&1 || alias fd='find . -iname'
 alias pm="$(package_manager)"
-alias t=trash # macOS trash command

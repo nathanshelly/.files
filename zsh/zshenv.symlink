@@ -26,3 +26,8 @@ export EDITOR=nvim
 # most important for quickly exiting
 # vi insert mode
 export KEYTIMEOUT=20
+
+# <<<< docker >>>>
+# add `brew` to path
+# ref - https://docs.brew.sh/Homebrew-on-Linux#install
+eval "$(/home/dot/.linuxbrew/bin/brew shellenv 2> /dev/null)"

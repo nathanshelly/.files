@@ -8,8 +8,8 @@ typeset -U path
 path=(
   # homebrew
   # hardcoded instead of `brew --prefix`
-  /usr/local/bin
-  /usr/local/sbin
+  /home/dot/.linuxbrew/bin
+  /home/dot/.linuxbrew/sbin
   $HOME/.cargo/bin
   # gitignored build folder
   # currently used only for the rust lsp -
@@ -29,6 +29,3 @@ do
   source "$path_file"
 done
 unset path_files path_file
-
-# add `brew` to path on linux (docker)
-[ -f /home/dot/.linuxbrew/bin/brew ] && eval "$(/home/dot/.linuxbrew/bin/brew shellenv)"

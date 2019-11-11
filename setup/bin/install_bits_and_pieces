@@ -7,7 +7,10 @@ source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 source "$DOTFILES/setup/lib/prompts.sh"
 
 # set up git submodules
+# TODO: handle possible failures more gracefully
+pushd "$DOTFILES" || exit
 git submodule update --init && info "Initialized submodules"
+popd || exit
 
 # install python module for neovim (used by `black` plugin)
 if command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8"; then
@@ -16,8 +19,8 @@ elif command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8"; then
   pip3 install neovim ptpython black
 fi
 
-# install vim plugins
-nvim -c PlugInstall -c qa
-
 # install zplugin & its associated plugins
 zsh -i -c exit
+
+# # install vim plugins
+nvim -c PlugInstall -c qa

@@ -8,7 +8,8 @@ source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 # ref - https://brew.sh/
 command -v brew > /dev/null 2>&1 || {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-  eval "$(/home/dot/.linuxbrew/bin/brew shellenv)"
+  # TODO: remove hardcoding
+  eval "$(/home/dot/.linuxbrew/bin/brew shellenv 2> /dev/null)"
 }
 
 cd "$DOTFILES" || {

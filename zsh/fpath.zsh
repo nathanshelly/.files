@@ -3,5 +3,5 @@
 if command -v brew &> /dev/null; then
   # hardcoding path given by following command for performance
   # `$(brew --prefix)/share/zsh/site-functions`
-  fpath=("/usr/local/share/zsh/site-functions" $fpath)
+  fpath=("/home/dot/.linuxbrew/share/zsh/site-functions" $fpath)
 fi
