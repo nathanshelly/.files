@@ -29,3 +29,6 @@ do
   source "$path_file"
 done
 unset path_files path_file
+
+# add `brew` to path on linux (docker)
+[ -f /home/dot/.linuxbrew/bin/brew ] && eval "$(/home/dot/.linuxbrew/bin/brew shellenv)"

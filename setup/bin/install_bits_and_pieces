@@ -6,27 +6,8 @@ source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
 source "$DOTFILES/setup/lib/prompts.sh"
 
-# TODO: check submodule & zsh plugins to avoid rerunning when unnecessary
-
-# add `zsh` to allowed shells if not already added
-grep -q "$(command -v zsh)" /etc/shells || {
-  info "Using sudo access to add '$(command -v zsh)' to /etc/shells\n"
-  sudo sh -c "echo $(command -v zsh) >> /etc/shells" && {
-    info "Added $(command -v zsh) to /etc/shells"
-  }
-}
-
-# change login shell to brew `zsh` if it isn't already
-[ "$SHELL" = "$(command -v zsh)" ] || {
-  chsh -s "$(command -v zsh)" && info "Changed login shell to $(command -v zsh)"
-}
-
 # set up git submodules
 git submodule update --init && info "Initialized submodules"
-
-# install `tmuxinator`
-# ref - https://github.com/tmuxinator/tmuxinator
-command -v gem > /dev/null 2>&1 && gem install --user-install tmuxinator
 
 # install python module for neovim (used by `black` plugin)
 if command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8"; then
@@ -35,31 +16,8 @@ elif command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8"; then
   pip3 install neovim ptpython black
 fi
 
-if command -v mas > /dev/null; then
-  # this line will error unless you have purchased Super Easy Timer. Delete or
-  # or comment this line out to avoid errors.
-  # TODO: check for apple account first?
-  # ref - https://github.com/mas-cli/mas
-  mas "Super Easy Timer", id: 1353137878
-fi
-
-# typescript repl
-# ref - https://github.com/HerringtonDarkholme/typescript-repl
-command -v npm > /dev/null 2>&1 && npm install --global tsun
-
 # install vim plugins
 nvim -c PlugInstall -c qa
-
-# <<<< poetry >>>>
-# TODO: fix poetry setup
-# install poetry (Python dependency management)
-# ref - https://github.com/sdispater/poetry#installation
-# curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-
-# set poetry to create virtualenvs in project root
-# ref - https://github.com/sdispater/poetry/issues/108
-# poetry config settings.virtualenvs.in-project true
-# <<<< end of poetry >>>>
 
 # install zplugin & its associated plugins
 zsh -i -c exit
