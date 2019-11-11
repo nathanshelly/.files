@@ -3,6 +3,7 @@
 source $DOTFILES/neovim/plugins.vim
 source $DOTFILES/neovim/plugin_config.vim
 
+" TODO: move this to `vim` specific-setup
 if !has('nvim')
   source $DOTFILES/neovim/vim_only.vim
 endif
