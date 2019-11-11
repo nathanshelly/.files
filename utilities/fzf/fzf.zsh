@@ -12,8 +12,7 @@
 # don't run unless `fzf` is installed
 command -v fzf > /dev/null 2>&1 || return
 
-# NOTE: if this is causing issues, try seeing if `brew --prefix` returns a
-# different value. Using static "/usr/local" for speed
+# NOTE: hardcoding here instead of `brew --prefix` for performance
 brew_prefix="/usr/local"
 
 # Note: `$-` lists options set in current shell

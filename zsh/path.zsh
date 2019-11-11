@@ -6,6 +6,8 @@
 typeset -U path
 
 path=(
+  # homebrew
+  # hardcoded instead of `brew --prefix`
   /usr/local/bin
   /usr/local/sbin
   $HOME/.cargo/bin
