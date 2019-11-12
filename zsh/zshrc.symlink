@@ -27,6 +27,15 @@ source "$DOTFILES/zsh/functions.zsh"
 # source after $DOTFILES/zsh/functions.zsh to allow aliasing those functions
 source "$DOTFILES/zsh/alias.zsh"
 
+# `zplugin` installer adds the following snippet, leave it in `.zshrc` instead
+# of moving into `zplugin.zsh` because the installer searches only this file so
+# it will redundantly add the below chunk in this file if it's anywhere else
+# <<<<<<<<<<<<<<<<<<< start of zplugin installer-added chunk >>>>>>>>>>>>>>>>>>>
+source "$HOME/.zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+# <<<<<<<<<<<<<<<<<<< start of zplugin installer-added chunk >>>>>>>>>>>>>>>>>>>
+
 # load and configure plugins
 source "$DOTFILES/zsh/plugins.zsh"
 # configure prompt after enabling
