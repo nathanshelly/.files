@@ -220,6 +220,11 @@ bind M-\; resize-pane -R 1
 bind l switch-client -l
 
 # clear screen (similar to Ctrl-l but can be used during running applications)
+# ref - https://stackoverflow.com/a/11525159
 bind C-l send-keys -R
+
+# clear scrollback buffer
+# ref - https://stackoverflow.com/a/10553992
+bind C-k clear-history
 
 # <<<< end of configuring tmux separate from .tmux >>>>
