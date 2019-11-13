@@ -7,7 +7,7 @@ source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 source "$DOTFILES/setup/lib/prompts.sh"
 
 # TODO: not necessary, slight improvement
-# check tic, submodule and zsh plugins to avoid rerunning when unnecessary
+# check submodule & zsh plugins to avoid rerunning when unnecessary
 
 # add `zsh` to allowed shells if not already added
 grep -q "$(command -v zsh)" /etc/shells || {
@@ -24,13 +24,6 @@ grep -q "$(command -v zsh)" /etc/shells || {
 
 # set up git submodules
 git submodule update --init && info "Initialized submodules"
-
-# add custom terminfo for tmux sessions
-# `-x` to treat unknown capabilities as user defined
-# note: this command is idempotent so no need to check anything before running
-# ref - `man tic` or `tic --help`
-tic -x "$DOTFILES/tmux/tmux-256color.terminfo" \
-  && info "Installed $DOTFILES/tmux/tmux-256color.terminfo"
 
 # install `tmuxinator`
 # ref - https://github.com/tmuxinator/tmuxinator
