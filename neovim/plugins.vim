@@ -3,9 +3,12 @@
 
 " <<<< automatic installation >>>>
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-if empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
-  !curl -fLo "$XDG_DATA_HOME/nvim/site/autoload/plug.vim" --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+" TODO: figure out how to specify nested expansion, save in variable?
+" if empty(glob("${XDG_DATA_HOME:-${HOME}/.local/share}/nvim/site/autoload/plug.vim"))
+if empty(glob("$HOME/.local/share/nvim/site/autoload/plug.vim"))
+  !curl --create-dirs -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim"
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " <<<<<<<< plugins >>>>>>>>
