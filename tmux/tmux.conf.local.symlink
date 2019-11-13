@@ -50,7 +50,19 @@ set -g history-limit 1000000
 # colors
 # it says 256 but actually true color (when combined w/ `terminal-overrides`
 # `:Tc` flag below), also enables italics
-set -g default-terminal "tmux-256color"
+set -g default-terminal "xterm-256color"
+
+# enable true color (RGB color), dimming, strikethrough and italics
+#
+# refs:
+# - [tmux, true color guide](https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be)
+# - [dimming](https://github.com/tmux/tmux/issues/135)
+# - [example config](https://github.com/Atcold/Unix-dot-files/blob/master/Tmux/tmux.conf#L38-L39)
+# - [setting terminal overrides](https://stackoverflow.com/questions/41783367/tmux-tmux-true-color-is-not-working-properly)
+set -sa terminal-overrides ',xterm*:dim=\E[2m'
+set -as terminal-overrides ',xterm*:sitm=\E[3m'
+set -as terminal-overrides ',xterm*:Tc'
+
 
 # window title
 set -g set-titles-string '#h ⟺  #S ⟺  #W'
@@ -206,17 +218,6 @@ bind M-\; resize-pane -R 1
 
 # switch to last session
 bind l switch-client -l
-
-# enable true color (RGB color), dimming, strikethrough and italics
-#
-# refs:
-# - [tmux, true color guide](https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be)
-# - [dimming](https://github.com/tmux/tmux/issues/135)
-# - [example config](https://github.com/Atcold/Unix-dot-files/blob/master/Tmux/tmux.conf#L38-L39)
-# - [setting terminal overrides](https://stackoverflow.com/questions/41783367/tmux-tmux-true-color-is-not-working-properly)
-set -sa terminal-overrides ',xterm*:dim=\E[2m'
-set -as terminal-overrides ',xterm*:sitm=\E[3m'
-set -as terminal-overrides ',xterm*:Tc'
 
 # clear screen (similar to Ctrl-l but can be used during running applications)
 bind C-l send-keys -R
