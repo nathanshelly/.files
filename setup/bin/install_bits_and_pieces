@@ -6,8 +6,7 @@ source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
 source "$DOTFILES/setup/lib/prompts.sh"
 
-# TODO: not necessary, slight improvement
-# check submodule & zsh plugins to avoid rerunning when unnecessary
+# TODO: check submodule & zsh plugins to avoid rerunning when unnecessary
 
 # add `zsh` to allowed shells if not already added
 grep -q "$(command -v zsh)" /etc/shells || {
@@ -27,7 +26,7 @@ git submodule update --init && info "Initialized submodules"
 
 # install `tmuxinator`
 # ref - https://github.com/tmuxinator/tmuxinator
-command -v gem > /dev/null 2>&1 || gem install --user-install tmuxinator
+command -v gem > /dev/null 2>&1 && gem install --user-install tmuxinator
 
 # install python module for neovim (used by `black` plugin)
 if command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8"; then
@@ -36,15 +35,17 @@ elif command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8"; then
   pip3 install neovim ptpython black
 fi
 
-# this line will error unless you have purchased Super Easy Timer. Delete or
-# or comment this line out to avoid errors.
-# TODO: check for apple account first?
-# ref - https://github.com/mas-cli/mas
-mas "Super Easy Timer", id: 1353137878
+if command -v mas > /dev/null; then
+  # this line will error unless you have purchased Super Easy Timer. Delete or
+  # or comment this line out to avoid errors.
+  # TODO: check for apple account first?
+  # ref - https://github.com/mas-cli/mas
+  mas "Super Easy Timer", id: 1353137878
+fi
 
 # typescript repl
 # ref - https://github.com/HerringtonDarkholme/typescript-repl
-command -v npm > /dev/null 2>&1 || npm install --global tsun
+command -v npm > /dev/null 2>&1 && npm install --global tsun
 
 # install vim plugins
 nvim -c PlugInstall -c qa
