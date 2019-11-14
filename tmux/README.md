@@ -10,10 +10,6 @@ A few useful `tmux` aliases:
 - `tl` -> `tmux ls` - list currently running `tmux` sessions
 - `tn` -> `tmux new -s` - create a named session, e.g. `tn <session-name>`
 
-## [`tmux-256color.terminfo`](./tmux-256color.terminfo)
-
-[`terminfo`](https://linux.die.net/man/5/terminfo) defining the terminal capabilities supported by `tmux`. Installed by [`$DOTFILES/setup/bin/install_bits_and_pieces`](../setup/bin/install_bits_and_pieces).
-
 ## [`tmux.conf.symlink`](./tmux.conf.symlink) & [`tmux.conf.local.symlink`](./tmux.conf.local.symlink)
 
 `tmux` configuration.
