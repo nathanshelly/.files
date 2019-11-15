@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+cd "$root"
+
+# blacklist third-party directories
+filter=(
+  ':!:apps/alfred'
+)
+
+{
+  # `.sh` extension
+  git ls-files '*.sh' -- "${filter[@]}"
+  # `#! usr/bin/env bash` shebang
+  git grep -l '^\(#! */usr/bin/env bash\|#! */bin/bash\)$' -- "${filter[@]}"
+  # remove duplicates from .sh + shebang
+} | sort | uniq | xargs shellcheck || exit 1
