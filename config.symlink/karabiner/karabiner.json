@@ -14,86 +14,7 @@
         },
         "rules": [
           {
-            "description": "Ctrl-P to click in Chrome, Firefox & Vivaldi",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.google.Chrome",
-                      "org.mozilla.firefox",
-                      "com.vivaldi.Vivaldi"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "p",
-                  "modifiers": {
-                    "mandatory": ["control"]
-                  }
-                },
-                "to": [
-                  {
-                    "pointing_button": "button1"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Ctrl-T to Shift-click in Chrome, Firefox & Vivaldi",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.google.Chrome",
-                      "org.mozilla.firefox",
-                      "com.vivaldi.Vivaldi"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "mandatory": ["control"]
-                  }
-                },
-                "to": [
-                  {
-                    "pointing_button": "button1",
-                    "modifiers": ["shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "manipulators": [
-              {
-                "description": "Change right_command to Cmd-Ctrl-Alt",
-                "from": {
-                  "key_code": "right_command",
-                  "modifiers": {
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_command",
-                    "modifiers": ["control", "option"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Ctrl to Escape when tapped",
+            "description": "Ctrl to Escape when tapped (Caps Lock mapped to Ctrl in simple modifications)",
             "manipulators": [
               {
                 "from": {
@@ -118,73 +39,19 @@
             ]
           },
           {
-            "description": "Left-Right shift roll to () when tapped",
+            "description": "Change Right Cmd to Cmd-Ctrl-Alt (Hyper key)",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "left_shift",
-                  "modifiers": {
-                    "mandatory": ["right_shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "9",
-                    "modifiers": ["left_shift"]
-                  },
-                  {
-                    "key_code": "0",
-                    "modifiers": ["left_shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Right-Left shift roll to () when tapped",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_shift",
-                  "modifiers": {
-                    "mandatory": ["left_shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "9",
-                    "modifiers": ["shift"]
-                  },
-                  {
-                    "key_code": "0",
-                    "modifiers": ["shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Left shift to ( when tapped",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "left_shift",
+                  "key_code": "right_command",
                   "modifiers": {
                     "optional": ["any"]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "left_shift",
-                    "lazy": true
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "9",
-                    "modifiers": ["left_shift"]
+                    "key_code": "right_command",
+                    "modifiers": ["control", "option"]
                   }
                 ],
                 "type": "basic"
@@ -192,232 +59,7 @@
             ]
           },
           {
-            "description": "Right shift to ) when tapped",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_shift",
-                  "modifiers": {
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_shift",
-                    "lazy": true
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "0",
-                    "modifiers": ["right_shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Cmd-Alt-H to nothing (Disable hide all else)",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "h",
-                  "modifiers": {
-                    "mandatory": ["option", "command"]
-                  }
-                },
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Cmd-Shift-M to Cmd-H (Remap Hide)",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": ["command", "shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "h",
-                    "modifiers": ["command"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Alt-D to Cmd-L in Chrome, Postman, Firefox & Vivaldi",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.google.Chrome",
-                      "com.postmanlabs.mac",
-                      "org.mozilla.firefox",
-                      "com.vivaldi.Vivaldi"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": ["option"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "l",
-                    "modifiers": ["command"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Ctrl-Shift-D to Cmd-Shift-J in Chrome (view Downloads)",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["com.google.Chrome"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": ["control", "shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "j",
-                    "modifiers": ["command", "shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Alt-J to Ctrl-Left Arrow in Fantastical",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "j",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": ["control"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Alt-K to Ctrl-Down Arrow in Fantastical",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "k",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "down_arrow",
-                    "modifiers": ["control"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Alt-L to Ctrl-Up Arrow in Fantastical",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "l",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "up_arrow",
-                    "modifiers": ["control"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Alt-; to Ctrl-Right Arrow in Fantastical",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "semicolon",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": ["control"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Ctrl-H to Ctrl-Delete",
+            "description": "Ctrl-H to Delete",
             "manipulators": [
               {
                 "from": {
@@ -701,7 +343,7 @@
             ]
           },
           {
-            "description": "Alt-; to Alt-Right-Arrow",
+            "description": "Alt-; to Alt-Right Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -825,7 +467,7 @@
             ]
           },
           {
-            "description": "Cmd-; to Right Cmd-Arrow",
+            "description": "Cmd-; to Cmd-Right Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -851,6 +493,365 @@
                     "modifiers": ["command"]
                   }
                 ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Alt-D to Cmd-L in Chrome, Postman, Firefox & Vivaldi",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "com.google.Chrome",
+                      "com.postmanlabs.mac",
+                      "org.mozilla.firefox",
+                      "com.vivaldi.Vivaldi"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "mandatory": ["option"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "l",
+                    "modifiers": ["command"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Ctrl-Shift-D to Cmd-Shift-J in Chrome (view Downloads)",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["com.google.Chrome"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "j",
+                    "modifiers": ["command", "shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Alt-J to Ctrl-Left Arrow in Fantastical",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": ["control"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Alt-K to Ctrl-Down Arrow in Fantastical",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow",
+                    "modifiers": ["control"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Alt-L to Ctrl-Up Arrow in Fantastical",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow",
+                    "modifiers": ["control"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Alt-; to Ctrl-Right Arrow in Fantastical",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "semicolon",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": ["control"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+
+          {
+            "description": "Ctrl-P to click in Chrome, Firefox & Vivaldi",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "com.google.Chrome",
+                      "org.mozilla.firefox",
+                      "com.vivaldi.Vivaldi"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  {
+                    "pointing_button": "button1"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Ctrl-T to Shift-click in Chrome, Firefox & Vivaldi",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "com.google.Chrome",
+                      "org.mozilla.firefox",
+                      "com.vivaldi.Vivaldi"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  {
+                    "pointing_button": "button1",
+                    "modifiers": ["shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Left shift to ( when tapped",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_shift",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "9",
+                    "modifiers": ["left_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Right shift to ) when tapped",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "right_shift",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_shift",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "0",
+                    "modifiers": ["right_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Left-Right shift roll to () when tapped",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_shift",
+                  "modifiers": {
+                    "mandatory": ["right_shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "9",
+                    "modifiers": ["left_shift"]
+                  },
+                  {
+                    "key_code": "0",
+                    "modifiers": ["left_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Right-Left shift roll to () when tapped",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "right_shift",
+                  "modifiers": {
+                    "mandatory": ["left_shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "9",
+                    "modifiers": ["shift"]
+                  },
+                  {
+                    "key_code": "0",
+                    "modifiers": ["shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Cmd-Shift-M to Cmd-H (Remap Hide)",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "mandatory": ["command", "shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "h",
+                    "modifiers": ["command"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Cmd-Alt-H to nothing (Disable hide all else)",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["option", "command"]
+                  }
+                },
                 "type": "basic"
               }
             ]
