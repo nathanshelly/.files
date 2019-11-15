@@ -59,6 +59,9 @@
             ]
           },
           {
+            "//": "<<<<< start of mapping h+modifiers to delete+modifiers >>>>>"
+          },
+          {
             "description": "Ctrl-H to Delete",
             "manipulators": [
               {
@@ -128,6 +131,10 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "/": "<<<<<< end of mapping h+modifiers to delete+modifiers >>>>>>",
+            "//": "<<<< start of mapping jkl;+modifiers to ⬅⬇⬆➡+modifiers >>>>"
           },
           {
             "description": "Ctrl-J to Left Arrow",
@@ -498,6 +505,117 @@
             ]
           },
           {
+            "/": "<<<<< end of mapping jkl;+modifiers to ⬅⬇⬆➡+modifiers >>>>>",
+            "//": "<<<<<<<<<<< start of binding Shift taps to () >>>>>>>>>>>>>",
+            "///": "<<<<<<<<<<<<<<< e.g. tap Left Shift -> `(` >>>>>>>>>>>>>>>",
+            "////": "<<<<<<<<<<<<<<< e.g. tap Right Shift -> `)` >>>>>>>>>>>>>",
+            "/////": "<<<<<<<<<<< holding shift works as usual  >>>>>>>>>>>>>"
+          },
+          {
+            "description": "Left shift to ( when tapped",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_shift",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "9",
+                    "modifiers": ["left_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Right shift to ) when tapped",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "right_shift",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_shift",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "0",
+                    "modifiers": ["right_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Left-Right shift roll to () when tapped",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_shift",
+                  "modifiers": {
+                    "mandatory": ["right_shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "9",
+                    "modifiers": ["left_shift"]
+                  },
+                  {
+                    "key_code": "0",
+                    "modifiers": ["left_shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Right-Left shift roll to () when tapped",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "right_shift",
+                  "modifiers": {
+                    "mandatory": ["left_shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "9",
+                    "modifiers": ["shift"]
+                  },
+                  {
+                    "key_code": "0",
+                    "modifiers": ["shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "/": "<<<<<<<<<<<<< end of binding Shift taps to () >>>>>>>>>>>>>",
+            "//": "<<<<<<<<<<<<<< start of app-specific bindings >>>>>>>>>>>>>>"
+          },
+          {
             "description": "Alt-D to Cmd-L in Chrome, Postman, Firefox & Vivaldi",
             "manipulators": [
               {
@@ -723,104 +841,8 @@
             ]
           },
           {
-            "description": "Left shift to ( when tapped",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "left_shift",
-                  "modifiers": {
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_shift",
-                    "lazy": true
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "9",
-                    "modifiers": ["left_shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Right shift to ) when tapped",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_shift",
-                  "modifiers": {
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_shift",
-                    "lazy": true
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "0",
-                    "modifiers": ["right_shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Left-Right shift roll to () when tapped",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "left_shift",
-                  "modifiers": {
-                    "mandatory": ["right_shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "9",
-                    "modifiers": ["left_shift"]
-                  },
-                  {
-                    "key_code": "0",
-                    "modifiers": ["left_shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Right-Left shift roll to () when tapped",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_shift",
-                  "modifiers": {
-                    "mandatory": ["left_shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "9",
-                    "modifiers": ["shift"]
-                  },
-                  {
-                    "key_code": "0",
-                    "modifiers": ["shift"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
+            "/": "<<<<<<<<<<<<<<< end of app-specific bindings >>>>>>>>>>>>>>>",
+            "//": "<<<<<<<<<<<< start of remapping system binding >>>>>>>>>>>>"
           },
           {
             "description": "Cmd-Shift-M to Cmd-H (Remap Hide)",
@@ -855,6 +877,9 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "/": "<<<<<<<<<<<<<< end of remapping system binding >>>>>>>>>>>>>>"
           }
         ]
       },
