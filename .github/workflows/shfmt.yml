@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: install shfmt
+      - name: Install `shfmt`
         run: sudo snap install shfmt
-      - name: shfmt
+      - name: Run `shfmt`
         run: ./infra/actions/shfmt
