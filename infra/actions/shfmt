@@ -16,4 +16,5 @@ filter=(
   # `#! usr/bin/env bash` shebang
   git grep -l '^\(#! */usr/bin/env bash\|#! */bin/bash\)$' -- "${filter[@]}"
   # remove duplicates from .sh + shebang
+  # `shfmt` args should match the alias in `<repo-root>/zsh/alias.zsh`
 } | sort | uniq | xargs shfmt -i 2 -bn -ci -sr -d || exit 1
