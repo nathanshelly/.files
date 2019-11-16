@@ -11,11 +11,18 @@ alias b='brew'
 alias bc='brew cask'
 alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
 
-# open another alacritty instance
-alias alac="open --new /Applications/Alacritty.app"
+# open another terminal (Alacritty) instance
+alias term="open --new /Applications/Alacritty.app"
 
 # discourage usage of rm (in favor of `t` alias for trash)
 alias rm='echo "use trash primarily, /bin/rm when needed"'
+
+# alias `shfmt` to apply default args
+# `-i 2` -> indent with 2 spaces
+# `-bn`  -> start lines with binary operators
+# `-ci`  -> indent switch cases
+# `-sr`  -> add space after redirect operators (e.g. `> /...` not `>/...`)
+alias shfmt='shfmt -i 2 -bn -ci -sr'
 
 # <<<< generics >>>>
 alias e="$EDITOR" # text editor
