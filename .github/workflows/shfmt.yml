@@ -1,0 +1,13 @@
+name: shfmt
+
+on: [push]
+
+jobs:
+  shfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: install shfmt
+        run: sudo snap install shfmt
+      - name: shfmt
+        run: ./infra/actions/shfmt
