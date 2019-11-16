@@ -20,9 +20,9 @@ if ! [ -f "$DOTFILES/git/gitconfig.local.symlink" ]; then
 
   # `-e <script>` applies given script to input
   sed -e "s/AUTHORNAME/$git_authorname/g" \
-      -e "s/AUTHOREMAIL/$git_authoremail/g" \
-        "$DOTFILES/git/gitconfig.local.symlink.example" \
-      > "$DOTFILES/git/gitconfig.local.symlink"
+    -e "s/AUTHOREMAIL/$git_authoremail/g" \
+    "$DOTFILES/git/gitconfig.local.symlink.example" \
+    > "$DOTFILES/git/gitconfig.local.symlink"
 
   success "created local gitconfig @ $DOTFILES/git/gitconfig.local.symlink"
 else

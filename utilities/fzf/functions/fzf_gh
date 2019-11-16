@@ -7,10 +7,10 @@ format='%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)'
 bindings='ctrl-s:toggle-sort,ctrl-space:toggle-preview'
 preview='grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | bat'
 
-git log --date=short --format="$format" --graph --color=always |
-fzf --ansi --no-sort --reverse --multi --bind "$bindings" \
-  --header 'Press CTRL-S to toggle sort' \
-  --preview "$preview" |
-grep -o "[a-f0-9]\{7,\}"
+git log --date=short --format="$format" --graph --color=always \
+  | fzf --ansi --no-sort --reverse --multi --bind "$bindings" \
+    --header 'Press CTRL-S to toggle sort' \
+    --preview "$preview" \
+  | grep -o "[a-f0-9]\{7,\}"
 
 unset format bindings preview

@@ -10,11 +10,11 @@
 # Args:
 #   - {string} delimiter - delimiter to join array by
 join_by() {
-  local IFS="$1";
-  shift;
+  local IFS="$1"
+  shift
   # `IFS` expansion due to `$*` (see third ref above)
   # save in `_joined` as return variable
   # TODO: test exporting this
   # shellcheck disable=SC2034
-  _joined="$*";
+  _joined="$*"
 }

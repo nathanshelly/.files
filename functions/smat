@@ -14,7 +14,6 @@
   return
 }
 
-
 if [[ $1 =~ \.md$ ]]; then
   mdcat "$1" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS
 else

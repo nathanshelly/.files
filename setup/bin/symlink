@@ -89,9 +89,9 @@ _symlink_based_on_filename() {
       success "Created directory '$HOME/${_path}' (and any non-existent parent \
 directories)"
     else
-      fail  "Failed to create directory '$HOME/${_path}' (or a non-existent \
+      fail "Failed to create directory '$HOME/${_path}' (or a non-existent \
 parent directory)"
-   fi
+    fi
   }
 
   # check if `src` is a directory
@@ -123,16 +123,16 @@ recursively_link_directory() {
   # use parens to group conditions
   # ref - https://stackoverflow.com/questions/7190565/unix-find-multiple-file-types
   find -H "$source_base_path" -type f,l -print0 \
-  | while IFS= read -r -d '' src; do
-    local target_path="$target_base_path${src#$source_base_path}"
+    | while IFS= read -r -d '' src; do
+      local target_path="$target_base_path${src#$source_base_path}"
 
-    echo "source path: $src"
-    echo "target path: $target_path"
-    echo "target folder: $(dirname "$target_base_path${src#$source_base_path}")"
+      echo "source path: $src"
+      echo "target path: $target_path"
+      echo "target folder: $(dirname "$target_base_path${src#$source_base_path}")"
 
-    mkdir -p "$(dirname "$target_path")"
-    link_file "$src" "$target_path"
-  done
+      mkdir -p "$(dirname "$target_path")"
+      link_file "$src" "$target_path"
+    done
 }
 
 # applies given regex to given string, returning matches in `_REGEX_MATCHES`
@@ -276,8 +276,7 @@ link_file() {
   if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]; then
     if [ "$overwrite_all" == "false" ] \
       && [ "$backup_all" == "false" ] \
-      && [ "$skip_all" == "false" ]
-    then
+      && [ "$skip_all" == "false" ]; then
       local current_src
       current_src="$(readlink "$dst")"
 
@@ -288,23 +287,29 @@ link_file() {
 \t[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         # need to directly read from user controller since this is executing
         # in a nested read of all `*.symlink*` files
-        read -r -s -n 1 action </dev/tty
+        read -r -s -n 1 action < /dev/tty
 
         case "$action" in
-          o )
-            overwrite=true;;
-          O )
-            overwrite_all=true;;
-          b )
-            backup=true;;
-          B )
-            backup_all=true;;
-          s )
-            skip=true;;
-          S )
-            skip_all=true;;
-          * )
+          o)
+            overwrite=true
             ;;
+          O)
+            overwrite_all=true
+            ;;
+          b)
+            backup=true
+            ;;
+          B)
+            backup_all=true
+            ;;
+          s)
+            skip=true
+            ;;
+          S)
+            skip_all=true
+            ;;
+          *) ;;
+
         esac
       fi
     fi

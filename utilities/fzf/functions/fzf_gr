@@ -9,9 +9,9 @@ preview+=' --pretty="format:%C(auto)%cd %h%d %s"'
 # shellcheck disable=SC2016
 preview+=' $(sed s/^..// <<< {} | cut -d" " -f1) | bat'
 
-git branch -a --color=always | grep -v '/HEAD\s' | sort |
-fzf --ansi --multi --tac --preview-window right:70% --bind="$bindings" \
-  --preview "$preview" |
-sed 's/^..//' | cut -d' ' -f1 |
-sed 's#^remotes/##'
+git branch -a --color=always | grep -v '/HEAD\s' | sort \
+  | fzf --ansi --multi --tac --preview-window right:70% --bind="$bindings" \
+    --preview "$preview" \
+  | sed 's/^..//' | cut -d' ' -f1 \
+  | sed 's#^remotes/##'
 unset preview bindings
