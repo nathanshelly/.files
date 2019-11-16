@@ -10,21 +10,21 @@ file="$1"
 
 if [ -f "$file" ]; then
   case "$file" in
-    *.tar.bz2)  tar -jxvf "$file"                    ;;
-    *.tar.gz)   tar -zxvf "$file"                    ;;
-    *.bz2)      bunzip2 "$file"                      ;;
-    *.dmg)      hdiutil mount "$file"                ;;
-    *.gz)       gunzip "$file"                       ;;
-    *.tar)      tar -xvf "$file"                     ;;
-    *.tbz2)     tar -jxvf "$file"                    ;;
-    *.tgz)      tar -zxvf "$file"                    ;;
-    *.zip)      unzip "$file"                        ;;
-    *.ZIP)      unzip "$file"                        ;;
-    *.pax)      pax -r < "$file"                     ;;
-    *.pax.Z)    uncompress "$file" --stdout | pax -r ;;
-    *.rar)      unrar x "$file"                      ;;
-    *.Z)        uncompress "$file"                   ;;
-    *)          echo "'$file' cannot be extracted/mounted via extract()" ;;
+    *.tar.bz2) tar -jxvf "$file" ;;
+    *.tar.gz) tar -zxvf "$file" ;;
+    *.bz2) bunzip2 "$file" ;;
+    *.dmg) hdiutil mount "$file" ;;
+    *.gz) gunzip "$file" ;;
+    *.tar) tar -xvf "$file" ;;
+    *.tbz2) tar -jxvf "$file" ;;
+    *.tgz) tar -zxvf "$file" ;;
+    *.zip) unzip "$file" ;;
+    *.ZIP) unzip "$file" ;;
+    *.pax) pax -r < "$file" ;;
+    *.pax.Z) uncompress "$file" --stdout | pax -r ;;
+    *.rar) unrar x "$file" ;;
+    *.Z) uncompress "$file" ;;
+    *) echo "'$file' cannot be extracted/mounted via extract()" ;;
   esac
 else
   echo "'$file' is not a valid file"

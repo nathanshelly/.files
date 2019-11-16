@@ -7,10 +7,10 @@
 _get_dotfiles_repo_root() {
   local dir
 
-  dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+  dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)"
   cd "$dir" || return
   _COMPUTED_DOTFILES="$(git rev-parse --show-toplevel)"
-  cd - >/dev/null 2>&1 || return
+  cd - > /dev/null 2>&1 || return
 }
 
 # checks if DOTFILES environment variable is set, sets it or quits based on user

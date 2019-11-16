@@ -21,11 +21,11 @@ lsof -i ":$port" > /dev/null 2>&1 || {
 # don't quote to split multiple port selections (ports should never have a space
 # inside them so this shouldn't ever cause an issue 🤞)
 # shellcheck disable=SC2046
-kill -9 $(\
+kill -9 $(
   lsof -i :"$port" \
-  | sed '1d' \
-  | fzf -m \
-  | sed -nE 's/^[[:alnum:]]+[[:space:]]+([[:digit:]]+)[[:space:]]+.*$/\1/p' \
+    | sed '1d' \
+    | fzf -m \
+    | sed -nE 's/^[[:alnum:]]+[[:space:]]+([[:digit:]]+)[[:space:]]+.*$/\1/p'
 )
 
 # avoid race condition between next `lsof` call and processes shutting down
