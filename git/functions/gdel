@@ -3,7 +3,17 @@
 # delete given branch locally & remotely
 
 [[ -z $1 ]] && {
-  echo 'No branch given, aborting'
+cat << EOF
+
+  error: the following arguments were not provided
+  
+    BRANCH-NAME
+  
+  USAGE:
+  
+      gdel BRANCH-NAME...
+
+EOF
   return 1
 }
 

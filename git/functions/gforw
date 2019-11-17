@@ -1,5 +1,22 @@
 #! /usr/bin/env bash
-
 # move forward linearly a given number of commits
+
+[[ -z $1 ]] && {
+cat << EOF
+
+  error: the following arguments were not provided
+  
+     NUMBER-OF-COMMITS
+  
+  USAGE:
+  
+     gforw NUMBER-OF-COMMITS [BRANCH-NAME]
+  
+  ...where BRANCH-NAME is the branch towards which to move (assumes 'master' if not given)
+  
+EOF
+  return 1
+}
+
 git checkout \
   "$(git rev-list --topo-order HEAD.."${2:-master}" | tail -"$1" | head -1)"
