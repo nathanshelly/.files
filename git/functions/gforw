@@ -2,18 +2,16 @@
 # move forward linearly a given number of commits
 
 [[ -z $1 ]] && {
-cat << EOF
+  cat << EOF
+error: the following arguments were not provided
 
-  error: the following arguments were not provided
-  
-     NUMBER-OF-COMMITS
-  
-  USAGE:
-  
-     gforw NUMBER-OF-COMMITS [BRANCH-NAME]
-  
-  ...where BRANCH-NAME is the branch towards which to move (assumes 'master' if not given)
-  
+  <NUMBER-OF-COMMITS>
+
+USAGE:
+
+  gforw NUMBER-OF-COMMITS [BRANCH-NAME]
+
+where BRANCH-NAME is the branch towards which to move (assumes \`master\` if none given)
 EOF
   return 1
 }
