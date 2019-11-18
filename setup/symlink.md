@@ -10,7 +10,7 @@ Searches for files/directories that contain `.symlink` in their path starting at
 
 ## Syntax
 
-```shell
+```bash
 ^(([-._a-zA-Z]+_._)*)([-._a-zA-Z]+)\.symlink(\.([_d]{1,2}))?$
 ```
 
@@ -18,7 +18,7 @@ Allows specifying a path through the file or directory name, using `.symlink` to
 
 _Note:_ if you'd like to easily check which names are allowed, define the below function (can copy and paste into terminal) then call it with the potential path like so: `$ check_regex '<path>'`.
 
-```shell
+```bash
 check_regex() {
   re="^(([-._a-zA-Z]+_._)*)([-._a-zA-Z]+)\.symlink(\.([_d]{1,2}))?$"
   [[ $1 =~ $re ]] && echo "valid" || echo "invalid";
@@ -104,7 +104,7 @@ Flag not valid for files.
 
 For the following examples the directory name `config` (w/ various combinations of `.symlink` & flags) has the following file structure (similar to `$DOTFILES/config/config.symlink` in this repo):
 
-```shell
+```bash
 config.symlink
 ├── alacritty
 │   └── alacritty.yml
