@@ -2,6 +2,18 @@
 
 My personal dotfiles.
 
+## try them out with zero risk or effort
+
+Run the following command to play around with these dotfiles in a zero-risk sandbox:
+
+```bash
+docker run --interactive --tty nathanshelly/dotfiles:latest
+```
+
+See [`docker/dotfiles`](./docker/dotfiles) for more details.
+
+# overview
+
 Primarily a [`tmux`](https://github.com/tmux/tmux), [`zsh`](https://www.zsh.org) & [`neovim`](https://github.com/neovim/neovim) workflow. See the respective topic folders: [`tmux`](./tmux), [`zsh`](./zsh) & [`neovim`](./neovim).
 
 ![workflow](assets/workflow.png 'workflow')
