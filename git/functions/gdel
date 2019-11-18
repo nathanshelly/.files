@@ -3,16 +3,14 @@
 # delete given branch locally & remotely
 
 [[ -z $1 ]] && {
-cat << EOF
+  cat << EOF
+error: the following arguments were not provided
 
-  error: the following arguments were not provided
-  
-    BRANCH-NAME
-  
-  USAGE:
-  
-      gdel BRANCH-NAME...
+  <BRANCH-NAME(S)>
 
+USAGE:
+
+  gdel <BRANCH-NAME(S)>...
 EOF
   return 1
 }
