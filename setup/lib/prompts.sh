@@ -7,7 +7,7 @@
 # to see all possible styles source this file and call the
 # `_prompts_display_supported` function
 #
-# ```shell
+# ```bash
 # source $DOTFILES/setup/lib/prompts.sh && _prompts_display_supported
 # ```
 #
