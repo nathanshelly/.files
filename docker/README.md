@@ -1,3 +1,3 @@
 # Docker
 
-All things docker. See [dotfiles](./dotfiles) to run a container with these dotfiles set up.
+All things docker. See [dotfiles](./dotfiles) to play around with these dotfiles (specifically the [`docker` branch](https://github.com/nathanshelly/.files/tree/docker)) in a sandbox.
