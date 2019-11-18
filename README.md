@@ -2,9 +2,9 @@
 
 My personal dotfiles.
 
-## try them out with zero risk or effort
+## try them out with zero risk or commitment
 
-Run the following command to play around with these dotfiles in a zero-risk sandbox:
+Run the following command to play around with these dotfiles in a sandbox:
 
 ```bash
 docker run --interactive --tty nathanshelly/dotfiles:latest
