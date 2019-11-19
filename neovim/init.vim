@@ -13,4 +13,4 @@ source $DOTFILES/neovim/options.vim
 source $DOTFILES/neovim/colors.vim
 source $DOTFILES/neovim/keymap.vim
 source $DOTFILES/neovim/commands.vim
-source $DOTFILES/neovim/coc.vim
+source $DOTFILES/neovim/coc.nvim
