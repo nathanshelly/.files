@@ -131,6 +131,7 @@ nmap <silent> <c-s> :CocList<CR>
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Use D for show documentation in preview window
+" TODO: move this to keymap & understand `<SID>`
 nnoremap <silent> D :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
