@@ -52,7 +52,8 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 - [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
 - [`keymap.vim`](#keymap.vim) - define keymappings (e.g. `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings (and leader key) defined in `plugins.vim`.
 - [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
-- [`plugins.vim`](#plugins.vim) - enable and configure plugins. Managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
+- [`plugins.vim`](#plugins.vim) - enable plugins, managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
+- [`plugin_config.vim`](#plugin_config.vim) - configure plugins (agnostic of plugin management method)
 - [`vimrc.symlink`](#vimrc.symlink) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv.symlink`](../zsh/zshenv.symlink)).
 
 ## each file in more detail
@@ -168,7 +169,7 @@ Notable options:
 
 ### [`plugins.vim`](./plugins.vim)
 
-Enable and configure plugins.
+Enable plugins.
 
 Managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
 
@@ -188,16 +189,6 @@ call plug#begin()
 ... # listed plugins
 
 call plug#end()
-
-
-" <<<<<<<< config >>>>>>>>
-# set `<leader>` key to be used in plugin configuration
-... # leader setting
-# configure plugins (set options & add keymappings)
-
-... # configuration of plugins
-
-" <<<<<<<< end of config >>>>>>>>
 ```
 
 #### notable plugins
@@ -230,6 +221,12 @@ call plug#end()
     >   ...;
     > `
     > ```
+
+### [`plugin_config.vim`](./plugin_config.vim)
+
+Configures enabled plugins.
+
+Agnostic of plugin management method.
 
 #### notable configuration
 
