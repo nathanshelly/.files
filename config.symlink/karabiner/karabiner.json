@@ -963,7 +963,7 @@
           },
 
           {
-            "description": "Ctrl-P to click in Chrome, Firefox & Vivaldi",
+            "description": "Ctrl-S to click in Chrome, Firefox & Vivaldi",
             "manipulators": [
               {
                 "conditions": [
@@ -977,7 +977,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "p",
+                  "key_code": "s",
                   "modifiers": {
                     "mandatory": ["control"]
                   }
