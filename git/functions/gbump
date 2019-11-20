@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+git commit --message bump --allow-empty && git push
