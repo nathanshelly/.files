@@ -964,47 +964,38 @@
             ]
           },
           {
-            "description": "Open terminal (Alacritty)",
+            "description": "Hyper-v to mouse click",
             "manipulators": [
               {
-                "type": "basic",
                 "from": {
-                  "key_code": "t",
+                  "key_code": "v",
                   "modifiers": {
                     "mandatory": ["command", "control", "option"]
                   }
                 },
                 "to": [
                   {
-                    "shell_command": "open -a alacritty''"
+                    "pointing_button": "button1"
                   }
-                ]
+                ],
+                "type": "basic"
               }
             ]
           },
           {
-            "description": "Ctrl-S to click in Chrome, Firefox & Vivaldi",
+            "description": "Hyper-g to Shift-mouse click",
             "manipulators": [
               {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.google.Chrome",
-                      "org.mozilla.firefox",
-                      "com.vivaldi.Vivaldi"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
                 "from": {
-                  "key_code": "s",
+                  "key_code": "g",
                   "modifiers": {
-                    "mandatory": ["control"]
+                    "mandatory": ["command", "control", "option"]
                   }
                 },
                 "to": [
                   {
-                    "pointing_button": "button1"
+                    "pointing_button": "button1",
+                    "modifiers": ["shift"]
                   }
                 ],
                 "type": "basic"
