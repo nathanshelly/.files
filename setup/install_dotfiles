@@ -20,7 +20,10 @@ source "${BASH_SOURCE%/*}/lib/check_dotfiles_variable.sh"
 # see the file in question for each piece
 "$DOTFILES/setup/bin/install_bits_and_pieces"
 
-# run last for other pieces to be installed
-# must be after `setup_git_config` to symlink generated file, and after
+# run after `setup_git_config` to symlink generated file, and after
 # `install_bits_and_pieces` to install submodules first
 "$DOTFILES/setup/bin/symlink"
+
+# run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions.symlink is
+# symlinked to `$HOME/.tool-versions`
+"$DOTFILES/setup/bin/setup_asdf"
