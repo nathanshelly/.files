@@ -68,6 +68,8 @@ brew "mdcat"
 brew "neovim", args: ["HEAD"]
 brew "pandoc"
 brew "pastel"
+# https://github.com/gpakosz/.tmux#accessing-the-macos-clipboard-from-within-tmux-sessions
+brew "reattach-to-user-namespace"
 brew "redis"
 brew "rename"
 brew "ripgrep"
