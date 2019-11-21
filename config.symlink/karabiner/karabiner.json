@@ -613,10 +613,12 @@
           },
           {
             "/": "<<<<<<<<<<<<< end of binding Shift taps to () >>>>>>>>>>>>>",
-            "//": "<<<<<<<<<<<<<< start of app-specific bindings >>>>>>>>>>>>>>"
+            "//": "<<<<<<<<<<<<< start of app-specific bindings >>>>>>>>>>>>>",
+            "///": "< many of these bindings use Cmd-Ctrl-Option all at once >",
+            "////": "<<< `Hyper` is used as a shorthand for these bindings >>>"
           },
           {
-            "description": "Open terminal (Alacritty)",
+            "description": "Hyper-t to open terminal (Alacritty)",
             "manipulators": [
               {
                 "type": "basic",
@@ -635,7 +637,7 @@
             ]
           },
           {
-            "description": "Open browser (Chrome)",
+            "description": "Hyper-b to open browser (Chrome)",
             "manipulators": [
               {
                 "type": "basic",
@@ -654,7 +656,7 @@
             ]
           },
           {
-            "description": "Open calendar (Fantastical 2)",
+            "description": "Hyper-c to open calendar (Fantastical 2)",
             "manipulators": [
               {
                 "type": "basic",
@@ -673,7 +675,7 @@
             ]
           },
           {
-            "description": "Open email (Tempo)",
+            "description": "Hyper-e to open email (Tempo)",
             "manipulators": [
               {
                 "type": "basic",
@@ -692,7 +694,7 @@
             ]
           },
           {
-            "description": "Open audio (Google Play Music)",
+            "description": "Hyper-a to open audio (Google Play Music)",
             "manipulators": [
               {
                 "type": "basic",
@@ -711,7 +713,7 @@
             ]
           },
           {
-            "description": "Open writing (Notion)",
+            "description": "Hyper-w to open writings (Notion)",
             "manipulators": [
               {
                 "type": "basic",
@@ -730,7 +732,7 @@
             ]
           },
           {
-            "description": "Open Finder",
+            "description": "Hyper-f to open Finder",
             "manipulators": [
               {
                 "type": "basic",
@@ -749,7 +751,7 @@
             ]
           },
           {
-            "description": "Open Slack",
+            "description": "Hyper-s to open Slack",
             "manipulators": [
               {
                 "type": "basic",
@@ -961,7 +963,25 @@
               }
             ]
           },
-
+          {
+            "description": "Open terminal (Alacritty)",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": ["command", "control", "option"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a alacritty''"
+                  }
+                ]
+              }
+            ]
+          },
           {
             "description": "Ctrl-S to click in Chrome, Firefox & Vivaldi",
             "manipulators": [
