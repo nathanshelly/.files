@@ -10,6 +10,7 @@ endif
 
 source $DOTFILES/neovim/fzf.vim
 source $DOTFILES/neovim/options.vim
+source $DOTFILES/neovim/filetype_specific.vim
 source $DOTFILES/neovim/colors.vim
 source $DOTFILES/neovim/keymap.vim
 source $DOTFILES/neovim/commands.vim
