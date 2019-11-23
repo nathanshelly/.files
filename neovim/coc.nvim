@@ -25,42 +25,42 @@ inoremap <expr> <c-l> "\<c-p>"
 " ref - https://www.reddit.com/r/vim/comments/78izt4/please_help_understand_how_to_use_plug_mapping/
 
 " double `<cr>` to skip confirmation prompt
-nmap <leader>cr :CocRestart<cr><cr>
+nnoremap <leader>cr :CocRestart<cr><cr>
 
 " show diagnostic information
 " TODO: figure out what's wrong with below line
-" nmap <leader>cd <Plug>(coc-diagnostic-info)
+" nnoremap <leader>cd <Plug>(coc-diagnostic-info)
 " move between diagnostics
-nmap <leader>cn <Plug>(coc-diagnostic-next)
-nmap <leader>cp <Plug>(coc-diagnostic-prev)
+nnoremap <leader>cn <Plug>(coc-diagnostic-next)
+nnoremap <leader>cp <Plug>(coc-diagnostic-prev)
 
 " go to definition
-nmap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gd <Plug>(coc-definition)
 " go to declaration
-nmap <silent> gr <Plug>(coc-declaration)
+nnoremap <silent> gr <Plug>(coc-declaration)
 " go to implentation
-nmap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gi <Plug>(coc-implementation)
 " go to type definition
-nmap <silent> gt <Plug>(coc-type-definition)
+nnoremap <silent> gt <Plug>(coc-type-definition)
 " go to references
-nmap <silent> grf <Plug>(coc-references)
+nnoremap <silent> grf <Plug>(coc-references)
 " rename value at cursor
-nmap <silent> grn <Plug>(coc-rename)
+nnoremap <silent> grn <Plug>(coc-rename)
 " format buffer
-nmap <silent> gfb <Plug>(coc-format)
+nnoremap <silent> gfb <Plug>(coc-format)
 " TODO: evaluate use of `co` namespace depending on usage patterns
 " TODO: understand what code actions are (and code lens actions below)
 " apply code action for current line
-nmap <silent> coa <Plug>(coc-codeaction)
+nnoremap <silent> coa <Plug>(coc-codeaction)
 
 " open link
 " TODO: figure out what's wrong with below line (same problem as above)
-" nmap  gx <Plug>(coc-openlink)
+" nnoremap  gx <Plug>(coc-openlink)
 
 " apply code lens action on current line
-nmap <silent> col <Plug>(coc-codelens-action)
+nnoremap <silent> col <Plug>(coc-codelens-action)
 " run quickfix action on current line
-nmap <silent> gfc <Plug>(coc-fix-current)
+nnoremap <silent> gfc <Plug>(coc-fix-current)
 
 " << variables >>
 
@@ -110,7 +110,7 @@ let g:coc_snippet_prev = '<c-p>'
 "   -  `pickColor`? `colorPresentation`?
 
 " TODO: look at CocList commands, configuration, mappings & sources
-nmap <silent> <c-s> :CocList<CR>
+nnoremap <silent> <c-s> :CocList<CR>
 
 " TODO: possible keybindings below
 " " Show all diagnostics
