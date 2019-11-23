@@ -1,5 +1,5 @@
 " <<<<<<<< General Options >>>>>>>>
-" NOTE: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
+" Note: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
 " bindings defined in that file work)
 
 " prevent swap files
@@ -124,6 +124,7 @@ au Filetype python set colorcolumn=89
 au Filetype python set textwidth=88
 
 " << vim >>
+
 au Filetype vim set textwidth=80
 
 " << json >>
