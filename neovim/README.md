@@ -49,6 +49,7 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 - [`coc.json`](#coc.json-%26-coc.nvim) & [`coc.nvim`](#coc.json-%26-coc.nvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc.json` is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colors.vim) - configure colors, (e.g. enable true color, set dark background, set color scheme)
 - [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
+- [`filetype_specific.vim`](#filetype_specific.vim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
 - [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
 - [`keymap.vim`](#keymap.vim) - define keymappings (e.g. `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings (and leader key) defined in `plugins.vim`.
 - [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
@@ -93,6 +94,20 @@ Add commands, used exclusively through keymappings.
 
 - `HiTab`/`NoHiTab` - highlight/unhighlight tabs. Mapped to `<leader>ht`/`<leader>htn`.
 - `TrimWhitespace` - strip extraneous whitespace from current file. Mapped to `<leader>tw`.
+
+### [`filetype_specific.vim`](./filetype_specific.vim)
+
+Configure options specific to a given filetype.
+
+- Vim - wrap at 80 characters
+- Makefile - insert literal tabs
+- Markdown - disable colorcolumn
+- Git commit messages
+  - wrap at 72 characters (set `colorcolumn` to match)
+  - highlight subject lines beyond 50 characters
+- Python
+  - set `colorcolumn` at 89 characters (write up to line not on it)
+  - wrap at 88 characters
 
 ### [`fzf.vim`](./fzf.vim)
 
@@ -156,16 +171,6 @@ Notable options:
   - show matches as you type
   - highlight all matches
   - smartcase - insensitive by default, becomes sensitive if capital letter typed
-- filetype specific settings
-  - Vim - wrap at 80 characters
-  - Makefile - insert literal tabs
-  - Markdown - disable colorcolumn
-  - Git commit messages
-    - wrap at 72 characters
-    - highlight subject lines beyond 50 characters
-  - Python
-    - set colorcolumn at 89 characters (write up to line not on it)
-    - wrap at 88 characters
 
 ### [`plugins.vim`](./plugins.vim)
 
