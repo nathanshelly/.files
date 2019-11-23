@@ -3,27 +3,27 @@
 " << git >>
 
 " commit message subject line wrap and color
-au FileType gitcommit set textwidth=72
-au Filetype gitcommit set colorcolumn=73
-au FileType gitcommit hi gitCommitSummary ctermfg=blue
+autocmd FileType gitcommit set textwidth=72
+autocmd Filetype gitcommit set colorcolumn=73
+autocmd FileType gitcommit hi gitCommitSummary ctermfg=blue
 
 " << makefile >>
 
 " insert tabs, not 2 spaces
-au FileType make set noexpandtab
+autocmd FileType make set noexpandtab
 
 " << markdown >>
 
-au FileType markdown set colorcolumn=
+autocmd FileType markdown set colorcolumn=
 
 " << python >>
 
-au Filetype python set colorcolumn=89
-au Filetype python set textwidth=88
+autocmd Filetype python set colorcolumn=89
+autocmd Filetype python set textwidth=88
 
 " << vim >>
 
-au Filetype vim set textwidth=80
+autocmd Filetype vim set textwidth=80
 
 " << json >>
 

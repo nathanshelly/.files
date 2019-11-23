@@ -7,7 +7,7 @@ set noswapfile
 
 " workaround
 " ref - https://github.com/neovim/neovim/issues/1936
-au FocusGained * :checktime
+autocmd FocusGained * :checktime
 
 " save on buffer switch
 set autowrite
@@ -31,8 +31,8 @@ set relativenumber
 
 " numbers in all buffers
 " ref - https://vi.stackexchange.com/questions/6436/how-to-show-line-numbers-for-all-buffers-windows-tabs/6441
-au BufWinEnter * set number
-au BufWinEnter * set relativenumber
+autocmd BufWinEnter * set number
+autocmd BufWinEnter * set relativenumber
 
 " absolute number in insert mode, otherwise hybrid
 " TODO: handle exiting insert mode w/ C-c?
