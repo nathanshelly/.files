@@ -22,7 +22,7 @@ set timeoutlen=1000 ttimeoutlen=0 updatetime=300
 " be less verbose (especially redundant due to status line)
 set noshowmode
 
-" allow unsaved buffers to be hidden
+" allow switching away from a dirty buffer (buffer w/ unsaved changes)
 set hidden
 
 " syntax coloring
