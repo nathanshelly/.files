@@ -5,7 +5,7 @@
 " commit message subject line wrap and color
 autocmd FileType gitcommit set textwidth=72
 autocmd Filetype gitcommit set colorcolumn=73
-autocmd FileType gitcommit hi gitCommitSummary ctermfg=blue
+autocmd FileType gitcommit highlight gitCommitSummary ctermfg=blue
 
 " << makefile >>
 
