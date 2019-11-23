@@ -73,36 +73,36 @@ nnoremap R @@
 nnoremap <Space> <NOP>
 
 " save, quit, force quit, reload, save & quit, exit w/ error, close buffer
-nmap <silent> <leader>w :w<CR>
-nmap <silent> <leader>q :q<CR>
-nmap <silent> <leader>! :q!<CR>
-nmap <silent> <leader>e :e<CR>
-nmap <silent> <leader>x :x<CR>
-nmap <silent> <leader>cq :cq<CR>
-nmap <silent> <leader>bd :bd<CR>
+nnoremap <silent> <leader>w :w<CR>
+nnoremap <silent> <leader>q :q<CR>
+nnoremap <silent> <leader>! :q!<CR>
+nnoremap <silent> <leader>e :e<CR>
+nnoremap <silent> <leader>x :x<CR>
+nnoremap <silent> <leader>cq :cq<CR>
+nnoremap <silent> <leader>bd :bd<CR>
 
 " refresh
 " ref - https://stackoverflow.com/a/17189261
-nmap <silent> <leader>r :syntax sync fromstart<cr>
+nnoremap <silent> <leader>r :syntax sync fromstart<cr>
 
 " source vimrc (`reload` mnemonic)
 " TODO: handle this better
-nmap <silent> <leader>rld  :source $HOME/.config/nvim/init.vim<CR>
+nnoremap <silent> <leader>rld  :source $HOME/.config/nvim/init.vim<CR>
 
 " turn off search highlighting
-nmap <silent> <leader>hn  :noh<CR>
+nnoremap <silent> <leader>hn  :noh<CR>
 
 " toggle tab highlighting
-nmap <silent> <leader>ht  :HiTab<CR>
-nmap <silent> <leader>htn :NoHiTab<CR>
+nnoremap <silent> <leader>ht  :HiTab<CR>
+nnoremap <silent> <leader>htn :NoHiTab<CR>
 
 " toggle paste mode (`paste yes`, `paste no` mnemonic)
-nmap <silent> <leader>py :set paste<CR>
-nmap <silent> <leader>pn :set nopaste<CR>
+nnoremap <silent> <leader>py :set paste<CR>
+nnoremap <silent> <leader>pn :set nopaste<CR>
 
 " start/end of screen line movement
-nmap <silent> <leader>' g$
-nmap <silent> <leader>" g0
+nnoremap <silent> <leader>' g$
+nnoremap <silent> <leader>" g0
 
 " vim split actions
 " navigate between vim splits

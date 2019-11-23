@@ -33,46 +33,46 @@ command! -bang -nargs=? -complete=dir Files
 "   - hide w/o changing UI - https://github.com/junegunn/fzf.vim#hide-statusline
 "   - customize - https://github.com/junegunn/fzf.vim#custom-statusline
 " TODO: understand why the following plug commands don't seem to work
-"   - `nmap <leader>fzf <plug>(fzf-complete-word)`
-"   - `nmap <leader>fzf <plug>(fzf-complete-line)`
-"   - `nmap <leader>fki <plug>(fzf-maps-i)`
+"   - `nnoremap <leader>fzf <plug>(fzf-complete-word)`
+"   - `nnoremap <leader>fzf <plug>(fzf-complete-line)`
+"   - `nnoremap <leader>fki <plug>(fzf-maps-i)`
 " TODO: maybe add completions? - https://github.com/junegunn/fzf.vim#usage
 " TODO: map most used command to <leader><space>
 
 " files below current shell directory (same as `fzf`)
-nmap <c-p> :Files<cr>
+nnoremap <c-p> :Files<cr>
 " all buffers
-nmap <c-b> :Buffers<cr>
+nnoremap <c-b> :Buffers<cr>
 " lines of files below current shell directory (same as `rg`)
-nmap <c-f> :Rg<cr>
+nnoremap <c-f> :Rg<cr>
 " lines in current buffer
-nmap <c-l> :BLines<cr>
+nnoremap <c-l> :BLines<cr>
 " files listed by `git status`
-nmap <c-g> :GFiles?<cr>
+nnoremap <c-g> :GFiles?<cr>
 
 " command history
-nmap <leader>hc :History:<cr>
+nnoremap <leader>hc :History:<cr>
 " search history
-nmap <leader>h/ :History/<cr>
+nnoremap <leader>h/ :History/<cr>
 " `v:oldfiles` and open buffers
-nmap <leader>hi :History<cr>
+nnoremap <leader>hi :History<cr>
 
 " less used commands below namespaced w/ `<leader>f` (for `fzf`)
 " lines in open buffers
-nmap <leader>fli :Lines<cr>
-nmap <leader>fmr :Marks<cr>
+nnoremap <leader>fli :Lines<cr>
+nnoremap <leader>fmr :Marks<cr>
 " ultisnips provided snippets
 " TODO: install ultisnips
-nmap <leader>fs :Snippets<cr>
+nnoremap <leader>fs :Snippets<cr>
 " commits
 " TODO: install fugitive.vim to enable jumping to commits
 " all commits (same as `git log`)
-nmap <leader>fct :Commits<cr>
+nnoremap <leader>fct :Commits<cr>
 " commits for the current buffer
-nmap <leader>fcb :BCommits<cr>
-nmap <leader>fcd :Commands<cr>
+nnoremap <leader>fcb :BCommits<cr>
+nnoremap <leader>fcd :Commands<cr>
 " normal mode mappings
-nmap <leader>fmp :Maps<cr>
+nnoremap <leader>fmp :Maps<cr>
 
 " various third party commands
 " TODO: use any of these navigation ideas?

@@ -19,7 +19,7 @@ let g:surround_{char2nr('S')} = "< \r >"
 
 " <<<< nerdtree >>>>
 " ref - https://github.com/scrooloose/nerdtree#faq-here-and-in-the-wiki
-map <c-n> :NERDTreeToggle<CR>
+noremap <c-n> :NERDTreeToggle<CR>
 
 " <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config
@@ -31,7 +31,7 @@ let g:gitp_blame_format = '  %{account} ~ %{ago} • %{commit}'
 " << keymap >>
 
 " use <leader>gd to display change
-nmap <leader>gd <plug>(git-p-diff-preview)
+nnoremap <leader>gd <plug>(git-p-diff-preview)
 
 " <<<< rhysd/git-messenger.vim (view git blame commit) >>>>
 " show diff of current file in popup
@@ -64,8 +64,8 @@ let g:goyo_width = '100%'
 
 " << keymap >>
 
-nmap <leader>jg :Goyo<CR>
-nmap <leader>jl :Limelight!!<CR>
+nnoremap <leader>jg :Goyo<CR>
+nnoremap <leader>jl :Limelight!!<CR>
 
 " <<<< vim-gh-line >>>>
 " ref - https://github.com/ruanyl/vim-gh-line#how-to-use
@@ -99,7 +99,7 @@ endfunction
 
 " <<<< markdown-preview >>>>
 
-nmap <leader>mp :MarkdownPreview<CR>
+nnoremap <leader>mp :MarkdownPreview<CR>
 
 " <<<<<< end of utilities >>>>>>
 
