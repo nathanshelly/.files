@@ -62,7 +62,6 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " wrap on linebreak (show as much as possible)
 " ref - http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
-set wrap
 set linebreak
 
 " allow cursor past end of line
