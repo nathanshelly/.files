@@ -32,15 +32,15 @@ hi MatchParen cterm=NONE ctermfg=cyan ctermbg=NONE guibg=#808080 guifg=#89CFF0 g
  " whitespace group coloring
 hi ExtraWhitespace ctermbg=magenta guibg=#ff00ff
 " keep through color scheme change
-au ColorScheme * hi ExtraWhitespace ctermbg=magenta guibg=#ff00ff
+autocmd ColorScheme * hi ExtraWhitespace ctermbg=magenta guibg=#ff00ff
 " highlight all trailing whitespace
 " TODO: check why this seemed to break
-au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 " avoid highlighting trailing whitespace on current line when editing at the end
 " of it
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
 " << syntax groups >>
 
 " match Tabs on file load (just matches, no highlighting yet)
-au BufRead * syntax match Tab /\t/
+autocmd BufRead * syntax match Tab /\t/
