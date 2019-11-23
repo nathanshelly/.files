@@ -11,7 +11,6 @@
 
 " escape with rolling jk
 inoremap jk <esc>
-inoremap <esc> <nop>
 
 " disable command mode
 " TODO: maybe come up with a nicer solution here
