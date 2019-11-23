@@ -1,5 +1,12 @@
 " <<<<<<<< Remappings >>>>>>>>
-" NOTE: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
+"
+" Note: ideally this file would be the sole source of truth for any keymappings.
+" Unfortunately, for organization purposes mappings also exist in `./fzf.vim`,
+" `./coc.nvim` & `./plugin_config.vim`. Try `grep`ing for `map` to track down
+" a specific keymapping (or using `f` if you've set up ripgrep & it's associated
+" aliases.
+"
+" Note II: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
 " bindings defined in that file work)
 
 " escape with rolling jk
