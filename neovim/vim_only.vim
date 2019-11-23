@@ -3,6 +3,11 @@
 " see list of `nvim` defaults w/ `:h nvim-defaults`
 
 " << neovim defaults >>
+
+" enable filetype detection, plugin and indentation file loading
+" ref - https://vi.stackexchange.com/questions/10124/what-is-the-difference-between-filetype-plugin-indent-on-and-filetype-indent
+filetype plugin indent on
+
 set autoindent
 
 " update open files as they change

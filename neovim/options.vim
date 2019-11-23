@@ -72,10 +72,6 @@ set virtualedit=onemore
 " (write up to line, not on top of it)
 set colorcolumn=81
 
-" enable filetype detection, plugin and indentation file loading
-" ref - https://vi.stackexchange.com/questions/10124/what-is-the-difference-between-filetype-plugin-indent-on-and-filetype-indent
-filetype plugin indent on
-
 " force sign column always open
 " avoids inconsistent buffer widths & jarring transition
 set signcolumn=yes
