@@ -1,6 +1,11 @@
 # path to dotfiles
 export DOTFILES="$HOME/.files"
 
+# `brew --prefix` takes ~25ms on my machine (to see how long it takes on yours
+# try `hyperfine 'brew --prefix'`). To avoid that overhead I hardcode the
+# path (seems pretty stable).
+export HOMEBREW_PREFIX="/usr/local"
+
 # XDG directory specification
 # ref - https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_DATA_HOME="$HOME/.local/share"
