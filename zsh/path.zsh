@@ -7,14 +7,14 @@ typeset -U path
 
 path=(
   # homebrew
-  # hardcoded instead of `brew --prefix`
-  /usr/local/bin
-  /usr/local/sbin
-  $HOME/.cargo/bin
+  "$HOMEBREW_PREFIX/bin"
+  "$HOMEBREW_PREFIX/sbin"
+  # rust
+  "$HOME/.cargo/bin"
   # gitignored build folder
   # currently used only for the rust lsp -
   # $DOTFILES/setup/bin/install_language_servers
-  $DOTFILES/target
+  "$DOTFILES/target"
   $path
 )
 

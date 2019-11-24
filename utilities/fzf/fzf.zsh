@@ -12,13 +12,10 @@
 # don't run unless `fzf` is installed
 command -v fzf > /dev/null 2>&1 || return
 
-# NOTE: hardcoding here instead of `brew --prefix` for performance
-brew_prefix="/usr/local"
-
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
 [[ $- == *i* ]] && {
-  source "$brew_prefix/opt/fzf/shell/completion.zsh" 2>/dev/null
+  source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2>/dev/null
 }
 
 # default keybindings
@@ -26,7 +23,7 @@ brew_prefix="/usr/local"
 # `M-c` - navigate to directory (`cd` into selected folder)
 # `^r` - overridden below (still history search but slightly different from
 # default behavior)
-source "$brew_prefix/opt/fzf/shell/key-bindings.zsh"
+source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 
 
 # TODO: handle `fd` not being installed
@@ -46,7 +43,7 @@ _fzf_compgen_dir() {
 # <<<< config >>>>
 
 # NOTE: corresponding widgets defined in `./functions.zsh` &
-# `$(brew --prefix)/opt/fzf/shell/key-bindings.zsh`
+# `$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh`
 
 # << zsh functions -> widgets >>
 # zsh requires explicit marking of functions that will be mapped as widgets
