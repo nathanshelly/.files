@@ -50,6 +50,7 @@ brew "gcc"
 
 brew "alt"
 brew "asciinema"
+brew "asdf"
 brew "awscli"
 brew "bat"
 brew "coreutils"
