@@ -51,7 +51,7 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 - [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
 - [`filetype_specific.vim`](#filetype_specific.vim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
 - [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
-- [`keymap.vim`](#keymap.vim) - define keymappings (e.g. `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings (and leader key) defined in `plugins.vim`.
+- [`keymap.vim`](#keymap.vim) - define keymappings (e.g. `` (`<space>`) as leader, `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings defined in `plugin_config.vim`.
 - [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
 - [`plugins.vim`](#plugins.vim) - enable plugins, managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
 - [`plugin_config.vim`](#plugin_config.vim) - configure plugins (agnostic of plugin management method)
@@ -128,12 +128,13 @@ Notable keymappings:
 
 Define keymappings.
 
-Plugin keymappings (and leader key) defined in `plugins.vim`.
+Plugin keymappings defined in `plugins.vim`.
 
 Notable keymappings:
 
 > `c-<character>` means `Ctrl-<character>`
 
+- map leader to `<Space>`
 - insert mode
   - `jk` to escape insert mode
 - normal mode
@@ -235,9 +236,6 @@ Agnostic of plugin management method.
 
 #### notable configuration
 
-> `c` here means `Ctrl`, e.g. `<c-p>` -> `<Ctrl-p>`
-
-- map leader to `<Space>`
 - `<leader>gd` to display diff at current line
 - `<leader>jg` to trigger Goyo (minimal writing mode)
 - statusline appearance (using [`lightline`](https://github.com/itchyny/lightline.vim)

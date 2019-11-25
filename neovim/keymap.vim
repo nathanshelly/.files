@@ -6,8 +6,10 @@
 " a specific keymapping (or using `f` if you've set up ripgrep & it's associated
 " aliases.
 "
-" Note II: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
-" bindings defined in that file work)
+" map leader -> space
+" Note: this must be sourced before `plugin_config.vim` for keymappings there
+" to use the correct leader
+let mapleader=" "
 
 " escape with rolling jk
 inoremap jk <esc>
