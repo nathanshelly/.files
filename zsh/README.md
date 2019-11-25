@@ -29,14 +29,14 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`completion.zsh`](#completion.zsh) - initialize completion
 - [`config.zsh`](#config.zsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
 - [`functions.zsh`](#functions.zsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
+- [`instant_prompt.zsh`](#instant_prompt.zsh) - enable [instant prompt](https://github.com/romkatv/powerlevel10k#what-is-instant-prompt)
 - [`keymap.zsh`](#keymap.zsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
 - [`manydots.zsh`](#manydots.zsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
 - [`options.zsh`](#options.zsh) - configure options (anything set using `setopt`)
-- [`path.zsh`](#path.zsh) - configure `$PATH` (uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;`)
 - [`plugins.zsh`](#plugins.zsh) - enable and configure plugins. Managed by [`zplugin`](https://github.com/zdharma/zplugin).
 - [`prompt.zsh`](#prompt.zsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
 - [`secrets.zsh`](#secrets.zsh) - store secrets such as API tokens. This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
-- [`zshenv.symlink`](#zshenv.symlink) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES`)
+- [`zshenv.symlink`](#zshenv.symlink) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES` & `$PATH`)
 - [`zshrc.symlink`](#zshrc.symlink) - source every `*.zsh` throughout this repo (`$DOTFILES/**/*.zsh`) to set up config
 
 ## each file in more detail
@@ -75,6 +75,10 @@ Set history file location and increases the size of the history to 100,000 lines
 
 Autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`).
 
+### [`instant_prompt.zsh`](./instant_prompt.zsh)
+
+Enable [instant prompt](https://github.com/romkatv/powerlevel10k#what-is-instant-prompt).
+
 ### [`keymap.zsh`](./keymap.zsh)
 
 Turn on `vim` mode for [`zle`](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings.
@@ -111,12 +115,6 @@ Notable options:
 - `auto_cd` - type a bare path to automatically perform `cd <path>`. For example (`>` is a prompt symbol here), `> ~/.files` will `cd` to `~/.files`, `> ..` will `cd` up a directory and so on.
 - `share_history` - history is synced between simultaneous shells on prompt load. For example, if I have two `tmux` panes open, run `ls` in one, then switch to the other, press `Ctrl-c` (to trigger a prompt load), then press `up` the most recent command in my history will be that `ls` I just ran in the other pane.
 
-### [`path.zsh`](./path.zsh)
-
-Configure `$PATH`.
-
-Uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;`. Ensures `$path` array contains each entry only once (like a set) with `typeset -u path`.
-
 ### [`plugins.zsh`](./plugins.zsh)
 
 Enable and configure plugins.
@@ -143,7 +141,11 @@ This file is not checked in to version control (ignored in `$DOTFILES/.gitignore
 
 Define environment variables, loaded before any other file in this folder.
 
-This file defines the `$DOTFILES` environment variable used throughout `zsh` configuration. It also defines `$EDITOR` used in various aliases/keybindings.
+A few notable environment variables:
+
+- `$DOTFILES` - specifies path to the root of this repo, used throughout `zsh` configuration
+- `$PATH` - uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;`. Ensures `$path` array contains each entry only once (like a set) with `typeset -u path`
+- `$EDITOR` - set to `nvim`, used in various aliases/keybindings
 
 This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
 
@@ -152,7 +154,7 @@ This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/setup/bin/symlink`](../set
 Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and autoload any functions in `functions` folders throughout this repo. Here is the loading order:
 
 1. [`secrets.zsh`](./secrets.zsh) - only if this file exists
-1. [`asdf.zsh`](./asdf.zsh)
+1. [`instant_prompt.zsh`](./instant_prompt.zsh)
 1. [`completion.zsh`](./completion.zsh)
 1. [`config.zsh`](./config.zsh)
 1. [`keymap.zsh`](./keymap.zsh)
@@ -160,11 +162,11 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`options.zsh`](./options.zsh)
 1. [`functions.zsh`](./functions.zsh)
 1. [`alias.zsh`](./alias.zsh)
-1. [`plugins.zsh`](./path.zsh)
-1. [`prompt.zsh`](./path.zsh)
-1. [`path.zsh`](./path.zsh)
-1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh` excluding those in this directory (`$DOTFILES/zsh`) and `$DOTFILES/submodules`). Also excludes any `path.zsh` files which are sourced by the `path.zsh` file in this directory.
+1. [`plugins.zsh`](./plugins.zsh)
+1. [`prompt.zsh`](./prompt.zsh)
+1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory) and `$DOTFILES/submodules`.
+1. [`asdf.zsh`](./asdf.zsh)
 
-This file itself is loaded after `zshenv.symlink` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
+`zshrc.symlink` itself is loaded after `zshenv.symlink` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
 
 This file symlinked to `$HOME/.zshrc` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
