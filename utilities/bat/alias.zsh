@@ -1,6 +1,8 @@
-# `cat` w/ color
-# ref - https://github.com/sharkdp/bat
-if command -v bat > /dev/null && command -v mdcat > /dev/null; then
+command -v bat > /dev/null || return
+
+if command -v smat > /dev/null && command -v mdcat > /dev/null; then
   # $DOTFILES/functions/smat
   alias cat=smat
+else
+  alias cat=bat
 fi

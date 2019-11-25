@@ -9,17 +9,17 @@ local selected num
 setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
 selected=( $(fc -l 1 | eval "$(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r --expect=ctrl-e $FZF_CTRL_R_OPTS -q ${(q)LBUFFER}") )
 local ret=$?
-if [ -n "$selected" ]; then
+[ -n "$selected" ] && {
   local accept=0
-  if [[ $selected[1] = ctrl-e ]]; then
+  [[ $selected[1] = ctrl-e ]] && {
     accept=1
     shift selected
-  fi
+  }
   num=${selected[1]}
-  if [ -n "$num" ]; then
+  [ -n "$num" ] && {
     zle vi-fetch-history -n $num
     [[ $accept = 0 ]] && zle accept-line
-  fi
-fi
+  }
+}
 zle reset-prompt
 return $ret

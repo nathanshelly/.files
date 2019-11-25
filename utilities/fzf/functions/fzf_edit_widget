@@ -8,10 +8,10 @@ file="$(
     | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_EDIT_OPTS" $(__fzfcmd) +m
   )"
 
-if [[ -z "$file" ]]; then
+[[ -z "$file" ]] && {
   zle redisplay
   return 0
-fi
+}
 
 "${EDITOR:-nvim}" "$file"
 
