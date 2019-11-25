@@ -1,7 +1,3 @@
-" map leader -> space
-" NOTE: done here to enable using <leader> in plugin keymappings
-let mapleader=" "
-
 " <<<<<< motions/operators >>>>>>
 
 " <<<< vim-surround >>>>
