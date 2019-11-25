@@ -31,3 +31,25 @@ export EDITOR=nvim
 # most important for quickly exiting
 # vi insert mode
 export KEYTIMEOUT=20
+
+# $PATH modification
+# zsh conveniently links path array and PATH env var
+# to add to path, write `path=(<new-addition> $path)`
+typeset -U path
+
+path=(
+  # homebrew
+  "$HOMEBREW_PREFIX/bin"
+  "$HOMEBREW_PREFIX/sbin"
+  # fzf
+  "$HOMEBREW_PREFIX/opt/fzf/bin"
+  # rust
+  "$HOME/.cargo/bin"
+  # poetry, python dependency manager
+  "$HOME/.poetry/bin"
+  # gitignored build folder
+  # currently used only for the rust lsp -
+  # $DOTFILES/setup/bin/install_language_servers
+  "$DOTFILES/target"
+  $path
+)

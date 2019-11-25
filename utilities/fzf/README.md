@@ -41,7 +41,3 @@ If only one option would be displayed, select it immediately (`--select-1`. If n
 - `M-f` - filter and output files shown by `git status` (untracked, unstaged, staged) to shell
 - `M-h` - filter `git log` commits and output hash to shell
 - `M-r` - filter all (local and remote) git branches and output to shell
-
-## [`path.zsh`](./path.zsh)
-
-Add `fzf` to `$path`.

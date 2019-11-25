@@ -32,10 +32,6 @@ source "$DOTFILES/zsh/plugins.zsh"
 # configure prompt after enabling
 source "$DOTFILES/zsh/prompt.zsh"
 
-# define variable to store list of files to source
-# note: -U ensures uniqueness
-typeset -U config_files
-
 # all *.zsh files throughout this repo exluding the $DOTFILES/zsh &
 # $DOTFILES/submodules directories (technically excludes $DOTFILES/**/zsh &
 # $DOTFILES/**/submodules however the only matching directories are those two)
@@ -43,25 +39,13 @@ typeset -U config_files
 # x~y matches anything that matches the pattern x but does not match y
 # ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Operators
 # (search "x~y" to find documentation for the above described behavior)
+
+# define variable to store list of files to source
+# note: -U ensures uniqueness
+typeset -U config_files
 config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
-
-# $config_files referenced in this file
-source "$DOTFILES/zsh/path.zsh"
-
-# `.zsh` files that are not `path.zsh`
-typeset -u non_path_files
-# `:#<pattern>` removes any strings that match the given pattern
-# ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
-# (search "(M)" to find the relevant documentation (though note this is NOT
-# actually using the "(M)" flag here))
-non_path_files=(${config_files:#*/path.zsh})
-for non_path_file in $non_path_files
-do
-  source "$non_path_file"
-done
-unset non_path_files non_path_file
-
-unset config_files
+for config_file in $config_files; do source "$config_file"; done
+unset config_files config_file
 
 # source asdf to give it final say on package versions
 source "$DOTFILES/zsh/asdf.zsh"
