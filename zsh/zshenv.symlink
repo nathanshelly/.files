@@ -32,6 +32,11 @@ export EDITOR=nvim
 # vi insert mode
 export KEYTIMEOUT=20
 
+# prevent generation of .pyc files
+export PYTHONDONTWRITEBYTECODE=1
+
+export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
+
 # $PATH modification
 # zsh conveniently links path array and PATH env var
 # to add to path, write `path=(<new-addition> $path)`
