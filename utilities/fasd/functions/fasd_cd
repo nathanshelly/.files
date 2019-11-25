@@ -1,9 +1,11 @@
+#! /usr/bin/env bash
+
 # function to execute built-in cd
 # ref - https://github.com/clvv/fasd/issues/48
 if [ $# -le 1 ]; then
   fasd "$@"
 else
-  local _fasd_ret="$(fasd -e 'printf %s' "$@")"
+  _fasd_ret="$(fasd -e 'printf %s' "$@")"
   [ -z "$_fasd_ret" ] && return
-  [ -d "$_fasd_ret" ] && cd "$_fasd_ret" || printf %s\n "$_fasd_ret"
+  [ -d "$_fasd_ret" ] && cd "$_fasd_ret" || printf %s"\n$_fasd_ret"
 fi

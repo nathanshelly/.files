@@ -2,14 +2,18 @@
 
 # see details in $DOTFILES/utilities/asdf
 
+# TODO: do this as a list (no need to call out to grep?)
+# plugin_list=($(asdf plugin-list))
+plugin_list=$(asdf plugin-list)
+
 # TODO: extract list of plugins from $DOTFILES/utilities/asdf/tool-versions.symlink
-if ! asdf plugin-list | grep -q nodejs; then
+echo "$plugin_list" | grep -q nodejs || {
   asdf plugin-add nodejs
   # install keyring - https://github.com/asdf-vm/asdf-nodejs#install
-  bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-fi
-asdf plugin-list | grep -q python || asdf plugin-add python
-asdf plugin-list | grep -q yarn || asdf plugin-add yarn
+  bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+}
+echo "$plugin_list" | grep -q python || asdf plugin-add python
+echo "$plugin_list" | grep -q yarn || asdf plugin-add yarn
 
 # install whatever tools are listed in "$HOME/.tool-versions"
 cd "$HOME" && asdf install

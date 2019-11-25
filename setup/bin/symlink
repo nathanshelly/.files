@@ -181,7 +181,7 @@ _extract_path() {
 
   # _regex_matches will only have length >= 2 if capture groups triggered,
   # meaning we have path components
-  if [ "${#_REGEX_MATCHES[@]}" -ge 2 ]; then
+  [ "${#_REGEX_MATCHES[@]}" -ge 2 ] && {
     # split array on delimiter
     # `local IFS='<delimiter>' scopes any interference w/ `IFS`
     # `(<string>)` - parens trigger splitting `<string>` on `IFS` value
@@ -196,7 +196,7 @@ _extract_path() {
     local _joined=''
     join_by '/' "${path_components[@]}"
     _path="${_joined}/"
-  fi
+  }
 }
 
 # extract file/directory name from input
@@ -247,7 +247,7 @@ _check_flags() {
 
   # _REGEX_MATCHES will only have length 2 if capture groups triggered, meaning
   # we have flags
-  if [ "${#_REGEX_MATCHES[@]}" -eq 2 ]; then
+  [ "${#_REGEX_MATCHES[@]}" -eq 2 ] && {
     local _flags=${_REGEX_MATCHES[1]}
 
     # check for substrings
@@ -255,7 +255,7 @@ _check_flags() {
     # ref - https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
     [[ $_flags == *"d"* ]] && { _direct=true; }
     [[ $_flags == *"_"* ]] && { _unhidden=true; }
-  fi
+  }
 }
 
 # link single file between `src` & `dst`
@@ -318,34 +318,34 @@ link_file() {
     backup=${backup:-$backup_all}
     skip=${skip:-$skip_all}
 
-    if [ "$overwrite" == true ]; then
+    [ "$overwrite" == true ] && {
       if /bin/rm -r "$dst"; then
         success "removed $dst"
       else
         fail "failed to remove $dst"
       fi
-    fi
+    }
 
-    if [ "$backup" == true ]; then
+    [ "$backup" == true ] && {
       if mv "$dst" "${dst}.backup"; then
         success "moved $dst to ${dst}.backup"
       else
         fail "failed to move $dst to ${dst}.backup"
       fi
-    fi
+    }
 
     [ "$skip" == true ] && success "skipped $src"
   fi
 
   # "false" or empty
-  if [ "$skip" != true ]; then
+  [ "$skip" != true ] && {
     # `-s` for symbolic link
     if ln -s "$src" "$dst"; then
       success "linked $src to $dst"
     else
       fail "failed to link $src to $dst"
     fi
-  fi
+  }
 }
 
 symlink
