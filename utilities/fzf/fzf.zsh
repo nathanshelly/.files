@@ -51,7 +51,7 @@ _fzf_compgen_dir() {
 # zsh requires explicit marking of functions that will be mapped as widgets
 zle -N fzf_edit_widget
 zle -N fzf_repo_file_widget
-zle -N fzf_ignored_file_widget
+zle -N fzf_all_widget
 zle -N fzf_history_widget_accept
 zle -N fzf_modified_history_widget
 
@@ -60,7 +60,7 @@ _fzf_bat_preview="--preview='bat --style=numbers --color=always {}'"
 _fzf_preview_window="--preview-window=down:75%"
 _fzf_hidden_preview_window="${_fzf_preview_window}:hidden"
 
-export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude .git --type file"
 export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
  --select-1 --exit-0 --multi\
  $_fzf_preview_window\
@@ -72,9 +72,9 @@ ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 # `^f` lists files starting from root of current repo
 bindkey '^f' fzf_repo_file_widget
 # `^a` lists all files/directories (including those listed in (git)ignore files)
-bindkey '^a' fzf_ignored_file_widget
+bindkey '^a' fzf_all_widget
 
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --type file"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
 
 # << navigate to directory (`cd` into selected folder) >>
