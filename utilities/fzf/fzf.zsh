@@ -44,7 +44,7 @@ _fzf_compgen_dir() {
 
 # <<<< config >>>>
 
-# NOTE: corresponding widgets defined in `./functions.zsh` &
+# NOTE: corresponding widgets defined in `./functions` &
 # `$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh`
 
 # << zsh functions -> widgets >>
@@ -74,7 +74,7 @@ bindkey '^f' fzf_repo_file_widget
 # `^a` lists all files/directories (including those listed in (git)ignore files)
 bindkey '^a' fzf_ignored_file_widget
 
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --type file"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
 
 # << navigate to directory (`cd` into selected folder) >>
