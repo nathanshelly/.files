@@ -24,6 +24,7 @@ autocmd Filetype python set textwidth=88
 " << vim >>
 
 autocmd Filetype vim set textwidth=80
+autocmd BufRead,BufNewFile *.nvim		setfiletype vim
 
 " << json >>
 
