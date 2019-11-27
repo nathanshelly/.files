@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # access files/directories based on "frecency" (frequency & recency)
 # ref - https://github.com/clvv/fasd
 

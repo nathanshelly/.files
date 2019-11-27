@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # this file uses `zplugin` to manage `zsh` plugins
 #
 # refs:

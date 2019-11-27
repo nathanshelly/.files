@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 command -v fasd > /dev/null 2>&1 || return
 
 # turn on fasd if installed

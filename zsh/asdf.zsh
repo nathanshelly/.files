@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # this file initializes the `asdf` version manager
 # initialization is done here so that it can be sourced in `./zshrc.symlink`
 # after all other `zsh` config files have been sourced to avoid conflicts.

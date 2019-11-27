@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # ref - http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 # `bindkey`
 #   - `-M <keymap>` -> specify keymap for keybinding

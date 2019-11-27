@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # replacement for `grep`
 # ref - https://github.com/BurntSushi/ripgrep
 

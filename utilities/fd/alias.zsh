@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # replacement for `find`
 # ref - https://github.com/sharkdp/fd
 

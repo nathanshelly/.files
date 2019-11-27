@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # replacement for `ls`
 # ref - https://github.com/ogham/exa
 command -v exa > /dev/null && {

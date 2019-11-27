@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # manydots - zle tweak for emulating "..."=="../.." etc.
 # type triple dots to input `../..', quadruple dots to `../../..', etc..
 

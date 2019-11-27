@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # load prompt piece by piece for faster rendering
 # ref - https://github.com/romkatv/powerlevel10k#what-is-instant-prompt
 

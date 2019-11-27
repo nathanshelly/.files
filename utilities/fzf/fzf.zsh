@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # fuzzy finder
 # ref - https://github.com/junegunn/fzf
 #
