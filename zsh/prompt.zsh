@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Using Powerlevel10k - https://github.com/romkatv/powerlevel10k
 #

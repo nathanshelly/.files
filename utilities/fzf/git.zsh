@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # fzf ❤️ git
 # useful combinations of git & fzf
 # this file specifies keybinding for functions defined in `./functions.zsh`

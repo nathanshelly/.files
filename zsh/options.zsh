@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # ref - http://zsh.sourceforge.net/Doc/Release/Options.html
 
 # beta testing

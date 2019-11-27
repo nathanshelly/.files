@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 command -v bat > /dev/null || return
 
 if command -v smat > /dev/null && command -v mdcat > /dev/null; then

@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # enables functions defined in any folder named `functions` throughout this repo
 # e.g. $DOTFILES/**/functions
 #
