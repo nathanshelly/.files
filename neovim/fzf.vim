@@ -13,18 +13,30 @@ let g:fzf_commands_expect = 'ctrl-space'
 
 let g:fzf_layout = { 'down': '75%' }
 
-" :Rg - add toggleable (w/ Space) preview w/ context
-" TODO: allow searching without filename? `--no-filename` Rg
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('down:60%', '?'),
-  \   <bang>0)
+" << previews >>
+" remap commands to add previews, toggle w/ ctrl-space
 
-" :Files - add toggleable (w/ Space) preview
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('down:60%'), <bang>0)
+" TODO: allow searching without filename? `--no-filename` Rg
+command! -nargs=* Rg call fzf#vim#grep(
+  \ 'rg  --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>),
+  \ 1,
+  \ fzf#vim#with_preview('down:60%')
+\)
+
+command! -nargs=? Files call fzf#vim#files(
+  \ <q-args>,
+  \ fzf#vim#with_preview('down:60%'),
+  \ <bang>0
+\)
+
+" TODO: figure out why the preview here can't find files
+command! -nargs=? Buffers call fzf#vim#buffers(
+  \ <q-args>,
+  \ fzf#vim#with_preview('down:60%'),
+  \ <bang>0
+\)
+
+" << end of previews >>
 
 " << keymap >>
 
