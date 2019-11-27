@@ -161,6 +161,9 @@ Plug '/usr/local/opt/fzf'
 " Use Sasha's fork which enables previewing of full files based on community's
 " fix - https://github.com/junegunn/fzf.vim/issues/751
 " TODO: check that this fork stays up to date with upstream
+" NOTE: unless you also care about the above issue I recommend you use the
+" canonical 'junegunn/fzf.vim` repo:
+" `Plug 'junegunn/fzf.vim'`
 Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
 
 " distraction free writing
