@@ -1,21 +1,23 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # edit selected file w/ `$EDITOR` (falling back to `nvim` if not set)
 # lightly adapted from `fzf-cd-widget`
 setopt localoptions pipefail 2> /dev/null
-file="$(
-  eval "$FZF_DEFAULT_COMMAND --type file" \
-    | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_EDIT_OPTS" $(__fzfcmd) +m
-  )"
+files=$(
+  eval "$FZF_CTRL_T_COMMAND" \
+    | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_EDIT_OPTS" $(__fzfcmd) -m
+)
 
-[[ -z "$file" ]] && {
+[[ -z $files ]] && {
   zle redisplay
   return 0
 }
 
-"${EDITOR:-nvim}" "$file"
+# TODO: figure out why calling echo here changes things
+# shellcheck disable=SC2046,SC2116,SC2086
+"${EDITOR:-nvim}" $(echo $files)
 
-unset file
+unset files
 
 _fzf_edit_widget_ret=$?
 zle fzf-redraw-prompt
