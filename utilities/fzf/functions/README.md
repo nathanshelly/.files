@@ -11,5 +11,5 @@
 - [`fzf_edit_widget`](./fzf_edit_widget) - filter and edit (w/ `$EDITOR`) files
 - [`fzf_kill_by_port`](./fzf_kill_by_port) - filter and kill processes running on the given port
 - [`fzf_repo_file_widget`](./fzf_repo_file_widget) - filter and output files from the root of the current repo
-- [`fzf_ignored_file_widget`](./fzf_ignored_file_widget) - filter and output files below current directory including ignored (by `.gitignore` or `.ignore` files) files
+- [`fzf_all_widget`](./fzf_all_widget) - filter and output files & directories below current directory including entries that ignored by `.gitignore` or `.ignore` files
 - [`fzf_modified_history_widget`](./fzf_modified_history_widget) - filter and output/run shell history. Modified from default to allow outputting (w/ `Ctrl-e`) instead of immediate execution for the purpose of editing commands before running

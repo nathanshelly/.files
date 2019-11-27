@@ -4,4 +4,4 @@
 # `.gitignore` or `.ignore` files) files
 #
 # `fzf-file-widget` with `--no-ignore`
-FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND} --no-ignore" fzf-file-widget
+FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --no-ignore --type directory" fzf-file-widget
