@@ -17,5 +17,7 @@ EOF
   return 1
 }
 
+# `-t <target-[client|session|window|pane]>`
+# `-s <session-name>`
 tmux attach -t "$session" &> /dev/null || tmux new -s "$session"
 unset session
