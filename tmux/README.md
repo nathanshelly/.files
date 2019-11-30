@@ -6,9 +6,12 @@ A terminal multiplexer: enables a number of terminals to be created, accessed, a
 
 A few useful `tmux` aliases:
 
-- `ta` -> `tmux attach -t` - attach to a target (currently used solely to attach to sessions)
 - `tl` -> `tmux ls` - list currently running `tmux` sessions
-- `tn` -> `tmux new -s` - create a named session, e.g. `tn <session-name>`
+- `tmuxn` -> `tmux -f /dev/null` - start `tmux` without configuration (useful for debugging)
+
+## functions
+
+See [functions README](./functions/README.md).
 
 ## [`tmux.conf.symlink`](./tmux.conf.symlink) & [`tmux.conf.local.symlink`](./tmux.conf.local.symlink)
 
