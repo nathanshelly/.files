@@ -11,6 +11,10 @@ Creates two aliases:
 - `rgz <query>` - filter and open lines matching `<query>`
 - `killp <port>` - filter and kill processes running on the given port
 
+## functions
+
+See [functions README](./functions/README.md).
+
 ## [`fzf.zsh`](./fzf.zsh)
 
 Enables completions/keybindings along with configuring commands/options.
