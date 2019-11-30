@@ -160,6 +160,10 @@ tmux_conf_battery_status_discharging='↓'    # U+2193
 tmux_conf_theme_clock_colour='#00afff'
 tmux_conf_theme_clock_style='24'
 
+# enable copying to os clipboard
+# ref - https://github.com/gpakosz/.tmux/issues/218#issuecomment-456202333
+tmux_conf_copy_to_os_clipboard=true
+
 # <<<< end of configuring .tmux options >>>>
 
 # <<<< configure tmux separate from .tmux >>>>
