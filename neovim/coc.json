@@ -50,11 +50,6 @@
   "diagnostic.virtualTextPrefix": " ~  ",
   "diagnostic.warningSign": "◉",
 
-  // TODO: add more of these? - https://github.com/iamcco/coc-diagnostic
-  "diagnostic-languageserver.filetypes": {
-    "sh": "shellcheck"
-  },
-
   "list.indicator": "λ",
   "list.nextKeymap": "<C-k>",
   "list.previousKeymap": "<C-l>",
@@ -62,6 +57,13 @@
   "suggest.enablePreview": true,
 
   // <<<<<<<< extension/language server specific settings >>>>>>>>
+
+  // <<<<<<< coc-diagnostic (linting & formatting) >>>>>>>
+  // extension - https://github.com/iamcco/coc-diagnostic
+  // language server - https://github.com/iamcco/diagnostic-languageserver
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
 
   // <<<< eslint >>>>
   // TODO: re-enable these
