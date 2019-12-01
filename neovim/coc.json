@@ -22,6 +22,7 @@
     "markdown",
     "python",
     "rust",
+    "sh",
     "typescript",
     "typescriptreact"
   ],
@@ -63,6 +64,16 @@
   // language server - https://github.com/iamcco/diagnostic-languageserver
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
+  },
+  "diagnostic-languageserver.formatters": {
+    "shfmt": {
+      "command": "shfmt",
+      // note: `-i 2` is a single arg but must be separated to work here
+      "args": ["-i", "2", "-bn", "-ci", "-sr"]
+    }
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt"
   },
 
   // <<<< eslint >>>>
