@@ -22,6 +22,7 @@
     "markdown",
     "python",
     "rust",
+    "sh",
     "typescript",
     "typescriptreact"
   ],
@@ -64,6 +65,16 @@
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
   },
+  "diagnostic-languageserver.formatters": {
+    "shfmt": {
+      "command": "shfmt",
+      // note: `-i 2` is a single arg but must be separated to work here
+      "args": ["-i", "2", "-bn", "-ci", "-sr"]
+    }
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt"
+  },
 
   // <<<< eslint >>>>
   // TODO: re-enable these
@@ -85,51 +96,6 @@
       "command": "bash-language-server",
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
-    },
-    "dls": {
-      "command": "diagnostic-languageserver",
-      "args": ["--stdio"],
-      "filetypes": ["sh"],
-      "initializationOptions": {
-        "linters": {
-          "shellcheck": {
-            "command": "shellcheck",
-            "debounce": 100,
-            "args": ["--format=gcc", "-"],
-            "offsetLine": 0,
-            "offsetColumn": 0,
-            "sourceName": "shellcheck",
-            "formatLines": 1,
-            "formatPattern": [
-              "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
-              {
-                "line": 1,
-                "column": 2,
-                "message": 4,
-                "security": 3
-              }
-            ],
-            "securities": {
-              "error": "error",
-              "warning": "warning",
-              "note": "info"
-            }
-          }
-        },
-        "formatters": {
-          "shfmt": {
-            "command": "shfmt",
-            // note: `-i 2` is a single arg but must be separated to work here
-            "args": ["-i", "2", "-bn", "-ci", "-sr"]
-          }
-        },
-        "filetypes": {
-          "sh": "shellcheck"
-        },
-        "formatFiletypes": {
-          "sh": "shfmt"
-        }
-      }
     }
   },
 
