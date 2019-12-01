@@ -16,19 +16,16 @@
 #   - does not conform to LSP (same server used by VSCode though, Microsoft
 #     forgoing it's own protocol for now, probably tech debt)
 #     https://github.com/microsoft/language-server-protocol-inspector/issues/42#issuecomment-479995275
+# - bash (& sh) - `coc-sh` - https://github.com/josa42/coc-sh - no config needed
 #
 # << installation in this file >>
 #
-# - bash - https://github.com/mads-hartmann/bash-language-server
 # - rust - `rust-analyzer` (https://github.com/rust-analyzer/rust-analyzer)
 # works well
 #
 # <<<< currently explicitly NOT used languages >>>>
 #
 # - ruby - https://github.com/castwide/solargraph is too flaky/times out to use
-
-# bash
-command -v npm > /dev/null 2>&1 || npm install --global bash-language-server
 
 # rust - using `rust-analyzer`
 # install rustup and then rust analyzer language server respectively if not
