@@ -87,18 +87,6 @@
     "typescriptreact"
   ],
 
-  // <<<< custom (w/o extension) language servers >>>>
-  // ref - https://github.com/neoclide/coc.nvim/wiki/Language-servers#register-custom-language-servers
-  "languageserver": {
-    // https://github.com/mads-hartmann/bash-language-server
-    "bash": {
-      "args": ["start"],
-      "command": "bash-language-server",
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
-    }
-  },
-
   // <<<< python >>>>
   // ref - https://github.com/neoclide/coc-python#options
 
