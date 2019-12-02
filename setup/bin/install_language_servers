@@ -37,7 +37,7 @@
 # - https://github.com/rust-analyzer/rust-analyzer#language-server-quick-start
 TARGET="$DOTFILES/target"
 command -v ra_lsp_server > /dev/null 2>&1 || {
-  command -v rustup || {
+  command -v rustup > /dev/null || {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   }
 
