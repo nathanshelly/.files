@@ -12,8 +12,12 @@ echo "$plugin_list" | grep -q nodejs || {
   # install keyring - https://github.com/asdf-vm/asdf-nodejs#install
   bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 }
+# https://github.com/danhper/asdf-python
 echo "$plugin_list" | grep -q python || asdf plugin-add python
+# https://github.com/twuni/asdf-yarn
 echo "$plugin_list" | grep -q yarn || asdf plugin-add yarn
+# https://github.com/code-lever/asdf-rust
+echo "$plugin_list" | grep -q rust || asdf plugin-add rust
 
 # install whatever tools are listed in "$HOME/.tool-versions"
 cd "$HOME" && asdf install
