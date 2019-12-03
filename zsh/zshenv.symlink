@@ -52,9 +52,8 @@ path=(
   "$HOME/.cargo/bin"
   # poetry, python dependency manager
   "$HOME/.poetry/bin"
-  # gitignored build folder
-  # currently used only for the rust lsp -
-  # $DOTFILES/setup/bin/install_language_servers
-  "$DOTFILES/target"
+  # `rust-analyzer` language server
+  # installed in $DOTFILES/setup/bin/install_language_servers
+  "$DOTFILES/target/rust-analyzer/target/release"
   $path
 )
