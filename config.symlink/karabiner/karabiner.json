@@ -630,7 +630,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open -a alacritty''"
+                    "shell_command": "open -a 'alacritty'"
                   }
                 ]
               }
