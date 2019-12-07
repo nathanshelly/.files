@@ -12,15 +12,36 @@ docker run --interactive --tty nathanshelly/dotfiles:latest
 
 See [`docker/dotfiles`](./docker/dotfiles) for more details.
 
-# overview
+## getting started
+
+The below commands will run the [`setup/install_dotfiles`](./setup/install_dotfiles) setup script.
+
+This script will walk through installing various shell utilities, applications and symlinking various files to their appropriate locations. See [`setup/bin`](./setup/bin/) folder for documentation on the setup process.
+
+```bash
+# << start of optional section >>
+# run when setting up a new computer and only if you want to use ssh
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/github -C "your_email@example.com"
+# copy to clipboard on macOS
+cat "$HOME/.ssh/github.pub" | pbcopy
+# add to GitHub @ https://github.com/settings/keys
+# << end of optional section >>
+
+# now clone this repo and run the setup script
+cd $HOME # to clone dotfiles to `$HOME/.files`
+# remove the `GIT_SSH_COMMAND="..."` unless you ran the above commands
+GIT_SSH_COMMAND="ssh -i ~/.ssh/github" git clone git@github.com:nathanshelly/.files.git
+cd .files
+setup/install_dotfiles
+```
+
+Unless something went wrong (🤞) you're all set up now! 🎉
+
+## overview
 
 Primarily a [`tmux`](https://github.com/tmux/tmux), [`zsh`](https://www.zsh.org) & [`neovim`](https://github.com/neovim/neovim) workflow. See the respective topic folders: [`tmux`](./tmux), [`zsh`](./zsh) & [`neovim`](./neovim).
 
 ![workflow](assets/workflow.png 'workflow')
-
-## getting started
-
-Clone this repo (I clone it to `~/.files`) then run the setup script: [`<path-to-repo>/setup/install_dotfiles`](./setup/install_dotfiles). This script will walk through installing various shell utilities, applications and symlinking various files to their appropriate locations. See [`setup/bin`](./setup/bin/) folder for documentation on the setup process.
 
 ## thanks/credit
 
