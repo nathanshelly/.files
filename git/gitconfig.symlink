@@ -69,3 +69,6 @@
   implicitIdentity   = false
   detachedHead       = false
   waitingForEditor   = false
+[gc]
+	# https://stackoverflow.com/a/41771616/2574937
+	pruneExpire = 1.hour.ago
