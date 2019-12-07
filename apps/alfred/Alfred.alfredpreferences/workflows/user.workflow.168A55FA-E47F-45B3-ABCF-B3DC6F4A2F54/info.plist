@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.vidavidorra.bluetooth-control</string>
+	<key>connections</key>
+	<dict>
+		<key>9CF57B3C-1A77-4471-ABBC-0041CFBDE904</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A62C6F7F-BEAF-4917-8FDE-781B0FADE2F8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A62C6F7F-BEAF-4917-8FDE-781B0FADE2F8</key>
+		<array/>
+	</dict>
+	<key>createdby</key>
+	<string>Jeroen de Bruijn</string>
+	<key>description</key>
+	<string>Control Bluetooth Status</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Bluetooth Control</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>bt</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>python bluetooth.py {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Bluetooth</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>9CF57B3C-1A77-4471-ABBC-0041CFBDE904</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>query="{query}"
+
+case $query in
+    "on")
+        ./blueutil_executable -p 1
+    ;;
+    "off")
+        ./blueutil_executable -p 0
+    ;;
+    "toggle")
+        status="$(./blueutil_executable -p)"
+        if [ "${status}" == "1" ]; then
+            ./blueutil_executable -p 0
+        elif [ "${status}" == "0" ]; then
+            ./blueutil_executable -p 1
+        fi
+    ;;
+    "restart")
+        ./blueutil_executable -p 0
+		sleep 1
+        ./blueutil_executable -p 1
+    ;;
+esac</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A62C6F7F-BEAF-4917-8FDE-781B0FADE2F8</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>9CF57B3C-1A77-4471-ABBC-0041CFBDE904</key>
+		<dict>
+			<key>xpos</key>
+			<integer>60</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+		<key>A62C6F7F-BEAF-4917-8FDE-781B0FADE2F8</key>
+		<dict>
+			<key>xpos</key>
+			<integer>280</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>www.vidavidorra.com</string>
+</dict>
+</plist>
