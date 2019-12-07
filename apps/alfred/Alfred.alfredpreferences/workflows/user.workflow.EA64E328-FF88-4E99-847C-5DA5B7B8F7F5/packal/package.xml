@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Open in Vim</name>
-  <version>1.0</version>
-  <bundle>com.alfredapp.openinvim</bundle>
-  <updated>1523830753</updated>
-  <file>open_in_vim.alfredworkflow</file>
-</workflow>
