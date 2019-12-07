@@ -4,5 +4,11 @@
 <dict>
 	<key>escapeCopiedPath</key>
 	<true/>
+	<key>showWithCtrl</key>
+	<false/>
+	<key>showWithFn</key>
+	<false/>
+	<key>showWithRightArrow</key>
+	<false/>
 </dict>
 </plist>
