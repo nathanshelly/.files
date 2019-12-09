@@ -78,7 +78,7 @@ alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gstsp='git stash show --patch'
 
-alias gu='reset HEAD~'
+alias gu='git reset HEAD~'
 
 # aliases to avoid `--no-pager` default
 # uses `gwp<command>` ("with pager" mnemonic) to avoid `--no-pager`
