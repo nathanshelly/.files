@@ -30,22 +30,9 @@
 [push]
   default = current
 [alias]
-  a = add
-  b = !"git --no-pager branch"
-  bt = for-each-ref --format='%(refname:short) -> %(upstream:short)' refs/heads
-  c = commit
-  # `--color` needed when piped to
-  # other commands like sed
-  d = diff --color
-  m = merge
   r = rebase
   ri = rebase --interactive
-  s = status
   co = checkout
-  st = stash
-  stl = stash list
-  stsp = stash show --patch
-  undo = reset HEAD~
   count = !git shortlog --summary
   last  = log -1 HEAD
   # base alias to build on

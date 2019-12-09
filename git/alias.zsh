@@ -10,65 +10,53 @@ command -v hub > /dev/null 2>&1 && alias git=hub
 # used in constructing other aliases
 alias gnp='git --no-pager'
 
-alias ga='git a'
+# bases for `gl...` (git log) aliases
+alias git_log_base="git log --abbrev-commit --decorate --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
+alias git_log_verbose_base="git log --abbrev-commit --decorate --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
+
+alias ga='git add'
 # add only tracked files
-alias gat='git a --update'
-alias gap='git a --patch'
+alias gat='git add --update'
+alias gap='git add --patch'
 
 # base, default to verbose
-alias gb='git b -vv'
-alias gba='gb --all'
-# non-verbose
-alias gbas='git b --all'
-alias gbd='git b --delete'
-alias gbD='git b --delete --force'
-alias gbf='git b --force'
-# using `-P` w/ `branch` by default
-# this alias provides bare git behavior
-alias gbl='git branch'
-alias gbm='git b --move'
-# non-verbose
-alias gbs='git b'
-alias gbt='git bt'
+alias gb='gnp branch -vv'
+alias gba='gnp branch -vv --all'
+alias gbd='gnp branch --delete'
+alias gbD='gnp branch --delete --force'
+alias gbf='gnp branch --force'
+alias gbm='gnp branch --move'
 
-alias gc='git c'
-alias gca='git c --amend'
-alias gcan='git c --amend --no-edit'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gcan='git commit --amend --no-edit'
 alias gcl='git clone'
 alias gclr='git clone --recurse'
-alias gcm='git c --message'
-alias gco='git co'
-alias gcob='git co -b' # `-b <branch>`
-alias gcom='git co master'
-alias gcop='git co --patch'
+alias gcm='git commit --message'
+alias gco='git checkout'
+alias gcob='git checkout -b' # <branch>
+alias gcom='git checkout master'
+alias gcop='git checkout --patch'
 alias gcp='git cherry-pick'
 
-alias gd='git d'
-alias gdc='git d --cached'
+alias gd='git diff --color'
+alias gdc='git diff --color --cached'
 # `-R` shows additions as deletions & vice versa, use to see deleted whitespace
-alias gdr='git d -R'
-alias gdcr='git d --cached -R'
+alias gdr='git diff --color -R'
+alias gdcr='git diff --color --cached -R'
 
 # cleanup - https://git-scm.com/docs/git-gc
 alias ggc='git gc'
 
-alias gl='gnp ln 15'
-alias gln='gnp ln'
-alias glp='git lv --patch --stat'
-alias gls='git lv --stat --graph'
-alias glsn='git lv --stat --graph --max-count'
-alias glv='gnp lvn 15'
-alias glvn='gnp lvn'
+alias gl='git_log_base --max-count 15'
+alias gln='git_log_base --max-count'
+alias glp='git_log_verbose_base --patch --stat'
+alias gls='git_log_verbose_base --stat --graph'
+alias glsn='git_log_verbose_base --stat --graph --max-count'
+alias glv='git_log_verbose_base --max-count 15'
+alias glvn='git_log_verbose_base --max-count'
 
-alias gm='git m'
-
-# << assorted aliases using `--no-pager` (`gnp`) >>
-# not a comprehensive list of aliases using `--no-pager`
-# could set option in future (`git config --global pager.<command> <bool>`)
-# ref - https://stackoverflow.com/a/18129365
-alias gnpd='gnp d'
-alias gnpdc='gnp d --cached'
-alias gnpls='gnp lvn 5 --stat'
+alias gm='git merge'
 
 alias gpl='git pull'
 alias gpla='git pull --all'
@@ -83,19 +71,16 @@ alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias grst='git reset'
 
-alias gs='git s --short --branch'
-alias gst='git st'
-alias gsta='git st apply'
-alias gstl='git st list'
-alias gstp='git st pop'
-alias gstsp='git st show --patch'
+alias gs='git status --short --branch'
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gstsp='git stash show --patch'
 
-alias gu='git undo'
+alias gu='reset HEAD~'
 
 # aliases to avoid `--no-pager` default
 # uses `gwp<command>` ("with pager" mnemonic) to avoid `--no-pager`
-alias gwpl='git l'
-alias gwplv='git lv'
-
-# TODO: add function aliases (from $DOTFILES/functions/_git_functions) for
-# discoverability
+alias gwpl='glbase'
+alias gwplv='glvbase'
