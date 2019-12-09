@@ -20,8 +20,10 @@ command -v brew > /dev/null && {
 alias term="open --new /Applications/Alacritty.app"
 
 # discourage usage of rm if `trash` is installed (suggests `t` alias`)
-command -v trash > /dev/null && alias t=trash # macOS trash command
-command -v trash > /dev/null || alias rm='echo "use trash primarily, /bin/rm when needed"'
+command -v trash > /dev/null && {
+  alias t=trash # macOS trash command
+  alias rm='echo "use trash primarily, /bin/rm when needed"'
+}
 
 # alias `shfmt` to apply default args
 # `-i 2` -> indent with 2 spaces
