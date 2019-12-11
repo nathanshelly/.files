@@ -16,6 +16,8 @@ EOF
 }
 
 # `$@` holds all arguments
-git branch --unset-upstream "$@" > /dev/null 2>&1
+for branch in "$@"; do
+  git branch --unset-upstream "$branch" > /dev/null 2>&1
+done
 git branch --delete --force "$@"
 git push origin --delete "$@"
