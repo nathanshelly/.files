@@ -28,6 +28,7 @@ inoremap <expr> <c-l> "\<c-p>"
 nnoremap <leader>cr :CocRestart<cr><cr>
 
 " show diagnostic information
+" TODO: figure out general key binding to go to next tsserver, rust language server, etc. error
 " TODO: figure out what's wrong with below line
 " nnoremap <leader>cd <Plug>(coc-diagnostic-info)
 " move between diagnostics
