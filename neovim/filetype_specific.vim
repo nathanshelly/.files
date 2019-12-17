@@ -1,35 +1,36 @@
-" <<<< File Specific >>>>
+augroup filetype_gitcommit
+  autocmd!
+  autocmd FileType gitcommit set textwidth=72 " wrap @ 72 characters
+  autocmd Filetype gitcommit set colorcolumn=73
+augroup END
 
-" << git >>
+augroup filetype_make
+  autocmd!
+  autocmd FileType make set noexpandtab " insert tabs, not 2 spaces
+augroup END
 
-" commit message subject line wrap and color
-autocmd FileType gitcommit set textwidth=72
-autocmd Filetype gitcommit set colorcolumn=73
-autocmd FileType gitcommit highlight gitCommitSummary ctermfg=blue
+augroup filetype_markdown
+  autocmd!
+  autocmd FileType markdown set colorcolumn=
+augroup END
 
-" << makefile >>
+augroup filetype_python
+  autocmd!
+  autocmd Filetype python set colorcolumn=89
+  autocmd Filetype python set textwidth=88
+augroup END
 
-" insert tabs, not 2 spaces
-autocmd FileType make set noexpandtab
+augroup filetype_vim
+  autocmd!
+  autocmd Filetype vim set textwidth=80
+  autocmd BufRead,BufNewFile *.nvim		setfiletype vim
+augroup END
 
-" << markdown >>
-
-autocmd FileType markdown set colorcolumn=
-
-" << python >>
-
-autocmd Filetype python set colorcolumn=89
-autocmd Filetype python set textwidth=88
-
-" << vim >>
-
-autocmd Filetype vim set textwidth=80
-autocmd BufRead,BufNewFile *.nvim		setfiletype vim
-
-" << json >>
-
-" mark json files as jsonc by default
-" refs:
-" - https://github.com/neoclide/jsonc.vim
-" - https://github.com/neoclide/jsonc.vim/blob/master/ftdetect/jsonc.vim
-autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc
+augroup filetype_json
+  autocmd!
+  " mark json files as jsonc by default
+  " refs:
+  " - https://github.com/neoclide/jsonc.vim
+  " - https://github.com/neoclide/jsonc.vim/blob/master/ftdetect/jsonc.vim
+  autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc
+augroup END

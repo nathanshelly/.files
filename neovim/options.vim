@@ -1,10 +1,12 @@
 " prevent swap files
 set noswapfile
 
-" workaround
-" TODO: add context here
-" ref - https://github.com/neovim/neovim/issues/1936
-autocmd FocusGained * :checktime
+" workaround to make terminal neovim autoread files when focus is gained
+" ref - https://github.com/neovim/neovim/issues/1936#issuecomment-309311829
+augroup autoread_workaround
+  autocmd!
+  autocmd FocusGained * :checktime
+augroup END
 
 " save on buffer switch
 set autowriteall
@@ -26,14 +28,16 @@ set hidden
 " syntax coloring
 syntax on
 
-" line numbers
-set number
-set relativenumber
+" << line numbers >>
 
-" numbers in all buffers
+" `autocmd`s below cover all use cases for bare `set number|relativenumber`
+
+" numbers in all buffers (including help pages)
 " ref - https://vi.stackexchange.com/questions/6436/how-to-show-line-numbers-for-all-buffers-windows-tabs/6441
-autocmd BufWinEnter * set number
-autocmd BufWinEnter * set relativenumber
+augroup absolute_number_in_help_pages
+  autocmd!
+  autocmd BufWinEnter * set number
+augroup end
 
 " absolute number in insert mode, otherwise hybrid
 " TODO: handle exiting insert mode w/ C-c?
@@ -43,6 +47,8 @@ augroup numbertoggle
   autocmd InsertLeave,BufEnter,FocusGained * set relativenumber
   autocmd InsertEnter,BufLeave,FocusLost   * set norelativenumber
 augroup END
+
+" << end line numbers >>
 
 " scrolloff
 set scrolloff=10
