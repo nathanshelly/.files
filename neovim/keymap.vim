@@ -88,8 +88,7 @@ nnoremap <silent> <leader>bd :bd<CR>
 nnoremap <silent> <leader>r :syntax sync fromstart<cr>
 
 " source vimrc (`reload` mnemonic)
-" TODO: handle this better
-nnoremap <silent> <leader>rld  :source $HOME/.config/nvim/init.vim<CR>
+nnoremap <silent> <leader>rld  :source $MYVIMRC<CR>
 
 " turn off search highlighting
 nnoremap <silent> <leader>hn  :noh<CR>
