@@ -7,7 +7,7 @@ set noswapfile
 autocmd FocusGained * :checktime
 
 " save on buffer switch
-set autowrite
+set autowriteall
 
 " resolves `coc.nvim` issue - https://github.com/neoclide/coc.nvim/issues/649
 set nobackup nowritebackup
