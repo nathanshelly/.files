@@ -32,15 +32,21 @@ highlight MatchParen cterm=NONE ctermfg=cyan ctermbg=NONE guibg=#808080 guifg=#8
  " whitespace group coloring
 highlight ExtraWhitespace ctermbg=magenta guibg=#ff00ff
 " keep through color scheme change
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta guibg=#ff00ff
-" highlight all trailing whitespace
-" TODO: check why this seemed to break
-autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
-" avoid highlighting trailing whitespace on current line when editing at the end
-" of it
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+augroup whitespace_highlighting
+  autocmd!
+  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta guibg=#ff00ff
+  " highlight all trailing whitespace
+  " TODO: check why this seemed to break
+  autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+  " avoid highlighting trailing whitespace on current line when editing at the end
+  " of it
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+augroup END
 
 " << syntax groups >>
 
 " match Tabs on file load (just matches, no highlighting yet)
-autocmd BufRead * syntax match Tab /\t/
+augroup tabs_match
+  autocmd!
+  autocmd BufRead * syntax match Tab /\t/
+augroup END

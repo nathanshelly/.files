@@ -46,6 +46,7 @@ let g:git_messenger_include_diff = "current"
 let g:limelight_conceal_ctermfg = 'Black'
 
 " goyo integration
+" TODO: clean up below autocommands
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
