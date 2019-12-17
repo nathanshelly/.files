@@ -1,11 +1,8 @@
-" <<<<<<<< General Options >>>>>>>>
-" Note: <leader> mapped to Space in $DOTFILES/plugins.vim (so that leader
-" bindings defined in that file work)
-
 " prevent swap files
 set noswapfile
 
 " workaround
+" TODO: add context here
 " ref - https://github.com/neovim/neovim/issues/1936
 autocmd FocusGained * :checktime
 
@@ -53,14 +50,13 @@ set scrolloff=10
 set mouse=a
 
 " indentation
-" explanation:
 " tabstop - # of columns a tab counts for
 " softtabstop - # of columns to use when hitting Tab in insert mode (see refs)
 " shiftwidth - # of columns text is indented w/ `<<` & `>>`
 " expandtab - insert spaces on Tab
 " refs:
-" http://vim.wikia.com/wiki/Indenting_source_code
-" https://tedlogan.com/techblog3.html
+" - http://vim.wikia.com/wiki/Indenting_source_code
+" - https://tedlogan.com/techblog3.html
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " wrap on linebreak (show as much as possible)
@@ -81,7 +77,7 @@ set signcolumn=yes
 
 " open full urls w/ `gx`
 " Use whole words when opening URLs, avoids cutting off query parameters
-" (`?<query parameter>`) and and anchors (`#<anchor>`)
+" (`?<query parameter>`) and anchors (`#<anchor>`)
 " ref - http://vi.stackexchange.com/q/2801/1631
 let g:netrw_gx="<cWORD>"
 
@@ -89,17 +85,14 @@ let g:netrw_gx="<cWORD>"
 " ref - http://vim.1045645.n5.nabble.com/Highlighting-matching-angle-brackets-lt-gt-td1188629.html
 set matchpairs+=<:>
 
-" persists history across opens
+" persist history across opens
 set undofile
 
 " be as terse as possible
 set shortmess+=a
 
-" << search >>
-
-" case sensitive if the search contains
-" capitals (ignorecase needs to be set for this)
-" whole word -> /\<word\>
-" lowercase sensitive -> /word\C (`\C` can be anywhere)
+" case sensitive if the search contains capitals (requires setting ignorecase)
+" to search for a whole word -> /\<word\>
+" to search lowercase sensitive -> /word\C (`\C` can be anywhere)
 set ignorecase
 set smartcase

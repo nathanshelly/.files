@@ -1,5 +1,5 @@
 " settings that apply only to `vim`/`vi`, not `neovim`
-" `nvim` ignores this file (see the `!has('nvim')` guard in ./vimrc.symlink)
+" `nvim` ignores this file (see the `!has('nvim')` guard in ./init.vim)
 " see list of `nvim` defaults w/ `:h nvim-defaults`
 
 " << neovim defaults >>
@@ -18,8 +18,8 @@ set background=dark
 
 " normal backspace
 " refs:
-" https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
-" http://vim.wikia.com/wiki/Backspace_and_delete_problems
+" - https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
+" - http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set backspace=indent,eol,start
 
 " disable beeping
