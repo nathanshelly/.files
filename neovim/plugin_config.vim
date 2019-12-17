@@ -53,7 +53,7 @@ autocmd! User GoyoLeave Limelight!
 " refs:
 "   - https://github.com/junegunn/goyo.vim/issues/160
 "   - https://github.com/junegunn/goyo.vim/pull/195
-autocmd! User GoyoLeave source $HOME/.vimrc
+autocmd! User GoyoLeave source $MYVIMRC
 
 let g:goyo_height = '66%'
 let g:goyo_width = '100%'
