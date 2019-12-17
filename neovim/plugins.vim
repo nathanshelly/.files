@@ -156,14 +156,13 @@ Plug 'iamcco/git-p.nvim'
 Plug 'rhysd/git-messenger.vim'
 
 " fuzzy finder
-" configuration is in ./fzf.vim due to its complexity
+" configuration is in ./fzf.vim instead of ./plugin_config.vim due to complexity
 Plug '/usr/local/opt/fzf'
 " Use Sasha's fork which enables previewing of full files based on community's
 " fix - https://github.com/junegunn/fzf.vim/issues/751
+" NOTE: unless you care about the issue i the above github link I recommend you
+" use the canonical 'junegunn/fzf.vim` repo: `Plug 'junegunn/fzf.vim'`
 " TODO: check that this fork stays up to date with upstream
-" NOTE: unless you also care about the above issue I recommend you use the
-" canonical 'junegunn/fzf.vim` repo:
-" `Plug 'junegunn/fzf.vim'`
 Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
 
 " distraction free writing
