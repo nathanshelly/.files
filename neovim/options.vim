@@ -13,7 +13,8 @@ set autowriteall
 set nobackup nowritebackup
 
 " shorter timeouts
-" updatetime - CursorHold & CursorHoldI
+" updatetime - length of time from last key press to fire CursorHold &
+" CursorHoldI autocmd events
 set timeoutlen=1000 ttimeoutlen=0 updatetime=300
 
 " be less verbose (especially redundant due to status line)
