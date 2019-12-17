@@ -46,16 +46,17 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 ## skimmable list of files
 
 - [`alias.zsh`](#alias.zsh) - define shell-level aliases (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
-- [`coc.json`](#coc.json-%26-coc.nvim) & [`coc.nvim`](#coc.json-%26-coc.nvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc.json` is similar to `settings.json` for `VSCode`.
+- [`coc.json5`](#coc.json5-%26-coc.nvim) & [`coc.nvim`](#coc.json5-%26-coc.nvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc.json5` is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colors.vim) - configure colors, (e.g. enable true color, set dark background, set color scheme)
 - [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
 - [`filetype_specific.vim`](#filetype_specific.vim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
 - [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
-- [`keymap.vim`](#keymap.vim) - define keymappings (e.g. `` (`<space>`) as leader, `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings defined in `plugin_config.vim`.
+- [`init.vim`](#init.vim) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv.symlink`](../zsh/zshenv.symlink)).
+- [`keymap.vim`](#keymap.vim) - define keymappings (e.g. \`\` (`<space>`) as leader, `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings defined in `plugin_config.vim`.
 - [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
-- [`plugins.vim`](#plugins.vim) - enable plugins, managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
 - [`plugin_config.vim`](#plugin_config.vim) - configure plugins (agnostic of plugin management method)
-- [`vimrc.symlink`](#vimrc.symlink) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv.symlink`](../zsh/zshenv.symlink)).
+- [`plugins.vim`](#plugins.vim) - enable plugins, managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
+- [`vim_only.vim`](#vim_only.vim) - configure `vi`|`vim`-specific settings
 
 ## each file in more detail
 
@@ -66,7 +67,7 @@ Define shell-level aliases.
 - `enc <file>` - open file w/o config. Mnemonic - `edit no config`.
 - `emp <file>` - open file (must be `*.md`) and immediately trigger `MarkdownPreview` (must have [`MarkdownPreview`](https://github.com/iamcco/markdown-preview.nvim) plugin installed). Mnemonic - `edit MarkdownPreview`.
 
-### [`coc.json`](./coc.json) & [`coc.nvim`](./coc.nvim)
+### [`coc.json5`](./coc.json5) & [`coc.nvim`](./coc.nvim)
 
 Configure [`Conquer of Completion` (`coc`)](https://github.com/neoclide/coc.nvim).
 
@@ -123,6 +124,14 @@ Notable keymappings:
 - `<c-l>` - fuzzy select lines of current buffer
 - `<c-g>` - fuzzy select from `git status` files
 - `<leader>hc` - fuzzy select from command history
+
+### [`init.vim`](./init.vim)
+
+Source every other `*.vim` file in this folder to set up config.
+
+Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv.symlink`](../zsh/zshenv.symlink)).
+
+This file is relatively symlinked (permanently, not via setup script) to [`$DOTFILES/config.symlink/nvim/init.vim`](../config.symlink/nvim/init.vim). The symlink script [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink) symlinks [`$DOTFILES/config.symlink/nvim/init.vim`](../config.symlink/nvim/init.vim) to `$HOME/.config/nvim/init.vim` (by proxy symlinking this file, one level of indirection).
 
 ### [`keymap.vim`](./keymap.vim)
 
@@ -197,9 +206,23 @@ call plug#begin()
 call plug#end()
 ```
 
+### [`plugin_config.vim`](./plugin_config.vim)
+
+Configure enabled plugins.
+
+Agnostic of plugin management method.
+
+#### notable configuration
+
+- `<leader>gd` to display diff at current line
+- `<leader>jg` to trigger Goyo (minimal writing mode)
+- statusline appearance (using [`lightline`](https://github.com/itchyny/lightline.vim)
+- `<leader>mp` to launch `MarkdownPreview`
+- disable vim-polyglot's Markdown support to use `vim-markdown` for Markdown files
+
 #### notable plugins
 
-- [`coc.nvim`](https://github.com/neoclide/coc.nvim) - multipurpose client, see more detail in the [`coc.nvim`](#coc.json-%26-coc.nvim) section
+- [`coc.nvim`](https://github.com/neoclide/coc.nvim) - multipurpose client, see more detail in the [`coc.nvim`](#coc.json5-%26-coc.nvim) section
 - operators
   - [`vim-surround`](https://github.com/tpope/vim-surround) - add/modify/delete surrounding characters (see documentation in [`./plugins.vim`](./plugins.vim) or the [`vim-surround` repo](https://github.com/tpope/vim-surround))
   - [`vim-commentary`](https://github.com/tpope/vim-commentary) - comment lines/motions w/ `gcc`/`<motion>gc`
@@ -228,24 +251,8 @@ call plug#end()
     > `
     > ```
 
-### [`plugin_config.vim`](./plugin_config.vim)
+### [`vim_only.vim`](./vim_only.vim)
 
-Configures enabled plugins.
+Configure `vi`|`vim`-specific settings.
 
-Agnostic of plugin management method.
-
-#### notable configuration
-
-- `<leader>gd` to display diff at current line
-- `<leader>jg` to trigger Goyo (minimal writing mode)
-- statusline appearance (using [`lightline`](https://github.com/itchyny/lightline.vim)
-- `<leader>mp` to launch `MarkdownPreview`
-- disable vim-polyglot's Markdown support to use `vim-markdown` for Markdown files
-
-### [`vimrc.symlink`](./vimrc.symlink)
-
-Sources every other `*.vim` file in this folder to set up config.
-
-Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv.symlink`](../zsh/zshenv.symlink)).
-
-This file symlinked to `$HOME/.vimrc` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
+The majority of these settings have become the default in `nvim` and so no longer need to be set.
