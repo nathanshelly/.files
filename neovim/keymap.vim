@@ -13,6 +13,11 @@ let mapleader=" "
 
 " escape with rolling jk
 inoremap jk <esc>
+" `Ctrl-c` already operates similar to `esc` with the caveat that using it to
+" exit insert mode doesn't trigger the `InsertLeave` autocmd. Remapping here
+" removes that difference.
+" ref - https://stackoverflow.com/a/10757148
+inoremap <c-c> <esc>
 
 " disable command mode
 " TODO: maybe come up with a nicer solution here
