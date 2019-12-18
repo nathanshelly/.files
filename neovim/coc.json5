@@ -96,6 +96,7 @@
 
   // enables Microsoft PLS
   // ref - https://github.com/neoclide/coc-python#optional-steps
+  // TODO: revisit these settings - fix auto-installing `mypy`/`black` issues
   "python.formatting.provider": "black",
   "python.jediEnabled": false,
   "python.linting.mypyEnabled": true,

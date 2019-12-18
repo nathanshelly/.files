@@ -29,7 +29,7 @@ highlight MatchParen cterm=NONE ctermfg=cyan ctermbg=NONE guibg=#808080 guifg=#8
 
 " << whitespace >>
 
- " whitespace group coloring
+" whitespace group coloring
 highlight ExtraWhitespace ctermbg=magenta guibg=#ff00ff
 " keep through color scheme change
 augroup whitespace_highlighting
