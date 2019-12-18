@@ -32,5 +32,5 @@ augroup filetype_json
   " refs:
   " - https://github.com/neoclide/jsonc.vim
   " - https://github.com/neoclide/jsonc.vim/blob/master/ftdetect/jsonc.vim
-  autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc
+  autocmd Filetype json setlocal filetype=jsonc
 augroup END
