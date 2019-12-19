@@ -8,6 +8,8 @@
 # shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/lib/check_dotfiles_variable.sh"
 
+xcode-select --install
+
 # run in separate subshells
 
 # install Homebrew and packages, casks & mas apps in `$DOTFILES/Brewfile`
