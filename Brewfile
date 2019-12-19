@@ -108,11 +108,9 @@ cask "fantastical"
 cask "firefox"
 cask "flux"
 cask "folx"
-cask "gitkraken"
 cask "google-backup-and-sync"
 cask "google-chrome"
 cask "istat-menus"
-cask "iterm2"
 cask "kap"
 cask "karabiner-elements"
 cask "logitech-options"
@@ -128,11 +126,6 @@ cask "slack"
 cask "spectacle"
 cask "subler"
 cask "visual-studio-code"
-cask "vivaldi"
-
-# << alternate versions >>
-
-cask "google-chrome-canary"
 
 # <<<< fonts >>>>
 
