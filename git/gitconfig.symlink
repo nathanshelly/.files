@@ -59,3 +59,5 @@
 [gc]
 	# https://stackoverflow.com/a/41771616/2574937
 	pruneExpire = 1.hour.ago
+[protocol]
+	version = 2 # faster for large repos -  https://git-scm.com/docs/protocol-v2
