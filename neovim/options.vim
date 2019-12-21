@@ -80,7 +80,8 @@ set colorcolumn=81
 
 augroup work_specific
   autocmd!
-  " put config here
+  " line length of 80, show ruler @ 81
+  autocmd BufNewFile,BufRead $HOME/work/* set colorcolumn=101
 augroup END
 
 " force sign column always open
