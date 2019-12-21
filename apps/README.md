@@ -1,6 +1,10 @@
 # apps
 
-Settings/keybindings files for various apps (primarily native).
+Brewfile for casks & settings/keybindings files for various apps (primarily native).
+
+## [Brewfile](./Brewfile)
+
+Lists the casks (desktop apps) to install via Homebrew. See additional context on Brewfiles in [`$DOTFILES/Brewfile`](../Brewfile).
 
 ## List of apps
 
