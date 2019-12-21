@@ -18,6 +18,9 @@ EOF
 # `$@` holds all arguments
 for branch in "$@"; do
   git branch --unset-upstream "$branch" > /dev/null 2>&1
+  # the two below actually support variadic usage, e.g. "$branch" -> "$@" would
+  # be valid, but running them in a loop improves failure handling from things
+  # like non-existentent given branches
+  git branch --delete --force "$branch"
+  git push origin --delete "$branch"
 done
-git branch --delete --force "$@"
-git push origin --delete "$@"
