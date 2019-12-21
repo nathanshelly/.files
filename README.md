@@ -29,6 +29,7 @@ cat "$HOME/.ssh/github.pub" | pbcopy
 
 # now clone this repo and run the setup script
 cd $HOME # to clone dotfiles to `$HOME/.files`
+[ "$(uname)" == "Darwin" ] && xcode-select --install # install `git` for new computer
 # remove the `GIT_SSH_COMMAND="..."` unless you ran the above commands
 GIT_SSH_COMMAND="ssh -i ~/.ssh/github" git clone git@github.com:nathanshelly/.files.git
 cd .files
