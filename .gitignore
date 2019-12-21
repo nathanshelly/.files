@@ -1,5 +1,3 @@
-# filled out gitconfig template
-git/gitconfig.local.symlink
 # scratch files
 temp.*
 # tokens, credentials, etc.

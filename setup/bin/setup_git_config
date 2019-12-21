@@ -1,32 +1,46 @@
 #! /usr/bin/env bash
 
-# set up local gitconfig (author name & email) @
-# $DOTFILES/git/gitconfig.local.symlink if it does not exist
+# set up a gitconfig (author name & email) based on
+# $DOTFILES/git/gitconfig.template if no file exists at the given destination
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
+destination="$1"
+
 source "$DOTFILES/setup/lib/prompts.sh"
 
-if ! [ -f "$DOTFILES/git/gitconfig.local.symlink" ]; then
-  info 'setting up local gitconfig'
+[[ -z $destination ]] && {
+  cat << EOF
+error: the following arguments were not provided
+
+  <GITCONFIG-DESTINATION>
+
+USAGE:
+
+  setup_git_config <GITCONFIG-DESTINATION>...
+EOF
+  return 1
+}
+
+if ! [ -f "$destination" ]; then
+  info "setting up gitconfig @ $destination"
 
   user ' - What is your github author name?'
   # `-e` uses `readline`
-  read -re git_authorname
+  read -re git_author_name
   user ' - What is your github author email?'
-  read -re git_authoremail
+  read -re git_author_email
 
   # `-e <script>` applies given script to input
-  sed -e "s/AUTHORNAME/$git_authorname/g" \
-    -e "s/AUTHOREMAIL/$git_authoremail/g" \
-    "$DOTFILES/git/gitconfig.local.symlink.example" \
-    > "$DOTFILES/git/gitconfig.local.symlink"
+  sed -e "s/AUTHORNAME/$git_author_name/g" \
+    -e "s/AUTHOREMAIL/$git_author_email/g" \
+    "$DOTFILES/git/gitconfig.template" \
+    > "$destination"
 
-  success "created local gitconfig @ $DOTFILES/git/gitconfig.local.symlink"
+  success "created gitconfig @ $destination"
 else
-  msg="skipped local gitconfig creation - already exists @"
-  msg+=" $DOTFILES/git/gitconfig.local.symlink"
-  success "$msg"
+  msg="skipped gitconfig creation - already exists @ $destination"
+  info "$msg"
 fi

@@ -12,9 +12,11 @@ A few of the notable configs set here:
   - `lb` - a base alias built on top of by `l`, `ln`, `lv` & `lvn` for varying levels of verbosity and printed # of commits
 - `[advice]` - turn off git advice to reduce verbosity
 
-## [`gitconfig.local.symlink.example`](./gitconfig.local.symlink.example)
+## [`gitconfig.template`](./gitconfig.template)
 
-A template to be filled in locally with the appropriate name and email. This template is filled in during the setup process (specifically via [`$DOTFILES/setup/bin/setup_git_config`](../setup/bin/setup_git_config)). The filled-in template is then symlinked to `$HOME/.gitconfig.local` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink).
+A template to be filled in locally with the appropriate name and email.
+
+This template is filled in by [`$DOTFILES/setup/bin/setup_git_config`](../setup/bin/setup_git_config)). The setup script calls this function once to set up a local gitconfig (`$HOME/.gitconfig.local`) and optionally a second time to set up a work gitconfig (`$HOME/.gitconfig.work`).
 
 ## [`alias.zsh`](./alias.zsh)
 

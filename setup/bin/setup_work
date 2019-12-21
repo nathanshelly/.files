@@ -1,0 +1,26 @@
+#! /usr/bin/env bash
+
+# setup work-related config
+# at the moment the only thing to setup is a work-specific gitconfig
+
+# check that DOTFILES variable is defined
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
+
+source "$DOTFILES/setup/lib/prompts.sh"
+
+[ -f "$HOME/.gitconfig.work" ] && {
+  info "skipping work setup since $HOME/.gitconfig.work already exists"
+  exit 1
+}
+
+user "set up work-specific config? (y/any other key)"
+
+read -r -s -n 1 maybe_continue < /dev/tty
+
+[[ "$maybe_continue" != 'y' ]] && {
+  info "skipping work setup"
+  exit 1
+}
+
+"$DOTFILES/setup/bin/setup_git_config" "$HOME/.gitconfig.work"
