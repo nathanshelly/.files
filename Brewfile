@@ -9,30 +9,13 @@
 #
 # I like to add comments, set options & reorder things for my own understanding.
 
-cask_args appdir: '/Applications'
-
 # <<<<<<<< taps >>>>>>>>
 
 # default apps
 tap "homebrew/core"
 
-# cask to install casks
-tap "homebrew/cask"
-
 # bundle to use `Brewfile`
 tap "homebrew/bundle"
-
-# drivers (specifically for Logitech)
-# ref - https://github.com/Homebrew/homebrew-cask-drivers
-tap "homebrew/cask-drivers"
-
-# alternate versions - betas (e.g. Chrome Canary)
-# ref - https://github.com/Homebrew/homebrew-cask-versions
-tap "homebrew/cask-versions"
-
-# fonts repository
-# ref - https://github.com/Homebrew/homebrew-cask-fonts
-tap "homebrew/cask-fonts"
 
 # alt
 # ref - https://github.com/uptech/alt
@@ -89,44 +72,3 @@ brew "vim"
 brew "watchexec"
 brew "wget"
 brew "zsh"
-
-# <<<<<<<< casks >>>>>>>>
-
-# <<<< apps >>>>
-
-cask "1password"
-cask "1password-cli"
-cask "alacritty"
-cask "alfred"
-cask "backblaze"
-cask "bartender"
-cask "contexts"
-cask "daisydisk"
-cask "detexify"
-cask "docker"
-cask "fantastical"
-cask "firefox"
-cask "flux"
-cask "folx"
-cask "google-backup-and-sync"
-cask "google-chrome"
-cask "istat-menus"
-cask "kap"
-cask "karabiner-elements"
-cask "logitech-options"
-cask "mactex-no-gui"
-cask "marshallofsound-google-play-music-player"
-cask "mediahuman-audio-converter"
-cask "notion"
-cask "pocket-casts"
-cask "postman"
-cask "private-internet-access"
-cask "rocket"
-cask "slack"
-cask "spectacle"
-cask "subler"
-cask "visual-studio-code"
-
-# <<<< fonts >>>>
-
-cask "font-fira-code"

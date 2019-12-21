@@ -4,14 +4,40 @@
 # shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
+source "$DOTFILES/setup/lib/prompts.sh"
+
 # installation script
 # ref - https://brew.sh/
 command -v brew > /dev/null 2>&1 || {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
+# standard packages, no casks (desktop apps)
 cd "$DOTFILES" || {
   echo "failed to \`cd\` to $DOTFILES, \`brew bundle\` not run"
   exit 1
 }
 brew bundle
+
+# << casks setup >>
+"$DOTFILES/infra/scripts/is_macos" || {
+  info "skipping casks setup since we aren't running macOS"
+  exit 1
+}
+
+user "set up casks (desktop apps listed in $DOTFILES/apps/Brewfile)?\
+ (y/any other key)"
+
+read -r -s -n 1 maybe_continue < /dev/tty
+
+[[ "$maybe_continue" != 'y' ]] && {
+  info "skipping cask setup"
+  exit 1
+}
+
+cd "$DOTFILES/apps" || {
+  echo "failed to \`cd\` to $DOTFILES/apps, \`brew bundle\` not run"
+  exit 1
+}
+brew bundle
+# << end casks setup >>
