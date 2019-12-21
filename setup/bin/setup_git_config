@@ -1,15 +1,15 @@
 #! /usr/bin/env bash
 
 # set up a gitconfig (author name & email) based on
-# $DOTFILES/git/gitconfig.symlink.template if it does not exist
+# $DOTFILES/git/gitconfig.template if no file exists at the given destination
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
 
-source "$DOTFILES/setup/lib/prompts.sh"
-
 destination="$1"
+
+source "$DOTFILES/setup/lib/prompts.sh"
 
 [[ -z $destination ]] && {
   cat << EOF
@@ -36,7 +36,7 @@ if ! [ -f "$destination" ]; then
   # `-e <script>` applies given script to input
   sed -e "s/AUTHORNAME/$git_author_name/g" \
     -e "s/AUTHOREMAIL/$git_author_email/g" \
-    "$DOTFILES/git/gitconfig.symlink.template" \
+    "$DOTFILES/git/gitconfig.template" \
     > "$destination"
 
   success "created gitconfig @ $destination"

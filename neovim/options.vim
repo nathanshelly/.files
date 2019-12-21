@@ -78,7 +78,7 @@ set virtualedit=onemore
 " (write up to line, not on top of it)
 set colorcolumn=81
 
-augroup work_specific " apply to any files in $HOME/work/*
+augroup work_specific
   autocmd!
   " put config here
 augroup END

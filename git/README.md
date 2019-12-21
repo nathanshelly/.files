@@ -12,7 +12,7 @@ A few of the notable configs set here:
   - `lb` - a base alias built on top of by `l`, `ln`, `lv` & `lvn` for varying levels of verbosity and printed # of commits
 - `[advice]` - turn off git advice to reduce verbosity
 
-## [`gitconfig.symlink.template`](./gitconfig.symlink.template)
+## [`gitconfig.template`](./gitconfig.template)
 
 A template to be filled in locally with the appropriate name and email.
 
