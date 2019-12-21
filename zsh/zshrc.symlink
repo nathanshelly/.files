@@ -47,5 +47,11 @@ config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
 for config_file in $config_files; do source "$config_file"; done
 unset config_files config_file
 
+# << work-specific >>
+[ -d "$HOME/work" ] && {
+  # add config here
+}
+# << end work-specific >>
+
 # source asdf to give it final say on package versions
 source "$DOTFILES/zsh/asdf.zsh"

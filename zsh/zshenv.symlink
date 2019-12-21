@@ -42,6 +42,12 @@ export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
 # to add to path, write `path=(<new-addition> $path)`
 typeset -U path
 
+# << work-specific >>
+[ -d "$HOME/work" ] && {
+  # add config here
+}
+# << end work-specific >>
+
 path=(
   # homebrew
   "$HOMEBREW_PREFIX/bin"
@@ -55,5 +61,6 @@ path=(
   # `rust-analyzer` language server
   # installed in $DOTFILES/setup/bin/install_language_servers
   "$DOTFILES/target/rust-analyzer/target/release"
+  # any previously defined path components
   $path
 )
