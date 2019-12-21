@@ -9,5 +9,6 @@ Various setup scripts
   - used with [`coc.nvim`](https://github.com/neoclide/coc.nvim) client (see [config](../../vim/coc.vim))
 - [`setup_git_config`](./setup_git_config) - fill in [`gitconfig.local.symlink.example`](../../git/gitconfig.local.symlink.example) template
 - [`setup_asdf`](./setup_asdf) - add [`asdf`](https://github.com/asdf-vm/asdf) [plugins](https://github.com/asdf-vm/asdf-plugins) then run `asdf install` to install global versions of packages
+- [`setup_work`](./setup_work) - add work-specific configuration (currently just a work-specific gitconfig (name & email))
 - [`symlink`](./symlink) - symlink files throughout `$DOTFILES` based on the scheme described [here](../symlink.md)
 - [`uninstall_brew`](./uninstall_brew) - uninstall [Homebrew](https://brew.sh) (includes all installed casks)

@@ -1,6 +1,9 @@
 # local/private config pulled from include
 [include]
   path = ~/.gitconfig.local
+# for work projects
+[includeIf "gitdir:~/work/"]
+  path = ~/.gitconfig.work
 [hub]
   protocol = ssh
 [color]
