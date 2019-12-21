@@ -24,10 +24,6 @@ grep -q "$(command -v zsh)" /etc/shells || {
 # set up git submodules
 git submodule update --init && info "Initialized submodules"
 
-# install `tmuxinator`
-# ref - https://github.com/tmuxinator/tmuxinator
-command -v gem > /dev/null 2>&1 && gem install --user-install tmuxinator
-
 # install python module for neovim (used by `black` plugin)
 if command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8"; then
   pip install neovim ptpython black
