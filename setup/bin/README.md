@@ -12,3 +12,4 @@ Various setup scripts
 - [`setup_work`](./setup_work) - add work-specific configuration (currently just a work-specific gitconfig (name & email))
 - [`symlink`](./symlink) - symlink files throughout `$DOTFILES` based on the scheme described [here](../symlink.md)
 - [`uninstall_brew`](./uninstall_brew) - uninstall [Homebrew](https://brew.sh) (includes all installed casks)
+- [`unsetup_work`](./unsetup_work) - remove work config (delete any locally generated files and revert relevant commits)
