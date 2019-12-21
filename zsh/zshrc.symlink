@@ -49,7 +49,8 @@ unset config_files config_file
 
 # << work-specific >>
 [ -d "$HOME/work" ] && {
-  # add config here
+  # initialize direnv environment variable manager - https://direnv.net
+  eval "$(direnv hook zsh)"
 }
 # << end work-specific >>
 
