@@ -14,7 +14,7 @@ See [`docker/dotfiles`](./docker/dotfiles) for more details.
 
 ## getting started
 
-The below commands will run the [`setup/install_dotfiles`](./setup/install_dotfiles) setup script.
+The below commands will run the [`setup/setup_dotfiles`](./setup/setup_dotfiles) setup script.
 
 This script will walk through installing various shell utilities, applications and symlinking various files to their appropriate locations. See [`setup/bin`](./setup/bin/) folder for documentation on the setup process.
 
@@ -33,7 +33,7 @@ cd $HOME # to clone dotfiles to `$HOME/.files`
 # remove the `GIT_SSH_COMMAND="..."` unless you ran the above commands
 GIT_SSH_COMMAND="ssh -i ~/.ssh/github" git clone git@github.com:nathanshelly/.files.git
 cd .files
-setup/install_dotfiles
+setup/setup_dotfiles
 ```
 
 Unless something went wrong (🤞) you're all set up now! 🎉
