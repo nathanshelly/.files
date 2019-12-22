@@ -3,7 +3,7 @@
 # filter and output files shown by `git status` (untracked, unstaged, staged) to
 # shell
 
-is_in_git_repo || return
+"$DOTFILES/infra/scripts/is_in_git_repo.sh" || return
 
 preview='(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | bat'
 
