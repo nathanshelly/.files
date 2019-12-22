@@ -35,6 +35,11 @@
 # - https://rustup.rs/
 # - https://github.com/fannheyward/coc-rust-analyzer#quick-start
 # - https://github.com/rust-analyzer/rust-analyzer#language-server-quick-start
+
+# check that DOTFILES variable is defined
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
+
 TARGET="$DOTFILES/target"
 command -v ra_lsp_server > /dev/null 2>&1 || {
   command -v rustup > /dev/null || {
@@ -47,7 +52,7 @@ command -v ra_lsp_server > /dev/null 2>&1 || {
     "$TARGET/rust-analyzer"
   cd "$TARGET/rust-analyzer" || {
     # shellcheck disable=SC2016
-    echo 'Failed to install `rust-analyzer` in `install_language_servers`'
+    echo "Failed to install \`rust-analyzer\` in ${BASH_SOURCE[0]}"
     exit 1
   }
 

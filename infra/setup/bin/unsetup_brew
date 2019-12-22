@@ -2,11 +2,7 @@
 
 # TODO: maybe operate on `brew bundle` knowledge?
 
-# manually remove casks (uninstall script uninstalls formulae but not casks)
-# note: does not install `mas` (Mac App Store) apps since `mas` does not seem
-# to distinguish between apps installed through it's API vs manually through
-# the app store
-
+# manually remove casks (Homebrew's uninstall script removes formulae, no casks)
 brew cask uninstall --force "$(brew cask list)"
 
 # uninstall script

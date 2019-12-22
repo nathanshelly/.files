@@ -131,7 +131,7 @@ Source every other `*.vim` file in this folder to set up config.
 
 Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv.symlink`](../zsh/zshenv.symlink)).
 
-This file is relatively symlinked (permanently, not via setup script) to [`$DOTFILES/config.symlink/nvim/init.vim`](../config.symlink/nvim/init.vim). The symlink script [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink) symlinks [`$DOTFILES/config.symlink/nvim/init.vim`](../config.symlink/nvim/init.vim) to `$HOME/.config/nvim/init.vim` (by proxy symlinking this file, one level of indirection).
+This file is relatively symlinked (permanently, not via setup script) to [`$DOTFILES/config.symlink/nvim/init.vim`](../config.symlink/nvim/init.vim). The symlink script [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink) symlinks [`$DOTFILES/config.symlink/nvim/init.vim`](../config.symlink/nvim/init.vim) to `$HOME/.config/nvim/init.vim` (by proxy symlinking this file, one level of indirection).
 
 ### [`keymap.vim`](./keymap.vim)
 

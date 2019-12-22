@@ -15,9 +15,10 @@ command -v brew > /dev/null && {
   alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
 }
 
-# open another terminal (Alacritty) instance
-# TODO: conditionally set this only on macOS
-alias term="open --new /Applications/Alacritty.app"
+$DOTFILES/infra/scripts/is_macos.sh && {
+  # open another terminal (Alacritty) instance
+  alias term="open --new /Applications/Alacritty.app"
+}
 
 # discourage usage of rm if `trash` is installed (suggests `t` alias`)
 command -v trash > /dev/null && {

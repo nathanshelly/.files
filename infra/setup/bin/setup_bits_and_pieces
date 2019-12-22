@@ -2,9 +2,9 @@
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
-source "$DOTFILES/setup/lib/prompts.sh"
+source "$DOTFILES/infra/scripts/prompts.sh"
 
 # TODO: check submodule & zsh plugins to avoid rerunning when unnecessary
 
@@ -31,11 +31,15 @@ elif command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8"; then
   pip3 install neovim ptpython black
 fi
 
-# this line will error unless you have purchased Super Easy Timer. Delete or
-# comment this line out to avoid errors.
-# TODO: check for apple account first?
-# ref - https://github.com/mas-cli/mas
-command -v mas > /dev/null && mas "Super Easy Timer", id: 1353137878
+"$DOTFILES/infra/scripts/is_macos.sh" && {
+  command -v mas > /dev/null || brew install "mas"
+
+  # this line will error unless you have purchased Super Easy Timer. Delete or
+  # comment this line out to avoid errors.
+  # TODO: check for apple account first?
+  # ref - https://github.com/mas-cli/mas
+  mas "Super Easy Timer", id: 1353137878
+}
 
 # typescript repl
 # ref - https://github.com/HerringtonDarkholme/typescript-repl
