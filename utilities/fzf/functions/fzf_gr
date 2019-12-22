@@ -2,7 +2,8 @@
 
 # filter all (local and remote) git branches and output to shell
 
-is_in_git_repo || return
+"$DOTFILES/infra/scripts/is_in_git_repo.sh" || return
+
 bindings='ctrl-space:toggle-preview'
 preview='git log --oneline --graph --date=short --color=always'
 preview+=' --pretty="format:%C(auto)%cd %h%d %s"'

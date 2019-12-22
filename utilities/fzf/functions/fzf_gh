@@ -2,7 +2,8 @@
 
 # filter `git log` commits and output hash to shell
 
-is_in_git_repo || return
+"$DOTFILES/infra/scripts/is_in_git_repo.sh" || return
+
 format='%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)'
 bindings='ctrl-s:toggle-sort,ctrl-space:toggle-preview'
 preview='grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | bat'
