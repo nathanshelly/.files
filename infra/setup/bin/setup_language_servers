@@ -38,7 +38,7 @@
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/../../scripts/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 TARGET="$DOTFILES/target"
 command -v ra_lsp_server > /dev/null 2>&1 || {

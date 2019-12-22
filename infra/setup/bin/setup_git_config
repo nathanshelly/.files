@@ -5,7 +5,7 @@
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/../../scripts/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 destination="$1"
 
