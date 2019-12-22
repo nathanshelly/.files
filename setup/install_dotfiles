@@ -16,11 +16,11 @@ source "${BASH_SOURCE%/*}/lib/check_dotfiles_variable.sh"
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/setup/bin/setup_git_config" "$HOME/.gitconfig.local"
 
-# install various pieces too small for their own files
+# set up various pieces too small for their own files
 # see the file in question for each piece
-"$DOTFILES/setup/bin/install_bits_and_pieces"
+"$DOTFILES/setup/bin/setup_bits_and_pieces"
 
-# run after `install_bits_and_pieces` to install submodules first
+# run after `setup_bits_and_pieces` to install submodules first
 "$DOTFILES/setup/bin/symlink"
 
 # run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions.symlink is

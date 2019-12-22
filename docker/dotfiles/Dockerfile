@@ -55,7 +55,7 @@ ENV PATH "/home/dot/.linuxbrew/bin:/home/dot/.linuxbrew/sbin:$PATH"
 # needed for `zplugin` plugins during installation
 # TODO: figure out other solution here
 ENV TERM xterm-256color
-RUN $DOTFILES/setup/bin/install_bits_and_pieces
+RUN $DOTFILES/setup/bin/setup_bits_and_pieces
 
 # cleans up git directory
 # as of 11/14/19 removes only the unnecessary chunk added by `zplugin`
