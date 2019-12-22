@@ -8,7 +8,7 @@
 # `_prompts_display_supported` function
 #
 # ```bash
-# source $DOTFILES/setup/lib/prompts.sh && _prompts_display_supported
+# source $DOTFILES/infra/scripts/prompts.sh && _prompts_display_supported
 # ```
 #
 # see bottom of this file for `_prompts_display_supported` definition

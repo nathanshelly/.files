@@ -2,7 +2,7 @@
 
 # <<<< motivation/design doc >>>>
 #
-# see writeup of motivation & methodology @ $DOTFILES/setup/symlink.md
+# see writeup of motivation & methodology @ $DOTFILES/infra/setup/symlink.md
 
 # note: values returned by setting variables, usually namespaced with `_`. for
 # scoping purposes, the calling function should define local variables with the
@@ -21,16 +21,15 @@
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
-source "$DOTFILES/setup/lib/prompts.sh"
-source "$DOTFILES/setup/lib/util.sh"
+source "$DOTFILES/infra/scripts/prompts.sh"
 
 # perform symlinking according to scheme specified in design doc (path -
-# `$DOTFILES/setup/symlink.md`)
+# `$DOTFILES/infra/setup/symlink.md`)
 symlink() {
   header "<< Symlinking >>\nfollowing scheme detailed @\
- $DOTFILES/setup/symlink.md"
+ $DOTFILES/infra/setup/symlink.md"
 
   local overwrite_all=false backup_all=false skip_all=false
 
@@ -192,7 +191,6 @@ _extract_path() {
     path_components=("${_REGEX_MATCHES[1]}")
 
     # join array back w/ `join_by` function (return value saved in `_joined`)
-    # `join_by` defined in $DOTFILES/setup/lib/util.sh
     local _joined=''
     join_by '/' "${path_components[@]}"
     _path="${_joined}/"
@@ -346,6 +344,25 @@ link_file() {
       fail "failed to link $src to $dst"
     fi
   }
+}
+
+# join array with given argument
+#
+# refs:
+# - https://stackoverflow.com/questions/22124417/bash-using-ifs-to-join-an-array-into-a-string
+# - https://stackoverflow.com/questions/1527049/how-can-i-join-elements-of-an-array-in-bash
+# - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
+#
+# Args:
+#   - {string} delimiter - delimiter to join array by
+join_by() {
+  local IFS="$1"
+  shift
+  # `IFS` expansion due to `$*` (see third ref above)
+  # save in `_joined` as return variable
+  # TODO: test exporting this
+  # shellcheck disable=SC2034
+  _joined="$*"
 }
 
 symlink

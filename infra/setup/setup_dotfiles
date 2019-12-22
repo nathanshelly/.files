@@ -6,26 +6,26 @@
 #   - http://mywiki.wooledge.org/BashFAQ/028
 #   - https://stackoverflow.com/questions/6659689/referring-to-a-file-relative-to-executing-script
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/lib/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 
 # run in separate subshells
 
-# install Homebrew and packages, casks & mas apps in `$DOTFILES/Brewfile`
-"$DOTFILES/setup/bin/install_brew"
+# set up Homebrew and packages, casks & mas apps in `$DOTFILES/Brewfile`
+"$DOTFILES/infra/setup/bin/setup_brew"
 
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
-"$DOTFILES/setup/bin/setup_git_config" "$HOME/.gitconfig.local"
+"$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local"
 
-# install various pieces too small for their own files
+# set up various pieces too small for their own files
 # see the file in question for each piece
-"$DOTFILES/setup/bin/install_bits_and_pieces"
+"$DOTFILES/infra/setup/bin/setup_bits_and_pieces"
 
-# run after `install_bits_and_pieces` to install submodules first
-"$DOTFILES/setup/bin/symlink"
+# run after `setup_bits_and_pieces` to set up submodules first
+"$DOTFILES/infra/setup/bin/symlink"
 
 # run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions.symlink is
 # symlinked to `$HOME/.tool-versions`
-"$DOTFILES/setup/bin/setup_asdf"
+"$DOTFILES/infra/setup/bin/setup_asdf"
 
 # optionally set up work-specific config (confirms via user prompt)
-"$DOTFILES/setup/bin/setup_work"
+"$DOTFILES/infra/setup/bin/setup_work"

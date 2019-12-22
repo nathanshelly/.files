@@ -147,7 +147,7 @@ A few notable environment variables:
 - `$PATH` - uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;`. Ensures `$path` array contains each entry only once (like a set) with `typeset -u path`
 - `$EDITOR` - set to `nvim`, used in various aliases/keybindings
 
-This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
+This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
 
 ### [`zshrc.symlink`](./zshrc.symlink)
 
@@ -169,4 +169,4 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 
 `zshrc.symlink` itself is loaded after `zshenv.symlink` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
 
-This file symlinked to `$HOME/.zshrc` by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
+This file symlinked to `$HOME/.zshrc` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)

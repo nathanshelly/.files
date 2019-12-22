@@ -1,6 +1,6 @@
 # Symlinking Scheme
 
-This script attempts to enable clean symlinking of arbitrary paths in your `$DOTFILES` directory to arbitrary paths on your filesystem (currently arbitrary paths off of `$HOME`, choice made to avoid invoking `sudo`).
+This script attempts to enable clean symlinking of arbitrary paths in your `$DOTFILES` directory to arbitrary paths on your filesystem (currently only allows arbitrary paths off of `$HOME`, choice made to avoid invoking `sudo`).
 
 Allows for symlinking individual files or whole directory (either by directly linking the directory or recursively linking contained files).
 

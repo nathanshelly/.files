@@ -8,6 +8,6 @@ Currently all alacritty functions are just quick methods for adjusting font size
 
 Config file lives in [`$DOTFILES/config.symlink/alacritty/alacritty.yml`](../../config.symlink/alacritty/alacritty.yml)
 
-Symlinked to `$HOME/.config/alacritty/alacritty.yml` by [`$DOTFILES/setup/bin/symlink`](../../setup/bin/symlink)
+Symlinked to `$HOME/.config/alacritty/alacritty.yml` by [`$DOTFILES/infra/setup/bin/symlink`](../../infra/setup/bin/symlink)
 
 Sets styling & font along with enabling Alt as meta key.
