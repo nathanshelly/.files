@@ -47,7 +47,7 @@ command -v ra_lsp_server > /dev/null 2>&1 || {
     "$TARGET/rust-analyzer"
   cd "$TARGET/rust-analyzer" || {
     # shellcheck disable=SC2016
-    echo 'Failed to install `rust-analyzer` in `install_language_servers`'
+    echo "Failed to install \`rust-analyzer\` in ${BASH_SOURCE[0]}"
     exit 1
   }
 

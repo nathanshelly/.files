@@ -73,7 +73,7 @@ path=(
   # poetry, python dependency manager
   "$HOME/.poetry/bin"
   # `rust-analyzer` language server
-  # installed in $DOTFILES/setup/bin/install_language_servers
+  # built by $DOTFILES/setup/bin/setup_language_servers
   "$DOTFILES/target/rust-analyzer/target/release"
   # any previously defined path components
   $path
