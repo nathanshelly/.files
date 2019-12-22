@@ -10,8 +10,8 @@ source "${BASH_SOURCE%/*}/lib/check_dotfiles_variable.sh"
 
 # run in separate subshells
 
-# install Homebrew and packages, casks & mas apps in `$DOTFILES/Brewfile`
-"$DOTFILES/setup/bin/install_brew"
+# set up Homebrew and packages, casks & mas apps in `$DOTFILES/Brewfile`
+"$DOTFILES/setup/bin/setup_brew"
 
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/setup/bin/setup_git_config" "$HOME/.gitconfig.local"
@@ -20,7 +20,7 @@ source "${BASH_SOURCE%/*}/lib/check_dotfiles_variable.sh"
 # see the file in question for each piece
 "$DOTFILES/setup/bin/setup_bits_and_pieces"
 
-# run after `setup_bits_and_pieces` to install submodules first
+# run after `setup_bits_and_pieces` to set up submodules first
 "$DOTFILES/setup/bin/symlink"
 
 # run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions.symlink is

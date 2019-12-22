@@ -44,8 +44,8 @@ RUN git clone --single-branch --branch docker https://github.com/nathanshelly/.f
 
 # set dotfiles for use in scripts
 ENV DOTFILES /home/dot/.files
-# install brew & all formulae - this takes a long time so run early for caching
-RUN $DOTFILES/setup/bin/install_brew
+# set up brew & all formulae - this takes a long time so run early for caching
+RUN $DOTFILES/setup/bin/setup_brew
 
 RUN $DOTFILES/setup/bin/symlink
 
