@@ -2,7 +2,7 @@
 
 # <<<< motivation/design doc >>>>
 #
-# see writeup of motivation & methodology @ $DOTFILES/setup/symlink.md
+# see writeup of motivation & methodology @ $DOTFILES/infra/setup/symlink.md
 
 # note: values returned by setting variables, usually namespaced with `_`. for
 # scoping purposes, the calling function should define local variables with the
@@ -27,10 +27,10 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 source "$DOTFILES/infra/scripts/join_by.sh"
 
 # perform symlinking according to scheme specified in design doc (path -
-# `$DOTFILES/setup/symlink.md`)
+# `$DOTFILES/infra/setup/symlink.md`)
 symlink() {
   header "<< Symlinking >>\nfollowing scheme detailed @\
- $DOTFILES/setup/symlink.md"
+ $DOTFILES/infra/setup/symlink.md"
 
   local overwrite_all=false backup_all=false skip_all=false
 

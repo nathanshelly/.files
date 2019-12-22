@@ -2,7 +2,7 @@
 
 ## [`gitconfig.symlink`](./gitconfig.symlink) & [`gitignore.symlink`](./gitignore.symlink)
 
-Defines global [`.gitignore`](https://git-scm.com/docs/gitignore) and [`.gitconfig`](https://git-scm.com/docs/git-config) that are symlinked to `$HOME/.gitconfig` & `.$HOME/.gitignore`, respectively, by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink)
+Defines global [`.gitignore`](https://git-scm.com/docs/gitignore) and [`.gitconfig`](https://git-scm.com/docs/git-config) that are symlinked to `$HOME/.gitconfig` & `.$HOME/.gitignore`, respectively, by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
 
 A few of the notable configs set here:
 
@@ -16,7 +16,7 @@ A few of the notable configs set here:
 
 A template to be filled in locally with the appropriate name and email.
 
-This template is filled in by [`$DOTFILES/setup/bin/setup_git_config`](../setup/bin/setup_git_config)). The setup script calls this function once to set up a local gitconfig (`$HOME/.gitconfig.local`) and optionally a second time to set up a work gitconfig (`$HOME/.gitconfig.work`).
+This template is filled in by [`$DOTFILES/infra/setup/bin/setup_git_config`](../infra/setup/bin/setup_git_config)). The setup script calls this function once to set up a local gitconfig (`$HOME/.gitconfig.local`) and optionally a second time to set up a work gitconfig (`$HOME/.gitconfig.work`).
 
 ## [`alias.zsh`](./alias.zsh)
 

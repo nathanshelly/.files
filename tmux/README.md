@@ -32,7 +32,7 @@ See [functions README](./functions/README.md).
 - switch to last session w/ `<prefix> l` (similar to hitting `Alt-Tab` (Windows) or `Cmd-Tab` (macOS) once)
 - enable true color (RGB color), dimming, strikethrough and italics through terminal overrides
 
-These two files are symlinked to `$HOME/.tmux.conf` & `$HOME/.tmux.conf.local`, respectively, by [`$DOTFILES/setup/bin/symlink`](../setup/bin/symlink).
+These two files are symlinked to `$HOME/.tmux.conf` & `$HOME/.tmux.conf.local`, respectively, by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink).
 
 ## [`tmuxinator_configs`](./tmuxinator_configs)
 

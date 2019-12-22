@@ -45,9 +45,9 @@ RUN git clone --single-branch --branch docker https://github.com/nathanshelly/.f
 # set dotfiles for use in scripts
 ENV DOTFILES /home/dot/.files
 # set up brew & all formulae - this takes a long time so run early for caching
-RUN $DOTFILES/setup/bin/setup_brew
+RUN $DOTFILES/infra/setup/bin/setup_brew
 
-RUN $DOTFILES/setup/bin/symlink
+RUN $DOTFILES/infra/setup/bin/symlink
 
 # add all formula to path
 ENV PATH "/home/dot/.linuxbrew/bin:/home/dot/.linuxbrew/sbin:$PATH"
@@ -55,7 +55,7 @@ ENV PATH "/home/dot/.linuxbrew/bin:/home/dot/.linuxbrew/sbin:$PATH"
 # needed for `zplugin` plugins during installation
 # TODO: figure out other solution here
 ENV TERM xterm-256color
-RUN $DOTFILES/setup/bin/setup_bits_and_pieces
+RUN $DOTFILES/infra/setup/bin/setup_bits_and_pieces
 
 # cleans up git directory
 # as of 11/14/19 removes only the unnecessary chunk added by `zplugin`
