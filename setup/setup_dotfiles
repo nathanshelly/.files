@@ -6,7 +6,7 @@
 #   - http://mywiki.wooledge.org/BashFAQ/028
 #   - https://stackoverflow.com/questions/6659689/referring-to-a-file-relative-to-executing-script
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/lib/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../scripts/check_dotfiles_variable.sh"
 
 # run in separate subshells
 

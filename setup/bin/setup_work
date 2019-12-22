@@ -5,9 +5,9 @@
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../../scripts/check_dotfiles_variable.sh"
 
-source "$DOTFILES/setup/lib/prompts.sh"
+source "$DOTFILES/infra/scripts/prompts.sh"
 
 [ -f "$HOME/.gitconfig.work" ] && {
   info "skipping work setup since $HOME/.gitconfig.work already exists"

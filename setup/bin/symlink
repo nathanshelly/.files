@@ -21,10 +21,10 @@
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../../scripts/check_dotfiles_variable.sh"
 
-source "$DOTFILES/setup/lib/prompts.sh"
-source "$DOTFILES/setup/lib/util.sh"
+source "$DOTFILES/infra/scripts/prompts.sh"
+source "$DOTFILES/infra/scripts/join_by.sh"
 
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/setup/symlink.md`)
@@ -192,7 +192,6 @@ _extract_path() {
     path_components=("${_REGEX_MATCHES[1]}")
 
     # join array back w/ `join_by` function (return value saved in `_joined`)
-    # `join_by` defined in $DOTFILES/setup/lib/util.sh
     local _joined=''
     join_by '/' "${path_components[@]}"
     _path="${_joined}/"

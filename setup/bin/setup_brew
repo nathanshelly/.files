@@ -2,9 +2,9 @@
 
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/../lib/check_dotfiles_variable.sh"
+source "${BASH_SOURCE%/*}/../../scripts/check_dotfiles_variable.sh"
 
-source "$DOTFILES/setup/lib/prompts.sh"
+source "$DOTFILES/infra/scripts/prompts.sh"
 
 # installation script
 # ref - https://brew.sh/
@@ -20,7 +20,7 @@ cd "$DOTFILES" || {
 brew bundle
 
 # << casks setup >>
-"$DOTFILES/infra/scripts/is_macos" || {
+"$DOTFILES/infra/scripts/is_macos.sh" || {
   info "skipping casks setup since we aren't running macOS"
   exit 1
 }
