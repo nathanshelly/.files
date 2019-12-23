@@ -27,7 +27,6 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 user "verbose? (y/any other key)"
 read -r -s -n 1 verbose < /dev/tty
-echo "$verbose"
 
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/infra/setup/symlink.md`)
