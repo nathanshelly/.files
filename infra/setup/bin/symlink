@@ -25,6 +25,10 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
+user "verbose? (y/any other key)"
+read -r -s -n 1 verbose < /dev/tty
+echo "$verbose"
+
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/infra/setup/symlink.md`)
 symlink() {
@@ -55,8 +59,10 @@ symlink() {
     if [[ $filename =~ $_symlink_regex ]]; then
       _symlink_based_on_filename "$src" "$filename"
     else
-      info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
+      [ "$verbose" == "y" ] && {
+        info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
 match symlinking syntax)"
+      }
     fi
   done
 }
@@ -78,10 +84,12 @@ _symlink_based_on_filename() {
   _check_flags "$filename"
 
   # debugging
-  echo ''
-  echo "src, source filename > $src, $filename"
-  echo "target name; path; flags (direct, unhidden) > $_name; $_path; \
+  [ "$verbose" == "y" ] && {
+    echo ''
+    echo "src, source filename > $src, $filename"
+    echo "target name; path; flags (direct, unhidden) > $_name; $_path; \
 ($_direct, $_unhidden)"
+  }
 
   [[ ! -d "$HOME/${_path}" ]] && {
     if mkdir -p "$HOME/${_path}"; then
@@ -125,9 +133,11 @@ recursively_link_directory() {
     | while IFS= read -r -d '' src; do
       local target_path="$target_base_path${src#$source_base_path}"
 
-      echo "source path: $src"
-      echo "target path: $target_path"
-      echo "target folder: $(dirname "$target_base_path${src#$source_base_path}")"
+      [ "$verbose" == "y" ] && {
+        echo "source path: $src"
+        echo "target path: $target_path"
+        echo "target folder: $(dirname "$target_base_path${src#$source_base_path}")"
+      }
 
       mkdir -p "$(dirname "$target_path")"
       link_file "$src" "$target_path"
@@ -281,6 +291,11 @@ link_file() {
       local current_src
       current_src="$(readlink "$dst")"
 
+      [ "$verbose" == "y" ] && {
+        echo "dst: $dst"
+        echo "current_src: $current_src"
+        echo "src: $src"
+      }
       if [ "$current_src" == "$src" ]; then
         skip=true
       else
