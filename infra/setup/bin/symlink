@@ -83,6 +83,20 @@ _symlink_based_on_filename() {
   # extract and check values of each possible flag
   _check_flags "$filename"
 
+  # add `.` unless unhidden flag is set
+  [[ $_unhidden == true ]] || {
+    if [ -z $_path ]; then
+      # if no path, add `.` to filename
+      _name=".$_name"
+    else
+      # if path exists, add `.` to path
+      # assumption here is that hidden folders rarely have nested hidden files.
+      # So if you have a path component you likely want the `.` to apply to the
+      # first folder in your path, not the filename.
+      _path=".$_path"
+    fi
+  }
+
   # debugging
   [ "$verbose" == "y" ] && {
     echo ''
@@ -101,18 +115,16 @@ parent directory)"
     fi
   }
 
+  # relative path from home, w/ or w/o `.` based on `_unhidden`
+  local dst="$HOME/${_path}${_name}"
+
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
-  local maybe_dot
-  maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
-  # relative path from home, w/ or w/o `.` based on `_unhidden`
-  local dst="$HOME/${_path}${maybe_dot}${_name}"
-
   if [[ -d "$src" ]]; then
     if [[ $_direct == true ]]; then
       link_file "$src" "$dst"
     else
-      recursively_link_directory "$src" "${maybe_dot}${_path}" "$_name"
+      recursively_link_directory "$src" "$_path" "$_name"
     fi
   else
     if [[ $_direct == true ]]; then
