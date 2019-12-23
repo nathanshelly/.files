@@ -47,7 +47,7 @@ symlink() {
       -print0
   ) | while IFS= read -r -d '' src; do # `-d <delimiter>`
     filename="$(basename "$src")"
-    local path_components='([-._ 0-9a-zA-Z]+_._)*'
+    local path_components='([-._ 0-9a-zA-Z]+,)*'
     local name='[-._ 0-9a-zA-Z]+'
     local flags='[_d]{1,2}'
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
@@ -175,23 +175,26 @@ _extract_path() {
 
   # path capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES length 2 or
   # greater)
-  local _path_regex='^(([-._[:space:][:alnum:]]+>)+).*'
+  local _path_regex='^(([-._[:space:][:alnum:]]+,)+).*'
   _apply_regex "$_path_regex" "$filename"
 
   # _regex_matches will only have length >= 2 if capture groups triggered,
   # meaning we have path components
   [ "${#_REGEX_MATCHES[@]}" -ge 2 ] && {
-    # split array on delimiter
-    # `local IFS='<delimiter>' scopes any interference w/ `IFS`
-    # `(<string>)` - parens trigger splitting `<string>` on `IFS` value
-    # ref - https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash#tab-top
-    local IFS='>'
-
     # outer path capture group @ index 1 (index 0 holds entire matched string)
-    path_components=("${_REGEX_MATCHES[1]}")
+    local _path_component="${_REGEX_MATCHES[1]}"
 
-    # join array back w/ `join_by` function (return value saved in `_joined`)
+    # `IFS=',' ...` scopes IFS changes to `...`, avoiding affecting later lines
+    # ref - https://stackoverflow.com/a/918931
+
+    # read manpage - http://linuxcommand.org/lc3_man_pages/readh.html
+
+    # `<<<` is a Here String (a stripped-down form of a Here Document)
+    # ref - https://www.tldp.org/LDP/abs/html/x17837.html
+    IFS=',' read -r -a path_components <<< "$_path_component"
+
     local _joined=''
+    # join array back with `/`s. `join_by` saves return value in `_joined`
     join_by '/' "${path_components[@]}"
     _path="${_joined}/"
   }
@@ -213,7 +216,7 @@ _extract_name() {
   local _REGEX_MATCHES=()
 
   # file/directory name capture group
-  local _name_regex='>?([-._ 0-9a-zA-Z]+)\.symlink.*$'
+  local _name_regex=',?([-._ 0-9a-zA-Z]+)\.symlink.*$'
   _apply_regex "$_name_regex" "$filename"
 
   # outer path capture group @ index 1 (index 0 holds entire matched string)
