@@ -25,6 +25,9 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
+user "verbose? (y/any other key)"
+read -r -s -n 1 verbose < /dev/tty
+
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/infra/setup/symlink.md`)
 symlink() {
@@ -47,7 +50,7 @@ symlink() {
       -print0
   ) | while IFS= read -r -d '' src; do # `-d <delimiter>`
     filename="$(basename "$src")"
-    local path_components='([-._ 0-9a-zA-Z]+_._)*'
+    local path_components='([-._ 0-9a-zA-Z]+,)*'
     local name='[-._ 0-9a-zA-Z]+'
     local flags='[_d]{1,2}'
     local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
@@ -55,8 +58,10 @@ symlink() {
     if [[ $filename =~ $_symlink_regex ]]; then
       _symlink_based_on_filename "$src" "$filename"
     else
-      info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
+      [ "$verbose" == "y" ] && {
+        info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
 match symlinking syntax)"
+      }
     fi
   done
 }
@@ -77,11 +82,27 @@ _symlink_based_on_filename() {
   # extract and check values of each possible flag
   _check_flags "$filename"
 
+  # add `.` unless unhidden flag is set
+  [[ $_unhidden == true ]] || {
+    if [ -z $_path ]; then
+      # if no path, add `.` to filename
+      _name=".$_name"
+    else
+      # if path exists, add `.` to path
+      # assumption here is that hidden folders rarely have nested hidden files.
+      # So if you have a path component you likely want the `.` to apply to the
+      # first folder in your path, not the filename.
+      _path=".$_path"
+    fi
+  }
+
   # debugging
-  echo ''
-  echo "src, source filename > $src, $filename"
-  echo "target name; path; flags (direct, unhidden) > $_name; $_path; \
+  [ "$verbose" == "y" ] && {
+    echo ''
+    echo "src, source filename > $src, $filename"
+    echo "target name; path; flags (direct, unhidden) > $_name; $_path; \
 ($_direct, $_unhidden)"
+  }
 
   [[ ! -d "$HOME/${_path}" ]] && {
     if mkdir -p "$HOME/${_path}"; then
@@ -93,18 +114,16 @@ parent directory)"
     fi
   }
 
+  # relative path from home, w/ or w/o `.` based on `_unhidden`
+  local dst="$HOME/${_path}${_name}"
+
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
-  local maybe_dot
-  maybe_dot="$([[ $_unhidden != true ]] && echo '.')"
-  # relative path from home, w/ or w/o `.` based on `_unhidden`
-  local dst="$HOME/${_path}${maybe_dot}${_name}"
-
   if [[ -d "$src" ]]; then
     if [[ $_direct == true ]]; then
       link_file "$src" "$dst"
     else
-      recursively_link_directory "$src" "${maybe_dot}${_path}" "$_name"
+      recursively_link_directory "$src" "$_path" "$_name"
     fi
   else
     if [[ $_direct == true ]]; then
@@ -125,9 +144,11 @@ recursively_link_directory() {
     | while IFS= read -r -d '' src; do
       local target_path="$target_base_path${src#$source_base_path}"
 
-      echo "source path: $src"
-      echo "target path: $target_path"
-      echo "target folder: $(dirname "$target_base_path${src#$source_base_path}")"
+      [ "$verbose" == "y" ] && {
+        echo "source path: $src"
+        echo "target path: $target_path"
+        echo "target folder: $(dirname "$target_base_path${src#$source_base_path}")"
+      }
 
       mkdir -p "$(dirname "$target_path")"
       link_file "$src" "$target_path"
@@ -175,23 +196,26 @@ _extract_path() {
 
   # path capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES length 2 or
   # greater)
-  local _path_regex='^(([-._[:space:][:alnum:]]+>)+).*'
+  local _path_regex='^(([-._[:space:][:alnum:]]+,)+).*'
   _apply_regex "$_path_regex" "$filename"
 
   # _regex_matches will only have length >= 2 if capture groups triggered,
   # meaning we have path components
   [ "${#_REGEX_MATCHES[@]}" -ge 2 ] && {
-    # split array on delimiter
-    # `local IFS='<delimiter>' scopes any interference w/ `IFS`
-    # `(<string>)` - parens trigger splitting `<string>` on `IFS` value
-    # ref - https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash#tab-top
-    local IFS='>'
-
     # outer path capture group @ index 1 (index 0 holds entire matched string)
-    path_components=("${_REGEX_MATCHES[1]}")
+    local _path_component="${_REGEX_MATCHES[1]}"
 
-    # join array back w/ `join_by` function (return value saved in `_joined`)
+    # `IFS=',' ...` scopes IFS changes to `...`, avoiding affecting later lines
+    # ref - https://stackoverflow.com/a/918931
+
+    # read manpage - http://linuxcommand.org/lc3_man_pages/readh.html
+
+    # `<<<` is a Here String (a stripped-down form of a Here Document)
+    # ref - https://www.tldp.org/LDP/abs/html/x17837.html
+    IFS=',' read -r -a path_components <<< "$_path_component"
+
     local _joined=''
+    # join array back with `/`s. `join_by` saves return value in `_joined`
     join_by '/' "${path_components[@]}"
     _path="${_joined}/"
   }
@@ -213,7 +237,7 @@ _extract_name() {
   local _REGEX_MATCHES=()
 
   # file/directory name capture group
-  local _name_regex='>?([-._ 0-9a-zA-Z]+)\.symlink.*$'
+  local _name_regex=',?([-._ 0-9a-zA-Z]+)\.symlink.*$'
   _apply_regex "$_name_regex" "$filename"
 
   # outer path capture group @ index 1 (index 0 holds entire matched string)
@@ -278,6 +302,11 @@ link_file() {
       local current_src
       current_src="$(readlink "$dst")"
 
+      [ "$verbose" == "y" ] && {
+        echo "dst: $dst"
+        echo "current_src: $current_src"
+        echo "src: $src"
+      }
       if [ "$current_src" == "$src" ]; then
         skip=true
       else
