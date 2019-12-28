@@ -37,24 +37,19 @@ autoload -Uz _zplugin
 # - http://zdharma.org/zplugin/wiki/INTRODUCTION/#some_ice-modifiers
 
 # TODO: install `fzf` & `fasd` with `zplugin`?
+# TODO II: load plugins asynchronously on docker?
 
 # ref - search zsh-autosuggestions
 # http://zdharma.org/zplugin/wiki/GALLERY/#plugins
-zplugin ice wait lucid atload'_zsh_autosuggest_start'
+# zplugin ice wait lucid atload'_zsh_autosuggest_start'
 zplugin light zsh-users/zsh-autosuggestions
 
 # note: any plugins that define widgets the syntax highlighting might need to
 # color (such as `zsh-autosuggestions`) must be loaded prior
 # ref - search fast-syntax-highlighting
 # http://zdharma.org/zplugin/wiki/GALLERY/#plugins
-zplugin ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+# zplugin ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zplugin light zdharma/fast-syntax-highlighting
-
-# synchronize system clipboard
-# theoretically you might need to source this after other keymappings, have not
-# yet seen a need for enforcing that
-zplugin ice wait lucid
-zplugin light kutsan/zsh-system-clipboard
 
 # similar to `jk/`, convenient when query already typed out
 # ref - https://github.com/zsh-users/zsh-history-substring-search

@@ -31,7 +31,10 @@ symlink() {
   header "<< Symlinking >>\nfollowing scheme detailed @\
  $DOTFILES/infra/setup/symlink.md"
 
-  local overwrite_all=false backup_all=false skip_all=false
+  # no user interaction during `docker build` so scripts cannot `read`
+  # to prevent user interaction default to always overwriting
+  # TODO: fix this in a less hacky way
+  local overwrite_all=true backup_all=false skip_all=false
 
   # write all files within depth w/ `.symlink` in their name, excluding `.git` &
   # `submodules` directories
