@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-command -v fasd > /dev/null 2>&1 || return
+command -v fasd > /dev/null || return
 
 # turn on fasd if installed
 # use a cache to reduce hit on shell performance

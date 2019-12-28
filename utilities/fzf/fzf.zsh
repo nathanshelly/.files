@@ -12,7 +12,7 @@
 # <<<< completion >>>>
 
 # don't run unless `fzf` is installed
-command -v fzf > /dev/null 2>&1 || return
+command -v fzf > /dev/null || return
 
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables

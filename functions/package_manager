@@ -1,8 +1,8 @@
 #! /usr/bin/env sh
 
-if command -v brew > /dev/null 2>&1; then
+if command -v brew > /dev/null; then
   echo 'brew'
-elif command -v apt > /dev/null 2>&1; then
+elif command -v apt > /dev/null; then
   # not necessarily the best idea but yolo
   echo 'sudo apt'
 else
