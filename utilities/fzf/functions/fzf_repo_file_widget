@@ -11,6 +11,7 @@ __fsel_repo() {
   # implementation complexity
   local _repo_root="$(rr)"
   local cmd="${FZF_CTRL_T_COMMAND}"
+  # TODO: why `2>` here?
   setopt localoptions pipefail 2> /dev/null
   eval "$FZF_CTRL_T_COMMAND . $_repo_root" \
     | sed "s~^$(rr)/~~" \

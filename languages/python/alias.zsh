@@ -1,3 +1,3 @@
 #! /usr/bin/env zsh
 
-command -v ptpython > /dev/null 2>&1 && alias ptpython='ptpython --vi'
+command -v ptpython > /dev/null && alias ptpython='ptpython --vi'

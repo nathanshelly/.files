@@ -25,9 +25,9 @@ grep -q "$(command -v zsh)" /etc/shells || {
 git submodule update --init && info "Initialized submodules"
 
 # install python module for neovim (used by `black` plugin)
-if command -v pip > /dev/null 2>&1 && pip -V | grep -q -E "3.7|3.8"; then
+if command -v pip > /dev/null && pip -V | grep -q -E "3.7|3.8"; then
   pip install neovim ptpython black
-elif command -v pip3 > /dev/null 2>&1 && pip3 -V | grep -q -E "3.7|3.8"; then
+elif command -v pip3 > /dev/null && pip3 -V | grep -q -E "3.7|3.8"; then
   pip3 install neovim ptpython black
 fi
 
@@ -43,7 +43,7 @@ fi
 
 # typescript repl
 # ref - https://github.com/HerringtonDarkholme/typescript-repl
-command -v npm > /dev/null 2>&1 && npm install --global tsun
+command -v npm > /dev/null && npm install --global tsun
 
 # install vim plugins
 nvim -c PlugInstall -c qa

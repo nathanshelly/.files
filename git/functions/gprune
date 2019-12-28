@@ -6,7 +6,7 @@
 # installed uses `hub sync` command to sync all local branches with their
 # remotes.
 
-if command -v hub > /dev/null 2>&1; then
+if command -v hub > /dev/null; then
   # shellcheck disable=SC2016
   hub sync > /dev/null 2>&1 || echo '`hub sync` failed'
 else
