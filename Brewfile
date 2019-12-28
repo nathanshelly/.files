@@ -27,16 +27,9 @@ tap "dandavison/delta", "https://github.com/dandavison/delta"
 
 # <<<<<<<< packages (formulae) >>>>>>>>
 
-# install a modern version of `gcc`
-# installed first so that it's used to compile later packages
-brew "gcc"
-
-brew "alt"
 brew "asciinema"
 brew "asdf"
-brew "awscli"
 brew "bat"
-brew "coreutils"
 brew "dust"
 brew "exa"
 brew "exiftool"
@@ -50,22 +43,16 @@ brew "hub"
 brew "hyperfine"
 brew "mdcat"
 brew "neovim", args: ["HEAD"]
-brew "pandoc"
 brew "pastel"
-# https://github.com/gpakosz/.tmux#accessing-the-macos-clipboard-from-within-tmux-sessions
-brew "reattach-to-user-namespace"
-brew "redis"
 brew "rename"
 brew "ripgrep"
 brew "rsync"
 brew "shellcheck"
 brew "shfmt"
-brew "terraform"
 brew "tig"
 brew "titlecase"
 brew "tldr"
 brew "tmux"
-brew "trash"
 brew "tree"
 brew "vim"
 brew "watchexec"

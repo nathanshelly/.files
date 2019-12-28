@@ -9,7 +9,8 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 # installation script
 # ref - https://brew.sh/
 command -v brew > /dev/null 2>&1 || {
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+  eval "$(/home/dot/.linuxbrew/bin/brew shellenv)"
 }
 
 # standard packages, no casks (desktop apps)

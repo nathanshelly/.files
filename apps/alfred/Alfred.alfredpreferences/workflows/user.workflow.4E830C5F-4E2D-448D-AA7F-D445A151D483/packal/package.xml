@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Swap User</name>
-  <version>1.0.0</version>
-  <bundle>rodrigobermudezschettino.swapuser</bundle>
-  <updated>1526132605</updated>
-  <file>swap_user.alfredworkflow</file>
-</workflow>

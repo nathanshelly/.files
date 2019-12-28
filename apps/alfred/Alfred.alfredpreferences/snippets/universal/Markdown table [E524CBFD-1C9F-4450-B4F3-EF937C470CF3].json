@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "Before | After\n--- | ---\n| ",
-    "uid" : "E524CBFD-1C9F-4450-B4F3-EF937C470CF3",
-    "name" : "Markdown table",
-    "keyword" : "mdtable"
-  }
-}
