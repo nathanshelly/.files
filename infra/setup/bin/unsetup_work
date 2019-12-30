@@ -4,4 +4,5 @@
 
 # revert Opendoor config
 # ref - https://github.com/nathanshelly/.files/commit/4e8cdceb15154a6f8b9c968745f1f7825e9c19e1
+git revert cb610a6
 git revert 4e8cdce
