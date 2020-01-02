@@ -11,7 +11,7 @@
 join-lines() {
   local item
   while read item; do
-    echo -n "${(q)item} "
+    printf '%s' "${(q)item} "
   done
 }
 

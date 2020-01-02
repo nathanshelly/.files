@@ -11,7 +11,7 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 # add `zsh` to allowed shells if not already added
 grep -q "$(command -v zsh)" /etc/shells || {
   info "Using sudo access to add '$(command -v zsh)' to /etc/shells\n"
-  sudo sh -c "echo $(command -v zsh) >> /etc/shells" && {
+  sudo sh -c 'printf "%s\n" "$(command -v zsh)" >> /etc/shells' && {
     info "Added $(command -v zsh) to /etc/shells"
   }
 }

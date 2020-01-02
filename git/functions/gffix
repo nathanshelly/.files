@@ -5,13 +5,15 @@
 #
 # Second part of 2 part workflow (w/ `gfix`) to quickly fix up a previous commit
 
-[[ -z $1 ]] && {
+branch="$1"
+
+[[ -z $branch ]] && {
   echo 'No branch given, aborting'
   return 1
 }
 
-git rev-parse --quiet --verify "$1" > /dev/null || {
-  echo "Sorry, the branch $1 doesn't seem to exist"
+git rev-parse --quiet --verify "$branch" > /dev/null || {
+  printf "Sorry, the branch '%s' doesn't seem to exist" "$branch"
   return 1
 }
 
@@ -22,7 +24,7 @@ git diff-index --quiet HEAD -- || {
 }
 
 # checkout branch to rebase on fix
-git checkout "$1" || {
+git checkout "$branch" || {
   echo 'Checkout failed, please fix the error then try again'
   return 1
 }

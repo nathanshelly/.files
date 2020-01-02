@@ -9,8 +9,8 @@
 file="$1"
 
 [ -f "$file" ] || {
-  echo "'$file' is not a valid file"
-  exit 1
+  printf "'%s' is not a valid file\n" "$file"
+  return 1
 }
 
 case "$file" in
@@ -28,5 +28,5 @@ case "$file" in
   *.pax.Z) uncompress "$file" --stdout | pax -r ;;
   *.rar) unrar x "$file" ;;
   *.Z) uncompress "$file" ;;
-  *) echo "'$file' cannot be extracted/mounted via extract()" ;;
+  *) printf "'%s' cannot be extracted/mounted via extract()\n" "$file" ;;
 esac

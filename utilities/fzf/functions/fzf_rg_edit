@@ -15,6 +15,7 @@ match=$(
     | fzf --no-multi --delimiter : \
       --preview "bat --color=always --line-range {2}: {1}"
 )
+# TODO: use `printf` not `echo`
 file=$(echo "$match" | cut -d':' -f1)
 [[ -n $file ]] && "$EDITOR" "$file" +"$(echo "$match" | cut -d':' -f2)"
 unset match file

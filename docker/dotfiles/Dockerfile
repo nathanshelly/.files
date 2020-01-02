@@ -18,7 +18,7 @@ RUN apt update && apt -y install \
 # add `brew`-installed `zsh` to allowed shells
 # note: this shell doesn't actually exist at the time of user creation but by
 # the time it's used it will
-RUN echo /home/dot/.linuxbrew/bin/zsh >> /etc/shells
+RUN printf "%s\n" "/home/dot/.linuxbrew/bin/zsh" >> /etc/shells
 
 # add `dot` user in order to use standard homebrew installation
 # refs:
