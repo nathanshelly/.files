@@ -14,6 +14,7 @@ files=$(
 }
 
 # TODO: figure out why calling echo here changes things
+# TODO: use `printf` not `echo`
 # shellcheck disable=SC2046,SC2116,SC2086
 "${EDITOR:-nvim}" $(echo $files)
 
