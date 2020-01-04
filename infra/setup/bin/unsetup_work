@@ -3,6 +3,7 @@
 [ -f "$HOME/.gitconfig.work" ] && /bin/rm "$HOME/.gitconfig.work"
 
 # revert Opendoor config
-# ref - https://github.com/nathanshelly/.files/commit/4e8cdceb15154a6f8b9c968745f1f7825e9c19e1
-git revert cb610a6
-git revert 4e8cdce
+
+git revert 2104894 # https://github.com/nathanshelly/.files/commit/2104894
+git revert cb610a6 # https://github.com/nathanshelly/.files/commit/cb610a6
+git revert 4e8cdce # https://github.com/nathanshelly/.files/commit/4e8cdce
