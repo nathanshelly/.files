@@ -1,7 +1,7 @@
 # $PATH modification
 # zsh conveniently links path array and PATH env var
 # to prepend new entry - `path=(<new-addition> $path)`
-# to append new entry - `path+=(<new-addition>)`
+# to append new entry - `path+=<new-addition>` (`()` required to add >1 entry)
 
 # make path array unique (a set)
 typeset -U path
@@ -35,3 +35,18 @@ typeset -U path
     path=("$HOMEBREW_PREFIX/opt/make/libexec/gnubin" $path)
   }
 }
+
+# << work-specific >>
+[ -d "$HOME/work" ] && {
+  { # android studio
+    local ANDROID_PATH="$HOME/Library/Android"
+    [[ -d "$ANDROID_PATH/tools" ]] && path+="$ANDROID_PATH/tools"
+    [[ -d "$ANDROID_PATH/platform-tools" ]] && {
+      path+="$ANDROID_PATH/platform-tools"
+    }
+  }
+
+  # Go executables
+  [[ -d "$GOPATH/bin" ]] && path=("$GOPATH/bin" $path)
+}
+# << end work-specific >>
