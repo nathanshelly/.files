@@ -59,8 +59,8 @@ Plug 'tpope/vim-unimpaired'
 "     `word`.
 " - `cs<character-to-replace><new-character>` - change nearest (innermost)
 "     surrounding pair of valid surrounding characters into any other valid
-"     surrounding character pairing. For example, `cs"<` on `"word"` changes the
-"     `"`s into `<>` -> `<word>`
+"     surrounding character pairing. For example, `cs"}` on `"word"` changes the
+"     `"`s into `{}` -> `{word}`
 "
 " See further usage examples - https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
