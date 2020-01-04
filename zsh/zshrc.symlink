@@ -54,5 +54,7 @@ unset config_files config_file
 }
 # << end work-specific >>
 
+# $PATH configuration
+source "$DOTFILES/zsh/path.zsh"
 # source asdf to give it final say on package versions
 source "$DOTFILES/zsh/asdf.zsh"
