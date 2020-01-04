@@ -25,14 +25,14 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-user "verbose? (y/any other key)"
-read -r -s -n 1 verbose < /dev/tty
-
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/infra/setup/symlink.md`)
 symlink() {
   header "<< Symlinking >>"
   header "following scheme detailed @ $DOTFILES/infra/setup/symlink.md"
+
+  user "verbose? (y/any other key)"
+  read -r -s -n 1 verbose < /dev/tty
 
   local overwrite_all=false backup_all=false skip_all=false
 
