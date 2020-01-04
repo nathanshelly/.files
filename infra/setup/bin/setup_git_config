@@ -24,23 +24,28 @@ EOF
   return 1
 }
 
-if ! [ -f "$destination" ]; then
-  info "setting up gitconfig @ $destination"
+info "setting up gitconfig @ $destination"
 
-  user ' - What is your github author name?'
-  # `-e` uses `readline`
-  read -re git_author_name
-  user ' - What is your github author email?'
-  read -re git_author_email
+if [ -f "$destination" ] || [ -d "$destination" ] || [ -L "$destination" ]; then
+  user "file exists @ $destination, overwrite it? (y/any other key)"
+  read -r -s -n 1 continue < /dev/tty
 
-  # `-e <script>` applies given script to input
-  sed -e "s/AUTHORNAME/$git_author_name/g" \
-    -e "s/AUTHOREMAIL/$git_author_email/g" \
-    "$DOTFILES/git/gitconfig.template" \
-    > "$destination"
-
-  success "created gitconfig @ $destination"
-else
-  msg="skipped gitconfig creation - already exists @ $destination"
-  info "$msg"
+  if [[ "$continue" != 'y' ]]; then
+    success "skipped gitconfig creation"
+    exit 0
+  fi
 fi
+
+user ' - What is your github author name?'
+# `-e` uses `readline`
+read -re git_author_name
+user ' - What is your github author email?'
+read -re git_author_email
+
+# `-e <script>` applies given script to input
+sed -e "s/AUTHORNAME/$git_author_name/g" \
+  -e "s/AUTHOREMAIL/$git_author_email/g" \
+  "$DOTFILES/git/gitconfig.template" \
+  > "$destination"
+
+success "created gitconfig @ $destination"
