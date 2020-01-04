@@ -5,6 +5,11 @@
 
 # <<<< files without dependencies >>>>
 
+[[ -v DOTFILES ]] || {
+  echo '$DOTFILES not defined, `.zshenv` must not have run. Bailing on `.zshrc`'
+  return 1
+}
+
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
