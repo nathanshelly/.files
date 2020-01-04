@@ -11,7 +11,7 @@ augroup END
 
 augroup filetype_markdown
   autocmd!
-  autocmd FileType markdown set colorcolumn=
+  autocmd FileType markdown setlocal colorcolumn=
 augroup END
 
 augroup filetype_python
