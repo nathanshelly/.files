@@ -44,15 +44,5 @@ export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
   export DIRENV_LOG_FORMAT= # silence direnv
   export ANDROID_HOME="$HOME/Library/Android/sdk" # for android studio
   export OD_CURRENT_USER_EMAIL="nathan.shelly@opendoor.com"
-
-  path=(
-    # for android studio
-    "$HOME/Library/Android/tools"
-    "$HOME/Library/Android/platform-tools"
-    # for Go executables
-    "$GOPATH/bin"
-    # any previously defined path components
-    $path
-  )
 }
 # << end work-specific >>
