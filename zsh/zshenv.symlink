@@ -37,11 +37,6 @@ export PYTHONDONTWRITEBYTECODE=1
 
 export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
 
-# $PATH modification
-# zsh conveniently links path array and PATH env var
-# to add to path, write `path=(<new-addition> $path)`
-typeset -U path
-
 # << work-specific >>
 [ -d "$HOME/work" ] && {
   export GOPATH="$HOME/work/go"
@@ -61,22 +56,3 @@ typeset -U path
   )
 }
 # << end work-specific >>
-
-path=(
-  # homebrew
-  "$HOMEBREW_PREFIX/bin"
-  "$HOMEBREW_PREFIX/sbin"
-  # fzf
-  "$HOMEBREW_PREFIX/opt/fzf/bin"
-  # rust
-  "$HOME/.cargo/bin"
-  # poetry, python dependency manager
-  "$HOME/.poetry/bin"
-  # `rust-analyzer` language server
-  # built by $DOTFILES/infra/setup/bin/setup_language_servers
-  "$DOTFILES/target/rust-analyzer/target/release"
-  # enable usage of `gmake` as `make` (`gmake` installed via `make` in Brewfile)
-  "$HOMEBREW_PREFIX/opt/make/libexec/gnubin"
-  # any previously defined path components
-  $path
-)
