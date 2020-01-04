@@ -48,6 +48,7 @@ brew "git-delta"
 brew "gpg"
 brew "hub"
 brew "hyperfine"
+brew "make"
 brew "mdcat"
 brew "neovim", args: ["HEAD"]
 brew "pandoc"

@@ -75,6 +75,8 @@ path=(
   # `rust-analyzer` language server
   # built by $DOTFILES/infra/setup/bin/setup_language_servers
   "$DOTFILES/target/rust-analyzer/target/release"
+  # enable usage of `gmake` as `make` (`gmake` installed via `make` in Brewfile)
+  "$HOMEBREW_PREFIX/opt/make/libexec/gnubin"
   # any previously defined path components
   $path
 )
