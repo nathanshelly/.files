@@ -75,7 +75,7 @@ let g:gh_line_blame_map = '<leader>mgb' " `mgb` for `misc git blame`
 " <<<< lightline >>>>
 " ref - https://github.com/itchyny/lightline.vim#colorscheme-configuration
 let g:lightline = {
-  \ 'colorscheme': 'seoul256',
+  \ 'colorscheme': 'darcula',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'readonly', 'filename', 'modified' ],
