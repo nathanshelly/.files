@@ -61,3 +61,6 @@ nvim -c PlugInstall -c qa
 
 # install zplugin & its associated plugins
 zsh -i -c exit
+
+# TODO: test this on new laptop
+zsh -i -c 'zplugin self-update' -c exit
