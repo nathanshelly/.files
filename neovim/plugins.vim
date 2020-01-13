@@ -193,7 +193,6 @@ Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 
 " individual languages/syntax
-"
 Plug 'tpope/vim-markdown'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
