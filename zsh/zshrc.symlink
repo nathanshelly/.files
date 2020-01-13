@@ -48,6 +48,8 @@ source "$DOTFILES/zsh/prompt.zsh"
 # define variable to store list of files to source
 # note: -U ensures uniqueness
 typeset -U config_files
+# Note: this expansion requires the `extended_glob` option to be set
+# this is done in `./options.zsh`
 config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
 for config_file in $config_files; do source "$config_file"; done
 unset config_files config_file
