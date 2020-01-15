@@ -1,0 +1,26 @@
+#! /usr/bin/env bash
+
+# check that DOTFILES variable is defined
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
+
+source "$DOTFILES/infra/scripts/prompts.sh"
+
+# add `zsh` to allowed shells if not already added
+grep -q "$(command -v zsh)" /etc/shells || {
+  info "Using sudo access to add '$(command -v zsh)' to /etc/shells\n"
+  sudo sh -c 'printf "%s\n" "$(command -v zsh)" >> /etc/shells' && {
+    info "Added $(command -v zsh) to /etc/shells"
+  }
+}
+
+# change login shell to brew `zsh` if it isn't already
+[ "$SHELL" = "$(command -v zsh)" ] || {
+  chsh -s "$(command -v zsh)" && info "Changed login shell to $(command -v zsh)"
+}
+
+# install zplugin & its associated plugins
+zsh -i -c exit
+
+# TODO: test this on new laptop
+zsh -i -c 'zplugin self-update' -c exit
