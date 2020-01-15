@@ -16,12 +16,17 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local"
 
+# symlink config files to their correct locations
+"$DOTFILES/infra/setup/bin/symlink"
+
+# set up our shell (`zsh`)
+# this adds `zsh` to our allowed shells and sets it as the default. Then it
+# loads `zsh` for the first time to install plugins & complete setup.
+"$DOTFILES/infra/setup/bin/setup_zsh"
+
 # set up various pieces too small for their own files
 # see the file in question for each piece
 "$DOTFILES/infra/setup/bin/setup_bits_and_pieces"
-
-# run after `setup_bits_and_pieces` to set up submodules first
-"$DOTFILES/infra/setup/bin/symlink"
 
 # run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions.symlink is
 # symlinked to `$HOME/.tool-versions`
