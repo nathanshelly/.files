@@ -1,5 +1,27 @@
 # setup
 
+## new computer
+
+These commands include steps only run when setting up a new computer and only if you want to use ssh.
+
+```bash
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/github -C "your_email@example.com"
+# copy to clipboard on macOS
+cat "$HOME/.ssh/github.pub" | pbcopy
+
+# now add to GitHub @ https://github.com/settings/keys
+
+cd $HOME # to clone dotfiles to `$HOME/.files`
+# install `git` oon new macOS machine
+[ "$(uname)" == "Darwin" ] && xcode-select --install
+# now clone this repo and run setup
+GIT_SSH_COMMAND="ssh -i ~/.ssh/github" git clone git@github.com:nathanshelly/.files.git
+cd .files
+make setup
+```
+
+## list of files
+
 > Note: to remove my work-specific config run [`unsetup_work`](./bin/unsetup_work)
 
 - [`bin`](./bin) - executable setup scripts
