@@ -1,6 +1,23 @@
 #! /usr/bin/env bash
 
-# see details in $DOTFILES/utilities/asdf
+# see more details in $DOTFILES/utilities/asdf
+
+# shellcheck disable=SC2016
+
+# check that DOTFILES variable is defined
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
+
+source "$DOTFILES/infra/scripts/prompts.sh"
+
+user 'set up `asdf` - https://asdf-vm.com/? (y/any other key)'
+
+read -r -s -n 1 maybe_continue < /dev/tty
+
+[[ "$maybe_continue" != 'y' ]] && {
+  info 'skipping `asdf` setup'
+  exit 1
+}
 
 # TODO: do this as a list (no need to call out to grep?)
 # plugin_list=($(asdf plugin-list))
