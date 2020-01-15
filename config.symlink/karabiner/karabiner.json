@@ -779,6 +779,7 @@
                       "com.google.Chrome",
                       "com.postmanlabs.mac",
                       "org.mozilla.firefox",
+                      "org.mozilla.nightly",
                       "com.vivaldi.Vivaldi"
                     ],
                     "type": "frontmost_application_if"
@@ -834,7 +835,8 @@
                   {
                     "bundle_identifiers": [
                       "com.google.Chrome",
-                      "org.mozilla.firefox"
+                      "org.mozilla.firefox",
+                      "org.mozilla.nightly"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1011,6 +1013,7 @@
                     "bundle_identifiers": [
                       "com.google.Chrome",
                       "org.mozilla.firefox",
+                      "org.mozilla.nightly",
                       "com.vivaldi.Vivaldi"
                     ],
                     "type": "frontmost_application_if"
