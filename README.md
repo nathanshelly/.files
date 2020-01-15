@@ -18,8 +18,6 @@ The below commands will run the [`infra/setup/setup_dotfiles`](./infra/setup/set
 
 This script will walk through installing various shell utilities, applications and symlinking various files to their appropriate locations. See [`infra/setup`](./infra/setup/) folder for documentation on the setup process.
 
-### quick setup
-
 ```bash
 cd $HOME # to clone dotfiles to `$HOME/.files`
 # now clone this repo and run setup
@@ -29,26 +27,6 @@ make setup
 ```
 
 Unless something went wrong (🤞) you're all set up now! 🎉
-
-### new computer
-
-These commands include steps only run when setting up a new computer and only if you want to use ssh.
-
-```bash
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/github -C "your_email@example.com"
-# copy to clipboard on macOS
-cat "$HOME/.ssh/github.pub" | pbcopy
-
-# now add to GitHub @ https://github.com/settings/keys
-
-cd $HOME # to clone dotfiles to `$HOME/.files`
-# install `git` oon new macOS machine
-[ "$(uname)" == "Darwin" ] && xcode-select --install
-# now clone this repo and run setup
-GIT_SSH_COMMAND="ssh -i ~/.ssh/github" git clone git@github.com:nathanshelly/.files.git
-cd .files
-make setup
-```
 
 ## overview
 
