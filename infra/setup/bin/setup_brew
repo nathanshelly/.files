@@ -6,13 +6,19 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-# installation script
-# ref - https://brew.sh/
+# installation
 command -v brew > /dev/null || {
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  if "$DOTFILES/infra/scripts/is_macos.sh"; then
+    # ref - https://brew.sh/
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  else
+    # linux
+    # ref - https://docs.brew.sh/Homebrew-on-Linux
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+  fi
 }
 
-# standard packages, no casks (desktop apps)
+# standard, platform-agnostic packages, no casks (desktop apps)
 cd "$DOTFILES" || {
   echo "failed to \`cd\` to $DOTFILES, \`brew bundle\` not run"
   exit 1
