@@ -17,14 +17,17 @@ cd "$DOTFILES" || {
   echo "failed to \`cd\` to $DOTFILES, \`brew bundle\` not run"
   exit 1
 }
+
 brew bundle
 
-# << casks setup >>
-"$DOTFILES/infra/scripts/is_macos.sh" || {
-  info "skipping casks setup since we aren't running macOS"
-  exit 1
-}
+"$DOTFILES/infra/scripts/is_macos.sh" || exit 0 # bail on Linux
 
+# <<<< start macos-specific >>>>
+pushd "$DOTFILES/macos" || exit 1
+brew bundle # formulae
+popd "$DOTFILES/macos" || exit 1
+
+# << casks setup >>
 user "set up casks (desktop apps listed in $DOTFILES/apps/Brewfile)?\
  (y/any other key)"
 
@@ -43,3 +46,4 @@ cd "$DOTFILES/apps" || {
 info "setting up casks"
 brew bundle
 # << end casks setup >>
+# <<<< start macos-specific >>>>

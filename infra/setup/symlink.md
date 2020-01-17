@@ -4,9 +4,9 @@ This script attempts to enable clean symlinking of arbitrary paths in your `$DOT
 
 Allows for symlinking individual files or whole directory (either by directly linking the directory or recursively linking contained files).
 
-Searches for files/directories that contain `.symlink` in their path starting at `$DOTFILES` environment with a depth of three. The next section is more specific about valid syntax.
+Searches for files/directories that contain `.symlink` in their path starting at `$DOTFILES` environment with a depth of four. The next section is more specific about valid syntax.
 
-> This search descends three directories (e.g. it applies to files at a path `$DOTFILES/<directory_one>/<directory_two>/<directory_three>` and all shallower directories)
+> This search descends four directories (e.g. it applies to files at a path `$DOTFILES/<directory_one>/<directory_two>/<directory_three>/<directory_four>` and all shallower directories)
 
 ## Syntax
 

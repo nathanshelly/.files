@@ -12,6 +12,11 @@ help:
 	@echo '		show this help message'
 	@echo 'make setup'
 	@echo '		set up dotfiles'
+	@echo 'make symlink'
+	@echo '		symlink config files (like .zshrc) to their appropriate locations'
 
 setup:
 	./infra/setup/setup_dotfiles
+
+symlink:
+	./infra/setup/bin/symlink
