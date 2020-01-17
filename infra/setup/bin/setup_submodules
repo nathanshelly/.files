@@ -6,6 +6,8 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-# typescript repl
-# ref - https://github.com/HerringtonDarkholme/typescript-repl
-# command -v npm > /dev/null && npm install --global tsun
+# set up git submodules
+git submodule update --init && {
+  # shellcheck disable=SC2016
+  success 'Set up submodules (`.tmux`)'
+}

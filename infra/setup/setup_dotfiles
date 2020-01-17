@@ -17,12 +17,18 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local"
 
 # symlink config files to their correct locations
+"$DOTFILES/infra/setup/bin/setup_submodules"
+
+# symlink config files to their correct locations
 "$DOTFILES/infra/setup/bin/symlink"
 
 # set up our shell (`zsh`)
 # this adds `zsh` to our allowed shells and sets it as the default. Then it
 # loads `zsh` for the first time to install plugins & complete setup.
 "$DOTFILES/infra/setup/bin/setup_zsh"
+
+# symlink config files to their correct locations
+"$DOTFILES/infra/setup/bin/setup_neovim"
 
 # set up various pieces too small for their own files
 # see the file in question for each piece

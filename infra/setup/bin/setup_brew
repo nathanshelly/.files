@@ -45,5 +45,16 @@ cd "$DOTFILES/apps" || {
 
 info "setting up casks"
 brew bundle
+
+# TODO: categorize this better
+"$DOTFILES/infra/scripts/is_macos.sh" && {
+  command -v mas > /dev/null || brew install "mas"
+
+  # this line will error unless you have purchased Super Easy Timer. Delete or
+  # comment this line out to avoid errors.
+  # TODO: check for apple account first?
+  # ref - https://github.com/mas-cli/mas
+  mas "Super Easy Timer", id: 1353137878
+}
 # << end casks setup >>
 # <<<< start macos-specific >>>>
