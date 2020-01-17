@@ -10,13 +10,16 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 
 # run in separate subshells
 
-# set up Homebrew and packages, casks & mas apps in `$DOTFILES/Brewfile`
+# set up Homebrew and packages, casks & mas apps in various Brewfiles:
+# - `$DOTFILES/Brewfile`
+# - `$DOTFILES/macos/Brewfile`
+# - `$DOTFILES/macos/apps/Brewfile`
 "$DOTFILES/infra/setup/bin/setup_brew"
 
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local"
 
-# symlink config files to their correct locations
+# initialize submodules
 "$DOTFILES/infra/setup/bin/setup_submodules"
 
 # symlink config files to their correct locations
@@ -27,7 +30,7 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 # loads `zsh` for the first time to install plugins & complete setup.
 "$DOTFILES/infra/setup/bin/setup_zsh"
 
-# symlink config files to their correct locations
+# load neovim for the first time to install plugins
 "$DOTFILES/infra/setup/bin/setup_neovim"
 
 # set up various pieces too small for their own files
