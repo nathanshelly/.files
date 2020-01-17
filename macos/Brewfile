@@ -1,0 +1,12 @@
+# <<<<<<<< packages only needed on macOS >>>>>>>>
+# see additional context on Brewfiles in $DOTFILES/Brewfile
+
+# <<<<<<<< packages (formulae) >>>>>>>>
+
+brew "coreutils"
+brew "make"
+brew "pandoc"
+# https://github.com/gpakosz/.tmux#accessing-the-macos-clipboard-from-within-tmux-sessions
+brew "reattach-to-user-namespace"
+brew "rename"
+brew "trash"
