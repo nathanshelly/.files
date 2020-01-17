@@ -43,7 +43,7 @@ symlink() {
   (
     find \
       -H "$DOTFILES" \
-      -maxdepth 3 \
+      -maxdepth 4 \
       -name '*.symlink*' \
       -not -path '*.git/*' \
       -not -path '*/submodules/*' \
