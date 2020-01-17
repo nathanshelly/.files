@@ -19,6 +19,12 @@ cd "$DOTFILES" || {
 }
 brew bundle
 
+"$DOTFILES/infra/scripts/is_macos.sh" || {
+  pushd "$DOTFILES/macos" || exit 1
+  brew bundle
+  popd "$DOTFILES/macos" || exit 1
+}
+
 # << casks setup >>
 "$DOTFILES/infra/scripts/is_macos.sh" || {
   info "skipping casks setup since we aren't running macOS"
