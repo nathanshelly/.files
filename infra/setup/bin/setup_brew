@@ -20,7 +20,7 @@ cd "$DOTFILES" || {
 
 brew bundle
 
-"$DOTFILES/infra/scripts/is_macos.sh" || exit 1
+"$DOTFILES/infra/scripts/is_macos.sh" || exit 0 # bail on Linux
 
 # <<<< start macos-specific >>>>
 pushd "$DOTFILES/macos" || exit 1
