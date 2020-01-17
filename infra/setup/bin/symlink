@@ -43,10 +43,11 @@ symlink() {
   (
     find \
       -H "$DOTFILES" \
-      -maxdepth 3 \
+      -maxdepth 4 \
       -name '*.symlink*' \
       -not -path '*.git/*' \
       -not -path '*/submodules/*' \
+      -not -path '*/apps/alfred/*' \
       -print0
   ) | while IFS= read -r -d '' src; do # `-d <delimiter>`
     filename="$(basename "$src")"
