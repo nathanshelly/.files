@@ -1,29 +1,29 @@
 #! /usr/bin/env zsh
 
-# this file uses `zplugin` to manage `zsh` plugins
+# this file uses `zinit` to manage `zsh` plugins
 #
 # refs:
-# - http://zdharma.org/zplugin/wiki/INTRODUCTION/
-# - https://github.com/zdharma/zplugin#zplugin-wiki
+# - http://zdharma.org/zinit/wiki/INTRODUCTION/
+# - https://github.com/zdharma/zinit#zinit-wiki
 
-# install `zplugin` if not already installed
-# ref - https://github.com/zdharma/zplugin
-[ -d "$HOME/.zplugin" ] || {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+# install `zinit` if not already installed
+# ref - https://github.com/zdharma/zinit
+[ -d "$HOME/.zinit" ] || {
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 }
 
-# <<<<<<<<<<<<<<<<<<< start of zplugin installer-added chunk >>>>>>>>>>>>>>>>>>>
-source "$HOME/.zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-# <<<<<<<<<<<<<<<<<<< start of zplugin installer-added chunk >>>>>>>>>>>>>>>>>>>
+### Added by Zinit's installer
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit installer's chunk
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# `zplugin` has a concept called ice modifiers which applies single-use
+# `zinit` has a concept called ice modifiers which applies single-use
 # modifiers to the next loaded plugin.
 #
-# the `ice` name communicates that the modifiers last for only the next zplugin
+# the `ice` name communicates that the modifiers last for only the next zinit
 # command
 #
 # here are the modifiers used in this file:
@@ -33,47 +33,47 @@ autoload -Uz _zplugin
 # - lucid - skip `Loaded ...` message
 #
 # refs:
-# - https://github.com/zdharma/zplugin#ice-modifiers
-# - http://zdharma.org/zplugin/wiki/INTRODUCTION/#some_ice-modifiers
+# - https://github.com/zdharma/zinit#ice-modifiers
+# - http://zdharma.org/zinit/wiki/INTRODUCTION/#some_ice-modifiers
 
-# TODO: install `fzf` & `fasd` with `zplugin`?
+# TODO: install `fzf` & `fasd` with `zinit`?
 
 # ref - search zsh-autosuggestions
-# http://zdharma.org/zplugin/wiki/GALLERY/#plugins
-zplugin ice wait lucid atload'_zsh_autosuggest_start'
-zplugin light zsh-users/zsh-autosuggestions
+# http://zdharma.org/zinit/wiki/GALLERY/#plugins
+zinit ice wait lucid atload'!_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
 
 # note: any plugins that define widgets the syntax highlighting might need to
 # color (such as `zsh-autosuggestions`) must be loaded prior
 # ref - search fast-syntax-highlighting
-# http://zdharma.org/zplugin/wiki/GALLERY/#plugins
-zplugin ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
-zplugin light zdharma/fast-syntax-highlighting
+# http://zdharma.org/zinit/wiki/GALLERY/#plugins
+zinit ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+zinit light zdharma/fast-syntax-highlighting
 
 # synchronize system clipboard
 # theoretically you might need to source this after other keymappings, have not
 # yet seen a need for enforcing that
-zplugin ice wait lucid
-zplugin light kutsan/zsh-system-clipboard
+zinit ice wait lucid
+zinit light kutsan/zsh-system-clipboard
 
 # similar to `jk/`, convenient when query already typed out
 # ref - https://github.com/zsh-users/zsh-history-substring-search
-zplugin light zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-history-substring-search
 
 # prompt
-# ref - https://github.com/romkatv/powerlevel10k#zplugin
-zplugin ice depth=1
-zplugin light romkatv/powerlevel10k
+# ref - https://github.com/romkatv/powerlevel10k#zinit
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
 # provide `yarn remove` & `yarn add` completions
 # TODO: make this async
-# zplugin ice wait lucid
-zplugin light buonomo/yarn-completion
+# zinit ice wait lucid
+zinit light buonomo/yarn-completion
 
 # TODO: figure this out
 # type `fuck` to correct last typed command
-# zplugin ice wait lucid
-# zplugin light laggardkernel/zsh-thefuck
+# zinit ice wait lucid
+# zinit light laggardkernel/zsh-thefuck
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
