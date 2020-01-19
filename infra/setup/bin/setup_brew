@@ -28,7 +28,7 @@ brew bundle # formulae
 popd "$DOTFILES/macos" || exit 1
 
 # << casks setup >>
-user "set up casks (desktop apps listed in $DOTFILES/apps/Brewfile)?\
+user "set up casks (desktop apps listed in $DOTFILES/gui/apps/Brewfile)?\
  (y/any other key)"
 
 read -r -s -n 1 maybe_continue < /dev/tty
@@ -38,8 +38,8 @@ read -r -s -n 1 maybe_continue < /dev/tty
   exit 1
 }
 
-cd "$DOTFILES/apps" || {
-  echo "failed to \`cd\` to $DOTFILES/apps, \`brew bundle\` not run"
+cd "$DOTFILES/gui/apps" || {
+  echo "failed to \`cd\` to $DOTFILES/gui/apps, \`brew bundle\` not run"
   exit 1
 }
 
