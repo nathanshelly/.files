@@ -7,7 +7,7 @@ cd "$root"
 
 # blacklist third-party directories
 filter=(
-  ':!:macos/apps/alfred'
+  ':!:gui/apps/alfred'
 )
 
 {

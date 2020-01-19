@@ -14,9 +14,14 @@ help:
 	@echo '		set up dotfiles'
 	@echo 'make symlink'
 	@echo '		symlink config files (like .zshrc) to their appropriate locations'
+	@echo 'make gui'
+	@echo '		set up gui parts of config'
 
 setup:
 	./infra/setup/setup_dotfiles
 
 symlink:
 	./infra/setup/bin/symlink
+
+gui:
+	./gui/setup/setup_gui
