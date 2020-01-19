@@ -4,7 +4,7 @@
 # - http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
 # targets without immediate file dependencies
-.PHONY: help setup
+.PHONY: gui help setup
 .DEFAULT_GOAL := help
 
 help:
