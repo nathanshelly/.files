@@ -6,6 +6,8 @@ source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
+[[ $SHOULD_SETUP_DESKTOP_APPS == false ]] && exit 0
+
 command -v brew > /dev/null || {
   # shellcheck disable=SC2016
   echo 'Setting up desktop apps requires `brew` to be installed'
@@ -18,18 +20,23 @@ command -v brew > /dev/null || {
 }
 
 # << casks setup >>
-user "set up casks (desktop apps listed in $DOTFILES/gui/apps/Brewfile)?\
- (y/any other key)"
+[[ $SHOULD_SETUP_DESKTOP_APPS == true ]] || {
+  user "set up desktop apps? (casks listed in $DOTFILES/gui/apps/Brewfile)?\
+   (y/any other key)"
 
-read -r -s -n 1 maybe_continue < /dev/tty
+  read -r -s -n 1 maybe_continue < /dev/tty
 
-[[ "$maybe_continue" != 'y' ]] && {
-  info "skipping cask setup"
-  exit 1
+  [[ "$maybe_continue" != 'y' ]] && {
+    info "skipping cask setup"
+    exit 0
+  }
 }
 
+echo 'setting up desktop apps (casks)'
+
 cd "$DOTFILES/gui/apps" || {
-  echo "failed to \`cd\` to $DOTFILES/gui/apps, \`brew bundle\` not run"
+  # shellcheck disable=SC2016
+  printf 'failed to `cd` to "%s/gui/apps", `brew bundle` not run' "$DOTFILES"
   exit 1
 }
 
