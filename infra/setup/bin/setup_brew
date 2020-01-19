@@ -22,39 +22,10 @@ brew bundle
 
 "$DOTFILES/infra/scripts/is_macos.sh" || exit 0 # bail on Linux
 
-# <<<< start macos-specific >>>>
+# <<<< macos-specific >>>>
 pushd "$DOTFILES/macos" || exit 1
 brew bundle # formulae
 popd "$DOTFILES/macos" || exit 1
+# <<<< end of macos-specific >>>>
 
-# << casks setup >>
-user "set up casks (desktop apps listed in $DOTFILES/gui/apps/Brewfile)?\
- (y/any other key)"
-
-read -r -s -n 1 maybe_continue < /dev/tty
-
-[[ "$maybe_continue" != 'y' ]] && {
-  info "skipping cask setup"
-  exit 1
-}
-
-cd "$DOTFILES/gui/apps" || {
-  echo "failed to \`cd\` to $DOTFILES/gui/apps, \`brew bundle\` not run"
-  exit 1
-}
-
-info "setting up casks"
-brew bundle
-
-# TODO: categorize this better
-"$DOTFILES/infra/scripts/is_macos.sh" && {
-  command -v mas > /dev/null || brew install "mas"
-
-  # this line will error unless you have purchased Super Easy Timer. Delete or
-  # comment this line out to avoid errors.
-  # TODO: check for apple account first?
-  # ref - https://github.com/mas-cli/mas
-  mas "Super Easy Timer", id: 1353137878
-}
-# << end casks setup >>
-# <<<< start macos-specific >>>>
+success "installed packages"
