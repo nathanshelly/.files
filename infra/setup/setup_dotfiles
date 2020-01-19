@@ -10,10 +10,8 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 
 # run in separate subshells
 
-# set up Homebrew and packages, casks & mas apps in various Brewfiles:
-# - `$DOTFILES/Brewfile`
-# - `$DOTFILES/macos/Brewfile`
-# - `$DOTFILES/macos/apps/Brewfile`
+# set up Homebrew and all packages from `$DOTFILES/Brewfile` &
+# `$DOTFILES/macos/Brewfile`
 "$DOTFILES/infra/setup/bin/setup_brew"
 
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`

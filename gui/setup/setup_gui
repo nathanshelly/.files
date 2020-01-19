@@ -8,6 +8,22 @@
 # shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 
+# handle any arguments/flags
+parse_input() {
+  for opt in "$@"; do
+    case $opt in
+      --skip-desktop-apps)
+        export SHOULD_SETUP_DESKTOP_APPS=false
+        ;;
+      --setup-desktop-apps)
+        export SHOULD_SETUP_DESKTOP_APPS=true
+        ;;
+    esac
+  done
+}
+
+parse_input "$@"
+
 # run in separate subshells
 
 # set up casks in `$DOTFILES/gui/Brewfile`
