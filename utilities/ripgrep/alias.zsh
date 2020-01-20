@@ -3,8 +3,6 @@
 # replacement for `grep`
 # ref - https://github.com/BurntSushi/ripgrep
 
-# TODO: remove once habit broken
-alias rg='echo "use generic f, not specific rg (use /usr/local/bin/rg if needed)"'
 # # use smart case by default
 # alias f='f --smart-case'
 
