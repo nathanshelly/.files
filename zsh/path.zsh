@@ -34,6 +34,13 @@ typeset -U path
   [[ -d "$HOMEBREW_PREFIX/opt/make/libexec/gnubin" ]] && {
     path=("$HOMEBREW_PREFIX/opt/make/libexec/gnubin" $path)
   }
+
+  "$DOTFILES/infra/scripts/is_macos.sh" || {
+    # TODO: confirm this is necessary on linux
+    # add `brew` to path
+    # ref - https://docs.brew.sh/Homebrew-on-Linux#install
+    eval "$(/home/dot/.linuxbrew/bin/brew shellenv 2> /dev/null)"
+  }
 }
 
 # << work-specific >>

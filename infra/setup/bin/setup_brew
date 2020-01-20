@@ -15,6 +15,10 @@ command -v brew > /dev/null || {
     # linux
     # ref - https://docs.brew.sh/Homebrew-on-Linux
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    # TODO: confirm this is necessary on linux
+    # add `brew` to path
+    # ref - https://docs.brew.sh/Homebrew-on-Linux#install
+    eval "$(/home/dot/.linuxbrew/bin/brew shellenv 2> /dev/null)"
   fi
 }
 
