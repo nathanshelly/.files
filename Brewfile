@@ -17,24 +17,14 @@ tap "homebrew/core"
 # bundle to use `Brewfile`
 tap "homebrew/bundle"
 
-# alt
-# ref - https://github.com/uptech/alt
-tap "uptech/homebrew-oss"
-
 # delta
 # ref - https://github.com/dandavison/delta
 tap "dandavison/delta", "https://github.com/dandavison/delta"
 
 # <<<<<<<< packages (formulae) >>>>>>>>
 
-# install a modern version of `gcc`
-# installed first so that it's used to compile later packages
-brew "gcc"
-
-brew "alt"
 brew "asciinema"
 brew "asdf"
-brew "awscli"
 brew "bandwhich"
 brew "bat"
 brew "dust"
@@ -51,12 +41,10 @@ brew "hyperfine"
 brew "mdcat"
 brew "neovim", args: ["HEAD"]
 brew "pastel"
-brew "redis"
 brew "ripgrep"
 brew "rsync"
 brew "shellcheck"
 brew "shfmt"
-brew "terraform"
 brew "tig"
 brew "titlecase"
 brew "tldr"
@@ -64,5 +52,4 @@ brew "tmux"
 brew "tree"
 brew "vim"
 brew "watchexec"
-brew "wget"
 brew "zsh"
