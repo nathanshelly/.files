@@ -4,7 +4,7 @@
 # - http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
 # targets without immediate file dependencies
-.PHONY: gui help setup
+.PHONY: all gui help setup symlink
 .DEFAULT_GOAL := help
 
 help:
@@ -16,6 +16,8 @@ help:
 	@echo '		symlink config files (like .zshrc) to their appropriate locations'
 	@echo 'make gui'
 	@echo '		set up gui parts of config'
+	@echo 'make all'
+	@echo '		set up terminal & gui parts of config'
 
 setup:
 	./infra/setup/setup_dotfiles
@@ -24,4 +26,8 @@ symlink:
 	./infra/setup/bin/symlink
 
 gui:
+	./gui/setup/setup_gui
+
+all:
+	./infra/setup/setup_dotfiles
 	./gui/setup/setup_gui
