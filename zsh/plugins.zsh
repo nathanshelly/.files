@@ -6,18 +6,6 @@
 # - http://zdharma.org/zinit/wiki/INTRODUCTION/
 # - https://github.com/zdharma/zinit#zinit-wiki
 
-# install `zinit` if not already installed
-# ref - https://github.com/zdharma/zinit
-[ -d "$HOME/.zinit" ] || {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-}
-
-### Added by Zinit's installer
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit installer's chunk
-
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # `zinit` has a concept called ice modifiers which applies single-use
