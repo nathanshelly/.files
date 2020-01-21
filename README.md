@@ -33,7 +33,3 @@ Unless something went wrong (🤞) you're all set up now! 🎉
 Primarily a [`tmux`](https://github.com/tmux/tmux), [`zsh`](https://www.zsh.org) & [`neovim`](https://github.com/neovim/neovim) workflow. See the respective topic folders: [`tmux`](./tmux), [`zsh`](./zsh) & [`neovim`](./neovim).
 
 ![workflow](infra/assets/workflow.png 'workflow')
-
-## thanks/credit
-
-Pieces and general organizational structure borrowed from Zach Holman's [@holman does dotfiles](https://github.com/holman/dotfiles).
