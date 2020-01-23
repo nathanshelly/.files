@@ -4,4 +4,4 @@
 
 ## List of functions (list of one at the moment)
 
-- [`tan`](./tan) - attach to given session if it exists, otherwise create it
+- [`tan <session-name>`](./tan) - attach to given session if it exists, otherwise create it
