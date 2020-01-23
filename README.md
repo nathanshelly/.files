@@ -1,6 +1,8 @@
 # .files
 
-My personal dotfiles.
+My personal dotfiles configuration for macOS & Linux systems.
+
+No guarantees that it will work with your setup but feel free to open an issue and I'll try to help/improve whatever I can!
 
 ## try them out with zero risk or commitment
 
@@ -30,6 +32,8 @@ Unless something went wrong (🤞) you're all set up now! 🎉
 
 ## overview
 
-Primarily a [`tmux`](https://github.com/tmux/tmux), [`zsh`](https://www.zsh.org) & [`neovim`](https://github.com/neovim/neovim) workflow. See the respective topic folders: [`tmux`](./tmux), [`zsh`](./zsh) & [`neovim`](./neovim).
+Primarily a [`tmux`](https://github.com/tmux/tmux), [`zsh`](https://www.zsh.org) & [`neovim`](https://github.com/neovim/neovim) workflow.
+
+See the respective topic folders: [`tmux`](./tmux), [`zsh`](./zsh) & [`neovim`](./neovim).
 
 ![workflow](infra/assets/workflow.png 'workflow')
