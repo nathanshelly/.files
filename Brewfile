@@ -17,6 +17,9 @@ tap "homebrew/core"
 # bundle to use `Brewfile`
 tap "homebrew/bundle"
 
+# `gh` - github CLI (successor to `hub`)
+tap "github/gh"
+
 # delta
 # ref - https://github.com/dandavison/delta
 tap "dandavison/delta", "https://github.com/dandavison/delta"
@@ -34,6 +37,7 @@ brew "fasd"
 brew "fd"
 brew "fzf"
 brew "git"
+brew "github/gh/gh"
 brew "git-delta"
 brew "gpg"
 brew "hub"
