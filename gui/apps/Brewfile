@@ -50,6 +50,7 @@ cask "private-internet-access"
 cask "rocket"
 cask "slack"
 cask "spectacle"
+cask "spotify"
 cask "subler"
 cask "visual-studio-code"
 
