@@ -36,20 +36,17 @@ symlink() {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  # write all files within depth w/ `.symlink` in their name, excluding `.git` &
-  # `submodules` directories
-  # use while loops, not for loops
+  # symlink files within depth w/ `.symlink` in their name, excluding
+  # blacklisted directories
   # ref - https://mywiki.wooledge.org/BashFAQ/001
+  local blacklist="/.git|/submodules/|/apps/alfred/"
   (
-    find \
-      -H "$DOTFILES" \
-      -maxdepth 4 \
-      -name '*.symlink*' \
-      -not -path '*.git/*' \
-      -not -path '*/submodules/*' \
-      -not -path '*/apps/alfred/*' \
-      -print0
-  ) | while IFS= read -r -d '' src; do # `-d <delimiter>`
+    # `-H` resolves symlinks to the underlying filename
+    find -H "$DOTFILES" -name '*.symlink*' -maxdepth 4
+  ) | (
+    # '-E' reads `|` separated terms from a string
+    grep -vZ -E "$blacklist"
+  ) | while read -r src; do
     filename="$(basename "$src")"
     local path_components='([-._ 0-9a-zA-Z]+,)*'
     local name='[-._ 0-9a-zA-Z]+'
@@ -61,7 +58,7 @@ symlink() {
     else
       [ "$verbose" == "y" ] && {
         info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
-match symlinking syntax)"
+    match symlinking syntax)"
       }
     fi
   done
