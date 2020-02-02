@@ -2,4 +2,4 @@
 
 # set alacritty to font size for 15 inch, 2k resolution laptop
 # mnemonic - `alacritty font small`
-sed -i '' 's/size: .*/size: 13.0/g' "$DOTFILES/config.symlink/alacritty/alacritty.yml"
+sed -i '' 's/size: .*/size: 13.0/g' "$DOTFILES/gui/config.symlink/alacritty/alacritty.yml"

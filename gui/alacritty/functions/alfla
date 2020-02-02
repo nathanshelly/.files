@@ -2,4 +2,4 @@
 
 # set alacritty to font size for 27 inch, 4k resolution monitor
 # mnemonic - `alacritty font large`
-sed -i '' 's/size: .*/size: 21.0/g' "$DOTFILES/config.symlink/alacritty/alacritty.yml"
+sed -i '' 's/size: .*/size: 21.0/g' "$DOTFILES/gui/config.symlink/alacritty/alacritty.yml"
