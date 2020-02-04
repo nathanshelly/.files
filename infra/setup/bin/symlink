@@ -135,23 +135,23 @@ recursively_link_directory() {
   local source_base_path="$1" target_path="$2" directory_name="$3"
   local target_base_path="$HOME/${target_path}${directory_name}"
 
-  # use parens to group conditions
+  # use `-o` to group conditions
   # ref - https://stackoverflow.com/questions/7190565/unix-find-multiple-file-types
-  find -H "$source_base_path" -type f,l -print0 \
-    | while IFS= read -r -d '' src; do
-      local target_path="$target_base_path${src#$source_base_path}"
+  find -H "$source_base_path" -type f -o -type l | while read -r src; do
+    local target_path="$target_base_path${src#$source_base_path}"
+    echo "target_path: $target_path"
 
-      [ "$verbose" == "y" ] && {
-        local target_folder
-        target_folder="$(dirname "$target_base_path${src#$source_base_path}")"
-        printf '\nsource path: %s' "$src"
-        printf '\ntarget path: %s' "$target_path"
-        printf '\ntarget folder: %s' "$target_folder"
-      }
+    [ "$verbose" == "y" ] && {
+      local target_folder
+      target_folder="$(dirname "$target_base_path${src#$source_base_path}")"
+      printf 'source path: %s\n' "$src"
+      printf 'target path: %s\n' "$target_path"
+      printf 'target folder: %s\n' "$target_folder"
+    }
 
-      mkdir -p "$(dirname "$target_path")"
-      link_file "$src" "$target_path"
-    done
+    mkdir -p "$(dirname "$target_path")"
+    link_file "$src" "$target_path"
+  done
 }
 
 # applies given regex to given string, returning matches in `_REGEX_MATCHES`
