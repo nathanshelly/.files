@@ -143,7 +143,6 @@ recursively_link_directory() {
   # ref - https://stackoverflow.com/questions/7190565/unix-find-multiple-file-types
   find -H "$source_base_path" -type f -o -type l | while read -r src; do
     local target_path="$target_base_path${src#$source_base_path}"
-    echo "target_path: $target_path"
 
     [ "$verbose" == "y" ] && {
       local target_folder
