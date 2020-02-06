@@ -27,7 +27,12 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 # perform symlinking according to scheme specified in design doc (path -
 # `$DOTFILES/infra/setup/symlink.md`)
-symlink() {
+main() {
+  local passed_blacklist="$1"
+  local default_blacklist="/.git|/submodules/|/apps/alfred/"
+  # ref - https://unix.stackexchange.com/a/415992
+  local blacklist="$default_blacklist${passed_blacklist:+"|$passed_blacklist"}"
+
   header "<< Symlinking >>"
   header "following scheme detailed @ $DOTFILES/infra/setup/symlink.md"
 
@@ -39,13 +44,11 @@ symlink() {
   # symlink files within depth w/ `.symlink` in their name, excluding
   # blacklisted directories
   # ref - https://mywiki.wooledge.org/BashFAQ/001
-  local blacklist="/.git|/submodules/|/apps/alfred/"
   (
     # `-H` resolves symlinks to the underlying filename
     find -H "$DOTFILES" -name '*.symlink*' -maxdepth 4
   ) | (
-    # '-E' reads `|` separated terms from a string
-    grep -vZ -E "$blacklist"
+    grep -vZ -E "$blacklist" # '-E' reads `|` separated terms from a string
   ) | while read -r src; do
     filename="$(basename "$src")"
     local path_components='([-._ 0-9a-zA-Z]+,)*'
@@ -393,4 +396,4 @@ join_by() {
   _joined="$*"
 }
 
-symlink
+main "$@"
