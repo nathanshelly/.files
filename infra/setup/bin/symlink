@@ -50,6 +50,7 @@ main() {
   ) | (
     grep -vZ -E "$blacklist" # '-E' reads `|` separated terms from a string
   ) | while read -r src; do
+    [ "$verbose" == "y" ] && echo # insert newline for formatting
     filename="$(basename "$src")"
     local path_components='([-._ 0-9a-zA-Z]+,)*'
     local name='[-._ 0-9a-zA-Z]+'
@@ -99,8 +100,8 @@ _symlink_based_on_filename() {
 
   # debugging
   [ "$verbose" == "y" ] && {
-    printf '\nsrc, source filename > %s, %s' "$src" "$filename"
-    printf '\ntarget name; path; flags (direct, unhidden) > %s; %s; (%s, %s)' \
+    printf 'src, source filename > %s, %s\n' "$src" "$filename"
+    printf 'target name; path; flags (direct, unhidden) > %s; %s; (%s, %s)\n' \
       "$_name" "$_path" "$_direct" "$_unhidden"
   }
 
@@ -305,9 +306,9 @@ link_file() {
       current_src="$(readlink "$dst")"
 
       [ "$verbose" == "y" ] && {
-        printf '\ndst: %s' "$dst"
-        printf '\ncurrent_src: %s' "$current_src"
-        printf '\nsrc: %s' "$src"
+        printf 'dst: %s\n' "$dst"
+        printf 'current_src: %s\n' "$current_src"
+        printf 'src: %s\n' "$src"
       }
       if [ "$current_src" == "$src" ]; then
         skip=true
@@ -363,7 +364,7 @@ link_file() {
       fi
     }
 
-    [ "$skip" == true ] && success "skipped $src"
+    [ "$skip" == true ] && info "skipped $src"
   fi
 
   # "false" or empty
