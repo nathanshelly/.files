@@ -1,21 +1,23 @@
 #! /usr/bin/env bash
 
-# display markdown file using `mdcat` w/ a pager
-# ref - https://github.com/lunaryorn/mdcat/issues/50
+# render given args with best available command
 
 [[ -z $1 ]] && {
   echo 'No target given, aborting'
   return 1
 }
 
-# if multiple targets given, use `bat` on all
-[[ -n $2 ]] && {
-  bat "$@"
-  return
+render_args() {
+  # use `mdcat` when passed a single markdown file
+  [[ -z $2 ]] && [[ $1 =~ \.md$ ]] && command -v mdcat > /dev/null && {
+    # display markdown file using `mdcat` w/ a pager
+    # ref - https://github.com/lunaryorn/mdcat/issues/50
+    mdcat "$1" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS
+    return
+  }
+
+  command -v bat > /dev/null && bat_or_cat="bat" || bat_or_cat="cat"
+  "$bat_or_cat" "$@"
 }
 
-if [[ $1 =~ \.md$ ]]; then
-  mdcat "$1" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS
-else
-  bat "$1"
-fi
+render_args "$@"
