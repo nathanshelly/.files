@@ -11,8 +11,11 @@ destination="$1"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-[[ -z $destination ]] && {
-  cat << EOF
+main() {
+  parse_input "$@"
+
+  [[ -z $destination ]] && {
+    cat << EOF
 error: the following arguments were not provided
 
   <GITCONFIG-DESTINATION>
@@ -21,31 +24,54 @@ USAGE:
 
   setup_git_config <GITCONFIG-DESTINATION>...
 EOF
-  return 1
+    return 1
+  }
+
+  if [ -f "$destination" ] || [ -d "$destination" ] || [ -L "$destination" ]; then
+    [[ $SHOULD_SKIP_EXISTING == true ]] && {
+      info "$destination already exists, gitconfig creation skipped"
+      exit 0
+    }
+    user "file exists @ $destination, overwrite it? (y/any other key)"
+    read -r -s -n 1 continue < /dev/tty
+
+    [[ "$continue" != 'y' ]] && {
+      info "gitconfig creation skipped"
+      exit 0
+    }
+  fi
+
+  info "setting up gitconfig @ $destination"
+
+  user ' - What is your github author name?'
+  # `-e` uses `readline`
+  read -re git_author_name
+  user ' - What is your github author email?'
+  read -re git_author_email
+
+  # `-e <script>` applies given script to input
+  sed -e "s/AUTHORNAME/$git_author_name/g" \
+    -e "s/AUTHOREMAIL/$git_author_email/g" \
+    "$DOTFILES/git/gitconfig.template" \
+    > "$destination"
+
+  success "created gitconfig @ $destination"
 }
 
-info "setting up gitconfig @ $destination"
+# handle any arguments/flags
+parse_input() {
+  for opt in "$@"; do
+    case $opt in
+      --skip-existing)
+        SHOULD_SKIP_EXISTING=true
+        ;;
+      --*)
+        # shellcheck disable=SC2016
+        printf 'invalid flag passed to `%s`\n' 'setup_git_config'
+        exit 1
+        ;;
+    esac
+  done
+}
 
-if [ -f "$destination" ] || [ -d "$destination" ] || [ -L "$destination" ]; then
-  user "file exists @ $destination, overwrite it? (y/any other key)"
-  read -r -s -n 1 continue < /dev/tty
-
-  if [[ "$continue" != 'y' ]]; then
-    success "skipped gitconfig creation"
-    exit 0
-  fi
-fi
-
-user ' - What is your github author name?'
-# `-e` uses `readline`
-read -re git_author_name
-user ' - What is your github author email?'
-read -re git_author_email
-
-# `-e <script>` applies given script to input
-sed -e "s/AUTHORNAME/$git_author_name/g" \
-  -e "s/AUTHOREMAIL/$git_author_email/g" \
-  "$DOTFILES/git/gitconfig.template" \
-  > "$destination"
-
-success "created gitconfig @ $destination"
+main "$@"
