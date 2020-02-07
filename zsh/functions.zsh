@@ -29,10 +29,14 @@
 # add all directories named `functions` throughout this repo to `fpath` and
 # autoload any executable files in those folders
 for dir in $DOTFILES/**/functions; do
-  # `(.x:t)` selects only executable (the `x`) files (the `.`) & extracts the
+  # `.#(.x:t)` selects all hidden (`.#` selects files starting with 0 or more
+  # `.`s) & non-hidden executable (the `x`) files (the `.`) & extracts the
   # filename (the `:t`)
-  # ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Qualifiers
-  autoload -Uz "$dir"/*(.x:t)
+  # Note: this requires the `extended_glob` option (set in `./options.zsh`)
+  # refs
+  # - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Qualifiers
+  # - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Operators
+  autoload -Uz "$dir"/.#*(.x:t)
   fpath=("$dir" $fpath)
 done
 unset dir
