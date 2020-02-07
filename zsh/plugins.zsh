@@ -71,8 +71,8 @@ zinit light buonomo/yarn-completion
 # <<<< syntax highlighting >>>>
 # TODO: understand why this doesn't seem to be working
 # refs:
-#   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
-#   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+# - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
+# - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 

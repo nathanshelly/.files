@@ -11,7 +11,7 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 [ -f "$HOME/.gitconfig.work" ] && {
   info "skipping work setup since $HOME/.gitconfig.work already exists"
-  exit 1
+  exit 0
 }
 
 user "set up work-specific config? (y/any other key)"
@@ -20,7 +20,7 @@ read -r -s -n 1 maybe_continue < /dev/tty
 
 [[ "$maybe_continue" != 'y' ]] && {
   info "skipping work setup"
-  exit 1
+  exit 0
 }
 
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.work" --skip-existing

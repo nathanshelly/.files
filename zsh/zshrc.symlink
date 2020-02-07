@@ -55,7 +55,6 @@ autoload -Uz _zinit
 source "$DOTFILES/zsh/plugins.zsh"
 # <<<< end of plugins >>>>
 
-
 # configure prompt after enabling
 source "$DOTFILES/zsh/prompt.zsh"
 

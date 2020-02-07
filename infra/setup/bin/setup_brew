@@ -33,9 +33,9 @@ brew bundle
 "$DOTFILES/infra/scripts/is_macos.sh" || exit 0 # bail on Linux
 
 # <<<< macos-specific >>>>
-pushd "$DOTFILES/macos" || exit 1
+pushd "$DOTFILES/macos" > /dev/null || exit 1
 brew bundle # formulae
-popd "$DOTFILES/macos" || exit 1
+popd "$DOTFILES/macos" > /dev/null || exit 1
 # <<<< end of macos-specific >>>>
 
 success "installed packages"
