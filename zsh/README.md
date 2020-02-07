@@ -134,7 +134,7 @@ Currently using [`powerlevel10k`](https://github.com/romkatv/powerlevel10k). `po
 
 Appearance:
 
-![prompt](../infra/assets/prompt.png 'prompt')
+![prompt](https://user-images.githubusercontent.com/9750687/74062058-49ce2e00-49a2-11ea-96a7-808db84e7844.png 'prompt')
 
 ### [`secrets.zsh`](./secrets.zsh)
 
