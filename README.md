@@ -36,4 +36,4 @@ Primarily a [`tmux`](https://github.com/tmux/tmux), [`zsh`](https://www.zsh.org)
 
 See the respective topic folders: [`tmux`](./tmux), [`zsh`](./zsh) & [`neovim`](./neovim).
 
-![workflow](infra/assets/workflow.png 'workflow')
+![workflow](https://user-images.githubusercontent.com/9750687/74062062-4aff5b00-49a2-11ea-9edd-2dd85c7ea5fb.png 'workflow')
