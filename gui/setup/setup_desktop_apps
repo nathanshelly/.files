@@ -61,10 +61,15 @@ parse_input() {
   for opt in "$@"; do
     case $opt in
       --skip-desktop-apps)
-        export SHOULD_SETUP_DESKTOP_APPS=false
+        SHOULD_SETUP_DESKTOP_APPS=false
         ;;
       --setup-desktop-apps)
-        export SHOULD_SETUP_DESKTOP_APPS=true
+        SHOULD_SETUP_DESKTOP_APPS=true
+        ;;
+      --*)
+        # shellcheck disable=SC2016
+        printf 'invalid flag passed to `%s`\n' 'setup_desktop_apps'
+        exit 1
         ;;
     esac
   done
