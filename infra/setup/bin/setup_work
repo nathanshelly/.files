@@ -23,4 +23,4 @@ read -r -s -n 1 maybe_continue < /dev/tty
   exit 1
 }
 
-"$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.work"
+"$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.work" --skip-existing
