@@ -40,8 +40,32 @@ If only one option would be displayed, select it immediately (`--select-1`. If n
 
 ## [`git.zsh`](./git.zsh)
 
-> `M` here means `Alt` (on Windows) or `Option` (on macOS)
+> Note: depending on your terminal you may need to change a setting to enable keybindings containing `Option`. See [the appendix below](#enabling-keybindings) for instructions that should take less than a minute.
+
+> `M` here means `Option` (on macOS) or`Alt` (on Windows)
 
 - `M-f` - filter and output files shown by `git status` (untracked, unstaged, staged) to shell
 - `M-h` - filter `git log` commits and output hash to shell
 - `M-r` - filter all (local and remote) git branches and output to shell
+
+## appendix
+
+### enabling keybindings
+
+Various terminals on macOS require brief configuration in order to use keybindings containing `Option`.
+
+#### "Terminal" - default macOS terminal
+
+Tick the box labeled "Use Option as Meta key" in Profiles > Keyboard.
+
+![Terminal](https://user-images.githubusercontent.com/9750687/74061402-cb24c100-49a0-11ea-9270-2707170cc592.png 'terminal')
+
+#### Iterm
+
+Select "Esc+" for "Left ⌥ Key" & "Right ⌥ Key" in Profiles > Keys.
+
+![Iterm](https://user-images.githubusercontent.com/9750687/74061408-ceb84800-49a0-11ea-90ec-c7cab978a15c.png 'Iterm')
+
+#### Alacritty
+
+Copy and paste [these bindings](https://github.com/nathanshelly/.files/blob/6ec55ce177bea6833f6179426b5e5a61601831b8/gui/config.symlink/alacritty/alacritty.yml#L646-L719) into your `alacritty.yml`.
