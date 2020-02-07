@@ -23,8 +23,8 @@ command -v fzf > /dev/null || return
 # default keybindings
 # `^t` - pastes selected files
 # `M-c` - navigate to directory (`cd` into selected folder)
-# `^r` - overridden below (still history search but slightly different from
-# default behavior)
+# `^r` - search history (overridden below - still history search but slightly
+# different from default behavior)
 source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 
 
@@ -69,9 +69,10 @@ ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 
 # << list files >>
 
-# `^f` lists files starting from root of current repo
-bindkey '^f' fzf_repo_file_widget
-# `^a` lists all files/directories (including those listed in (git)ignore files)
+# filter and output files from the root of the current git repo
+bindkey '^g' fzf_repo_file_widget
+# filter and output all files/directories (including those listed in (git)ignore
+# files) below current directory
 bindkey '^a' fzf_all_widget
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

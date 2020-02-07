@@ -33,8 +33,8 @@ If only one option would be displayed, select it immediately (`--select-1`. If n
 
 > `C` here means `Ctrl`
 
-- `C-f` - filter and output files from the root of the current repo
-- `C-a` - filter and output files below current directory including ignored (by `.gitignore` or `.ignore` files) files
+- `C-g` - filter and output files from the root of the current git repo
+- `C-a` - filter and output files & directories below current directory including ignored (by `.gitignore` or `.ignore` files) files
 - `C-p` - filter and edit (w/ `$EDITOR`) files
 - `C-r` (or `/` in `vicmd` mode) - filter and run shell history. While filtering hit `C-e` to output the command to the line for editing before running.
 
