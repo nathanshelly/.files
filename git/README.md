@@ -2,7 +2,7 @@
 
 ## [`gitconfig.symlink`](./gitconfig.symlink) & [`gitignore.symlink`](./gitignore.symlink)
 
-Defines global [`.gitignore`](https://git-scm.com/docs/gitignore) and [`.gitconfig`](https://git-scm.com/docs/git-config) that are symlinked to `$HOME/.gitconfig` & `.$HOME/.gitignore`, respectively, by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
+Defines global [`.gitconfig`](https://git-scm.com/docs/git-config) & [`.gitignore`](https://git-scm.com/docs/gitignore) that are symlinked to `$HOME/.gitconfig` & `.$HOME/.gitignore`, respectively, by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
 
 A few of the notable configs set here:
 
