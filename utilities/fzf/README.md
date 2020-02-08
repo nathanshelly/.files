@@ -42,7 +42,7 @@ If only one option would be displayed, select it immediately (`--select-1`. If n
 
 > Note: depending on your terminal you may need to change a setting to enable keybindings containing `Option`. See [the appendix below](#enabling-keybindings) for instructions that should take less than a minute.
 
-> `M` here means `Option` (on macOS) or`Alt` (on Windows)
+> `M` here means `Option` (on macOS) or `Alt` (on Windows)
 
 - `M-f` - filter and output files shown by `git status` (untracked, unstaged, staged) to shell
 - `M-h` - filter `git log` commits and output hash to shell
