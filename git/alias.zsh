@@ -4,21 +4,13 @@
 # https://github.com/github/hub
 command -v hub > /dev/null && alias git=hub
 
-# some git aliases
-# sorted alphabetically
-# uses gitconfig aliases to avoid duplication
-# used in constructing other aliases
-alias gnp='git --no-pager'
-
-# bases for `gl...` (git log) aliases
-alias git_log_base="git log --abbrev-commit --decorate --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
-alias git_log_verbose_base="git log --abbrev-commit --decorate --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
-
 alias ga='git add'
 # add only tracked files
 alias gat='git add --update'
 alias gap='git add --patch'
 
+# used in below aliases
+alias gnp='git --no-pager'
 # base, default to verbose
 alias gb='gnp branch -vv'
 alias gba='gnp branch -vv --all'
@@ -47,6 +39,10 @@ alias gdcr='git diff --color --cached -R'
 
 # cleanup - https://git-scm.com/docs/git-gc
 alias ggc='git gc'
+
+# bases for `gl...` (git log) aliases
+alias git_log_base="git log --abbrev-commit --decorate --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
+alias git_log_verbose_base="git log --abbrev-commit --decorate --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
 
 alias gl='git_log_base --max-count 15'
 alias gln='git_log_base --max-count'
