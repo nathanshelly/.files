@@ -14,6 +14,8 @@
 # don't run unless `fzf` is installed
 command -v fzf > /dev/null || return
 
+"$DOTFILES/infra/scripts/component_enabled.sh" 'fzf' || return 0
+
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
 [[ $- == *i* ]] && {

@@ -1,5 +1,7 @@
 #! /usr/bin/env zsh
 
+"$DOTFILES/infra/scripts/component_enabled.sh" 'fzf' || return 0
+
 # fzf ❤️ git
 # useful combinations of git & fzf
 # this file specifies keybinding for functions defined in `./functions.zsh`
