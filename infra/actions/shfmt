@@ -5,16 +5,11 @@ set -euo pipefail
 root="$(git rev-parse --show-toplevel)"
 cd "$root"
 
-# blacklist third-party directories
-filter=(
-  ':!:gui/apps/alfred'
-)
-
 {
   # `.sh` extension
-  git ls-files '*.sh' -- "${filter[@]}"
+  git ls-files '*.sh'
   # `#! usr/bin/env bash` shebang
-  git grep -l '^\(#! */usr/bin/env bash\|#! */bin/bash\)$' -- "${filter[@]}"
+  git grep -l '^\(#! */usr/bin/env bash\|#! */bin/bash\)$'
   # remove duplicates from .sh + shebang
   # `shfmt` args should match the alias in `$DOTFILES/zsh/alias.zsh`
 } | sort | uniq | xargs shfmt -i 2 -bn -ci -sr -d
