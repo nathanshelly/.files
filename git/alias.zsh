@@ -48,7 +48,7 @@ alias git_log_verbose_base="git log --abbrev-commit --decorate --pretty=format:'
 
 alias gl='git_log_base --max-count 15'
 alias gln='git_log_base --max-count'
-alias glp='git_log_verbose_base --patch --stat'
+alias glp='git log --patch --stat'
 alias gls='git_log_verbose_base --stat --graph'
 alias glsn='git_log_verbose_base --stat --graph --max-count'
 alias glv='git_log_verbose_base --max-count 15'
