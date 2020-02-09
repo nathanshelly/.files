@@ -1,5 +1,7 @@
 #! /usr/bin/env zsh
 
+"$DOTFILES/infra/scripts/component_enabled.sh" 'git-aliases' || return 0
+
 # use hub if installed
 # https://github.com/github/hub
 command -v hub > /dev/null && alias git=hub
