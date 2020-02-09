@@ -6,6 +6,8 @@
 #
 # see more details on `asdf` and my global config in `$DOTFILES/utilities/asdf`
 
+"$DOTFILES/infra/scripts/component_enabled.sh" 'asdf' || return 0
+
 # ref - https://asdf-vm.com/#/core-manage-asdf-vm?id=add-to-your-shell
 asdf_initialization="$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
 [ -f "$asdf_initialization" ] && source "$asdf_initialization"

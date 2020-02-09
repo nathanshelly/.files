@@ -8,6 +8,8 @@
 # `autoload`
 #   - `-U` -> alias expansion is supressed when the function is loaded
 
+"$DOTFILES/infra/scripts/component_enabled.sh" 'vi-mode' || return 0
+
 # turn on vim mode
 bindkey -v
 

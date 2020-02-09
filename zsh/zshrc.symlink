@@ -10,6 +10,8 @@
   return 1
 }
 
+"$DOTFILES/infra/scripts/component_enabled.sh" 'zsh' || return 0
+
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
 
