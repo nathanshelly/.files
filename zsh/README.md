@@ -2,35 +2,16 @@
 
 A modern, backwards-compatible replacement for `bash` that offers essentially a superset of `bash`'s features.
 
-## why `zsh`
-
-`zsh` offers useful features such as complex scripting features, smart tab-completion, advanced globbing support and plugin support while preserving backwards compatibility. Additionally, in my anecdotal experience, `zsh` has greater support in the open source community.
-
-### alternatives considered
-
-#### [`bash`](https://linux.die.net/man/1/bash)
-
-My reasons to not use `bash` are the inverse of why I use `zsh` (e.g. lack of advanced globbing, lack of useful scripting features, worse (in my experience) plugin support, etc.).
-
-In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default shell in the next macOS version (as of 10/03/2019). That alone is not necessarily a reason to use it (especially since a factor in Apple's decision here is licensing related as opposed to end user satisfaction) but for anyone unsure about switching to `zsh` it may offer some surety of it's maturity/viability.
-
-#### [`fish`](https://fishshell.com)
-
-`fish` seems nice, especially its sane scripting syntax. For me, however, its improvements over `zsh` don't outweigh its lack of backwards compatibility.
-
-#### [`nu`](https://github.com/nushell/nushell)
-
-`nu` seems fascinating. I may even jump to it at some point in the future but it's not mature enough for me at the moment to want to make it my daily driver.
+See [here](https://github.com/nathanshelly/.files/tree/master/zsh#why-zsh) for more information on why these dotfiles use `zsh`.
 
 ## skimmable list of files
 
-- [`alias.zsh`](#alias.zsh) - define generic aliases. Aliases specific to a topic (for example aliases for `tmux`) should go in the corresponding topic folder (e.g. [`$DOTFILES/tmux/alias.zsh`](../tmux/alias.zsh)).
+- [`alias.zsh`](#alias.zsh) - define various aliases. Some aliases specific to a topic (for example aliases for `git`) are in the corresponding topic folder (e.g. [`$DOTFILES/git/alias.zsh`](../git/alias.zsh)).
 - [`asdf.zsh`](#asdf.zsh) - initialize [`asdf`](https://asdf-vm.com) (the version manager I use)
 - [`completion.zsh`](#completion.zsh) - initialize completion
 - [`config.zsh`](#config.zsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
 - [`functions.zsh`](#functions.zsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
 - [`instant_prompt.zsh`](#instant_prompt.zsh) - enable [instant prompt](https://github.com/romkatv/powerlevel10k#what-is-instant-prompt)
-- [`keymap.zsh`](#keymap.zsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
 - [`manydots.zsh`](#manydots.zsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
 - [`options.zsh`](#options.zsh) - configure options (anything set using `setopt`)
 - [`path.zsh`](#path.zsh) - configure `$PATH`
@@ -46,17 +27,13 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 
 Define generic aliases.
 
-Topic-specific aliases (for example aliases for `tmux`) should go in the corresponding topic folder (e.g. [`$DOTFILES/tmux/alias.zsh`](../tmux/alias.zsh)).
+Topic-specific aliases (for example aliases for `git`) are in the corresponding topic folder (e.g. [`$DOTFILES/git/alias.zsh`](../git/alias.zsh)).
 
 Notable aliases:
 
-- `srczsh` - `source $HOME/.zshrc`, reload `zshrc`
-- `zshn` - `zsh -f`, launch shell w/o config
-- `rr` - `git rev-parse --show-toplevel`, gives the absolute path to the root of the current repo
-- `rm` - disables `rm` to force usage of [`trash`](https://github.com/sindresorhus/trash) (aliased to `t` elsewhere in this file)
-- `e` - `$EDITOR`, provides a generic command to edit a file regardless of the backing program
-- `f` - `rg` if installed, `grep -R` otherwise. Similar to `e`, provides a generic command regardless of backing program.
-- `t` - [`trash`](https://github.com/sindresorhus/trash), a utility to move files/folders to the trash (instead of deleting permanently) on macOS for recoverability
+- `cat` - [`smat`](../functions/smat) - based on installed utilities conditionally renders `.md` files with [`mdcat`](https://github.com/lunaryorn/mdcat) and other files with [`bat`](https://github.com/sharkdp/bat)
+- `l` (& `ll`, `la`, etc.) - various aliases of [`exa`](https://github.com/ogham/exa), a modern replacement for `ls`
+- `f` - `rg` if installed, `grep -R` otherwise. Provides a generic search command regardless of backing program.
 
 ### [`asdf.zsh`](./asdf.zsh)
 
@@ -79,25 +56,6 @@ Autoload all functions (executable files) defined in any directory named `functi
 ### [`instant_prompt.zsh`](./instant_prompt.zsh)
 
 Enable [instant prompt](https://github.com/romkatv/powerlevel10k#what-is-instant-prompt).
-
-### [`keymap.zsh`](./keymap.zsh)
-
-Turn on `vim` mode for [`zle`](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings.
-
-Add keymappings to support text objects supported by `vim`. Each of the following can be used with `i` or `a` (e.g. `i<character>` or `a<character>`): `'`, `"`, \`, `{`, `(`, `[`, `<`.
-
-Add keymappings to recreate behavior of [`vim-surround`](https://github.com/tpope/vim-surround) (that link provides usage examples).
-
-Additional notable keymappings:
-
-- insert mode
-  - `jk` to escape insert mode
-- normal mode
-  - movement keys to home row - `hjkl` -> `jkl;`
-  - start/end of line movement
-    - `'` moves to end of line (same behavior as `$`)
-    - `"` moves to start of line (same behavior as `0`)
-  - `v` to edit the current command in `$EDITOR`. Quitting the opened editor dumps the edited command to the command line for execution.
 
 ### [`manydots.zsh`](./manydots.zsh)
 
@@ -150,7 +108,6 @@ A few notable environment variables:
 
 - `$DOTFILES` - specifies path to the root of this repo, used throughout `zsh` configuration
 - `$PATH` - uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;`. Ensures `$path` array contains each entry only once (like a set) with `typeset -u path`
-- `$EDITOR` - set to `nvim`, used in various aliases/keybindings
 
 This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
 
@@ -162,7 +119,6 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`instant_prompt.zsh`](./instant_prompt.zsh)
 1. [`completion.zsh`](./completion.zsh)
 1. [`config.zsh`](./config.zsh)
-1. [`keymap.zsh`](./keymap.zsh)
 1. [`manydots.zsh`](./manydots.zsh)
 1. [`options.zsh`](./options.zsh)
 1. [`functions.zsh`](./functions.zsh)

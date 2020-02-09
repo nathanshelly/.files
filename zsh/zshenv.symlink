@@ -1,54 +1,9 @@
 # path to dotfiles
-export DOTFILES="$HOME/.files"
+export DOTFILES="$HOME/.odfiles"
 
 # `brew --prefix` takes ~25ms on my machine (to see how long it takes on yours
 # try `hyperfine 'brew --prefix'`). To avoid that overhead I hardcode the
 # path (seems pretty stable).
-if "$DOTFILES/infra/scripts/is_macos.sh"; then
-  export HOMEBREW_PREFIX="/usr/local"
-else
-  # this assumes (with reasonable likelihood) that Homebrew is installed under
-  # the current user
-  export HOMEBREW_PREFIX="$HOME/.linuxbrew"
-fi
+export HOMEBREW_PREFIX="/usr/local"
 
-# XDG directory specification
-# ref - https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-
-# << homebrew >>
-# ref - https://github.com/Homebrew/brew/blob/master/docs/Manpage.md#environment
-
-export HOMEBREW_INSTALL_CLEANUP=0 # checking existence, not value
-export HOMEBREW_AUTO_UPDATE_SECS=86400 # check for update every 24 hours
-
-# << tmuxinator >>
-# ref - https://github.com/tmuxinator/tmuxinator#project-configuration-location
-export TMUXINATOR_CONFIG="$DOTFILES/tmux/tmuxinator_configs"
-
-# set default editors
-# technically only aliasing $VISUAL is necessary but $EDITOR is used elsewhere
-# in these dotfiles and should be `nvim`
-export VISUAL=nvim
-export EDITOR=nvim
-
-# shorten key delay to .2 seconds
-# most important for quickly exiting
-# vi insert mode
-export KEYTIMEOUT=20
-
-# prevent generation of .pyc files
-export PYTHONDONTWRITEBYTECODE=1
-
-export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
-
-# << work-specific >>
-[ -d "$HOME/work" ] && {
-  export GOPATH="$HOME/work/go"
-  export VAULT_ADDR=https://vault.services.opendoor.com:8200
-  export DIRENV_LOG_FORMAT= # silence direnv
-  export ANDROID_HOME="$HOME/Library/Android/sdk" # for android studio
-  export OD_CURRENT_USER_EMAIL="nathan.shelly@opendoor.com"
-}
-# << end work-specific >>
+export VAULT_ADDR=https://vault.services.opendoor.com:8200

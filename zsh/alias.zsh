@@ -1,45 +1,55 @@
 #! /usr/bin/env zsh
 
-alias srczsh="source $HOME/.zshrc"
+command -v smat > /dev/null && alias cat=smat # $DOTFILES/functions/smat
 
-# launch w/o sourcing configs
-alias zshn='zsh -f'
+# <<<<<<<<< exa >>>>>>>>>
+# exa - replacement for `ls`
+# ref - https://github.com/ogham/exa
+command -v exa > /dev/null && {
+  alias l='exa'
 
-# repo root
-command -v git > /dev/null && alias rr="git rev-parse --show-toplevel"
+  # options - https://github.com/ogham/exa#options
 
-# << homebrew >>
-command -v brew > /dev/null && {
-  alias b='brew'
-  alias bc='brew cask'
-  alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
+  alias la='l --all'
+  # TODO: get newer version of `exa` that supports this
+  # alias ld='l --list-dirs'
+  alias li='l --git-ignore'
+  alias ll='l --long --all'
+} || {
+  # exa not installed
+
+  # `-C` force multicolumn view
+  # `-F` display characters indicating properties, e.g. `/` for directory
+  alias l='ls -CF'
+  # `-A` list all entries except `.` & `..`
+  alias la='ls -AF'
+  # `-l` long format (more details)
+  # `-h` human readable units (byte, kilobyte, etc.)
+  alias ll='ls -AFhl'
 }
+# <<<<<<<<< end of exa >>>>>>>>>
 
-$DOTFILES/infra/scripts/is_macos.sh && {
-  # open another terminal (Alacritty) instance
-  alias term="open --new /Applications/Alacritty.app"
-}
-
-# discourage usage of rm if `trash` is installed (suggests `t` alias`)
-command -v trash > /dev/null && {
-  alias t=trash # macOS trash command
-  alias rm='echo "use trash primarily, /bin/rm when needed"'
-}
-
-# alias `shfmt` to apply default args
-# `-i 2` -> indent with 2 spaces
-# `-bn`  -> start lines with binary operators
-# `-ci`  -> indent switch cases
-# `-sr`  -> add space after redirect operators (e.g. `> /...` not `>/...`)
-command -v shfmt > /dev/null && alias shfmt='shfmt -i 2 -bn -ci -sr'
-
-# <<<< generics >>>>
-alias e="$EDITOR" # text editor
-command -v exiftool > /dev/null && alias i=exiftool # metadata info
-command -v open > /dev/null && alias o=open # macOS open command
+# <<<<<<<<< ripgrep >>>>>>>>>
 if command -v rg > /dev/null; then
   alias f='/usr/local/bin/rg --smart-case'
 else
   alias f='grep -R'
 fi
-command -v package_manager > /dev/null && alias pm="$(package_manager)"
+
+# search for literal strings
+alias ff='f --fixed-strings'
+
+# search only tests - any filename/directory matching the given patterns
+alias ft="f --glob '*test*' --glob '*spec*'"
+
+# ignore tests - exclude any filename/directory matching the given patterns
+alias fnt="f --glob '!*test*' --glob '!*spec*'"
+
+# whole word
+alias fw='f --word-regexp'
+
+# `-uuu` (`--unrestricted`) ignores .gitignore files, and searches hidden files
+# and directories along with binary files
+alias fu='f -uuu'
+alias fus='f -uuu --case-sensitive'
+# <<<<<<<<< end of ripgrep >>>>>>>>>

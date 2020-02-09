@@ -24,8 +24,6 @@
 # - https://github.com/zdharma/zinit#ice-modifiers
 # - http://zdharma.org/zinit/wiki/INTRODUCTION/#some_ice-modifiers
 
-# TODO: install `fzf` & `fasd` with `zinit`?
-
 # ref - search zsh-autosuggestions
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
 zinit ice wait lucid atload'!_zsh_autosuggest_start'
@@ -35,15 +33,7 @@ zinit light zsh-users/zsh-autosuggestions
 # color (such as `zsh-autosuggestions`) must be loaded prior
 # ref - search fast-syntax-highlighting
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
-# TODO: uncomment this and figure out bug
-# zinit ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
-
-# synchronize system clipboard
-# theoretically you might need to source this after other keymappings, have not
-# yet seen a need for enforcing that
-zinit ice wait lucid
-zinit light kutsan/zsh-system-clipboard
 
 # similar to `jk/`, convenient when query already typed out
 # ref - https://github.com/zsh-users/zsh-history-substring-search
@@ -53,23 +43,11 @@ zinit light zsh-users/zsh-history-substring-search
 # ref - https://github.com/romkatv/powerlevel10k#zinit
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-
-# provide `yarn remove` & `yarn add` completions
-# TODO: make this async
-# zinit ice wait lucid
-zinit light buonomo/yarn-completion
-
-# TODO: figure this out
-# type `fuck` to correct last typed command
-# zinit ice wait lucid
-# zinit light laggardkernel/zsh-thefuck
-
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<< syntax highlighting >>>>
-# TODO: understand why this doesn't seem to be working
 # refs:
 # - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
 # - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
@@ -104,9 +82,4 @@ bindkey '^w' vi-forward-word
 # << keymappings >>
 bindkey '^u' history-substring-search-up
 bindkey '^y' history-substring-search-down
-
-# <<< zsh-system-clipboard
-# https://github.com/kutsan/zsh-system-clipboard#options
-typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX='true'
-
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>>

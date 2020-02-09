@@ -21,7 +21,6 @@ source "$DOTFILES/zsh/instant_prompt.zsh"
 
 source "$DOTFILES/zsh/completion.zsh"
 source "$DOTFILES/zsh/config.zsh"
-source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/manydots.zsh"
 source "$DOTFILES/zsh/options.zsh"
 
@@ -77,12 +76,8 @@ config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
 for config_file in $config_files; do source "$config_file"; done
 unset config_files config_file
 
-# << work-specific >>
-[ -d "$HOME/work" ] && {
-  # initialize direnv environment variable manager - https://direnv.net
-  command -v direnv > /dev/null && eval "$(direnv hook zsh)"
-}
-# << end work-specific >>
+# initialize direnv environment variable manager - https://direnv.net
+command -v direnv > /dev/null && eval "$(direnv hook zsh)"
 
 # $PATH configuration
 source "$DOTFILES/zsh/path.zsh"
