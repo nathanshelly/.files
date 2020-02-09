@@ -42,3 +42,5 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 
 # optionally set up work-specific config (confirms via user prompt)
 "$DOTFILES/infra/setup/bin/setup_work"
+
+echo 'Setup finished! 🎉'

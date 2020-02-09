@@ -18,7 +18,7 @@ See [`docker/dotfiles`](./docker/dotfiles) for more details.
 
 The below commands will run the [`infra/setup/setup_dotfiles`](./infra/setup/setup_dotfiles) setup script.
 
-This script will walk through installing various shell utilities, applications and symlinking various files to their appropriate locations. See [`infra/setup`](./infra/setup/) folder for documentation on the setup process.
+This script will walk through installing various shell utilities, symlinking various files to their appropriate locations, etc. See [`infra/setup`](./infra/setup/) folder for documentation on the setup process.
 
 ```bash
 cd $HOME # to clone dotfiles to `$HOME/.files`
