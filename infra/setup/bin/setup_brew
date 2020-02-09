@@ -8,34 +8,15 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 # installation
 command -v brew > /dev/null || {
-  if "$DOTFILES/infra/scripts/is_macos.sh"; then
-    # ref - https://brew.sh/
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  else
-    # linux
-    # ref - https://docs.brew.sh/Homebrew-on-Linux
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    # TODO: confirm this is necessary on linux
-    # add `brew` to path
-    # ref - https://docs.brew.sh/Homebrew-on-Linux#install
-    eval "$(/home/dot/.linuxbrew/bin/brew shellenv 2> /dev/null)"
-  fi
+  # ref - https://brew.sh/
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
-# standard, platform-agnostic packages, no casks (desktop apps)
 cd "$DOTFILES" || {
   echo "failed to \`cd\` to $DOTFILES, \`brew bundle\` not run"
   exit 1
 }
 
 brew bundle
-
-"$DOTFILES/infra/scripts/is_macos.sh" || exit 0 # bail on Linux
-
-# <<<< macos-specific >>>>
-pushd "$DOTFILES/macos" > /dev/null || exit 1
-brew bundle # formulae
-popd "$DOTFILES/macos" > /dev/null || exit 1
-# <<<< end of macos-specific >>>>
 
 success "installed packages"

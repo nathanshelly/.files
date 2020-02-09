@@ -17,9 +17,6 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
 
-# initialize submodules
-"$DOTFILES/infra/setup/bin/setup_submodules"
-
 # symlink config files to their correct locations
 # exclude symlinks whose paths include the `|` separated terms
 "$DOTFILES/infra/setup/bin/symlink" "/gui/|/ssh|/languages/"
@@ -28,19 +25,5 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 # this adds `zsh` to our allowed shells and sets it as the default. Then it
 # loads `zsh` for the first time to install plugins & complete setup.
 "$DOTFILES/infra/setup/bin/setup_zsh"
-
-# load neovim for the first time to install plugins
-"$DOTFILES/infra/setup/bin/setup_neovim"
-
-# set up various pieces too small for their own files
-# see the file in question for each piece
-"$DOTFILES/infra/setup/bin/setup_bits_and_pieces"
-
-# run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions.symlink is
-# symlinked to `$HOME/.tool-versions`
-"$DOTFILES/infra/setup/bin/setup_asdf"
-
-# optionally set up work-specific config (confirms via user prompt)
-"$DOTFILES/infra/setup/bin/setup_work"
 
 echo 'Setup finished! 🎉'

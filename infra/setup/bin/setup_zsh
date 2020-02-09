@@ -28,7 +28,4 @@ info "Installing plugins"
 # install zplugin & its associated plugins
 zsh -i
 
-# # TODO: test this on new laptop
-# zsh -i -c 'zplugin self-update' -c exit
-
 success "Completed zsh setup"
