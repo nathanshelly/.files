@@ -1,22 +1,14 @@
 # git
 
-## [`gitconfig.symlink`](./gitconfig.symlink) & [`gitignore.symlink`](./gitignore.symlink)
+## [`gitconfig.symlink`](./gitconfig.symlink)
 
-Defines global [`.gitconfig`](https://git-scm.com/docs/git-config) & [`.gitignore`](https://git-scm.com/docs/gitignore) that are symlinked to `$HOME/.gitconfig` & `.$HOME/.gitignore`, respectively, by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
-
-A few of the notable configs set here:
-
-- `ff = only` - only perform fast-forward merges (a `git pull` that would result in a merge instead fails).
-- aliases
-  - `b` - dump branches to terminal, no pager by default
-  - `lb` - a base alias built on top of by `l`, `ln`, `lv` & `lvn` for varying levels of verbosity and printed # of commits
-- `[advice]` - turn off git advice to reduce verbosity
+Defines global [`.gitconfig`](https://git-scm.com/docs/git-config) that are symlinked to `$HOME/.gitconfig`, respectively, by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
 
 ## [`gitconfig.template`](./gitconfig.template)
 
 A template to be filled in locally with the appropriate name and email.
 
-This template is filled in by [`$DOTFILES/infra/setup/bin/setup_git_config`](../infra/setup/bin/setup_git_config)). The setup script calls this function once to set up a local gitconfig (`$HOME/.gitconfig.local`) and optionally a second time to set up a work gitconfig (`$HOME/.gitconfig.work`).
+This template is filled in by [`$DOTFILES/infra/setup/bin/setup_git_config`](../infra/setup/bin/setup_git_config)). The setup script calls this function to set up a local gitconfig (`$HOME/.gitconfig.local`).
 
 ## [`alias.zsh`](./alias.zsh)
 

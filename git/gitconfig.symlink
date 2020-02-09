@@ -1,9 +1,6 @@
 # local/private config pulled from include
 [include]
   path = ~/.gitconfig.local
-# for work projects
-[includeIf "gitdir:~/work/"]
-  path = ~/.gitconfig.work
 [hub]
   protocol = ssh
 [color]
@@ -28,8 +25,6 @@
   prompt = false
 [help]
   autocorrect = 1
-[pull]
-  ff = only
 [push]
   default = current
 [alias]
@@ -51,14 +46,6 @@
   branch = 135
   localBranch = 135
   remoteBranch = 159
-[advice]
-  pushNonFastForward = false
-  statusHints        = false
-  commitBeforeMerge  = false
-  resolveConflict    = false
-  implicitIdentity   = false
-  detachedHead       = false
-  waitingForEditor   = false
 [gc]
 	# https://stackoverflow.com/a/41771616/2574937
 	pruneExpire = 1.hour.ago
