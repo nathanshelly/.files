@@ -16,4 +16,4 @@ filter=(
   # `#! usr/bin/env bash` shebang
   git grep -l '^\(#! */usr/bin/env bash\|#! */bin/bash\)$' -- "${filter[@]}"
   # remove duplicates from .sh + shebang
-} | sort | uniq | xargs shellcheck || exit 1
+} | sort | uniq | xargs shellcheck
