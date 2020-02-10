@@ -13,5 +13,4 @@
   return 1
 }
 
-# only reset if we can't fast-forward
-git pull --all || git reset --hard "origin/$1"
+git fetch --all && git reset --hard "origin/$1"

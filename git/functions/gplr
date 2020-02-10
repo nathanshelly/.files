@@ -13,4 +13,4 @@
 }
 
 # only reset if we can't fast-forward
-git pull --all || git rebase --interactive "origin/$1"
+git fetch --all || git rebase --interactive "origin/$1"
