@@ -25,11 +25,6 @@ typeset -U path
     $path
   )
 
-  # TODO: confirm this is needed
-  [[ -d "$HOMEBREW_PREFIX/opt/fzf/bin" ]] && {
-    path=("$HOMEBREW_PREFIX/opt/fzf/bin" $path)
-  }
-
   # enable usage of `gmake` as `make` (`gmake` installed via `make` in Brewfile)
   [[ -d "$HOMEBREW_PREFIX/opt/make/libexec/gnubin" ]] && {
     path=("$HOMEBREW_PREFIX/opt/make/libexec/gnubin" $path)

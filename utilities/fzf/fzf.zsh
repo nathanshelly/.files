@@ -29,19 +29,17 @@ command -v fzf > /dev/null || return
 # different from default behavior)
 source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 
+# use `fd` for `**` path & directory completion if installed
+command -v fd > /dev/null && {
+  # path completion - `$1` is the base path to start traversal
+  _fzf_compgen_path() {
+    fd --hidden --follow --exclude ".git" . "$1"
+  }
 
-# TODO: handle `fd` not being installed
-
-# use `fd` for `**` path completion
-# `$1` is the base path to start traversal
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-
-# use `fd` for `**` directory completion
-# `$1` is the base path to start traversal
-_fzf_compgen_dir() {
-  fd --type directory --hidden --follow --exclude ".git" . "$1"
+  # directory completion - `$1` is the base path to start traversal
+  _fzf_compgen_dir() {
+    fd --type directory --hidden --follow --exclude ".git" . "$1"
+  }
 }
 
 # <<<< config >>>>
@@ -62,7 +60,14 @@ _fzf_bat_preview="--preview='bat --style=numbers --color=always {}'"
 _fzf_preview_window="--preview-window=down:75%"
 _fzf_hidden_preview_window="${_fzf_preview_window}:hidden"
 
-export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude .git --type file"
+if command -v fd > /dev/null; then
+  export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude .git --type file"
+  export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git"
+else
+  export FZF_DEFAULT_COMMAND="find -L . -type f"
+  export FZF_ALT_C_COMMAND="find . -type d"
+fi
+
 export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
  --select-1 --exit-0 --multi\
  $_fzf_preview_window\
@@ -81,7 +86,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"
 
 # << navigate to directory (`cd` into selected folder) >>
-export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git"
 export FZF_ALT_C_OPTS="--preview='exa --color always {}'"
 
 # << edit w/ $EDITOR >>

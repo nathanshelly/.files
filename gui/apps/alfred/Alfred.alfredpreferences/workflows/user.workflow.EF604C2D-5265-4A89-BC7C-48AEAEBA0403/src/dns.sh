@@ -12,7 +12,7 @@ fi
 # Handle action
 if [ "$1" != "" ]; then
   if [ "$1" == "EDIT" ]; then
-  	open "$FILE"
+    open "$FILE"
     exit
   elif [ "$1" == "DEFAULT" ]; then
     DNS="empty"
@@ -24,8 +24,6 @@ if [ "$1" != "" ]; then
   dscacheutil -flushcache
   exit
 fi
-
-# TODO: Handle both WiFi and Ethernet connections
 
 DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$NAME")")
 
