@@ -42,7 +42,4 @@ if command -v rg > /dev/null; then
 else
   alias f='grep -R'
 fi
-# if `fd` not installed alias `fd` to `find` (uses `fd` alias instead of `f` as
-# that is already used by `ripgrep`)
-command -v fd > /dev/null || alias fd='find . -iname'
 command -v package_manager > /dev/null && alias pm="$(package_manager)"
