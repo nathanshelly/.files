@@ -34,3 +34,11 @@ augroup filetype_json
   " - https://github.com/neoclide/jsonc.vim/blob/master/ftdetect/jsonc.vim
   autocmd Filetype json setlocal filetype=jsonc
 augroup END
+
+augroup filetype_jsonc
+  autocmd!
+  " the `jsonc` extension I use assumes `.cjson` as the extension. I'd rather
+  " use `.jsonc`.
+  " ref - https://github.com/neoclide/jsonc.vim/blob/master/ftdetect/jsonc.vim
+  autocmd BufNewFile,BufRead *.jsonc setlocal filetype=jsonc
+augroup END
