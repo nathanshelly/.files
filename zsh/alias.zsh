@@ -37,15 +37,12 @@ command -v shfmt > /dev/null && alias shfmt='shfmt -i 2 -bn -ci -sr'
 alias e="$EDITOR" # text editor
 command -v exiftool > /dev/null && alias i=exiftool # metadata info
 command -v open > /dev/null && alias o=open # macOS open command
-# search (TODO: maybe use ternary here?)
 if command -v rg > /dev/null; then
   alias f='/usr/local/bin/rg --smart-case'
 else
-  # TODO: make function here to really abstract out difference?
   alias f='grep -R'
 fi
 # if `fd` not installed alias `fd` to `find` (uses `fd` alias instead of `f` as
 # that is already used by `ripgrep`)
-# TODO: make function here to really abstract out difference?
 command -v fd > /dev/null || alias fd='find . -iname'
 command -v package_manager > /dev/null && alias pm="$(package_manager)"
