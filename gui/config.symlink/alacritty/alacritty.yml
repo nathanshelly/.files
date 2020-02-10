@@ -60,9 +60,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  # TODO: use `Maximized` when Alacritty is patched
-  # ref - https://github.com/jwilm/alacritty/issues/2877
-  startup_mode: Windowed
+  startup_mode: Maximized
 
   # Window title
   # title: Alacritty

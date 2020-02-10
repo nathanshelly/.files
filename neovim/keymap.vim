@@ -19,10 +19,6 @@ inoremap jk <esc>
 " ref - https://stackoverflow.com/a/10757148
 inoremap <c-c> <esc>
 
-" disable command mode
-" TODO: maybe come up with a nicer solution here
-nnoremap q: <nop>
-
 " <<<< home row keys for movement >>>>
 
 " left/right
