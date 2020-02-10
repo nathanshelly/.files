@@ -42,6 +42,7 @@ brew "git-delta"
 brew "gpg"
 brew "hub"
 brew "hyperfine"
+brew 'jq'
 brew "mdcat"
 brew "neovim", args: ["HEAD"]
 brew "pastel"
