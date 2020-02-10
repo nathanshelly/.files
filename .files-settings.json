@@ -3,6 +3,6 @@
   "fzf": true,
   "git-aliases": true,
   "theme": "dark",
-  "vi-mode": true,
+  "vi-mode": false,
   "zsh": true
 }
