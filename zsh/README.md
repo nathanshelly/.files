@@ -12,6 +12,7 @@ See [here](https://github.com/nathanshelly/.files/tree/master/zsh#why-zsh) for m
 - [`config.zsh`](#config.zsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
 - [`functions.zsh`](#functions.zsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
 - [`instant_prompt.zsh`](#instant_prompt.zsh) - enable [instant prompt](https://github.com/romkatv/powerlevel10k#what-is-instant-prompt)
+- [`keymap.zsh`](#keymap.zsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
 - [`manydots.zsh`](#manydots.zsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
 - [`options.zsh`](#options.zsh) - configure options (anything set using `setopt`)
 - [`path.zsh`](#path.zsh) - configure `$PATH`
@@ -56,6 +57,23 @@ Autoload all functions (executable files) defined in any directory named `functi
 ### [`instant_prompt.zsh`](./instant_prompt.zsh)
 
 Enable [instant prompt](https://github.com/romkatv/powerlevel10k#what-is-instant-prompt).
+
+### [`keymap.zsh`](./keymap.zsh)
+
+Turns on `vim` mode for [`zle`](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings.
+
+Can be disabled/enabled via the `vi-mode` setting in [`$DOTFILES/.files-settings.json`](../.files-settings.json).
+
+Add keymappings to support text objects supported by `vim`. Each of the following can be used with `i` or `a` (e.g. `i<character>` or `a<character>`): `'`, `"`, \`, `{`, `(`, `[`, `<`.
+
+Add keymappings to recreate behavior of [`vim-surround`](https://github.com/tpope/vim-surround) (that link provides usage examples).
+
+Additional notable keymappings:
+
+- insert mode
+  - `jk` to escape insert mode
+- normal mode
+  - `v` to edit the current command in `$EDITOR`. Quitting the opened editor dumps the edited command to the command line for execution.
 
 ### [`manydots.zsh`](./manydots.zsh)
 

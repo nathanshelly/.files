@@ -16,25 +16,8 @@ bindkey -v
 # map jk to esc in insert mode
 bindkey -M viins 'jk' vi-cmd-mode
 
-# change movement to home row
-# hjkl -> jkl; in normal mode
-bindkey -M vicmd 'j' vi-backward-char
-bindkey -M vicmd 'k' down-line-or-history
-bindkey -M vicmd 'l' up-line-or-history
-bindkey -M vicmd ';' vi-forward-char
-
 # enable normal backspace behavior
 bindkey "^?" backward-delete-char
-
-# start/end of line movement
-bindkey -M vicmd "'" vi-end-of-line
-bindkey -M vicmd '"' vi-digit-or-beginning-of-line
-
-# repeat `tfTF` motions (find next char)
-# `,` is default binding to repeat in opposite direction
-# need to manually bind `h` to repeat find since we overwrote the default
-# binding of `;` for movement
-bindkey -M vicmd "h" vi-repeat-find
 
 # edit zsh commands in $EDITOR
 # ref - https://nuclearsquid.com/writings/edit-long-commands/
