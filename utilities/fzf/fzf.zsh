@@ -78,9 +78,6 @@ ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 
 # filter and output files from the root of the current git repo
 bindkey '^g' fzf_repo_file_widget
-# filter and output all files/directories (including those listed in (git)ignore
-# files) below current directory
-bindkey '^a' fzf_all_widget
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$_fzf_bat_preview $_fzf_hidden_preview_window"

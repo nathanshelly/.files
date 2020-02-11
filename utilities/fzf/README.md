@@ -23,7 +23,7 @@ Enables completions/keybindings along with configuring commands/options.
 
 Use `fd` (instead of default `find`) for `**` path & directory completion and keybindings.
 
-Enable multi-select (w/ `Tab` & `Shift-Tab`) by default. Use `Ctrl-a` to select all filtered values. Use `Ctrl-k` & `Ctrl-l` to move down and up results list.
+Enable multi-select (w/ `Tab` & `Shift-Tab`) by default. Use `Ctrl-k` & `Ctrl-l` to move down and up results list.
 
 Add previews w/ `bat` (toggleable w/ `Ctrl-Space`). Use `Ctrl-d` & `Ctrl-u` to scroll previews down and up, respectively.
 
@@ -34,7 +34,6 @@ If only one option would be displayed, select it immediately (`--select-1`. If n
 > `C` here means `Ctrl`
 
 - `C-g` - filter and output files from the root of the current git repo
-- `C-a` - filter and output files & directories below current directory including ignored (by `.gitignore` or `.ignore` files) files
 - `C-p` - filter and edit (w/ `$EDITOR`) files
 - `C-r` (or `/` in `vicmd` mode) - filter and run shell history. While filtering hit `C-e` to output the command to the line for editing before running.
 
