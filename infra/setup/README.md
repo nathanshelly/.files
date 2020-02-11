@@ -11,12 +11,12 @@ cat "$HOME/.ssh/id_rsa.pub" | pbcopy
 
 # now add to GitHub @ https://github.com/settings/keys
 
-cd $HOME # to clone dotfiles to `$HOME/.odfiles`
+cd $HOME # to clone dotfiles to `$HOME/.odotfiles`
 # install `git` on new macOS machine
 [ "$(uname)" == "Darwin" ] && xcode-select --install
 # now clone this repo and run setup
-git clone git@github.com:opendoor-labs/odfiles.git .odfiles
-cd .odfiles
+git clone git@github.com:opendoor-labs/odotfiles.git .odotfiles
+cd .odotfiles
 make setup
 ```
 

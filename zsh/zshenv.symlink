@@ -1,5 +1,5 @@
 # path to dotfiles
-export DOTFILES="$HOME/.odfiles"
+export DOTFILES="$HOME/.odotfiles"
 
 # `brew --prefix` takes ~25ms on my machine (to see how long it takes on yours
 # try `hyperfine 'brew --prefix'`). To avoid that overhead I hardcode the

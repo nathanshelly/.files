@@ -1,4 +1,4 @@
-# odfiles
+# odotfiles
 
 macOS configuration for Opendoor employees.
 
@@ -11,10 +11,10 @@ The below commands will run the [`infra/setup/setup_dotfiles`](./infra/setup/set
 This script will walk through installing various shell utilities, symlinking various files to their appropriate locations, etc. See [`infra/setup`](./infra/setup/) folder for documentation on the setup process.
 
 ```bash
-cd $HOME # to clone dotfiles to `$HOME/odfiles`
+cd $HOME # to clone dotfiles to `$HOME/odotfiles`
 # now clone this repo and run setup
-git clone https://github.com/opendoor-labs/odfiles.git .odfiles
-cd .odfiles
+git clone https://github.com/opendoor-labs/odotfiles.git .odotfiles
+cd .odotfiles
 make setup
 ```
 
