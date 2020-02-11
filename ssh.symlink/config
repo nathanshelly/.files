@@ -2,7 +2,7 @@ Host github.com
   IdentityFile ~/.ssh/github
 
 Host pi
-  HostName 192.168.1.2
+  HostName natasha-codes.duckdns.org
   User nathan
   IdentityFile ~/.ssh/pi
 
