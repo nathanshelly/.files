@@ -6,4 +6,6 @@ export DOTFILES="$HOME/.odfiles"
 # path (seems pretty stable).
 export HOMEBREW_PREFIX="/usr/local"
 
+export GOPATH="$HOME/go"
+
 export VAULT_ADDR=https://vault.services.opendoor.com:8200
