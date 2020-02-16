@@ -6,14 +6,10 @@
 // this symlinking should occur through the install script
 //
 // can also be done manually:
-// `ln -s $DOTFILES/neovim/coc.json $HOME/.config/nvim/coc-settings.json`
+// `ln -s $DOTFILES/neovim/coc.jsonc $HOME/.config/nvim/coc-settings.json`
 //
 // Note: install script symlinking works by symlinking the existing symlink in
 // `$DOTFILES/config/nvim`
-//
-// Note II: GitHub correctly highlights comments with the `json5` extension
-// TODO: switch to using `jsonc` extension (since it seems more common in my
-// anecdotal experience) when GitHub adds support
 {
   // "coc.preferences.bracketEnterImprove", // how is this supposed to work
   "coc.preferences.formatOnSaveFiletypes": [
