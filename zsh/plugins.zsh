@@ -33,6 +33,7 @@ zinit light zsh-users/zsh-autosuggestions
 # color (such as `zsh-autosuggestions`) must be loaded prior
 # ref - search fast-syntax-highlighting
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
+zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
 # similar to `jk/`, convenient when query already typed out

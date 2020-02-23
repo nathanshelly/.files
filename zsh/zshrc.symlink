@@ -3,7 +3,7 @@
 # specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# <<<< files without dependencies >>>>
+# <<<< guards >>>>
 
 [[ -v DOTFILES ]] || {
   echo '$DOTFILES not defined, `.zshenv` must not have run. Bailing on `.zshrc`'
@@ -12,12 +12,18 @@
 
 "$DOTFILES/infra/scripts/component_enabled.sh" 'zsh' || return 0
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+# ref - https://github.com/romkatv/powerlevel10k#what-is-instant-prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# <<<< files without dependencies >>>>
+
 # store tokens/keys in `secrets.zsh`, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/secrets.zsh" ] && source "$DOTFILES/zsh/secrets.zsh"
-
-# this should be one of the first files sourced, see explanation at the top of
-# the file
-source "$DOTFILES/zsh/instant_prompt.zsh"
 
 source "$DOTFILES/zsh/completion.zsh"
 source "$DOTFILES/zsh/config.zsh"
@@ -56,8 +62,9 @@ autoload -Uz _zinit
 source "$DOTFILES/zsh/plugins.zsh"
 # <<<< end of plugins >>>>
 
-# configure prompt after enabling
-source "$DOTFILES/zsh/prompt.zsh"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# note: ~/.p10k.zsh is a symlink to $DOTFILES/zsh/p10k.zsh.symlink
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # all *.zsh files throughout this repo exluding the $DOTFILES/zsh &
 # $DOTFILES/submodules directories (technically excludes $DOTFILES/**/zsh &
