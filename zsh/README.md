@@ -29,13 +29,12 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`completion.zsh`](#completion.zsh) - initialize completion
 - [`config.zsh`](#config.zsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
 - [`functions.zsh`](#functions.zsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
-- [`instant_prompt.zsh`](#instant_prompt.zsh) - enable [instant prompt](https://github.com/romkatv/powerlevel10k#what-is-instant-prompt)
 - [`keymap.zsh`](#keymap.zsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
 - [`manydots.zsh`](#manydots.zsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
 - [`options.zsh`](#options.zsh) - configure options (anything set using `setopt`)
 - [`path.zsh`](#path.zsh) - configure `$PATH`
 - [`plugins.zsh`](#plugins.zsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
-- [`prompt.zsh`](#prompt.zsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
+- [`p10k.zsh.symlink`](#p10k.zsh.symlink) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
 - [`secrets.zsh`](#secrets.zsh) - store secrets such as API tokens. This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
 - [`zshenv.symlink`](#zshenv.symlink) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES` & `$PATH`)
 - [`zshrc.symlink`](#zshrc.symlink) - source every `*.zsh` throughout this repo (`$DOTFILES/**/*.zsh`) to set up config
@@ -75,10 +74,6 @@ Set history file location and increases the size of the history to 100,000 lines
 ### [`functions.zsh`](./functions.zsh)
 
 Autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`).
-
-### [`instant_prompt.zsh`](./instant_prompt.zsh)
-
-Enable [instant prompt](https://github.com/romkatv/powerlevel10k#what-is-instant-prompt).
 
 ### [`keymap.zsh`](./keymap.zsh)
 
@@ -126,7 +121,7 @@ Enable and configure plugins.
 
 Managed by [`zinit`](https://github.com/zdharma/zinit).
 
-### [`prompt.zsh`](./prompt.zsh)
+### [`p10k.zsh.symlink`](./p10k.zsh.symlink)
 
 Configure prompt appearance.
 
@@ -159,7 +154,6 @@ This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/infra/setup/bin/symlink`](
 Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and autoload any functions in `functions` folders throughout this repo. Here is the loading order:
 
 1. [`secrets.zsh`](./secrets.zsh) - only if this file exists
-1. [`instant_prompt.zsh`](./instant_prompt.zsh)
 1. [`completion.zsh`](./completion.zsh)
 1. [`config.zsh`](./config.zsh)
 1. [`keymap.zsh`](./keymap.zsh)
@@ -168,7 +162,7 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`functions.zsh`](./functions.zsh)
 1. [`alias.zsh`](./alias.zsh)
 1. [`plugins.zsh`](./plugins.zsh)
-1. [`prompt.zsh`](./prompt.zsh)
+1. [`p10k.zsh.symlink`](./p10k.zsh.symlink)
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory) and `$DOTFILES/submodules`.
 1. [`path.zsh`](./path.zsh)
 1. [`asdf.zsh`](./asdf.zsh)
