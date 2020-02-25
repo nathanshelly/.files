@@ -20,7 +20,7 @@ call plug#begin()
 " a multipurpose client for language servers (e.g. intellisense, compilation
 " errors, formatting), linters, formatters (e.g. prettier or black) and various
 " other external shell programs (e.g. shellcheck)
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " provide completions from tmux panes
 Plug 'wellle/tmux-complete.vim'
