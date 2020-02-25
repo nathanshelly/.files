@@ -30,8 +30,9 @@ export TMUXINATOR_CONFIG="$DOTFILES/tmux/tmuxinator_configs"
 # set default editors
 # technically only aliasing $VISUAL is necessary but $EDITOR is used elsewhere
 # in these dotfiles and should be `nvim`
-export VISUAL=nvim
-export EDITOR=nvim
+editor="$($DOTFILES/infra/scripts/get_local_setting.sh "editor")"
+export VISUAL="$editor"
+export EDITOR="$editor"
 
 # shorten key delay to .2 seconds
 # most important for quickly exiting
