@@ -19,3 +19,5 @@ make setup
 ```
 
 Unless something went wrong (🤞) you're all set up now! 🎉
+
+Configure high-level features of these dotfiles via the [settings](./infra/docs/settings.md).

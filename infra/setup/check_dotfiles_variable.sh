@@ -23,8 +23,8 @@ check_dotfiles_variable() {
   _get_dotfiles_repo_root
 
   [[ -z "$DOTFILES" ]] && {
-    printf "This script requires a DOTFILES environment variable holding the \
-path\nto the repo this script is running form. This path appears to be\n\
+    printf "This script requires a \$DOTFILES environment variable holding the \
+path\nto the repo this script is running from. This path appears to be\n\
 '%s'.\n\nIs this correct (y/any other key)? " "$_COMPUTED_DOTFILES"
     # `-r` treats backslash as a literal, `-n` accepts one character of input
     read -r -n 1 maybe_continue

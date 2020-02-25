@@ -34,6 +34,7 @@ brew "git-delta"
 brew "hub"
 brew 'jq'
 brew "mdcat"
+brew "nvim"
 brew "ripgrep"
 brew "rsync"
 brew "tldr"

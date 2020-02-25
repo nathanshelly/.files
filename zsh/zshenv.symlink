@@ -9,3 +9,7 @@ export HOMEBREW_PREFIX="/usr/local"
 export GOPATH="$HOME/go"
 
 export VAULT_ADDR=https://vault.services.opendoor.com:8200
+
+# set default editor
+editor="$($DOTFILES/infra/scripts/get_local_setting.sh "editor")"
+export EDITOR="$editor"
