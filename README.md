@@ -32,10 +32,14 @@ make setup
 
 Unless something went wrong (🤞) you're all set up now! 🎉
 
+Configure high-level features of these dotfiles via the [settings](./infra/docs/settings.md).
+
 ## overview
 
 Primarily a [`tmux`](https://github.com/tmux/tmux), [`zsh`](https://www.zsh.org) & [`neovim`](https://github.com/neovim/neovim) workflow.
 
 See the respective topic folders: [`tmux`](./tmux), [`zsh`](./zsh) & [`neovim`](./neovim).
+
+See [additional documentation](./infra/docs).
 
 ![workflow](https://user-images.githubusercontent.com/9750687/74062062-4aff5b00-49a2-11ea-9edd-2dd85c7ea5fb.png 'workflow')
