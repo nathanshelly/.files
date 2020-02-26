@@ -2,6 +2,11 @@
 
 command -v smat > /dev/null && alias cat=smat # $DOTFILES/functions/smat
 
+# these generic aliases allow changing the underlying command without having to
+# change your muscle memory
+alias e="$EDITOR"
+command -v rg > /dev/null && alias f="rg"
+
 # <<<<<<<<< exa >>>>>>>>>
 # exa - replacement for `ls`
 # ref - https://github.com/ogham/exa
@@ -11,8 +16,6 @@ command -v exa > /dev/null && {
   # options - https://github.com/ogham/exa#options
 
   alias la='l --all'
-  # TODO: get newer version of `exa` that supports this
-  # alias ld='l --list-dirs'
   alias li='l --git-ignore'
   alias ll='l --long --all'
 } || {
