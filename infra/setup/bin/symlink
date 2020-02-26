@@ -13,6 +13,7 @@ main() {
 
   link_file "$DOTFILES/zsh/zshenv.symlink" "$HOME/.zshenv"
   link_file "$DOTFILES/zsh/zshrc.symlink" "$HOME/.zshrc"
+  link_file "$DOTFILES/zsh/p10k.zsh.symlink" "$HOME/.p10k.zsh"
   link_file "$DOTFILES/git/gitconfig.symlink" "$HOME/.gitconfig"
 }
 
