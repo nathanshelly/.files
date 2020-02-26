@@ -31,9 +31,18 @@ source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/manydots.zsh"
 source "$DOTFILES/zsh/options.zsh"
 
+# $PATH configuration
+# perform early so that executables are available for future config files
+source "$DOTFILES/zsh/path.zsh"
+
 # <<<< files with dependencies >>>>
+# these files depend either on executables made accessible via $PATH or code
+# defined in earlier config files.
+#
 # note: some files here also define dependencies for later files so the ordering
 # in this section matters (unlike in the previous two sections)
+
+source "$DOTFILES/zsh/dynamic_env_vars.zsh"
 
 source "$DOTFILES/zsh/functions.zsh"
 
@@ -92,7 +101,5 @@ unset config_files config_file
 }
 # << end work-specific >>
 
-# $PATH configuration
-source "$DOTFILES/zsh/path.zsh"
 # source asdf to give it final say on package versions
 source "$DOTFILES/zsh/asdf.zsh"

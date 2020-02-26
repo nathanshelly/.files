@@ -27,9 +27,6 @@ export HOMEBREW_AUTO_UPDATE_SECS=86400 # check for update every 24 hours
 # ref - https://github.com/tmuxinator/tmuxinator#project-configuration-location
 export TMUXINATOR_CONFIG="$DOTFILES/tmux/tmuxinator_configs"
 
-# get default editor from local settings
-export EDITOR="$($DOTFILES/infra/scripts/get_local_setting.sh "editor")"
-
 # shorten key delay to .2 seconds
 # most important for quickly exiting
 # vi insert mode
