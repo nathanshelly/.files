@@ -10,16 +10,14 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 
 # run in separate subshells
 
-# set up Homebrew and all packages from `$DOTFILES/Brewfile` &
-# `$DOTFILES/macos/Brewfile`
+# set up Homebrew and all packages from `$DOTFILES/Brewfile`
 "$DOTFILES/infra/setup/bin/setup_brew"
 
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
 
 # symlink config files to their correct locations
-# exclude symlinks whose paths include the `|` separated terms
-"$DOTFILES/infra/setup/bin/symlink" "/gui/|/ssh|/languages/"
+"$DOTFILES/infra/setup/bin/symlink"
 
 # set up our shell (`zsh`)
 # this adds `zsh` to our allowed shells and sets it as the default. Then it
