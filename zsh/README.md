@@ -7,7 +7,6 @@ See [here](https://github.com/nathanshelly/.files/tree/master/zsh#why-zsh) for m
 ## skimmable list of files
 
 - [`alias.zsh`](#alias.zsh) - define various aliases. Some aliases specific to a topic (for example aliases for `git`) are in the corresponding topic folder (e.g. [`$DOTFILES/git/alias.zsh`](../git/alias.zsh)).
-- [`asdf.zsh`](#asdf.zsh) - initialize [`asdf`](https://asdf-vm.com) (the version manager I use)
 - [`completion.zsh`](#completion.zsh) - initialize completion
 - [`config.zsh`](#config.zsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
 - [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh) - set environment variables whose value requires dynamism (dependencies)
@@ -35,10 +34,6 @@ Notable aliases:
 - `cat` - [`smat`](../functions/smat) - based on installed utilities conditionally renders `.md` files with [`mdcat`](https://github.com/lunaryorn/mdcat) and other files with [`bat`](https://github.com/sharkdp/bat)
 - `l` (& `ll`, `la`, etc.) - various aliases of [`exa`](https://github.com/ogham/exa), a modern replacement for `ls`
 - `f` - `rg` if installed, `grep -R` otherwise. Provides a generic search command regardless of backing program.
-
-### [`asdf.zsh`](./asdf.zsh)
-
-Initialize the [`asdf`](https://asdf-vm.com) version manager.
 
 ### [`completion.zsh`](./completion.zsh)
 
@@ -147,7 +142,6 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`plugins.zsh`](./plugins.zsh)
 1. [`p10k.zsh.symlink`](./p10k.zsh.symlink)
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory) and `$DOTFILES/submodules`.
-1. [`asdf.zsh`](./asdf.zsh)
 
 `zshrc.symlink` itself is loaded after `zshenv.symlink` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
 
