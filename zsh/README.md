@@ -16,7 +16,7 @@ See [here](https://github.com/nathanshelly/.files/tree/master/zsh#why-zsh) for m
 - [`manydots.zsh`](#manydots.zsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
 - [`options.zsh`](#options.zsh) - configure options (anything set using `setopt`)
 - [`path.zsh`](#path.zsh) - configure `$PATH`
-- [`plugins.zsh`](#plugins.zsh) - enable and configure plugins. Managed by [`zplugin`](https://github.com/zdharma/zplugin).
+- [`plugins.zsh`](#plugins.zsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
 - [`prompt.zsh`](#prompt.zsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
 - [`secrets.zsh`](#secrets.zsh) - store secrets such as API tokens. This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
 - [`zshenv.symlink`](#zshenv.symlink) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES` & `$PATH`)
@@ -100,7 +100,7 @@ Enable and configure `$PATH`.
 
 Enable and configure plugins.
 
-Managed by [`zplugin`](https://github.com/zdharma/zplugin).
+Managed by [`zinit`](https://github.com/zdharma/zinit).
 
 ### [`prompt.zsh`](./prompt.zsh)
 

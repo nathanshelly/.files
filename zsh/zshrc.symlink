@@ -62,9 +62,10 @@ autoload -Uz _zinit
 source "$DOTFILES/zsh/plugins.zsh"
 # <<<< end of plugins >>>>
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# note: ~/.p10k.zsh is a symlink to $DOTFILES/zsh/p10k.zsh.symlink
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# run `p10k configure` or edit $DOTFILES/zsh/p10k.zsh.symlink to customize prompt
+# note: $DOTFILES/zsh/p10k.zsh.symlink is symlinked to ~/.p10k.zsh so that
+# changes via `p10k configure` are reflected here & tracked.
+source "$DOTFILES/zsh/p10k.zsh.symlink"
 
 # all *.zsh files throughout this repo exluding the $DOTFILES/zsh &
 # $DOTFILES/submodules directories (technically excludes $DOTFILES/**/zsh &

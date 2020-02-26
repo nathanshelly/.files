@@ -13,7 +13,7 @@ info "Setting up zsh"
 # add `zsh` to allowed shells if not already added
 grep -q "$zsh_path" /etc/shells || {
   info "Using sudo access to add '$zsh_path' to /etc/shells"
-  sudo sh -c 'printf "%s\n" "$zsh_path" >> /etc/shells' && {
+  sudo sh -c "printf '%s\n' '$zsh_path' >> /etc/shells" && {
     info "Added $zsh_path to /etc/shells"
   }
 }
@@ -25,7 +25,10 @@ grep -q "$zsh_path" /etc/shells || {
 }
 
 info "Installing plugins"
-# install zplugin & its associated plugins
-zsh -i
+
+# install zinit & its associated plugins
+# `zinit self-update` is a recommended post-install step which runs `zcompile`
+# to squeeze the last bit of performance
+zsh -i -c 'zinit self-update' > /dev/null
 
 success "Completed zsh setup"
