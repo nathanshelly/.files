@@ -25,10 +25,9 @@ grep -q "$zsh_path" /etc/shells || {
 }
 
 info "Installing plugins"
-# install zplugin & its associated plugins
-zsh -i
 
-# # TODO: test this on new laptop
-# zsh -i -c 'zplugin self-update' -c exit
+# install zinit & its associated plugins
+# TODO: make this less black boxy
+zsh -i -c 'zinit self-update' > /dev/null
 
 success "Completed zsh setup"

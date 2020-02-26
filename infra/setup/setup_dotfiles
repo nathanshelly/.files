@@ -44,3 +44,5 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 "$DOTFILES/infra/setup/bin/setup_work"
 
 echo 'Setup finished! 🎉'
+echo 'Starting new shell, happy coding!'
+zsh -i
