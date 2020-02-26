@@ -27,6 +27,8 @@ grep -q "$zsh_path" /etc/shells || {
 info "Installing plugins"
 
 # install zinit & its associated plugins
+# `zinit self-update` is a recommended post-install step which runs `zcompile`
+# to squeeze the last bit of performance
 # TODO: make this less black boxy
 zsh -i -c 'zinit self-update' > /dev/null
 
