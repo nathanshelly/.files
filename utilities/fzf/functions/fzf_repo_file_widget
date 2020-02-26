@@ -9,12 +9,12 @@ __fsel_repo() {
   # directory
   # TODO: maybe do this relatively? would be cleaner usage, not sure it's worth
   # implementation complexity
-  local _repo_root="$(rr)"
+  local _repo_root="$(git rev-parse --show-toplevel)"
   local cmd="${FZF_CTRL_T_COMMAND}"
   # TODO: why `2>` here?
   setopt localoptions pipefail 2> /dev/null
   eval "$FZF_CTRL_T_COMMAND . $_repo_root" \
-    | sed "s~^$(rr)/~~" \
+    | sed "s~^$(git rev-parse --show-toplevel)/~~" \
     | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS --preview='bat --style=numbers --color=always $_repo_root/{}'" $(__fzfcmd) -m "$@" \
     | while read item; do
       echo -n "$_repo_root/${(q)item} " # TODO: use `printf` not `echo`
