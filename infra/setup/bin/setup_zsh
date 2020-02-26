@@ -14,14 +14,14 @@ info "Setting up zsh"
 grep -q "$zsh_path" /etc/shells || {
   info "Using sudo access to add '$zsh_path' to /etc/shells"
   sudo sh -c "printf '%s\n' '$zsh_path' >> /etc/shells" && {
-    info "Added $zsh_path to /etc/shells"
+    success "Added $zsh_path to /etc/shells"
   }
 }
 
 # change login shell to brew `zsh` if it isn't already
 [ "$SHELL" = "$zsh_path" ] || {
   info "Using sudo access to change default shell to '$zsh_path'"
-  chsh -s "$zsh_path" && info "Changed login shell to $zsh_path"
+  chsh -s "$zsh_path" && success "Changed login shell to $zsh_path"
 }
 
 info "Installing plugins"
