@@ -12,6 +12,8 @@ This script will walk through installing various shell utilities, symlinking var
 
 ```bash
 cd $HOME # to clone dotfiles to `$HOME/odotfiles`
+# install git on new computers (no-ops if already installed)
+xcode-select --install
 # now clone this repo and run setup
 git clone https://github.com/opendoor-labs/odotfiles.git .odotfiles
 cd .odotfiles
