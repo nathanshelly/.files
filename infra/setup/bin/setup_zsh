@@ -13,7 +13,7 @@ info "Setting up zsh"
 # add `zsh` to allowed shells if not already added
 grep -q "$zsh_path" /etc/shells || {
   info "Using sudo access to add '$zsh_path' to /etc/shells"
-  sudo sh -c 'printf "%s\n" "$zsh_path" >> /etc/shells' && {
+  sudo sh -c "printf '%s\n' '$zsh_path' >> /etc/shells" && {
     info "Added $zsh_path to /etc/shells"
   }
 }
