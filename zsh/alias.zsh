@@ -34,6 +34,8 @@ command -v trash > /dev/null && {
 command -v shfmt > /dev/null && alias shfmt='shfmt -i 2 -bn -ci -sr'
 
 # <<<< generics >>>>
+# these generic aliases allow changing the underlying command without having to
+# change your muscle memory
 alias e="$EDITOR" # text editor
 command -v exiftool > /dev/null && alias i=exiftool # metadata info
 command -v open > /dev/null && alias o=open # macOS open command
