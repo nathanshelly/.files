@@ -28,6 +28,7 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`asdf.zsh`](#asdf.zsh) - initialize [`asdf`](https://asdf-vm.com) (the version manager I use)
 - [`completion.zsh`](#completion.zsh) - initialize completion
 - [`config.zsh`](#config.zsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
+- [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh) - set environment variables whose value requires dynamism (dependencies)
 - [`functions.zsh`](#functions.zsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
 - [`keymap.zsh`](#keymap.zsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
 - [`manydots.zsh`](#manydots.zsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
@@ -70,6 +71,10 @@ Initialize completion. Uses a cache with a refresh every 20 hours to speed up sh
 Configure miscellaneous behavior that doesn't fit in any other file.
 
 Set history file location and increases the size of the history to 100,000 lines.
+
+### [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh)
+
+Currently only sets `$EDITOR` to `nvim`.
 
 ### [`functions.zsh`](./functions.zsh)
 
@@ -115,6 +120,8 @@ Notable options:
 
 Enable and configure `$PATH`.
 
+Uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;`. Ensures `$path` array contains each entry only once (like a set) with `typeset -u path`
+
 ### [`plugins.zsh`](./plugins.zsh)
 
 Enable and configure plugins.
@@ -144,8 +151,7 @@ Define environment variables, loaded before any other file in this folder.
 A few notable environment variables:
 
 - `$DOTFILES` - specifies path to the root of this repo, used throughout `zsh` configuration
-- `$PATH` - uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;`. Ensures `$path` array contains each entry only once (like a set) with `typeset -u path`
-- `$EDITOR` - set to `nvim`, used in various aliases/keybindings
+- `$HOMEBREW_PREFIX` - should be equivalent to `brew --prefix`. Hardcoded (dynamic between OSes) to the current stable location to avoid overhead of `brew --prefix` (~25 ms)
 
 This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
 
@@ -159,12 +165,13 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`keymap.zsh`](./keymap.zsh)
 1. [`manydots.zsh`](./manydots.zsh)
 1. [`options.zsh`](./options.zsh)
+1. [`path.zsh`](./path.zsh)
+1. [`dynamic_env_vars.zsh`](./path.zsh)
 1. [`functions.zsh`](./functions.zsh)
 1. [`alias.zsh`](./alias.zsh)
 1. [`plugins.zsh`](./plugins.zsh)
 1. [`p10k.zsh.symlink`](./p10k.zsh.symlink)
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory) and `$DOTFILES/submodules`.
-1. [`path.zsh`](./path.zsh)
 1. [`asdf.zsh`](./asdf.zsh)
 
 `zshrc.symlink` itself is loaded after `zshenv.symlink` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
