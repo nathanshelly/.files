@@ -8,3 +8,5 @@ target
 # debugging tool
 # ref - https://github.com/Homebrew/homebrew-bundle/pull/552
 Brewfile.lock.json
+# local overrides
+zsh/local.zsh
