@@ -26,14 +26,17 @@
 
 # ref - search zsh-autosuggestions
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
-zinit ice wait lucid atload'!_zsh_autosuggest_start'
+zinit ice wait lucid atload"!_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
 # note: any plugins that define widgets the syntax highlighting might need to
 # color (such as `zsh-autosuggestions`) must be loaded prior
 # ref - search fast-syntax-highlighting
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
-zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+#
+# TODO: uncomment out below line once this issue is resolved
+# https://github.com/zdharma/fast-syntax-highlighting/issues/177
+# zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
 # similar to `jk/`, convenient when query already typed out
