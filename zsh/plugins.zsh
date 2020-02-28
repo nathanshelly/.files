@@ -35,7 +35,10 @@ zinit light zsh-users/zsh-autosuggestions
 # color (such as `zsh-autosuggestions`) must be loaded prior
 # ref - search fast-syntax-highlighting
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
-zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+#
+# TODO: uncomment out below line once this issue is resolved
+# https://github.com/zdharma/fast-syntax-highlighting/issues/177
+# zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
 # synchronize system clipboard
