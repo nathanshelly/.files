@@ -28,7 +28,7 @@
 
 # ref - search zsh-autosuggestions
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
-zinit ice wait lucid atload'!_zsh_autosuggest_start'
+zinit ice wait lucid atload"!_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
 # note: any plugins that define widgets the syntax highlighting might need to
