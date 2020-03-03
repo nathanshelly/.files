@@ -16,9 +16,11 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
 # ref - https://github.com/romkatv/powerlevel10k#what-is-instant-prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+"$DOTFILES/infra/scripts/component_enabled.sh" 'prompt' && {
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+}
 
 # <<<< files without dependencies >>>>
 
@@ -74,7 +76,9 @@ source "$DOTFILES/zsh/plugins.zsh"
 # run `p10k configure` or edit $DOTFILES/zsh/p10k.zsh.symlink to customize prompt
 # note: $DOTFILES/zsh/p10k.zsh.symlink is symlinked to ~/.p10k.zsh so that
 # changes via `p10k configure` are reflected here & tracked.
-source "$DOTFILES/zsh/p10k.zsh.symlink"
+"$DOTFILES/infra/scripts/component_enabled.sh" 'prompt' && {
+  source "$DOTFILES/zsh/p10k.zsh.symlink"
+}
 
 # all *.zsh files throughout this repo exluding the $DOTFILES/zsh &
 # $DOTFILES/submodules directories (technically excludes $DOTFILES/**/zsh &

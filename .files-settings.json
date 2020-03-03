@@ -2,6 +2,7 @@
   "editor": "nvim",
   "fzf": true,
   "git-aliases": true,
+  "prompt": true,
   "theme": "dark",
   "vi-mode": false,
   "zsh": true

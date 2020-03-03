@@ -12,6 +12,7 @@ Currently these options are primarily booleans enabling or disabling a specific 
   "editor": "<valid-editor-program>",
   "fzf": boolean, // enable/disable `fzf` including keybindings & completions
   "git-aliases": boolean, // enable/disable git aliases
+  "prompt": boolean, // enable/disable configured prompt (powerlevel10k)
   "theme": "dark|light", // color theme - "dark" | "light"
   "vi-mode": boolean, // enable/disable `vi-mode` (currently only in `zsh`)
   // conditionally source `.zshrc` config (does not affect `.zshenv` sourcing)

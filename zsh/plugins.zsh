@@ -45,8 +45,10 @@ zinit light zsh-users/zsh-history-substring-search
 
 # prompt
 # ref - https://github.com/romkatv/powerlevel10k#zinit
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
+"$DOTFILES/infra/scripts/component_enabled.sh" 'prompt' && {
+  zinit ice depth=1
+  zinit light romkatv/powerlevel10k
+}
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
