@@ -10,6 +10,8 @@ The below commands will run the [`infra/setup/setup_dotfiles`](./infra/setup/set
 
 This script will walk through installing various shell utilities, symlinking various files to their appropriate locations, etc. See [`infra/setup`](./infra/setup/) folder for documentation on the setup process.
 
+These dotfiles must be cloned to `$HOME/.odotfiles` or you will need to update the [`$DOTFILES`](https://github.com/opendoor-labs/odotfiles/blob/b3e4b90f3c9f8428834b6c22a4401add1d1b6f49/zsh/zshenv.symlink#L2) environment variable to point to the cloned location.
+
 ```bash
 cd $HOME # to clone dotfiles to `$HOME/odotfiles`
 # install git on new computers (no-ops if already installed)
