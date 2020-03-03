@@ -25,3 +25,11 @@ make setup
 Unless something went wrong (🤞) you're all set up now! 🎉
 
 Configure high-level features of these dotfiles via the [settings](./infra/docs/settings.md).
+
+## Secrets
+
+DO NOT check in any tokens like your `NPM_TOKEN`. To avoid this, `$DOTFILES/zsh/secrets.zsh` is gitignored and you can put your secrets there.
+
+## Local Overrides
+
+`$DOTFILES/zsh/local.zsh` is sourced only if it exists. Put local overrides in here if you want to make personal customizations.
