@@ -30,6 +30,7 @@
 source "$DOTFILES/zsh/completion.zsh"
 source "$DOTFILES/zsh/config.zsh"
 source "$DOTFILES/zsh/keymap.zsh"
+source "$DOTFILES/zsh/manydots.zsh"
 source "$DOTFILES/zsh/options.zsh"
 
 # $PATH configuration
