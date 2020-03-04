@@ -68,8 +68,7 @@ else
   export FZF_ALT_C_COMMAND="find . -type d"
 fi
 
-export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
- --select-1 --exit-0 --multi\
+export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle --multi\
  $_fzf_preview_window\
  --bind ctrl-k:down,ctrl-l:up,ctrl-space:toggle-preview,\
 ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"

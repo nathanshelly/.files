@@ -27,8 +27,6 @@ Enable multi-select (w/ `Tab` & `Shift-Tab`) by default. Use `Ctrl-k` & `Ctrl-l`
 
 Add previews w/ `bat` (toggleable w/ `Ctrl-Space`). Use `Ctrl-d` & `Ctrl-u` to scroll previews down and up, respectively.
 
-If only one option would be displayed, select it immediately (`--select-1`. If none would be displayed, exit immediately (`--exit-0`).
-
 ### Keybindings
 
 > `C` here means `Ctrl`
