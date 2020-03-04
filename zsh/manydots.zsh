@@ -68,4 +68,8 @@ manydots() {
   manydots.on
 }
 
-[[ -o kshautoload ]] || manydots "$@"
+# load manydots only once
+[ -z $_LOADED_MANYDOTS ] && {
+  manydots "$@"
+  _LOADED_MANYDOTS=true
+}
