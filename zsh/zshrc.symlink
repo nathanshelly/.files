@@ -103,3 +103,6 @@ unset config_files config_file
 
 # source asdf to give it final say on package versions
 source "$DOTFILES/zsh/asdf.zsh"
+
+# any last local overrides, gitignored to avoid checking in
+[ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
