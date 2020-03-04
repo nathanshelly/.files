@@ -8,8 +8,9 @@ compinit
 # ref - https://superuser.com/questions/1092033/how-can-i-make-zsh-tab-completion-fix-capitalization-errors-for-directorys-and
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# Highlight options in tab-complete
-zstyle ':completion:*' menu select
+# `yes` - select first item on initial tab
+# `select` - highlight options in tab-complete
+zstyle ':completion:*' menu yes select
 
 # enable completions for homebrew-installed programs
 # TODO: fix whatever's not working here
