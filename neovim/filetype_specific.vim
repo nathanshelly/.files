@@ -9,6 +9,11 @@ augroup filetype_make
   autocmd FileType make set noexpandtab " insert tabs, not 2 spaces
 augroup END
 
+augroup filetype_gitconfig
+  autocmd!
+  autocmd FileType gitconfig set noexpandtab " insert tabs, not 2 spaces
+augroup END
+
 augroup filetype_markdown
   autocmd!
   autocmd FileType markdown setlocal colorcolumn=
