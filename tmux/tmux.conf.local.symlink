@@ -227,3 +227,59 @@ bind C-l send-keys -R
 bind C-k clear-history
 
 # <<<< end of configuring tmux separate from .tmux >>>>
+
+# Colo(u)r the pane borders
+set -g pane-border-style 'fg=colour255'
+set -g pane-active-border-style 'fg=colour32'
+
+#############################
+### Status line configuration
+#############################
+
+# Refresh the status line every 5 seconds
+set -g status-interval 5
+
+# Extend the maximum length of each status line section
+set -g status-left-length 100
+set -g status-right-length 100
+
+######################################
+### Status line sections and colo(u)rs
+###
+### Useful unicode:   
+######################################
+
+# Set default status line colors
+
+set -g status-style bold
+set -g status-bg "colour24"
+set -g status-fg "colour0"
+
+set -g status-left "\
+#[fg=colour231, bg=colour53] #S \
+#[fg=colour53, bg=colour51]\
+"
+
+# Non-selected windows are de-bolded
+set -g window-status-format "\
+#[fg=colour232,none bg=colour51] #{b:pane_current_path} \
+#[fg=colour51, bg=colour24]\
+"
+
+set -g window-status-current-format "\
+#[fg=colour232, bg=colour51] ~#{b:pane_current_path}~ \
+#[fg=colour51, bg=colour24]\
+"
+
+set -g window-status-separator "\
+#[fg=colour24, bg=colour51]\
+"
+
+set -g status-right "\
+#[fg=colour87, bg=colour24]\
+#[fg=colour232, bg=colour87] %H:%M %a %b %d \
+#[fg=colour195, bg=colour87]\
+#[fg=colour232, bg=colour195] #(whoami) \
+#[fg=colour135, bg=colour195]\
+#[fg=colour232, bg=colour135] #h \
+"
