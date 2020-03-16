@@ -42,3 +42,12 @@ augroup filetype_jsonc
   " ref - https://github.com/neoclide/jsonc.vim/blob/master/ftdetect/jsonc.vim
   autocmd BufNewFile,BufRead *.jsonc setlocal filetype=jsonc
 augroup END
+
+augroup filetype_dot_symlink
+  " this group corrects syntax highlighting for automatically symlinked files
+  autocmd!
+  autocmd BufNewFile,BufRead tmux*symlink* setlocal filetype=tmux.conf
+  autocmd BufNewFile,BufRead *gitconfig* setlocal filetype=gitconfig
+  autocmd BufNewFile,BufRead *json*symlink* setlocal filetype=jsonc
+  autocmd BufNewFile,BufRead *toml*symlink* setlocal filetype=toml
+augroup END
