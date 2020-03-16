@@ -10,11 +10,6 @@
 #   - `X` -> send a command to copy mode
 # <<<< end of frequently used commands (from man page) >>>>
 
-# <<<< override .tmux options >>>>
-
-# boost history
-set -g history-limit 1000000
-
 # << terminal style settings >>
 # enable true color (RGB color), dimming, strikethrough and italics
 #
@@ -40,6 +35,9 @@ set -g set-titles-string '#h ⟺  #S ⟺  #W'
 # remove delay when hitting esc in zsh vi
 # mode (overwrite tmux.config setting to 10)
 set -g escape-time 0
+
+# boost history
+set -g history-limit 1000000
 
 # remap clearing screen
 unbind -n C-l
