@@ -31,8 +31,8 @@ set -sa terminal-overrides ',xterm*:dim=\E[2m'
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 set -as terminal-overrides ',xterm*:Tc'
 
-
-# window title
+# set window (at OS level) title
+set -g set-titles on
 set -g set-titles-string '#h ⟺  #S ⟺  #W'
 
 # remove delay when hitting esc in zsh vi
