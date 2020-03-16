@@ -18,7 +18,7 @@ set -g history-limit 1000000
 # colors
 # it says 256 but actually true color (when combined w/ `terminal-overrides`
 # `:Tc` flag below), also enables italics
-set -g default-terminal "tmux-256color"
+set -g default-terminal "xterm-256color"
 
 # enable true color (RGB color), dimming, strikethrough and italics
 #
