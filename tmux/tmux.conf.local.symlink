@@ -262,12 +262,12 @@ set -g status-left "\
 
 # Non-selected windows are de-bolded
 set -g window-status-format "\
-#[fg=colour232,none bg=colour51] #{b:pane_current_path} \
+#[fg=colour232,none bg=colour51] #{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}} \
 #[fg=colour51, bg=colour24]\
 "
 
 set -g window-status-current-format "\
-#[fg=colour232, bg=colour51] ~#{b:pane_current_path}~ \
+#[fg=colour232, bg=colour51] #{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}} \
 #[fg=colour51, bg=colour24]\
 "
 
