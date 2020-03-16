@@ -15,11 +15,7 @@
 # boost history
 set -g history-limit 1000000
 
-# colors
-# it says 256 but actually true color (when combined w/ `terminal-overrides`
-# `:Tc` flag below), also enables italics
-set -g default-terminal "xterm-256color"
-
+# << terminal style settings >>
 # enable true color (RGB color), dimming, strikethrough and italics
 #
 # refs:
@@ -27,9 +23,15 @@ set -g default-terminal "xterm-256color"
 # - [dimming](https://github.com/tmux/tmux/issues/135)
 # - [example config](https://github.com/Atcold/Unix-dot-files/blob/master/Tmux/tmux.conf#L38-L39)
 # - [setting terminal overrides](https://stackoverflow.com/questions/41783367/tmux-tmux-true-color-is-not-working-properly)
+
+# it says 256 but actually true color
+# (when combined w/ `terminal-overrides` `:Tc` flag)
+set -g default-terminal "xterm-256color"
+set -as terminal-overrides ',xterm*:Tc'
+# dimming, strikethrough and italics
 set -sa terminal-overrides ',xterm*:dim=\E[2m'
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
-set -as terminal-overrides ',xterm*:Tc'
+# << end of terminal style settings >>
 
 # set window (at OS level) title
 set -g set-titles on
