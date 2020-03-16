@@ -13,7 +13,7 @@
   branch = auto
 [core]
   excludesfile = ~/.gitignore
-	pager = "delta --tabs=2 --hunk-style=plain --highlight-removed --theme='TwoDark' --plus-color='#1c3428' --plus-emph-color='#37664e' --minus-color='#390423' --minus-emph-color='#af0d6c'"
+  pager = "delta --tabs=2 --hunk-style=plain --highlight-removed --theme='TwoDark' --plus-color='#1c3428' --plus-emph-color='#37664e' --minus-color='#390423' --minus-emph-color='#af0d6c'"
 [pager]
   # " = true" means use pager defined `./pager.zsh`
   diff     = true
@@ -60,7 +60,7 @@
   detachedHead       = false
   waitingForEditor   = false
 [gc]
-	# https://stackoverflow.com/a/41771616/2574937
-	pruneExpire = 1.hour.ago
+  # https://stackoverflow.com/a/41771616/2574937
+  pruneExpire = 1.hour.ago
 [protocol]
-	version = 2 # faster for large repos -  https://git-scm.com/docs/protocol-v2
+  version = 2 # faster for large repos -  https://git-scm.com/docs/protocol-v2
