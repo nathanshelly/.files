@@ -1,1 +1,188 @@
-../submodules/gpakosz-tmux/.tmux.conf
+# <<<< docs (straight from man page) >>>>
+# `set` -> `set-option`
+#   - use `show-option <option>` to view value of an option
+#   - `-g` -> global context
+#   - `setw` -> `set-window-options` - set options of the current window
+# `bind` -> `bindkey` (`unbind` -> `unbindkey`)
+#   - `-T <table>` -> bind to specific table
+#   - `-n` -> `-T root` (bind to "root" table, instead of default "prefix")
+# `send` -> `send -keys`
+#   - `X` -> send a command to copy mode
+#
+# <<<< end of frequently used commands (from man page) >>>>
+
+# <<<<<<<< terminal style settings >>>>>>>>
+# enable true color (RGB color), dimming, strikethrough and italics
+#
+# refs:
+# - [tmux, true color guide](https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be)
+# - [dimming](https://github.com/tmux/tmux/issues/135)
+# - [example config](https://github.com/Atcold/Unix-dot-files/blob/master/Tmux/tmux.conf#L38-L39)
+# - [setting terminal overrides](https://stackoverflow.com/questions/41783367/tmux-tmux-true-color-is-not-working-properly)
+
+# it says 256 but actually true color
+# (when combined w/ `terminal-overrides` `:Tc` flag)
+set -g default-terminal "xterm-256color"
+set -as terminal-overrides ',xterm*:Tc'
+# dimming, strikethrough and italics
+set -sa terminal-overrides ',xterm*:dim=\E[2m'
+set -as terminal-overrides ',xterm*:sitm=\E[3m'
+# <<<<<<<< end of terminal style settings >>>>>>>>
+
+# set window (at OS level) title
+set -g set-titles on
+set -g set-titles-string '#h ⟺  #S ⟺  #W'
+
+set -g escape-time 0         # remove delay when hitting esc in zsh vi mode
+set -g history-limit 500000  # boost history
+set -g base-index 1          # start windows numbering at 1
+setw -g pane-base-index 1    # make pane numbering consistent with windows
+set -g renumber-windows on   # renumber windows when a window is closed
+set -g monitor-activity on
+set -g visual-activity off
+
+# enable mouse mode
+set -g mouse on
+
+# <<<< keybindings >>>>
+
+# change prefix to Alt-Space
+unbind C-b
+set -g prefix M-Space
+
+# create session
+bind C-c command-prompt -p new-session 'new-session -s %%'
+
+# find session
+bind C-f command-prompt -p find-session 'switch-client -t %%'
+
+# remap pane splits and open panes/windows in current directory
+bind c new-window -c "#{pane_current_path}"
+bind -n M-\\ split-window -h -c "#{pane_current_path}"
+bind -n M-- split-window -v -c "#{pane_current_path}"
+
+# kill pane/window w/o confirmation & add shortcut to kill session
+bind x kill-pane
+bind X kill-window
+bind & kill-session
+
+# << copy-mode-vi >>
+# use vi navigation in copy mode (entered by `<prefix> [` or scrolling)
+bind -T copy-mode-vi 'j'  send -X cursor-left
+bind -T copy-mode-vi 'k'  send -X cursor-down
+bind -T copy-mode-vi 'l'  send -X cursor-up
+bind -T copy-mode-vi ';' send -X cursor-right
+
+# use alt+(j|k|l|;) to navigate between panes
+bind -n M-j select-pane -L
+bind -n M-k select-pane -D
+bind -n M-l select-pane -U
+bind -n M-\; select-pane -R
+
+# use alt+shift+(j|k|l|;) to quickly resize panes
+bind -n M-J resize-pane -L 3
+bind -n M-K resize-pane -D 3
+bind -n M-L resize-pane -U 3
+bind -n M-: resize-pane -R 3
+
+# use <prefix> alt+(j|k|l|;) to precisely resize panes
+bind M-j resize-pane -L 1
+bind M-k resize-pane -D 1
+bind M-l resize-pane -U 1
+bind M-\; resize-pane -R 1
+
+# clear screen (similar to Ctrl-l but can be used during running applications)
+# ref - https://stackoverflow.com/a/11525159
+bind C-l send-keys -R
+
+# clear scrollback buffer
+# ref - https://stackoverflow.com/a/10553992
+bind C-k clear-history
+
+# reload configuration
+bind r source-file $HOME/.tmux.conf \; display '$HOME/.tmux.conf sourced'
+
+# edit configuration
+bind e new-window -n "$HOME/.tmux.conf" "sh -c '\${EDITOR:-vim} $HOME/.tmux.conf && tmux source $HOME/.tmux.conf && tmux display \"$HOME/.tmux.conf sourced\"'"
+
+# # copy to macOS clipboard
+# if -b 'command -v pbcopy > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | pbcopy"'
+# if -b 'command -v reattach-to-user-namespace > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | reattach-to-user-namespace pbcopy"'
+# # copy to X11 clipboard
+# if -b 'command -v xsel > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xsel -i -b"'
+# if -b '! command -v xsel > /dev/null 2>&1 && command -v xclip > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xclip -i -selection clipboard >/dev/null 2>&1"'
+# # copy to Windows clipboard
+# if -b 'command -v clip.exe > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | clip.exe"'
+# if -b '[ -c /dev/clipboard ]' 'bind y run -b "tmux save-buffer - > /dev/clipboard"'
+
+# <<<< end of keybindings >>>>
+
+# <<<< styling >>>>
+# status line sections and colo(u)rs
+# useful unicode:   
+
+# colo(u)r the pane borders
+set -g pane-border-style 'fg=colour247'
+set -g pane-active-border-style 'fg=colour39'
+
+# << status line >>
+#
+# format substitutions
+# - #S -> session name
+# - #F -> window flag
+# - #h -> hostname minus the domain
+# - #(whoami) -> result of running `whoami`
+# - Time format string:
+#    - %H -> 24hr hour
+#    - %M -> minute
+#    - %b -> abbreviated month name
+#    - %d -> day of the month
+# << end status line >>
+
+# #5b2c70 - purple
+# #d75fd7 - deeper salmon
+# #ff87af - salmon
+
+# status line configuration
+
+# refresh the status line every 5 seconds
+set -g status-interval 5
+
+# extend the maximum length of each status line section
+set -g status-left-length 100
+set -g status-right-length 100
+
+
+set -g status-style 'bg=#000000,fg=colour247' # light gray
+set -g message-style 'bg=colour39,fg=#000000'
+
+set -g status-left "\
+#[fg=colour231, bg=colour53] #S \
+#[fg=colour53, bg=colour51]\
+"
+
+# Non-selected windows are de-bolded
+set -g window-status-format "\
+#[fg=colour232, bg=colour51] #F #I #{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}} \
+#[fg=colour51, bg=colour24]\
+"
+
+set -g window-status-current-format "\
+#[fg=colour232, bg=colour51, bold] #F #I #{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}} \
+#[fg=colour51, bg=colour24]\
+"
+
+set -g window-status-separator "\
+#[fg=colour24, bg=colour51]\
+"
+
+# ⌨ prefix indicator (U+2328)
+set -g status-right "\
+#{?client_prefix,⌨, } \
+#[fg=colour87, bg=colour24]\
+#[fg=colour232, bg=colour87] %H:%M %b %d \
+#[fg=colour195, bg=colour87]\
+#[fg=colour232, bg=colour195] #(whoami) \
+#[fg=colour135, bg=colour195]\
+#[fg=colour232, bg=colour135] #h \
+"
