@@ -29,7 +29,7 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 # `$DOTFILES/infra/setup/symlink.md`)
 main() {
   local passed_blacklist="$1"
-  local default_blacklist="/.git|/submodules/|/apps/alfred/"
+  local default_blacklist="/.git|/apps/alfred/"
   # ref - https://unix.stackexchange.com/a/415992
   local blacklist="$default_blacklist${passed_blacklist:+"|$passed_blacklist"}"
 

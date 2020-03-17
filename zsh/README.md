@@ -171,7 +171,7 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`alias.zsh`](./alias.zsh)
 1. [`plugins.zsh`](./plugins.zsh)
 1. [`p10k.zsh.symlink`](./p10k.zsh.symlink)
-1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory) and `$DOTFILES/submodules`.
+1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory).
 1. [`asdf.zsh`](./asdf.zsh)
 
 `zshrc.symlink` itself is loaded after `zshenv.symlink` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
