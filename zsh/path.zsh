@@ -9,6 +9,9 @@ typeset -U path
 # python dependency manager
 [[ -d "$HOME/.poetry/bin" ]] && path=("$HOME/.poetry/bin" $path)
 
+# where `pip install --user` installs executables
+[[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+
 [[ -d "$HOME/.cargo/bin" ]] && path=("$HOME/.cargo/bin" $path) # rust packages
 
 # `rust-analyzer` language server
