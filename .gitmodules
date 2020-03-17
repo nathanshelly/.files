@@ -1,4 +1,0 @@
-[submodule "gpakosz-tmux"]
-	path = submodules/gpakosz-tmux
-	url = https://github.com/gpakosz/.tmux.git
-	branch = master
