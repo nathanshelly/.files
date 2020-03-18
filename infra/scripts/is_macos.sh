@@ -1,7 +1,3 @@
 #! /usr/bin/env bash
 
-if [ "$(uname)" == "Darwin" ]; then
-  exit 0
-else
-  exit 1
-fi
+[ "$(uname)" = "Darwin" ]
