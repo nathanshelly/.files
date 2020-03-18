@@ -73,6 +73,31 @@ bind -T copy-mode-vi 'k'  send -X cursor-down
 bind -T copy-mode-vi 'l'  send -X cursor-up
 bind -T copy-mode-vi ';' send -X cursor-right
 
+# enable copying to system clipboard via `Enter` & `y`
+#
+# running the below commands as shell commands allows the
+# TMUX_SYSTEM_CLIPBOARD_COMMAND variable to be expanded only after it's set
+# ref - https://stackoverflow.com/a/55843777
+run '\
+if command -v reattach-to-user-namespace > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND "reattach-to-user-namespace pbcopy"; \
+elif command -v pbcopy > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND pbcopy; \
+elif command -v xclip > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND xclip; \
+elif command -v clip.exe > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND clip.exe; \
+elif command -v xsel > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND xsel; \
+fi \
+'
+# pipe contents to copy command determined above
+# ref - https://unix.stackexchange.com/a/131187
+if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND"'
+if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND"'
+if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND" \; display-message "highlighted selection copied to system clipboard"'
+
+
 # use alt+(j|k|l|;) to navigate between panes
 bind -n M-j select-pane -L
 bind -n M-k select-pane -D
@@ -104,16 +129,6 @@ bind r source-file $HOME/.tmux.conf \; display '$HOME/.tmux.conf sourced'
 
 # edit configuration
 bind e new-window -n "$HOME/.tmux.conf" "sh -c '\${EDITOR:-vim} $HOME/.tmux.conf && tmux source $HOME/.tmux.conf && tmux display \"$HOME/.tmux.conf sourced\"'"
-
-# # copy to macOS clipboard
-# if -b 'command -v pbcopy > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | pbcopy"'
-# if -b 'command -v reattach-to-user-namespace > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | reattach-to-user-namespace pbcopy"'
-# # copy to X11 clipboard
-# if -b 'command -v xsel > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xsel -i -b"'
-# if -b '! command -v xsel > /dev/null 2>&1 && command -v xclip > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xclip -i -selection clipboard >/dev/null 2>&1"'
-# # copy to Windows clipboard
-# if -b 'command -v clip.exe > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | clip.exe"'
-# if -b '[ -c /dev/clipboard ]' 'bind y run -b "tmux save-buffer - > /dev/clipboard"'
 
 # <<<< end of keybindings >>>>
 
