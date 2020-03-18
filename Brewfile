@@ -46,6 +46,7 @@ brew "hyperfine"
 brew 'jq'
 brew "mdcat"
 brew "neovim", args: ["HEAD"]
+brew "ncurses"
 brew "pastel"
 brew "ripgrep"
 brew "rsync"
