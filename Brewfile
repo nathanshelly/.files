@@ -34,7 +34,8 @@ brew "git-delta"
 brew "hub"
 brew 'jq'
 brew "mdcat"
-brew "nvim"
+brew "neovim", args: ["HEAD"]
+brew "ncurses"
 brew "ripgrep"
 brew "rsync"
 brew "tldr"
