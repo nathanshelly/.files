@@ -11,9 +11,9 @@ else
   COLOR_OVERRIDES=" --plus-color='#1c3428' --plus-emph-color='#37664e' --minus-color='#390423' --minus-emph-color='#af0d6c'"
 fi
 
-PAGER="delta --tabs=2 --hunk-style=plain --highlight-removed --theme='$PAGER_THEME'${COLOR_OVERRIDES}"
+TEMP_PAGER="delta --tabs=2 --hunk-style=plain --highlight-removed --theme='$PAGER_THEME'${COLOR_OVERRIDES}"
 
 # overhead is minimal so just run on each shell
-git config --global core.pager "$PAGER"
+# git config --global core.pager "$TEMP_PAGER"
 
-unset PAGER PAGER_THEME TERMINAL_THEME
+unset TEMP_PAGER PAGER_THEME TERMINAL_THEME
