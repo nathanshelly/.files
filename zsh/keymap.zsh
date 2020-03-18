@@ -20,6 +20,9 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 # turn on vim mode
 bindkey -v
 
+# shorten key delay to .2 seconds to allow quick exiting of insert mode
+export KEYTIMEOUT=20
+
 # map jk to esc in insert mode
 bindkey -M viins 'jk' vi-cmd-mode
 
