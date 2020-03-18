@@ -9,3 +9,5 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 # typescript repl
 # ref - https://github.com/HerringtonDarkholme/typescript-repl
 # command -v npm > /dev/null && npm install --global tsun
+
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
