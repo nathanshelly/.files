@@ -46,28 +46,42 @@ set -g mouse on
 
 # <<<< keybindings >>>>
 
-# change prefix to Alt-Space
-unbind C-b
+# M-<key> means (Option|Alt)-<key>
+# C-<key> means Ctrl-<key>
+
 set -g prefix M-Space
 
 # create session
 bind C-c command-prompt -p new-session 'new-session -s %%'
 
-# find session
+# search and jump to session
+# usage: `C-f foo` to jump to session `foo(...)`, e.g. `foo`, `foobar`, `fooany`
 bind C-f command-prompt -p find-session 'switch-client -t %%'
 
-# remap pane splits and open panes/windows in current directory
+# open windows to current directory
 bind c new-window -c "#{pane_current_path}"
+# remap pane splitting & open new panes to current directory
+# this means `M-\`, just need to escape the backslash
 bind -n M-\\ split-window -h -c "#{pane_current_path}"
 bind -n M-- split-window -v -c "#{pane_current_path}"
 
-# kill pane/window w/o confirmation & add shortcut to kill session
+# tweak/add bindings for pane/window/session killing
+#
+# by default tmux binds `x` and `&` respectively to `kill-pane` and `kill-window`
+# but with a confirm prompt before taking the action. It does not bind
+# `kill-session` to anything.
+#
+# the below lines remap `&` to session killing and `X` to window killing and
+# makes all bindings unconditional
 bind x kill-pane
 bind X kill-window
 bind & kill-session
 
 # << copy-mode-vi >>
-# use vi navigation in copy mode (entered by `<prefix> [` or scrolling)
+# copy mode entered by `<prefix> [` or scrolling
+# ref - https://superuser.com/a/197272
+#
+# use home row (`jkl;` instead of default `hjkl` navigation)
 bind -T copy-mode-vi 'j'  send -X cursor-left
 bind -T copy-mode-vi 'k'  send -X cursor-down
 bind -T copy-mode-vi 'l'  send -X cursor-up
@@ -179,22 +193,23 @@ set -g status-left "\
 # Non-selected windows are de-bolded
 set -g window-status-format "\
 #[fg=colour232, bg=colour51] #F #I #{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}} \
-#[fg=colour51, bg=colour24]\
+#[fg=colour51, bg=#000000]\
 "
 
 set -g window-status-current-format "\
 #[fg=colour232, bg=colour51, bold] #F #I #{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}} \
-#[fg=colour51, bg=colour24]\
+#[fg=colour51, bg=#000000]\
 "
 
 set -g window-status-separator "\
-#[fg=colour24, bg=colour51]\
+#[fg=#000000, bg=#000000]\
+#[fg=#000000, bg=colour51]\
 "
 
 # ⌨ prefix indicator (U+2328)
 set -g status-right "\
 #{?client_prefix,⌨, } \
-#[fg=colour87, bg=colour24]\
+#[fg=colour87]\
 #[fg=colour232, bg=colour87] %H:%M %b %d \
 #[fg=colour195, bg=colour87]\
 #[fg=colour232, bg=colour195] #(whoami) \
