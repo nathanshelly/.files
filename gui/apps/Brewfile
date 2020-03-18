@@ -3,9 +3,6 @@
 
 cask_args appdir: '/Applications'
 
-# cask to install casks
-tap "homebrew/cask"
-
 # drivers (specifically for Logitech)
 # ref - https://github.com/Homebrew/homebrew-cask-drivers
 tap "homebrew/cask-drivers"
@@ -13,10 +10,6 @@ tap "homebrew/cask-drivers"
 # alternate versions - betas, nightlys, etc.
 # ref - https://github.com/Homebrew/homebrew-cask-versions
 tap "homebrew/cask-versions"
-
-# fonts repository
-# ref - https://github.com/Homebrew/homebrew-cask-fonts
-tap "homebrew/cask-fonts"
 
 # <<<< apps >>>>
 
@@ -53,10 +46,6 @@ cask "spectacle"
 cask "spotify"
 cask "subler"
 cask "visual-studio-code"
-
-# <<<< fonts >>>>
-
-cask "font-fira-code"
 
 # <<<< alternate versions >>>>
 
