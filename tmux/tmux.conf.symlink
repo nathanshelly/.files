@@ -22,7 +22,7 @@
 
 # it says 256 but actually true color
 # (when combined w/ `terminal-overrides` `:Tc` flag)
-set -g default-terminal "xterm-256color"
+set -g default-terminal "tmux-256color"
 set -as terminal-overrides ',xterm*:Tc'
 # dimming, strikethrough and italics
 set -sa terminal-overrides ',xterm*:dim=\E[2m'
