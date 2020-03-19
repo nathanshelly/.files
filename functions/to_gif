@@ -32,5 +32,10 @@ echo "$GIF_OUT_PATH"
 
 SCALE='-1:-1'
 [ "$(uname -s)" = Darwin ] && SCALE='iw*0.5:-1' # undo 2x pixels
-ffmpeg -i "$VIDEO_IN_PATH" -map_metadata -1 -vf "fps=15,scale=${SCALE}:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "$GIF_OUT_PATH"
+ffmpeg \
+  -i "$VIDEO_IN_PATH" \
+  -map_metadata -1 \
+  -vf "fps=15,scale=${SCALE}:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+  -loop 0 \
+  "$GIF_OUT_PATH"
 unset GIF_OUT_PATH SCALE VIDEO_IN_PATH
