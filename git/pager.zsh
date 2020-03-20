@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-# dynamically set pager based on color theme
+# dynamically set pager based on color theme in `$DOTFILES/.files-settings.json`
 
 TERMINAL_THEME="$($DOTFILES/infra/scripts/get_local_setting.sh "theme")"
 if [ ${TERMINAL_THEME:-""} = light ]; then
@@ -14,6 +14,6 @@ fi
 TEMP_PAGER="delta --tabs=2 --hunk-style=plain --highlight-removed --theme='$PAGER_THEME'${COLOR_OVERRIDES}"
 
 # overhead is minimal so just run on each shell
-# git config --global core.pager "$TEMP_PAGER"
+git config --global core.pager "$TEMP_PAGER"
 
 unset TEMP_PAGER PAGER_THEME TERMINAL_THEME
