@@ -70,7 +70,7 @@ Your configuration should now be applied on top of these dotfiles. Feel free to 
 
 Here's a few items you might be interested in trying/learning more about:
 
-- configure high-level features of these dotfiles (changing the theme, setting your editor, disabling the promopt, etc.) via the [settings](./infra/docs/settings.md)
+- configure high-level features of these dotfiles (changing the theme, setting your editor, disabling the prompt, etc.) via the [settings](./infra/docs/settings.md)
 - configure your prompt appearance via `p10k configure` (or disable the prompt altogether via the `prompt` setting from the previous bullet point)
 - use [`fzf` keybindings](./utilities/fzf/README.md#keybindings) to speed up so many things from quickly fuzzily selecting files, find zsh history items you half-remember typing weeks ago, checking out the commit from the one keyword you remember typing in the commit message & more
 - use [`fasd`](./utilities/fasd/README.md) to quickly jump to or edit frequently/recently visited directories or files from anywhere
