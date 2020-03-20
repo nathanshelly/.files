@@ -57,3 +57,9 @@ augroup filetype_dot_symlink
   autocmd BufNewFile,BufRead *json*symlink* setlocal filetype=jsonc
   autocmd BufNewFile,BufRead *toml*symlink* setlocal filetype=toml
 augroup END
+
+augroup direnv
+  autocmd!
+  " `.envrc-*` files are bash - https://github.com/direnv/direnv#how-it-works
+  autocmd BufNewFile,BufRead *envrc* setlocal filetype=bash
+augroup END
