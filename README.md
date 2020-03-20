@@ -13,7 +13,7 @@ This script will walk through installing various shell utilities, symlinking var
 These dotfiles must be cloned to `$HOME/.odotfiles` or you will need to update the [`$DOTFILES`](https://github.com/opendoor-labs/odotfiles/blob/b3e4b90f3c9f8428834b6c22a4401add1d1b6f49/zsh/zshenv.symlink#L2) environment variable to point to the cloned location.
 
 ```bash
-cd $HOME # to clone dotfiles to `$HOME/odotfiles`
+cd $HOME # to clone dotfiles to `$HOME/.odotfiles`
 # install git on new computers (no-ops if already installed)
 xcode-select --install
 # now clone this repo and run setup
@@ -52,7 +52,7 @@ Your configuration should now be applied on top of these dotfiles. Please open a
 
 Here's a few items you might be interested in trying/learning more about:
 
-- configure high-level features of these dotfiles (changing the theme, setting your editor, disabling the promopt, etc.) via the [settings](./infra/docs/settings.md)
+- configure high-level features of these dotfiles (changing the theme, setting your editor, disabling the prompt, etc.) via the [settings](./infra/docs/settings.md)
 - configure your prompt appearance via `p10k configure` (or disable the prompt altogether via the `prompt` setting from the previous bullet point)
 - use [`fzf` keybindings](./utilities/fzf/README.md#keybindings) to speed up so many things from quickly fuzzily selecting files, find zsh history items you half-remember typing weeks ago, checking out the commit from the one keyword you remember typing in the commit message & more
 - use [`fasd`](./utilities/fasd/README.md) to quickly jump to or edit frequently/recently visited directories or files from anywhere
