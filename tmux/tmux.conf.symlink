@@ -187,7 +187,7 @@ SESSION_NAME_BG="colour140"
 
 set -g status-left "\
 #[fg=$PITCH_BLACK, bg=$SESSION_NAME_BG] #S \
-#[fg=$SESSION_NAME_BG, bg=$PITCH_BLACK]$LEFT_SEPARATOR\
+#[fg=$SESSION_NAME_BG, bg=$PITCH_BLACK]$LEFT_SEPARATOR \
 "
 
 # shortened to ~ if equal to your username
@@ -208,8 +208,6 @@ set -g window-status-current-format "\
 #[fg=$TEXT_FG,bg=$CURRENT_WINDOW_STATUS_BG,bold] $WINDOW_STATUS_FORMAT_COMPONENTS\
 #[fg=$CURRENT_WINDOW_STATUS_BG,bg=$PITCH_BLACK]$LEFT_SEPARATOR\
 "
-set -g window-status-separator "#[fg=$PITCH_BLACK,bg=$PITCH_BLACK]$LEFT_SEPARATOR"
-
 HOSTNAME_BG="colour63"
 USERNAME_BG="colour9"
 CLOCK_TEXT_FG="colour240"
