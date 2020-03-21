@@ -6,8 +6,6 @@
 brew "coreutils"
 brew "make"
 brew "pandoc"
-# https://github.com/gpakosz/.tmux#accessing-the-macos-clipboard-from-within-tmux-sessions
-brew "reattach-to-user-namespace"
 brew "rename"
 brew "trash"
 brew "wget"

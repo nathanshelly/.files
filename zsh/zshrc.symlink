@@ -77,9 +77,8 @@ source "$DOTFILES/zsh/plugins.zsh"
 # changes via `p10k configure` are reflected here & tracked.
 source "$DOTFILES/zsh/p10k.zsh.symlink"
 
-# all *.zsh files throughout this repo exluding the $DOTFILES/zsh &
-# $DOTFILES/submodules directories (technically excludes $DOTFILES/**/zsh &
-# $DOTFILES/**/submodules however the only matching directories are those two)
+# all *.zsh files throughout this repo exluding the $DOTFILES/zsh directory
+# (technically excludes $DOTFILES/**/zsh)
 #
 # x~y matches anything that matches the pattern x but does not match y
 # ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Operators
@@ -90,7 +89,7 @@ source "$DOTFILES/zsh/p10k.zsh.symlink"
 typeset -U config_files
 # Note: this expansion requires the `extended_glob` option to be set
 # this is done in `./options.zsh`
-config_files=($DOTFILES/**/*.zsh~*/zsh/*~*/submodules/*)
+config_files=($DOTFILES/**/*.zsh~*/zsh/*)
 for config_file in $config_files; do source "$config_file"; done
 unset config_files config_file
 
