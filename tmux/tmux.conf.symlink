@@ -185,7 +185,7 @@ PITCH_BLACK="#000000"
 set -g status-style "bg=$PITCH_BLACK,fg=$PITCH_BLACK"
 set -g message-style "bg=$AZURE,fg=$PITCH_BLACK"
 
-SESSION_NAME_BG="colour5"
+SESSION_NAME_BG="colour140"
 
 set -g status-left "\
 #[fg=$PITCH_BLACK, bg=$SESSION_NAME_BG] #S \
@@ -210,18 +210,17 @@ set -g window-status-current-format "\
 #[fg=$TEXT_FG,bg=$CURRENT_WINDOW_STATUS_BG,bold] $WINDOW_STATUS_FORMAT_COMPONENTS\
 #[fg=$CURRENT_WINDOW_STATUS_BG,bg=$PITCH_BLACK]\
 "
-
 set -g window-status-separator "#[fg=$PITCH_BLACK,bg=$PITCH_BLACK]"
 
 HOSTNAME_BG="colour63"
 USERNAME_BG="colour9"
-CLOCK_BG="colour140"
+CLOCK_TEXT_FG="colour240"
 # ⌨ prefix indicator (U+2328)
+# `\ue0b3` - https://github.com/ryanoasis/powerline-extra-symbols#glyphs
 set -g status-right "\
 #{?client_prefix,⌨, } \
-#[fg=$CLOCK_BG]\
-#[fg=$TEXT_FG, bg=$CLOCK_BG] %H:%M %b %d \
-#[fg=$USERNAME_BG, bg=$CLOCK_BG]\
+#[fg=$CLOCK_TEXT_FG] %H:%M \ue0b3 %d %b \
+#[fg=$USERNAME_BG]\
 #[fg=$TEXT_FG, bg=$USERNAME_BG] #(whoami) \
 #[fg=$HOSTNAME_BG, bg=$USERNAME_BG]\
 #[fg=$TEXT_FG, bg=$HOSTNAME_BG] #h \
