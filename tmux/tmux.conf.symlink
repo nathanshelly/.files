@@ -150,9 +150,12 @@ bind e new-window -n "$HOME/.tmux.conf" "sh -c '\${EDITOR:-vim} $HOME/.tmux.conf
 # status line sections and colo(u)rs
 # useful unicode:   
 
+LIGHT_GRAY="colour247"
+AZURE="colour39"
+
 # colo(u)r the pane borders
-set -g pane-border-style 'fg=colour247'
-set -g pane-active-border-style 'fg=colour39'
+set -g pane-border-style "fg=$LIGHT_GRAY"
+set -g pane-active-border-style "fg=$AZURE"
 
 # << status line >>
 #
@@ -168,10 +171,6 @@ set -g pane-active-border-style 'fg=colour39'
 #    - %d -> day of the month
 # << end status line >>
 
-# #5b2c70 - purple
-# #d75fd7 - deeper salmon
-# #ff87af - salmon
-
 # status line configuration
 
 # refresh the status line every 5 seconds
@@ -181,38 +180,49 @@ set -g status-interval 5
 set -g status-left-length 100
 set -g status-right-length 100
 
+PITCH_BLACK="#000000"
 
-set -g status-style 'bg=#000000,fg=colour247' # light gray
-set -g message-style 'bg=colour39,fg=#000000'
+set -g status-style "bg=$PITCH_BLACK,fg=$PITCH_BLACK"
+set -g message-style "bg=$AZURE,fg=$PITCH_BLACK"
+
+SESSION_NAME_BG="colour5"
 
 set -g status-left "\
-#[fg=colour231, bg=colour53] #S \
-#[fg=colour53, bg=colour51]\
+#[fg=$PITCH_BLACK, bg=$SESSION_NAME_BG] #S \
+#[fg=$SESSION_NAME_BG, bg=$PITCH_BLACK]\
 "
 
-# Non-selected windows are de-bolded
+# shortened to ~ if equal to your username
+CURRENT_PATH="#{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}}"
+WINDOW_STATUS_FORMAT_COMPONENTS="#F $CURRENT_PATH "
+WINDOW_STATUS_BG="$AZURE"
+TEXT_FG="colour232"
+
 set -g window-status-format "\
-#[fg=colour232, bg=colour51] #F #I #{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}} \
-#[fg=colour51, bg=#000000]\
+#[fg=$PITCH_BLACK,bg=$WINDOW_STATUS_BG]\
+#[fg=$TEXT_FG, bg=$WINDOW_STATUS_BG] $WINDOW_STATUS_FORMAT_COMPONENTS\
+#[fg=$WINDOW_STATUS_BG, bg=$PITCH_BLACK]\
 "
 
+CURRENT_WINDOW_STATUS_BG="colour81"
 set -g window-status-current-format "\
-#[fg=colour232, bg=colour51, bold] #F #I #{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}} \
-#[fg=colour51, bg=#000000]\
+#[fg=$PITCH_BLACK,bg=$CURRENT_WINDOW_STATUS_BG]\
+#[fg=$TEXT_FG,bg=$CURRENT_WINDOW_STATUS_BG,bold] $WINDOW_STATUS_FORMAT_COMPONENTS\
+#[fg=$CURRENT_WINDOW_STATUS_BG,bg=$PITCH_BLACK]\
 "
 
-set -g window-status-separator "\
-#[fg=#000000, bg=#000000]\
-#[fg=#000000, bg=colour51]\
-"
+set -g window-status-separator "#[fg=$PITCH_BLACK,bg=$PITCH_BLACK]"
 
+HOSTNAME_BG="colour63"
+USERNAME_BG="colour9"
+CLOCK_BG="colour140"
 # ⌨ prefix indicator (U+2328)
 set -g status-right "\
 #{?client_prefix,⌨, } \
-#[fg=colour87]\
-#[fg=colour232, bg=colour87] %H:%M %b %d \
-#[fg=colour195, bg=colour87]\
-#[fg=colour232, bg=colour195] #(whoami) \
-#[fg=colour135, bg=colour195]\
-#[fg=colour232, bg=colour135] #h \
+#[fg=$CLOCK_BG]\
+#[fg=$TEXT_FG, bg=$CLOCK_BG] %H:%M %b %d \
+#[fg=$USERNAME_BG, bg=$CLOCK_BG]\
+#[fg=$TEXT_FG, bg=$USERNAME_BG] #(whoami) \
+#[fg=$HOSTNAME_BG, bg=$USERNAME_BG]\
+#[fg=$TEXT_FG, bg=$HOSTNAME_BG] #h \
 "
