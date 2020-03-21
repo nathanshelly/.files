@@ -17,9 +17,6 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
 
-# initialize submodules
-"$DOTFILES/infra/setup/bin/setup_submodules"
-
 # symlink config files to their correct locations
 # exclude symlinks whose paths include the `|` separated terms
 "$DOTFILES/infra/setup/bin/symlink" "/gui/|/ssh|/languages/"

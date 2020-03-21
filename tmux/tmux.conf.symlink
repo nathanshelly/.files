@@ -1,1 +1,227 @@
-../submodules/gpakosz-tmux/.tmux.conf
+# <<<< docs (straight from man page) >>>>
+# `set` -> `set-option`
+#   - use `show-option <option>` to view value of an option
+#   - `-g` -> global context
+#   - `setw` -> `set-window-options` - set options of the current window
+# `bind` -> `bindkey` (`unbind` -> `unbindkey`)
+#   - `-T <table>` -> bind to specific table
+#   - `-n` -> `-T root` (bind to "root" table, instead of default "prefix")
+# `send` -> `send -keys`
+#   - `X` -> send a command to copy mode
+# <<<< end of frequently used commands (from man page) >>>>
+
+# <<<<<<<< terminal style settings >>>>>>>>
+# enable true color (RGB color), dimming, strikethrough and italics
+#
+# refs:
+# - [tmux, true color guide](https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be)
+# - [dimming](https://github.com/tmux/tmux/issues/135)
+# - [example config](https://github.com/Atcold/Unix-dot-files/blob/master/Tmux/tmux.conf#L38-L39)
+# - [setting terminal overrides](https://stackoverflow.com/questions/41783367/tmux-tmux-true-color-is-not-working-properly)
+
+# it says 256 but actually true color w/ `terminal-overrides` `:Tc` flag
+# `tmux-256color` `terminfo` installed by `$DOTFILES/infra/setup/bin/setup_bits_and_pieces`
+set -g default-terminal "tmux-256color"
+set -as terminal-overrides ',xterm*:Tc'
+# dimming, strikethrough and italics
+set -sa terminal-overrides ',xterm*:dim=\E[2m'
+set -as terminal-overrides ',xterm*:sitm=\E[3m'
+# <<<<<<<< end of terminal style settings >>>>>>>>
+
+# set window (at OS level) title
+set -g set-titles on
+set -g set-titles-string '#h ⟺  #S ⟺  #W'
+
+set -g escape-time 0         # remove delay when hitting esc in zsh vi mode
+set -g history-limit 500000  # boost history
+set -g base-index 1          # start windows numbering at 1
+setw -g pane-base-index 1    # make pane numbering consistent with windows
+set -g renumber-windows on   # renumber windows when a window is closed
+set -g monitor-activity on
+set -g visual-activity off
+
+set -g mouse on # enable mouse mode
+
+# <<<< keybindings >>>>
+
+# M-<key> means (Option|Alt)-<key>
+# C-<key> means Ctrl-<key>
+
+set -g prefix M-Space
+
+bind C-c command-prompt -p new-session 'new-session -s %%' # create session
+
+# search and jump to session
+# usage: `C-f foo` to jump to session `foo(...)`, e.g. `foo`, `foobar`, `fooany`
+bind C-f command-prompt -p find-session 'switch-client -t %%'
+
+# open windows to current directory
+bind c new-window -c "#{pane_current_path}"
+# remap pane splitting & open new panes to current directory
+# this means `M-\`, just need to escape the backslash
+bind -n M-\\ split-window -h -c "#{pane_current_path}"
+bind -n M-- split-window -v -c "#{pane_current_path}"
+
+# tweak/add bindings for pane/window/session killing
+#
+# by default tmux binds `x` and `&` respectively to `kill-pane` and `kill-window`
+# but with a confirm prompt before taking the action. It does not bind
+# `kill-session` to anything.
+#
+# the below lines remap `&` to session killing and `X` to window killing and
+# makes all bindings unconditional
+bind x kill-pane
+bind X kill-window
+bind & kill-session
+
+# << copy-mode-vi >>
+# copy mode entered by `<prefix> [` or scrolling
+# ref - https://superuser.com/a/197272
+#
+# use home row (`jkl;` instead of default `hjkl` navigation)
+bind -T copy-mode-vi 'j'  send -X cursor-left
+bind -T copy-mode-vi 'k'  send -X cursor-down
+bind -T copy-mode-vi 'l'  send -X cursor-up
+bind -T copy-mode-vi ';' send -X cursor-right
+
+# enable copying to system clipboard via `Enter` & `y`
+#
+# running the below commands as shell commands prevents expansion of
+# TMUX_SYSTEM_CLIPBOARD_COMMAND until after it is dynamically set at run time
+# ref - https://stackoverflow.com/a/55843777
+run '\
+if command -v reattach-to-user-namespace > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND "reattach-to-user-namespace pbcopy"; \
+elif command -v pbcopy > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND pbcopy; \
+elif command -v xclip > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND xclip; \
+elif command -v clip.exe > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND clip.exe; \
+elif command -v xsel > /dev/null; then \
+  tmux set-environment -g TMUX_SYSTEM_CLIPBOARD_COMMAND xsel; \
+fi \
+'
+# pipe contents to copy command determined above
+# ref - https://unix.stackexchange.com/a/131187
+if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND"'
+if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND"'
+if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND" \; display-message "highlighted selection copied to system clipboard"'
+
+# use alt+(j|k|l|;) to navigate between panes
+bind -n M-j select-pane -L
+bind -n M-k select-pane -D
+bind -n M-l select-pane -U
+bind -n M-\; select-pane -R
+
+# use alt+shift+(j|k|l|;) to quickly resize panes
+bind -n M-J resize-pane -L 3
+bind -n M-K resize-pane -D 3
+bind -n M-L resize-pane -U 3
+bind -n M-: resize-pane -R 3
+
+# use <prefix> alt+(j|k|l|;) to precisely resize panes
+bind M-j resize-pane -L 1
+bind M-k resize-pane -D 1
+bind M-l resize-pane -U 1
+bind M-\; resize-pane -R 1
+
+# clear screen (similar to Ctrl-l but can be used during running applications)
+# ref - https://stackoverflow.com/a/11525159
+bind C-l send-keys -R
+
+# clear scrollback buffer
+# ref - https://stackoverflow.com/a/10553992
+bind C-k clear-history
+
+# reload configuration
+bind r source-file $HOME/.tmux.conf \; display '$HOME/.tmux.conf sourced'
+
+# edit configuration
+bind e new-window -n "$HOME/.tmux.conf" "sh -c '\${EDITOR:-vim} $HOME/.tmux.conf && tmux source $HOME/.tmux.conf && tmux display \"$HOME/.tmux.conf sourced\"'"
+
+# <<<< end of keybindings >>>>
+
+# <<<< styling >>>>
+
+LIGHT_GRAY="colour247"
+AZURE="colour39"
+
+# colo(u)r the pane borders
+set -g pane-border-style "fg=$LIGHT_GRAY"
+set -g pane-active-border-style "fg=$AZURE"
+
+# << status line >>
+
+# refresh the status line every 5 seconds
+set -g status-interval 5
+
+# extend the maximum length of each status line section
+set -g status-left-length 100
+set -g status-right-length 100
+
+PITCH_BLACK="#000000"
+
+set -g status-style "bg=$PITCH_BLACK,fg=$PITCH_BLACK"
+set -g message-style "bg=$AZURE,fg=$PITCH_BLACK"
+
+# format substitutions
+# - #S -> session name
+# - #F -> window flag
+# - #h -> hostname minus the domain
+# - #(whoami) -> result of running `whoami`
+# - Time format string:
+#    - %H -> 24hr hour
+#    - %M -> minute
+#    - %b -> abbreviated month name
+#    - %d -> day of the month
+# << end status line >>
+
+LEFT_SEPARATOR=""
+RIGHT_SEPARATOR=""
+PREFIX_INDICATOR="⌨" # U+2328
+# https://github.com/ryanoasis/powerline-extra-symbols#glyphs
+RIGHT_CLOCK_SEPARATOR="\ue0b3"
+
+SESSION_NAME_BG="colour140"
+
+set -g status-left "\
+#[fg=$PITCH_BLACK, bg=$SESSION_NAME_BG] #S \
+#[fg=$SESSION_NAME_BG, bg=$PITCH_BLACK]$LEFT_SEPARATOR\
+"
+
+# shortened to ~ if equal to your username
+CURRENT_PATH="#{?#{==:#{pane_current_path},$HOME},~,#{b:pane_current_path}}"
+WINDOW_STATUS_FORMAT_COMPONENTS="#F $CURRENT_PATH "
+WINDOW_STATUS_BG="$AZURE"
+TEXT_FG="colour232"
+
+set -g window-status-format "\
+#[fg=$PITCH_BLACK,bg=$WINDOW_STATUS_BG]$LEFT_SEPARATOR\
+#[fg=$TEXT_FG, bg=$WINDOW_STATUS_BG] $WINDOW_STATUS_FORMAT_COMPONENTS\
+#[fg=$WINDOW_STATUS_BG, bg=$PITCH_BLACK]$LEFT_SEPARATOR\
+"
+
+CURRENT_WINDOW_STATUS_BG="colour81"
+set -g window-status-current-format "\
+#[fg=$PITCH_BLACK,bg=$CURRENT_WINDOW_STATUS_BG]$LEFT_SEPARATOR\
+#[fg=$TEXT_FG,bg=$CURRENT_WINDOW_STATUS_BG,bold] $WINDOW_STATUS_FORMAT_COMPONENTS\
+#[fg=$CURRENT_WINDOW_STATUS_BG,bg=$PITCH_BLACK]$LEFT_SEPARATOR\
+"
+set -g window-status-separator "#[fg=$PITCH_BLACK,bg=$PITCH_BLACK]$LEFT_SEPARATOR"
+
+HOSTNAME_BG="colour63"
+USERNAME_BG="colour9"
+CLOCK_TEXT_FG="colour240"
+set -g status-right "\
+#{?client_prefix,⌨, } \
+#[fg=$CLOCK_TEXT_FG] %H:%M $RIGHT_CLOCK_SEPARATOR %d %b \
+#[fg=$USERNAME_BG]$RIGHT_SEPARATOR\
+#[fg=$TEXT_FG, bg=$USERNAME_BG] #(whoami) \
+#[fg=$HOSTNAME_BG, bg=$USERNAME_BG]$RIGHT_SEPARATOR\
+#[fg=$TEXT_FG, bg=$HOSTNAME_BG] #h \
+"
+
+# <<<<<<<< local overrides >>>>>>>>
+if '[ -f ~/.tmux.conf.local ]' 'source ~/.tmux.conf.local'
+bind t source-file $HOME/.tmux.conf.local \; display '$HOME/.tmux.conf.local sourced'

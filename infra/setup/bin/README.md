@@ -11,7 +11,6 @@ Various setup scripts
   - used with [`coc.nvim`](https://github.com/neoclide/coc.nvim) client (see [config](../../vim/coc.vim))
 - [`setup_macos_settings`](./setup_macos_settings) - set macOS configuration (currently unimplemented)
 - [`setup_neovim`](./setup_neovim) - set up [`neovim`](https://neovim.io/) text editor
-- [`setup_submodules`](./setup_submodules) - set up submodules ([`.tmux`](https://github.com/gpakosz/.tmux))
 - [`setup_work`](./setup_work) - add work-specific configuration (currently just a work-specific gitconfig (name & email))
 - [`symlink`](./symlink) - symlink files throughout `$DOTFILES` based on the scheme described [here](../symlink.md)
 - [`unsetup_brew`](./unsetup_brew) - remove [Homebrew](https://brew.sh) and all install casks/formulae
