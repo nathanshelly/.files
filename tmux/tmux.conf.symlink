@@ -226,3 +226,7 @@ set -g status-right "\
 #[fg=$HOSTNAME_BG, bg=$USERNAME_BG]\
 #[fg=$TEXT_FG, bg=$HOSTNAME_BG] #h \
 "
+
+# <<<<<<<< local overrides >>>>>>>>
+if '[ -f ~/.tmux.conf.local ]' 'source ~/.tmux.conf.local'
+bind t source-file $HOME/.tmux.conf.local \; display '$HOME/.tmux.conf.local sourced'
