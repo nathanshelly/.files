@@ -177,11 +177,11 @@ set -g message-style "bg=$AZURE,fg=$PITCH_BLACK"
 #    - %d -> day of the month
 # << end status line >>
 
-LEFT_SEPARATOR=""
-RIGHT_SEPARATOR=""
+LEFT_SEPARATOR="" # U+E0B0
+RIGHT_SEPARATOR="" # U+E0B2
 PREFIX_INDICATOR="⌨" # U+2328
 # https://github.com/ryanoasis/powerline-extra-symbols#glyphs
-RIGHT_CLOCK_SEPARATOR="\ue0b3"
+RIGHT_CLOCK_SEPARATOR="" # U+E0B1
 
 SESSION_NAME_BG="colour140"
 
