@@ -22,7 +22,7 @@ See the respective topic folders: [`tmux`](./tmux), [`zsh`](./zsh) & [`neovim`](
 
 See [additional documentation](./infra/docs).
 
-![workflow](https://user-images.githubusercontent.com/9750687/77220178-cf451200-6afa-11ea-8993-18cf8ff1e32a.png)
+![workflow](https://user-images.githubusercontent.com/9750687/77220178-cf451200-6afa-11ea-8993-18cf8ff1e32a.png 'workflow')
 
 ## getting started
 
