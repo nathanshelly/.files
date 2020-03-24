@@ -74,15 +74,23 @@ bind x kill-pane
 bind X kill-window
 bind & kill-session
 
+# clear screen (similar to Ctrl-l but can be used during running applications)
+# ref - https://stackoverflow.com/a/11525159
+bind C-l send-keys -R
+
+# clear scrollback buffer
+# ref - https://stackoverflow.com/a/10553992
+bind C-k clear-history
+
+# reload configuration
+bind r source-file $HOME/.tmux.conf \; display '$HOME/.tmux.conf sourced'
+
+# edit configuration
+bind e new-window -n "$HOME/.tmux.conf" "sh -c '\${EDITOR:-vim} $HOME/.tmux.conf && tmux source $HOME/.tmux.conf && tmux display \"$HOME/.tmux.conf sourced\"'"
+
 # << copy-mode-vi >>
 # copy mode entered by `<prefix> [` or scrolling
 # ref - https://superuser.com/a/197272
-#
-# use home row (`jkl;` instead of default `hjkl` navigation)
-bind -T copy-mode-vi 'j'  send -X cursor-left
-bind -T copy-mode-vi 'k'  send -X cursor-down
-bind -T copy-mode-vi 'l'  send -X cursor-up
-bind -T copy-mode-vi ';' send -X cursor-right
 
 # enable copying to system clipboard via `Enter` & `y`
 #
@@ -108,6 +116,12 @@ if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi y sen
 if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND"'
 if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND" \; display-message "highlighted selection copied to system clipboard"'
 
+# use home row (`jkl;` instead of default `hjkl` navigation)
+bind -T copy-mode-vi 'j'  send -X cursor-left
+bind -T copy-mode-vi 'k'  send -X cursor-down
+bind -T copy-mode-vi 'l'  send -X cursor-up
+bind -T copy-mode-vi ';' send -X cursor-right
+
 # use alt+(j|k|l|;) to navigate between panes
 bind -n M-j select-pane -L
 bind -n M-k select-pane -D
@@ -125,20 +139,6 @@ bind M-j resize-pane -L 1
 bind M-k resize-pane -D 1
 bind M-l resize-pane -U 1
 bind M-\; resize-pane -R 1
-
-# clear screen (similar to Ctrl-l but can be used during running applications)
-# ref - https://stackoverflow.com/a/11525159
-bind C-l send-keys -R
-
-# clear scrollback buffer
-# ref - https://stackoverflow.com/a/10553992
-bind C-k clear-history
-
-# reload configuration
-bind r source-file $HOME/.tmux.conf \; display '$HOME/.tmux.conf sourced'
-
-# edit configuration
-bind e new-window -n "$HOME/.tmux.conf" "sh -c '\${EDITOR:-vim} $HOME/.tmux.conf && tmux source $HOME/.tmux.conf && tmux display \"$HOME/.tmux.conf sourced\"'"
 
 # <<<< end of keybindings >>>>
 
