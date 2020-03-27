@@ -42,6 +42,40 @@ make setup
 
 Unless something went wrong (🤞) you're all set up now! 🎉
 
+## why use this?
+
+### the pitch
+
+- features
+  - [fuzzy searching anything and everything](https://user-images.githubusercontent.com/9750687/77736063-e9826280-6fc8-11ea-9cde-c1d785a15ac5.gif) via [`fzf`](https://github.com/junegunn/fzf)
+    - this demo shows `git` commits, files below the current directory, and shell history, see all the possibilities [here](./utilities/fzf/README.md)
+  - [easy completion/execution of last command matching what you've typed so far](https://user-images.githubusercontent.com/9750687/77734491-0701fd00-6fc6-11ea-88a8-7050762d1302.gif) via [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions/)
+  - [syntax highlighting as you type (immediate feedback on invalid commands, flags, paths, etc.)](https://user-images.githubusercontent.com/9750687/77735358-a83d8300-6fc7-11ea-9be4-faab8443fb60.gif) via [`fast-syntax-highlighting`](https://github.com/zdharma/fast-syntax-highlighting)
+  - [syntax highlighted `git diff`s](https://user-images.githubusercontent.com/9750687/77733162-a5409380-6fc3-11ea-9f7a-59db41d058df.png) via [`delta`](https://github.com/dandavison/delta)
+  - [syntax highlighted `cat`ting of files](https://user-images.githubusercontent.com/9750687/77732987-4da22800-6fc3-11ea-9cc2-79f0643e9645.png) via [`bat`](https://github.com/sharkdp/bat)
+  - [highlighted `man` pages](https://user-images.githubusercontent.com/9750687/77732882-116ec780-6fc3-11ea-83e9-0e1743963536.png)
+  - [a blazing-fast async prompt](https://github.com/romkatv/powerlevel10k/) with contextual information like `git` changes, executable versions, etc.
+  - [useful utilities](./utilities/README.md) like [`fasd`](./utilities/fasd/README.md), [`rg`](./utilities/ripgrep/README.md), [`fzf`](./utilities/fzf/README.md), [`fd`](./utilities/fd/README.md), etc.
+- best practices/sane defaults - dotfiles configuration is weird. At times the documentation seems like ancient, undechiperable text. The terminal emulator (e.g. Alacritty or iTerm2), terminal multiplexer if you use one (e.g. `tmux` or `screen`) and shell (`bash`, `zsh`, `fish`, etc.) can interact in unexpected, maddening ways. sometimes the suggestions you see on Stack Overflow seem like magic incantations. these dotfiles deal with all of that for you so you don't need to worry about it (& if you do run into weirdness help is only an issue away!).
+  > disclaimer: I am well aware that these dotfiles can always be improved. The claim of best practices comes primarily from the sheer volume of time poured into them, not any pretension that they are perfect.
+- well-supported - no SLA but a promise to address new issues in a timely manner ⏰
+- well-documented - READMEs & code comments galore help anytime you want to make direct changes
+- focus on speed - this configuration attempts to provide a useful set of features while keeping shell startup/prompt latency as low as possible
+
+### the anti-pitch
+
+- 'mo code, 'mo problems - actually though additional dependencies can cause headaches and add complexity or fragility that outweighs the benefits
+- no single dotfiles configuration is best for everyone - these dotfiles were written with my use cases in mind, they will hopefully work for yours (or at least the parts that do can be adopted for your own config) but they won't work for everyone's
+
+### .files values
+
+Putting these in writing helps keep this configuration accountable (and provide opportunities to purposefully changes directions).
+
+- standards respecting - should avoid non-standard modifications (e.g. overwriting commonly used bindings), non-standard modifications should be opt-in/easily configurable wherever possible
+- reliable - avoid fragile dependencies & configuration. Breaking someone's shell (in subtle or unsubtle ways) is far worse than not having a given feature.
+- customizable - support different configurations for different users (without adding too much additional complexity/fragility)
+- passively useful - this configuration should be useful & worthwhile without learning any aliases or keybindings, modifying any settings or reading any documentation
+
 ## next steps
 
 ### add your own configuration
