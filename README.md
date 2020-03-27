@@ -42,6 +42,8 @@ make setup
 
 Unless something went wrong (🤞) you're all set up now! 🎉
 
+Check out [next steps](#next-steps) to explore features/configuration possibilities.
+
 ## why use this?
 
 ### the pitch
