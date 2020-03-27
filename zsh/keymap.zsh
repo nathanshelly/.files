@@ -8,10 +8,20 @@
 # `autoload`
 #   - `-U` -> alias expansion is supressed when the function is loaded
 
+# use `Shift+Tab` to cycle backwards through completions
+# ref - https://unix.stackexchange.com/questions/84867/zsh-completion-enabling-shift-tab
+zmodload zsh/complist
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+
+# <<<<<<<<<<< vi mode >>>>>>>>>>>
+
 "$DOTFILES/infra/scripts/component_enabled.sh" 'vi-mode' || return 0
 
 # turn on vim mode
 bindkey -v
+
+# shorten key delay to .2 seconds to allow quick exiting of insert mode
+export KEYTIMEOUT=20
 
 # map jk to esc in insert mode
 bindkey -M viins 'jk' vi-cmd-mode

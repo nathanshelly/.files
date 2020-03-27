@@ -1,51 +1,52 @@
 # local/private config pulled from include
 [include]
-  path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
+# for work projects
 [hub]
-  protocol = ssh
+	protocol = ssh
 [color]
-  ui = always
-  diff = auto
-  status = auto
-  branch = auto
+	ui = always
+	diff = auto
+	status = auto
+	branch = auto
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
 	pager = "delta --tabs=2 --hunk-style=plain --highlight-removed --theme='TwoDark' --plus-color='#1c3428' --plus-emph-color='#37664e' --minus-color='#390423' --minus-emph-color='#af0d6c'"
 [pager]
-  # " = true" means use pager defined `./pager.zsh`
-  diff     = true
-  difftool = true
-  log      = true
-  show     = true
+	# " = true" means use pager defined `./pager.zsh`
+	diff     = true
+	difftool = true
+	log      = true
+	show     = true
 [apply]
-  whitespace = nowarn
+	whitespace = nowarn
 [mergetool]
-  keepBackup = false
+	keepBackup = false
 [difftool]
-  prompt = false
+	prompt = false
 [help]
-  autocorrect = 1
+	autocorrect = 1
 [push]
-  default = current
+	default = current
 [alias]
-  r = rebase
-  ri = rebase --interactive
-  co = checkout
-  count = !git shortlog --summary
-  last  = log -1 HEAD
-  # base alias to build on
-  lb = log --abbrev-commit --decorate
-  l = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
-  ln = l --max-count
-  lv = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
-  lvn = lv --max-count
+	r = rebase
+	ri = rebase --interactive
+	co = checkout
+	count = !git shortlog --summary
+	last  = log -1 HEAD
+	# base alias to build on
+	lb = log --abbrev-commit --decorate
+	l = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
+	ln = l --max-count
+	lv = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
+	lvn = lv --max-count
 [color "status"]
-  added = 045
-  changed = 212
-  untracked = 004
-  branch = 135
-  localBranch = 135
-  remoteBranch = 159
+	added = 045
+	changed = 212
+	untracked = 004
+	branch = 135
+	localBranch = 135
+	remoteBranch = 159
 [gc]
 	# https://stackoverflow.com/a/41771616/2574937
 	pruneExpire = 1.hour.ago

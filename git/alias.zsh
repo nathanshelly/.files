@@ -76,5 +76,5 @@ alias gu='git reset HEAD~'
 
 # aliases to avoid `--no-pager` default
 # uses `gwp<command>` ("with pager" mnemonic) to avoid `--no-pager`
-alias gwpl='glbase'
-alias gwplv='glvbase'
+alias gwpl='git_log_base'
+alias gwplv='git_log_verbose_base'
