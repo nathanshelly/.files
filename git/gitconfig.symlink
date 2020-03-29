@@ -1,66 +1,83 @@
-# local/private config pulled from include
+######## local overrides of `git` identity (author name & email) ########
+# https://git-scm.com/docs/git-config#_includes
 [include]
 	path = ~/.gitconfig.local
-# for work projects
-[includeIf "gitdir:~/work/"]
+[includeIf "gitdir:~/work/"] # optional work-specific identity
 	path = ~/.gitconfig.work
-[hub]
-	protocol = ssh
-[color]
-	ui = always
-	diff = auto
-	status = auto
-	branch = auto
-[core]
-	excludesfile = ~/.gitignore
-	pager = "delta --tabs=2 --hunk-style=plain --highlight-removed --theme='TwoDark' --plus-color='#1c3428' --plus-emph-color='#37664e' --minus-color='#390423' --minus-emph-color='#af0d6c'"
-[pager]
-	# " = true" means use pager defined `./pager.zsh`
-	diff     = true
-	difftool = true
-	log      = true
-	show     = true
-[apply]
-	whitespace = nowarn
-[mergetool]
-	keepBackup = false
-[difftool]
-	prompt = false
-[help]
-	autocorrect = 1
-[pull]
-	ff = only
-[push]
-	default = current
-[alias]
-	r = rebase
-	ri = rebase --interactive
-	co = checkout
-	count = !git shortlog --summary
-	last  = log -1 HEAD
-	# base alias to build on
-	lb = log --abbrev-commit --decorate
-	l = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(auto)%d%C(reset)'"
-	ln = l --max-count
-	lv = !"git lb --pretty=format:'%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
-	lvn = lv --max-count
+######## alphabetical list of config options ########
+[advice]
+	# disable help messages
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-advice
+	commitBeforeMerge  = false
+	detachedHead       = false
+	implicitIdentity   = false
+	pushNonFastForward = false
+	resolveConflict    = false
+	statusHints        = false
+	waitingForEditor   = false
+[branch]
+	# make `pull` use rebase, not merge
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-branchautoSetupRebase
+	autosetuprebase = always
 [color "status"]
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorstatusltslotgt
 	added = 045
-	changed = 212
-	untracked = 004
 	branch = 135
+	changed = 212
 	localBranch = 135
 	remoteBranch = 159
-[advice]
-	pushNonFastForward = false
-	statusHints        = false
-	commitBeforeMerge  = false
-	resolveConflict    = false
-	implicitIdentity   = false
-	detachedHead       = false
-	waitingForEditor   = false
-[gc]
-	# https://stackoverflow.com/a/41771616/2574937
-	pruneExpire = 1.hour.ago
-[protocol]
-	version = 2 # faster for large repos -  https://git-scm.com/docs/protocol-v2
+	untracked = 004
+[core]
+	# maintains original EOL characters on checkout, normalizes CLRF -> LF endings
+	# on commit
+	# https://stackoverflow.com/a/4425433
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreautocrlf
+	autocrlf = input
+	# marks `~/.gitignore` (if it exists) as a global ignore file applying to all
+	# `git` repos throughout your machine (unrelated to the `.gitignore` at the
+	# root of this repo - `$DOTFILES/.gitignore`)
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreexcludesFile
+	excludesFile = ~/.gitignore
+	# this line dynamically set by `$DOTFILES/zsh/pager.zsh" on shell load based
+	# on `theme` value in `$DOTFILES/.files-settings.json`
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-corepager
+	pager = "delta --tabs=2 --hunk-style=plain --highlight-removed --theme='TwoDark' --plus-color='#1c3428' --plus-emph-color='#37664e' --minus-color='#390423' --minus-emph-color='#af0d6c'"
+	# ensures unicode compatibility between macOS, Windows & Linux
+	# https://www.git-tower.com/help/guides/faq-and-tips/faq/unicode-filenames/mac
+	precomposeUnicode = true
+[help]
+	# automatically correct and execute mistyped commands
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-helpautoCorrect
+	autoCorrect = -1 # negative value executes command immediately
+[hub] # GitHub CLI tool - https://github.com/github/hub
+	protocol = ssh
+[rebase]
+	# automatically runs `git stash` when you start a rebase, and `git stash pop`
+	# when you finish that rebase
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-rebaseautoStash
+	autostash = true
+[rerere]
+	# remember & automatically apply past merge conflic resolutions
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-rerereenabled
+	# https://stackoverflow.com/a/49501436
+	enabled = true
+[pager] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pagerltcmdgt
+	diff     = true
+	log      = true
+	show     = true
+[pull]
+	# allows only fast-forward merges (no creation of a merge commit)
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-pullff
+	ff = only
+[push]
+	# `git push` treated as `git push remote <current-checkout-out-branch-name>`
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault
+	default			= current
+	# push annotated tags missing from remote
+	# equivalent of typing `git push --follow-tags`
+	# https://git-scm.com/docs/git-push#Documentation/git-push.txt---follow-tags
+	followTags  = true
+[tag]
+	# properly sort semver tags (`v-0.9.1x` after `v-0.9.9`)
+	# https://stackoverflow.com/a/22634649
+	sort = version:refname
