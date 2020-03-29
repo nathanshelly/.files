@@ -64,6 +64,8 @@ alias grnm='git rebase master'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias grst='git reset'
+# reset all changes, including untracked files
+alias grstf='git reset --hard && git clean -d --force' # `-d` - recurse
 
 alias gs='git status --short --branch'
 alias gst='git stash'
