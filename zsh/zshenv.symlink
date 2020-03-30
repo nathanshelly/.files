@@ -1,53 +1,99 @@
-# path to dotfiles
-export DOTFILES="$HOME/.files"
+main() {
+  # set DOTFILES env var (statically if possible for speed, else dynamically)
+  if [ -d "$HOME/.files" ]; then
+   # to avoid unnecessary overhead assume the `$HOME/.files` directory contains
+   # this config if it exists
+    export DOTFILES="$HOME/.files"
+  else
+    dynamically_determine_dotfiles # see function at end of file
+  fi
 
-# `brew --prefix` takes ~25ms on my machine (to see how long it takes on yours
-# try `hyperfine 'brew --prefix'`). To avoid that overhead I hardcode the
-# path (seems pretty stable).
-if "$DOTFILES/infra/scripts/is_macos.sh"; then
-  export HOMEBREW_PREFIX="/usr/local"
-else
-  # this assumes (with reasonable likelihood) that Homebrew is installed under
-  # the current user
-  export HOMEBREW_PREFIX="$HOME/.linuxbrew"
-fi
+  # `brew --prefix` takes ~25-40ms on my machine vs ~11ms for the if/else below
+  # to avoid that overhead I hardcode the path (seems unlikely to change soon)
+  #
+  # to see times on your machine (you may have to `brew install hyperfine`):
+  # - `hyperfine 'brew --prefix'`
+  # - `hyperfine ./foo.sh` where `foo.sh` is a script w/ the if/else below
+  if "$DOTFILES/infra/scripts/is_macos.sh"; then
+    export HOMEBREW_PREFIX="/usr/local"
+  else
+    # this assumes (with reasonable likelihood) that Homebrew is installed under
+    # the current user
+    export HOMEBREW_PREFIX="$HOME/.linuxbrew"
+  fi
 
-# XDG directory specification
-# ref - https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
+  # XDG directory specification
+  # ref - https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+  export XDG_DATA_HOME="$HOME/.local/share"
+  export XDG_CONFIG_HOME="$HOME/.config"
 
-# << homebrew >>
-# ref - https://github.com/Homebrew/brew/blob/master/docs/Manpage.md#environment
+  # << homebrew >>
+  # ref - https://github.com/Homebrew/brew/blob/master/docs/Manpage.md#environment
 
-export HOMEBREW_INSTALL_CLEANUP=0 # checking existence, not value
-export HOMEBREW_AUTO_UPDATE_SECS=86400 # check for update every 24 hours
+  export HOMEBREW_INSTALL_CLEANUP=0 # checking existence, not value
+  export HOMEBREW_AUTO_UPDATE_SECS=86400 # check for update every 24 hours
 
-# << tmuxinator >>
-# ref - https://github.com/tmuxinator/tmuxinator#project-configuration-location
-export TMUXINATOR_CONFIG="$DOTFILES/tmux/tmuxinator_configs"
+  # << tmuxinator >>
+  # ref - https://github.com/tmuxinator/tmuxinator#project-configuration-location
+  export TMUXINATOR_CONFIG="$DOTFILES/tmux/tmuxinator_configs"
 
-# prevent generation of .pyc files
-export PYTHONDONTWRITEBYTECODE=1
+  # prevent generation of .pyc files
+  export PYTHONDONTWRITEBYTECODE=1
 
-export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
+  export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
 
-# colored paging (enables colored man pages)
-# ref - https://github.com/sorin-ionescu/prezto/blob/cfeb8cd6c9f60c2a928f4c706d0137c7de2ef106/modules/environment/init.zsh#L59-L67
-export LESS_TERMCAP_mb=$'\E[01;31m'      # begins blinking
-export LESS_TERMCAP_md=$'\E[01;31m'      # begins bold
-export LESS_TERMCAP_me=$'\E[0m'          # ends mode
-export LESS_TERMCAP_se=$'\E[0m'          # ends standout-mode
-export LESS_TERMCAP_so=$'\E[00;47;30m'   # begins standout-mode
-export LESS_TERMCAP_ue=$'\E[0m'          # ends underline
-export LESS_TERMCAP_us=$'\E[01;32m'      # begins underline
+  # colored paging (enables colored man pages)
+  # ref - https://github.com/sorin-ionescu/prezto/blob/cfeb8cd6c9f60c2a928f4c706d0137c7de2ef106/modules/environment/init.zsh#L59-L67
+  export LESS_TERMCAP_mb=$'\E[01;31m'      # begins blinking
+  export LESS_TERMCAP_md=$'\E[01;31m'      # begins bold
+  export LESS_TERMCAP_me=$'\E[0m'          # ends mode
+  export LESS_TERMCAP_se=$'\E[0m'          # ends standout-mode
+  export LESS_TERMCAP_so=$'\E[00;47;30m'   # begins standout-mode
+  export LESS_TERMCAP_ue=$'\E[0m'          # ends underline
+  export LESS_TERMCAP_us=$'\E[01;32m'      # begins underline
 
-# << work-specific >>
-[ -d "$HOME/work" ] && {
-  export GOPATH="$HOME/work/go"
-  export VAULT_ADDR=https://vault.services.opendoor.com:8200
-  export DIRENV_LOG_FORMAT= # silence direnv
-  export ANDROID_HOME="$HOME/Library/Android/sdk" # for android studio
-  export OD_CURRENT_USER_EMAIL="nathan.shelly@opendoor.com"
+  # << work-specific >>
+  [ -d "$HOME/work" ] && {
+    export GOPATH="$HOME/work/go"
+    export VAULT_ADDR=https://vault.services.opendoor.com:8200
+    export DIRENV_LOG_FORMAT= # silence direnv
+    export ANDROID_HOME="$HOME/Library/Android/sdk" # for android studio
+    export OD_CURRENT_USER_EMAIL="nathan.shelly@opendoor.com"
+  }
+  # << end work-specific >>
 }
-# << end work-specific >>
+
+# dynamically determine path to `.files` repo
+# attempts to follow symlinked `zshenv` (bails if `zshenv` is not symlinked)
+dynamically_determine_dotfiles() {
+  local follow_symlink_command path_to_symlinked_zshenv path_to_zshenv
+  # path to this script, likely `$HOME/.zshenv` (this does NOT follow symlinks)
+  # ref - https://stackoverflow.com/a/23259585
+  path_to_zshenv="${(%):-%x}"
+
+  # if it isn't a symlink bail, requires manual configuration
+  [ -L "$path_to_zshenv" ] || {
+    echo 'Failed to determine $DOTFILES as this script is not symlinked'
+    exit 1
+  }
+
+  # follow symlink - https://stackoverflow.com/a/42918
+  if command -v realpath > /dev/null; then
+    follow_symlink_command="realpath"
+  elif command -v readlink > /dev/null; then
+     if [ "$(uname)" = "Darwin" ]; then
+      follow_symlink_command="readlink" # macOS
+    else
+      follow_symlink_command="readlink -f" # linux implementations require `-f`
+     fi
+  else
+    echo 'Failed to find command to follow symlinks'
+    exit 1
+  fi
+  path_to_symlinked_zshenv="$("$follow_symlink_command" "$path_to_zshenv")"
+  # `:h` removes path component from end, `:h:h` to remove `zsh/zshenv.symlink`
+  # ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Modifiers
+  export DOTFILES="${path_to_symlinked_zshenv:h:h}"
+}
+
+main "$@"
