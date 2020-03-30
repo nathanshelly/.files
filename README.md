@@ -12,35 +12,44 @@ Primarily a [`zsh`](https://www.zsh.org), [`neovim`](https://github.com/neovim/n
   - [the pitch](#the-pitch)
   - [the anti-pitch](#the-anti-pitch)
   - [.files values](#.files-values)
-- [getting started](#getting-started)
-  - [next steps](#next-steps)
-    - [add your own configuration](#add-your-own-configuration)
-    - [add secrets safely](#add-secrets-safely)
-    - [explore features/configuration](#explore-featuresconfiguration)
+- [quickstart](#quickstart)
+- [next-steps](#next-steps)
+  - [add your own configuration](#add-your-own-configuration)
+  - [add secrets safely](#add-secrets-safely)
+  - [explore features/configuration](#explore-featuresconfiguration)
 
 ## why use this?
+
+Custom dotfiles can make your terminal setup far more powerful (& prettier).
+
+They can also suck up your time following a rabbit hole of Stack Overflow posts, break in unexpected ways, and generally be a chore to build.
+
+These dotfiles give you the best of a custom configuration without the hassle of maintenance.
 
 ### the pitch
 
 - features
   - [fuzzy searching anything and everything](https://user-images.githubusercontent.com/9750687/77736063-e9826280-6fc8-11ea-9cde-c1d785a15ac5.gif) via [`fzf`](https://github.com/junegunn/fzf) (see additional possibilities [here](./utilities/fzf/README.md))
-  - [easy completion/execution of last command matching what you've typed so far](https://user-images.githubusercontent.com/9750687/77734491-0701fd00-6fc6-11ea-88a8-7050762d1302.gif) via [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions/)
-  - [syntax highlighting as you type (immediate feedback on invalid commands, flags, paths, etc.)](https://user-images.githubusercontent.com/9750687/77735358-a83d8300-6fc7-11ea-9be4-faab8443fb60.gif) via [`fast-syntax-highlighting`](https://github.com/zdharma/fast-syntax-highlighting)
+  - [easy completion/execution of most recent matching command](https://user-images.githubusercontent.com/9750687/77734491-0701fd00-6fc6-11ea-88a8-7050762d1302.gif) via [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions/)
+  - [syntax highlighting as you type](https://user-images.githubusercontent.com/9750687/77735358-a83d8300-6fc7-11ea-9be4-faab8443fb60.gif) (immediate feedback on invalid commands, flags, paths, etc.) via [`fast-syntax-highlighting`](https://github.com/zdharma/fast-syntax-highlighting)
   - [syntax highlighted `git diff`s](https://user-images.githubusercontent.com/9750687/77733162-a5409380-6fc3-11ea-9f7a-59db41d058df.png) via [`delta`](https://github.com/dandavison/delta)
   - [syntax highlighted `cat`ting of files](https://user-images.githubusercontent.com/9750687/77732987-4da22800-6fc3-11ea-9cc2-79f0643e9645.png) via [`bat`](https://github.com/sharkdp/bat)
   - [highlighted `man` pages](https://user-images.githubusercontent.com/9750687/77732882-116ec780-6fc3-11ea-83e9-0e1743963536.png) via [a few `TERMCAP` vars](https://github.com/nathanshelly/.files/blob/88c87bb5eb9946ede43b2de66a60f8672722b5f3/zsh/zshenv.symlink#L35-L43)
-  - [a blazing-fast async prompt](https://github.com/romkatv/powerlevel10k/) with contextual information like `git` changes, executable versions, etc. (extremely customizable via the command `p10k configure`)
+  - [a blazing-fast async prompt](https://github.com/romkatv/powerlevel10k/) with contextual information like `git` changes, executable versions, etc. (customizable via the command `p10k configure`)
   - [useful utilities](./utilities/README.md) like [`fasd`](./utilities/fasd/README.md), [`rg`](./utilities/ripgrep/README.md), [`fzf`](./utilities/fzf/README.md), [`fd`](./utilities/fd/README.md), etc.
-- best practices/sane defaults - dotfiles configuration is weird. At times the documentation seems like ancient, undechiperable text. The terminal emulator (e.g. Alacritty or iTerm2), terminal multiplexer if you use one (e.g. `tmux` or `screen`) and shell (`bash`, `zsh`, `fish`, etc.) can interact in unexpected, maddening ways. Sometimes the suggestions you see on Stack Overflow seem like magic incantations. These dotfiles deal with all of that for you so you don't need to worry about it (and if you do run into weirdness help is only an issue away!).
+- best practices/sane defaults - dotfiles configuration is weird. At times the documentation seems like ancient, undechiperable text. Things break in wild, unexpected maddening ways. Sometimes the suggestions you see on Stack Overflow seem like magic incantations. These dotfiles deal with all of that for you so you don't need to worry about it (and if you do run into weirdness help is only an issue away!).
+
   > disclaimer: I am well aware that these dotfiles can always be improved. The claim of best practices comes primarily from the sheer volume of time poured into them, not any pretension that they are perfect.
+
 - well-supported - no SLA but a promise to address new issues in a timely manner ⏰
 - well-documented - READMEs & code comments galore help anytime you want to make direct changes
 - focus on speed - this configuration attempts to provide a useful set of features while keeping shell startup/prompt latency as low as possible
+- customize - you can toggle bits & pieces, set your color theme (light or dark), and more via a [settings file](./infra/docs/settings.md)
 
 ### the anti-pitch
 
 - 'mo code, 'mo problems - additional dependencies can cause headaches and add complexity or fragility that outweighs the benefits
-- no single dotfiles configuration is best for everyone - these dotfiles were written with my use cases in mind, they will hopefully work for yours (or at least the parts that do can be adopted for your own config) but they won't work for everyone's
+- no single dotfiles configuration is best for everyone - these dotfiles were written with my use cases in mind. They will hopefully work for yours (or at least the parts that do can be adopted for your own config) but they won't work for everyone's
 
 ### .files values
 
@@ -51,7 +60,7 @@ Aspirational principles:
 - passively useful - be useful & worthwhile without learning any aliases or keybindings, modifying any settings or reading any documentation
 - respectful of defaults - make non-standard modifications (e.g. overwriting commonly used bindings) opt-in/easily configurable wherever possible
 
-## getting started
+## quickstart
 
 > If you use docker you can run the following command to test drive this config with minimal effort (see [`docker/dotfiles`](./docker/dotfiles) for more details):
 >
@@ -59,9 +68,7 @@ Aspirational principles:
 
 These dotfiles use 24 bit (true) color. For best results use a terminal emulator that supports this feature (the default macOS emulator, `Terminal`, does **not**). Here are a few possibilities: [`Alacritty`](https://github.com/alacritty/alacritty), [`kitty`](https://sw.kovidgoyal.net/kitty/), [`iTerm2` (macOS-specific)](https://iterm2.com/).
 
-The below commands will run the [`infra/setup/setup_dotfiles`](./infra/setup/setup_dotfiles) setup script.
-
-This script will walk through installing various shell utilities, symlinking various files to their appropriate locations, etc. See [`infra/setup`](./infra/setup/) folder for documentation on the setup process.
+The below commands will run the [`infra/setup/setup_dotfiles`](./infra/setup/setup_dotfiles) which will walk through installing shell utilities, symlinking files to their appropriate locations, etc. See the [`infra/setup`](./infra/setup/) folder for documentation on the setup process.
 
 ```bash
 cd $HOME # to clone dotfiles to `$HOME/.files`
@@ -75,7 +82,7 @@ Unless something went wrong (🤞) you're all set up now! 🎉
 
 Check out [next steps](#next-steps) below to explore features/configuration possibilities.
 
-### next steps
+## next steps
 
 #### add your own configuration
 
