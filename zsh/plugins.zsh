@@ -36,10 +36,13 @@ zinit light zsh-users/zsh-autosuggestions
 # ref - search fast-syntax-highlighting
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
 #
-# TODO: uncomment out below line once this issue is resolved
+# TODO: enable asynchronous loading once this issue is resolved
 # https://github.com/zdharma/fast-syntax-highlighting/issues/177
 # zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
-zinit light zdharma/fast-syntax-highlighting
+# TODO: switch back to `fast-syntax-highlighting` once this issue is resolved
+# https://github.com/zdharma/fast-syntax-highlighting/issues/179
+# zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-syntax-highlighting
 
 # synchronize system clipboard
 # theoretically you might need to source this after other keymappings, have not
