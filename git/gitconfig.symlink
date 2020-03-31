@@ -73,7 +73,7 @@
 	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-rebaseautoStash
 	autostash = true
 [rerere]
-	# remember & automatically apply past merge conflic resolutions
+	# remember & automatically apply past merge conflict resolutions
 	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-rerereenabled
 	# https://stackoverflow.com/a/49501436
 	enabled = true
