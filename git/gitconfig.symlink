@@ -51,16 +51,6 @@
 	autoCorrect = -1 # negative value executes command immediately
 [hub] # GitHub CLI tool - https://github.com/github/hub
 	protocol = ssh
-[rebase]
-	# automatically runs `git stash` when you start a rebase, and `git stash pop`
-	# when you finish that rebase
-	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-rebaseautoStash
-	autostash = true
-[rerere]
-	# remember & automatically apply past merge conflic resolutions
-	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-rerereenabled
-	# https://stackoverflow.com/a/49501436
-	enabled = true
 [pager] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pagerltcmdgt
 	diff     = true
 	log      = true
@@ -77,6 +67,16 @@
 	# equivalent of typing `git push --follow-tags`
 	# https://git-scm.com/docs/git-push#Documentation/git-push.txt---follow-tags
 	followTags  = true
+[rebase]
+	# automatically runs `git stash` when you start a rebase, and `git stash pop`
+	# when you finish that rebase
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-rebaseautoStash
+	autostash = true
+[rerere]
+	# remember & automatically apply past merge conflic resolutions
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-rerereenabled
+	# https://stackoverflow.com/a/49501436
+	enabled = true
 [tag]
 	# properly sort semver tags (`v-0.9.1x` after `v-0.9.9`)
 	# https://stackoverflow.com/a/22634649
