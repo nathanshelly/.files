@@ -1,7 +1,5 @@
 " <<<<<<<< colors >>>>>>>>
 
-" TODO: look into changes to colors from true color support
-
 " true color support
 " note: with true color support on, must specify highlights with guifg/bf
 " ref - https://github.com/joshdick/onedark.vim#installation
@@ -9,11 +7,15 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme onedark
+" installed as plugin with `vim-plug`, see ./plugins.vim
+" `silent!` to avoid erroring if `onedark` not installed
+silent! colorscheme onedark
 
 " disable background color potentially set by colorscheme
 " ref - https://vi.stackexchange.com/a/16136
 highlight Normal ctermbg=NONE guibg=NONE
+" rehighlight on color scheme change
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
 " << miscellaneous >>
 
@@ -34,6 +36,7 @@ highlight ExtraWhitespace ctermbg=magenta guibg=#ff00ff
 " keep through color scheme change
 augroup whitespace_highlighting
   autocmd!
+  " rehighlight on color scheme change
   autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta guibg=#ff00ff
   " highlight all trailing whitespace
   " TODO: check why this seemed to break
