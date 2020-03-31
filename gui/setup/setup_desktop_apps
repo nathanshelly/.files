@@ -36,14 +36,7 @@ main() {
   }
 
   echo 'setting up desktop apps (casks)'
-
-  cd "$DOTFILES/gui/apps" || {
-    # shellcheck disable=SC2016
-    printf 'failed to `cd` to "%s/gui/apps", `brew bundle` not run' "$DOTFILES"
-    exit 1
-  }
-
-  brew bundle
+  brew bundle --file "$DOTFILES/gui/apps/Brewfile"
   success "set up casks"
   # << end casks setup >>
 

@@ -23,19 +23,10 @@ command -v brew > /dev/null || {
 }
 
 # standard, platform-agnostic packages, no casks (desktop apps)
-cd "$DOTFILES" || {
-  echo "failed to \`cd\` to $DOTFILES, \`brew bundle\` not run"
-  exit 1
-}
+brew bundle --file "$DOTFILES/Brewfile"
 
-brew bundle
-
+# macos-specific forumulae
 "$DOTFILES/infra/scripts/is_macos.sh" || exit 0 # bail on Linux
-
-# <<<< macos-specific >>>>
-pushd "$DOTFILES/macos" > /dev/null || exit 1
-brew bundle # formulae
-popd "$DOTFILES/macos" > /dev/null || exit 1
-# <<<< end of macos-specific >>>>
+brew bundle --file "$DOTFILES/macos/Brewfile"
 
 success "installed packages"
