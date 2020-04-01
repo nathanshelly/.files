@@ -59,7 +59,7 @@
             ]
           },
           {
-            "//": "<<<<< start of mapping h+modifiers to delete+modifiers >>>>>"
+            "description": "<<<<<< start of mapping h+modifiers to delete+modifiers >>>>>>"
           },
           {
             "description": "Ctrl-H to Delete",
@@ -133,8 +133,7 @@
             ]
           },
           {
-            "/": "<<<<<< end of mapping h+modifiers to delete+modifiers >>>>>>",
-            "//": "<<<< start of mapping jkl;+modifiers to ⬅⬇⬆➡+modifiers >>>>"
+            "description": "<<<<<< end of mapping h+modifiers to delete+modifiers/start of mapping jkl;+modifiers to ⬅⬇⬆➡+modifiers >>>>>>"
           },
           {
             "description": "Ctrl-J to Left Arrow",
@@ -505,11 +504,10 @@
             ]
           },
           {
-            "/": "<<<<< end of mapping jkl;+modifiers to ⬅⬇⬆➡+modifiers >>>>>",
-            "//": "<<<<<<<<<<< start of binding Shift taps to () >>>>>>>>>>>>>",
-            "///": "<<<<<<<<<<<<<<< e.g. tap Left Shift -> `(` >>>>>>>>>>>>>>>",
-            "////": "<<<<<<<<<<<<<<< e.g. tap Right Shift -> `)` >>>>>>>>>>>>>",
-            "/////": "<<<<<<<<<<< holding shift works as usual  >>>>>>>>>>>>>"
+            "description": "<<<<<< end of mapping jkl;+modifiers to ⬅⬇⬆➡+modifiers/start binding Shift taps to `()`>>>>>>",
+            "/": "<<<<<<<<<<<<<<<< e.g. tap Left Shift -> `(` >>>>>>>>>>>>>>>>",
+            "//": "<<<<<<<<<<<<<<<< e.g. tap Right Shift -> `)` >>>>>>>>>>>>>>",
+            "///": "<<<<<<<<<<<<< holding shift works as usual  >>>>>>>>>>>>>>>"
           },
           {
             "description": "Left shift to ( when tapped",
@@ -612,10 +610,9 @@
             ]
           },
           {
-            "/": "<<<<<<<<<<<<< end of binding Shift taps to () >>>>>>>>>>>>>",
-            "//": "<<<<<<<<<<<<< start of app-specific bindings >>>>>>>>>>>>>",
-            "///": "< many of these bindings use Cmd-Ctrl-Option all at once >",
-            "////": "<<< `Hyper` is used as a shorthand for these bindings >>>"
+            "description": "<<<<<< end of binding Shift taps to `()`/start of app-specific bindings >>>>>>",
+            "/": "<< many of these bindings use Cmd-Ctrl-Option all at once >>",
+            "//": "<<<< `Hyper` is used as a shorthand for these bindings >>>>"
           },
           {
             "description": "Hyper-t to open terminal (Alacritty)",
@@ -998,8 +995,7 @@
             ]
           },
           {
-            "/": "<<<<<<<<<<<<<<< end of app-specific bindings >>>>>>>>>>>>>>>",
-            "//": "<<<<<<<<<<<< start of remapping system binding >>>>>>>>>>>>"
+            "description": "<<<<<< end of app-specific bindings/start of remapping system bindings >>>>>>"
           },
           {
             "description": "Cmd-Shift-M to Cmd-H (Remap Hide)",
@@ -1036,7 +1032,7 @@
             ]
           },
           {
-            "/": "<<<<<<<<<<<<<< end of remapping system binding >>>>>>>>>>>>>>"
+            "description": "<<<<<< end of remapping system bindings >>>>>>"
           }
         ]
       },
