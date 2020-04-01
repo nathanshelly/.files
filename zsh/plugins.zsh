@@ -74,19 +74,13 @@ zinit light buonomo/yarn-completion
 # <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<< syntax highlighting >>>>
-# TODO: understand why this doesn't seem to be working
-# refs:
 # - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
 # - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-
 typeset -A ZSH_HIGHLIGHT_STYLES
-
-ZSH_HIGHLIGHT_STYLES[comment]='fg=magenta'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=111'
 
 # <<<< autosuggestions >>>>
 # ref - https://github.com/zsh-users/zsh-autosuggestions#configuration
-
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244' # light grey
 ZSH_AUTOSUGGEST_USE_ASYNC=true # can be set to anything
 
