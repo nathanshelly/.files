@@ -789,6 +789,25 @@
             ]
           },
           {
+            "description": "Hyper-v to open video chatting app (Zoom)",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "v",
+                  "modifiers": {
+                    "mandatory": ["command", "control", "option"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'zoom.us'"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "Alt-D to Cmd-L in Chrome, Postman, Firefox & Vivaldi",
             "manipulators": [
               {
