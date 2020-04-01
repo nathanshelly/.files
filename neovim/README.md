@@ -25,7 +25,7 @@ Here are a few other peoples' reasons for using `vim` (which also apply to `neov
 
 #### [`vim`](https://github.com/vim/vim)
 
-Originally because `neovim` supported asynchronous plugins before `vim`. Vim 8 added asynchronous support and narrowed the gap between the two.
+Originally started using `neovim` because it supported asynchronous plugins before `vim`. Vim 8 added asynchronous support and narrowed the gap between the two.
 
 At this point I'm sticking with `neovim` primarily because in my experience, `neovim`'s development seems quicker and more responsive to the community's requests.
 
@@ -37,16 +37,14 @@ I appreciate the community's support, its rapid pace of improvement and features
 
 The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conceit of modal editing/a language for editing (I know there are plugins for `vscode` to recreate much of this behavior but I'd rather use the native implementation). A few other reasons follow in no particular ordering.
 
-`neovim` allows me to conduct all my editing in a terminal. This is a relatively minor consideration but one that increases my happiness with it.
-
-`neovim` supports some plugins for adding text objects/operators that as far as I'm aware have no `vscode` equivalent.
-
-`neovim` has none of the chrome of `vscode` that I prefer to avoid (I know much, if not all, of that chrome can be hidden with settings but I'd rather my editor simply not have it).
+- `neovim` allows me to conduct all my editing in a terminal. This is a relatively minor consideration but one that increases my happiness with it.
+- `neovim` supports some plugins for adding text objects/operators that as far as I'm aware have no `vscode` equivalent
+- `neovim` has none of the chrome of `vscode` that I prefer to avoid (I know much, if not all, of that chrome can be hidden with settings but I'd rather my editor simply not have it)
 
 ## skimmable list of files
 
 - [`alias.zsh`](#alias.zsh) - define shell-level aliases (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
-- [`coc.jsonc`](#coc.jsonc-%26-coc.nvim) & [`coc.nvim`](#coc.jsonc-%26-coc.nvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc.jsonc` is similar to `settings.json` for `VSCode`.
+- [`coc.jsonc` and `coc.nvim`](#cocjsonc-and-cocnvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc.jsonc` is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colors.vim) - configure colors, (e.g. enable true color, set dark background, set color scheme)
 - [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
 - [`filetype_specific.vim`](#filetype_specific.vim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
@@ -67,7 +65,7 @@ Define shell-level aliases.
 - `enc <file>` - open file w/o config. Mnemonic - `edit no config`.
 - `emp <file>` - open file (must be `*.md`) and immediately trigger `MarkdownPreview` (must have [`MarkdownPreview`](https://github.com/iamcco/markdown-preview.nvim) plugin installed). Mnemonic - `edit MarkdownPreview`.
 
-### [`coc.jsonc`](./coc.jsonc) & [`coc.nvim`](./coc.nvim)
+### [`coc.jsonc`](./coc.jsonc) and [`coc.nvim`](./coc.nvim)
 
 Configure [`Conquer of Completion` (`coc`)](https://github.com/neoclide/coc.nvim).
 
@@ -222,7 +220,7 @@ Agnostic of plugin management method.
 
 #### notable plugins
 
-- [`coc.nvim`](https://github.com/neoclide/coc.nvim) - multipurpose client, see more detail in the [`coc.nvim`](#coc.jsonc-%26-coc.nvim) section
+- [`coc.nvim`](https://github.com/neoclide/coc.nvim) - multipurpose client, see more detail in the [`coc.nvim`](#cocjsonc-and-cocnvim) section
 - operators
   - [`vim-surround`](https://github.com/tpope/vim-surround) - add/modify/delete surrounding characters (see documentation in [`./plugins.vim`](./plugins.vim) or the [`vim-surround` repo](https://github.com/tpope/vim-surround))
   - [`vim-commentary`](https://github.com/tpope/vim-commentary) - comment lines/motions w/ `gcc`/`<motion>gc`
