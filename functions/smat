@@ -1,12 +1,6 @@
 #! /usr/bin/env bash
 
 # render given args with best available command
-
-[[ -z $1 ]] && {
-  echo 'No target given, aborting'
-  return 1
-}
-
 render_args() {
   # use `mdcat` when passed a single markdown file
   [[ -z $2 ]] && [[ $1 =~ \.md$ ]] && command -v mdcat > /dev/null && {
@@ -16,6 +10,7 @@ render_args() {
     return
   }
 
+  local bat_or_cat
   command -v bat > /dev/null && bat_or_cat="bat" || bat_or_cat="cat"
   "$bat_or_cat" "$@"
 }
