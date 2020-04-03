@@ -47,6 +47,7 @@ set -g mouse on # enable mouse mode
 # M-<key> means (Option|Alt)-<key>
 # C-<key> means Ctrl-<key>
 
+# prefix | leader | command binding
 set -g prefix M-Space
 
 bind C-c command-prompt -p new-session 'new-session -s %%' # create session
