@@ -41,6 +41,7 @@ brew "git"
 brew "github/gh/gh"
 brew "git-delta"
 brew "gpg"
+brew "highlight"
 brew "hub"
 brew "hyperfine"
 brew 'jq'
