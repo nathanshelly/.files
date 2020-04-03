@@ -29,6 +29,9 @@ highlight IncSearch cterm=NONE ctermfg=black ctermbg=cyan guibg=#89CFF0 guifg=#0
 " matching
 highlight MatchParen cterm=NONE ctermfg=cyan ctermbg=NONE guibg=#808080 guifg=#89CFF0 gui=none
 
+" make comments italic
+highlight Comment cterm=italic gui=italic
+
 " << whitespace >>
 
 " whitespace group coloring
