@@ -38,10 +38,16 @@ typeset -U path # make path array unique (a set)
   }
 
   "$DOTFILES/infra/scripts/is_macos.sh" || {
-    # TODO: confirm this is necessary on linux
-    # add `brew` to path
+    # run the below scripts to add `brew` to PATH on linux installations
     # ref - https://docs.brew.sh/Homebrew-on-Linux#install
-    eval "$(/home/dot/.linuxbrew/bin/brew shellenv 2> /dev/null)"
+
+    # installs to separate user if given `sudo` access during installation
+    if [ -d /home/linuxbrew/.linuxbrew ]; then
+      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    # installs to home directory if NOT given `sudo` access during installation
+    elif [ -d "$HOME/.linuxbrew" ]; then
+      eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+    fi
   }
 }
 
