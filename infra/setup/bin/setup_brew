@@ -13,12 +13,19 @@ command -v brew > /dev/null || {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   else
     # linux
-    # ref - https://docs.brew.sh/Homebrew-on-Linux
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    # TODO: confirm this is necessary on linux
-    # add `brew` to path
     # ref - https://docs.brew.sh/Homebrew-on-Linux#install
-    eval "$(/home/dot/.linuxbrew/bin/brew shellenv 2> /dev/null)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    # add `brew` to path
+    # if user gives `sudo` access
+    if [ -d /home/linuxbrew/.linuxbrew ]; then
+      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    # if user does not give `sudo` access
+    elif [ -d "$HOME/.linuxbrew" ]; then
+      eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
+    else
+      # shellcheck disable=SC2016
+      echo 'No `brew` installation found, bailing'
+    fi
   fi
 }
 
