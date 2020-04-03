@@ -35,7 +35,8 @@ brew bundle --file "$DOTFILES/Brewfile"
 success "installed packages"
 
 # macos-specific forumulae
-"$DOTFILES/infra/scripts/is_macos.sh" || exit 0 # bail on Linux
+"$DOTFILES/infra/scripts/is_macos.sh" || return 0 # bail on Linux
+
 brew bundle --file "$DOTFILES/macos/Brewfile"
 
 success "installed macOS-specific packages"
