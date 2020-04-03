@@ -46,7 +46,7 @@ main() {
   # ref - https://mywiki.wooledge.org/BashFAQ/001
   (
     # `-H` resolves symlinks to the underlying filename
-    find -H "$DOTFILES" -name '*.symlink*' -maxdepth 4
+    find -H "$DOTFILES" -maxdepth 4 -name '*.symlink*'
   ) | (
     grep -vZ -E "$blacklist" # '-E' reads `|` separated terms from a string
   ) | while read -r src; do
