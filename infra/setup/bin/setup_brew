@@ -32,8 +32,10 @@ command -v brew > /dev/null || {
 # standard, platform-agnostic packages, no casks (desktop apps)
 brew bundle --file "$DOTFILES/Brewfile"
 
+success "installed packages"
+
 # macos-specific forumulae
 "$DOTFILES/infra/scripts/is_macos.sh" || exit 0 # bail on Linux
 brew bundle --file "$DOTFILES/macos/Brewfile"
 
-success "installed packages"
+success "installed macOS-specific packages"
