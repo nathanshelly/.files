@@ -12,7 +12,7 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 
 # set up Homebrew and all packages from `$DOTFILES/Brewfile` &
 # `$DOTFILES/macos/Brewfile`
-# `source` so that Hombrew is added to PATH for future setup steps (needed for
+# `source` so that Homebrew is added to PATH for future setup steps (needed for
 # Linux setup)
 source "$DOTFILES/infra/setup/bin/setup_brew" || {
   echo 'Homebrew installation had at least one failure'
