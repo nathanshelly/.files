@@ -15,11 +15,15 @@ main() {
   # - `hyperfine 'brew --prefix'`
   # - `hyperfine ./foo.sh` where `foo.sh` is a script w/ the if/else below
   if "$DOTFILES/infra/scripts/is_macos.sh"; then
-    export HOMEBREW_PREFIX="/usr/local"
+    [ -d /usr/local/Homebrew ] && export HOMEBREW_PREFIX="/usr/local"
   else
-    # this assumes (with reasonable likelihood) that Homebrew is installed under
-    # the current user
-    export HOMEBREW_PREFIX="$HOME/.linuxbrew"
+    # given `sudo` access during installation
+    if [ -d /home/linuxbrew/.linuxbrew ]; then
+      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    # NOT given `sudo` access during installation
+    elif [ -d "$HOME/.linuxbrew" ]; then
+      eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+    fi
   fi
 
   # XDG directory specification
