@@ -32,11 +32,6 @@ main() {
   # output ANSI "color" escape sequences
   # value of LESS is passed to `less` as args
   export LESS=" -R"
-  # LESSOPEN configures preprocessor that colors ANSI escape sequences
-  # http://www.andre-simon.de/doku/highlight/en/integration.php
-  export LESSOPEN="| $(command -v highlight) %s --out-format truecolor \
---line-numbers --force --style base16/onedark --no-trailing-nl"
-
   # colored paging (enables colored man pages)
   # ref - https://github.com/sorin-ionescu/prezto/blob/cfeb8cd6c9f60c2a928f4c706d0137c7de2ef106/modules/environment/init.zsh#L59-L67
   export LESS_TERMCAP_mb=$'\E[01;31m'      # begins blinking
