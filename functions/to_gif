@@ -2,40 +2,35 @@
 
 # convert given video to gif
 # ref - https://superuser.com/a/556031
+to_gif() {
+  local video_in_path gif_out_path
+  video_in_path="$1"
+  gif_out_path="${2:-${video_in_path%.*}.gif}"
 
-VIDEO_IN_PATH="$1"
-GIF_OUT_PATH="$2"
+  if [[ -z $video_in_path ]]; then
+    local video_in_formatted
+    [[ -z $video_in_path ]] && video_in_formatted="<video_in_path>"
 
-if [[ -z $VIDEO_IN_PATH ]] || [[ -z $GIF_OUT_PATH ]]; then
-  [[ -z $VIDEO_IN_PATH ]] && {
-    printf 'video in: %s' "$VIDEO_IN_PATH"
-    VIDEO_IN_FORMATTED="<VIDEO_IN_PATH>"
-  }
-  [[ -z $GIF_OUT_PATH ]] && {
-    printf 'gif out: %s' "$GIF_OUT_PATH"
-    GIF_OUT_FORMATTED="<GIF_OUT_PATH>"
-  }
-  cat << EOF
-error: the following arguments were not provided
+    cat << EOF
+error: the following argument was not provided
 
-  $VIDEO_IN_FORMATTED $GIF_OUT_FORMATTED
+  $video_in_formatted
 
 USAGE:
 
-  to_gif <VIDEO-IN-PATH> <GIF-OUT-PATH>
+  to_gif <VIDEO-IN-PATH> [GIF-OUT-PATH]
 EOF
-  unset GIF_OUT_FORMATTED GIF_OUT_PATH VIDEO_IN_FORMATTED VIDEO_IN_PATH
-  return 1
-fi
+    return 1
+  fi
 
-echo "$GIF_OUT_PATH"
+  SCALE='-1:-1'
+  [ "$(uname -s)" = Darwin ] && SCALE='iw*0.5:-1' # undo 2x pixels
+  ffmpeg \
+    -i "$video_in_path" \
+    -map_metadata -1 \
+    -vf "fps=15,scale=${SCALE}:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+    -loop 0 \
+    "$gif_out_path"
+}
 
-SCALE='-1:-1'
-[ "$(uname -s)" = Darwin ] && SCALE='iw*0.5:-1' # undo 2x pixels
-ffmpeg \
-  -i "$VIDEO_IN_PATH" \
-  -map_metadata -1 \
-  -vf "fps=15,scale=${SCALE}:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
-  -loop 0 \
-  "$GIF_OUT_PATH"
-unset GIF_OUT_PATH SCALE VIDEO_IN_PATH
+to_gif "$@"
