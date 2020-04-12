@@ -17,9 +17,9 @@ source "$DOTFILES/infra/scripts/prompts.sh"
   # set up `tmux-256color` `terminfo` entry from `brew` `ncurses`
   # ref - https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
   # compile `tmux-256color.info` using modern `brew` `ncurses`
-  "$(brew --prefix)/opt/ncurses/bin/infocmp" "${TMPDIR}tmux-256color" > "${TMPDIR}tmux-256color.info"
+  "$(brew --prefix)/opt/ncurses/bin/infocmp" "tmux-256color" > "${TMPDIR}tmux-256color.info"
   # then install the compiled entry to the system `terminfo` database
   # shellcheck disable=SC2016
   echo 'Using `sudo` to install `tmux-256color` `terminfo` entry'
-  sudo tic -xe "${TMPDIR}tmux-256color" "${TMPDIR}tmux-256color.info"
+  sudo tic -xe "tmux-256color" "${TMPDIR}tmux-256color.info"
 }
