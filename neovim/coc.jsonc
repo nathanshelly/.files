@@ -98,6 +98,11 @@
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": false,
 
+  "markdownlint.config": {
+    "MD013": false, // line length
+    "MD026": false // trailing punctuation
+  },
+
   // <<<< rust >>>>
   // ref - https://github.com/fannheyward/coc-rust-analyzer#configurations
   "rust-analyzer.enableCargoWatchOnStartup": "enabled",

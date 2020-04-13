@@ -160,7 +160,7 @@ Plug 'rhysd/git-messenger.vim'
 Plug '/usr/local/opt/fzf'
 " Use Sasha's fork which enables previewing of full files based on community's
 " fix - https://github.com/junegunn/fzf.vim/issues/751
-" NOTE: unless you care about the issue i the above github link I recommend you
+" NOTE: unless you care about the issue in the above github link I recommend you
 " use the canonical 'junegunn/fzf.vim` repo: `Plug 'junegunn/fzf.vim'`
 " TODO: check that this fork stays up to date with upstream
 Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
