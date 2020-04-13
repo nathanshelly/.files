@@ -241,7 +241,7 @@ Agnostic of plugin management method.
   - [`vim-polyglot`](https://github.com/sheerun/vim-polyglot) - syntax for an array of languages
   - [`vim-markdown`](https://github.com/iamcco/markdown-preview.nvim) - markdown syntax (note: `vim-polyglot's` markdown syntax disabled to use this syntax highlighting instead)
   - [`vim-jsx-typescript`](https://github.com/peitalin/vim-jsx-typescript) - `jsx` highlighting for [`React`](https://reactjs.org)
-  - ['vim-styled-components'](https://github.com/styled-components/vim-styled-components) - highlighting inside `css'...'` (acutally \`, not ', but can't escape \` inside \`\`)
+  - ['vim-styled-components'](https://github.com/styled-components/vim-styled-components) - highlighting inside `css'...'` (\` not ', but can't escape \` inside \`\`)
     > ```javascript
     > // highlights `...` code
     > css`
