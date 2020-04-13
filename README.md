@@ -85,7 +85,7 @@ Check out [next steps](#next-steps) below to explore features/configuration poss
 
 ## next steps
 
-#### add your own configuration
+### add your own configuration
 
 If you have your own shell configuration (a `.bashrc`, `.bash_profile`, `.zshrc`, etc.) you will likely be able to simply source it and get the best of this config while overriding with your own.
 
@@ -101,13 +101,13 @@ source $HOME/.zshrc
 
 Your configuration should now be applied on top of these dotfiles. Feel free to open an issue if you have any trouble!
 
-#### add secrets safely
+### add secrets safely
 
 **DO NOT** check in any tokens or credentials like `NPM_TOKEN`s, database URLs, etc. To avoid this, add such secrets to the gitignored `$DOTFILES/zsh/secrets.zsh` (you'll need to create it the first time you want to add a secret).
 
 > Technically `$DOTFILES/zsh/local.zsh` is gitignored as well but splitting out secrets into a separate file can help avoid accidental leakage.
 
-#### explore features/configuration
+### explore features/configuration
 
 Here's a few items you might be interested in trying/learning more about:
 

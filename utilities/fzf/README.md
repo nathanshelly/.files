@@ -14,7 +14,7 @@ See longer explainer [here](https://gist.github.com/nathanshelly/4b7020d09d413ca
 
 - `C-a` - filter and output files & directories below current directory including normally ignored files (files listed in `.gitignore` or `.ignore`)
 - `C-g` - filter and output files from the root of the current git repo
-- `C-p` - filter and edit files below current directory (same files listed by `C-t`). Files edited via `$EDITOR` (configured in[ `.files-settings.json`](../../.files-settings.json)).
+- `C-p` - filter and edit files below current directory (same files listed by `C-t`). Files edited via `$EDITOR` (configured in [`.files-settings.json`](../../.files-settings.json)).
 - `C-t` - filter and output files below current directory
 - `C-r` (or `/` in `vicmd` (normal) mode) - filter and run shell history. Hit `C-e` instead of `Enter` to output the command to the line for editing before running.
 - `M-c` - filter and `cd` to directories below the current directory. If you have part of a command typed this will preserve that command while switching directories.

@@ -6,7 +6,7 @@ To specify versions for a project one creates a `.tool-versions` file at the roo
 
 For example:
 
-```
+```shell
 nodejs 10.15.3
 python 3.8.0
 ```
