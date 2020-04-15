@@ -53,10 +53,10 @@ main() {
   # << end work-specific >>
 }
 
-# `brew --prefix` takes ~25-40ms on my machine vs ~11ms for the if/else below to
-# avoid that overhead I hardcode the path based on the existence of a folder in
-# the expected installation locations across OSes (these locations seem unlikely
-# to change soon)
+# `brew --prefix` takes ~25-40ms on my machine vs ~11ms for the if/else below
+# to avoid that overhead I hardcode the path based on the existence of a folder
+# in the expected installation locations across OSes (these locations seem
+# unlikely to change soon)
 #
 # to see times on your machine (you may have to `brew install hyperfine`):
 # - `hyperfine 'brew --prefix'`
