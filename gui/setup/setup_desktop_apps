@@ -40,13 +40,29 @@ main() {
   success "set up casks"
   # << end casks setup >>
 
-  command -v mas > /dev/null || brew install "mas"
+  setup_mas_apps
+}
+
+setup_mas_apps() {
+  user "set up Mac App Store apps (Xcode & Super Easy Timer)? (y/any other key)"
+
+  read -r -s -n 1 maybe_continue < /dev/tty
+  [[ "$maybe_continue" != 'y' ]] && {
+    info "skipping Mac App Store apps"
+    exit 0
+  }
+
+  local mas_path
+  mas_path="$(brew --prefix)/bin/mas"
+  [ -f "$mas_path" ] || brew install "mas"
 
   # this line will error unless you have purchased Super Easy Timer. Delete or
   # comment this line out to avoid errors.
   # TODO: check for apple account first?
   # ref - https://github.com/mas-cli/mas
   mas install 1353137878 # Super Easy Timer
+
+  mas install 497799835 # Xcode
 }
 
 # handle any arguments/flags
