@@ -60,9 +60,13 @@ setup_mas_apps() {
   # comment this line out to avoid errors.
   # TODO: check for apple account first?
   # ref - https://github.com/mas-cli/mas
-  mas install 1353137878 # Super Easy Timer
 
-  mas install 497799835 # Xcode
+  # Xcode - https://apps.apple.com/us/app/xcode/id497799835
+  mas install 497799835
+  # Super Easy Timer (paid, $5) - https://apps.apple.com/us/app/super-easy-timer/id1353137878
+  mas install 1353137878
+  # Time Out (in-app purchases) - https://apps.apple.com/us/app/time-out-break-reminders/id402592703
+  mas install 402592703
 }
 
 # handle any arguments/flags
