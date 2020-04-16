@@ -100,6 +100,7 @@
 
   "markdownlint.config": {
     "MD013": false, // line length
+    "MD024": false, // no duplicate heading
     "MD026": false // trailing punctuation
   },
 
