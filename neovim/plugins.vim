@@ -197,4 +197,7 @@ Plug 'tpope/vim-markdown'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
+" insert color from color picker
+Plug 'KabbAmine/vCoolor.vim'
+
 call plug#end()
