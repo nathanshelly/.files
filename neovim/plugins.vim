@@ -200,4 +200,8 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " insert color from color picker
 Plug 'KabbAmine/vCoolor.vim'
 
+" highlight color codes with their color
+" run `:ColorHighlight` to see #FF00AA with a hot pink background
+Plug 'chrisbra/Colorizer'
+
 call plug#end()
