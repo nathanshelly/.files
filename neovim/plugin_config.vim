@@ -125,3 +125,15 @@ let g:markdown_fenced_languages = [
 " ref - https://github.com/KabbAmine/vCoolor.vim#customization
 let g:vcoolor_disable_mappings = 1
 let g:vcoolor_map = '<m-c>' " already the default, added here just for context
+
+" <<<< Colorizer >>>>
+" ref - https://github.com/chrisbra/Colorizer
+
+" automatically highlight in css files
+autocmd BufNewFile,BufRead *.css :ColorHighlight!
+
+" highlight manually via shortcut
+nnoremap <leader>ch :ColorHighlight<CR>
+
+" highlight only color codes, not color names - '#ffffff' not 'white'
+let g:colorizer_colornames = 0
