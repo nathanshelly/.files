@@ -38,11 +38,11 @@ zinit light zsh-users/zsh-autosuggestions
 #
 # TODO: enable asynchronous loading once this issue is resolved
 # https://github.com/zdharma/fast-syntax-highlighting/issues/177
-# zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
-# TODO: switch back to `fast-syntax-highlighting` once this issue is resolved
+# zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
+# TODO: remove `atload="FAST_HIGHLIGHT[...]="` once this issue is resolved
 # https://github.com/zdharma/fast-syntax-highlighting/issues/179
-# zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-syntax-highlighting
+zinit ice atload"FAST_HIGHLIGHT[chroma-man]="
+zinit light zdharma/fast-syntax-highlighting
 
 # synchronize system clipboard
 # theoretically you might need to source this after other keymappings, have not
@@ -64,20 +64,9 @@ zinit light romkatv/powerlevel10k
 # zinit ice wait lucid
 zinit light buonomo/yarn-completion
 
-# TODO: figure this out
-# type `fuck` to correct last typed command
-# zinit ice wait lucid
-# zinit light laggardkernel/zsh-thefuck
-
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-# <<<< syntax highlighting >>>>
-# - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
-# - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[comment]='fg=111'
 
 # <<<< autosuggestions >>>>
 # ref - https://github.com/zsh-users/zsh-autosuggestions#configuration

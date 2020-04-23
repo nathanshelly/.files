@@ -32,4 +32,7 @@ info "Installing plugins"
 # TODO: make this less black boxy
 zsh -i -c 'zinit self-update' > /dev/null
 
+# apply ZLE syntax highlighting overrides
+fast-theme "$DOTFILES/zsh/zle-fsh-theme-overlay.ini"
+
 success "Completed zsh setup"
