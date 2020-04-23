@@ -37,6 +37,7 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`plugins.zsh`](#plugins.zsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
 - [`p10k.zsh.symlink`](#p10k.zsh.symlink) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
 - [`secrets.zsh`](#secrets.zsh) - store secrets such as API tokens. This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
+- [`zle-fsh-theme-overlay.ini`](#zle-fsh-theme-overlay.ini) - an overlay to customize syntax highlighting
 - [`zshenv.symlink`](#zshenv.symlink) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES` & `$PATH`)
 - [`zshrc.symlink`](#zshrc.symlink) - source every `*.zsh` throughout this repo (`$DOTFILES/**/*.zsh`) to set up config
 
@@ -143,6 +144,12 @@ Appearance:
 Store secrets such as API tokens.
 
 This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
+
+### [`zle-fsh-theme-overlay.ini`](./zle-fsh-theme-overlay.ini)
+
+Customize ZLE syntax highlighting.
+
+The default comment highlighting is unreadable on my terminal theme. This overlay fixes that following the advice [here](https://github.com/zdharma/fast-syntax-highlighting/issues/138#issuecomment-502383578).
 
 ### [`zshenv.symlink`](./zshenv.symlink)
 
