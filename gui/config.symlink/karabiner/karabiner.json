@@ -90,7 +90,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -116,6 +117,17 @@
             "description": "Cmd-H to Cmd-Delete",
             "manipulators": [
               {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "com.googlecode.iterm2",
+                      "io.alacritty",
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
                 "from": {
                   "key_code": "h",
                   "modifiers": {
@@ -144,7 +156,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -174,7 +187,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -204,7 +218,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -234,7 +249,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -264,7 +280,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -295,7 +312,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -326,7 +344,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -357,7 +376,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -388,7 +408,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -418,7 +439,9 @@
                   {
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
-                      "io.alacritty"
+                      "io.alacritty",
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -450,7 +473,8 @@
                       "com.googlecode.iterm2",
                       "com.contextsformac.Contexts",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -481,7 +505,8 @@
                     "bundle_identifiers": [
                       "com.googlecode.iterm2",
                       "io.alacritty",
-                      "com.apple.Terminal"
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
                     ],
                     "type": "frontmost_application_unless"
                   }
