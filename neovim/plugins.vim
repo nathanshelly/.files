@@ -139,7 +139,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'tpope/vim-fugitive'
 
 " file explorer
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 
 " repeats plugin actions (vim-commentary,  vim-surround, etc.)
 Plug 'tpope/vim-repeat'
