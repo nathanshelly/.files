@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+# https://unix.stackexchange.com/questions/125694/case-matching-pattern-replacement-with-sed
+# flags like whole word?
+
+replace() {
+  find="$1"
+  replace="$2"
+  # split matches to operate on individual files
+  # shellcheck disable=SC2046
+  sed -i '' -e "s|$find|$replace|g" $(f --files-with-matches "$find")
+}
+
+replace "$@"
