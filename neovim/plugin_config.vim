@@ -16,6 +16,8 @@ let g:surround_{char2nr('S')} = "< \r >"
 " <<<< nerdtree >>>>
 " ref - https://github.com/scrooloose/nerdtree#faq-here-and-in-the-wiki
 noremap <c-n> :NERDTreeToggle<CR>
+" highlight current file in tree
+noremap <leader>ntf :NERDTreeFind<CR>
 
 " <<<< git-p.nvim (git info) >>>>
 " ref - https://github.com/iamcco/git-p.nvim#usage--config
