@@ -26,6 +26,11 @@ grep -q "$zsh_path" /etc/shells || {
 
 info "Installing plugins"
 
+# TODO: clean this up
+BREW_PREFIX="$(brew --prefix)"
+sudo chown -R "$(whoami)" "$BREW_PREFIX/share/zsh" "$BREW_PREFIX/share/zsh/site-functions"
+chmod u+w "$BREW_PREFIX/share/zsh" "$BREW_PREFIX/share/zsh/site-functions"
+
 # install zinit & its associated plugins
 # `zinit self-update` is a recommended post-install step which runs `zcompile`
 # to squeeze the last bit of performance
