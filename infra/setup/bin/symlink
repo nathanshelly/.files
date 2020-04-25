@@ -86,7 +86,7 @@ _symlink_based_on_filename() {
 
   # add `.` unless unhidden flag is set
   [[ $_unhidden == true ]] || {
-    if [ -z $_path ]; then
+    if [ -z "$_path" ]; then
       # if no path, add `.` to filename
       _name=".$_name"
     else
