@@ -1,19 +1,46 @@
 #! /usr/bin/env bash
 
-set -euo pipefail
+main() {
+  set -euo pipefail
+  local maybe_fix root
 
-root="$(git rev-parse --show-toplevel)"
-cd "$root"
+  maybe_fix="${1:-}"
+  root="$(git rev-parse --show-toplevel)"
 
-# blacklist third-party directories
-filter=(
-  ':!:gui/apps/alfred'
-)
+  cd "$root"
 
-{
-  # `.sh` extension
-  git ls-files '*.sh' -- "${filter[@]}"
-  # `#! usr/bin/env bash` shebang
-  git grep -l '^\(#! */usr/bin/env bash\|#! */bin/bash\)$' -- "${filter[@]}"
-  # remove duplicates from .sh + shebang
-} | sort | uniq | xargs shellcheck
+  # `infra/actions/shellcheck --fix` to apply fixes
+  # `files_string` purposely unquoted to split on spaces
+  if [[ $maybe_fix == '--fix' ]]; then
+    maybe_diff=$(mktemp)
+    # `|| true` ignores exit code, preventing script exiting
+    # shellcheck disable=SC2046
+    shellcheck --format diff $(get_files) > "$maybe_diff" || true
+    # apply diff if it is non-empty
+    if [ -s "$maybe_diff" ]; then
+      git apply "$maybe_diff"
+    fi
+  else
+    # shellcheck disable=SC2046
+    shellcheck $(get_files)
+  fi
+}
+
+get_files() {
+  local filter
+
+  # blacklist third-party directories
+  filter=(
+    ':!:gui/apps/alfred'
+  )
+
+  {
+    # `.sh` extension
+    git ls-files '*.sh' -- "${filter[@]}"
+    # `#! usr/bin/env bash` shebang
+    git grep -l '^\(#! */usr/bin/env bash\|#! */bin/bash\)$' -- "${filter[@]}"
+    # remove duplicates from .sh + shebang
+  } | sort | uniq
+}
+
+main "$@"
