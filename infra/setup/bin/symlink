@@ -120,7 +120,7 @@ parent directory)"
 
   # check if `src` is a directory
   # ref - https://www.tldp.org/LDP/abs/html/fto.html
-  if [[ -d "$src" ]]; then
+  if [[ -d $src ]]; then
     if [[ $_direct == true ]]; then
       link_file "$src" "$dst"
     else

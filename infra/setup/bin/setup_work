@@ -18,7 +18,7 @@ user "set up work-specific config? (y/any other key)"
 
 read -r -s -n 1 maybe_continue < /dev/tty
 
-[[ "$maybe_continue" != 'y' ]] && {
+[[ $maybe_continue != 'y' ]] && {
   info "skipping work setup"
   exit 0
 }

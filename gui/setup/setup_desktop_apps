@@ -29,7 +29,7 @@ main() {
 
     read -r -s -n 1 maybe_continue < /dev/tty
 
-    [[ "$maybe_continue" != 'y' ]] && {
+    [[ $maybe_continue != 'y' ]] && {
       info "skipping cask setup"
       exit 0
     }
@@ -47,7 +47,7 @@ setup_mas_apps() {
   user "set up Mac App Store apps (Xcode & Super Easy Timer)? (y/any other key)"
 
   read -r -s -n 1 maybe_continue < /dev/tty
-  [[ "$maybe_continue" != 'y' ]] && {
+  [[ $maybe_continue != 'y' ]] && {
     info "skipping Mac App Store apps"
     exit 0
   }
