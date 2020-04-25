@@ -14,7 +14,7 @@ user 'set up `asdf` - https://asdf-vm.com/? (y/any other key)'
 
 read -r -s -n 1 maybe_continue < /dev/tty
 
-[[ "$maybe_continue" != 'y' ]] && {
+[[ $maybe_continue != 'y' ]] && {
   info 'skipping `asdf` setup'
   exit 1
 }

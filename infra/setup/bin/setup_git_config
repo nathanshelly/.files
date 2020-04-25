@@ -35,7 +35,7 @@ EOF
     user "file exists @ $destination, overwrite it? (y/any other key)"
     read -r -s -n 1 continue < /dev/tty
 
-    [[ "$continue" != 'y' ]] && {
+    [[ $continue != 'y' ]] && {
       info "gitconfig creation skipped"
       exit 0
     }
