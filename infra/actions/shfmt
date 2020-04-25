@@ -1,20 +1,21 @@
 #! /usr/bin/env bash
 
-set -euo pipefail
+main() {
+  set -euo pipefail
+  local filter root
 
-root="$(git rev-parse --show-toplevel)"
-cd "$root"
+  # blacklist third-party directories
+  filter='gui/apps/alfred'
+  root="$(git rev-parse --show-toplevel)"
 
-# blacklist third-party directories
-filter=(
-  ':!:gui/apps/alfred'
-)
+  cd "$root"
 
-{
-  # `.sh` extension
-  git ls-files '*.sh' -- "${filter[@]}"
-  # `#! usr/bin/env bash` shebang
-  git grep -l '^\(#! */usr/bin/env bash\|#! */bin/bash\)$' -- "${filter[@]}"
-  # remove duplicates from .sh + shebang
-  # `shfmt` args should match the alias in `$DOTFILES/zsh/alias.zsh`
-} | sort | uniq | xargs shfmt -i 2 -bn -ci -sr -d
+  # pass through any function args to `shfmt`, used in ci to pass `-d` to error
+  # on diff, also enables easy auto-fixing w/ `infra/action/shfmt -w -s` (`-w`
+  # write to file, `-s` simplify)
+  # `shfmt` args should be kept in sync with alias in `$DOTFILES/zsh/alias.zsh`
+  # shellcheck disable=SC2086
+  shfmt -f . | grep -v "$filter" | xargs shfmt -i 2 -bn -ci -sr "$@"
+}
+
+main "$@"
