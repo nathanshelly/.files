@@ -10,4 +10,4 @@ jobs:
       - name: Install `shfmt`
         run: sudo snap install shfmt
       - name: Run `shfmt`
-        run: ./infra/actions/shfmt
+        run: ./infra/actions/shfmt -d
