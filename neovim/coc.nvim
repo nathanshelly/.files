@@ -31,38 +31,39 @@ nnoremap <leader>cr :CocRestart<cr><cr>
 " TODO: figure out general key binding to go to next tsserver, rust language
 " server, etc. error
 " TODO: figure out what's wrong with below line
-" nnoremap <leader>cd <Plug>(coc-diagnostic-info)
+" nmap <leader>cd <Plug>(coc-diagnostic-info)
 " move between diagnostics
-nnoremap <leader>cn <Plug>(coc-diagnostic-next)
-nnoremap <leader>cp <Plug>(coc-diagnostic-prev)
+nmap <leader>cn <Plug>(coc-diagnostic-next)
+nmap <leader>cp <Plug>(coc-diagnostic-prev)
 
 " go to definition
-nnoremap <silent> gd <Plug>(coc-definition)
-" go to declaration
-nnoremap <silent> gr <Plug>(coc-declaration)
+nmap <silent> gd <Plug>(coc-definition)
+" " go to declaration
+" nmap <silent> gr <Plug>(coc-declaration)
 " go to implentation
-nnoremap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gi <Plug>(coc-implementation)
 " go to type definition
-nnoremap <silent> gt <Plug>(coc-type-definition)
-" go to references
-nnoremap <silent> grf <Plug>(coc-references)
-" rename value at cursor
-nnoremap <silent> grn <Plug>(coc-rename)
+nmap <silent> gt <Plug>(coc-type-definition)
+" " go to references
+" nmap <silent> grf <Plug>(coc-references)
+" " rename value at cursor
+nmap <silent> gnr <Plug>(coc-rename)
 " format buffer
-nnoremap <silent> gfb <Plug>(coc-format)
+nmap <silent> gfb <Plug>(coc-format)
 " TODO: evaluate use of `co` namespace depending on usage patterns
 " TODO: understand what code actions are (and code lens actions below)
 " apply code action for current line
-nnoremap <silent> coa <Plug>(coc-codeaction)
+nmap <silent> coa <Plug>(coc-codeaction)
+" nmap <silent> coa :CocAction<CR>
 
 " open link
 " TODO: figure out what's wrong with below line (same problem as above)
-" nnoremap  gx <Plug>(coc-openlink)
+" nmap  gx <Plug>(coc-openlink)
 
 " apply code lens action on current line
-nnoremap <silent> col <Plug>(coc-codelens-action)
+nmap <silent> col <Plug>(coc-codelens-action)
 " run quickfix action on current line
-nnoremap <silent> gfc <Plug>(coc-fix-current)
+nmap <silent> gfc <Plug>(coc-fix-current)
 
 " << variables >>
 
