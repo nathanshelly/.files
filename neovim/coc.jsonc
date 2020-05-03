@@ -99,9 +99,14 @@
   "python.linting.pylintEnabled": false,
 
   "markdownlint.config": {
+    "MD005": false, // prevents indented ordered list items
+    "MD007": false, // unordered list endentation (prevents mixing list types)
     "MD013": false, // line length
+    "MD014": false, // requires output for code blocks with `$` prompts
     "MD024": false, // no duplicate heading
-    "MD026": false // trailing punctuation
+    "MD026": false, // trailing punctuation
+    "MD032": false, // blanks around lists (also prevents mixing list types)
+    "MD034": false // no bare urls
   },
 
   // <<<< rust >>>>
