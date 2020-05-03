@@ -1,5 +1,0 @@
-#! /usr/bin/env bash
-
-# set alacritty to font size for 27 inch, 2k resolution monitor
-# mnemonic - `alacritty font medium`
-sed -i '' 's/size: .*/size: 16.0/g' "$DOTFILES/gui/config.symlink/alacritty/alacritty.yml"
