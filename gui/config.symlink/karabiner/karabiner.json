@@ -792,7 +792,7 @@
             ]
           },
           {
-            "description": "Hyper-d to open database (PSequel)",
+            "description": "Hyper-d to open database (TablePlus)",
             "manipulators": [
               {
                 "type": "basic",
@@ -804,7 +804,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open -a 'PSequel'"
+                    "shell_command": "open -a 'TablePlus'"
                   }
                 ]
               }
