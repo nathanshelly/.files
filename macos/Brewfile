@@ -6,7 +6,6 @@
 brew "coreutils"
 brew "make"
 brew "mpv"
-brew "pandoc"
 brew "rename"
 brew "trash"
 brew "wget"
