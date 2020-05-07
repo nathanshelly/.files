@@ -15,11 +15,6 @@ command -v brew > /dev/null && {
   alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
 }
 
-"$DOTFILES/infra/scripts/is_macos.sh" && {
-  # open another terminal (Alacritty) instance
-  alias term="open --new /Applications/Alacritty.app"
-}
-
 command -v trash > /dev/null && alias t=trash # macOS trash command
 
 # alias `shfmt` to apply default args

@@ -6,7 +6,7 @@
 	<integer>1</integer>
 	<key>custom</key>
 	<string>on alfred_script(q)
-	tell application "Alacritty"
+	tell application "iTerm"
 		activate
 		do script q
 	end tell
