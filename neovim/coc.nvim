@@ -45,7 +45,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 " go to type definition
 nmap <silent> gt <Plug>(coc-type-definition)
 " " go to references
-" nmap <silent> grf <Plug>(coc-references)
+nmap <silent> gfr <Plug>(coc-references)
 " " rename value at cursor
 nmap <silent> gnr <Plug>(coc-rename)
 " format buffer
