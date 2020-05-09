@@ -17,7 +17,9 @@
 		<key>string</key>
 		<string>V</string>
 	</dict>
+	<key>persistFor</key>
+	<integer>3</integer>
 	<key>persistForImages</key>
-	<integer>1</integer>
+	<integer>2</integer>
 </dict>
 </plist>
