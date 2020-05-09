@@ -424,7 +424,7 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>320 339 799 448 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 2 1438 898 0 0 1440 900 </string>
+	<string>0 0 1440 900 0 0 1440 900 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -672,6 +672,8 @@
 				<key>Red Component</key>
 				<real>1</real>
 			</dict>
+			<key>Blink Allowed</key>
+			<true/>
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
@@ -1079,7 +1081,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>dotfiles-regular 15</string>
+			<string>Iosevka-Term 15</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1160,19 +1162,22 @@
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
-		<string>dotfiles</string>
+		<string>Iosevka Term</string>
+		<string>Iosevka</string>
+		<string>Fira Code</string>
+		<string>IosevkaCC</string>
 	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{104, 761}</string>
+		<string>{432, 705}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>24BDD851-E610-427F-8D6C-D58F0D04DB4A</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>11</integer>
+	<integer>14</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
