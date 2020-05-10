@@ -102,7 +102,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'tpope/vim-fugitive'
 
 " file explorer
-Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree',  { 'on':  'NERDTreeToggle' }
 
 " repeats plugin actions (vim-commentary,  vim-surround, etc.)
 Plug 'tpope/vim-repeat'
