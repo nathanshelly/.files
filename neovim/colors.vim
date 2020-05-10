@@ -9,13 +9,19 @@ endif
 
 " installed as plugin with `vim-plug`, see ./plugins.vim
 " `silent!` to avoid erroring if `onedark` not installed
-silent! colorscheme onedark
+silent! colorscheme onehalfdark
 
-" disable background color potentially set by colorscheme
-" ref - https://vi.stackexchange.com/a/16136
-highlight Normal ctermbg=NONE guibg=NONE
+function! s:clear_background()
+  " disable background color(s) potentially set by colorscheme
+  " ref - https://vi.stackexchange.com/a/16136
+  highlight Normal ctermbg=NONE guibg=NONE
+  highlight SignColumn ctermbg=NONE guibg=NONE
+  highlight LineNr ctermbg=NONE guibg=NONE
+endfunction
+call <SID>clear_background()
+
 " rehighlight on color scheme change
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+autocmd ColorScheme * call <SID>clear_background()
 
 " << miscellaneous >>
 
