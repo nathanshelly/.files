@@ -29,25 +29,6 @@ Plug 'wellle/tmux-complete.vim'
 
 " < both operators and motions >
 
-" a grab bag of useful normal mode keybindings
-"
-" here are the ones that interest me enough to install this (time will tell if I
-" actually use any of them):
-"
-" - `[f` - open preceding file alphabetically in the current file's directory
-" - `]f` - open succeeding file alphabetically in the current file's directory
-" - `<count>[<Space>` - add <count> blank lines above cursor
-" - `<count>]<Space>` - add <count> blank lines below cursor
-" - `<count>[e` - exchange current line with <count> lines above
-" - `<count>]e` - exchange current line with <count> lines below
-" - `[p` - paste above the cursor maintaining indentation
-" - `[p` - paste below the cursor maintaining indentation
-" - `[u<motion>` or `[uu` - URL encode, e.g. foo bar => foo%20bar
-" - `]u<motion>` or `]uu` - URL decode, e.g. foo bar => foo%20bar
-"
-" ref - https://github.com/tpope/vim-unimpaired
-Plug 'tpope/vim-unimpaired'
-
 " < operators >
 
 " edit surrounding characters
