@@ -150,7 +150,7 @@ Plug 'metakirby5/codi.vim'
 Plug 'neoclide/jsonc.vim'
 
 " color scheme
-Plug 'joshdick/onedark.vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " language pack
 Plug 'sheerun/vim-polyglot'
