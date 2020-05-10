@@ -663,7 +663,7 @@
             ]
           },
           {
-            "description": "Hyper-b to open browser (Chrome)",
+            "description": "Hyper-b to open browser (Firefox Nightly)",
             "manipulators": [
               {
                 "type": "basic",
@@ -834,17 +834,15 @@
             ]
           },
           {
-            "description": "Alt-D to Cmd-L in Chrome, Postman, Firefox & Vivaldi",
+            "description": "Alt-D to Cmd-L in Chrome & Firefox",
             "manipulators": [
               {
                 "conditions": [
                   {
                     "bundle_identifiers": [
                       "com.google.Chrome",
-                      "com.postmanlabs.mac",
                       "org.mozilla.firefox",
-                      "org.mozilla.nightly",
-                      "com.vivaldi.Vivaldi"
+                      "org.mozilla.nightly"
                     ],
                     "type": "frontmost_application_if"
                   }

@@ -50,7 +50,7 @@ These dotfiles give you the best of a custom configuration without the hassle of
 ### the anti-pitch
 
 - 'mo code, 'mo problems - additional dependencies can cause headaches and add complexity or fragility that outweighs the benefits
-- no single dotfiles configuration is best for everyone - these dotfiles were written with my use cases in mind. They will hopefully work for yours (or at least the parts that do can be adopted for your own config) but they won't work for everyone's
+- no single dotfiles configuration is best for everyone - these dotfiles were written with my use cases in mind. They will hopefully work for yours (or at least the parts that do can be adopted for your own config); they won't work for everyone's
 
 ### .files values
 
