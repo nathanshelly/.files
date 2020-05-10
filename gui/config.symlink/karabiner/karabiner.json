@@ -281,7 +281,8 @@
                       "com.googlecode.iterm2",
                       "io.alacritty",
                       "com.apple.Terminal",
-                      "net.kovidgoyal.kitty"
+                      "net.kovidgoyal.kitty",
+                      "com.flexibits.fantastical2.mac"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -313,7 +314,8 @@
                       "com.googlecode.iterm2",
                       "io.alacritty",
                       "com.apple.Terminal",
-                      "net.kovidgoyal.kitty"
+                      "net.kovidgoyal.kitty",
+                      "com.flexibits.fantastical2.mac"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -345,7 +347,8 @@
                       "com.googlecode.iterm2",
                       "io.alacritty",
                       "com.apple.Terminal",
-                      "net.kovidgoyal.kitty"
+                      "net.kovidgoyal.kitty",
+                      "com.flexibits.fantastical2.mac"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -377,7 +380,8 @@
                       "com.googlecode.iterm2",
                       "io.alacritty",
                       "com.apple.Terminal",
-                      "net.kovidgoyal.kitty"
+                      "net.kovidgoyal.kitty",
+                      "com.flexibits.fantastical2.mac"
                     ],
                     "type": "frontmost_application_unless"
                   }
