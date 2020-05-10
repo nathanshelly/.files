@@ -77,24 +77,6 @@ Plug 'christoomey/vim-sort-motion'
 " - kana/vim-textobj-indent
 Plug 'kana/vim-textobj-user'
 
-" line (inner `il` & around `al`)
-"
-" adds two text objects:
-" - `<operator>il` - delete line from level of indentation
-" - `<operator>al` - delete full line (including whitespace, `dal` <> `dd`)
-"
-" usage:
-" ```
-" // `dal` & `dil` do the same on the below line
-" text here
-"   // on example 'some indented text here' line below
-"   // `dal` deletes whole line including whitespace (same effect as `cc`)
-"   // `dil` preserves the white space and deletes everything else
-"   some indented text here
-" more text here
-" ```
-Plug 'kana/vim-textobj-line'
-
 " indents
 "
 " `<operator>ii` - operates on all lines at same indentation above and below
