@@ -7,9 +7,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" installed as plugin with `vim-plug`, see ./plugins.vim
-" `silent!` to avoid erroring if `onedark` not installed
-silent! colorscheme onehalfdark
+" source locally stored colorscheme, in future will break this out a repo
+source $DOTFILES/neovim/colorschemes/onehalfdarkmodified.vim
 
 function! s:clear_background()
   " disable background color(s) potentially set by colorscheme

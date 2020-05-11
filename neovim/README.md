@@ -46,6 +46,7 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 - [`alias.zsh`](#alias.zsh) - define shell-level aliases (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
 - [`coc.jsonc` and `coc.nvim`](#cocjsonc-and-cocnvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc.jsonc` is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colors.vim) - configure colors, (e.g. enable true color, set dark background, set color scheme)
+- [`colorschemes`](#colorschemes) - custom colorschemes (sole scheme at the moment is a fork of OneHalfDark)
 - [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
 - [`filetype_specific.vim`](#filetype_specific.vim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
 - [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
@@ -86,6 +87,12 @@ Notable configurations:
 - set color scheme
 - highlight matching parens
 - highlight trailing whitespace
+
+### [`colorschemes`](./colorschemes)
+
+Custom colorschemes.
+
+[Sole scheme](./colorschemes/onehalfdarkmodified.vim) at the moment is a fork of [OneHalfDark](https://github.com/sonph/onehalf/tree/master/vim).
 
 ### [`commands.vim`](./commands.vim)
 
