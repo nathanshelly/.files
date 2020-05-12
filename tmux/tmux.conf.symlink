@@ -117,29 +117,23 @@ if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi y sen
 if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND"'
 if-shell '! [ -z "$TMUX_SYSTEM_CLIPBOARD_COMMAND" ]' 'bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "$TMUX_SYSTEM_CLIPBOARD_COMMAND" \; display-message "highlighted selection copied to system clipboard"'
 
-# use home row (`jkl;` instead of default `hjkl` navigation)
-bind -T copy-mode-vi 'j'  send -X cursor-left
-bind -T copy-mode-vi 'k'  send -X cursor-down
-bind -T copy-mode-vi 'l'  send -X cursor-up
-bind -T copy-mode-vi ';' send -X cursor-right
+# use alt+(hjkl) to navigate between panes
+bind -n M-h select-pane -L
+bind -n M-j select-pane -D
+bind -n M-k select-pane -U
+bind -n M-l select-pane -R
 
-# use alt+(j|k|l|;) to navigate between panes
-bind -n M-j select-pane -L
-bind -n M-k select-pane -D
-bind -n M-l select-pane -U
-bind -n M-\; select-pane -R
+# use alt+shift+(hjkl) to quickly resize panes
+bind -n M-H resize-pane -L 3
+bind -n M-J resize-pane -D 3
+bind -n M-K resize-pane -U 3
+bind -n M-L resize-pane -R 3
 
-# use alt+shift+(j|k|l|;) to quickly resize panes
-bind -n M-J resize-pane -L 3
-bind -n M-K resize-pane -D 3
-bind -n M-L resize-pane -U 3
-bind -n M-: resize-pane -R 3
-
-# use <prefix> alt+(j|k|l|;) to precisely resize panes
-bind M-j resize-pane -L 1
-bind M-k resize-pane -D 1
-bind M-l resize-pane -U 1
-bind M-\; resize-pane -R 1
+# use <prefix> alt+(hjkl) to precisely resize panes
+bind M-h resize-pane -L 1
+bind M-j resize-pane -D 1
+bind M-k resize-pane -U 1
+bind M-l resize-pane -R 1
 
 # <<<< end of keybindings >>>>
 

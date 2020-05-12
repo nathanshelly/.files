@@ -94,7 +94,6 @@ Additional notable keymappings:
 - insert mode
   - `jk` to escape insert mode
 - normal mode
-  - movement keys to home row - `hjkl` -> `jkl;`
   - start/end of line movement
     - `'` moves to end of line (same behavior as `$`)
     - `"` moves to start of line (same behavior as `0`)

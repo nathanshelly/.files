@@ -59,14 +59,14 @@
             ]
           },
           {
-            "description": "<<<<<< start of mapping h+modifiers to delete+modifiers >>>>>>"
+            "description": "<<<<<< start of mapping ;+modifiers to delete+modifiers >>>>>>"
           },
           {
-            "description": "Ctrl-H to Delete",
+            "description": "Ctrl-; to Delete",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "h",
+                  "key_code": "semicolon",
                   "modifiers": {
                     "mandatory": ["control"],
                     "optional": ["shift"]
@@ -82,7 +82,7 @@
             ]
           },
           {
-            "description": "Alt-H to Alt-Delete",
+            "description": "Alt-; to Alt-Delete",
             "manipulators": [
               {
                 "conditions": [
@@ -97,7 +97,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "h",
+                  "key_code": "semicolon",
                   "modifiers": {
                     "mandatory": ["option"],
                     "optional": ["shift"]
@@ -114,7 +114,7 @@
             ]
           },
           {
-            "description": "Cmd-H to Cmd-Delete",
+            "description": "Cmd-; to Cmd-Delete",
             "manipulators": [
               {
                 "conditions": [
@@ -129,7 +129,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "h",
+                  "key_code": "semicolon",
                   "modifiers": {
                     "mandatory": ["command"]
                   }
@@ -145,10 +145,10 @@
             ]
           },
           {
-            "description": "<<<<<< end of mapping h+modifiers to delete+modifiers/start of mapping jkl;+modifiers to ⬅⬇⬆➡+modifiers >>>>>>"
+            "description": "<<<<<< end of mapping h+modifiers to delete+modifiers/start of mapping hjkl+modifiers to ⬅⬇⬆➡+modifiers >>>>>>"
           },
           {
-            "description": "Ctrl-J to Left Arrow",
+            "description": "Ctrl-h to Left Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -163,7 +163,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "j",
+                  "key_code": "h",
                   "modifiers": {
                     "mandatory": ["control"],
                     "optional": ["shift"]
@@ -179,7 +179,7 @@
             ]
           },
           {
-            "description": "Ctrl-K to Down Arrow",
+            "description": "Ctrl-j to Down Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -194,7 +194,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "k",
+                  "key_code": "j",
                   "modifiers": {
                     "mandatory": ["control"],
                     "optional": ["shift"]
@@ -210,7 +210,7 @@
             ]
           },
           {
-            "description": "Ctrl-L to Up Arrow",
+            "description": "Ctrl-k to Up Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -225,7 +225,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "l",
+                  "key_code": "k",
                   "modifiers": {
                     "mandatory": ["control"],
                     "optional": ["shift"]
@@ -241,7 +241,7 @@
             ]
           },
           {
-            "description": "Ctrl-; to Right Arrow",
+            "description": "Ctrl-l to Right Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -256,7 +256,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "semicolon",
+                  "key_code": "l",
                   "modifiers": {
                     "mandatory": ["control"],
                     "optional": ["shift"]
@@ -272,7 +272,40 @@
             ]
           },
           {
-            "description": "Alt-J to Alt-Left Arrow",
+            "description": "Alt-h to Alt-Left Arrow",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "com.googlecode.iterm2",
+                      "io.alacritty",
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty",
+                      "com.flexibits.fantastical2.mac"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": ["option"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Alt-j to Alt-Down Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -296,7 +329,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_arrow",
+                    "key_code": "down_arrow",
                     "modifiers": ["option"]
                   }
                 ],
@@ -305,7 +338,7 @@
             ]
           },
           {
-            "description": "Alt-K to Alt-Down Arrow",
+            "description": "Alt-k to Alt-Up Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -329,7 +362,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "down_arrow",
+                    "key_code": "up_arrow",
                     "modifiers": ["option"]
                   }
                 ],
@@ -338,7 +371,7 @@
             ]
           },
           {
-            "description": "Alt-L to Alt-Up Arrow",
+            "description": "Alt-l to Alt-Right Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -362,39 +395,6 @@
                 },
                 "to": [
                   {
-                    "key_code": "up_arrow",
-                    "modifiers": ["option"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Alt-; to Alt-Right Arrow",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.googlecode.iterm2",
-                      "io.alacritty",
-                      "com.apple.Terminal",
-                      "net.kovidgoyal.kitty",
-                      "com.flexibits.fantastical2.mac"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "semicolon",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["shift"]
-                  }
-                },
-                "to": [
-                  {
                     "key_code": "right_arrow",
                     "modifiers": ["option"]
                   }
@@ -404,7 +404,39 @@
             ]
           },
           {
-            "description": "Cmd-J to Cmd-Left Arrow",
+            "description": "Cmd-h to Cmd-Left Arrow",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "com.googlecode.iterm2",
+                      "io.alacritty",
+                      "com.apple.Terminal",
+                      "net.kovidgoyal.kitty"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["command"],
+                    "optional": ["shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": ["command"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Cmd-j to Cmd-Down Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -427,38 +459,6 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_arrow",
-                    "modifiers": ["command"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Cmd-K to Cmd-Down Arrow",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.googlecode.iterm2",
-                      "io.alacritty",
-                      "com.apple.Terminal",
-                      "net.kovidgoyal.kitty"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "k",
-                  "modifiers": {
-                    "mandatory": ["command"],
-                    "optional": ["shift"]
-                  }
-                },
-                "to": [
-                  {
                     "key_code": "down_arrow",
                     "modifiers": ["command"]
                   }
@@ -468,7 +468,7 @@
             ]
           },
           {
-            "description": "Cmd-L to Cmd-Up Arrow",
+            "description": "Cmd-k to Cmd-Up Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -484,7 +484,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "l",
+                  "key_code": "k",
                   "modifiers": {
                     "mandatory": ["command"],
                     "optional": ["shift"]
@@ -501,7 +501,7 @@
             ]
           },
           {
-            "description": "Cmd-; to Cmd-Right Arrow",
+            "description": "Cmd-l to Cmd-Right Arrow",
             "manipulators": [
               {
                 "conditions": [
@@ -516,7 +516,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "semicolon",
+                  "key_code": "l",
                   "modifiers": {
                     "mandatory": ["command"],
                     "optional": ["shift"]
@@ -533,7 +533,7 @@
             ]
           },
           {
-            "description": "<<<<<< end of mapping jkl;+modifiers to ⬅⬇⬆➡+modifiers/start binding Shift taps to `()`>>>>>>",
+            "description": "<<<<<< end of mapping hjkl+modifiers to ⬅⬇⬆➡+modifiers/start binding Shift taps to `()`>>>>>>",
             "/": "<<<<<<<<<<<<<<<< e.g. tap Left Shift -> `(` >>>>>>>>>>>>>>>>",
             "//": "<<<<<<<<<<<<<<<< e.g. tap Right Shift -> `)` >>>>>>>>>>>>>>",
             "///": "<<<<<<<<<<<<< holding shift works as usual  >>>>>>>>>>>>>>>"

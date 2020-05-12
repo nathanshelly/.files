@@ -50,7 +50,7 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 - [`filetype_specific.vim`](#filetype_specific.vim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
 - [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
 - [`init.vim`](#init.vim) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv.symlink`](../zsh/zshenv.symlink)).
-- [`keymap.vim`](#keymap.vim) - define keymappings (e.g. \`\` (`<space>`) as leader, `jk` to escape insert mode, remap movement keys to home row (`hjkl` -> `jkl;`)). Note: plugin keymappings defined in `plugin_config.vim`.
+- [`keymap.vim`](#keymap.vim) - define keymappings (e.g. \`\` (`<space>`) as leader, `jk` to escape insert mode. Note: plugin keymappings defined in `plugin_config.vim`.
 - [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
 - [`plugin_config.vim`](#plugin_config.vim) - configure plugins (agnostic of plugin management method)
 - [`plugins.vim`](#plugins.vim) - enable plugins, managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
@@ -145,8 +145,6 @@ Notable keymappings:
 - insert mode
   - `jk` to escape insert mode
 - normal mode
-  - movement keys to home row - `hjkl` -> `jkl;`
-    - additionally remap repeating last `tfTF` motion to `h` since that functionality provided by `;` is now overwritten
   - start/end of line movement
     - `'` moves to end of line (remapped from `$`)
       - original behavior of jumping to marks performed with `x` instead (see below)

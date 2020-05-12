@@ -26,13 +26,6 @@ export KEYTIMEOUT=20
 # map jk to esc in insert mode
 bindkey -M viins 'jk' vi-cmd-mode
 
-# change movement to home row
-# hjkl -> jkl; in normal mode
-bindkey -M vicmd 'j' vi-backward-char
-bindkey -M vicmd 'k' down-line-or-history
-bindkey -M vicmd 'l' up-line-or-history
-bindkey -M vicmd ';' vi-forward-char
-
 # enable normal backspace behavior
 bindkey "^?" backward-delete-char
 

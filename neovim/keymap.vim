@@ -19,24 +19,6 @@ inoremap jk <esc>
 " ref - https://stackoverflow.com/a/10757148
 inoremap <c-c> <esc>
 
-" <<<< home row keys for movement >>>>
-
-" left/right
-noremap j h
-noremap ; l
-" up/down
-noremap l k
-noremap k j
-
-" remap up/down screen line movement in normal mode
-nnoremap gl gk
-nnoremap gk gj
-
-" <<<< end of home row movement keys remapping >>>>
-
-" remap `;` -> `h` (repeat last `tfTF` movement) `;` used for home row movement
-nnoremap h ;
-
 " start/end of line movement
 noremap " ^
 noremap ' $
