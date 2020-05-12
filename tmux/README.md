@@ -24,9 +24,9 @@ Here are highlights:
 - remap pane
   - horizontal: `<prefix> "` -> `M--` (that's `Alt/Option` and `-` at the same time)
   - vertical: `<prefix> %` -> `M-\` (meant to evoke `|` for vertical split but no need to hold `Shift`)
-- switch panes w/ `M-(j|k|l|;)`, e.g. `M-j` moves left a pane, `M-k` down a pane, `M-l` up a pane, and `M-;` right a pane
-- resize panes w/ `M-(J|K|L|:)`, e.g. `M-J` (`M-Shift-j`) resizes to the left, `M-K` resizes down, etc.
-  - Note: by default this resizing is slightly coarse (3x larger increments than the smallest possible). To resize more granularly use `<prefix> M-(j|k|l|;)`.
+- switch panes w/ `M-(h|j|k|l)`, e.g. `M-h` moves left a pane, `M-j` down a pane, `M-k` up a pane, and `M-l` right a pane
+- resize panes w/ `M-(H|J|K|L)`, e.g. `M-H` (`M-Shift-h`) resizes to the left, `M-J` resizes down, etc.
+  - Note: by default this resizing is slightly coarse (3x larger increments than the smallest possible). To resize more granularly use `<prefix> M-(h|j|k|l)`.
 - switch to last session w/ `<prefix> l` (similar to hitting `Alt-Tab` (Windows) or `Cmd-Tab` (macOS) once)
 - enable true color (RGB color), dimming, strikethrough and italics through terminal overrides
 
