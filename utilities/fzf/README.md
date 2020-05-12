@@ -24,7 +24,7 @@ See longer explainer [here](https://gist.github.com/nathanshelly/4b7020d09d413ca
 > Note: these bindings configured in [`git.zsh`](#git.zsh)
 
 - `M-f` - filter and output files shown by `git status` (untracked, unstaged, staged) to shell
-- `M-h` - filter `git log` commits and output hash to shell
+- `M-t` - filter `git log` commits and output hash to shell
 - `M-r` - filter all (local and remote) git branches and output to shell
 
 ## files
@@ -56,7 +56,7 @@ If only one option would be displayed, select it immediately (`--select-1`). If 
 
 ### [`git.zsh`](./git.zsh)
 
-Enables [`git`-related bindings](#git-bindings) (e.g. `M-r` for branches, `M-h` for hashes, etc.).
+Enables [`git`-related bindings](#git-bindings) (e.g. `M-r` for branches, `M-t` for commits, etc.).
 
 ## appendix
 
