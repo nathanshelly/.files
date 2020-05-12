@@ -29,6 +29,8 @@ command -v brew > /dev/null || {
   fi
 }
 
+brew analytics off # disable analytics
+
 # standard, platform-agnostic packages, no casks (desktop apps)
 brew bundle --file "$DOTFILES/Brewfile"
 
