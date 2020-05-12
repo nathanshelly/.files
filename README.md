@@ -38,9 +38,9 @@ These dotfiles give you the best of a custom configuration without the hassle of
   - [a blazing-fast async prompt](https://github.com/romkatv/powerlevel10k/) with contextual information like `git` changes, executable versions, etc.
     - customizable via the command `p10k configure`
   - [useful utilities](./utilities/README.md) like [`fasd`](./utilities/fasd/README.md), [`rg`](./utilities/ripgrep/README.md), [`fzf`](./utilities/fzf/README.md), [`fd`](./utilities/fd/README.md), etc.
-- best practices/sane defaults - dotfiles configuration is weird. At times the documentation seems like ancient, undechiperable text. Things break in wild, unexpected maddening ways. Sometimes the suggestions you see on Stack Overflow seem like magic incantations. These dotfiles deal with all of that for you so you don't need to worry about it (and if you do run into weirdness help is only an issue away!).
+- best practices/sane defaults - dotfiles configuration is weird. At times the documentation seems like ancient, undecipherable text. Things break in wild, unexpected maddening ways. Sometimes the suggestions you see on Stack Overflow seem like magic incantations. These dotfiles deal with all of that for you so you don't need to worry about it (and if you do run into weirdness help is only an issue away!).
 
-  > disclaimer: I am well aware that these dotfiles can always be improved. The claim of best practices comes primarily from the sheer volume of time poured into them, not any pretension that they are perfect.
+  > disclaimer: These dotfiles can always be improved. The claim of best practices comes primarily from the sheer volume of time poured into them, not any pretension that they are perfect.
 
 - well-supported - no SLA but a promise to address new issues in a timely manner ⏰
 - well-documented - READMEs & code comments galore help anytime you want to make direct changes
