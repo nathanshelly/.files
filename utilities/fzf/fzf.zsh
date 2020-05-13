@@ -71,7 +71,7 @@ fi
 export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
  --select-1 --exit-0 --multi\
  $_fzf_preview_window\
- --bind ctrl-k:down,ctrl-l:up,ctrl-space:toggle-preview,\
+ --bind ctrl-j:down,ctrl-k:up,ctrl-space:toggle-preview,\
 ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
 
 # << list files >>
