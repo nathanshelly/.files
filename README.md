@@ -37,7 +37,7 @@ These dotfiles give you the best of a custom configuration without the hassle of
   - [highlighted `man` pages](https://user-images.githubusercontent.com/9750687/77732882-116ec780-6fc3-11ea-83e9-0e1743963536.png) via [a few `TERMCAP` vars](https://github.com/nathanshelly/.files/blob/88c87bb5eb9946ede43b2de66a60f8672722b5f3/zsh/zshenv.symlink#L35-L43)
   - [a blazing-fast async prompt](https://github.com/romkatv/powerlevel10k/) with contextual information like `git` changes, executable versions, etc.
     - customizable via the command `p10k configure`
-  - [useful utilities](./utilities/README.md) like [`fasd`](./utilities/fasd/README.md), [`rg`](./utilities/ripgrep/README.md), [`fzf`](./utilities/fzf/README.md), [`fd`](./utilities/fd/README.md), etc.
+  - [useful utilities](./utilities/README.md) like [`z.lua`](https://github.com/skywind3000/z.lua), [`rg`](./utilities/ripgrep/README.md), [`fzf`](./utilities/fzf/README.md), [`fd`](./utilities/fd/README.md), etc.
 - best practices/sane defaults - dotfiles configuration is weird. At times the documentation seems like ancient, undecipherable text. Things break in wild, unexpected maddening ways. Sometimes the suggestions you see on Stack Overflow seem like magic incantations. These dotfiles deal with all of that for you so you don't need to worry about it (and if you do run into weirdness help is only an issue away!).
 
   > disclaimer: These dotfiles can always be improved. The claim of best practices comes primarily from the sheer volume of time poured into them, not any pretension that they are perfect.
@@ -114,4 +114,5 @@ Here's a few items you might be interested in trying/learning more about:
 - configure high-level features of these dotfiles (changing the theme, setting your editor, disabling the prompt, etc.) via the [settings](./infra/docs/settings.md)
 - configure your prompt appearance via `p10k configure` (or disable the prompt altogether via the `prompt` setting from the previous bullet point)
 - use [`fzf` keybindings](./utilities/fzf/README.md#keybindings) to speed up so many things from quickly fuzzily selecting files, find zsh history items you half-remember typing weeks ago, checking out the commit from the one keyword you remember typing in the commit message & more
-- use [`fasd`](./utilities/fasd/README.md) to quickly jump to or edit frequently/recently visited directories or files from anywhere
+- use `z <directory-fragment>` to quickly jump to frequently/recently visited directories from anywhere
+  - for example, `z down` to jump to downloads or `z .f` to jump to this directory
