@@ -24,7 +24,7 @@
 # - https://github.com/zdharma/zinit#ice-modifiers
 # - http://zdharma.org/zinit/wiki/INTRODUCTION/#some_ice-modifiers
 
-# TODO: install `fzf` & `fasd` with `zinit`?
+# TODO: install `fzf` with `zinit`?
 
 # ref - search zsh-autosuggestions
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
@@ -63,6 +63,9 @@ zinit light romkatv/powerlevel10k
 # TODO: make this async
 # zinit ice wait lucid
 zinit light buonomo/yarn-completion
+
+zinit ice wait lucid
+zinit light skywind3000/z.lua
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
