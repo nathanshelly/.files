@@ -864,7 +864,34 @@
             ]
           },
           {
-            "description": "Alt-J to Ctrl-Left Arrow in Fantastical",
+            "description": "Alt-h to Ctrl-Left Arrow in Fantastical",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": ["control"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Alt-j to Ctrl-Down Arrow in Fantastical",
             "manipulators": [
               {
                 "conditions": [
@@ -882,7 +909,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_arrow",
+                    "key_code": "down_arrow",
                     "modifiers": ["control"]
                   }
                 ],
@@ -891,7 +918,7 @@
             ]
           },
           {
-            "description": "Alt-K to Ctrl-Down Arrow in Fantastical",
+            "description": "Alt-k to Ctrl-Up Arrow in Fantastical",
             "manipulators": [
               {
                 "conditions": [
@@ -909,7 +936,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "down_arrow",
+                    "key_code": "up_arrow",
                     "modifiers": ["control"]
                   }
                 ],
@@ -918,7 +945,7 @@
             ]
           },
           {
-            "description": "Alt-L to Ctrl-Up Arrow in Fantastical",
+            "description": "Alt-l to Ctrl-Right Arrow in Fantastical",
             "manipulators": [
               {
                 "conditions": [
@@ -929,33 +956,6 @@
                 ],
                 "from": {
                   "key_code": "l",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "up_arrow",
-                    "modifiers": ["control"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Alt-; to Ctrl-Right Arrow in Fantastical",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["com.flexibits.fantastical2.mac"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "semicolon",
                   "modifiers": {
                     "mandatory": ["option"],
                     "optional": ["shift"]
