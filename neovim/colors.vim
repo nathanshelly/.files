@@ -7,7 +7,7 @@ if (has("termguicolors"))
 endif
 
 " source locally stored colorscheme, in future may break this out to a repo
-source $DOTFILES/neovim/colorschemes/onehalfdarkmodified.vim
+source $DOTFILES/neovim/colorschemes/n.vim
 
 " << miscellaneous >>
 
