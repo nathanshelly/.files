@@ -6,20 +6,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" source locally stored colorscheme, in future will break this out a repo
+" source locally stored colorscheme, in future may break this out to a repo
 source $DOTFILES/neovim/colorschemes/onehalfdarkmodified.vim
-
-function! s:clear_background()
-  " disable background color(s) potentially set by colorscheme
-  " ref - https://vi.stackexchange.com/a/16136
-  highlight Normal ctermbg=NONE guibg=NONE
-  highlight SignColumn ctermbg=NONE guibg=NONE
-  highlight LineNr ctermbg=NONE guibg=NONE
-endfunction
-call <SID>clear_background()
-
-" rehighlight on color scheme change
-autocmd ColorScheme * call <SID>clear_background()
 
 " << miscellaneous >>
 
