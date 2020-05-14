@@ -1,13 +1,7 @@
-" ==============================================================================
-"   Name:        One Half Dark
-"   Author:      Son A. Pham <sp@sonpham.me>
-"   Url:         https://github.com/sonph/onehalf
-"   License:     The MIT License (MIT)
-"
-"   A dark vim color scheme based on Atom's One. See github.com/sonph/onehalf
-"   for installation instructions, a light color scheme, versions for other
-"   editors/terminals, and a matching theme for vim-airline.
-" ==============================================================================
+"  A fork of
+"  https://github.com/sonph/onehalf/blob/970abdf26b399100cbb59c6b6e693c4ff877c59d/vim/colors/onehalfdark.vim
+
+" TODO: test w/ & w/o flux
 
 set background=dark
 highlight clear
@@ -16,21 +10,21 @@ syntax reset
 let g:colors_name="onehalfdark"
 let colors_name="onehalfdark"
 
-
-let s:black       = { "gui": "#282c34", "cterm": "236" }
+let s:black       = { "gui": "#000000", "cterm": "16" }
 let s:red         = { "gui": "#e06c75", "cterm": "168" }
 let s:green       = { "gui": "#98c379", "cterm": "114" }
 let s:yellow      = { "gui": "#e5c07b", "cterm": "180" }
 let s:blue        = { "gui": "#61afef", "cterm": "75"  }
 let s:purple      = { "gui": "#c678dd", "cterm": "176" }
 let s:cyan        = { "gui": "#56b6c2", "cterm": "73"  }
-let s:white       = { "gui": "#dcdfe4", "cterm": "188" }
+let s:white       = { "gui": "#d0d0d0", "cterm": "249" }
 
 let s:fg          = s:white
 let s:bg          = s:black
 
+let s:menu_grey   = { "gui": "#282C34", "cterm": "235"  }
 let s:comment_fg  = { "gui": "#5c6370", "cterm": "241" }
-let s:gutter_bg   = { "gui": "#282c34", "cterm": "236" }
+let s:gutter_bg   = s:black
 let s:gutter_fg   = { "gui": "#919baa", "cterm": "247" }
 
 let s:cursor_line = { "gui": "#313640", "cterm": "237" }
@@ -38,7 +32,6 @@ let s:color_col   = { "gui": "#313640", "cterm": "237" }
 
 let s:selection   = { "gui": "#474e5d", "cterm": "239" }
 let s:vertsplit   = { "gui": "#313640", "cterm": "237" }
-
 
 function! s:h(group, fg, bg, attr)
   if type(a:fg) == type({})
@@ -57,7 +50,6 @@ function! s:h(group, fg, bg, attr)
     exec "hi " . a:group . " gui=NONE cterm=NONE"
   endif
 endfun
-
 
 " User interface colors {
 call s:h("Normal", s:fg, s:bg, "")
@@ -84,7 +76,7 @@ call s:h("MoreMsg", s:fg, "", "")
 call s:h("WarningMsg", s:red, "", "")
 call s:h("Question", s:purple, "", "")
 
-call s:h("Pmenu", s:bg, s:fg, "")
+call s:h("Pmenu", s:fg, s:menu_grey, "")
 call s:h("PmenuSel", s:fg, s:blue, "")
 call s:h("PmenuSbar", "", s:selection, "")
 call s:h("PmenuThumb", "", s:fg, "")
@@ -197,24 +189,24 @@ hi link gitcommitUnmergedArrow gitcommitUnmergedFile
 " }
 
 " Fix colors in neovim terminal buffers {
-  if has('nvim')
-    let g:terminal_color_0 = s:black.gui
-    let g:terminal_color_1 = s:red.gui
-    let g:terminal_color_2 = s:green.gui
-    let g:terminal_color_3 = s:yellow.gui
-    let g:terminal_color_4 = s:blue.gui
-    let g:terminal_color_5 = s:purple.gui
-    let g:terminal_color_6 = s:cyan.gui
-    let g:terminal_color_7 = s:white.gui
-    let g:terminal_color_8 = s:black.gui
-    let g:terminal_color_9 = s:red.gui
-    let g:terminal_color_10 = s:green.gui
-    let g:terminal_color_11 = s:yellow.gui
-    let g:terminal_color_12 = s:blue.gui
-    let g:terminal_color_13 = s:purple.gui
-    let g:terminal_color_14 = s:cyan.gui
-    let g:terminal_color_15 = s:white.gui
-    let g:terminal_color_background = s:bg.gui
-    let g:terminal_color_foreground = s:fg.gui
-  endif
+if has('nvim')
+  let g:terminal_color_0 = s:black.gui
+  let g:terminal_color_1 = s:red.gui
+  let g:terminal_color_2 = s:green.gui
+  let g:terminal_color_3 = s:yellow.gui
+  let g:terminal_color_4 = s:blue.gui
+  let g:terminal_color_5 = s:purple.gui
+  let g:terminal_color_6 = s:cyan.gui
+  let g:terminal_color_7 = s:white.gui
+  let g:terminal_color_8 = s:black.gui
+  let g:terminal_color_9 = s:red.gui
+  let g:terminal_color_10 = s:green.gui
+  let g:terminal_color_11 = s:yellow.gui
+  let g:terminal_color_12 = s:blue.gui
+  let g:terminal_color_13 = s:purple.gui
+  let g:terminal_color_14 = s:cyan.gui
+  let g:terminal_color_15 = s:white.gui
+  let g:terminal_color_background = s:bg.gui
+  let g:terminal_color_foreground = s:fg.gui
+endif
 " }
