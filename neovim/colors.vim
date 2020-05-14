@@ -2,7 +2,6 @@
 
 " true color support
 " note: with true color support on, must specify highlights with guifg/bf
-" ref - https://github.com/joshdick/onedark.vim#installation
 if (has("termguicolors"))
   set termguicolors
 endif
