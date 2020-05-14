@@ -242,7 +242,6 @@ Agnostic of plugin management method.
   - [`fzf.vim`](https://github.com/junegunn/fzf.vim) - fuzzy search files, buffers, lines, etc. Configuration is complex enough to be broken out into its own file - [`fzf.vim`](#fzf.vim)
   - [`limelight.vim`](https://github.com/junegunn/limelight.vim) - prettier/more functional statusline
 - colors/syntax/languages
-  - [`onedark.vim`](https://github.com/joshdick/onedark.vim) - color scheme
   - [`vim-polyglot`](https://github.com/sheerun/vim-polyglot) - syntax for an array of languages
   - [`vim-markdown`](https://github.com/iamcco/markdown-preview.nvim) - markdown syntax (note: `vim-polyglot's` markdown syntax disabled to use this syntax highlighting instead)
   - [`vim-jsx-typescript`](https://github.com/peitalin/vim-jsx-typescript) - `jsx` highlighting for [`React`](https://reactjs.org)
