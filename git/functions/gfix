@@ -17,7 +17,6 @@ git rev-parse --quiet --verify fix > /dev/null && {
 
 # checkout out # commits back or specific hash depending on user input
 # <-> matches any number of digits (`zsh` specific)
-# TODO: clean this up
 { { [[ $1 = <-> ]] && (( $1 < 50 )) } && gback "$1" || git checkout "$1" } || {
   echo 'Checkout failed, please fix the error then try again'
   return 1
