@@ -10,6 +10,5 @@ Additionally, parts of this configuration (like Karabiner) are extremely opinion
 
 - [`apps`](./apps) - configuration for `macOS` GUI apps (e.g. [Alacritty](https://github.com/alacritty/alacritty), [Rectangle](https://github.com/rxhanson/Rectangle), [VSCode](https://github.com/microsoft/vscode))
 - [`config.symlink`](./config.symlink) - macOS-specific configuration files symlinked to `$HOME/.config` (e.g. `alacritty`, `karabiner`, `mpv`)
-- [`fonts`](./fonts) - currently holds a single font named [`dotfiles`](./fonts/dotfiles) (combination of Space Mono Italic and Fira Code Regular & Bold faces)
 - [`xvimrc.symlink`](./xvimrc.symlink) - configure [XVim2](https://github.com/XVimProject/XVim2) to graft `vim` onto `Xcode`
   - XVim2 installation done manually via [instructions here](https://github.com/XVimProject/XVim2#install).
