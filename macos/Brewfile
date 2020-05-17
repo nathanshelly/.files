@@ -9,13 +9,3 @@ brew "mpv"
 brew "rename"
 brew "trash"
 brew "wget"
-
-# <<<< fonts >>>>
-# casks are only valid on macOS
-# casks are nomally gui applications and the rest are therefore listed in
-# $DOTFILES/gui/apps/Brewfile but fonts are not gui-specific so install here
-
-# fonts repository
-# ref - https://github.com/Homebrew/homebrew-cask-fonts
-tap "homebrew/cask-fonts"
-cask "font-fira-code"

@@ -377,7 +377,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/.files/gui/apps/iterm</string>
+	<string>~/.files/gui/apps/iterm/colors</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{799, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -424,7 +424,9 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>320 339 799 448 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1440 900 0 0 1440 900 </string>
+	<string>0 3 802 897 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>720 0 720 900 0 0 1440 900 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1077,11 +1079,11 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>Monaco 12</string>
+			<string>OperatorMonoForPowerline-Book 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Iosevka-Term 15</string>
+			<string>dotfiles-regular 15</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1162,22 +1164,19 @@
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
-		<string>Iosevka Term</string>
-		<string>Iosevka</string>
-		<string>Fira Code</string>
-		<string>IosevkaCC</string>
+		<string>dotfiles</string>
 	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{432, 705}</string>
+		<string>{114, 712}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>24BDD851-E610-427F-8D6C-D58F0D04DB4A</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>14</integer>
+	<integer>19</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
