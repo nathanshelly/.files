@@ -663,7 +663,7 @@
             ]
           },
           {
-            "description": "Hyper-b to open browser (Firefox Nightly)",
+            "description": "Hyper-b to open browser (Firefox)",
             "manipulators": [
               {
                 "type": "basic",
@@ -675,7 +675,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open -a 'Firefox Nightly'"
+                    "shell_command": "open -a 'Firefox'"
                   }
                 ]
               }
