@@ -1,4 +1,4 @@
-nodejs 12.13.0
+nodejs 12.16.3
 python 3.7.5
 rust   nightly
 yarn   1.21.0
