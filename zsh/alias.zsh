@@ -31,7 +31,7 @@ alias e="$EDITOR" # text editor
 command -v exiftool > /dev/null && alias i=exiftool # metadata info
 command -v open > /dev/null && alias o=open # macOS open command
 if command -v rg > /dev/null; then
-  alias f='/usr/local/bin/rg --smart-case'
+  alias f='rg --smart-case'
 else
   alias f='grep -R'
 fi
