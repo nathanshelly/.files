@@ -102,6 +102,12 @@ let g:coc_global_extensions = [
 let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-p>'
 
+" customize status line error/warning symbols (matches diagnostic warning/error)
+" TODO: customize colors?
+let g:coc_status_error_sign = '◉ '
+let g:coc_status_warning_sign = '○ '
+
+
 " expand snippet if possible (check out related options)
 " inoremap <silent><expr> <c-e> coc#expandable()
 
