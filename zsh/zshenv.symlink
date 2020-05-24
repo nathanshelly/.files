@@ -29,6 +29,8 @@ main() {
 
   export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
 
+  export DIRENV_LOG_FORMAT= # silence direnv
+
   # output ANSI "color" escape sequences
   # value of LESS is passed to `less` as args
   export LESS=" -R"
@@ -46,7 +48,6 @@ main() {
   [ -d "$HOME/work" ] && {
     export GOPATH="$HOME/work/go"
     export VAULT_ADDR=https://vault.services.opendoor.com:8200
-    export DIRENV_LOG_FORMAT= # silence direnv
     export ANDROID_HOME="$HOME/Library/Android/sdk" # for android studio
     export OD_CURRENT_USER_EMAIL="nathan.shelly@opendoor.com"
   }
