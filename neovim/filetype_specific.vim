@@ -60,6 +60,6 @@ augroup END
 
 augroup direnv
   autocmd!
-  " `.envrc-*` files are bash - https://github.com/direnv/direnv#how-it-works
+  " `.envrc-*` files are ~bash - https://github.com/direnv/direnv#how-it-works
   autocmd BufNewFile,BufRead *envrc* setlocal filetype=bash
 augroup END

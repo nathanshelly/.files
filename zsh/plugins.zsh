@@ -64,8 +64,16 @@ zinit light romkatv/powerlevel10k
 # zinit ice wait lucid
 zinit light buonomo/yarn-completion
 
+# quickly `cd` to folders based on frequency and recency of access
 zinit ice wait lucid
 zinit light skywind3000/z.lua
+
+# initialize direnv environment variable manager - direnv.net
+# ref - https://zdharma.org/zinit/wiki/Direnv-explanation/
+zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
+        direnv/direnv
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

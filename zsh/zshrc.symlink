@@ -93,13 +93,6 @@ config_files=($DOTFILES/**/*.zsh~*/zsh/*)
 for config_file in $config_files; do source "$config_file"; done
 unset config_files config_file
 
-# << work-specific >>
-[ -d "$HOME/work" ] && {
-  # initialize direnv environment variable manager - https://direnv.net
-  command -v direnv > /dev/null && eval "$(direnv hook zsh)"
-}
-# << end work-specific >>
-
 # source asdf to give it final say on package versions
 source "$DOTFILES/zsh/asdf.zsh"
 
