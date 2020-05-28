@@ -38,15 +38,15 @@ nmap <leader>cp <Plug>(coc-diagnostic-prev)
 
 " go to definition
 nmap <silent> gd <Plug>(coc-definition)
-" " go to declaration
+" go to declaration
 " nmap <silent> gr <Plug>(coc-declaration)
 " go to implentation
 nmap <silent> gi <Plug>(coc-implementation)
 " go to type definition
 nmap <silent> gt <Plug>(coc-type-definition)
-" " go to references
+" go to references
 nmap <silent> gfr <Plug>(coc-references)
-" " rename value at cursor
+" rename value at cursor
 nmap <silent> gnr <Plug>(coc-rename)
 " format buffer
 nmap <silent> gfb <Plug>(coc-format)
