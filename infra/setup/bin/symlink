@@ -1,285 +1,63 @@
 #! /usr/bin/env bash
 
-# <<<< motivation/design doc >>>>
-#
-# see writeup of motivation & methodology @ $DOTFILES/infra/setup/symlink.md
-
-# note: values returned by setting variables, usually namespaced with `_`. for
-# scoping purposes, the calling function should define local variables with the
-# expected name. that is, if your function is named `foo` and returns in the
-# variable `_ret_val`, your calling function should look something like this:
-#
-# ```
-# # define local to hold return value
-# local _ret_val
-# ... # whatever code your heart desires (don't shadow `_ret_val`)
-# # call function
-# foo
-# # use `_ret_val` with returned value
-# printf '%s' "$_ret_val"
-# ```
-
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-# perform symlinking according to scheme specified in design doc (path -
-# `$DOTFILES/infra/setup/symlink.md`)
 main() {
-  local passed_blacklist="$1"
-  local default_blacklist="/.git|/apps/alfred/"
-  # ref - https://unix.stackexchange.com/a/415992
-  local blacklist="$default_blacklist${passed_blacklist:+"|$passed_blacklist"}"
-
   header "<< Symlinking >>"
-  header "following scheme detailed @ $DOTFILES/infra/setup/symlink.md"
-
-  user "verbose? (y/any other key)"
-  read -r -s -n 1 verbose < /dev/tty
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  # symlink files within depth w/ `.symlink` in their name, excluding
-  # blacklisted directories
-  # ref - https://mywiki.wooledge.org/BashFAQ/001
-  (
-    # `-H` resolves symlinks to the underlying filename
-    find -H "$DOTFILES" -maxdepth 4 -name '*.symlink*'
-  ) | (
-    grep -vZ -E "$blacklist" # '-E' reads `|` separated terms from a string
-  ) | while read -r src; do
-    [ "$verbose" == "y" ] && echo # insert newline for formatting
-    filename="$(basename "$src")"
-    local path_components='([-._ 0-9a-zA-Z]+,)*'
-    local name='[-._ 0-9a-zA-Z]+'
-    local flags='[_d]{1,2}'
-    local _symlink_regex="^($path_components)($name)\.symlink(\.$flags)?$"
+  link_file "$DOTFILES/git/gitconfig" "$HOME/.gitconfig"
+  link_file "$DOTFILES/git/gitignore" "$HOME/.gitignore"
+  link_file "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
+  link_file "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
+  link_file "$DOTFILES/zsh/p10k.zsh" "$HOME/.p10k.zsh"
+  link_file "$DOTFILES/gui/xvimrc" "$HOME/.xvimrc"
+  link_file "$DOTFILES/languages/js/prettierrc.json" "$HOME/.prettierrc.json"
+  link_file "$DOTFILES/languages/rust/rustfmt.toml" "$HOME/.rustfmt.toml"
+  link_file "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
+  link_file "$DOTFILES/utilities/asdf/tool-versions" "$HOME/.tool-versions"
+  link_file "$DOTFILES/ssh/config" "$HOME/.ssh/config"
 
-    if [[ $filename =~ $_symlink_regex ]]; then
-      _symlink_based_on_filename "$src" "$filename"
-    else
-      [ "$verbose" == "y" ] && {
-        info "skipped symlinking $filename (contains \`.symlink\` but doesn't \
-    match symlinking syntax)"
-      }
-    fi
-  done
-}
+  link_file "$DOTFILES/neovim/init.vim" "$HOME/.config/nvim/init.vim"
+  link_file \
+    "$DOTFILES/neovim/coc-settings.jsonc" \
+    "$HOME/.config/nvim/coc-settings.json"
 
-# symlink individual file/directory based on name
-#
-# Args:
-#   - {string} src - path to source file
-#   - {string} filename - filename of source file
-_symlink_based_on_filename() {
-  local src="$1" filename="$2"
-  local _path='' _name='' _direct=false _unhidden=false
+  # <<<< gui applications >>>>
 
-  # extract target name and optional path from target filename
-  _extract_path "$filename"
-  _extract_name "$filename"
-
-  # extract and check values of each possible flag
-  _check_flags "$filename"
-
-  # add `.` unless unhidden flag is set
-  [[ $_unhidden == true ]] || {
-    if [ -z "$_path" ]; then
-      # if no path, add `.` to filename
-      _name=".$_name"
-    else
-      # if path exists, add `.` to path
-      # assumption here is that hidden folders rarely have nested hidden files.
-      # So if you have a path component you likely want the `.` to apply to the
-      # first folder in your path, not the filename.
-      _path=".$_path"
-    fi
+  "$DOTFILES/infra/scripts/is_macos.sh" || {
+    echo 'skipping gui symlinks - currently only supported on macOS'
+    return 1
   }
 
-  # debugging
-  [ "$verbose" == "y" ] && {
-    printf 'src, source filename > %s, %s\n' "$src" "$filename"
-    printf 'target name; path; flags (direct, unhidden) > %s; %s; (%s, %s)\n' \
-      "$_name" "$_path" "$_direct" "$_unhidden"
-  }
+  link_file "$DOTFILES/gui/apps/mpv/mpv.conf" "$HOME/.config/mpv/mpv.conf"
+  link_file \
+    "$DOTFILES/gui/apps/alacritty/alacritty.yml" \
+    "$HOME/.config/alacritty/alacritty.yml"
 
-  [[ ! -d "$HOME/${_path}" ]] && {
-    if mkdir -p "$HOME/${_path}"; then
-      success "Created directory '$HOME/${_path}' (and any non-existent parent \
-directories)"
-    else
-      fail "Failed to create directory '$HOME/${_path}' (or a non-existent \
-parent directory)"
-    fi
-  }
+  link_file \
+    "$DOTFILES/gui/apps/rectangle/com.knollsoft.Rectangle.plist" \
+    "$HOME/Library/Preferences/com.knollsoft.Rectangle.plist"
 
-  # relative path from home, w/ or w/o `.` based on `_unhidden`
-  local dst="$HOME/${_path}${_name}"
+  link_file \
+    "$DOTFILES/gui/apps/alt-tab/com.lwouis.alt-tab-macos.plist" \
+    "$HOME/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 
-  # check if `src` is a directory
-  # ref - https://www.tldp.org/LDP/abs/html/fto.html
-  if [[ -d $src ]]; then
-    if [[ $_direct == true ]]; then
-      link_file "$src" "$dst"
-    else
-      recursively_link_directory "$src" "$_path" "$_name"
-    fi
-  else
-    if [[ $_direct == true ]]; then
-      warn "Invalid flag \`d\` (direct) for non-directory '$src'"
-    else
-      link_file "$src" "$dst"
-    fi
-  fi
-}
+  link_file \
+    "$DOTFILES/gui/apps/ueli/config.json" \
+    "$HOME/Library/Application Support/ueli/config.json"
 
-recursively_link_directory() {
-  local source_base_path="$1" target_path="$2" directory_name="$3"
-  local target_base_path="$HOME/${target_path}${directory_name}"
-
-  # use `-o` to group conditions
-  # ref - https://stackoverflow.com/questions/7190565/unix-find-multiple-file-types
-  find -H "$source_base_path" -type f -o -type l | while read -r src; do
-    local target_path="$target_base_path${src#$source_base_path}"
-
-    [ "$verbose" == "y" ] && {
-      local target_folder
-      target_folder="$(dirname "$target_base_path${src#$source_base_path}")"
-      printf 'source path: %s\n' "$src"
-      printf 'target path: %s\n' "$target_path"
-      printf 'target folder: %s\n' "$target_folder"
-    }
-
-    mkdir -p "$(dirname "$target_path")"
-    link_file "$src" "$target_path"
-  done
-}
-
-# applies given regex to given string, returning matches in `_REGEX_MATCHES`
-#
-# calling function should define local `_REGEX_MATCHES` to capture return
-#
-# Args:
-#   - {string} regex_to_apply - the regex to apply
-#   - {string} input_to_apply_regex_to - input on which to apply regex
-#
-# Returns:
-#   {string[]} `_REGEX_MATCHES` - any matches
-_apply_regex() {
-  local regex_to_apply="$1" input_to_apply_regex_to="$2"
-  _REGEX_MATCHES=
-
-  # if regex matches then populate `_REGEX_MATCHES` to return
-  [[ $input_to_apply_regex_to =~ $regex_to_apply ]] && {
-    # outer parens, `(...)`, ensure copying as array, not string
-    # internal `""` prevents splitting of individual array elements on IFS
-    _REGEX_MATCHES=("${BASH_REMATCH[@]}")
-  }
-}
-
-# extract target path relative to `$HOME` at which to symlink
-#
-# described in more detail in the design doc (see top of this file for more)
-#
-# TODO: handle windows paths?
-# TODO: perform simple replacement, not splitting & joining
-#   `${string//substring/replacement}`
-#
-# Args:
-#   - {string} filename - source file/directory name
-#
-# Returns:
-#   {string} _path - extracted path (joined w/ `/` & appended w/ `/`)
-_extract_path() {
-  local filename="$1"
-  local _REGEX_MATCHES=()
-
-  # path capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES length 2 or
-  # greater)
-  local _path_regex='^(([-._[:space:][:alnum:]]+,)+).*'
-  _apply_regex "$_path_regex" "$filename"
-
-  # _regex_matches will only have length >= 2 if capture groups triggered,
-  # meaning we have path components
-  [ "${#_REGEX_MATCHES[@]}" -ge 2 ] && {
-    # outer path capture group @ index 1 (index 0 holds entire matched string)
-    local _path_component="${_REGEX_MATCHES[1]}"
-
-    # `IFS=',' ...` scopes IFS changes to `...`, avoiding affecting later lines
-    # ref - https://stackoverflow.com/a/918931
-
-    # read manpage - http://linuxcommand.org/lc3_man_pages/readh.html
-
-    # `<<<` is a Here String (a stripped-down form of a Here Document)
-    # ref - https://www.tldp.org/LDP/abs/html/x17837.html
-    IFS=',' read -r -a path_components <<< "$_path_component"
-
-    local _joined=''
-    # join array back with `/`s. `join_by` saves return value in `_joined`
-    join_by '/' "${path_components[@]}"
-    _path="${_joined}/"
-  }
-}
-
-# extract file/directory name from input
-#
-# described in more detail in the design doc (see top of this file for more)
-#
-# target name of file/directory to symlink
-#
-# Args:
-#   - {string} filename - source file/directory name
-#
-# Returns:
-#   {string} _name - extracted name
-_extract_name() {
-  local filename="$1"
-  local _REGEX_MATCHES=()
-
-  # file/directory name capture group
-  local _name_regex=',?([-._ 0-9a-zA-Z]+)\.symlink.*$'
-  _apply_regex "$_name_regex" "$filename"
-
-  # outer path capture group @ index 1 (index 0 holds entire matched string)
-  _name=${_REGEX_MATCHES[1]}
-}
-
-# check flags set through filename
-#
-# described in more detail in the design doc (see top of this file for more)
-#
-# Flags (`.<flags>`) (can be specified in any order):
-#   - `.d` (direct, return variable - `_direct`) - only valid for directories,
-#     symlink whole folder w/ one symlink instead of recuresively traversing and
-#     symlinking
-#   - `._` (unhidden, return variable - `_unhidden`) - avoid prepending `.`
-#
-# Args:
-#   - {string} filename - source file/directory name
-#
-# Returns:
-#   {bool(s)} `_direct`, `_unhidden` - flags
-_check_flags() {
-  local filename="$1"
-  local _REGEX_MATCHES=()
-
-  # flags capture group @ _REGEX_MATCHES[1] (if _REGEX_MATCHES has length 2)
-  local _flags_regex='^.*\.symlink(\.[_d]{1,2})?$'
-  _apply_regex "$_flags_regex" "$filename"
-
-  # _REGEX_MATCHES will only have length 2 if capture groups triggered, meaning
-  # we have flags
-  [ "${#_REGEX_MATCHES[@]}" -eq 2 ] && {
-    local _flags=${_REGEX_MATCHES[1]}
-
-    # check for substrings
-    # if `d` & `_` in `_flags`
-    # ref - https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
-    [[ $_flags == *"d"* ]] && { _direct=true; }
-    [[ $_flags == *"_"* ]] && { _unhidden=true; }
-  }
+  link_file \
+    "$DOTFILES/gui/apps/vscode/keybindings.json" \
+    "$HOME/Library/Application Support/Code/User/keybindings.json"
+  link_file \
+    "$DOTFILES/gui/apps/vscode/settings.json" \
+    "$HOME/Library/Application Support/Code/User/settings.json"
 }
 
 # link single file between `src` & `dst`
@@ -304,11 +82,6 @@ link_file() {
       local current_src
       current_src="$(readlink "$dst")"
 
-      [ "$verbose" == "y" ] && {
-        printf 'dst: %s\n' "$dst"
-        printf 'current_src: %s\n' "$current_src"
-        printf 'src: %s\n' "$src"
-      }
       if [ "$current_src" == "$src" ]; then
         skip=true
       else
@@ -375,25 +148,6 @@ link_file() {
       fail "failed to link $src to $dst"
     fi
   }
-}
-
-# join array with given argument
-#
-# refs:
-# - https://stackoverflow.com/questions/22124417/bash-using-ifs-to-join-an-array-into-a-string
-# - https://stackoverflow.com/questions/1527049/how-can-i-join-elements-of-an-array-in-bash
-# - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
-#
-# Args:
-#   - {string} delimiter - delimiter to join array by
-join_by() {
-  local IFS="$1"
-  shift
-  # `IFS` expansion due to `$*` (see third ref above)
-  # save in `_joined` as return variable
-  # TODO: test exporting this
-  # shellcheck disable=SC2034
-  _joined="$*"
 }
 
 main "$@"
