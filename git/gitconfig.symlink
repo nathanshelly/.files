@@ -38,10 +38,9 @@
 	# root of this repo - `$DOTFILES/.gitignore`)
 	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreexcludesFile
 	excludesFile = ~/.gitignore
-	# this line dynamically set by `$DOTFILES/zsh/pager.zsh" on shell load based
-	# on `theme` value in `$DOTFILES/.files-settings.json`
-	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-corepager
-	pager = "delta --tabs=2 --hunk-style=plain --highlight-removed --theme='TwoDark' --plus-color='#1c3428' --plus-emph-color='#37664e' --minus-color='#390423' --minus-emph-color='#af0d6c'"
+
+	# pager = <set in zsh/dynamic_env_vars.zsh>
+
 	# ensures unicode compatibility between macOS, Windows & Linux
 	# https://www.git-tower.com/help/guides/faq-and-tips/faq/unicode-filenames/mac
 	precomposeUnicode = true
