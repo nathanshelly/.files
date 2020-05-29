@@ -48,16 +48,6 @@ augroup filetype_jsonc
   autocmd BufNewFile,BufRead *.jsonc setlocal filetype=jsonc
 augroup END
 
-augroup filetype_dot_symlink
-  " correct syntax highlighting for automatically symlinked files
-  autocmd!
-  autocmd BufNewFile,BufRead *tmux*symlink* setlocal filetype=tmux.conf
-  autocmd BufNewFile,BufRead *tmux*local* setlocal filetype=tmux.conf
-  autocmd BufNewFile,BufRead *gitconfig* setlocal filetype=gitconfig
-  autocmd BufNewFile,BufRead *json*symlink* setlocal filetype=jsonc
-  autocmd BufNewFile,BufRead *toml*symlink* setlocal filetype=toml
-augroup END
-
 augroup direnv
   autocmd!
   " `.envrc-*` files are ~bash - https://github.com/direnv/direnv#how-it-works

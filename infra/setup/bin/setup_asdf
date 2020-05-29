@@ -23,7 +23,7 @@ read -r -s -n 1 maybe_continue < /dev/tty
 # plugin_list=($(asdf plugin-list))
 plugin_list=$(asdf plugin-list)
 
-# TODO: extract list of plugins from $DOTFILES/utilities/asdf/tool-versions.symlink
+# TODO: extract list of plugins from $DOTFILES/utilities/asdf/tool-versions
 printf '%s' "$plugin_list" | grep -q nodejs || {
   asdf plugin-add nodejs
   # install keyring - https://github.com/asdf-vm/asdf-nodejs#install

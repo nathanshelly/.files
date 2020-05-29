@@ -24,8 +24,7 @@ source "$DOTFILES/infra/setup/bin/setup_brew" || {
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
 
 # symlink config files to their correct locations
-# exclude symlinks whose paths include the `|` separated terms
-"$DOTFILES/infra/setup/bin/symlink" "/gui/|/ssh|/languages/"
+"$DOTFILES/infra/setup/bin/symlink"
 
 # set up our shell (`zsh`)
 # this adds `zsh` to our allowed shells and sets it as the default. Then it
@@ -39,7 +38,7 @@ source "$DOTFILES/infra/setup/bin/setup_brew" || {
 # see the file in question for each piece
 "$DOTFILES/infra/setup/bin/setup_bits_and_pieces"
 
-# run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions.symlink is
+# run after `$DOTFILES/infra/setup/bin/symlink` so that $DOTFILES/utilities/asdf/tool-versions is
 # symlinked to `$HOME/.tool-versions`
 "$DOTFILES/infra/setup/bin/setup_asdf"
 
