@@ -6,10 +6,7 @@
 // this symlinking should occur through the install script
 //
 // can also be done manually:
-// `ln -s $DOTFILES/neovim/coc.jsonc $HOME/.config/nvim/coc-settings.json`
-//
-// Note: install script symlinking works by symlinking the existing symlink in
-// `$DOTFILES/config/nvim`
+// `ln -s $DOTFILES/neovim/coc-settings.jsonc $HOME/.config/nvim/coc-settings.json`
 {
   // "coc.preferences.bracketEnterImprove", // how is this supposed to work
   "coc.preferences.formatOnSaveFiletypes": [
