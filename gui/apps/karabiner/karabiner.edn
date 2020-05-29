@@ -4,19 +4,6 @@
 ;; - edn spec https://github.com/edn-format/edn
 ;; - https://gist.github.com/kaushikgopal/ff7a92bbc887e59699c804b59074a126
  {:profiles
-  ;; goku ignores the `cheatsheet` section
-  ;; ! - mandatory
-  ;; # - optional
-  ;; C T O S - left_command left_control left_option left_shift
-  ;; Q W E R - right_command right_control right_option right_shift
-  ;; must prefix C T O S with ! or #
-  :cheatsheet
-  {:!Ca "command a" ;; mandatory left_command
-   :#Sa "shift a"   ;; optional left_shift
-   :!CTOa "command control option a"
-   :!Tspacebar "command space"
-   :##a "keycode a optional any"}
-
   {:Default
    {:default true
     ;; simultaneous_threshold_milliseconds (def: 50)
@@ -29,10 +16,13 @@
     ;; hold for 195s -> single tap ; hold for 205s -> modifier
     :alone   200}}
 
+
   ;; these regexes match application `bundle_identifier`s
   ;; find `bundle_identifier` in an app's `Info.plist` (eg. in
   ;; `/Applications/Mail.app/Contents/Info.plist`) file, search for
   ;; "CFBundleIdentifier"
+
+
   :applications {:fantastical ["^com\\.flexibits\\.fantastical2\\.mac$"]
                  :browsers ["^org\\.mozilla\\.firefox$"
                             "^org\\.mozilla\\.nightly$"
@@ -41,6 +31,22 @@
                  :terminals ["^com\\.googlecode\\.iterm2$"
                              "^io\\.alacritty$"
                              "^com\\.apple\\.Terminal$"]}
+
+
+  ;; goku ignores this `cheatsheet` section
+  ;; ! - mandatory
+  ;; # - optional
+  ;; C T O S - left_command left_control left_option left_shift
+  ;; Q W E R - right_command right_control right_option right_shift
+  ;; must prefix C T O S with ! or #
+
+
+  :cheatsheet
+  {:!Ca "command a" ;; mandatory left_command
+   :#Sa "shift a"   ;; optional left_shift
+   :!CTOa "command control option a"
+   :!Tspacebar "command space"
+   :##a "keycode a optional any"}
 
   :main
   [{:des "caps lock -> escape (alone/tapped) left_control (held)"
@@ -59,13 +65,13 @@
             [:!C#Sh  :!Cleft_arrow]
             [:!C#Sj  :!Cdown_arrow]
             [:!C#Sk  :!Cup_arrow]
-            [:!C#Sl  :!Cright_arrow]]}]
+            [:!C#Sl  :!Cright_arrow]]}
 
    ;; delete w/o leaving home row
-  {:des "Ctrl-; to Delete" :rules [[:!Tsemicolon :delete_or_backspace]]}
-  {:des "Option-; to Option-Delete"
-   :rules [[:!Osemicolon :!Odelete_or_backspace]]}
-  {:des "Cmd-; to Cmd-Delete" :rules [[:!Csemicolon :!Cdelete_or_backspace]]}
+   {:des "Ctrl-; to Delete" :rules [[:!Tsemicolon :delete_or_backspace]]}
+   {:des "Option-; to Option-Delete"
+    :rules [[:!Osemicolon :!Odelete_or_backspace]]}
+   {:des "Cmd-; to Cmd-Delete" :rules [[:!Csemicolon :!Cdelete_or_backspace]]}
 
    ;; 1. I want global keyboard shortcuts to play/pause audio & skip tracks
    ;; 2. I want this binding to be triggerable with one hand (preferably the
@@ -74,38 +80,38 @@
    ;; to allow bindings with Option, only Ctrl (🤷‍♂️) so remap right_option
    ;; to right_control
    ;; TODO: remove this when/if I can use option instead of ctrl
-  {:des "Right alt to right control" :rules [[:right_option :right_control]]}
+   {:des "Right alt to right control" :rules [[:right_option :right_control]]}
 
    ;; enter parens `()` more easily
-  {:des "tap left shift -> `(`"
-   :rules [[:##left_shift :left_shift nil {:alone :!S9}]]}
-  {:des "tap right shift -> `)`"
-   :rules [[:##right_shift :right_shift nil {:alone :!S0}]]}
+   {:des "tap left shift -> `(`"
+    :rules [[:##left_shift :left_shift nil {:alone :!S9}]]}
+   {:des "tap right shift -> `)`"
+    :rules [[:##right_shift :right_shift nil {:alone :!S0}]]}
 
    ;; use right_command as a hyper to expand possible mappings
-  {:des "Right command to hyper" :rules [[:right_command :!WEright_command]]}
-  {:des "Open apps w/ hyper (Right command)"
-   :rules [[:!QWEa "open -a 'Google Play Music Desktop Player'"] ;; audio
-           [:!QWEb "open -a 'Firefox'"] ;; browser
-           [:!QWEc "open -a 'Fantastical'"] ;; calendar
-           [:!QWEd "open -a 'TablePlus'"] ;; database
-           [:!QWEe "open -a 'Tempo'"] ;; email
-           [:!QWEf "open -a 'Finder'"]
-           [:!QWEs "open -a 'Slack'"]
-           [:!QWEt "open -a 'iTerm'"] ;; terminal
-           [:!QWEv "open -a 'zoom.us'"] ;; video chatting app
-           [:!QWEw "open -a 'Notion'"]]} ;; writings
+   {:des "Right command to hyper" :rules [[:right_command :!WEright_command]]}
+   {:des "Open apps w/ hyper (Right command)"
+    :rules [[:!QWEa "open -a 'Google Play Music Desktop Player'"] ;; audio
+            [:!QWEb "open -a 'Firefox'"] ;; browser
+            [:!QWEc "open -a 'Fantastical'"] ;; calendar
+            [:!QWEd "open -a 'TablePlus'"] ;; database
+            [:!QWEe "open -a 'Tempo'"] ;; email
+            [:!QWEf "open -a 'Finder'"]
+            [:!QWEs "open -a 'Slack'"]
+            [:!QWEt "open -a 'iTerm'"] ;; terminal
+            [:!QWEv "open -a 'zoom.us'"] ;; video chatting app
+            [:!QWEw "open -a 'Notion'"]]} ;; writings
 
    ;; `Cmd-l` is handy in browsers for accessing the URL bar
    ;; this file elsewhere binds `Cmd-l` to `Cmd-➡ ` so use `Option-d` to access
    ;; the URL bar instead
-  {:des "Option-d to Cmd-l in browsers"
-   :rules [:browsers ;; apply only in browsers
-           [:!Od :!Cl]]}
+   {:des "Option-d to Cmd-l in browsers"
+    :rules [:browsers ;; apply only in browsers
+            [:!Od :!Cl]]}
 
-  {:des "fantastical event manipulation"
-   :rules [:fantastical ;; apply only  in fantastical
-           [:!O#Sh :!Tleft_arrow]
-           [:!O#Sj :!Tdown_arrow]
-           [:!O#Sk :!Tup_arrow]
-           [:!O#Sl :!T#Sright_arrow]]}}
+   {:des "fantastical event manipulation"
+    :rules [:fantastical ;; apply only  in fantastical
+            [:!O#Sh :!Tleft_arrow]
+            [:!O#Sj :!Tdown_arrow]
+            [:!O#Sk :!Tup_arrow]
+            [:!O#Sl :!T#Sright_arrow]]}]}
