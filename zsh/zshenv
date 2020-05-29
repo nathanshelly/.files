@@ -1,6 +1,6 @@
 main() {
   # set DOTFILES env var (statically if possible for speed, else dynamically)
-  if false; then
+  if [ -d "$HOME/.files" ]; then
    # to avoid unnecessary overhead assume the `$HOME/.files` directory contains
    # this config if it exists
     export DOTFILES="$HOME/.files"
@@ -116,7 +116,7 @@ dynamically_determine_dotfiles() {
   path_to_symlinked_zshenv="$("$follow_symlink_command" "$path_to_zshenv")"
   # `:h` removes path component from end, `:h:h` to remove `zsh/zshenv` (`zsh` & `zshenv`)
   # ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Modifiers
-  echo "${path_to_symlinked_zshenv:h:h}"
+  export DOTFILES="${path_to_symlinked_zshenv:h:h}"
 }
 
 main "$@"
