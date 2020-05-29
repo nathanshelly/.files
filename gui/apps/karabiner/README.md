@@ -17,7 +17,16 @@ Make sure the [current profile is called "Default"](https://github.com/yqrashawn
 
 <!-- TODO: automate away need to update profile name? -->
 
-Run the following command from anywhere to apply the current config:
+Install `goku`:
+
+```shell
+# first install required dependency (automatic dependency
+# resolution currently fails with an issue about taps)
+brew install "candid82/brew/joker"
+brew install "yqrashawn/goku/goku"
+```
+
+Finally run the following command from anywhere to apply the config:
 
 ```console
 ~/.files on goku
