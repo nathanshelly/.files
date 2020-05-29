@@ -13,7 +13,7 @@ A few useful `tmux` aliases:
 
 See [functions README](./functions/README.md).
 
-## [`tmux.conf.symlink`](./tmux.conf.symlink)
+## [`tmux.conf`](./tmux.conf)
 
 `tmux` configuration.
 

@@ -1,6 +1,6 @@
 # git
 
-## [`gitconfig.symlink`](./gitconfig.symlink) & [`gitignore.symlink`](./gitignore.symlink)
+## [`gitconfig`](./gitconfig) & [`gitignore`](./gitignore)
 
 Defines global [`.gitconfig`](https://git-scm.com/docs/git-config) & [`.gitignore`](https://git-scm.com/docs/gitignore) that are symlinked to `$HOME/.gitconfig` & `.$HOME/.gitignore`, respectively, by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
 
@@ -20,7 +20,7 @@ This template is filled in by [`$DOTFILES/infra/setup/bin/setup_git_config`](../
 
 ## [`alias.zsh`](./alias.zsh)
 
-Defines various useful `git` aliases. Most of these aliases avoid using pagers when possible. Additionally, many of them depend on aliases defined in [`./gitconfig.symlink`](./gitconfig.symlink) to avoid redundant configuration.
+Defines various useful `git` aliases. Most of these aliases avoid using pagers when possible. Additionally, many of them depend on aliases defined in [`./gitconfig`](./gitconfig) to avoid redundant configuration.
 
 A few of my most used:
 

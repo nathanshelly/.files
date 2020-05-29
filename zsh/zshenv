@@ -114,7 +114,7 @@ dynamically_determine_dotfiles() {
     exit 1
   fi
   path_to_symlinked_zshenv="$("$follow_symlink_command" "$path_to_zshenv")"
-  # `:h` removes path component from end, `:h:h` to remove `zsh/zshenv.symlink`
+  # `:h` removes path component from end, `:h:h` to remove `zsh/zshenv` (`zsh` & `zshenv`)
   # ref - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Modifiers
   export DOTFILES="${path_to_symlinked_zshenv:h:h}"
 }

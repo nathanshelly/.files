@@ -13,7 +13,7 @@ python 3.8.0
 
 The first time you work in that project run `asdf install` to set up your environment and you're all done.
 
-## [`tool-versions.symlink`](./tool-versions.symlink)
+## [`tool-versions`](./tool-versions)
 
 Symlinked to `$HOME/.tool-versions` by [`$DOTFILES/infra/setup/bin/symlink`](../../infra/setup/bin/symlink).
 

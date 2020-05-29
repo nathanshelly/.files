@@ -1,6 +1,6 @@
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # This zshrc sources files in $DOTFILES/zsh & any `.zsh` files in the directory
-# specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv.symlink`)
+# specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv`)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<< guards >>>>
@@ -72,10 +72,8 @@ autoload -Uz _zinit
 source "$DOTFILES/zsh/plugins.zsh"
 # <<<< end of plugins >>>>
 
-# run `p10k configure` or edit $DOTFILES/zsh/p10k.zsh.symlink to customize prompt
-# note: $DOTFILES/zsh/p10k.zsh.symlink is symlinked to ~/.p10k.zsh so that
-# changes via `p10k configure` are reflected here & tracked.
-source "$DOTFILES/zsh/p10k.zsh.symlink"
+# run `p10k configure` or edit $DOTFILES/zsh/p10k.zsh to customize prompt
+source "$DOTFILES/zsh/p10k.zsh"
 
 # all *.zsh files throughout this repo exluding the $DOTFILES/zsh directory
 # (technically excludes $DOTFILES/**/zsh)
