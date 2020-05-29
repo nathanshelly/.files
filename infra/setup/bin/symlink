@@ -87,8 +87,6 @@ link_file() {
       else
         user "file exists: $dst ($(basename "$src")), what do you want to do? \
   [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        # need to directly read from user controller since this is executing
-        # in a nested read of all `*.symlink*` files
         read -r -s -n 1 action < /dev/tty
 
         case "$action" in

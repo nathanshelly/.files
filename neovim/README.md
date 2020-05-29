@@ -50,7 +50,7 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 - [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
 - [`filetype_specific.vim`](#filetype_specific.vim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
 - [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
-- [`init.vim`](#init.vim) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv.symlink`](../zsh/zshenv.symlink)).
+- [`init.vim`](#init.vim) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv`](../zsh/zshenv)).
 - [`keymap.vim`](#keymap.vim) - define keymappings (e.g. \`\` (`<space>`) as leader, `jk` to escape insert mode. Note: plugin keymappings defined in `plugin_config.vim`.
 - [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
 - [`plugin_config.vim`](#plugin_config.vim) - configure plugins (agnostic of plugin management method)
@@ -134,9 +134,9 @@ Notable keymappings:
 
 Source every other `*.vim` file in this folder to set up config.
 
-Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv.symlink`](../zsh/zshenv.symlink)).
+Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv`](../zsh/zshenv)).
 
-This file is relatively symlinked (permanently, not via setup script) to [`$DOTFILES/config.symlink/nvim/init.vim`](../config.symlink/nvim/init.vim). The symlink script [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink) symlinks [`$DOTFILES/config.symlink/nvim/init.vim`](../config.symlink/nvim/init.vim) to `$HOME/.config/nvim/init.vim` (by proxy symlinking this file, one level of indirection).
+This file symlinked to `$HOME/.config/nvim/init.vim` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink).
 
 ### [`keymap.vim`](./keymap.vim)
 

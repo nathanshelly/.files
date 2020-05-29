@@ -39,7 +39,7 @@ source "$DOTFILES/infra/setup/bin/setup_brew" || {
 # see the file in question for each piece
 "$DOTFILES/infra/setup/bin/setup_bits_and_pieces"
 
-# run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions.symlink is
+# run after `symlink` so that $DOTFILES/utilities/asdf/tool-versions is
 # symlinked to `$HOME/.tool-versions`
 "$DOTFILES/infra/setup/bin/setup_asdf"
 

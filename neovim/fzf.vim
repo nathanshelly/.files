@@ -4,7 +4,7 @@
 
 " << options >>
 
-" :Commits - match `git lv` defined in $DOFTILES/git/gitconfig.symlink
+" :Commits - match `git lv` defined in $DOFTILES/git/gitconfig
 let g:fzf_commits_log_options = '--graph --color=always --decorate --format=
 \"%C(cyan)%h%C(reset) - %s %C(blue)(%cr)%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)"'
 
