@@ -24,19 +24,19 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 
 ## skimmable list of files
 
-- [`alias.zsh`](#alias.zsh) - define generic aliases. Aliases specific to a topic (for example aliases for `tmux`) should go in the corresponding topic folder (e.g. [`$DOTFILES/tmux/alias.zsh`](../tmux/alias.zsh)).
-- [`asdf.zsh`](#asdf.zsh) - initialize [`asdf`](https://asdf-vm.com) (the version manager I use)
-- [`completion.zsh`](#completion.zsh) - initialize completion
-- [`config.zsh`](#config.zsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
+- [`alias.zsh`](#aliaszsh) - define generic aliases. Aliases specific to a topic (for example aliases for `tmux`) should go in the corresponding topic folder (e.g. [`$DOTFILES/tmux/alias.zsh`](../tmux/alias.zsh)).
+- [`asdf.zsh`](#asdfzsh) - initialize [`asdf`](https://asdf-vm.com) (the version manager I use)
+- [`completion.zsh`](#completionzsh) - initialize completion
+- [`config.zsh`](#configzsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
 - [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh) - set environment variables whose value requires dynamism (dependencies)
-- [`functions.zsh`](#functions.zsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
-- [`keymap.zsh`](#keymap.zsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
-- [`manydots.zsh`](#manydots.zsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
-- [`options.zsh`](#options.zsh) - configure options (anything set using `setopt`)
-- [`path.zsh`](#path.zsh) - configure `$PATH`
-- [`plugins.zsh`](#plugins.zsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
-- [`p10k.zsh`](#p10k.zsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
-- [`secrets.zsh`](#secrets.zsh) - store secrets such as API tokens. This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
+- [`functions.zsh`](#functionszsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
+- [`keymap.zsh`](#keymapzsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
+- [`manydots.zsh`](#manydotszsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
+- [`options.zsh`](#optionszsh) - configure options (anything set using `setopt`)
+- [`path.zsh`](#pathzsh) - configure `$PATH`
+- [`plugins.zsh`](#pluginszsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
+- [`p10k.zsh`](#p10kzsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
+- [`secrets.zsh`](#secretszsh) - store secrets such as API tokens. This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
 - [`zle-fsh-theme-overlay.ini`](#zle-fsh-theme-overlay.ini) - an overlay to customize syntax highlighting
 - [`zshenv`](#zshenv) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES` & `$PATH`)
 - [`zshrc`](#zshrc) - source every `*.zsh` throughout this repo (`$DOTFILES/**/*.zsh`) to set up config

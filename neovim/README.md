@@ -43,19 +43,19 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 
 ## skimmable list of files
 
-- [`alias.zsh`](#alias.zsh) - define shell-level aliases (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
+- [`alias.zsh`](#aliaszsh) - define shell-level aliases (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
 - [`coc-settings.jsonc` and `coc.nvim`](#coc-settingsjsonc-and-cocnvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc-settings.jsonc` is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colorsvim) - configure colors, (e.g. enable true color, set dark background, set color scheme)
 - [`colorschemes`](#colorschemes) - custom colorschemes (sole scheme at the moment is a fork of OneHalfDark)
-- [`commands.vim`](#commands.vim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
-- [`filetype_specific.vim`](#filetype_specific.vim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
-- [`fzf.vim`](#fzf.vim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
-- [`init.vim`](#init.vim) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv`](../zsh/zshenv)).
-- [`keymap.vim`](#keymap.vim) - define keymappings (e.g. \`\` (`<space>`) as leader, `jk` to escape insert mode. Note: plugin keymappings defined in `plugin_config.vim`.
-- [`options.vim`](#options.vim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
-- [`plugin_config.vim`](#plugin_config.vim) - configure plugins (agnostic of plugin management method)
-- [`plugins.vim`](#plugins.vim) - enable plugins, managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
-- [`vim_only.vim`](#vim_only.vim) - configure `vi`|`vim`-specific settings
+- [`commands.vim`](#commandsvim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
+- [`filetype_specific.vim`](#filetype_specificvim) - filetype specific settings (e.g insert literal tabs in Makefiles, disable `colorcolumn` in `*.md`, etc.)
+- [`fzf.vim`](#fzfvim) - configure [`fzf.vim`](https://github.com/junegunn/fzf.vim), a plugin for fuzzy searching files, buffers, lines, etc.
+- [`init.vim`](#initvim) - sources every other `*.vim` file in this folder to set up config. Requires `$DOTFILES` environment variable to be appropriately set (see [`zshenv`](../zsh/zshenv)).
+- [`keymap.vim`](#keymapvim) - define keymappings (e.g. \`\` (`<space>`) as leader, `jk` to escape insert mode. Note: plugin keymappings defined in `plugin_config.vim`.
+- [`options.vim`](#optionsvim) - set options (e.g. `autowrite` to save on buffer switch, `noswapfile` to disable generation of swapfiles (`*.swp`), indentation behavior (spaces over tabs), filetype specific settings (insert literal tabs in Makefiles, disable colorcolumn in `*.md`))
+- [`plugin_config.vim`](#plugin_configvim) - configure plugins (agnostic of plugin management method)
+- [`plugins.vim`](#pluginsvim) - enable plugins, managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
+- [`vim_only.vim`](#vim_onlyvim) - configure `vi`|`vim`-specific settings
 
 ## each file in more detail
 
