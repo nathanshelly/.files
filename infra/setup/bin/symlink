@@ -11,8 +11,8 @@ main() {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  link_file "$DOTFILES/git/gitconfig" "$HOME/.gitconfig"
-  link_file "$DOTFILES/git/gitignore" "$HOME/.gitignore"
+  link_file "$DOTFILES/utilities/git/gitconfig" "$HOME/.gitconfig"
+  link_file "$DOTFILES/utilities/git/gitignore" "$HOME/.gitignore"
   link_file "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
   link_file "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
   link_file "$DOTFILES/zsh/p10k.zsh" "$HOME/.p10k.zsh"

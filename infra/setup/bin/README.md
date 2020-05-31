@@ -2,7 +2,7 @@
 
 Various setup scripts
 
-- [`setup_git_config`](./setup_git_config) - fill in [`gitconfig.template`](../../../git/gitconfig.template) template
+- [`setup_git_config`](./setup_git_config) - fill in [`gitconfig.template`](../../../utilities/git/gitconfig.template) template
 - [`setup_asdf`](./setup_asdf) - add [`asdf`](https://github.com/asdf-vm/asdf) [plugins](https://github.com/asdf-vm/asdf-plugins) then run `asdf install` to install global versions of packages
 - [`setup_bits_and_pieces`](./setup_bits_and_pieces) - set up various bits and pieces
 - [`setup_brew`](./setup_brew) - install [Homebrew](https://brew.sh) and formulae specified in [`Brewfile`](../../Brewfile)
