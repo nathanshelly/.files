@@ -20,7 +20,7 @@ main() {
   link_file "$DOTFILES/misc/formatters/prettierrc.json" "$HOME/.prettierrc.json"
   link_file "$DOTFILES/misc/formatters/rustfmt.toml" "$HOME/.rustfmt.toml"
   link_file "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
-  link_file "$DOTFILES/utilities/asdf/tool-versions" "$HOME/.tool-versions"
+  link_file "$DOTFILES/tool-versions" "$HOME/.tool-versions"
   link_file "$DOTFILES/misc/ssh/config" "$HOME/.ssh/config"
 
   link_file "$DOTFILES/neovim/init.vim" "$HOME/.config/nvim/init.vim"
