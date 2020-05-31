@@ -31,7 +31,3 @@ Here are highlights:
 - enable true color (RGB color), dimming, strikethrough and italics through terminal overrides
 
 This file is symlinked to `$HOME/.tmux.conf` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink).
-
-## [`tmuxinator_configs`](./tmuxinator_configs)
-
-Configuration files defining [`tmuxinator`](https://github.com/tmuxinator/tmuxinator) sessions.

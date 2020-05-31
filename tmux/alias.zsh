@@ -6,6 +6,3 @@ alias tmuxn='tmux -f /dev/null'
 
 alias tk='tmux kill-session -t'
 alias tl='tmux ls'
-
-# << tmuxinator >>
-alias mux='tmuxinator'
