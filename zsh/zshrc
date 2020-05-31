@@ -29,7 +29,6 @@ source "$DOTFILES/zsh/completion.zsh"
 source "$DOTFILES/zsh/config.zsh"
 source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/manydots.zsh"
-source "$DOTFILES/zsh/options.zsh"
 
 # $PATH configuration
 # perform early so that executables are available for future config files
@@ -100,6 +99,9 @@ setopt no_extended_glob
 
 # source asdf to give it final say on package versions
 source "$DOTFILES/zsh/asdf.zsh"
+
+# apply options, overriding any set for script purposes
+source "$DOTFILES/zsh/options.zsh"
 
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
