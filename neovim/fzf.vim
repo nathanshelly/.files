@@ -16,11 +16,36 @@ let g:fzf_layout = { 'down': '75%' }
 " << previews >>
 " remap commands to add previews, toggle w/ ctrl-space
 
-" TODO: allow searching without filename? `--no-filename` Rg
+" this search reruns ripgrep every time the query is updated, `fzf` does not
+" perform any searching, serving only as a selector interface
+"
+" this search is bound to `Ctrl-f` in normal mode
+"
+" ref - https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': [
+    \ '--preview-window=down:60%',
+    \ '--phony',
+    \ '--query',
+    \ a:query,
+    \ '--bind',
+    \ 'change:reload:'.reload_command
+    \]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" this search dumps all lines in files queried by ripgrep then performs `fzf`'s
+" fuzzy search over those lines as you type your query
 command! -nargs=* Rg call fzf#vim#grep(
   \ 'rg  --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>),
   \ 1,
-  \ fzf#vim#with_preview('down:60%')
+  \ fzf#vim#with_preview({
+  \  'options': '--preview-window=down:60% --delimiter : --nth 4..'
+  \ })
 \)
 
 command! -nargs=? Files call fzf#vim#files(
@@ -56,7 +81,7 @@ nnoremap <c-p> :Files<cr>
 " all buffers
 nnoremap <c-b> :Buffers<cr>
 " lines of files below current shell directory (same as `rg`)
-nnoremap <c-f> :Rg<cr>
+nnoremap <c-f> :RG<cr>
 " lines in current buffer
 nnoremap <c-l> :BLines<cr>
 " files listed by `git status`
