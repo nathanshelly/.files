@@ -24,8 +24,6 @@
 # - https://github.com/zdharma/zinit#ice-modifiers
 # - http://zdharma.org/zinit/wiki/INTRODUCTION/#some_ice-modifiers
 
-# TODO: install `fzf` with `zinit`?
-
 # ref - search zsh-autosuggestions
 # http://zdharma.org/zinit/wiki/GALLERY/#plugins
 zinit ice wait lucid atload"!_zsh_autosuggest_start"
@@ -59,11 +57,6 @@ zinit light zsh-users/zsh-history-substring-search
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-# provide `yarn remove` & `yarn add` completions
-# TODO: make this async
-# zinit ice wait lucid
-zinit light buonomo/yarn-completion
-
 # quickly `cd` to folders based on frequency and recency of access
 zinit ice wait lucid
 zinit light skywind3000/z.lua
@@ -84,18 +77,16 @@ zinit from"gh-r" as"program" mv"direnv* -> direnv" \
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244' # light grey
 ZSH_AUTOSUGGEST_USE_ASYNC=true # can be set to anything
 
-# in the future consider testing `completion` strategy on feature branch
-# ref - https://github.com/zsh-users/zsh-autosuggestions/compare/features/completion-suggestions
-ZSH_AUTOSUGGEST_STRATEGY=(history)
-
 # << keymappings >>
 # ref - https://github.com/zsh-users/zsh-autosuggestions#key-bindings
 
 # accept until end of line (same as right arrow)
+# note: this matches default behavior in emacs binding mode  as `^e` is bound to
+# `end-of-line` widget which triggers acceptance
 bindkey '^e' autosuggest-accept
 # accept until end of line and immediately execute
 bindkey '^ ' autosuggest-execute
-# accept next word
+# accept next word (overrides `backward-kill-word` in emacs binding mode)
 bindkey '^w' vi-forward-word
 
 # <<<< history-substring-search >>>>
