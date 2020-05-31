@@ -28,3 +28,5 @@ if command -v rg > /dev/null; then
 else
   alias f='grep -R'
 fi
+
+command -v smat > /dev/null && alias cat=smat # $DOTFILES/functions/smat
