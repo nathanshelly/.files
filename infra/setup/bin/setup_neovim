@@ -11,7 +11,7 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 user "set up neovim? (y/any other key)"
 
-read -r -s -n 1 maybe_continue < /dev/tty
+read -r -n 1 maybe_continue < /dev/tty
 
 [[ $maybe_continue != 'y' ]] && {
   info "skipping neovim setup"
