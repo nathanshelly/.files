@@ -6,9 +6,20 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-"$DOTFILES/infra/scripts/is_macos.sh" && {
-  # set up `tmux-256color` `terminfo` entry from `brew` `ncurses`
-  # ref - https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
+main() {
+  "$DOTFILES/infra/scripts/is_macos.sh" && {
+    setup_tmux_terminfo
+  }
+}
+
+# set up `tmux-256color` `terminfo` entry from `brew` `ncurses`
+# ref - https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
+setup_tmux_terminfo() {
+  toe | grep -q "tmux-256color" && {
+    info 'skipping terminfo setup: already installed'
+    return 0
+  }
+
   # compile `tmux-256color.info` using modern `brew` `ncurses`
   "$(brew --prefix)/opt/ncurses/bin/infocmp" "tmux-256color" > "${TMPDIR}tmux-256color.info"
   # then install the compiled entry to the system `terminfo` database
@@ -16,3 +27,5 @@ source "$DOTFILES/infra/scripts/prompts.sh"
   info 'Using `sudo` to install `tmux-256color` `terminfo` entry'
   sudo tic -xe "tmux-256color" "${TMPDIR}tmux-256color.info"
 }
+
+main "$@"
