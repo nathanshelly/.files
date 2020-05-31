@@ -63,7 +63,7 @@ Aspirational principles:
 
 ## quickstart
 
-> If you use docker you can run the following command to test drive this config with minimal effort (see [`docker/dotfiles`](./docker/dotfiles) for more details):
+> If you use docker you can run the following command to test drive this config with minimal effort (see [`misc/docker/dotfiles`](./misc/docker/dotfiles) for more details):
 >
 > `docker run --interactive --tty nathanshelly/dotfiles:latest`
 
