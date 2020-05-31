@@ -27,7 +27,7 @@
 		},
 		"browserBookmarksOptions": {
 			"browser": "Google Chrome",
-			"isEnabled": true
+			"isEnabled": false
 		},
 		"calculatorOptions": {
 			"isEnabled": true,
@@ -39,7 +39,7 @@
 			"isEnabled": true,
 			"rgbEnabled": true,
 			"rgbaEnabled": true,
-			"showColorPreview": false
+			"showColorPreview": true
 		},
 		"colorThemeOptions": {
 			"name": "Atom One Dark",
@@ -55,7 +55,7 @@
 			"scrollbarForegroundColor": "#3d444f"
 		},
 		"commandlineOptions": {
-			"isEnabled": true,
+			"isEnabled": false,
 			"prefix": ">",
 			"shell": "Terminal"
 		},
@@ -68,7 +68,7 @@
 		},
 		"dictionaryOptions": {
 			"debounceDelay": 250,
-			"isEnabled": true,
+			"isEnabled": false,
 			"minSearchTermLength": 3,
 			"prefix": "dict?"
 		},
@@ -85,10 +85,10 @@
 			"blackList": [
 				"desktop.ini"
 			],
-			"isEnabled": false,
+			"isEnabled": true,
 			"maxSearchResults": 100,
 			"showFullFilePath": true,
-			"showHiddenFiles": false
+			"showHiddenFiles": true
 		},
 		"generalOptions": {
 			"allowWindowMove": true,
@@ -97,7 +97,7 @@
 			"hideMainWindowAfterExecution": true,
 			"hideMainWindowOnBlur": true,
 			"hotKey": {
-				"key": "Plus",
+				"key": "Space",
 				"modifier": "Command"
 			},
 			"language": "English",
@@ -116,7 +116,7 @@
 			"prefix": "md?"
 		},
 		"operatingSystemCommandsOptions": {
-			"isEnabled": false
+			"isEnabled": true
 		},
 		"operatingSystemSettingsOptions": {
 			"isEnabled": false
@@ -157,7 +157,7 @@
 			"isEnabled": true
 		},
 		"websearchOptions": {
-			"isEnabled": true,
+			"isEnabled": false,
 			"webSearchEngines": [
 				{
 					"encodeSearchTerm": true,
@@ -234,13 +234,13 @@
 			]
 		},
 		"workflowOptions": {
-			"isEnabled": false,
+			"isEnabled": true,
 			"workflows": []
 		}
 	},
 	"favorites": [
 		{
-			"executionCount": 1,
+			"executionCount": 4,
 			"item": {
 				"active": true,
 				"description": "Change settings",
