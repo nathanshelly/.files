@@ -25,17 +25,8 @@ noremap ' $
 " used in conjunction with `virtualedit` option to move past end of line
 noremap $ g$
 
-" disable character level manipulation
-nnoremap S <nop>
-nnoremap X <nop>
-
 " switch to last buffer
 nnoremap <c-x> <c-^>
-
-" remapped below
-nnoremap s <nop>
-nnoremap R <nop>
-nnoremap x <nop>
 
 " << registers (copy/paste) >>
 " use `s` for register selection (instead of `"`)
@@ -87,13 +78,6 @@ nnoremap <silent> <leader>pn :set nopaste<CR>
 " start/end of screen line movement
 nnoremap <silent> <leader>' g$
 nnoremap <silent> <leader>" g0
-
-" vim split actions
-" navigate between vim splits
-nnoremap <c-w>j <c-w><Left>
-nnoremap <c-w>k <c-w><Down>
-nnoremap <c-w>l <c-w><Up>
-nnoremap <c-w>; <c-w><Right>
 
 " clear line
 nnoremap <leader>d 0D
