@@ -12,7 +12,8 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 user 'set up `asdf` - https://asdf-vm.com/? (y/any other key)'
 
-read -r -s -n 1 maybe_continue < /dev/tty
+read -r -n 1 maybe_continue < /dev/tty
+echo # avoid writing on same line as user input
 
 [[ $maybe_continue != 'y' ]] && {
   info 'skipping `asdf` setup'

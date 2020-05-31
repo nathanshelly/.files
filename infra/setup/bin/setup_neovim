@@ -12,12 +12,15 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 user "set up neovim? (y/any other key)"
 
 read -r -n 1 maybe_continue < /dev/tty
+echo # avoid writing on same line as user input
 
 [[ $maybe_continue != 'y' ]] && {
   info "skipping neovim setup"
   exit 1
 }
 
+# shellcheck disable=SC2016
+info 'installing python dependencies (`neovim` & `black`)'
 # install python module for neovim (used by `black` plugin)
 if command -v pip > /dev/null && pip -V | grep -q -E "3.7|3.8"; then
   pip install neovim black > /dev/null
