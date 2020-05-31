@@ -35,7 +35,7 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`options.zsh`](#optionszsh) - configure options (anything set using `setopt`)
 - [`path.zsh`](#pathzsh) - configure `$PATH`
 - [`plugins.zsh`](#pluginszsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
-- [`p10k.zsh`](#p10kzsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
+- [`prompt.zsh`](#promptzsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
 - [`secrets.zsh`](#secretszsh) - store secrets such as API tokens. This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
 - [`zle-fsh-theme-overlay.ini`](#zle-fsh-theme-overlayini) - an overlay to customize syntax highlighting
 - [`zshenv`](#zshenv) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES` & `$PATH`)
@@ -128,7 +128,7 @@ Enable and configure plugins.
 
 Managed by [`zinit`](https://github.com/zdharma/zinit).
 
-### [`p10k.zsh`](./p10k.zsh)
+### [`prompt.zsh`](./prompt.zsh)
 
 Configure prompt appearance.
 
@@ -176,7 +176,7 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`functions.zsh`](./functions.zsh)
 1. [`alias.zsh`](./alias.zsh)
 1. [`plugins.zsh`](./plugins.zsh)
-1. [`p10k.zsh`](./p10k.zsh)
+1. [`prompt.zsh`](./prompt.zsh)
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory).
 1. [`asdf.zsh`](./asdf.zsh)
 
