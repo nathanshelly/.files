@@ -104,8 +104,4 @@ bindkey '^w' vi-forward-word
 bindkey '^u' history-substring-search-up
 bindkey '^y' history-substring-search-down
 
-# <<< zsh-system-clipboard
-# https://github.com/kutsan/zsh-system-clipboard#options
-typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX='true'
-
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>>
