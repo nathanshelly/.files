@@ -15,7 +15,6 @@ main() {
   link_file "$DOTFILES/utilities/git/gitignore" "$HOME/.gitignore"
   link_file "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
   link_file "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
-  link_file "$DOTFILES/zsh/p10k.zsh" "$HOME/.p10k.zsh"
   link_file "$DOTFILES/gui/xvimrc" "$HOME/.xvimrc"
   link_file "$DOTFILES/misc/formatters/prettierrc.json" "$HOME/.prettierrc.json"
   link_file "$DOTFILES/misc/formatters/rustfmt.toml" "$HOME/.rustfmt.toml"
@@ -58,6 +57,9 @@ main() {
   link_file \
     "$DOTFILES/gui/apps/vscode/settings.json" \
     "$HOME/Library/Application Support/Code/User/settings.json"
+}
+
+link_base_files() {
 }
 
 # link single file between `src` & `dst`

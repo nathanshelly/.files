@@ -72,8 +72,15 @@ autoload -Uz _zinit
 source "$DOTFILES/zsh/plugins.zsh"
 # <<<< end of plugins >>>>
 
-# run `p10k configure` or edit $DOTFILES/zsh/p10k.zsh to customize prompt
-source "$DOTFILES/zsh/p10k.zsh"
+# run `p10k configure` or edit $DOTFILES/zsh/prompt.zsh to customize prompt
+
+# prefer `~/.p10k.zsh` if it exists (likely from `p10k configure`)
+if [[ -f $HOME/.p10k.zsh ]]; then
+  source "$HOME/.p10k.zsh"
+else
+  # otherwise source default config
+  source "$DOTFILES/zsh/prompt.zsh"
+fi
 
 # all *.zsh files throughout this repo exluding the $DOTFILES/zsh directory
 # (technically excludes $DOTFILES/**/zsh)
