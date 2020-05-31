@@ -6,20 +6,13 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-# typescript repl
-# ref - https://github.com/HerringtonDarkholme/typescript-repl
-# command -v npm > /dev/null && npm install --global tsun
-
 "$DOTFILES/infra/scripts/is_macos.sh" && {
-  # trigger generation of `locate` database
-  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
-
   # set up `tmux-256color` `terminfo` entry from `brew` `ncurses`
   # ref - https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
   # compile `tmux-256color.info` using modern `brew` `ncurses`
   "$(brew --prefix)/opt/ncurses/bin/infocmp" "tmux-256color" > "${TMPDIR}tmux-256color.info"
   # then install the compiled entry to the system `terminfo` database
   # shellcheck disable=SC2016
-  echo 'Using `sudo` to install `tmux-256color` `terminfo` entry'
+  info 'Using `sudo` to install `tmux-256color` `terminfo` entry'
   sudo tic -xe "tmux-256color" "${TMPDIR}tmux-256color.info"
 }

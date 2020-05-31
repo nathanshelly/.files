@@ -20,9 +20,9 @@ read -r -s -n 1 maybe_continue < /dev/tty
 
 # install python module for neovim (used by `black` plugin)
 if command -v pip > /dev/null && pip -V | grep -q -E "3.7|3.8"; then
-  pip install neovim ptpython black
+  pip install neovim black > /dev/null
 elif command -v pip3 > /dev/null && pip3 -V | grep -q -E "3.7|3.8"; then
-  pip3 install neovim ptpython black
+  pip3 install neovim black > /dev/null
 fi
 
 # install vim plugins

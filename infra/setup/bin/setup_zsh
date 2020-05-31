@@ -24,14 +24,6 @@ grep -q "$zsh_path" /etc/shells || {
   chsh -s "$zsh_path" && success "Changed login shell to $zsh_path"
 }
 
-info "Installing plugins"
-
-# TODO: conditionally run this
-info "Using sudo access to change ownership of brew-installed zsh folders"
-BREW_PREFIX="$(brew --prefix)"
-sudo chown -R "$(whoami)" "$BREW_PREFIX/share/zsh" "$BREW_PREFIX/share/zsh/site-functions"
-chmod u+w "$BREW_PREFIX/share/zsh" "$BREW_PREFIX/share/zsh/site-functions"
-
 # final setup steps run via a zsh interactive shell
 # install zinit & its associated plugins
 # apply ZLE syntax highlighting overrides to FSH plugin
@@ -41,7 +33,7 @@ chmod u+w "$BREW_PREFIX/share/zsh" "$BREW_PREFIX/share/zsh/site-functions"
 final_zsh_setup="\
 zinit self-update;\
 fast-theme \"$DOTFILES/zsh/zle-fsh-theme-overlay.ini\";"
-echo "$final_zsh_setup"
+info "Installing plugins"
 zsh -i -c "$final_zsh_setup" > /dev/null
 unset final_zsh_setup
 
