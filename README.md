@@ -4,7 +4,7 @@ My personal dotfiles configuration for macOS & Linux systems.
 
 Primarily a [`zsh`](https://www.zsh.org), [`neovim`](https://github.com/neovim/neovim) & [`tmux`](https://github.com/tmux/tmux) workflow (respective folders: [`zsh`](./zsh), [`neovim`](./neovim) & [`tmux`](./tmux)).
 
-![workflow](https://user-images.githubusercontent.com/9750687/77220178-cf451200-6afa-11ea-8993-18cf8ff1e32a.png 'workflow')
+![workflow](https://user-images.githubusercontent.com/9750687/77220178-cf451200-6afa-11ea-8993-18cf8ff1e32a.png "workflow")
 
 ## toc
 
@@ -34,7 +34,7 @@ These dotfiles give you the best of a custom configuration without the hassle of
   - [syntax highlighting as you type](https://user-images.githubusercontent.com/9750687/77735358-a83d8300-6fc7-11ea-9be4-faab8443fb60.gif) (immediate feedback on invalid commands, flags, paths, etc.) via [`fast-syntax-highlighting`](https://github.com/zdharma/fast-syntax-highlighting)
   - [syntax highlighted `git diff`s](https://user-images.githubusercontent.com/9750687/77733162-a5409380-6fc3-11ea-9f7a-59db41d058df.png) via [`delta`](https://github.com/dandavison/delta)
   - [syntax highlighted `cat`ting of files](https://user-images.githubusercontent.com/9750687/77732987-4da22800-6fc3-11ea-9cc2-79f0643e9645.png) via [`bat`](https://github.com/sharkdp/bat)
-  - [highlighted `man` pages](https://user-images.githubusercontent.com/9750687/77732882-116ec780-6fc3-11ea-83e9-0e1743963536.png) via [a few `TERMCAP` vars](https://github.com/nathanshelly/.files/blob/88c87bb5eb9946ede43b2de66a60f8672722b5f3/zsh/zshenv.symlink#L35-L43)
+  - [highlighted `man` pages](https://user-images.githubusercontent.com/9750687/77732882-116ec780-6fc3-11ea-83e9-0e1743963536.png) via [a few `TERMCAP` vars](https://github.com/nathanshelly/.files/blob/ba5fc4e/zsh/zshenv#L34-L45)
   - [a blazing-fast async prompt](https://github.com/romkatv/powerlevel10k/) with contextual information like `git` changes, executable versions, etc.
     - customizable via the command `p10k configure`
   - [useful utilities](./utilities/README.md) like [`z.lua`](https://github.com/skywind3000/z.lua), [`rg`](./utilities/ripgrep/README.md), [`fzf`](./utilities/fzf/README.md), [`fd`](./utilities/fd/README.md), etc.

@@ -68,14 +68,14 @@ Various terminals on macOS require brief configuration in order to use keybindin
 
 Tick the box labeled "Use Option as Meta key" in Profiles > Keyboard.
 
-![Terminal](https://user-images.githubusercontent.com/9750687/74061402-cb24c100-49a0-11ea-9270-2707170cc592.png 'terminal')
+![Terminal](https://user-images.githubusercontent.com/9750687/74061402-cb24c100-49a0-11ea-9270-2707170cc592.png "terminal")
 
 #### Iterm
 
 Select "Esc+" for "Left ⌥ Key" & "Right ⌥ Key" in Profiles > Keys.
 
-![Iterm](https://user-images.githubusercontent.com/9750687/74061408-ceb84800-49a0-11ea-90ec-c7cab978a15c.png 'Iterm')
+![Iterm](https://user-images.githubusercontent.com/9750687/74061408-ceb84800-49a0-11ea-90ec-c7cab978a15c.png "Iterm")
 
 #### Alacritty
 
-Copy and paste [these bindings](https://github.com/nathanshelly/.files/blob/6ec55ce177bea6833f6179426b5e5a61601831b8/gui/config.symlink/alacritty/alacritty.yml#L646-L719) into your `alacritty.yml`.
+Copy and paste [these bindings](https://github.com/nathanshelly/.files/blob/ba5fc4e/gui/apps/alacritty/alacritty.yml#L632-L705) into your `alacritty.yml`.
