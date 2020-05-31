@@ -2,7 +2,7 @@
 " for use in other config files
 source $DOTFILES/neovim/plugins.vim
 " source after `plugins.vim` for final say on keybindings (source before
-" `plugin_config.zsh` to set the correct leader)
+" `plugin_config.vim` to set the correct leader)
 source $DOTFILES/neovim/keymap.vim
 source $DOTFILES/neovim/plugin_config.vim
 source $DOTFILES/neovim/fzf.vim

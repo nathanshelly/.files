@@ -27,7 +27,6 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`alias.zsh`](#aliaszsh) - define generic aliases. Aliases specific to a topic (for example aliases for `tmux`) should go in the corresponding topic folder (e.g. [`$DOTFILES/tmux/alias.zsh`](../tmux/alias.zsh)).
 - [`asdf.zsh`](#asdfzsh) - initialize [`asdf`](https://asdf-vm.com) (the version manager I use)
 - [`completion.zsh`](#completionzsh) - initialize completion
-- [`config.zsh`](#configzsh) - configure miscellaneous behavior that doesn't fit in any other file (e.g. enabling case insensitive completion)
 - [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh) - set environment variables whose value requires dynamism (dependencies)
 - [`functions.zsh`](#functionszsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
 - [`keymap.zsh`](#keymapzsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
@@ -66,12 +65,6 @@ Initialize the [`asdf`](https://asdf-vm.com) version manager.
 ### [`completion.zsh`](./completion.zsh)
 
 Initialize completion. Uses a cache with a refresh every 20 hours to speed up shell load.
-
-### [`config.zsh`](./config.zsh)
-
-Configure miscellaneous behavior that doesn't fit in any other file.
-
-Set history file location and increases the size of the history to 100,000 lines.
 
 ### [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh)
 
@@ -167,7 +160,6 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 
 1. [`secrets.zsh`](./secrets.zsh) - only if this file exists
 1. [`completion.zsh`](./completion.zsh)
-1. [`config.zsh`](./config.zsh)
 1. [`keymap.zsh`](./keymap.zsh)
 1. [`manydots.zsh`](./manydots.zsh)
 1. [`options.zsh`](./options.zsh)
