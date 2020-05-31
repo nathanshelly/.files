@@ -8,13 +8,6 @@ alias zshn='zsh -f'
 # repo root
 command -v git > /dev/null && alias rr="git rev-parse --show-toplevel"
 
-# << homebrew >>
-command -v brew > /dev/null && {
-  alias b='brew'
-  alias bc='brew cask'
-  alias bu='b update && b upgrade && bc upgrade && b cleanup && b doctor'
-}
-
 command -v trash > /dev/null && alias t=trash # macOS trash command
 
 # alias `shfmt` to apply default args
@@ -35,4 +28,3 @@ if command -v rg > /dev/null; then
 else
   alias f='grep -R'
 fi
-command -v package_manager > /dev/null && alias pm="$(package_manager)"

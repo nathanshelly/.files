@@ -76,6 +76,18 @@ This is by far the most valuable plugin I use. `coc` fills in most of the gaps I
 
 `coc` is a plugin installed using `vim-plug` like all other plugins. Unlike other plugins, however, it has its own extension ecosystem. These extensions provide much of the previously mentioned functionality (much of this behavior can also be recreated with manual configuration but these extensions make things simpler by, for example, eliding configuration specifying which program to run to spin up a language server for a given language). These extensions are often wrappers around `vscode` extensions providing beneficial interoperability between the two editors so that users of both benefit. To learn more about `coc`'s extensions view the [wiki](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions).
 
+#### language support
+
+Languages currently used:
+
+| language    | extension                                                               |
+| ----------- | ----------------------------------------------------------------------- |
+| bash (& sh) | [`coc-sh`](https://github.com/josa42/coc-sh)                            |
+| go          | [`coc-go`](https://github.com/josa42/coc-go)                            |
+| python      | [`coc-python`](https://github.com/neoclide/coc-python)                  |
+| rust        | [`coc-rust-analyzer`](https://github.com/fannheyward/coc-rust-analyzer) |
+| typescript  | [`coc-tsserver`](https://github.com/neoclide/coc-tsserver)              |
+
 ### [`colors.vim`](./colors.vim)
 
 Configure colors.
