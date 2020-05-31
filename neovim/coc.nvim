@@ -77,7 +77,6 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 " available extensions - https://www.npmjs.com/search?q=keywords%3Acoc.nvim
 " extra sources - https://github.com/neoclide/coc-sources
 "
-" TODO: configure extensions, set up required language servers
 " `coc-tsserver`: requires no separate language server
 " `coc-marketplace`: install extensions from within vim
 let g:coc_global_extensions = [

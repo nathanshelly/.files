@@ -18,12 +18,6 @@ typeset -U path # make path array unique (a set)
 
 [[ -d "$HOME/.cargo/bin" ]] && path=("$HOME/.cargo/bin" $path) # rust packages
 
-# `rust-analyzer` language server
-# built by $DOTFILES/infra/setup/bin/setup_language_servers
-[[ -d "$DOTFILES/target/rust-analyzer/target/release" ]] && {
-  path=("$DOTFILES/target/rust-analyzer/target/release" $path)
-}
-
 # homebrew
 [[ -d "$HOMEBREW_PREFIX" ]] && {
   path=(
