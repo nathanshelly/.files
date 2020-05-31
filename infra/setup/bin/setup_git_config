@@ -30,7 +30,7 @@ EOF
 
   if [ -f "$destination" ] || [ -d "$destination" ] || [ -L "$destination" ]; then
     [[ $SHOULD_SKIP_EXISTING == true ]] && {
-      info "$destination already exists, gitconfig creation skipped"
+      info "gitconfig creation skipped: $destination already exists"
       exit 0
     }
     user "file exists @ $destination, overwrite it? (y/any other key)"
