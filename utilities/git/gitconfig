@@ -8,6 +8,7 @@
 [advice]
 	# disable help messages
 	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-advice
+	addEmptyPathspec   = false
 	commitBeforeMerge  = false
 	detachedHead       = false
 	implicitIdentity   = false
