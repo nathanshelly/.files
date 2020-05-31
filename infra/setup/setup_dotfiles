@@ -11,7 +11,7 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 # run in separate subshells
 
 # set up Homebrew and all packages from `$DOTFILES/Brewfile` &
-# `$DOTFILES/macos/Brewfile`
+# `$DOTFILES/misc/macos/Brewfile`
 # `source` so that Homebrew is added to PATH for future setup steps (needed for
 # Linux setup)
 source "$DOTFILES/infra/setup/bin/setup_brew" || {

@@ -6,7 +6,7 @@ Various setup scripts
 - [`setup_asdf`](./setup_asdf) - add [`asdf`](https://github.com/asdf-vm/asdf) [plugins](https://github.com/asdf-vm/asdf-plugins) then run `asdf install` to install global versions of packages
 - [`setup_bits_and_pieces`](./setup_bits_and_pieces) - set up various bits and pieces
 - [`setup_brew`](./setup_brew) - install [Homebrew](https://brew.sh) and formulae specified in [`Brewfile`](../../Brewfile)
-  - on macOS this also installs macOS-specific formulae specified in [`macos/Brewfile`](../../../macos/Brewfile)
+  - on macOS this also installs macOS-specific formulae specified in [`misc/macos/Brewfile`](../../../misc/macos/Brewfile)
 - [`setup_language_servers`](./setup_language_servers) - set up language servers (providing completion, formatting, linting, etc.) for various languages
   - used with [`coc.nvim`](https://github.com/neoclide/coc.nvim) client (see [config](../../vim/coc.vim))
 - [`setup_macos_settings`](./setup_macos_settings) - set macOS configuration (currently unimplemented)
