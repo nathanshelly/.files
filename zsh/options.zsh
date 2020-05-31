@@ -12,7 +12,7 @@ setopt auto_cd
 setopt complete_in_word no_list_beep complete_aliases
 
 # expansion & globbing
-setopt extended_glob no_match
+setopt extended_glob
 
 # history
 setopt hist_ignore_all_dups hist_reduce_blanks share_history hist_verify
