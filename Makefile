@@ -28,6 +28,10 @@ symlink:
 gui:
 	./gui/setup/setup_gui
 
+# config specific to my use cases
+nathan:
+	./infra/setup/bin/symlink --nathan
+
 all:
 	./infra/setup/setup_dotfiles
 	./gui/setup/setup_gui
