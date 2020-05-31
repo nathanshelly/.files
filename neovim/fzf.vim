@@ -40,6 +40,9 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " this search dumps all lines in files queried by ripgrep then performs `fzf`'s
 " fuzzy search over those lines as you type your query
+" refs:
+" - https://github.com/junegunn/fzf.vim/#example-rg-command-with-preview-window
+" - https://github.com/junegunn/fzf.vim/issues/714#issuecomment-428802659
 command! -nargs=* Rg call fzf#vim#grep(
   \ 'rg  --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>),
   \ 1,
