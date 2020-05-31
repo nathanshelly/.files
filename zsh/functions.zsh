@@ -28,6 +28,7 @@
 
 # add all directories named `functions` throughout this repo to `fpath` and
 # autoload any executable files in those folders
+setopt extended_glob # required for below expansion
 for dir in $DOTFILES/**/functions; do
   # `.#(.x:t)` selects all hidden (`.#` selects files starting with 0 or more
   # `.`s) & non-hidden executable (the `x`) files (the `.`) & extracts the
@@ -40,3 +41,4 @@ for dir in $DOTFILES/**/functions; do
   fpath=("$dir" $fpath)
 done
 unset dir
+setopt no_extended_glob # disable after use
