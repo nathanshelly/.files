@@ -51,8 +51,6 @@ link_gui_files() {
   # Vim bindings for Xcode
   link_file "$DOTFILES/gui/xvimrc" "$HOME/.xvimrc"
 
-  link_file "$DOTFILES/gui/apps/mpv/mpv.conf" "$HOME/.config/mpv/mpv.conf"
-
   # terminal emulator
   link_file \
     "$DOTFILES/gui/apps/alacritty/alacritty.yml" \
