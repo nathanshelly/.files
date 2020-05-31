@@ -7,13 +7,17 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 source "$DOTFILES/infra/scripts/prompts.sh"
 
 main() {
+  parse_input "$@"
+
   header "<< Symlinking >>"
 
   local overwrite_all=false backup_all=false skip_all=false
 
   link_base_files
-  link_extra_files
-  link_gui_files
+  [[ $INSTALL_NATHAN_SYMLINKS == true ]] && link_nathan_files
+  [[ $INSTALL_GUI_SYMLINKS == true ]] && link_gui_files
+
+  return 0
 }
 
 # link base files comprising meat of config
@@ -33,10 +37,13 @@ link_base_files() {
   link_file "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 }
 
-# link extra files that most people will likely find unnecessary
-link_extra_files() {
+# link nathan files that most people will likely find unnecessary
+link_nathan_files() {
+  info "Linking nathan-specific files"
+
   link_file "$DOTFILES/utilities/git/gitignore" "$HOME/.gitignore"
   link_file "$DOTFILES/misc/ssh/config" "$HOME/.ssh/config"
+  # configs for autoformatters
   link_file "$DOTFILES/misc/formatters/prettierrc.json" "$HOME/.prettierrc.json"
   link_file "$DOTFILES/misc/formatters/rustfmt.toml" "$HOME/.rustfmt.toml"
 }
@@ -47,6 +54,8 @@ link_gui_files() {
     echo 'skipping gui symlinks - currently only supported on macOS'
     return 1
   }
+
+  info "Linking GUI-specific links"
 
   # Vim bindings for Xcode
   link_file "$DOTFILES/gui/xvimrc" "$HOME/.xvimrc"
@@ -166,6 +175,24 @@ link_file() {
       fail "failed to link $src to $dst"
     fi
   }
+}
+
+parse_input() {
+  for opt in "$@"; do
+    case $opt in
+      --gui)
+        INSTALL_GUI_SYMLINKS=true
+        ;;
+      --nathan)
+        INSTALL_NATHAN_SYMLINKS=true
+        ;;
+      --*)
+        # shellcheck disable=SC2016
+        printf 'invalid flag passed to `%s`\n' 'symlink'
+        exit 1
+        ;;
+    esac
+  done
 }
 
 main "$@"

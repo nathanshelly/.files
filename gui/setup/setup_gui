@@ -14,5 +14,4 @@ source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 "$DOTFILES/gui/setup/setup_desktop_apps" "$@"
 
 # symlink config files to their correct locations
-# TODO: symlink only gui-specific symlinks
-"$DOTFILES/infra/setup/bin/symlink" "$@"
+"$DOTFILES/infra/setup/bin/symlink" "$@" --gui
