@@ -23,8 +23,6 @@ main() {
   # prevent generation of .pyc files
   export PYTHONDONTWRITEBYTECODE=1
 
-  export BAT_CONFIG_PATH="$DOTFILES/utilities/bat/bat.conf"
-
   export DIRENV_LOG_FORMAT= # silence direnv
 
   # output ANSI "color" escape sequences

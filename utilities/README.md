@@ -2,7 +2,7 @@
 
 Resources for various utilities
 
-- [`bat`](./bat) - a prettier `cat` with syntax highlighting, line numbers, git highlights and paging
+- [`bat`](#bat) - a prettier `cat` with syntax highlighting, line numbers, git highlights and paging
 - [`exa`](./exa) - a prettier `ls` with friendlier defaults
 - [`git`](./git) - version control of choice
 - [`fd`](#fd) - a faster `find` with friendlier defaults
@@ -34,6 +34,10 @@ The first time you work in that project run `asdf install` to set up your enviro
 Symlinked to `$HOME/.tool-versions` by [`$DOTFILES/infra/setup/bin/symlink`](../../infra/setup/bin/symlink).
 
 This file specifies the global versions of tools to use if there is no other `.tool-versions` file between the current directory and `$HOME`.
+
+## [`bat`](https://github.com/sharkdp/bat) 🦇
+
+A prettier cat with syntax highlighting, line numbers, git highlights and paging.
 
 ### [`fd`](https://github.com/sharkdp/fd)
 
