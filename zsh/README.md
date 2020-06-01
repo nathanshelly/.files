@@ -31,7 +31,6 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`functions.zsh`](#functionszsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
 - [`keymap.zsh`](#keymapzsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
 - [`manydots.zsh`](#manydotszsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
-- [`options.zsh`](#optionszsh) - configure options (anything set using `setopt`)
 - [`path.zsh`](#pathzsh) - configure `$PATH`
 - [`plugins.zsh`](#pluginszsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
 - [`prompt.zsh`](#promptzsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
@@ -98,17 +97,6 @@ Add a `zle` widget to facilitate specifying relative directories multiple levels
 
 Each `.` typed past `..` increases the level. For example, `cd ...` becomes `cd ../..`. Typing `.` again gives you `cd ../../..`.
 
-### [`options.zsh`](./options.zsh)
-
-Configure options (anything set using `setopt`).
-
-See [list of possible options](http://zsh.sourceforge.net/Doc/Release/Options.html).
-
-Notable options:
-
-- `auto_cd` - type a bare path to automatically perform `cd <path>`. For example (`>` is a prompt symbol here), `> ~/.files` will `cd` to `~/.files`, `> ..` will `cd` up a directory and so on.
-- `share_history` - history is synced between simultaneous shells on prompt load. For example, if I have two `tmux` panes open, run `ls` in one, then switch to the other, press `Ctrl-c` (to trigger a prompt load), then press `up` the most recent command in my history will be that `ls` I just ran in the other pane.
-
 ### [`path.zsh`](./path.zsh)
 
 Enable and configure `$PATH`.
@@ -162,7 +150,6 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`completion.zsh`](./completion.zsh)
 1. [`keymap.zsh`](./keymap.zsh)
 1. [`manydots.zsh`](./manydots.zsh)
-1. [`options.zsh`](./options.zsh)
 1. [`path.zsh`](./path.zsh)
 1. [`dynamic_env_vars.zsh`](./path.zsh)
 1. [`functions.zsh`](./functions.zsh)

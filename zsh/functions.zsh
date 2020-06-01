@@ -33,7 +33,6 @@ for dir in $DOTFILES/**/functions; do
   # `.#(.x:t)` selects all hidden (`.#` selects files starting with 0 or more
   # `.`s) & non-hidden executable (the `x`) files (the `.`) & extracts the
   # filename (the `:t`)
-  # Note: this requires the `extended_glob` option (set in `./options.zsh`)
   # refs
   # - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Qualifiers
   # - http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Operators

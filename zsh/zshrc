@@ -100,7 +100,21 @@ setopt no_extended_glob
 source "$DOTFILES/zsh/asdf.zsh"
 
 # apply options, overriding any set for script purposes
-source "$DOTFILES/zsh/options.zsh"
+#
+# ref - http://zsh.sourceforge.net/Doc/Release/Options.html
+#
+# - `auto_cd` - type a bare path to perform `cd <path>`
+#   - `$ ~/.files<Enter>` will `cd` to `~/.files`
+#   - `$ ..<Enter>` will `cd` up a directory
+# - `extended_glob` - expansion & globbing
+# - `interactive_comments` - allow comments at the command line (zle)
+# - `local_options` - reset any options on script return
+# - history
+#   - `hist_ignore_all_dups` - treat '#', '~' & '^' as glob patterns
+#   - `hist_reduce_blanks` - dedupe & remove lines differing only in whitespace
+#   - `share_history` - sync history between simultaneous shells on prompt load
+setopt auto_cd extended_glob interactive_comments local_options \
+  hist_ignore_all_dups hist_reduce_blanks share_history
 
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
