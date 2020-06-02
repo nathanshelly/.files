@@ -2,7 +2,10 @@
 
 # filter all (local and remote) git branches and output to shell
 
-"$DOTFILES/infra/scripts/is_in_git_repo.sh" || return
+"$DOTFILES/infra/scripts/is_in_git_repo.sh" || {
+  echo 'not in a git repo, nothing to show'
+  return 0
+}
 
 bindings='ctrl-space:toggle-preview'
 preview='git log --oneline --graph --date=short --color=always'

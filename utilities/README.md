@@ -35,7 +35,7 @@ Symlinked to `$HOME/.tool-versions` by [`$DOTFILES/infra/setup/bin/symlink`](../
 
 This file specifies the global versions of tools to use if there is no other `.tool-versions` file between the current directory and `$HOME`.
 
-## [`bat`](https://github.com/sharkdp/bat) 🦇
+### [`bat`](https://github.com/sharkdp/bat) 🦇
 
 A prettier cat with syntax highlighting, line numbers, git highlights and paging.
 
