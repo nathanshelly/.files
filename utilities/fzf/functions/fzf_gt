@@ -2,7 +2,10 @@
 
 # filter `git log` commits and output hash to shell
 
-"$DOTFILES/infra/scripts/is_in_git_repo.sh" || return
+"$DOTFILES/infra/scripts/is_in_git_repo.sh" || {
+  echo 'not in a git repo, nothing to show'
+  return 0
+}
 
 format='%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)'
 bindings='ctrl-s:toggle-sort,ctrl-space:toggle-preview'
