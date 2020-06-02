@@ -7,9 +7,6 @@ Defines global [`.gitconfig`](https://git-scm.com/docs/git-config) & [`.gitignor
 A few of the notable configs set here:
 
 - `ff = only` - only perform fast-forward merges (a `git pull` that would result in a merge instead fails).
-- aliases
-  - `b` - dump branches to terminal, no pager by default
-  - `lb` - a base alias built on top of by `l`, `ln`, `lv` & `lvn` for varying levels of verbosity and printed # of commits
 - `[advice]` - turn off git advice to reduce verbosity
 
 ## [`gitconfig.template`](./gitconfig.template)
@@ -20,7 +17,7 @@ This template is filled in by [`$DOTFILES/infra/setup/bin/setup_git_config`](../
 
 ## [`alias.zsh`](./alias.zsh)
 
-Defines various useful `git` aliases. Most of these aliases avoid using pagers when possible. Additionally, many of them depend on aliases defined in [`./gitconfig`](./gitconfig) to avoid redundant configuration.
+Defines various useful `git` aliases. Most of these aliases avoid using pagers when possible.
 
 A few of my most used:
 
