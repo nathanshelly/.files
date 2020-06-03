@@ -24,18 +24,17 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 
 ## skimmable list of files
 
-- [`alias.zsh`](#aliaszsh) - define generic aliases. Aliases specific to a topic (for example aliases for `tmux`) should go in the corresponding topic folder (e.g. [`$DOTFILES/tmux/alias.zsh`](../tmux/alias.zsh)).
-- [`asdf.zsh`](#asdfzsh) - initialize [`asdf`](https://asdf-vm.com) (the version manager I use)
+- [`alias.zsh`](#aliaszsh) - define generic aliases
 - [`completion.zsh`](#completionzsh) - initialize completion
 - [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh) - set environment variables whose value requires dynamism (dependencies)
-- [`functions.zsh`](#functionszsh) - autoload all functions (executable files) defined in any directory named `functions` throughout this repo (`$DOTFILES/**/functions`)
+- [`functions.zsh`](#functionszsh) - autoload all functions (executable files) defined in `$DOTFILES/functions`
 - [`keymap.zsh`](#keymapzsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
+- [`local.zsh`](#localzsh) - local (computer-specific) overrides (gitignored & sourced only if it exists)
 - [`manydots.zsh`](#manydotszsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
 - [`path.zsh`](#pathzsh) - configure `$PATH`
 - [`plugins.zsh`](#pluginszsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
 - [`prompt.zsh`](#promptzsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
-- [`secrets.zsh`](#secretszsh) - store secrets such as API tokens. This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
-- [`zle-fsh-theme-overlay.ini`](#zle-fsh-theme-overlayini) - an overlay to customize syntax highlighting
+- [`secrets.zsh`](#secretszsh) - store secrets such as API tokens (gitignored & sourced only if it exists)
 - [`zshenv`](#zshenv) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES` & `$PATH`)
 - [`zshrc`](#zshrc) - source every `*.zsh` throughout this repo (`$DOTFILES/**/*.zsh`) to set up config
 
@@ -52,9 +51,8 @@ Notable aliases:
 - `srczsh` - `source $HOME/.zshrc`, reload `zshrc`
 - `zshn` - `zsh -f`, launch shell w/o config
 - `rr` - `git rev-parse --show-toplevel`, gives the absolute path to the root of the current repo
-- `rm` - disables `rm` to force usage of [`trash`](https://github.com/sindresorhus/trash) (aliased to `t` elsewhere in this file)
 - `e` - `$EDITOR`, provides a generic command to edit a file regardless of the backing program
-- `f` - `rg` if installed, `grep -R` otherwise. Similar to `e`, provides a generic command regardless of backing program.
+- `f` - [`rg`](https://github.com/BurntSushi/ripgrep). Similar to `e`, provides a generic command regardless of backing program.
 - `t` - [`trash`](https://github.com/sindresorhus/trash), a utility to move files/folders to the trash (instead of deleting permanently) on macOS for recoverability
 
 ### [`asdf.zsh`](./asdf.zsh)
@@ -67,7 +65,7 @@ Initialize completion. Uses a cache with a refresh every 20 hours to speed up sh
 
 ### [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh)
 
-Currently only sets `$EDITOR` to `nvim`.
+Sets dynamic environment variables. `LESSOPEN` depends on the `highlight` command while `$GIT_PAGER`, `BAT_THEME` & `EDITOR` all depend on settings values in `$DOTFILES/.files-settings.json`.
 
 ### [`functions.zsh`](./functions.zsh)
 
@@ -90,6 +88,12 @@ Additional notable keymappings:
     - `'` moves to end of line (same behavior as `$`)
     - `"` moves to start of line (same behavior as `0`)
   - `v` to edit the current command in `$EDITOR`. Quitting the opened editor dumps the edited command to the command line for execution.
+
+### [`local.zsh`](./local.zsh)
+
+Apply local (computer-specific) config (not secrets, for better hygiene those should be in `$DOTFILES/secrets.zsh`).
+
+This file is not checked in to version control (ignored in `$DOTFILES/.gitignore`) and sourced only if it exists.
 
 ### [`manydots.zsh`](./manydots.zsh)
 
@@ -158,6 +162,7 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`prompt.zsh`](./prompt.zsh)
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory).
 1. [`asdf.zsh`](./asdf.zsh)
+1. [`local.zsh`](./local.zsh)
 
 `zshrc` itself is loaded after `zshenv` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
 

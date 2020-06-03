@@ -3,8 +3,7 @@
 # replacement for `grep`
 # ref - https://github.com/BurntSushi/ripgrep
 
-# # use smart case by default
-# alias f='f --smart-case'
+command -v rg > /dev/null || return # bail if ripgrep not installed
 
 # increase context around match
 alias fcc='f --context 3'

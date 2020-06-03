@@ -39,5 +39,5 @@ for dir in $DOTFILES/**/functions; do
   autoload -Uz "$dir"/.#*(.x:t)
   fpath=("$dir" $fpath)
 done
-unset dir
 setopt no_extended_glob # disable after use
+unset dir
