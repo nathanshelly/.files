@@ -29,10 +29,12 @@ rg -w @types/lodash -g 'package.json'
 
 ## [`alias.zsh`](./alias.zsh)
 
-Turns on smart case by default by aliasing `rg` -> `rg --smart-case`. Adds several additional aliases, a few highlights:
+`f` is aliased to `rg --smart-case` in `$DOTFILES/zsh/alias.zsh`. Generic alias so that if the underlying utility changes muscle memory is preserved. This also turns on smart case by default.
 
-- `rgf` - search literal strings
-- `rgnt` - exclude test/spec files from search
-- `rgt` - search only test/spec files
-- `rgu` - ignore `.gitignore` & `.ignore` files, include hidden files/directories & binary files
-- `rgw` - only match whole words
+Adds several additional aliases, a few highlights:
+
+- `ff` - search literal strings
+- `fnt` - exclude test/spec files from search
+- `ft` - search only test/spec files
+- `fu` - ignore `.gitignore` & `.ignore` files, include hidden files/directories & binary files
+- `fw` - only match whole words

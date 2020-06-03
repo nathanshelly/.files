@@ -48,7 +48,7 @@ Enables completions/[keybindings](#keybindings) along with configuring commands/
 
 Use `fd` (instead of default `find`) for `**` path & directory completion and keybindings.
 
-Enable multi-select (w/ `Tab` & `Shift-Tab`) by default. Use `Ctrl-a` to select all filtered values. Use `Ctrl-k` & `Ctrl-l` to move down and up results list.
+Enable multi-select (w/ `Tab` & `Shift-Tab`) by default. Use `Ctrl-a` to select all filtered values. Use `Ctrl-j` & `Ctrl-k` to move down and up results list.
 
 Add previews w/ `bat` (toggleable w/ `Ctrl-Space`). Use `Ctrl-d` & `Ctrl-u` to scroll previews down and up, respectively.
 
@@ -68,13 +68,13 @@ Various terminals on macOS require brief configuration in order to use keybindin
 
 Tick the box labeled "Use Option as Meta key" in Profiles > Keyboard.
 
-![Terminal](https://user-images.githubusercontent.com/9750687/74061402-cb24c100-49a0-11ea-9270-2707170cc592.png "terminal")
+![Terminal](https://user-images.githubusercontent.com/9750687/74061402-cb24c100-49a0-11ea-9270-2707170cc592.png 'terminal')
 
-#### Iterm
+#### iTerm
 
 Select "Esc+" for "Left ⌥ Key" & "Right ⌥ Key" in Profiles > Keys.
 
-![Iterm](https://user-images.githubusercontent.com/9750687/74061408-ceb84800-49a0-11ea-90ec-c7cab978a15c.png "Iterm")
+![iTerm](https://user-images.githubusercontent.com/9750687/74061408-ceb84800-49a0-11ea-90ec-c7cab978a15c.png 'iTerm')
 
 #### Alacritty
 

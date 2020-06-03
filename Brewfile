@@ -43,6 +43,7 @@ brew "gpg"
 brew "hub"
 brew "hyperfine"
 brew 'jq'
+brew "lua" # `z.lua` dependency
 brew "mdcat"
 brew "neovim"
 brew "ncurses"
