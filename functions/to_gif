@@ -7,7 +7,7 @@ to_gif() {
   video_in_path="$1"
   gif_out_path="${2:-${video_in_path%.*}.gif}"
 
-  command -v fuck > /dev/null || {
+  command -v ffmpeg > /dev/null || {
     cat << EOF
 error: \`ffmpeg\` must be installed to create gifs
 please run \`brew install ffmpeg\`, then retry'
