@@ -19,7 +19,8 @@
 			"applicationFolders": [
 				"/Applications",
 				"/System/Library/CoreServices",
-				"/Users/nathan/Applications"
+				"/Users/nathan/Applications",
+				"/System/Applications"
 			],
 			"enabled": true,
 			"showFullFilePath": false,
