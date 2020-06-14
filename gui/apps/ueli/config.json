@@ -238,47 +238,5 @@
 			"isEnabled": true,
 			"workflows": []
 		}
-	},
-	"favorites": [
-		{
-			"executionCount": 4,
-			"item": {
-				"active": true,
-				"description": "Change settings",
-				"executionArgument": "open-settings",
-				"hideMainWindowAfterExecution": false,
-				"icon": {
-					"parameter": "\n    <svg version=\"1.1\" id=\"Ebene_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n        viewBox=\"0 0 600 600\" xml:space=\"preserve\">\n        <path d=\"M59,121.6l81.3-46.9c5.9-3.4,13.1-3.4,18.9,0l80.8,46.9c5.8,3.4,9.4,9.6,9.4,16.4v187.2c0,14.6,15.8,23.7,28.4,16.4l62.4-36\n            c5.9-3.4,9.5-9.6,9.5-16.4l0-209c0-6.8,3.6-13,9.5-16.4l81-46.8c5.9-3.4,13.1-3.4,18.9,0l81,46.8c5.9,3.4,9.5,9.6,9.5,16.4v324.4\n            c0,6.8-3.6,13-9.5,16.4L259.2,583.1c-5.9,3.4-13.1,3.4-18.9,0L59,478.4c-5.9-3.4-9.5-9.6-9.5-16.4V137.9\n            C49.6,131.2,53.2,124.9,59,121.6z\"/>\n    </svg>\n    ",
-					"type": "SVG"
-				},
-				"id": "search-result-item-1",
-				"name": "Settings",
-				"originPluginType": "ueli-command-search-plugin",
-				"resultNumber": 1,
-				"searchable": [
-					"Settings"
-				]
-			}
-		},
-		{
-			"executionCount": 1,
-			"item": {
-				"active": true,
-				"description": "Edit the settings file with your default text editor",
-				"executionArgument": "edit-config-file",
-				"hideMainWindowAfterExecution": true,
-				"icon": {
-					"parameter": "\n    <svg version=\"1.1\" id=\"Ebene_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n        viewBox=\"0 0 600 600\" xml:space=\"preserve\">\n        <path d=\"M59,121.6l81.3-46.9c5.9-3.4,13.1-3.4,18.9,0l80.8,46.9c5.8,3.4,9.4,9.6,9.4,16.4v187.2c0,14.6,15.8,23.7,28.4,16.4l62.4-36\n            c5.9-3.4,9.5-9.6,9.5-16.4l0-209c0-6.8,3.6-13,9.5-16.4l81-46.8c5.9-3.4,13.1-3.4,18.9,0l81,46.8c5.9,3.4,9.5,9.6,9.5,16.4v324.4\n            c0,6.8-3.6,13-9.5,16.4L259.2,583.1c-5.9,3.4-13.1,3.4-18.9,0L59,478.4c-5.9-3.4-9.5-9.6-9.5-16.4V137.9\n            C49.6,131.2,53.2,124.9,59,121.6z\"/>\n    </svg>\n    ",
-					"type": "SVG"
-				},
-				"id": "search-result-item-1",
-				"name": "Edit settings file",
-				"originPluginType": "ueli-command-search-plugin",
-				"resultNumber": 1,
-				"searchable": [
-					"Edit settings file"
-				]
-			}
-		}
-	]
+	}
 }
