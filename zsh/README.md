@@ -35,7 +35,8 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`plugins.zsh`](#pluginszsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
 - [`prompt.zsh`](#promptzsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
 - [`secrets.zsh`](#secretszsh) - store secrets such as API tokens (gitignored & sourced only if it exists)
-- [`zshenv`](#zshenv) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES` & `$PATH`)
+- [`zle-fsh-theme-overlay.ini`](#zle-fsh-theme-overlayini) - an overlay to customize syntax highlighting
+- [`zshenv`](#zshenv) - define environment variables, loaded before any other file in this folder (this file defines `$DOTFILES`)
 - [`zshrc`](#zshrc) - source every `*.zsh` throughout this repo (`$DOTFILES/**/*.zsh`) to set up config
 
 ## each file in more detail
@@ -155,14 +156,14 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`keymap.zsh`](./keymap.zsh)
 1. [`manydots.zsh`](./manydots.zsh)
 1. [`path.zsh`](./path.zsh)
-1. [`dynamic_env_vars.zsh`](./path.zsh)
+1. [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh)
 1. [`functions.zsh`](./functions.zsh)
 1. [`alias.zsh`](./alias.zsh)
 1. [`plugins.zsh`](./plugins.zsh)
 1. [`prompt.zsh`](./prompt.zsh)
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory).
 1. [`asdf.zsh`](./asdf.zsh)
-1. [`local.zsh`](./local.zsh)
+1. [`local.zsh`](./local.zsh) - only if this file exists
 
 `zshrc` itself is loaded after `zshenv` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
 
