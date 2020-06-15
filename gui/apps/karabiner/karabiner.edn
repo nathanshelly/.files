@@ -27,7 +27,8 @@
                  :browsers ["^org\\.mozilla\\.firefox$"
                             "^org\\.mozilla\\.nightly$"
                             "^com\\.google\\.Chrome$"
-                            "^com\\.microsoft\\.edgemac.*"]
+                            "^com\\.microsoft\\.edgemac.*"
+                            "com\\.apple\\.Safari"]
                  :terminals ["^com\\.googlecode\\.iterm2$"
                              "^io\\.alacritty$"
                              "^com\\.apple\\.Terminal$"]}
