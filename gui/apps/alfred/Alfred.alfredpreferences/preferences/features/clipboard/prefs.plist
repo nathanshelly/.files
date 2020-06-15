@@ -17,6 +17,8 @@
 		<key>string</key>
 		<string>V</string>
 	</dict>
+	<key>limit</key>
+	<integer>4</integer>
 	<key>persistFor</key>
 	<integer>3</integer>
 	<key>persistForImages</key>
