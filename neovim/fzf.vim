@@ -87,8 +87,8 @@ nnoremap <c-b> :Buffers<cr>
 nnoremap <c-f> :RG<cr>
 " lines in current buffer
 nnoremap <c-l> :BLines<cr>
-" files listed by `git status`
-nnoremap <c-g> :GFiles?<cr>
+" files in current repo
+nnoremap <c-g> :GFiles<cr>
 
 " command history
 nnoremap <leader>hc :History:<cr>
