@@ -24,9 +24,6 @@ main() {
 
   export DIRENV_LOG_FORMAT= # silence direnv
 
-  # output ANSI "color" escape sequences
-  # value of LESS is passed to `less` as args
-  export LESS=" -R"
   # colored paging (enables colored man pages)
   # ref - https://github.com/sorin-ionescu/prezto/blob/cfeb8cd6c9f60c2a928f4c706d0137c7de2ef106/modules/environment/init.zsh#L59-L67
   export LESS_TERMCAP_mb=$'\E[01;31m'      # begins blinking
