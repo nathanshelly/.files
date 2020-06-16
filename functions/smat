@@ -6,7 +6,7 @@ render_args() {
   [[ -z $2 ]] && [[ $1 =~ \.md$ ]] && command -v mdcat > /dev/null && {
     # display markdown file using `mdcat` w/ a pager
     # ref - https://github.com/lunaryorn/mdcat/issues/50
-    mdcat "$1" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS
+    mdcat "$1" | less --no-init --quit-if-one-screen --raw-control-chars
     return
   }
 
