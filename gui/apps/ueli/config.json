@@ -120,7 +120,7 @@
 			"isEnabled": true
 		},
 		"operatingSystemSettingsOptions": {
-			"isEnabled": false
+			"isEnabled": true
 		},
 		"searchEngineOptions": {
 			"blackList": [],
