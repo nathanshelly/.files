@@ -31,7 +31,8 @@
                             "com\\.apple\\.Safari"]
                  :terminals ["^com\\.googlecode\\.iterm2$"
                              "^io\\.alacritty$"
-                             "^com\\.apple\\.Terminal$"]}
+                             "^com\\.apple\\.Terminal$",
+                             "^com\\.microsoft\\.VSCode$"]}
 
 
   ;; goku ignores this `cheatsheet` section
@@ -96,7 +97,7 @@
             [:!QWEb "open -a 'Firefox'"] ;; browser
             [:!QWEc "open -a 'Fantastical'"] ;; calendar
             [:!QWEd "open -a 'TablePlus'"] ;; database
-            [:!QWEe "open -a 'Tempo'"] ;; email
+            [:!QWEe "open -a 'Visual Studio Code'"] ;; editor
             [:!QWEf "open -a 'Finder'"]
             [:!QWEs "open -a 'Slack'"]
             [:!QWEt "open -a 'iTerm'"] ;; terminal
