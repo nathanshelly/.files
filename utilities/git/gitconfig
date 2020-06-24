@@ -81,3 +81,8 @@
 	# properly sort semver tags (`v-0.9.1x` after `v-0.9.9`)
 	# https://stackoverflow.com/a/22634649
 	sort = version:refname
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
