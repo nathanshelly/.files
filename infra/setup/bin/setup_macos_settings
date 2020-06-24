@@ -1,3 +1,5 @@
 #! /usr/bin/env bash
 
 # TODO: set up macOS settings configuration
+# ref - https://www.howtogeek.com/267463/how-to-enable-key-repeating-in-macos/
+defaults write -g ApplePressAndHoldEnabled -bool false
