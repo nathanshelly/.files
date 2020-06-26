@@ -57,7 +57,16 @@ command! -nargs=? Files call fzf#vim#files(
   \ <bang>0
 \)
 
+" TODO: understand this better, pretty sure there's a better way
+command! -nargs=? GFiles call fzf#vim#gitfiles(
+  \ <q-args>,
+  \ fzf#vim#with_preview('down:60%'),
+  \ <bang>0
+\)
+
 " TODO: figure out why the preview here can't find files
+" hint: seem to work fine for files below it in the tree (GFiles above doesn't
+" have the same issue interestingly)
 command! -nargs=? Buffers call fzf#vim#buffers(
   \ <q-args>,
   \ fzf#vim#with_preview('down:60%'),
