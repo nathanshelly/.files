@@ -1,17 +1,68 @@
 {
+  // <<<< settings from Sasha pairing >>>>
+  // TODO: combine these more cleanly
+  "editor.fontSize": 14,
+  // Disable moving to MRU tab after closing
+  "workbench.editor.focusRecentEditorAfterClose": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  // Don't use selected string for search
+  "editor.find.seedSearchStringFromSelection": false,
+  // Pass Option through to tmux in the integrated terminal
+  "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.fontSize": 14,
+  // Save/Paste configuration
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  // Don't auto-reveal files in the explorer
+  "explorer.autoReveal": false,
+  // Show issues in the status bar
+  "problems.showCurrentInStatus": true,
+  // Ignore the freaking extension recommendations
+  "extensions.ignoreRecommendations": true,
+  // Disable VSCode keyboard nav in lists in favor of Vim plugin's
+  "workbench.list.automaticKeyboardNavigation": false,
+  "editor.lineNumbers": "relative",
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.visualstar": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["C-o"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["C-i"],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "before": ["'"],
+      "after": ["$"]
+    },
+    {
+      "before": ["\""],
+      "after": ["^"]
+    }
+  ],
+  // <<<< end of settings from Sasha pairing >>>>
   // <<<<<< workbench >>>>>>
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
-
-  "workbench.startupEditor": "none",
+  // Use a new empty file at startup
+  "workbench.startupEditor": "newUntitledFile",
+  // Disable the "file preview" feature
   "workbench.editor.enablePreview": false,
   "workbench.activityBar.visible": false,
   "workbench.statusBar.visible": true,
   "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "vscode-icons",
-
+  "workbench.iconTheme": "material-icon-theme",
   // <<<<<< editor >>>>>>
-
   // appearance
   "editor.minimap.enabled": false,
   "editor.rulers": [80, 100, 120],
@@ -19,19 +70,15 @@
   "editor.cursorStyle": "line-thin",
   "editor.renderIndentGuides": true,
   "editor.renderLineHighlight": "gutter",
-
   // font
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "Natasha I",
   "editor.fontLigatures": true,
-
   // whitespace
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.detectIndentation": true,
-
   // action
   "editor.emptySelectionClipboard": false,
-
   // <<<<<< exclusions >>>>>>
   "files.exclude": {
     "**/.git": true,
@@ -41,61 +88,52 @@
     "**/.DS_Store": true,
     "**/*.pyc": true
   },
-
   // <<<<<< zen mode >>>>>>
   "zenMode.hideTabs": false,
   "zenMode.hideStatusBar": false,
   "zenMode.centerLayout": false,
-
   // <<<<<< window >>>>>>
   "window.openFilesInNewWindow": "off",
   "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
   "window.newWindowDimensions": "maximized",
   "window.zoomLevel": 0,
-
   // <<<<<< explorer >>>>>>
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-
   // <<<<<< files >>>>>>
   "files.eol": "\n",
   "files.autoSave": "off",
   "files.insertFinalNewline": true,
-
   // <<<<<< colors >>>>>>
   "workbench.colorCustomizations": {
     "[One Dark Pro]": {
       "statusBar.background": "#3e8c9b",
       "statusBar.foreground": "#dbdddd",
-
       "editor.background": "#232323",
       "editorGroup.background": "#232323",
       "editorGroupHeader.noTabsBackground": "#232323",
       "editorGroupHeader.tabsBackground": "#232323",
       "tab.activeBackground": "#303030",
       "tab.inactiveBackground": "#232323",
-
       "titleBar.activeBackground": "#232323",
       "titleBar.inactiveBackground": "#232323",
-
       "sideBar.background": "#232323",
-
       "panel.border": "#232323",
-      "panel.background": "#232323",
+      "panel.background": "#232323"
     }
   },
-
   // <<<<<< markdown >>>>>>
   "markdownlint.config": {
     "default": true,
     "MD004": false,
     "MD007": false,
     "MD024": false,
-    "MD029": { "style": "ordered" },
+    "MD029": {
+      "style": "ordered"
+    },
     "MD041": false,
     "no-hard-tabs": false
   },
-
   // <<<<<< integrated terminal >>>>>>
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.scrollback": 5000,
@@ -135,13 +173,11 @@
     "workbench.action.terminal.scrollToTop",
     "workbench.action.terminal.scrollUp",
     "workbench.action.terminal.scrollUpPage",
-
     // toggling panels
     "workbench.action.terminal.toggleTerminal",
     "workbench.action.output.toggleOutput",
     "workbench.actions.view.problems",
     "workbench.debug.action.toggleRepl",
-
     // focusing on other components
     "workbench.action.focusActiveEditorGroup",
     "workbench.action.focusSideBar",
@@ -151,32 +187,24 @@
     "workbench.action.maximizeEditor",
     "workbench.action.toggleZenMode"
   ],
-
   // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
   // <<<<<<<<<<<< extensions >>>>>>>>>>>>
   // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
-
   // <<<<<< general >>>>>>
   "extensions.autoUpdate": true,
-
   // <<<<<< project >>>>>>
   "projectManager.openInNewWindowWhenClickingInStatusBar": true,
-
   // <<<<<< scroll off >>>>>>
   "scrolloff.alwaysCenter": true,
-
   // <<<<<< python >>>>>>
   "python.pythonPath": "/usr/local/bin/python3",
   "python.venvPath": "~/envs/python",
-
   // linting
   "python.linting.enabled": true,
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": false,
-
   // <<<<<< trailng spaces >>>>>>
   "trailing-spaces.highlightCurrentLine": false,
-
   // <<<<<< vs icons >>>>>>
-  "vsicons.dontShowNewVersionMessage": true,
+  "vsicons.dontShowNewVersionMessage": true
 }
