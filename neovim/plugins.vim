@@ -120,7 +120,9 @@ Plug 'rhysd/git-messenger.vim'
 
 " fuzzy finder
 " configuration is in ./fzf.vim instead of ./plugin_config.vim due to complexity
-Plug '/usr/local/opt/fzf'
+"
+" TODO: maybe point directly to `fzf` installed by `nix?
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Use Sasha's fork which enables previewing of full files based on community's
 " fix - https://github.com/junegunn/fzf.vim/issues/751
 " NOTE: unless you care about the issue in the above github link I recommend you

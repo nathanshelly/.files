@@ -130,3 +130,9 @@ setopt auto_cd extended_glob interactive_comments local_options \
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
+
+# make `home-manager` available for use
+# ref - https://github.com/rycee/home-manager#installation
+# TODO: remove if this becomes unnecessary
+# tracking issue - https://github.com/NixOS/nix/issues/2033
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH

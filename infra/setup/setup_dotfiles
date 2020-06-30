@@ -10,6 +10,12 @@ source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 
 printf '\x1b[38;5;006mstarting dotfiles setup\x1b[0m\n\n'
 
+# symlink config files to their correct locations
+# done early so that other installation steps can make use of these files (for
+# example, setting up home-manager for the first time in `setup_nix` requires
+# `$DOTFILES/nix/home.nix` to be symlinked appropriately)
+"$DOTFILES/infra/setup/bin/symlink"
+
 # TODO: test if available for future setup steps
 "$DOTFILES/infra/setup/bin/setup_nix" || {
   # shellcheck disable=SC2016
@@ -31,9 +37,6 @@ source "$DOTFILES/infra/setup/bin/setup_brew" || {
 
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
-
-# symlink config files to their correct locations
-"$DOTFILES/infra/setup/bin/symlink"
 
 # set up our shell (`zsh`)
 # this adds `zsh` to our allowed shells and sets it as the default. Then it

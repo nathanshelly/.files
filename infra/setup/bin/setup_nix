@@ -47,6 +47,8 @@ main() {
   # install & create first generation
   nix-shell '<home-manager>' -A install
 
+  # TODO: do I need to `home-manager switch` here?
+
   # symlink home config
   ln -s "$DOTFILES/nix/home.nix" "$HOME/.config/nixpkgs/home.nix"
 }

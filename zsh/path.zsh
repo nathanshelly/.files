@@ -20,17 +20,7 @@ typeset -U path # make path array unique (a set)
 
 # homebrew
 [[ -d "$HOMEBREW_PREFIX" ]] && {
-  path=(
-    "$HOMEBREW_PREFIX/bin"
-    "$HOMEBREW_PREFIX/sbin"
-    $path
-  )
-
-  # enable usage of `gmake` as `make` (`gmake` installed via `make` in Brewfile)
-  [[ -d "$HOMEBREW_PREFIX/opt/make/libexec/gnubin" ]] && {
-    path=("$HOMEBREW_PREFIX/opt/make/libexec/gnubin" $path)
-  }
-
+  # TODO: remove this?
   "$DOTFILES/infra/scripts/is_macos.sh" || {
     # run the below scripts to add `brew` to PATH on linux installations
     # ref - https://docs.brew.sh/Homebrew-on-Linux#install

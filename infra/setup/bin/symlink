@@ -20,8 +20,12 @@ main() {
   return 0
 }
 
-# link base files comprising meat of config
+# link base files comprising majority of config
 link_base_files() {
+  link_file \
+    "$DOTFILES/nix/home.nix" \
+    "${XDG_CONFIG_HOME:-$HOME/.config}/nixpkgs/home.nix"
+
   link_file "$DOTFILES/utilities/git/gitconfig" "$HOME/.gitconfig"
   link_file "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
   link_file "$DOTFILES/tool-versions" "$HOME/.tool-versions"

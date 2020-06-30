@@ -11,7 +11,7 @@
 
 # TODO: allow multi select here
 match=$(
-  "$HOMEBREW_PREFIX/bin/rg" --color=never --line-number "$1" \
+  "$NIX_PROFILE/bin/rg" --color=never --line-number "$1" \
     | fzf --no-multi --delimiter : \
       --preview "bat --color=always --line-range {2}: {1}"
 )

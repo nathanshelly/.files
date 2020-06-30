@@ -8,6 +8,7 @@ main() {
     dynamically_determine_dotfiles # see function at end of file
   fi
 
+  export NIX_PROFILE="$HOME/.nix-profile"
   dynamically_set_homebrew_prefix # see function below
 
   # XDG directory specification

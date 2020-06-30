@@ -18,7 +18,7 @@ grep -q "$zsh_path" /etc/shells || {
   }
 }
 
-# change login shell to brew `zsh` if it isn't already
+# change login shell to active version of `zsh` (if it isn't already)
 [ "$SHELL" = "$zsh_path" ] || {
   info "Using sudo access to change default shell to '$zsh_path'"
   chsh -s "$zsh_path" && success "Changed login shell to $zsh_path"
