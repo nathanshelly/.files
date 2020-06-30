@@ -32,11 +32,6 @@ command -v brew > /dev/null || {
 
 brew analytics off # disable analytics
 
-# standard, platform-agnostic packages, no casks (desktop apps)
-info 'installing base `brew` dependencies'
-brew bundle --file "$DOTFILES/Brewfile"
-success 'installed base `brew` dependencies'
-
 # macos-specific forumulae
 "$DOTFILES/infra/scripts/is_macos.sh" || return 0 # bail on Linux
 
