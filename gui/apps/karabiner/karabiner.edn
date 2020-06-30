@@ -23,7 +23,7 @@
   ;; "CFBundleIdentifier"
 
 
-  :applications {:fantastical ["^com\\.flexibits\\.fantastical2\\.mac$"]
+  :applications {:fantastical ["com.flexibits.fantastical2.mac"]
                  :browsers ["^org\\.mozilla\\.firefox$"
                             "^org\\.mozilla\\.nightly$"
                             "^com\\.google\\.Chrome$"
@@ -51,7 +51,17 @@
    :##a "keycode a optional any"}
 
   :main
-  [{:des "caps lock -> escape (alone/tapped) left_control (held)"
+  ;; bind app-specific bindings before any shadowing bindings to avoid being
+  ;; overridden (global vim movement overrides fantastical-specific bindings
+  ;; if they occur before this block)
+  [{:des "fantastical event manipulation"
+    :rules [:fantastical ;; apply only  in fantastical
+            [:!O#Sh :!Tleft_arrow]
+            [:!O#Sj :!Tdown_arrow]
+            [:!O#Sk :!Tup_arrow]
+            [:!O#Sl :!T#Sright_arrow]]}
+
+   {:des "caps lock -> escape (alone/tapped) left_control (held)"
     :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
 
    {:des "global vim movement - Ctrl+hjkl -> ⬅ ⬇ ⬆ ➡ , Option+hjkl -> Option+⬅ ⬇ ⬆ ➡ , Cmd+hjkl -> Option+⬅ ⬇ ⬆ ➡ "
@@ -112,11 +122,4 @@
             [:!Od :!Cl]]}
    {:des "Ctrl-p to Cmd-k in browsers"
     :rules [:browsers ;; apply only in browsers
-            [:!Tp :!Ck]]}
-
-   {:des "fantastical event manipulation"
-    :rules [:fantastical ;; apply only  in fantastical
-            [:!O#Sh :!Tleft_arrow]
-            [:!O#Sj :!Tdown_arrow]
-            [:!O#Sk :!Tup_arrow]
-            [:!O#Sl :!T#Sright_arrow]]}]}
+            [:!Tp :!Ck]]}]}
