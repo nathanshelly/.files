@@ -110,6 +110,9 @@
    {:des "Option-d to Cmd-l in browsers"
     :rules [:browsers ;; apply only in browsers
             [:!Od :!Cl]]}
+   {:des "Ctrl-p to Cmd-k in browsers"
+    :rules [:browsers ;; apply only in browsers
+            [:!Tp :!Ck]]}
 
    {:des "fantastical event manipulation"
     :rules [:fantastical ;; apply only  in fantastical
