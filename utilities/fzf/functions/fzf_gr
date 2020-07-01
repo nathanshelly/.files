@@ -11,7 +11,7 @@ bindings='ctrl-space:toggle-preview'
 preview='git log --oneline --graph --date=short --color=always'
 preview+=' --pretty="format:%C(auto)%cd %h%d %s"'
 # shellcheck disable=SC2016
-preview+=' $(sed s/^..// <<< {} | cut -d" " -f1) | bat'
+preview+=' $(sed s/^..// <<< {} | cut -d" " -f1) -- | bat'
 
 git branch -a --color=always | grep -v '/HEAD\s' | sort \
   | fzf --ansi --multi --tac --preview-window right:70% --bind="$bindings" \
