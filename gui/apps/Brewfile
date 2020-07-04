@@ -3,10 +3,6 @@
 
 cask_args appdir: '/Applications'
 
-# drivers (specifically for Logitech)
-# ref - https://github.com/Homebrew/homebrew-cask-drivers
-tap "homebrew/cask-drivers"
-
 # <<<< apps >>>>
 
 cask "1password"
@@ -22,7 +18,6 @@ cask "google-chrome"
 cask "istat-menus"
 cask "karabiner-elements"
 cask "keycastr"
-cask "logitech-options"
 cask "marshallofsound-google-play-music-player"
 cask "monitorcontrol"
 cask "mpv"
@@ -32,6 +27,7 @@ cask "rectangle"
 cask "slack"
 cask "spotify"
 cask "sound-control"
+cask "steermouse"
 cask "subler"
 cask "ueli"
 cask "visual-studio-code"
