@@ -153,6 +153,9 @@ call s:h("Error", s:red, s:gutter_bg, "")
 call s:h("Todo", s:purple, "", "")
 " }
 
+" Language-specific {
+call s:h("javaScriptLineComment", s:comment_fg, "", "")
+" }
 
 " Plugins {
 " GitGutter
