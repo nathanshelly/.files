@@ -19,6 +19,8 @@ Make sure the [current profile is called "Default"](https://github.com/yqrashawn
 
 Install `goku`:
 
+<!-- TODO: install via `nix` (need to update `goku` version in derivation) -->
+
 ```shell
 # first install required dependency (automatic dependency
 # resolution currently fails with an issue about taps)

@@ -25,16 +25,6 @@ printf '\x1b[38;5;006mstarting dotfiles setup\x1b[0m\n\n'
   exit 1
 }
 
-# set up Homebrew and all packages from `$DOTFILES/Brewfile` &
-# `$DOTFILES/misc/macos/Brewfile`
-# `source` so that Homebrew is added to PATH for future setup steps (needed for
-# Linux setup)
-source "$DOTFILES/infra/setup/bin/setup_brew" || {
-  echo 'Homebrew installation had at least one failure'
-  echo 'This can often be flaky and only prevent use of a package or two'
-  echo 'If the error looks more severe you may want to investigate more'
-}
-
 # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
 "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
 

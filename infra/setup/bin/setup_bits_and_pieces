@@ -12,7 +12,7 @@ main() {
   }
 }
 
-# set up `tmux-256color` `terminfo` entry from `brew` `ncurses`
+# set up `tmux-256color` `terminfo` entry from modern `ncurses`
 # ref - https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
 setup_tmux_terminfo() {
   toe | grep -q "tmux-256color" && {
@@ -20,8 +20,8 @@ setup_tmux_terminfo() {
     return 0
   }
 
-  # compile `tmux-256color.info` using modern `brew` `ncurses`
-  "$(brew --prefix)/opt/ncurses/bin/infocmp" "tmux-256color" > "${TMPDIR}tmux-256color.info"
+  # compile `tmux-256color.info` using modern `ncurses`
+  "infocmp" "tmux-256color" > "${TMPDIR}tmux-256color.info"
   # then install the compiled entry to the system `terminfo` database
   # shellcheck disable=SC2016
   info 'Using `sudo` to install `tmux-256color` `terminfo` entry'

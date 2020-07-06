@@ -20,4 +20,5 @@ Various setup scripts
 
 ### additional scripts
 
+- [`setup_brew`](./setup_brew) - install [Homebrew](https://brew.sh) to `casks` (macOS desktop apps)
 - [`setup_desktop_apps`](./setup_desktop_apps) - installs all desktop apps I use via [`brew cask`](https://github.com/Homebrew/homebrew-cask/) & [`mas`](https://github.com/mas-cli/mas)

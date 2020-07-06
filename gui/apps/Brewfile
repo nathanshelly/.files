@@ -1,5 +1,4 @@
 # <<<<<<<< casks (only valid on macOS) >>>>>>>>
-# see additional context on Brewfiles in $DOTFILES/Brewfile
 
 cask_args appdir: '/Applications'
 

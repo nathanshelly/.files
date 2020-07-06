@@ -1,3 +1,5 @@
+# TODO: switch from Homebrew to nix
+
 # refs:
 # - https://runnable.com/blog/9-common-dockerfile-mistakes
 # - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
@@ -45,7 +47,7 @@ RUN git clone --single-branch --branch docker https://github.com/nathanshelly/.f
 # set dotfiles for use in scripts
 ENV DOTFILES /home/dot/.files
 # set up brew & all formulae - this takes a long time so run early for caching
-RUN $DOTFILES/infra/setup/bin/setup_brew
+RUN $DOTFILES/gui/setup/setup_brew
 
 RUN $DOTFILES/infra/setup/bin/symlink
 

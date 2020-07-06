@@ -8,11 +8,12 @@
     asciinema
     bandwhich
     bat
+    darwin.trash # TODO: understand behavior on non-Darwin system
     dust
     exa
     exiftool
     fd
-    ffmpeg
+    ffmpeg-full
     fzf
     git
     gitAndTools.delta

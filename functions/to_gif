@@ -10,7 +10,12 @@ to_gif() {
   command -v ffmpeg > /dev/null || {
     cat << EOF
 error: \`ffmpeg\` must be installed to create gifs
-please run \`brew install ffmpeg\`, then retry'
+please install \`ffmpeg\` then try again
+
+quick fixes:
+
+w/ \`brew\`: \`brew install ffmpeg\`
+w/ \`nix\`: \`nix-env -i ffmpeg-full\`
 EOF
     return 1
   }
