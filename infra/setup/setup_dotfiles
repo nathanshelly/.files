@@ -12,7 +12,10 @@ printf '\x1b[38;5;006mstarting dotfiles setup\x1b[0m\n\n'
 
 # TODO: test if available for future setup steps
 "$DOTFILES/infra/setup/bin/setup_nix" || {
-  echo "Nix installation failed. Please fix any errors and try again."
+  # shellcheck disable=SC2016
+  echo '`nix` installation failed.'
+  # shellcheck disable=SC2016
+  echo 'Try opening a new shell and rerunning `$DOTFILES/infra/setup/bin/setup_nix`'
   exit 1
 }
 

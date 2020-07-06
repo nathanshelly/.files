@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 
+# shellcheck disable=SC1090,SC2016
+
 # check that DOTFILES variable is defined
-# shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
@@ -23,9 +24,14 @@ main() {
   # daemon?
   # TODO: explain why multiuser and differences w/ single-user install
   # https://nixos.org/nix/manual/#sect-multi-user-installation
-  sh <(curl https://nixos.org/nix/install) \
+  sh <(curl -L https://nixos.org/nix/install) \
     --daemon \
     "$MAC_INSTALLATION_FLAGS"
+
+  command -v nix-env > /dev/null || {
+    echo 'The `nix-env` binary is not available, installation may have errored.'
+    exit 1
+  }
 
   # ref - https://github.com/rycee/home-manager#installation
   # install home manager
