@@ -44,7 +44,9 @@ main() {
 }
 
 setup_mas_apps() {
-  user "set up Mac App Store apps (Xcode, Super Easy Timer, and Timeout)? (y/any other key)"
+  user "set up Mac App Store apps (Xcode, Super Easy Timer, and Time Out)? \
+This requires being signed in to the app store and will only install apps if \
+you have previously installed them. (y/any other key)"
 
   read -r -s -n 1 maybe_continue < /dev/tty
   [[ $maybe_continue != 'y' ]] && {
@@ -52,14 +54,7 @@ setup_mas_apps() {
     exit 0
   }
 
-  local mas_path
-  mas_path="$(brew --prefix)/bin/mas"
-  [ -f "$mas_path" ] || brew install "mas"
-
-  # this line will error unless you have purchased Super Easy Timer. Delete or
-  # comment this line out to avoid errors.
-  # TODO: check for apple account first?
-  # ref - https://github.com/mas-cli/mas
+  command -v mas > /dev/null || brew install "mas"
 
   # Xcode - https://apps.apple.com/us/app/xcode/id497799835
   mas install 497799835

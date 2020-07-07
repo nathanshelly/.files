@@ -8,8 +8,9 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 command -v brew > /dev/null && return
 
-! "$DOTFILES/infra/scripts/is_macos.sh" && {
-  echo "These dotfiles don't use \`brew\` in Linux environments. Skipping install."
+"$DOTFILES/infra/scripts/is_macos.sh" || {
+  echo "these dotfiles don't use \`brew\` in Linux environments"
+  echo 'skipping install'
   return
 }
 

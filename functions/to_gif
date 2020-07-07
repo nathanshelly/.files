@@ -14,8 +14,8 @@ please install \`ffmpeg\` then try again
 
 quick fixes:
 
-w/ \`brew\`: \`brew install ffmpeg\`
 w/ \`nix\`: \`nix-env -i ffmpeg-full\`
+w/ \`brew\`: \`brew install ffmpeg\`
 EOF
     return 1
   }
