@@ -20,13 +20,18 @@ main() {
   return 0
 }
 
-# link base files comprising meat of config
+# link base files comprising majority of config
 link_base_files() {
+  link_file \
+    "$DOTFILES/nix/home.nix" \
+    "${XDG_CONFIG_HOME:-$HOME/.config}/nixpkgs/home.nix"
+
   link_file "$DOTFILES/utilities/git/gitconfig" "$HOME/.gitconfig"
   link_file "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
   link_file "$DOTFILES/tool-versions" "$HOME/.tool-versions"
 
   # editor configuration
+  mkdir -p "$HOME/.config/nvim"
   link_file "$DOTFILES/neovim/init.vim" "$HOME/.config/nvim/init.vim"
   link_file \
     "$DOTFILES/neovim/coc-settings.jsonc" \
@@ -61,6 +66,7 @@ link_gui_files() {
   link_file "$DOTFILES/gui/xvimrc" "$HOME/.xvimrc"
 
   # terminal emulator
+  mkdir -p "$HOME/.config/alacritty"
   link_file \
     "$DOTFILES/gui/apps/alacritty/alacritty.yml" \
     "$HOME/.config/alacritty/alacritty.yml"
@@ -76,11 +82,13 @@ link_gui_files() {
     "$HOME/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 
   # launcher (Alfred, Spotlight, Windows search, etc.)
+  mkdir -p "$HOME/Library/Application Support/ueli"
   link_file \
     "$DOTFILES/gui/apps/ueli/config.json" \
     "$HOME/Library/Application Support/ueli/config.json"
 
   # VSCode - text editor
+  mkdir -p "$HOME/Library/Application Support/Code/User"
   link_file \
     "$DOTFILES/gui/apps/vscode/keybindings.json" \
     "$HOME/Library/Application Support/Code/User/keybindings.json"

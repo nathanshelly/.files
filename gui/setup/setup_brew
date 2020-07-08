@@ -1,0 +1,35 @@
+#! /usr/bin/env bash
+
+# check that DOTFILES variable is defined
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
+
+source "$DOTFILES/infra/scripts/prompts.sh"
+
+"$DOTFILES/infra/scripts/is_macos.sh" || {
+  info "these dotfiles don't use \`brew\` in Linux environments"
+  info 'skipping install'
+  return
+}
+
+command -v brew > /dev/null && {
+  # shellcheck disable=SC2016
+  info '`brew` installed, skipping installation'
+  return
+}
+
+# shellcheck disable=SC2016
+info '`brew` not installed, installing now...'
+
+# installation - https://brew.sh/
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+# fix permissions issues for `compinit` caused by Homebrew messing with things
+#
+# ref - https://stackoverflow.com/a/43544733
+#
+# TODO: run conditionally
+compaudit | xargs chown -R "$(whoami)"
+compaudit | xargs chmod go-w
+
+brew analytics off # disable analytics

@@ -8,9 +8,15 @@
 # shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 
+# source so that `brew` is usable in the current shell for the next steps
+source "$DOTFILES/gui/setup/setup_brew" || {
+  echo 'Homebrew installation failed. Please fix any errors and try again.'
+  exit 1
+}
+
 # run in separate subshells
 
-# set up casks in `$DOTFILES/gui/Brewfile`
+# install casks in `$DOTFILES/gui/apps/Brewfile`
 "$DOTFILES/gui/setup/setup_desktop_apps" "$@"
 
 # symlink config files to their correct locations

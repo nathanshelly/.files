@@ -1,10 +1,12 @@
 # apps
 
-Brewfile for casks & settings/keybindings files for various apps (primarily native).
+A [Brewfile](https://thoughtbot.com/blog/brewfile-a-gemfile-but-for-homebrew) for easy installation of all GUI apps I use (Homebrew calls them casks).
+
+Settings/keybindings files for to configure a subset of those apps.
 
 ## [Brewfile](./Brewfile)
 
-Lists the casks (desktop apps) to install via Homebrew. See additional context on Brewfiles in [`$DOTFILES/Brewfile`](../Brewfile).
+Lists the casks (desktop apps) to install via Homebrew.
 
 ## List of apps
 
