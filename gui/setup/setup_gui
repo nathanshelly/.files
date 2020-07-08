@@ -10,9 +10,8 @@ source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 
 # source so that `brew` is usable in the current shell for the next steps
 source "$DOTFILES/gui/setup/setup_brew" || {
-  echo 'Homebrew installation failed'
-  echo 'This can often be flaky and only prevent use of a package or two'
-  echo 'If the error looks more severe you may want to investigate more'
+  echo 'Homebrew installation failed. Please fix any errors and try again.'
+  exit 1
 }
 
 # run in separate subshells

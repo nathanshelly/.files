@@ -9,6 +9,7 @@
     bandwhich
     bat
     darwin.trash # TODO: understand behavior on non-Darwin system
+    direnv
     dust
     exa
     exiftool
@@ -16,10 +17,12 @@
     ffmpeg-full
     fzf
     git
+    git-lfs
     gitAndTools.delta
     gitAndTools.gh
     gitAndTools.hub
     gitAndTools.tig
+    gnumake
     gnupg
     hyperfine
     jq
@@ -27,6 +30,7 @@
     mdcat
     ncurses
     neovim
+    nodejs
     ripgrep
     rsync
     shellcheck

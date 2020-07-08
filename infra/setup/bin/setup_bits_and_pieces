@@ -25,7 +25,8 @@ setup_tmux_terminfo() {
   # then install the compiled entry to the system `terminfo` database
   # shellcheck disable=SC2016
   info 'Using `sudo` to install `tmux-256color` `terminfo` entry'
-  sudo tic -xe "tmux-256color" "${TMPDIR}tmux-256color.info"
+  # install to system database
+  /usr/bin/tic -xe "tmux-256color" "${TMPDIR}tmux-256color.info"
 }
 
 main "$@"

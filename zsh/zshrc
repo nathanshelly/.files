@@ -136,3 +136,7 @@ fi
 # TODO: remove if this becomes unnecessary
 # tracking issue - https://github.com/NixOS/nix/issues/2033
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+
+# initialize direnv
+# ref - https://direnv.net/docs/hook.html#zsh
+eval "$(direnv hook zsh)"
