@@ -3,6 +3,13 @@
 # specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv`)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+# Note: script sourcing order matters (particularly with `nix`)
+#
+# This script will run after `.zshenv` (gaining access to any env vars created)
+#
+# refs:
+# - https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/#zsh_configuration_files
+
 # <<<< guards >>>>
 
 [[ -v DOTFILES ]] || {
@@ -127,18 +134,6 @@ setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
-
-# initialize `nix`
-# this code should be added to the corresponding `etc` file for your shell, e.g.
-# `/etc/bashrc` or `/etc/zshrc`. For some reason it seems like `macOS` may
-# overwrite these changes on a system update. For that reason add it here as
-# well (duplicate sourcing isn't an issue as the script bails immediately if run
-# previously)
-# ref - https://discourse.nixos.org/t/post-macos-install-env-var-settings-for-zsh/4597/7
-# TODO: make sure this is the best way to handle this
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
 
 # make `home-manager` available for use
 # ref - https://github.com/rycee/home-manager#installation
