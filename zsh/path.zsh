@@ -1,7 +1,7 @@
 # this file sets the $PATH environment variable to enable various executables
 #
 # why set this here and not in `zshenv`? because macOS & certain Linux distros
-# run `/etc/profile` after `zshenv` overwriting path modifications
+# run `/etc/zprofile` after `zshenv` overwriting path modifications
 # ref - https://stackoverflow.com/a/34244862
 #
 # zsh conveniently links `path` array and `PATH` env var
