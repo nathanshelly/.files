@@ -14,6 +14,8 @@ main() {
 
   setup_home_manager || exit 1
 
+  setup_nix_darwin || exit 1 # only runs on macOS (darwin)
+
   success '`nix` (and various pieces) setup complete'
 }
 
@@ -94,6 +96,62 @@ setup_home_manager() {
   ln -sf "$DOTFILES/nix/home.nix" "$HOME/.config/nixpkgs/home.nix"
 
   success '`home-manager` setup complete'
+}
+
+# manages macOS-specific config
+# ref - https://github.com/LnL7/nix-darwin#install
+setup_nix_darwin() {
+  "$DOTFILES/infra/scripts/is_macos.sh" || {
+    info 'skipping `nix-darwin` installation on non-macOS system'
+    return 0
+  }
+
+  command -v darwin-rebuild > /dev/null && {
+    info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
+    return 0
+  }
+
+  info "setting up nix-darwin"
+
+  pushd "${TMPDIR}" || {
+    fail 'failed to push tmp directory'
+    return 1
+  }
+
+  # move `/etc` files so that nix-darwin can set up it's own copies
+  #
+  # TODO: maybe make this workaround unnecessary?
+  #
+  # refs:
+  # - https://github.com/LnL7/nix-darwin/issues/158#issuecomment-560969421
+  # - https://github.com/LnL7/nix-darwin/issues/46
+  # - https://github.com/LnL7/nix-darwin/issues/2
+  sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.backup-before-nix-darwin
+  sudo mv /etc/zprofile /etc/zprofile.backup-before-nix-darwin
+  sudo mv /etc/zshrc /etc/zshrc.backup-before-nix-darwin
+
+  nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+
+  ./result/bin/darwin-installer || {
+    fail '`nix-darwin` installer failed. Please fix any issues and try again.'
+    return 1
+  }
+
+  command -v darwin-rebuild > /dev/null || {
+    fail "\`nix-darwin\` installation finished but the \`darwin-rebuild\`
+ command is not invokable. Please fix any issues and try again."
+    return 1
+  }
+
+  # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
+  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin-configuration.nix"
+
+  popd || {
+    fail 'probably not really an issue: failed to pop directory'
+    return 1
+  }
+
+  success '`nix-darwin` setup complete'
 }
 
 main "$@"
