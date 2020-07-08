@@ -31,6 +31,7 @@
     ncurses
     neovim
     nodejs
+    python3
     ripgrep
     rsync
     shellcheck
