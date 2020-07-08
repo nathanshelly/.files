@@ -196,8 +196,6 @@
   "projectManager.openInNewWindowWhenClickingInStatusBar": true,
   // <<<<<< scroll off >>>>>>
   "scrolloff.alwaysCenter": true,
-  // <<<<<< python >>>>>>
-  "python.pythonPath": "/usr/local/bin/python3",
   "python.venvPath": "~/envs/python",
   // linting
   "python.linting.enabled": true,
@@ -206,5 +204,6 @@
   // <<<<<< trailng spaces >>>>>>
   "trailing-spaces.highlightCurrentLine": false,
   // <<<<<< vs icons >>>>>>
-  "vsicons.dontShowNewVersionMessage": true
+  "vsicons.dontShowNewVersionMessage": true,
+  "python.defaultInterpreterPath": "/Users/nathan/.nix-profile/bin/python"
 }
