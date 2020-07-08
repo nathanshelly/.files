@@ -4,7 +4,7 @@
 # - http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
 # targets without immediate file dependencies
-.PHONY: all check fix format gui help lint setup symlink
+.PHONY: all check fix format gui help lint nix setup symlink
 .DEFAULT_GOAL := help
 
 lint:
@@ -21,6 +21,9 @@ fix: format
 
 setup:
 	./infra/setup/setup_dotfiles
+
+nix:
+	./infra/setup/bin/setup_nix
 
 symlink:
 	./infra/setup/bin/symlink
@@ -41,6 +44,8 @@ help:
 	@echo '		show this help message'
 	@echo 'make setup'
 	@echo '		set up dotfiles'
+	@echo 'make nix'
+	@echo '		set up nix'
 	@echo 'make symlink'
 	@echo '		symlink config files (like .zshrc) to their appropriate locations'
 	@echo 'make gui'
