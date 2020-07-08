@@ -13,12 +13,12 @@ main() {
 
   command -v brew > /dev/null || {
     # shellcheck disable=SC2016
-    echo 'Setting up desktop apps requires `brew` to be installed'
+    fail 'Setting up desktop apps requires `brew` to be installed'
     exit 1
   }
 
   "$DOTFILES/infra/scripts/is_macos.sh" || {
-    echo 'Desktop app setup only supported for macOS currently'
+    info 'Desktop app setup only supported for macOS currently'
     exit 1
   }
 
@@ -35,16 +35,19 @@ main() {
     }
   }
 
-  echo 'setting up desktop apps (casks)'
-  brew bundle --file "$DOTFILES/gui/apps/Brewfile"
+  info 'setting up desktop apps (casks)'
+  brew bundle --file "$DOTFILES/gui/apps/Brewfile" --verbose
   success "set up casks"
   # << end casks setup >>
 
   setup_mas_apps
 }
 
+# TODO: separate out more cleanly, fix up rough spots (xcode auth)
 setup_mas_apps() {
-  user "set up Mac App Store apps (Xcode & Super Easy Timer)? (y/any other key)"
+  user "set up Mac App Store apps (Xcode, Super Easy Timer, and Time Out)? \
+This requires being signed in to the app store and will only install apps if \
+you have previously installed them. (y/any other key)"
 
   read -r -s -n 1 maybe_continue < /dev/tty
   [[ $maybe_continue != 'y' ]] && {
@@ -52,14 +55,7 @@ setup_mas_apps() {
     exit 0
   }
 
-  local mas_path
-  mas_path="$(brew --prefix)/bin/mas"
-  [ -f "$mas_path" ] || brew install "mas"
-
-  # this line will error unless you have purchased Super Easy Timer. Delete or
-  # comment this line out to avoid errors.
-  # TODO: check for apple account first?
-  # ref - https://github.com/mas-cli/mas
+  command -v mas > /dev/null || brew install "mas"
 
   # Xcode - https://apps.apple.com/us/app/xcode/id497799835
   mas install 497799835
@@ -67,6 +63,9 @@ setup_mas_apps() {
   mas install 1353137878
   # Time Out (in-app purchases) - https://apps.apple.com/us/app/time-out-break-reminders/id402592703
   mas install 402592703
+
+  # TODO: verify fixes Xcode installation issue
+  sudo xcodebuild -license accept
 }
 
 # handle any arguments/flags
@@ -80,6 +79,7 @@ parse_input() {
         SHOULD_SETUP_DESKTOP_APPS=true
         ;;
       --*)
+        sudo xcodebuild -license accept
         # shellcheck disable=SC2016
         printf 'invalid flag passed to `%s`\n' 'setup_desktop_apps'
         exit 1

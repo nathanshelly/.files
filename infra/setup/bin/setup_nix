@@ -10,13 +10,15 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 main() {
   local MAC_INSTALLATION_FLAGS
 
+  info 'setting up `nix` (package manager)'
+
   # macOS (as of Catalina) makes the root (`/`) read-only
   # `nix` can workaround this by creating a "synthetic" directory at `/nix` and
   # mounting a separate volume which holds the actual contents
   # TODO: update docs/flesh out comments here
   # PR docs - https://dgn9s9wft3u6a.cloudfront.net/store/4iwvbj92fc10yyxla50an3vghajikwbl-manual/manual.html#sect-macos-installation
   "$DOTFILES/infra/scripts/is_macos.sh" && {
-    MAC_INSTALLATION_FLAGS='--darwin-use-encrypted-nix-store-volume'
+    MAC_INSTALLATION_FLAGS='--darwin-use-unencrypted-nix-store-volume'
   }
 
   # `--daemon` enables multiuser install
@@ -24,9 +26,17 @@ main() {
   # daemon?
   # TODO: explain why multiuser and differences w/ single-user install
   # https://nixos.org/nix/manual/#sect-multi-user-installation
-  sh <(curl -L https://nixos.org/nix/install) \
-    --daemon \
-    "$MAC_INSTALLATION_FLAGS"
+  command -v nix-env > /dev/null || {
+    sh <(curl -L https://nixos.org/nix/install) \
+      --daemon \
+      "$MAC_INSTALLATION_FLAGS"
+  }
+
+  # initialize `nix` for next steps
+  if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    # shellcheck disable=SC1091
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+  fi
 
   command -v nix-env > /dev/null || {
     echo 'The `nix-env` binary is not available, installation may have errored.'
@@ -47,8 +57,10 @@ main() {
   # install & create first generation
   nix-shell '<home-manager>' -A install
 
+  # TODO: do I need to `home-manager switch` here?
+
   # symlink home config
-  ln -s "$DOTFILES/nix/home.nix" "$HOME/.config/nixpkgs/home.nix"
+  ln -sf "$DOTFILES/nix/home.nix" "$HOME/.config/nixpkgs/home.nix"
 }
 
 main "$@"

@@ -2,8 +2,14 @@
 
 alias srczsh="source $HOME/.zshrc"
 
+# never auto update before running
+# ref - https://github.com/Homebrew/brew/blob/master/docs/Manpage.md#environment
+alias brew="HOMEBREW_NO_AUTO_UPDATE=true brew"
+
 # launch w/o sourcing configs
 alias zshn='zsh -f'
+
+alias hm="home-manager"
 
 # repo root
 command -v git > /dev/null && alias rr="git rev-parse --show-toplevel"

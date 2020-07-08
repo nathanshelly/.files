@@ -17,7 +17,29 @@ echo # avoid writing on same line as user input
 
 [[ $maybe_continue != 'y' ]] && {
   info 'skipping `asdf` setup'
-  exit 1
+  exit 0
+}
+
+# `nix` does not have `asdf` so install it via `git` when/if I need it
+command -v asdf > /dev/null || {
+  user "\`asdf\` doesn't seem to be installed, would you like to install it?"
+
+  read -r -n 1 maybe_continue < /dev/tty
+  echo # avoid writing on same line as user input
+
+  [[ $maybe_continue != 'y' ]] && {
+    info 'not installing `asdf`, bailing on `asdf` setup'
+    exit 0
+  }
+
+  # https://asdf-vm.com/#/core-manage-asdf-vm
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8 || {
+    echo 'Installation failed. Please fix any errors and try again'
+    exit 1
+  }
+
+  # adds `asdf` to environment for next steps
+  source "$DOTFILES/zsh/asdf.zsh"
 }
 
 # TODO: do this as a list (no need to call out to grep?)

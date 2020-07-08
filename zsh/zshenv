@@ -8,16 +8,12 @@ main() {
     dynamically_determine_dotfiles # see function at end of file
   fi
 
-  dynamically_set_homebrew_prefix # see function below
+  export NIX_PROFILE="$HOME/.nix-profile"
 
   # XDG directory specification
   # ref - https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
   export XDG_CONFIG_HOME="$HOME/.config"
   export XDG_DATA_HOME="$HOME/.local/share"
-
-  # << homebrew >>
-  # ref - https://github.com/Homebrew/brew/blob/master/docs/Manpage.md#environment
-  export HOMEBREW_NO_AUTO_UPDATE=true # never autoupdate
 
   # prevent generation of .pyc files
   export PYTHONDONTWRITEBYTECODE=1
@@ -46,38 +42,6 @@ main() {
     export OD_CURRENT_USER_EMAIL="nathan.shelly@opendoor.com"
   }
   # << end work-specific >>
-}
-
-# `brew --prefix` takes ~25-40ms on my machine vs ~11ms for the if/else below
-# to avoid that overhead I hardcode the path based on the existence of a folder
-# in the expected installation locations across OSes (these locations seem
-# unlikely to change soon)
-#
-# to see times on your machine (you may have to `brew install hyperfine`):
-# - `hyperfine 'brew --prefix'`
-# - `hyperfine ./foo.sh` where `foo.sh` is a script w/ the if/else below
-dynamically_set_homebrew_prefix() {
-  local macos_installation linux_sudo_installation linux_no_sudo_installation
-  local calculated_installation
-  macos_brew_installation='/usr/local'
-  linux_sudo_installation='/home/linuxbrew/.linuxbrew'
-  linux_no_sudo_installation="$HOME/.linuxbrew"
-
-  # on macOS the installation location `/usr/local` exists regardless of whether
-  # `brew` is installed so we need to check the inner Homebrew folder
-  if [ -d "$macos_brew_installation/Homebrew" ]; then
-    calculated_installation="$macos_brew_installation"
-  elif [ -d "$linux_sudo_installation" ]; then
-    calculated_installation="$linux_sudo_installation"
-  elif [ -d "$linux_no_sudo_installation" ]; then
-    calculated_installation="$linux_no_sudo_installation"
-  fi
-
-  # `calculated_installation` will be set if Homebrew is installed to any of the
-  # above locations
-  [ -z "$calculated_installation" ] || {
-    export HOMEBREW_PREFIX="$calculated_installation"
-  }
 }
 
 # dynamically determine path to `.files` repo

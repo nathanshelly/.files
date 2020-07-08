@@ -140,10 +140,7 @@ The default comment highlighting is unreadable on my terminal theme. This overla
 
 Define environment variables, loaded before any other file in this folder.
 
-A few notable environment variables:
-
-- `$DOTFILES` - specifies path to the root of this repo, used throughout `zsh` configuration
-- `$HOMEBREW_PREFIX` - should be equivalent to `brew --prefix`. Hardcoded (dynamic between OSes) to the current stable location to avoid overhead of `brew --prefix` (~25 ms)
+Defines `$DOTFILES` which specifies path to the root of this repo. Used throughout `zsh` configuration.
 
 This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
 

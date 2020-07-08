@@ -19,7 +19,7 @@ command -v fzf > /dev/null || return
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
 [[ $- == *i* ]] && {
-  source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2>/dev/null
+  source "$NIX_PROFILE/share/fzf/completion.zsh" 2>/dev/null
 }
 
 # default keybindings
@@ -27,7 +27,7 @@ command -v fzf > /dev/null || return
 # `M-c` - navigate to directory (`cd` into selected folder)
 # `^r` - search history (overridden below - still history search but slightly
 # different from default behavior)
-source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+source "$NIX_PROFILE/share/fzf/key-bindings.zsh"
 
 # use `fd` for `**` path & directory completion if installed
 command -v fd > /dev/null && {
@@ -45,7 +45,7 @@ command -v fd > /dev/null && {
 # <<<< config >>>>
 
 # NOTE: corresponding widgets defined in `./functions` &
-# `$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh`
+# `$NIX_PROFILE/share/fzf/key-bindings.zsh`
 
 # << zsh functions -> widgets >>
 # zsh requires explicit marking of functions that will be mapped as widgets
