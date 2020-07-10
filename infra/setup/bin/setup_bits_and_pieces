@@ -9,6 +9,8 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 main() {
   "$DOTFILES/infra/scripts/is_macos.sh" && {
     setup_tmux_terminfo
+
+    prevent_apps_restarting_on_login
   }
 }
 
@@ -31,10 +33,15 @@ setup_tmux_terminfo() {
 
 # prevent macOS from reopening apps on restart by preventing storing of session
 # ref - https://apple.stackexchange.com/a/253609
-# make the file storing the session owned by root
-# (otherwise the OS will just replace it)
-sudo chown root ~/Library/Preferences/ByHost/com.apple.loginwindow*
-# remove all permissions, so it can't be read or written to
-sudo chmod 000 ~/Library/Preferences/ByHost/com.apple.loginwindow*
+prevent_apps_restarting_on_login() {
+  # shellcheck disable=SC2016
+  info 'Using `sudo` to prevent macOS from restarting apps on login'
+
+  # make the file storing the session owned by root
+  # (otherwise the OS will just replace it)
+  sudo chown root ~/Library/Preferences/ByHost/com.apple.loginwindow*
+  # remove all permissions, so it can't be read or written to
+  sudo chmod 000 ~/Library/Preferences/ByHost/com.apple.loginwindow*
+}
 
 main "$@"
