@@ -10,6 +10,12 @@ alias brew="HOMEBREW_NO_AUTO_UPDATE=true brew"
 alias zshn='zsh -f'
 
 alias hm="home-manager"
+alias hme="home-manager edit"
+alias hms="home-manager switch"
+
+alias dr="darwin-rebuild"
+alias dre="darwin-rebuild edit"
+alias drs="darwin-rebuild switch"
 
 # repo root
 command -v git > /dev/null && alias rr="git rev-parse --show-toplevel"
