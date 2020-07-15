@@ -17,6 +17,7 @@
     "json",
     "jsonc",
     "markdown",
+    "nix",
     "python",
     "rust",
     "sh",
@@ -71,6 +72,16 @@
   },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
+  },
+
+  // custom
+  "languageserver": {
+    "nix": {
+      "command": "rnix-lsp",
+      "filetypes": [
+        "nix"
+      ]
+    }
   },
 
   // <<<< eslint >>>>

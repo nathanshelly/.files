@@ -33,6 +33,7 @@
     nodejs
     python3
     ripgrep
+    rnix-lsp # nix lsp
     rsync
     shellcheck
     shfmt
