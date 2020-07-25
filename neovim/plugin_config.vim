@@ -85,10 +85,21 @@ let g:lightline = {
   \ },
   \ 'component_function': {
   \   'readonly': 'LightlineReadonly',
+  \   'filename': 'LightlineFilename',
   \   'cocstatus': 'coc#status',
   \   'currentfunction': 'CocCurrentFunction'
   \ },
 \ }
+
+" ref - https://github.com/itchyny/lightline.vim/issues/293#issuecomment-373710096
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 " hide readonly component in help pages
 " https://github.com/itchyny/lightline.vim#can-i-hide-the-readonly-component-in-the-help-buffer
