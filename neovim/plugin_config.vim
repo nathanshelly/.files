@@ -111,6 +111,9 @@ endfunction
 
 nnoremap <leader>mp :MarkdownPreview<CR>
 
+" <<<< vim-cursorword >>>>
+let g:cursorword_delay = 400
+
 " <<<<<< end of utilities >>>>>>
 
 " <<<<<< colors/syntax/languages >>>>>>

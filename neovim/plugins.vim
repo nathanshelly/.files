@@ -145,6 +145,8 @@ Plug 'itchyny/lightline.vim'
 
 " universal REPL
 Plug 'metakirby5/codi.vim'
+" underline instances of word under cursor
+Plug 'itchyny/vim-cursorword'
 
 " << colors/syntax/languages >>
 
