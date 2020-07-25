@@ -22,20 +22,25 @@ main() {
 
 # link base files comprising majority of config
 link_base_files() {
+  local XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
   link_file \
     "$DOTFILES/nix/home.nix" \
-    "${XDG_CONFIG_HOME:-$HOME/.config}/nixpkgs/home.nix"
+    "$XDG_CONFIG_HOME/nixpkgs/home.nix"
 
   link_file "$DOTFILES/utilities/git/gitconfig" "$HOME/.gitconfig"
   link_file "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
   link_file "$DOTFILES/tool-versions" "$HOME/.tool-versions"
 
   # editor configuration
-  mkdir -p "$HOME/.config/nvim"
-  link_file "$DOTFILES/neovim/init.vim" "$HOME/.config/nvim/init.vim"
+  mkdir -p "$XDG_CONFIG_HOME/nvim/colors"
+  link_file "$DOTFILES/neovim/init.vim" "$XDG_CONFIG_HOME/nvim/init.vim"
   link_file \
     "$DOTFILES/neovim/coc-settings.jsonc" \
-    "$HOME/.config/nvim/coc-settings.json"
+    "$XDG_CONFIG_HOME/nvim/coc-settings.json"
+  link_file \
+    "$DOTFILES/neovim/colors/n.vim" \
+    "$XDG_CONFIG_HOME/nvim/colors/n.vim"
 
   # shell configuration
   link_file "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
@@ -55,6 +60,8 @@ link_nathan_files() {
 
 # link files for GUI apps, currently only supported on macOS
 link_gui_files() {
+  local XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
   "$DOTFILES/infra/scripts/is_macos.sh" || {
     echo 'skipping gui symlinks - currently only supported on macOS'
     return 1
@@ -66,10 +73,10 @@ link_gui_files() {
   link_file "$DOTFILES/gui/xvimrc" "$HOME/.xvimrc"
 
   # terminal emulator
-  mkdir -p "$HOME/.config/alacritty"
+  mkdir -p "$XDG_CONFIG_HOME/alacritty"
   link_file \
     "$DOTFILES/gui/apps/alacritty/alacritty.yml" \
-    "$HOME/.config/alacritty/alacritty.yml"
+    "$XDG_CONFIG_HOME/alacritty/alacritty.yml"
 
   # window organization/resizing
   link_file \
