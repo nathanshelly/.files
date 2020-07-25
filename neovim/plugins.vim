@@ -65,7 +65,6 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-sort-motion'
 
 " < text objects >
-" note: curently no motion plugins installed
 
 " this plugin is a dependency for other `kana/vim-textobj-*`
 "
@@ -130,12 +129,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " TODO: check that this fork stays up to date with upstream
 Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
 
-" distraction free writing
-Plug 'junegunn/goyo.vim'
-
-" highlight currently editing text
-Plug 'junegunn/limelight.vim'
-
 " open current line in github
 " note: opens most recent blob so only works if you are downstream of remote
 Plug 'ruanyl/vim-gh-line'
@@ -143,8 +136,6 @@ Plug 'ruanyl/vim-gh-line'
 " status line
 Plug 'itchyny/lightline.vim'
 
-" universal REPL
-Plug 'metakirby5/codi.vim'
 " underline instances of word under cursor
 Plug 'itchyny/vim-cursorword'
 
