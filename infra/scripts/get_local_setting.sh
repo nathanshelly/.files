@@ -4,4 +4,4 @@ command -v jq > /dev/null || exit 0
 
 # `-raw-output` strips quotes from strings
 # ref - https://github.com/stedolan/jq/issues/1735#issuecomment-427863218
-jq --raw-output --arg KEY "$1" '.[$KEY]' < "$DOTFILES/.files-settings.json"
+jq --raw-output --arg KEY "$1" '.[$KEY]' < "$DOTFILES/.files-settings"

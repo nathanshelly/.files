@@ -66,7 +66,7 @@ Initialize completion. Uses a cache with a refresh every 20 hours to speed up sh
 
 ### [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh)
 
-Sets dynamic environment variables. `LESSOPEN` depends on the `highlight` command while `$GIT_PAGER`, `BAT_THEME` & `EDITOR` all depend on settings values in `$DOTFILES/.files-settings.json`.
+Sets dynamic environment variables. `LESSOPEN` depends on the `highlight` command while `$GIT_PAGER`, `BAT_THEME` & `EDITOR` all depend on settings values in `$DOTFILES/.files-settings`.
 
 ### [`functions.zsh`](./functions.zsh)
 
