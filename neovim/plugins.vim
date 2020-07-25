@@ -136,9 +136,6 @@ Plug 'ruanyl/vim-gh-line'
 " status line
 Plug 'itchyny/lightline.vim'
 
-" underline instances of word under cursor
-Plug 'itchyny/vim-cursorword'
-
 " << colors/syntax/languages >>
 
 " jsonc filetype - JSON w/ comments
