@@ -16,7 +16,7 @@ main() {
 --line-numbers --force --style base16/onedark --no-trailing-nl"
 }
 
-# set `bat` theme based on terminal theme in `$DOTFILES/.files-settings.json`
+# set `bat` theme based on terminal theme in `$DOTFILES/.files-settings`
 set_bat_theme() {
   local terminal_theme
 
@@ -32,7 +32,7 @@ set_bat_theme() {
 set_git_pager_theme() {
   local color_overrides pager_theme terminal_theme
 
-  # dynamically set pager based on color theme in `$DOTFILES/.files-settings.json`
+  # dynamically set pager based on color theme in `$DOTFILES/.files-settings`
   terminal_theme="$($DOTFILES/infra/scripts/get_local_setting.sh "theme")"
   if [ ${terminal_theme:-""} = light ]; then
     pager_theme="OneHalfLight";

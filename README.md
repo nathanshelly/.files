@@ -45,7 +45,7 @@ These dotfiles give you the best of a custom configuration without the hassle of
 - well-supported - no SLA but a promise to address new issues in a timely manner ⏰
 - well-documented - READMEs & code comments galore help anytime you want to make direct changes
 - focus on speed - this configuration attempts to provide a useful set of features while keeping shell startup/prompt latency as low as possible
-- customizable - toggle bits & pieces, set a color theme (light or dark), and more via a [`.files-settings.json` file](./infra/docs/settings.md)
+- customizable - toggle bits & pieces, set a color theme (light or dark), and more via a [`.files-settings` file](./infra/docs/settings.md)
 
 ### the anti-pitch
 

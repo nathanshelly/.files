@@ -28,5 +28,5 @@ source_homebrew_asdf() {
 source_homebrew_asdf && return 0
 
 echo 'Error initializing `asdf`. Try running `$DOTFILES/infra/setup/bin/setup_asdf.sh`.'
-echo 'Or setting `asdf: false` in $DOTFILES/.files-settings.json'
+echo 'Or setting `asdf: false` in $DOTFILES/.files-settings'
 return 0

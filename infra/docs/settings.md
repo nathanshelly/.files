@@ -1,6 +1,6 @@
 # settings
 
-These dotfiles are configured via [`.files-settings.json`](../../.files-settings.json). This allows for easy high-level tweaking.
+These dotfiles are configured via [`.files-settings`](../../.files-settings). This allows for easy high-level tweaking.
 
 Currently these options are primarily booleans enabling or disabling a specific component. Non-boolean options are theme ("dark" or "light") and editor options (`(n)vi(m)`, `emacs`, `code`, etc.).
 
