@@ -10,6 +10,11 @@
   return 1
 }
 
+# $PATH configuration
+# perform early so that executables are available for enabled check and future
+# config files
+source "$DOTFILES/zsh/path.zsh"
+
 "$DOTFILES/infra/scripts/component_enabled.sh" 'zsh' || return 0
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -28,10 +33,6 @@ fi
 source "$DOTFILES/zsh/completion.zsh"
 source "$DOTFILES/zsh/keymap.zsh"
 source "$DOTFILES/zsh/manydots.zsh"
-
-# $PATH configuration
-# perform early so that executables are available for future config files
-source "$DOTFILES/zsh/path.zsh"
 
 # <<<< files with dependencies >>>>
 # these files depend either on executables made accessible via $PATH or code
