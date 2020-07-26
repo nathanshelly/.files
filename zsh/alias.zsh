@@ -9,13 +9,17 @@ alias brew="HOMEBREW_NO_AUTO_UPDATE=true brew"
 # launch w/o sourcing configs
 alias zshn='zsh -f'
 
-alias hm="home-manager"
-alias hme="home-manager edit"
-alias hms="home-manager switch"
+command -v home-manager > /dev/null && {
+  alias hm="home-manager"
+  alias hme="home-manager edit"
+  alias hms="home-manager switch"
+}
 
-alias dr="darwin-rebuild"
-alias dre="darwin-rebuild edit"
-alias drs="darwin-rebuild switch"
+command -v darwin-rebuild > /dev/null && {
+  alias dr="darwin-rebuild"
+  alias dre="darwin-rebuild edit"
+  alias drs="darwin-rebuild switch"
+}
 
 # repo root
 command -v git > /dev/null && {
