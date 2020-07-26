@@ -135,12 +135,6 @@ setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
 
-# make `home-manager` available for use
-# ref - https://github.com/rycee/home-manager#installation
-# TODO: remove if this becomes unnecessary
-# tracking issue - https://github.com/NixOS/nix/issues/2033
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-
 # initialize direnv
 # ref - https://direnv.net/docs/hook.html#zsh
 eval "$(direnv hook zsh)"
