@@ -18,16 +18,14 @@ command -v fzf > /dev/null || return
 
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
-[[ $- == *i* ]] && {
+[[ $- == *i* ]] && [ -f $NIX_PROFILE/share/fzf/completion.zsh ] && {
   source "$NIX_PROFILE/share/fzf/completion.zsh" 2>/dev/null
 }
 
-# default keybindings
-# `^t` - pastes selected files
-# `M-c` - navigate to directory (`cd` into selected folder)
-# `^r` - search history (overridden below - still history search but slightly
-# different from default behavior)
-source "$NIX_PROFILE/share/fzf/key-bindings.zsh"
+# set up default key bindings (see config below for more details)
+[ -f $NIX_PROFILE/share/fzf/key-bindings.zsh ] && {
+  source "$NIX_PROFILE/share/fzf/key-bindings.zsh"
+}
 
 # use `fd` for `**` path & directory completion if installed
 command -v fd > /dev/null && {
@@ -73,6 +71,14 @@ export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
  $_fzf_preview_window\
  --bind ctrl-j:down,ctrl-k:up,ctrl-space:toggle-preview,\
 ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
+
+# <<<< keybindings >>>>
+
+# default keybindings
+# `^t` - pastes selected files
+# `M-c` - navigate to directory (`cd` into selected folder)
+# `^r` - search history (overridden below - still history search but slightly
+# different from default behavior)
 
 # << list files >>
 
