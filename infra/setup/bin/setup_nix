@@ -63,6 +63,12 @@ setup_nix() {
 }
 
 setup_home_manager() {
+  "$DOTFILES/infra/scripts/is_macos.sh" && {
+    info 'skipping `home-manager` installation on macOS system'
+    info 'managed via `home-manager` mode of `nix-darwin` config on macOS'
+    return 0
+  }
+
   command -v home-manager > /dev/null && {
     info 'skipping `home-manager` installation since `home-manager` is invokable'
     return 0
@@ -104,6 +110,16 @@ setup_nix_darwin() {
   "$DOTFILES/infra/scripts/is_macos.sh" || {
     info 'skipping `nix-darwin` installation on non-macOS system'
     return 0
+  }
+
+  # shellcheck disable=SC2210
+  grep --quiet "home-manager" "$HOME/.nix-channels" 2>&1 > /dev/null || {
+    # add channel for home-manager module
+    # ref - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
+    nix-channel --add \
+      https://github.com/rycee/home-manager/archive/master.tar.gz \
+      home-manager
+    nix-channel --update
   }
 
   command -v darwin-rebuild > /dev/null && {
