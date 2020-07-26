@@ -54,9 +54,11 @@ zinit light zsh-users/zsh-history-substring-search
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-# quickly `cd` to folders based on frequency and recency of access
-zinit ice wait lucid
-zinit light skywind3000/z.lua
+command -v lua > /dev/null && {
+  # quickly `cd` to folders based on frequency and recency of access
+  zinit ice wait lucid
+  zinit light skywind3000/z.lua
+}
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
