@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-command -v jq > /dev/null || exit 0
+command -v jq > /dev/null || exit 1
 
 # `-raw-output` strips quotes from strings
 # ref - https://github.com/stedolan/jq/issues/1735#issuecomment-427863218
