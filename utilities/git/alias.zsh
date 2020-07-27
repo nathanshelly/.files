@@ -25,7 +25,6 @@ alias gclr='git clone --recurse'
 alias gcm='git commit --message'
 alias gco='git checkout'
 alias gcob='git checkout -b' # <branch>
-alias gcom='git checkout master'
 alias gcop='git checkout --patch'
 alias gcp='git cherry-pick'
 
