@@ -5,7 +5,8 @@ render_args() {
   # use `mdcat` when passed a single markdown file
   [[ -z $2 ]] && [[ $1 =~ \.md$ ]] && command -v mdcat > /dev/null && {
     # display markdown file using `mdcat` w/ a pager
-    # ref - https://github.com/lunaryorn/mdcat/issues/50
+    # TODO: use `--paginate` flag once released
+    # ref - https://github.com/lunaryorn/mdcat/issues/152
     mdcat "$1" | less --no-init --quit-if-one-screen --raw-control-chars
     return
   }
