@@ -3,7 +3,7 @@
 alias srczsh="source $HOME/.zshrc"
 
 # never auto update before running
-# ref - https://github.com/Homebrew/brew/blob/master/docs/Manpage.md#environment
+# ref - https://github.com/Homebrew/brew/blob/main/docs/Manpage.md#environment
 alias brew="HOMEBREW_NO_AUTO_UPDATE=true brew"
 
 # launch w/o sourcing configs

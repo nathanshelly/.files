@@ -104,7 +104,7 @@ Notable configurations:
 
 Custom colorschemes.
 
-[Sole scheme](./colorschemes/onehalfdarkmodified.vim) at the moment is a fork of [OneHalfDark](https://github.com/sonph/onehalf/tree/master/vim).
+[Sole scheme](./colorschemes/onehalfdarkmodified.vim) at the moment is a fork of [OneHalfDark](https://github.com/sonph/onehalf/tree/main/vim).
 
 ### [`commands.vim`](./commands.vim)
 
@@ -206,7 +206,7 @@ Managed using [`vim-plug`](https://github.com/junegunn/vim-plug).
 Here's the format of this file:
 
 ```vim
-# install `vim-plug` from master if not already installed
+# install `vim-plug` from main if not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   ...
 endif

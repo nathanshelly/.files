@@ -2,8 +2,8 @@
 
 # Pull all remotes & hard reset to `origin/$1`
 #
-# For example, `gplf master` will pull all remotes and reset current branch to
-# `origin/master`.
+# For example, `gplf main` will pull all remotes and reset current branch to
+# `origin/main`.
 #
 # Passing a branch that is not a tracking branch of the checked out local branch
 # will still hard reset the current branch to the given branch.

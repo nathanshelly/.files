@@ -24,7 +24,6 @@ A few of my most used:
 - `gb` -> `git branch`
 - `gcm` -> `git commit -m`
 - `gco` -> `git checkout`
-  - `gcom` -> `git checkout master`
 - `gl` -> `git log`
 - `gpl` -> `git pull`
 - `gps` -> `git push`
@@ -32,7 +31,6 @@ A few of my most used:
 - `gr` -> `git rebase --interactive`
   - `gra` -> `git rebase --abort`
   - `grc` -> `git rebase --continue`
-  - `grm` -> `git rebase --interactive master`
   - `gu` -> `git reset HEAD~` - undo last commit, retains all changes from the commits unstaged
 
 ## functions

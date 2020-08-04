@@ -58,8 +58,6 @@ alias gpsd='git push --dry-run'
 
 alias gr='git rebase --interactive'
 alias grn='git rebase'
-alias grm='git rebase --interactive master'
-alias grnm='git rebase master'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias grst='git reset'

@@ -30,7 +30,7 @@ docker run -it --mount src=<dir-to-mount>,target=/external,type=bind nathanshell
 docker exec --user 0 --interactive --tty dot zsh
 ```
 
-## differences from `master`/`macOS` setup
+## differences from `main`/`macOS` setup
 
 This setup mostly replicates the behavior of these dotfiles on macOS with a few differences:
 

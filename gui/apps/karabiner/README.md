@@ -48,7 +48,7 @@ See comments in [`karabiner.edn`](./karabiner.edn) for the full list of rules ap
 
 ### editing the config (`karabiner.edn`)
 
-See [the tutorial](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md) for additional examples.
+See [the tutorial](https://github.com/yqrashawn/GokuRakuJoudo/blob/main/tutorial.md) for additional examples.
 
 To format the file run this (requires `npx` & uses [`cljfmt`](https://github.com/weavejester/cljfmt) under the hood):
 

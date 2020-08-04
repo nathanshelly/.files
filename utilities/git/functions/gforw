@@ -1,8 +1,9 @@
 #! /usr/bin/env bash
-# move forward linearly a given number of commits
 
-[[ -z $1 ]] && {
-  cat << EOF
+# move forward linearly a given number of commits
+function gforw() {
+  [[ -z $1 ]] && {
+    cat << EOF
 error: the following arguments were not provided
 
   <NUMBER-OF-COMMITS>
@@ -11,10 +12,19 @@ USAGE:
 
   gforw NUMBER-OF-COMMITS [BRANCH-NAME]
 
-where BRANCH-NAME is the branch towards which to move (assumes \`master\` if none given)
+where BRANCH-NAME is the branch towards which to move (if none given assumes
+\`main\` [falls back to \`master\`])
 EOF
-  return 1
+    return 1
+  }
+
+  local default
+
+  # shellcheck disable=SC1090
+  default="$(. "$DOTFILES"/utilities/git/functions/prefer_main.sh)"
+
+  git checkout \
+    "$(git rev-list --topo-order HEAD.."${2:-"$default"}" | tail -"$1" | head -1)"
 }
 
-git checkout \
-  "$(git rev-list --topo-order HEAD.."${2:-master}" | tail -"$1" | head -1)"
+gforw "$@"

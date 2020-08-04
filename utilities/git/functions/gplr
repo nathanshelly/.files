@@ -2,7 +2,7 @@
 
 # Pull all remotes & rebase current branch on `origin/$1`
 #
-# For example, `gplr master` rebases the current branch on `origin/master`
+# For example, `gplr main` rebases the current branch on `origin/main`
 #
 # Passing a branch that is not a tracking branch of the checked out local branch
 # will still rebase the current branch on the given branch.

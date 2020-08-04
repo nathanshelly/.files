@@ -1,6 +1,6 @@
 // configuration file for `coc.nvim` - https://github.com/neoclide/coc.nvim
 //
-// defaults - https://github.com/neoclide/coc.nvim/blob/master/data/schema.json
+// defaults - https://github.com/neoclide/coc.nvim/blob/main/data/schema.json
 //
 // this file must be symlinked to `$HOME/.config/nvim/coc-settings.json`
 // this symlinking should occur through the install script

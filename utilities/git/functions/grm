@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+# shellcheck disable=SC1090
+git rebase --interactive "$(. "$DOTFILES"/utilities/git/functions/prefer_main.sh)"
