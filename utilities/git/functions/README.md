@@ -6,6 +6,7 @@ Git-specific functions autoloaded (lazy loaded) into shell.
 
 - [`gcom`](./gcom) -> `git checkout main` (falls back to `master`)
 - [`grm`](./grm) -> `git rebase --interactive main` (falls back to `master`)
+- [`grbump`](./grbump) -> rebase given branches onto `main` (falls back to `master`)
 - [`cdrr`](./cdrr) - `cd` to repo root if in a git repo
 - [`gae`](./gae) - add all files below \$PWD except given files/directories
 - [`gback`](./gback) - move back linearly a given number of commits

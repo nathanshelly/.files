@@ -1,0 +1,31 @@
+#! /usr/bin/env bash
+
+# rebase given branches on main & force-push
+
+# would avoid running if anything's watching files
+# ref - https://stackoverflow.com/a/4914298/5121636
+
+function grbump() {
+  [[ -z $1 ]] && {
+    cat << EOF
+error: the following arguments were not provided
+
+  <BRANCH-NAME(S)>
+
+USAGE:
+
+  grbump <BRANCH-NAME(S)>...
+EOF
+    return 1
+  }
+
+  local branch
+
+  # `$@` holds all arguments
+  for branch in "$@"; do
+    # shellcheck disable=SC1090
+    git rebase "$(. "$DOTFILES/utilities/git/functions/prefer_main.sh")" "$branch"
+  done
+}
+
+grbump "$@"
