@@ -1,5 +1,7 @@
 # scripts
 
+<!-- TODO: make this accuracte, scripts like `component_enabled` are executed directly -->
+
 Various infra-related scripts. Scripts without execute permissions used via `source`ing.
 
 - [`component_enabled.sh`](./component_enabled.sh) - tests if given component is enabled (keys to `false`)
