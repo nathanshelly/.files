@@ -79,7 +79,6 @@ parse_input() {
         SHOULD_SETUP_DESKTOP_APPS=true
         ;;
       --*)
-        sudo xcodebuild -license accept
         # shellcheck disable=SC2016
         printf 'invalid flag passed to `%s`\n' 'setup_desktop_apps'
         exit 1
