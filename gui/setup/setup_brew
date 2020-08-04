@@ -22,7 +22,7 @@ command -v brew > /dev/null && {
 info '`brew` not installed, installing now...'
 
 # installation - https://brew.sh/
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/main/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # fix permissions issues for `compinit` caused by Homebrew messing with things
 #
