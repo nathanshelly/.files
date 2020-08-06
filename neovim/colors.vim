@@ -35,7 +35,6 @@ augroup whitespace_highlighting
   " rehighlight on color scheme change
   autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta guibg=#ff00ff
   " highlight all trailing whitespace
-  " TODO: check why this seemed to break
   autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
   " avoid highlighting trailing whitespace on current line when editing at the end
   " of it

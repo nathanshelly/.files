@@ -42,11 +42,8 @@ command -v asdf > /dev/null || {
   source "$DOTFILES/zsh/asdf.zsh"
 }
 
-# TODO: do this as a list (no need to call out to grep?)
-# plugin_list=($(asdf plugin-list))
 plugin_list=$(asdf plugin-list)
 
-# TODO: extract list of plugins from $DOTFILES/utilities/asdf/tool-versions
 printf '%s' "$plugin_list" | grep -q nodejs || {
   asdf plugin-add nodejs
   # install keyring - https://github.com/asdf-vm/asdf-nodejs#install

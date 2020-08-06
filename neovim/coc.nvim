@@ -28,10 +28,6 @@ inoremap <expr> <c-l> "\<c-p>"
 nnoremap <leader>cr :CocRestart<cr><cr>
 
 " show diagnostic information
-" TODO: figure out general key binding to go to next tsserver, rust language
-" server, etc. error
-" TODO: figure out what's wrong with below line
-" nmap <leader>cd <Plug>(coc-diagnostic-info)
 " move between diagnostics
 nmap <leader>cn <Plug>(coc-diagnostic-next)
 nmap <leader>cp <Plug>(coc-diagnostic-prev)
@@ -50,15 +46,8 @@ nmap <silent> gfr <Plug>(coc-references)
 nmap <silent> gnr <Plug>(coc-rename)
 " format buffer
 nmap <silent> gfb <Plug>(coc-format)
-" TODO: evaluate use of `co` namespace depending on usage patterns
-" TODO: understand what code actions are (and code lens actions below)
 " apply code action for current line
 nmap <silent> coa <Plug>(coc-codeaction)
-" nmap <silent> coa :CocAction<CR>
-
-" open link
-" TODO: figure out what's wrong with below line (same problem as above)
-" nmap  gx <Plug>(coc-openlink)
 
 " apply code lens action on current line
 nmap <silent> col <Plug>(coc-codelens-action)
@@ -103,7 +92,6 @@ let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-p>'
 
 " customize status line error/warning symbols (matches diagnostic warning/error)
-" TODO: customize colors?
 let g:coc_status_error_sign = '◉ '
 let g:coc_status_warning_sign = '○ '
 
@@ -126,13 +114,7 @@ nnoremap <silent> <c-s> :CocList<CR>
 
 " TODO: possible keybindings below
 " " Show all diagnostics
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" " Manage extensions
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" " Show commands
-" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document
-" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>cda  :<C-u>CocList diagnostics<cr>
 " " Search workspace symbols
 " nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " " Do default action for next item.
