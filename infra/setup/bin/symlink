@@ -27,9 +27,8 @@ main() {
 link_base_files() {
   local XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
-  link_file \
-    "$DOTFILES/nix/home.nix" \
-    "$XDG_CONFIG_HOME/nixpkgs/home.nix"
+  mkdir -p "$XDG_CONFIG_HOME/nixpkgs"
+  link_file "$DOTFILES/nix/home.nix" "$XDG_CONFIG_HOME/nixpkgs/home.nix"
 
   link_file "$DOTFILES/utilities/git/gitconfig" "$HOME/.gitconfig"
   link_file "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
