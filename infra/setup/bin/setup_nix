@@ -98,9 +98,6 @@ setup_home_manager() {
     return 1
   }
 
-  # symlink home config
-  ln -sf "$DOTFILES/nix/home.nix" "$HOME/.config/nixpkgs/home.nix"
-
   success '`home-manager` setup complete'
 }
 
