@@ -62,6 +62,7 @@ function set_up_miscellaneus() {
   # to squeeze out the last bit of performance
 
   # TODO: make this actually work on fresh install or remove entirely
+  # TODO: make this less black boxy
   final_zsh_setup_commands="\
   zinit self-update;\
   fast-theme \"$DOTFILES/zsh/zle-fsh-theme-overlay.ini\";"
