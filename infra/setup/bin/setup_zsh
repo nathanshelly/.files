@@ -6,56 +6,68 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-zsh_path="$(command -v zsh)"
-
 info "Setting up zsh"
 
 # TODO: remove `path_helper` macOS utility
 
 # TODO: move this setup into nix-darwin config
 # add `zsh` to allowed shells if not already added
-grep -q "$zsh_path" /etc/shells || {
-  info "Using sudo access to add '$zsh_path' to /etc/shells"
-  sudo sh -c "printf '%s\n' '$zsh_path' >> /etc/shells" && {
-    success "Added $zsh_path to /etc/shells"
+function maybe_add_active_zsh_to_allowed_shells() {
+  local active_zsh_path
+
+  active_zsh_path="$(command -v zsh)"
+
+  grep -q "$active_zsh_path" /etc/shells && return 0
+
+  info "Using sudo access to add '$active_zsh_path' to /etc/shells"
+  sudo sh -c "printf '%s\n' '$active_zsh_path' >> /etc/shells" && {
+    success "Added $active_zsh_path to /etc/shells"
   }
 }
+maybe_add_active_zsh_to_allowed_shells
 
-function maybe_set_default_shell() {
-  zsh_path="$(command -v zsh)"
-  # change login shell to active version of `zsh` (if it isn't already)
+# change default shell to active version of `zsh` (if it isn't already)
+function maybe_set_active_zsh_as_default() {
+  local active_zsh_path default_shell
+
   if "$DOTFILES/infra/scripts/is_macos.sh"; then
     # avoids following symlinks
-    # reports the correct default shell: /etc/profiles/per-user/$USER/bin/zsh
+    # reports the expected default shell: /etc/profiles/per-user/$USER/bin/zsh
     # instead of $SHELL's specific Nix store version: /nix/store/l72j...-zsh-x.y/bin/zsh
     # ref - https://stackoverflow.com/a/41553295
     default_shell="$(dscl . -read ~ UserShell | sed 's/UserShell: //')"
-    [ "$default_shell" = "$zsh_path" ]
   else
-    [ "$SHELL" = "$zsh_path" ]
+    default_shell="$SHELL"
   fi
-  # the exit status of the last command
-  # in this case the exit status of `[` (the `test` command) which is 1 when the
-  # test fails and 0 when it passes
-  # shellcheck disable=SC2181
-  [ $? = 0 ] || {
-    info "Using sudo access to change default shell to '$zsh_path'"
-    chsh -s "$zsh_path" && success "Changed login shell to $zsh_path"
+
+  active_zsh_path="$(command -v zsh)"
+
+  [ "$default_shell" = "$active_zsh_path" ] && return 0
+
+  info "Using sudo access to change default shell to '$active_zsh_path' \
+(current default is '$default_shell')"
+  chsh -s "$active_zsh_path" && {
+    success "Changed default shell to '$active_zsh_path'"
   }
 }
-maybe_set_default_shell
+maybe_set_active_zsh_as_default
 
-# final setup steps run via a zsh interactive shell
-# install zinit & its associated plugins
-# apply ZLE syntax highlighting overrides to FSH plugin
-# `zinit self-update` is a recommended post-install step which runs `zcompile`
-# to squeeze out the last bit of performance
-# TODO: make this less black boxy
-final_zsh_setup="\
-zinit self-update;\
-fast-theme \"$DOTFILES/zsh/zle-fsh-theme-overlay.ini\";"
-info "Installing plugins"
-zsh -i -c "$final_zsh_setup" > /dev/null
-unset final_zsh_setup
+function set_up_miscellaneus() {
+  local final_zsh_setup_commands
+
+  # final setup steps run via a zsh interactive shell
+  # install zinit & its associated plugins
+  # apply ZLE syntax highlighting overrides to FSH plugin
+  # `zinit self-update` is a recommended post-install step which runs `zcompile`
+  # to squeeze out the last bit of performance
+  # TODO: make this less black boxy
+  final_zsh_setup_commands="\
+  zinit self-update;\
+  fast-theme \"$DOTFILES/zsh/zle-fsh-theme-overlay.ini\";"
+
+  info "Installing plugins"
+  zsh -i -c "$final_zsh_setup_commands" > /dev/null
+}
+set_up_miscellaneus
 
 success "Completed zsh setup"
