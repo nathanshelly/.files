@@ -18,11 +18,29 @@ grep -q "$zsh_path" /etc/shells || {
   }
 }
 
-# change login shell to active version of `zsh` (if it isn't already)
-[ "$SHELL" = "$zsh_path" ] || {
-  info "Using sudo access to change default shell to '$zsh_path'"
-  chsh -s "$zsh_path" && success "Changed login shell to $zsh_path"
+function maybe_set_default_shell() {
+  zsh_path="$(command -v zsh)"
+  # change login shell to active version of `zsh` (if it isn't already)
+  if "$DOTFILES/infra/scripts/is_macos.sh"; then
+    # avoids following symlinks
+    # reports the correct default shell: /etc/profiles/per-user/$USER/bin/zsh
+    # instead of $SHELL's specific Nix store version: /nix/store/l72j...-zsh-x.y/bin/zsh
+    # ref - https://stackoverflow.com/a/41553295
+    default_shell="$(dscl . -read ~ UserShell | sed 's/UserShell: //')"
+    [ "$default_shell" = "$zsh_path" ]
+  else
+    [ "$SHELL" = "$zsh_path" ]
+  fi
+  # the exit status of the last command
+  # in this case the exit status of `[` (the `test` command) which is 1 when the
+  # test fails and 0 when it passes
+  # shellcheck disable=SC2181
+  [ $? = 0 ] || {
+    info "Using sudo access to change default shell to '$zsh_path'"
+    chsh -s "$zsh_path" && success "Changed login shell to $zsh_path"
+  }
 }
+maybe_set_default_shell
 
 # final setup steps run via a zsh interactive shell
 # install zinit & its associated plugins
