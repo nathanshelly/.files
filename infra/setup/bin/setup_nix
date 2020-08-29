@@ -110,7 +110,7 @@ setup_nix_darwin() {
   }
 
   # shellcheck disable=SC2210
-  grep --quiet "home-manager" "$HOME/.nix-channels" 2>&1 > /dev/null || {
+  grep --quiet "home-manager" "$HOME/.nix-channels" > /dev/null 2>&1 || {
     # add channel for home-manager module
     # ref - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
     nix-channel --add \
