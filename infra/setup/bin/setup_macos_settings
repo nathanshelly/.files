@@ -1,0 +1,90 @@
+#! /usr/bin/env bash
+
+# adapted from https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+# useful ref - https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/
+
+# check that DOTFILES variable is defined
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
+
+source "$DOTFILES/infra/scripts/prompts.sh"
+
+info "configuring macOS settings"
+
+# close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# set ~/tmp as the default location for new Finder windows
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/tmp/"
+
+# display full POSIX path as Finder window title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+# keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# disable warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# use list view in all Finder windows by default
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Expand "General" and "Open with" File Info panes
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+  General -bool true \
+  OpenWith -bool true
+
+###############################################################################
+# Miscellaneous
+###############################################################################
+
+# 24 hour clock
+defaults write com.apple.menuextra.clock DateFormat -string "H:mm:ss"
+
+# save screenshots to ~/tmp
+defaults write com.apple.screencapture location -string "$HOME/tmp"
+
+# disable automatic substitutions/corrections:
+# - smart dashes
+# - quotes
+# - periods
+# - capitalization
+defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
+# click in the scrollbar to jump to spot that's clicked
+defaults write -g AppleScrollerPagingBehavior -bool true
+
+# trackpad tracing speed
+defaults write -g com.apple.trackpad.scaling -float 5.0
+
+# set alert volume to zero to disable beeps
+defaults write -g com.apple.sound.beep.volume -float 0
+
+# prevent Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+info "killing affected applications"
+for app in "cfprefsd" \
+  "Dock" \
+  "Finder" \
+  "SystemUIServer"; do
+  killall "${app}" &> /dev/null
+done
+success "finished configuring macOS settings"
