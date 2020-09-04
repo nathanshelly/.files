@@ -9,8 +9,6 @@
 #   - https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861
 #   - http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 
-# <<<< completion >>>>
-
 # don't run unless `fzf` is installed
 command -v fzf > /dev/null || return
 
@@ -20,6 +18,7 @@ command -v fzf > /dev/null || return
 # takes ~4ms as timed by `hyperfine`
 FZF_SHARE="$(fzf-share)"
 
+# <<<< completion >>>>
 # Note: `$-` lists options set in current shell
 # ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
 [[ $- == *i* ]] && [ -f $FZF_SHARE/completion.zsh ] && {
