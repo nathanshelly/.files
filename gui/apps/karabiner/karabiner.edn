@@ -85,15 +85,6 @@
     :rules [[:!Osemicolon :!Odelete_or_backspace]]}
    {:des "Cmd-; to Cmd-Delete" :rules [[:!Csemicolon :!Cdelete_or_backspace]]}
 
-   ;; 1. I want global keyboard shortcuts to play/pause audio & skip tracks
-   ;; 2. I want this binding to be triggerable with one hand (preferably the
-   ;; right one)
-   ;; 3. The music player I use (Google Play Music Desktop Player) does not seem
-   ;; to allow bindings with Option, only Ctrl (🤷‍♂️) so remap right_option
-   ;; to right_control
-   ;; TODO: remove this when/if I can use option instead of ctrl
-   {:des "Right alt to right control" :rules [[:right_option :right_control]]}
-
    ;; enter parens `()` more easily
    {:des "tap left shift -> `(`"
     :rules [[:##left_shift :left_shift nil {:alone :!S9}]]}
@@ -103,7 +94,7 @@
    ;; use right_command as a hyper to expand possible mappings
    {:des "Right command to hyper" :rules [[:right_command :!WEright_command]]}
    {:des "Open apps w/ hyper (Right command)"
-    :rules [[:!QWEa "open -a 'Google Play Music Desktop Player'"] ;; audio
+    :rules [[:!QWEa "open -a 'Spotify'"] ;; audio
             [:!QWEb "open -a 'Firefox'"] ;; browser
             [:!QWEc "open -a 'Fantastical'"] ;; calendar
             [:!QWEd "open -a 'TablePlus'"] ;; database
