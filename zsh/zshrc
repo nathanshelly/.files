@@ -10,6 +10,11 @@
   return 1
 }
 
+# << zsh history >>
+# cannot be set in `zshenv` as the default `/etc/zshrc` overrides these values
+HISTSIZE=100000 # number of lines of history kept by the shell
+SAVEHIST=$HISTSIZE # number of lines saved to $HISTFILE
+
 # $PATH configuration
 # perform early so that executables are available for enabled check and future
 # config files

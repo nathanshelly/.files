@@ -28,10 +28,6 @@ main() {
   export LESS_TERMCAP_ue=$'\E[0m'          # ends underline
   export LESS_TERMCAP_us=$'\E[01;32m'      # begins underline
 
-  # << zsh history >>
-  HISTSIZE=100000 # number of lines of history kept by the shell
-  SAVEHIST=$HISTSIZE # number of lines saved to $HISTFILE
-
   # << work-specific >>
   [ -d "$HOME/work" ] && {
     export GOPATH="$HOME/work/go"
