@@ -28,7 +28,8 @@
                             "^org\\.mozilla\\.nightly$"
                             "^com\\.google\\.Chrome$"
                             "^com\\.microsoft\\.edgemac.*"
-                            "com\\.apple\\.Safari"]
+                            "com\\.apple\\.Safari"
+                            "com\\.spotify\\.client"]
                  :terminals ["^com\\.googlecode\\.iterm2$"
                              "^io\\.alacritty$"
                              "^com\\.apple\\.Terminal$",
@@ -109,8 +110,8 @@
    ;; this file elsewhere binds `Cmd-l` to `Cmd-➡ ` so use `Option-d` to access
    ;; the URL bar instead
    {:des "Option-d to Cmd-l in browsers"
-    :rules [:browsers ;; apply only in browsers
+    :rules [:browsers
             [:!Od :!Cl]]}
    {:des "Ctrl-p to Cmd-k in browsers"
-    :rules [:browsers ;; apply only in browsers
+    :rules [:browsers
             [:!Tp :!Ck]]}]}
