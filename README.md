@@ -4,7 +4,7 @@ My personal dotfiles configuration for macOS & Linux systems.
 
 Primarily a [`zsh`](https://www.zsh.org), [`neovim`](https://github.com/neovim/neovim) & [`tmux`](https://github.com/tmux/tmux) workflow (respective folders: [`zsh`](./zsh), [`neovim`](./neovim) & [`tmux`](./tmux)).
 
-![workflow](https://user-images.githubusercontent.com/9750687/77220178-cf451200-6afa-11ea-8993-18cf8ff1e32a.png 'workflow')
+![workflow](https://user-images.githubusercontent.com/9750687/77220178-cf451200-6afa-11ea-8993-18cf8ff1e32a.png "workflow")
 
 ## toc
 

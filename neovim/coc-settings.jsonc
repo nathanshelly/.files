@@ -78,9 +78,7 @@
   "languageserver": {
     "nix": {
       "command": "rnix-lsp",
-      "filetypes": [
-        "nix"
-      ]
+      "filetypes": ["nix"]
     }
   },
 
