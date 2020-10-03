@@ -40,11 +40,16 @@ all:
 	./infra/setup/setup_dotfiles
 	./gui/setup/setup_gui
 
+apply:
+	./nix/apply
+
 help:
 	@echo 'make help'
 	@echo '		show this help message'
 	@echo 'make setup'
 	@echo '		set up dotfiles'
+	@echo 'make apply'
+	@echo '		apply latest config'
 	@echo 'make nix'
 	@echo '		set up nix'
 	@echo 'make symlink'
