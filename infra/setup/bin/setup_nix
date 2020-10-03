@@ -26,7 +26,7 @@ setup_nix() {
   }
 
   # macOS (as of Catalina) makes the root (`/`) read-only
-  # `nix` can workaround this by creating a "synthetic" directory at `/nix` and
+  # `nix` can work around this by creating a "synthetic" directory at `/nix` and
   # mounting a separate volume which holds the actual contents
   #
   # As the ref below points out, "unencrypted" is a bit of a misnomer. Any Mac
@@ -65,32 +65,13 @@ setup_nix() {
 setup_home_manager() {
   "$DOTFILES/infra/scripts/is_macos.sh" && {
     info 'skipping `home-manager` installation on macOS system'
-    info 'managed via `home-manager` mode of `nix-darwin` config on macOS'
+    info 'managed via `home-manager` module in `nix-darwin` config on macOS'
     return 0
   }
 
-  command -v home-manager > /dev/null && {
-    info 'skipping `home-manager` installation since `home-manager` is invokable'
-    return 0
-  }
+  info "setting up home-manager"
 
-  # install home manager - https://github.com/rycee/home-manager#installation
-  nix-channel --add \
-    https://github.com/rycee/home-manager/archive/master.tar.gz \
-    home-manager
-  nix-channel --update
-
-  # make home-manager available (also done on each shell load in zshrc)
-  export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-
-  # install & create first generation
-  nix-shell '<home-manager>' -A install
-
-  command -v home-manager > /dev/null || {
-    fail "\`home-manager\` installation finished but the \`home-manager\`
- command is not invokable. Please fix any issues and try again."
-    return 1
-  }
+  maybe_install_home_manager || return 1
 
   # switch to home-manager config
   home-manager switch || {
@@ -109,26 +90,42 @@ setup_nix_darwin() {
     return 0
   }
 
-  # shellcheck disable=SC2210
-  grep --quiet "home-manager" "$HOME/.nix-channels" > /dev/null 2>&1 || {
-    # add channel for home-manager module
-    # ref - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
-    nix-channel --add \
-      https://github.com/rycee/home-manager/archive/master.tar.gz \
-      home-manager
-    nix-channel --update
-  }
+  info "setting up nix-darwin"
 
-  command -v darwin-rebuild > /dev/null && {
-    info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
+  maybe_install_nix_darwin || return 1
+
+  # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
+  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin-configuration.nix"
+
+  success '`nix-darwin` setup complete'
+}
+
+maybe_install_home_manager() {
+  command -v home-manager > /dev/null || {
+    info 'skipping `home-manager` installation since `home-manager` is invokable'
     return 0
   }
 
-  info "setting up nix-darwin"
+  # install home manager - https://github.com/rycee/home-manager#installation
+  maybe_setup_home_manager_channel
 
-  pushd "${TMPDIR}" || {
-    fail 'failed to push tmp directory'
+  # make home-manager available (also done on each shell load in zshrc)
+  export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+
+  # install & create first generation
+  nix-shell '<home-manager>' -A install
+
+  command -v home-manager > /dev/null || {
+    fail "\`home-manager\` installation finished but the \`home-manager\`
+ command is not invokable. Please fix any issues and try again."
     return 1
+  }
+}
+
+maybe_install_nix_darwin() {
+  command -v darwin-rebuild > /dev/null || {
+    info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
+    return 0
   }
 
   # move `/etc` files so that nix-darwin can set up it's own copies
@@ -143,10 +140,20 @@ setup_nix_darwin() {
   sudo mv /etc/zprofile /etc/zprofile.backup-before-nix-darwin
   sudo mv /etc/zshrc /etc/zshrc.backup-before-nix-darwin
 
+  pushd "${TMPDIR}" || {
+    fail 'failed to push tmp directory'
+    return 1
+  }
+
   nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
 
   ./result/bin/darwin-installer || {
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
+    return 1
+  }
+
+  popd || {
+    fail 'probably not really an issue: failed to pop directory'
     return 1
   }
 
@@ -156,15 +163,19 @@ setup_nix_darwin() {
     return 1
   }
 
-  # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
-  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin-configuration.nix"
+  maybe_setup_home_manager_channel
+}
 
-  popd || {
-    fail 'probably not really an issue: failed to pop directory'
-    return 1
+maybe_setup_home_manager_channel() {
+  # shellcheck disable=SC2210
+  grep --quiet "home-manager" "$HOME/.nix-channels" > /dev/null 2>&1 || {
+    # add channel for home-manager module
+    # ref - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
+    nix-channel --add \
+      https://github.com/rycee/home-manager/archive/master.tar.gz \
+      home-manager
+    nix-channel --update
   }
-
-  success '`nix-darwin` setup complete'
 }
 
 main "$@"
