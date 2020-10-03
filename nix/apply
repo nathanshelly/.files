@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+
+# check that DOTFILES variable is defined
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../infra/setup/check_dotfiles_variable.sh"
+
+source "$DOTFILES/infra/scripts/prompts.sh"
+
+main() {
+  info "applying current config"
+
+  if os_specific_apply_command; then
+    success "applied config"
+  else
+    fail "failed to apply config"
+  fi
+}
+
+os_specific_apply_command() {
+  if "$DOTFILES/infra/scripts/is_macos.sh"; then
+    darwin-rebuild switch
+  else # TODO: account for NixOS when supported in the future
+    home-manager switch
+  fi
+}
+
+main
