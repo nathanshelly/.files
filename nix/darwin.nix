@@ -1,20 +1,19 @@
 { config, pkgs, ... }:
 
 # configuration for `nix-darwin`
-#
 {
   # use a custom config location
   # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
   environment.darwinConfig = "$HOME/.files/nix/darwin.nix";
 
-  # l
+  # user environment management via home-manager
+  # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
   imports = [ <home-manager/nix-darwin> ];
   home-manager.users.nathan = import ./home.nix;
   home-manager.useUserPackages = true;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
 
   # create /etc/zshrc that loads the nix-darwin environment
   programs.zsh.enable = true;
@@ -84,7 +83,6 @@
   #
   # refs
   # - https://git.bytes.zone/brian/dotfiles.nix/src/commit/dd1633e69c90eb6fd9cb8c408488dc24ab76931b/notes/home-manager-with-nix-darwin.org?lang=lv-LV
-  # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
 
   # TODO
   # - fix shell management
