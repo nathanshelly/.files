@@ -69,7 +69,7 @@ Supported.
 Configuration is split in two files:
 
 - [`darwin.nix`](./darwin.nix) - the entrypoint, applies the configuration in `home.nix` and defines everything else: user accounts/packages, keyboard shortcuts, UI, background services, etc.
-- [`home.nix`](./home.nix) - defines the development environment via [Home Manager](https://rycee.gitlab.io/home-manager/)
+- [`home.nix`](./home.nix) - defines the user environment via [Home Manager](https://rycee.gitlab.io/home-manager/)
   - Home Manager can manage this configuration independently but these dotfiles apply the config [via the `nix-darwin` module](TODO: fill this in) ([docs](https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module))
 
 Home Manager and `nix-darwin` helpfully abstract away much of the complexity of applying our configuration. Various modules provide high-level keys to configure behavior of the underlying tool.
@@ -78,7 +78,7 @@ Home Manager and `nix-darwin` helpfully abstract away much of the complexity of 
 
 Theoretically supported, not yet tested.
 
-[Home Manager](https://rycee.gitlab.io/home-manager/) applies the configuration in [`home.nix`](./home.nix) defining the development environment (shell, editor, etc.).
+[Home Manager](https://rycee.gitlab.io/home-manager/) applies the configuration in [`home.nix`](./home.nix) defining the user environment (shell, editor, etc.).
 
 ### NixOS
 
