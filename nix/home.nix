@@ -107,38 +107,20 @@ in
     enable = true;
 
     # TODO: apply conditionally based on user config, rewritten in nix
-    defaultKeymap = "vicmd";
-    # TODO: update things to make sure this works
+    defaultKeymap = "viins";
     dotDir = ".config/zsh";
 
     # TODO: switch these to append the contents of the file instead of sourcing
-    initExtra = ". $DOTFILES/zsh/zshrc";
-    envExtra = ". $DOTFILES/zsh/zshenv";
+    initExtra = builtins.readFile "${DOTFILES}/zsh/zshrc";
+    envExtra = builtins.readFile "${DOTFILES}/zsh/zshenv";
 
     shellAliases = {
-      # TODO: conditionally load based on if exa is executable
-      # replacement for `ls`
-      # ref - https://github.com/ogham/exa
-      # command -v exa > /dev/null && {
-      # alias l = 'exa'
-      #   # options - https://github.com/ogham/exa#options
-      #   alias la='l --all'
-      # alias ll='l --long --all'
-      # } || {
-      # # exa not installed
-
-      # # `-F` display characters indicating properties, e.g. `/` for directory
-      # alias l='ls -F'
-      # # `-A` list all entries except `.` & `..`
-      # alias la='ls -AF'
-      # # `-l` long format (more details)
-      # # `-h` human readable units (byte, kilobyte, etc.)
-      # alias ll='ls -AFhl'
-      # }
-
-
+      # `exa` - prettier replacement for `ls`
+      # options - https://github.com/ogham/exa#options
+      l = "exa";
+      la = "exa --all";
+      ll = "exa --long --all";
     };
-
   };
 
   # this machine-specific value should correspond to the nix version at the time
