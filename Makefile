@@ -33,7 +33,6 @@ gui:
 
 # config specific to my use cases
 nathan:
-	./infra/setup/bin/symlink --nathan
 	./infra/setup/bin/setup_macos_settings
 
 all:

@@ -29,5 +29,3 @@ Here are highlights:
   - Note: by default this resizing is slightly coarse (3x larger increments than the smallest possible). To resize more granularly use `<prefix> M-(h|j|k|l)`.
 - switch to last session w/ `<prefix> l` (similar to hitting `Alt-Tab` (Windows) or `Cmd-Tab` (macOS) once)
 - enable true color (RGB color), dimming, strikethrough and italics through terminal overrides
-
-This file is symlinked to `$HOME/.tmux.conf` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink).

@@ -1,8 +1,7 @@
 "  A fork of
 "  https://github.com/sonph/onehalf/blob/970abdf26b399100cbb59c6b6e693c4ff877c59d/vim/colors/onehalfdark.vim
 
-" symlinked to $XDG_CONFIG_HOME/nvim/colors/n.vim
-" by $DOTFILES/infra/setup/bin/symlink
+" symlinked to $XDG_CONFIG_HOME/nvim/colors/n.vim via `$DOTFILES/nix/home.nix`
 
 " TODO: test w/ & w/o flux
 
