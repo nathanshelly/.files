@@ -2,20 +2,22 @@
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.ssh.enable
   programs.ssh = {
     enable = true;
-    extraConfig = ''
-      Host github.com
-        IdentityFile ~/.ssh/github
 
-      Host pi
-        HostName natasha-codes.duckdns.org
-        User nathan
-        IdentityFile ~/.ssh/pi
-
-      Host gpubox
-        HostName gpubox1.mystic.cs.iit.edu
-        User nshelly
-        IdentityFile ~/.ssh/gpubox
-    '';
+    matchBlocks = {
+      "github.com" = {
+        identityFile = "~/.ssh/github";
+      };
+      "pi" = {
+        hostname = "natasha-codes.duckdns.org";
+        user = "nathan";
+        identityFile = "~/.ssh/pi";
+      };
+      "gpubox" = {
+        hostname = "gpubox1.mystic.cs.iit.edu";
+        user = "nshelly";
+        identityFile = "~/.ssh/gpubox";
+      };
+    };
   };
 
   home.file = {
