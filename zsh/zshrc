@@ -1,7 +1,11 @@
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+################### END OF HOME-MANAGER DECLARED ZSH CONFIG ####################
+
+################################################################################
+
+######################### START OF BESPOKE ZSH CONFIG ##########################
+
 # This zshrc sources files in $DOTFILES/zsh & any `.zsh` files in the directory
-# specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv`)
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# specified by "$DOTFILES" (set to `$HOME/.files` in `$DOTFILES/zsh/zshenv`)
 
 # Note: script sourcing order matters (particularly with `nix`)
 #
@@ -16,11 +20,6 @@
   echo '$DOTFILES not defined, `.zshenv` must not have run. Bailing on `.zshrc`'
   return 1
 }
-
-# << zsh history >>
-# cannot be set in `zshenv` as the default `/etc/zshrc` overrides these values
-HISTSIZE=100000 # number of lines of history kept by the shell
-SAVEHIST=$HISTSIZE # number of lines saved to $HISTFILE
 
 # $PATH configuration
 # perform early so that executables are available for enabled check and future
@@ -134,7 +133,3 @@ setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
-
-# initialize direnv
-# ref - https://direnv.net/docs/hook.html#zsh
-eval "$(direnv hook zsh)"
