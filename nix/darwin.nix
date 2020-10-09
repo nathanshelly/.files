@@ -18,6 +18,26 @@
   # create /etc/zshrc that loads the nix-darwin environment
   programs.zsh.enable = true;
 
+  # TODO: figure out how to conditionally merge in personal overrides
+  # check existence of `$HOME/.nathan` file?
+  # figure out how to spread attribute sets
+  # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.systemPath
+  # environment.systemPath = import ./work.nix
+  environment.systemPath = [
+    # # python dependency manager
+    # [ [ -d "$HOME/.poetry/bin" ] ] && path=("$HOME/.poetry/bin" $path)
+
+    # # put nix profile first on path
+    # [ [ -d "/etc/profiles/per-user/$USER/bin" ] ] && {
+    # path = ("/etc/profiles/per-user/$USER/bin" $path)
+    #   }
+
+    #   # where `pip install --user` installs executables
+    #   [[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+
+    #   [[ -d "$HOME/.cargo/bin" ]] && path=("$HOME/.cargo/bin" $path) # rust packages
+  ];
+
   users.users.nathan = {
     home = "/Users/nathan";
     description = "Nathan Shelly";
@@ -39,7 +59,6 @@
       git-lfs
       gitAndTools.delta
       gitAndTools.gh
-      gitAndTools.hub
       gitAndTools.tig
       gnumake
       gnupg
@@ -75,6 +94,15 @@
     description = "Test User";
     shell = pkgs.zsh;
   };
+
+  # protect `nix-direnv` dev environments from being garbage collected
+  # ref - https://github.com/nix-community/nix-direnv#via-home-manager
+  #
+  # manual - https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
+  nix.extraOptions = ''
+    keep-derivations = true
+    keep-outputs = true
+  '';
 
   # questions
   # - how is nix config interpreted on other systems?
