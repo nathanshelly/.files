@@ -1,10 +1,55 @@
 { config, pkgs, ... }:
 
 # configuration for `nix-darwin`
+# ref - https://github.com/lnl7/
 {
+  # TODO: add keyboard shortcuts - https://github.com/LnL7/nix-darwin/pull/189
+
+  # TODO: - package & install natasha-codes font
+  # https://daiderd.com/nix-darwin/manual/index.html#opt-fonts.enableFontDir
+
+  # TODO: maybe set up nix-index for command not found helper?
+  #   - https://github.com/bennofs/nix-index
+  #   - https://daiderd.com/nix-darwin/manual/index.html#opt-programs.nix-index.enable
+
+  # TODO: tmux/vim/zsh - maybe in home-manager instead? any way to use both?
+  # - https://daiderd.com/nix-darwin/manual/index.html#opt-programs.tmux.enable
+
   # use a custom config location
-  # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
-  environment.darwinConfig = "$HOME/.files/nix/darwin.nix";
+  # ref - https://github.com/lnl7/nix-darwin/wiki/Changing-the-configuration.nix-location
+  environment = {
+    darwinConfig = "$HOME/.files/nix/darwin.nix";
+
+    # TODO
+    # - try with separate non-existent user
+    # - figure out who would run this the first time on a new mac if not me, just for sysadmins?
+    # refs:
+    # - https://discourse.nixos.org/t/using-nix-to-install-login-shell-on-non-nixos-platform/2807/2
+    # - https://github.com/rycee/home-manager/issues/1226
+    # environment.systemPackages = [ pkgs.zsh ];
+    shells = [ pkgs.zsh ];
+
+    # TODO: figure out how to conditionally merge in personal overrides
+    # check existence of `$HOME/.nathan` file?
+    # figure out how to spread attribute sets
+    # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.systemPath
+    # environment.systemPath = import ./work.nix
+    systemPath = [
+      # # python dependency manager
+      # [ [ -d "$HOME/.poetry/bin" ] ] && path=("$HOME/.poetry/bin" $path)
+
+      # # put nix profile first on path
+      # [ [ -d "/etc/profiles/per-user/$USER/bin" ] ] && {
+      # path = ("/etc/profiles/per-user/$USER/bin" $path)
+      #   }
+
+      #   # where `pip install --user` installs executables
+      #   [[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+
+      #   [[ -d "$HOME/.cargo/bin" ]] && path=("$HOME/.cargo/bin" $path) # rust packages
+    ];
+  };
+
 
   # user environment management via home-manager
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
@@ -12,31 +57,48 @@
   home-manager.users.nathan = import ./home.nix;
   home-manager.useUserPackages = true;
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # protect `nix-direnv` dev environments from being garbage collected
+  # ref - https://github.com/nix-community/nix-direnv#via-home-manager
+  #
+  # manual - https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
+  nix.extraOptions = ''
+    keep-derivations = true
+    keep-outputs = true
+  '';
+
 
   # create /etc/zshrc that loads the nix-darwin environment
+  # TODO: test if this is necessary
   programs.zsh.enable = true;
 
-  # TODO: figure out how to conditionally merge in personal overrides
-  # check existence of `$HOME/.nathan` file?
-  # figure out how to spread attribute sets
-  # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.systemPath
-  # environment.systemPath = import ./work.nix
-  environment.systemPath = [
-    # # python dependency manager
-    # [ [ -d "$HOME/.poetry/bin" ] ] && path=("$HOME/.poetry/bin" $path)
+  # auto upgrade nix package and the daemon service
+  services.nix-daemon.enable = true;
 
-    # # put nix profile first on path
-    # [ [ -d "/etc/profiles/per-user/$USER/bin" ] ] && {
-    # path = ("/etc/profiles/per-user/$USER/bin" $path)
-    #   }
+  #######################
+  # macOS settings config
+  # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults..GlobalPreferences.com.apple.sound.beep.sound
+  #######################
+  system.defaults = {
+    dock.autohide = true;
 
-    #   # where `pip install --user` installs executables
-    #   [[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+    # enable key repeat on hold (instead of special characters popup)
+    NSGlobalDomain.ApplePressAndHoldEnabled = false;
+    # show all file extensions in Finder
+    NSGlobalDomain.AppleShowAllExtensions = true;
 
-    #   [[ -d "$HOME/.cargo/bin" ]] && path=("$HOME/.cargo/bin" $path) # rust packages
-  ];
+    NSGlobalDomain._HIHideMenuBar = true;
+
+    # TODO: use below defaults once upgraded
+    # https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults.NSGlobalDomain.com.apple.trackpad.scaling
+    # system.defaults.NSGlobalDomain.com.apple.sound.beep.volume = 0;
+    # system.defaults.NSGlobalDomain.com.apple.trackpad.scaling = 3; # max speed
+    # system.defaults.NSGlobalDomain.com.apple.trackpad.scaling = 3;
+    NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+    NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
+    screencapture.location = "$HOME/Downloads";
+  };
+
+
 
   users.users.nathan = {
     home = "/Users/nathan";
@@ -94,69 +156,6 @@
     description = "Test User";
     shell = pkgs.zsh;
   };
-
-  # protect `nix-direnv` dev environments from being garbage collected
-  # ref - https://github.com/nix-community/nix-direnv#via-home-manager
-  #
-  # manual - https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
-  nix.extraOptions = ''
-    keep-derivations = true
-    keep-outputs = true
-  '';
-
-  # questions
-  # - how is nix config interpreted on other systems?
-  #   - generic Linux
-  #   - NixOS
-  #
-  # refs
-  # - https://git.bytes.zone/brian/dotfiles.nix/src/commit/dd1633e69c90eb6fd9cb8c408488dc24ab76931b/notes/home-manager-with-nix-darwin.org?lang=lv-LV
-
-  # TODO
-  # - fix shell management
-  # - try with separate non-existent user
-  # - figure out who would run this the first time on a new mac if not me, just for sysadmins?
-  # refs:
-  # - https://discourse.nixos.org/t/using-nix-to-install-login-shell-on-non-nixos-platform/2807/2
-  # - https://github.com/rycee/home-manager/issues/1226
-  # environment.shells = [ pkgs.zsh ];
-  # environment.systemPackages = [ pkgs.zsh ];
-  # };
-
-  # TODO:
-  # - add keyboard shortcuts - https://github.com/LnL7/nix-darwin/pull/189
-  # - package & install natasha-codes font via nix - https://daiderd.com/nix-darwin/manual/index.html#opt-fonts.enableFontDir
-  # - path - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.systemPath
-  # - environment variables - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.variables
-  # - exteranl builder - https://daiderd.com/nix-darwin/manual/index.html#opt-nix.buildMachines
-  # - maybe set up nix-index for command not found helper?
-  #   - https://github.com/bennofs/nix-index
-  #   - https://daiderd.com/nix-darwin/manual/index.html#opt-programs.nix-index.enable
-  # - tmux/vim/zsh - maybe in home-manager instead?
-  #   - https://daiderd.com/nix-darwin/manual/index.html#opt-programs.tmux.enable
-
-  #######################
-  # macOS settings config
-  # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults..GlobalPreferences.com.apple.sound.beep.sound
-  #######################
-
-  system.defaults.dock.autohide = true;
-
-  # enable key repeat on hold (instead of special characters popup)
-  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-  # show all file extensions in Finder
-  system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
-
-  system.defaults.NSGlobalDomain._HIHideMenuBar = true;
-
-  # TODO: see why `system.defaults.NSGlobalDomain.com` errors on `switch`
-  # https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults.NSGlobalDomain.com.apple.trackpad.scaling
-  # system.defaults.NSGlobalDomain.com.apple.sound.beep.volume = 0;
-  # system.defaults.NSGlobalDomain.com.apple.trackpad.scaling = 3; # max speed
-  # system.defaults.NSGlobalDomain.com.apple.trackpad.scaling = 3;
-  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
-  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
-  system.defaults.screencapture.location = "$HOME/Downloads";
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
