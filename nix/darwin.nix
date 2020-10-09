@@ -21,13 +21,14 @@
     darwinConfig = "$HOME/.files/nix/darwin.nix";
 
     # TODO
-    # - try with separate non-existent user
-    # - figure out who would run this the first time on a new mac if not me, just for sysadmins?
     # refs:
     # - https://discourse.nixos.org/t/using-nix-to-install-login-shell-on-non-nixos-platform/2807/2
     # - https://github.com/rycee/home-manager/issues/1226
     # environment.systemPackages = [ pkgs.zsh ];
-    shells = [ pkgs.zsh ];
+    # shells = [
+    #   # TODO: figure out how to reference user packages
+    #   # config.users.users.nathan.packages.zsh
+    # ];
 
     # TODO: figure out how to conditionally merge in personal overrides
     # check existence of `$HOME/.nathan` file?
@@ -129,7 +130,6 @@
       lua # z.lua dependency
       mdcat
       ncurses
-      neovim
       nodejs
       python3
       ripgrep
