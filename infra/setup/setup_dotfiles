@@ -45,10 +45,6 @@ main() {
   # see the file in question for each piece
   "$DOTFILES/infra/setup/bin/setup_bits_and_pieces"
 
-  # run after `$DOTFILES/infra/setup/bin/symlink` so that $DOTFILES/utilities/asdf/tool-versions is
-  # symlinked to `$HOME/.tool-versions`
-  "$DOTFILES/infra/setup/bin/setup_asdf"
-
   # optionally set up work-specific config (confirms via user prompt)
   "$DOTFILES/infra/setup/bin/setup_work"
 
