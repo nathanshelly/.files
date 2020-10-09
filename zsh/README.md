@@ -131,8 +131,6 @@ Define environment variables, loaded before any other file in this folder.
 
 Defines `$DOTFILES` which specifies path to the root of this repo. Used throughout `zsh` configuration.
 
-This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
-
 ### [`zshrc`](./zshrc)
 
 Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and autoload any functions in `functions` folders throughout this repo. Here is the loading order:
@@ -150,5 +148,3 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`local.zsh`](./local.zsh) - only if this file exists
 
 `zshrc` itself is loaded after `zshenv` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
-
-This file symlinked to `$HOME/.zshrc` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
