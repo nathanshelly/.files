@@ -28,14 +28,6 @@ main() {
   export LESS_TERMCAP_ue=$'\E[0m'          # ends underline
   export LESS_TERMCAP_us=$'\E[01;32m'      # begins underline
 
-  # << work-specific >>
-  [ -d "$HOME/work" ] && {
-    export GOPATH="$HOME/work/go"
-    export VAULT_ADDR=https://vault.services.opendoor.com:8200
-    export ANDROID_HOME="$HOME/Library/Android/sdk" # for android studio
-    export OD_CURRENT_USER_EMAIL="nathan.shelly@opendoor.com"
-  }
-  # << end work-specific >>
 }
 
 # dynamically determine path to `.files` repo
