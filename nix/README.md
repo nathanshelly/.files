@@ -1,5 +1,9 @@
 # nix
 
+# TODOs before merging
+
+- [ ] add/update documentation for all config moving in to nix
+
 These dotfiles are declared and applied via [Nix](https://nixos.org/) (and the Nix ecosystem).
 
 ## toc
