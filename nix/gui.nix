@@ -7,6 +7,7 @@ let
 in
 {
   home.file = {
+    # TODO: figure out better solution that allows for updating settings via gui
     "${vars.XDG_CONFIG_HOME}/alacritty/alacritty.yml".source =
       "${GUI_APPS}/alacritty/alacritty.yml";
 

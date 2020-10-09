@@ -20,9 +20,7 @@
   };
 
   home.file = {
-    ".ssh/config".source = "${vars.DOTFILES}/misc/ssh/config";
-
-    # `prettier` config - https://prettier.io
+    # ref - https://prettier.io
     ".prettierrc.json".text = ''
       {
         "arrowParens": "avoid",
@@ -32,7 +30,8 @@
         "trailingComma": "all"
       }
     '';
-    # `rustfmt` config - https://github.com/rust-lang/rustfmt
+
+    # ref - https://github.com/rust-lang/rustfmt
     ".rustfmt.toml".text = ''
       # << stable >>
 
