@@ -83,25 +83,7 @@ in
   # let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
-  # https://rycee.gitlab.io/home-manager/options.html#opt-programs.neovim.enable
-  # programs.neovim = {
-  #   enable = true;
-  #   extraConfig = ''
-  #     . $DOTFILES/neovim/init.vim
-  #   '';
-  #   extraPython3Packages = ps: with ps; [ black ];
-  #   plugins = with pkgs.vimPlugins; [
-  #     yankring
-  #     vim-nix
-  #     {
-  #       plugin = vim-startify;
-  #       config = "let g:startify_change_to_vcs_root = 0";
-  #     }
-  #   ];
-  #   vimAlias = true;
-  #   vimdiffAlias = true;
-  #   withNodeJs = true;
-  # };
+  programs.neovim = import ./editor.nix pkgs;
 
   programs.zsh = {
     enable = true;
