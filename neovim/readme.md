@@ -148,8 +148,6 @@ Source every other `*.vim` file in this folder to set up config.
 
 Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv`](../zsh/zshenv)).
 
-This file symlinked to `$HOME/.config/nvim/init.vim` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink).
-
 ### [`keymap.vim`](./keymap.vim)
 
 Define keymappings.
@@ -261,8 +259,8 @@ Agnostic of plugin management method.
     > ```javascript
     > // highlights `...` code
     > css`
-    >   ...;
-    > `
+    >   ...
+    > `;
     > ```
 
 ### [`vim_only.vim`](./vim_only.vim)
