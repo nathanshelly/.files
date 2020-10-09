@@ -8,7 +8,6 @@ Currently these options are primarily booleans enabling or disabling a specific 
 
 ```jsonc
 {
-  "asdf": boolean, // enable/disable versions via `asdf`
   // value of $EDITOR - "nvim", "emacs", "code", etc.
   "editor": "<valid-editor-program>",
   "fzf": boolean, // enable/disable `fzf` including keybindings & completions

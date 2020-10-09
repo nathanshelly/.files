@@ -3,7 +3,7 @@
 Resources for various utilities
 
 - [`bat`](#bat) - a prettier `cat` with syntax highlighting, line numbers, git highlights and paging
-- [`exa`](./exa) - a prettier `ls` with friendlier defaults
+- [`exa`](#exa) - a prettier `ls` with friendlier defaults
 - [`git`](./git) - version control of choice
 - [`fd`](#fd) - a faster `find` with friendlier defaults
 - [`fzf`](./fzf) - easily fuzzily filter any list (files, directories, git branches, etc.)
@@ -14,30 +14,22 @@ Wrote up [an explainer](https://gist.github.com/nathanshelly/4b7020d09d413cab823
 
 ## utilities w/o a separate README
 
-### [`asdf`](https://github.com/asdf-vm/asdf)
-
-`asdf` is an extendable version manager that supports a variety of languages and tools. Sort of a one-version-manager-to-rule-them-all idea.
-
-To specify versions for a project one creates a `.tool-versions` file at the root of the project with the languages/tools and their respective versions.
-
-For example:
-
-```shell
-nodejs 10.15.3
-python 3.8.0
-```
-
-The first time you work in that project run `asdf install` to set up your environment and you're all done.
-
-#### [`tool-versions`](../tool-versions)
-
-Symlinked to `$HOME/.tool-versions` by [`$DOTFILES/infra/setup/bin/symlink`](../../infra/setup/bin/symlink).
-
-This file specifies the global versions of tools to use if there is no other `.tool-versions` file between the current directory and `$HOME`.
-
 ### [`bat`](https://github.com/sharkdp/bat) 🦇
 
 A prettier cat with syntax highlighting, line numbers, git highlights and paging.
+
+### [`exa`](https://github.com/ogham/exa) 💎
+
+A prettier ls that comes with friendlier defaults and adds extra contextual information (like git info with --git).
+
+See aliases defined [here](TODO: fill this in).
+
+Defines a few aliases, using `exa` if installed, `ls` otherwise:
+
+- `l` -> `exa` or `ls -CF` (one less letter 😃)
+- `la` -> `exa --all` or `ls -AF` (list hidden files)
+- `ll` -> `exa --long --all` or `ls -AFhl` (list all files w/ more detail in column view)
+- `li` -> `exa --git-ignore` (no `ls` counterpart so only aliased when `exa` is installed)
 
 ### [`fd`](https://github.com/sharkdp/fd)
 
