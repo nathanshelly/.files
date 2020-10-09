@@ -2,8 +2,6 @@
 
 ## [`gitconfig`](./gitconfig) & [`gitignore`](./gitignore)
 
-Defines global [`.gitconfig`](https://git-scm.com/docs/git-config) & [`.gitignore`](https://git-scm.com/docs/gitignore) that are symlinked to `$HOME/.gitconfig` & `.$HOME/.gitignore`, respectively, by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
-
 A few of the notable configs set here:
 
 - `ff = only` - only perform fast-forward merges (a `git pull` that would result in a merge instead fails).
