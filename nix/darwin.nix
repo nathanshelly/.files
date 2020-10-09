@@ -30,25 +30,17 @@
     #   # config.users.users.nathan.packages.zsh
     # ];
 
+    # TODO: understand how this is possibly supposed to work
     # TODO: figure out how to conditionally merge in personal overrides
     # check existence of `$HOME/.nathan` file?
     # figure out how to spread attribute sets
     # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.systemPath
     # environment.systemPath = import ./work.nix
-    systemPath = [
-      # # python dependency manager
-      # [ [ -d "$HOME/.poetry/bin" ] ] && path=("$HOME/.poetry/bin" $path)
-
-      # # put nix profile first on path
-      # [ [ -d "/etc/profiles/per-user/$USER/bin" ] ] && {
-      # path = ("/etc/profiles/per-user/$USER/bin" $path)
-      #   }
-
-      #   # where `pip install --user` installs executables
-      #   [[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
-
-      #   [[ -d "$HOME/.cargo/bin" ]] && path=("$HOME/.cargo/bin" $path) # rust packages
-    ];
+    # systemPath = [] ++ (
+    #   if builtins.pathExists "${builtins.getEnv "HOME"}/work"
+    #   then (import ./work.nix).darwin.environment.systemPath
+    #   else []
+    # );
   };
 
 
