@@ -17,9 +17,6 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 "$DOTFILES/infra/scripts/component_enabled.sh" 'vi-mode' || return 0
 
-# turn on vim mode
-bindkey -v
-
 # shorten key delay to .2 seconds to allow quick exiting of insert mode
 export KEYTIMEOUT=20
 
