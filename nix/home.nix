@@ -6,6 +6,7 @@ let
   HOME = "/Users/${USERNAME}";
   DOTFILES = "${HOME}/.files";
   XDG_CONFIG_HOME = "${HOME}/.config";
+  INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists "${HOME}/.nathan";
 in
 {
   # TODO: create issue to look into gpg signing
@@ -22,7 +23,9 @@ in
   # figure out how to spread attribute sets - "import ./nathan.nix"
 
   # TODO: conditionally spread work zsh config
-  # home.sessionVariables = import ./work.nix;
+  home.sessionVariables = if builtins.pathExists "${HOME}/work"
+  then (import ./work.nix).home.sessionVariables
+  else {};
 
   # TODO: conditionally apply gui config
   # figure out how to spread attribute sets - "import ./gui.nix"
@@ -41,11 +44,15 @@ in
     "${XDG_CONFIG_HOME}/nvim/coc-settings.json".source = "${DOTFILES}/neovim/coc-settings.jsonc";
     # custom colorscheme
     "${XDG_CONFIG_HOME}/nvim/colors/n.vim".source = "${DOTFILES}/neovim/colors/n.vim";
+  } // (
+    if INSTALL_NATHAN_SPECIFIC_CONFIG then (import ./nathan.nix).home.file else {}
+  );
 
-    ##### zsh #####
-    # TODO: remove this?
-    ".zshenv".source = "${DOTFILES}/zsh/zshenv";
-  };
+  programs.ssh = (
+    if INSTALL_NATHAN_SPECIFIC_CONFIG
+    then (import ./nathan.nix).programs.ssh
+    else {}
+  );
 
   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.command-not-found.enable
   programs.command-not-found.enable = true;
