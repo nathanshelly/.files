@@ -23,7 +23,7 @@ These dotfiles are declared and applied via [Nix](https://nixos.org/) (and the N
 
 A declarative, replicable config comprising everything that makes my dotfiles the unique snowflake they are ❄️
 
-This configuration should work gracefully on any Unixy system and specify all meaningful configuration including the development environment (shell, editor, color schemes, etc.), user packages, OS settings (keyboard shortcuts, appearance, etc.), background services (`postgresql`, `redis`, etc.) and more.
+This configuration should work gracefully on any Unixy system and specify all meaningful configuration including the user environment (shell, editor, color schemes, etc.), user packages, OS settings (keyboard shortcuts, appearance, etc.), background services (`postgresql`, `redis`, etc.) and more.
 
 ## why Nix
 
@@ -57,7 +57,7 @@ These projects are:
 
 - the Nix language tuned specifically for declarative, replicable configuration
 - the Nixpkgs package manager
-- Home Manager - a tool for managing the development environment (shell, editor, CLI tools, etc.)
+- Home Manager - a tool for managing the user environment (shell, editor, CLI tools, etc.)
 - OS-specific tooling
   - NixOS - an operating system built completely atop Nix thus supporting perfectly replicable, declarative configuration
   - nix-darwin - an tool to declaratively manage macOS (Darwin) similar to NixOS
