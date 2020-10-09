@@ -55,10 +55,6 @@ Notable aliases:
 - `f` - [`rg`](https://github.com/BurntSushi/ripgrep). Similar to `e`, provides a generic command regardless of backing program.
 - `t` - [`trash`](https://github.com/sindresorhus/trash), a utility to move files/folders to the trash (instead of deleting permanently) on macOS for recoverability
 
-### [`asdf.zsh`](./asdf.zsh)
-
-Initialize the [`asdf`](https://asdf-vm.com) version manager.
-
 ### [`completion.zsh`](./completion.zsh)
 
 Initialize completion. Uses a cache with a refresh every 20 hours to speed up shell load.
@@ -151,7 +147,6 @@ Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and a
 1. [`plugins.zsh`](./plugins.zsh)
 1. [`prompt.zsh`](./prompt.zsh)
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory).
-1. [`asdf.zsh`](./asdf.zsh)
 1. [`local.zsh`](./local.zsh) - only if this file exists
 
 `zshrc` itself is loaded after `zshenv` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).

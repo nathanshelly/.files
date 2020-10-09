@@ -3,7 +3,6 @@
 Various setup scripts
 
 - [`setup_git_config`](./setup_git_config) - fill in [`gitconfig.template`](../../../utilities/git/gitconfig.template) template
-- [`setup_asdf`](./setup_asdf) - add [`asdf`](https://github.com/asdf-vm/asdf) [plugins](https://github.com/asdf-vm/asdf-plugins) then run `asdf install` to install global versions of packages
 - [`setup_bits_and_pieces`](./setup_bits_and_pieces) - set up various bits and pieces
 - [`setup_macos_settings`](./setup_macos_settings) - set macOS configuration (currently unimplemented)
 - [`setup_neovim`](./setup_neovim) - set up [`neovim`](https://neovim.io/) text editor
