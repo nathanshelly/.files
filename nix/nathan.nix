@@ -1,6 +1,5 @@
-{ vars }:
-
 {
+  # https://rycee.gitlab.io/home-manager/options.html#opt-programs.ssh.enable
   programs.ssh = {
     enable = true;
     extraConfig = ''
@@ -20,7 +19,7 @@
   };
 
   home.file = {
-    # ref - https://prettier.io
+    # https://prettier.io/docs/en/configuration.html
     ".prettierrc.json".text = ''
       {
         "arrowParens": "avoid",
@@ -31,7 +30,9 @@
       }
     '';
 
-    # ref - https://github.com/rust-lang/rustfmt
+    # refs:
+    # - https://github.com/rust-lang/rustfmt
+    # - https://rust-lang.github.io/rustfmt/?version=master&search=
     ".rustfmt.toml".text = ''
       # << stable >>
 
