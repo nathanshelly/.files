@@ -45,6 +45,10 @@ in
     "${config.xdg.configHome}/nvim/colors/n.vim".source = "${DOTFILES}/neovim/colors/n.vim";
   } // (
     if INSTALL_NATHAN_SPECIFIC_CONFIG then (import ./nathan.nix).home.file else {}
+  ) // (
+    if pkgs.stdenv.isDarwin && INSTALL_NATHAN_SPECIFIC_CONFIG
+    then (import ./gui.nix).home.file
+    else {}
   );
 
   programs.ssh = (
