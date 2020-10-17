@@ -64,8 +64,8 @@ setup_nix() {
 
 setup_home_manager() {
   "$DOTFILES/infra/scripts/is_macos.sh" && {
-    info 'skipping `home-manager` installation on macOS system'
-    info 'managed via `home-manager` module in `nix-darwin` config on macOS'
+    info "skipping \`home-manager\` installation on macOS system - managed via
+ \`home-manager\` module in \`nix-darwin\` config on macOS"
     return 0
   }
 
@@ -90,12 +90,10 @@ setup_nix_darwin() {
     return 0
   }
 
-  info "setting up nix-darwin"
-
   maybe_install_nix_darwin || return 1
 
   # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
-  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin-configuration.nix"
+  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin.nix"
 
   success '`nix-darwin` setup complete'
 }
@@ -123,10 +121,12 @@ maybe_install_home_manager() {
 }
 
 maybe_install_nix_darwin() {
-  command -v darwin-rebuild > /dev/null || {
+  command -v darwin-rebuild > /dev/null && {
     info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
     return 0
   }
+
+  info "setting up nix-darwin"
 
   # move `/etc` files so that nix-darwin can set up it's own copies
   #
@@ -147,6 +147,7 @@ maybe_install_nix_darwin() {
 
   nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
 
+  # TODO: handle interactive prompts
   ./result/bin/darwin-installer || {
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
     return 1

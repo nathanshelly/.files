@@ -4,7 +4,7 @@
 # - http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
 # targets without immediate file dependencies
-.PHONY: all check fix format gui help lint nix setup headless-setup symlink
+.PHONY: all check fix format gui help lint nix headless-setup setup
 .DEFAULT_GOAL := help
 
 lint:
@@ -28,15 +28,8 @@ setup:
 nix:
 	./infra/setup/bin/setup_nix
 
-symlink:
-	./infra/setup/bin/symlink
-
 gui:
 	./gui/setup/setup_gui
-
-# config specific to my use cases
-nathan:
-	./infra/setup/bin/setup_macos_settings
 
 all:
 	./infra/setup/setup_dotfiles
@@ -54,8 +47,6 @@ help:
 	@echo '		apply latest config'
 	@echo 'make nix'
 	@echo '		set up nix'
-	@echo 'make symlink'
-	@echo '		symlink config files (like .zshrc) to their appropriate locations'
 	@echo 'make gui'
 	@echo '		set up gui parts of config'
 	@echo 'make all'
