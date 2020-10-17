@@ -76,25 +76,6 @@ Plug 'christoomey/vim-sort-motion'
 " - kana/vim-textobj-indent
 Plug 'kana/vim-textobj-user'
 
-" indents
-"
-" `<operator>ii` - operates on all lines at same indentation above and below
-"   cursor line. Selection stops at empty lines or lines with different
-"   indentation.
-" `<operator>ai` - operates on all lines at same or greater indentation above
-"   and below cursor line. Selection stops at lines with lesser indentation, NOT
-"   at empty lines or lines with greater indentation.
-"
-" See more details and helpful detailed diagrams of the effect of different
-" selections w/ code examples:
-" ref - http://kana.github.io/config/vim/textobj-indent.html
-Plug 'kana/vim-textobj-indent'
-
-" entire document - `<operator>ae`
-" `ae` - entire contents of buffer (slightly shorter version of `ggdG`)
-" `ie` - contents of buffer minus leading/trailing whitespace
-Plug 'kana/vim-textobj-entire'
-
 " << utilities >>
 
 " git wrapper
