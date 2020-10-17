@@ -5,7 +5,6 @@ let
   USERNAME = "nathan";
   HOME = "/Users/${USERNAME}";
   DOTFILES = "${HOME}/.files";
-  XDG_CONFIG_HOME = "${HOME}/.config";
   INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists "${HOME}/.nathan";
 in
 {
@@ -34,16 +33,16 @@ in
   # form: "<target>".source = "<source>"
   home.file = {
     # TODO: make sure I can use `home-manager` to link this file
-    "${XDG_CONFIG_HOME}/nix/home.nix".source = "${DOTFILES}/nix/home.nix";
+    "${config.xdg.configHome}/nix/home.nix".source = "${DOTFILES}/nix/home.nix";
 
     # TODO: experiment with `tmux` module
     ".tmux.conf".source = "${DOTFILES}/tmux/tmux.conf";
 
     ##### neovim #####
     # extra configuration for `coc.nvim` plugin
-    "${XDG_CONFIG_HOME}/nvim/coc-settings.json".source = "${DOTFILES}/neovim/coc-settings.jsonc";
+    "${config.xdg.configHome}/nvim/coc-settings.json".source = "${DOTFILES}/neovim/coc-settings.jsonc";
     # custom colorscheme
-    "${XDG_CONFIG_HOME}/nvim/colors/n.vim".source = "${DOTFILES}/neovim/colors/n.vim";
+    "${config.xdg.configHome}/nvim/colors/n.vim".source = "${DOTFILES}/neovim/colors/n.vim";
   } // (
     if INSTALL_NATHAN_SPECIFIC_CONFIG then (import ./nathan.nix).home.file else {}
   );
