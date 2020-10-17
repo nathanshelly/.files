@@ -29,17 +29,41 @@ This configuration should work gracefully on any Unixy system and specify all me
 
 The Nix ecosystem provides tooling to enable declarative specification and replicable application of much (and growing) of my dotfiles in the Nix language.
 
-Pre-Nix these dotfiles applied themselves via shell scripts. I actually kind of enjoy writing shell scripts (shellcheck, shfmt, and a bash language server make a huge difference for me) but that's still a fragile system supported only by me.
+Pre-Nix these dotfiles applied themselves via shell scripts. Even if a developer enjoy writing shell scripts but that's still a fragile system supported by one.
 
 Instead of that fragile collection of imperative shell scripts Nix enables a flexible, composable configuration that glues together disparate bits of config with a more consistent structure.
 
 ## how it works at a high-level
 
+Why do people currently want to use my dotfiles? What do I tout? How does Nix complement these reasons?
+
+Nix lets you configure everything in one place with one consistent language.
+
+It Just Works tm.
+
+Nix is versioned. Mess something up in your config? Roll back to any previous configuration at any time.
+
+Try without pressure. Uninstall any config at any time.
+
+Here is a pseudocode config written in Nix:
+
+```nix
+{
+ programs.direnv = enable = true;
+
+ # sources completions and key-bindings in interactive zsh sessions
+ # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.fzf.enable
+ programs.fzf.enable = true;
+
+ programs.git = import ./git.nix;
+}
+```
+
 In practice a configuration boils down to putting files in expected locations. For example, `zsh` will respect any configuration in a `$HOME/.zshrc` file (and others like `/etc/zshrc`, `$HOME/.zshenv`, etc.). These files may be read directly by the program or they may set features of an environment (like environment variables or shell aliases) that apply to the tool when run in that environment. Even the act of installing a package in the end just comes down to putting the corresponding binary in a folder on your `$PATH`.
 
 > There are, of course, exceptions to this general principle. macOS system settings for example are written via `defaults write` which updates a SQLite (TODO: double check this) database.
 
-The complexity of a dotfiles configuration comes primarily from the sheer variety of files/expected locations and the occasional need to interface with a third party tool to move a given file to its corresponding location. For example, to install a given package one needs to interface with a package manager (`apt`, `yum`, `brew`, etc.).
+The complexity of a dotfiles configuration comes primarily from the sheer variety of files/expected locations and the occasional need to interface with a third party tool (e.g. `brew install`ing a package) to move a given file to its corresponding location.
 
 Nix tooling abstracts this complexity away by providing a consistent interface to declare a wider range of config than any other tool I'm aware of. This varies from the least abstract symlinking of arbitrary files to setting high-level keys in a corresponding module which Nix tooling realizes by writing the corresponding files.
 
@@ -51,9 +75,7 @@ In other situations it may make more sense to declare a bit of config in its own
 
 ## Nix ecosystem
 
-The Nix umbrella includes multiple projects that when combined approach this goal better than any other system I am currently aware of.
-
-These projects are:
+The Nix umbrella includes multiple projects that together enable the benefits described above:
 
 - the Nix language tuned specifically for declarative, replicable configuration
 - the Nixpkgs package manager
@@ -61,8 +83,6 @@ These projects are:
 - OS-specific tooling
   - NixOS - an operating system built completely atop Nix thus supporting perfectly replicable, declarative configuration
   - nix-darwin - an tool to declaratively manage macOS (Darwin) similar to NixOS
-
-Together these projects enable the most portable possible specification of these dotfiles across NixOS, macOS and other Linux flavors.
 
 ## how it works at a lower level
 
