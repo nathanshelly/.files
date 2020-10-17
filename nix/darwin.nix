@@ -31,7 +31,6 @@
     # ];
 
     # TODO: understand how this is possibly supposed to work
-    # TODO: figure out how to conditionally merge in personal overrides
     # check existence of `$HOME/.nathan` file?
     # figure out how to spread attribute sets
     # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.systemPath
