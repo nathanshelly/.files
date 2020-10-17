@@ -4,16 +4,11 @@
 " <<<< automatic installation >>>>
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 
-" TODO: figure out how to specify nested expansion, save in variable?
-" if empty(glob("${XDG_DATA_HOME:-${HOME}/.local/share}/nvim/site/autoload/plug.vim"))
-if empty(glob("$HOME/.local/share/nvim/site/autoload/plug.vim"))
-  !curl --create-dirs -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim"
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
 " <<<<<<<< plugins >>>>>>>>
 
-call plug#begin()
+" TODO: figure out how to specify nested expansion, save in variable?
+" if empty(glob("${XDG_DATA_HOME:-${HOME}/.local/share}/nvim/site/autoload/plug.vim"))
+call plug#begin("$HOME/.local/share/nvim/plugged")
 
 " a multipurpose client for language servers (e.g. intellisense, compilation
 " errors, formatting), linters, formatters (e.g. prettier or black) and various
@@ -67,6 +62,6 @@ Plug 'chrisbra/Colorizer'
 
 " TODO: allow unsupported systems?
 " insert color from color picker
-Plug 'kabbamine/vCoolor-vim'
+Plug 'kabbamine/vCoolor.vim'
 
 call plug#end()
