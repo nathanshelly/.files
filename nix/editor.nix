@@ -1,10 +1,7 @@
 { pkgs ? import <nixpkgs>, ... }:
 
 let
-  # TODO: make this dynamic
-  HOME = builtins.getEnv "HOME";
-  DOTFILES = "${HOME}/.files";
-  XDG_CONFIG_HOME = "${HOME}/.config";
+  DOTFILES = "${builtins.getEnv "HOME"}/.files";
 in
 {
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.neovim.enable
@@ -15,13 +12,14 @@ in
   # TODO: test this
   extraPython3Packages = ps: with ps; [ black ];
 
+  # TODO: move neovim-specific packages here form ./darwin.nix after upgrading
+  # home-manager version
+  # extraPackages = with pkgs; [
+  #   rnix-lsp
+  # ];
+
   plugins = with pkgs.vimPlugins; [
     vim-plug
-
-    # a multipurpose client for language servers (e.g. intellisense, compilation
-    # errors, formatting), linters, formatters (e.g. prettier or black) and various
-    # other external shell programs (e.g. shellcheck)
-    # coc-nvim
 
     # fuzzy finder
     # configuration in ./fzf.vim over ./plugin_config.vim due to complexity
@@ -29,9 +27,7 @@ in
 
     # << motions/operators >>
 
-    # < both operators and motions >
-
-    # < operators >
+    # << operators >>
 
     # edit surrounding characters
     #
@@ -108,5 +104,8 @@ in
 
   vimAlias = true;
   vimdiffAlias = true;
+
+  # sets `g:node_host_prog='${nodePackages.neovim}/bin/neovim-node-host`
+  # ref - https://github.com/NixOS/nixpkgs/blob/e7b9fc42c8bf284ba6886aacdb81c9af8495f0de/pkgs/applications/editors/neovim/wrapper.nix#L68-L75
   withNodeJs = true;
 }
