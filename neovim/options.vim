@@ -56,6 +56,10 @@ set scrolloff=10
 " enable mouse
 set mouse=a
 
+" TODO: document
+set foldmethod=syntax
+set nofoldenable
+
 " indentation
 " tabstop - # of columns a tab counts for
 " softtabstop - # of columns to use when hitting Tab in insert mode (see refs)
