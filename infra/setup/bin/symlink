@@ -13,6 +13,9 @@ main() {
 
   local overwrite_all=false backup_all=false skip_all=false
 
+  # TODO: see if I can declaratively maanage this in Nix
+  link_file "$DOTFILES/nix/home.nix" "$HOME/.config/nix/home.nix"
+
   [[ $INSTALL_GUI_SYMLINKS == true ]] && link_gui_files
 
   return 0
