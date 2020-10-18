@@ -9,13 +9,6 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 main() {
   parse_input "$@"
 
-  header "<< Symlinking >>"
-
-  local overwrite_all=false backup_all=false skip_all=false
-
-  # TODO: see if I can declaratively maanage this in Nix
-  link_file "$DOTFILES/nix/home.nix" "$HOME/.config/nix/home.nix"
-
   [[ $INSTALL_GUI_SYMLINKS == true ]] && link_gui_files
 
   return 0
@@ -34,122 +27,34 @@ link_gui_files() {
 
   # terminal emulator
   mkdir -p "$XDG_CONFIG_HOME/alacritty"
-  link_file \
+  "$DOTFILES/infra/setup/bin/link_file" \
     "$DOTFILES/gui/apps/alacritty/alacritty.yml" \
     "$XDG_CONFIG_HOME/alacritty/alacritty.yml"
 
   # window organization/resizing
-  link_file \
+  "$DOTFILES/infra/setup/bin/link_file" \
     "$DOTFILES/gui/apps/rectangle/com.knollsoft.Rectangle.plist" \
     "$HOME/Library/Preferences/com.knollsoft.Rectangle.plist"
 
   # window switcher
-  link_file \
+  "$DOTFILES/infra/setup/bin/link_file" \
     "$DOTFILES/gui/apps/alt-tab/com.lwouis.alt-tab-macos.plist" \
     "$HOME/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 
   # launcher (Alfred, Spotlight, Windows search, etc.)
   mkdir -p "$HOME/Library/Application Support/ueli"
-  link_file \
+  "$DOTFILES/infra/setup/bin/link_file" \
     "$DOTFILES/gui/apps/ueli/config.json" \
     "$HOME/Library/Application Support/ueli/config.json"
 
   # VSCode - text editor
   mkdir -p "$HOME/Library/Application Support/Code/User"
-  link_file \
+  "$DOTFILES/infra/setup/bin/link_file" \
     "$DOTFILES/gui/apps/vscode/keybindings.json" \
     "$HOME/Library/Application Support/Code/User/keybindings.json"
-  link_file \
+  "$DOTFILES/infra/setup/bin/link_file" \
     "$DOTFILES/gui/apps/vscode/settings.json" \
     "$HOME/Library/Application Support/Code/User/settings.json"
-}
-
-# link single file between `src` & `dst`
-#
-# takes user input (potentially modified by `<option>_all` flags defined in
-# calling scope)
-#
-# Args:
-#   - {string} src - source path
-#   - {string} dst - target path
-link_file() {
-  # parameters
-  local src="$1" dst="$2"
-
-  # flags set by user interaction
-  local overwrite='' backup='' skip='' action=''
-
-  if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]; then
-    if [ "$overwrite_all" == "false" ] \
-      && [ "$backup_all" == "false" ] \
-      && [ "$skip_all" == "false" ]; then
-      local current_src
-      current_src="$(readlink "$dst")"
-
-      if [ "$current_src" == "$src" ]; then
-        skip=true
-      else
-        user "file exists: $dst ($(basename "$src")), what do you want to do? \
-  [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        read -r -s -n 1 action < /dev/tty
-
-        case "$action" in
-          o)
-            overwrite=true
-            ;;
-          O)
-            overwrite_all=true
-            ;;
-          b)
-            backup=true
-            ;;
-          B)
-            backup_all=true
-            ;;
-          s)
-            skip=true
-            ;;
-          S)
-            skip_all=true
-            ;;
-          *) ;;
-
-        esac
-      fi
-    fi
-
-    overwrite=${overwrite:-$overwrite_all}
-    backup=${backup:-$backup_all}
-    skip=${skip:-$skip_all}
-
-    [ "$overwrite" == true ] && {
-      if /bin/rm -r "$dst"; then
-        success "removed $dst"
-      else
-        fail "failed to remove $dst"
-      fi
-    }
-
-    [ "$backup" == true ] && {
-      if mv "$dst" "${dst}.backup"; then
-        success "moved $dst to ${dst}.backup"
-      else
-        fail "failed to move $dst to ${dst}.backup"
-      fi
-    }
-
-    [ "$skip" == true ] && info "skipped $src"
-  fi
-
-  # "false" or empty
-  [ "$skip" != true ] && {
-    # `-s` for symbolic link
-    if ln -s "$src" "$dst"; then
-      success "linked $src to $dst"
-    else
-      fail "failed to link $src to $dst"
-    fi
-  }
 }
 
 parse_input() {
