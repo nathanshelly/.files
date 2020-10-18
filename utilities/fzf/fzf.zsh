@@ -69,11 +69,28 @@ else
   export FZF_ALT_C_COMMAND="find . -type d"
 fi
 
-export FZF_DEFAULT_OPTS="--height 99% --reverse --no-mouse --cycle\
- --select-1 --exit-0 --multi\
- $_fzf_preview_window\
- --bind ctrl-j:down,ctrl-k:up,ctrl-space:toggle-preview,\
-ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all+accept"
+## ctrl-j / ctrl-k (or ctrl-n / ctrl-p) to move cursor up and down
+## Enter key to select, ctrl / esc to exit
+## in multi-select mode (-m), tab and shift-tab to mark multiple items
+## Mouse: scroll, click, double-click; shift-click and shift-scroll on multi-select mode
+fzf_opts=(
+  --multi
+  # do nothing if no results, one result -> select immediately
+  --select-1 --exit-0
+  --reverse --cycle
+  "${_fzf_preview_window}" --height 95%
+  --bind ctrl-space:toggle-preview
+  --bind ctrl-j:down
+  --bind ctrl-k:up
+  --bind ctrl-d:half-page-down
+  --bind ctrl-u:half-page-up
+  --bind ctrl-s:toggle-sort
+  --bind ctrl-e:preview-down
+  --bind ctrl-y:preview-up
+)
+
+export FZF_DEFAULT_OPTS="${fzf_opts[*]}"
+unset fzf_opts
 
 # <<<< keybindings >>>>
 
