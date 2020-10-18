@@ -148,7 +148,7 @@ maybe_install_nix_darwin() {
   nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
 
   # TODO: handle interactive prompts
-  ./result/bin/darwin-installer || {
+  source "${TMPDIR}/result/bin/darwin-installer" || {
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
     return 1
   }
