@@ -32,9 +32,6 @@ in
   # creates symlinks to immutable copies of the source file in /nix/store
   # form: "<target>".source = "<source>"
   home.file = {
-    # TODO: make sure I can use `home-manager` to link this file
-    "${config.xdg.configHome}/nix/home.nix".source = "${DOTFILES}/nix/home.nix";
-
     # TODO: experiment with `tmux` module
     ".tmux.conf".source = "${DOTFILES}/tmux/tmux.conf";
 
