@@ -203,6 +203,13 @@ recreate_channels() {
   nix-channel --update
 }
 
+restore_default_system_files() {
+  info 'Using `sudo` to restore /etc/nix/nix.conf, /etc/zprofile & /etc/zshrc'
+  sudo mv /etc/nix/nix.conf.backup-before-nix-darwin /etc/nix/nix.conf
+  sudo mv /etc/zprofile.backup-before-nix-darwin /etc/zprofile
+  sudo mv /etc/zshrc.backup-before-nix-darwin /etc/zshrc
+}
+
 maybe_install_nix_darwin() {
   command -v darwin-rebuild > /dev/null && {
     info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
