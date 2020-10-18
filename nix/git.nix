@@ -1,6 +1,10 @@
 {
   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.git.enable
   enable = true;
+
+  # TODO: enable when switching to a more recent version of home manager
+  # delta.enable = true;
+
   includes = [
     # local overrides of `git` identity (author name & email)
     # https://git-scm.com/docs/git-config#_includes
