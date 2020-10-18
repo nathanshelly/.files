@@ -143,6 +143,13 @@ backup_default_system_files() {
   sudo mv /etc/zshrc /etc/zshrc.backup-before-nix-darwin
 }
 
+restore_default_system_files() {
+  info 'Using `sudo` to restore /etc/nix/nix.conf, /etc/zprofile & /etc/zshrc'
+  sudo mv /etc/nix/nix.conf.backup-before-nix-darwin /etc/nix/nix.conf
+  sudo mv /etc/zprofile.backup-before-nix-darwin /etc/zprofile
+  sudo mv /etc/zshrc.backup-before-nix-darwin /etc/zshrc
+}
+
 maybe_install_nix_darwin() {
   command -v darwin-rebuild > /dev/null && {
     info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
@@ -160,9 +167,12 @@ maybe_install_nix_darwin() {
 
   backup_default_system_files
 
-  # TODO: handle interactive prompts
+  # TODO: handle interactive prompts, pass flags to answer questions?
   source "${TMPDIR}/result/bin/darwin-installer" || {
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
+
+    restore_default_system_files
+
     return 1
   }
 
