@@ -110,6 +110,13 @@ maybe_install_home_manager() {
   # make home-manager available (also done on each shell load in zshrc)
   export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
+  # symlink $DOTfiLES/nix/home.nix config in place before first generation
+  # TODO: see if I can declaratively manage this in Nix
+  mkdir -p "$HOME/.config/nix"
+  "$DOTFILES/infra/setup/bin/link_file" \
+    "$DOTFILES/nix/home.nix" \
+    "$HOME/.config/nix/home.nix"
+
   # install & create first generation
   nix-shell '<home-manager>' -A install
 
