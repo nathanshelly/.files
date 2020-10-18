@@ -19,14 +19,5 @@ echo # avoid writing on same line as user input
   exit 1
 }
 
-# shellcheck disable=SC2016
-info 'installing python dependencies (`neovim` & `black`)'
-# install python module for neovim (used by `black` plugin)
-if command -v pip > /dev/null && pip -V | grep -q -E "3.7|3.8"; then
-  pip install neovim black > /dev/null
-elif command -v pip3 > /dev/null && pip3 -V | grep -q -E "3.7|3.8"; then
-  pip3 install neovim black > /dev/null
-fi
-
 # install vim plugins
 nvim -c PlugInstall -c qa
