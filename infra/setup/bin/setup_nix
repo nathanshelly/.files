@@ -138,16 +138,23 @@ backup_default_system_files() {
   # - https://github.com/LnL7/nix-darwin/issues/158#issuecomment-560969421
   # - https://github.com/LnL7/nix-darwin/issues/46
   # - https://github.com/LnL7/nix-darwin/issues/2
-  sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.backup-before-nix-darwin
-  sudo mv /etc/zprofile /etc/zprofile.backup-before-nix-darwin
-  sudo mv /etc/zshrc /etc/zshrc.backup-before-nix-darwin
+  "$DOTFILES/infra/setup/bin/backup_file" "/etc/nix/nix.conf"
+  "$DOTFILES/infra/setup/bin/backup_file" "/etc/zprofile"
+  "$DOTFILES/infra/setup/bin/backup_file" "/etc/zshrc"
 }
 
 restore_default_system_files() {
   info 'Using `sudo` to restore /etc/nix/nix.conf, /etc/zprofile & /etc/zshrc'
-  sudo mv /etc/nix/nix.conf.backup-before-nix-darwin /etc/nix/nix.conf
-  sudo mv /etc/zprofile.backup-before-nix-darwin /etc/zprofile
-  sudo mv /etc/zshrc.backup-before-nix-darwin /etc/zshrc
+
+  local nix_conf, zprofile, zshrc
+
+  nix_conf="/etc/nix/nix.conf"
+  zprofile="/etc/zprofile"
+  zshrc="/etc/zshrc"
+
+  [ -f "$nix_conf.bak" ] && sudo mv "$nix_conf.bak" "$nix_conf"
+  [ -f "$zprofile.bak" ] && sudo mv "$zprofile.bak" "$zprofile"
+  [ -f "$zshrc.bak" ] && sudo mv "$zshrc.bak" "$zshrc"
 }
 
 maybe_install_nix_darwin() {
