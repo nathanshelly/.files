@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+
+# check that DOTFILES variable is defined
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
+
+source "$DOTFILES/infra/scripts/prompts.sh"
+
+# backup single file
+#
+# Args:
+#   - {string} target - file to backup
+#   - {string} [extension = bak] - extension of created file, default of bak
+backup_file() {
+  # parameters
+  local src="$1" ext="$2"
+
+  [ -f "$src" ] && {
+    sudo mv "$src" "$src.$ext"
+  }
+}
+
+backup_file "$@"
