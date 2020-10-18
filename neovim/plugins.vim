@@ -13,6 +13,10 @@ call plug#begin("$HOME/.local/share/nvim/plugged")
 " a multipurpose client for language servers (e.g. intellisense, compilation
 " errors, formatting), linters, formatters (e.g. prettier or black) and various
 " other external shell programs (e.g. shellcheck)
+"
+" TODO: install `coc.nvim` via home-manager (and possibly individual coc-*
+" extensions)
+" - https://github.com/nix-community/home-manager/issues/1531
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
 " << autocompletion >>
