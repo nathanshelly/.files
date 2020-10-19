@@ -172,13 +172,13 @@ maybe_install_nix_darwin() {
 
   nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
 
-  backup_default_system_files
+  # backup_default_system_files
 
   # TODO: handle interactive prompts, pass flags to answer questions?
   source "${TMPDIR}/result/bin/darwin-installer" || {
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
 
-    restore_default_system_files
+    # restore_default_system_files
 
     return 1
   }
