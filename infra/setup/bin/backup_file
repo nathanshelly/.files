@@ -13,9 +13,10 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 #   - {string} [extension = bak] - extension of created file, default of bak
 backup_file() {
   # parameters
-  local src="$1" ext="$2"
+  local src="$1" ext="${2:-bak}"
 
   [ -f "$src" ] && {
+    # TODO: conditionally use sudo here
     sudo mv "$src" "$src.$ext"
   }
 }
