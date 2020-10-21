@@ -116,11 +116,14 @@ source "$DOTFILES/zsh/asdf.zsh"
 # - `interactive_comments` - allow comments at the command line (zle)
 # - `local_options` - reset any options on script return
 # - history
+#   - `hist_ignore_space` - don't save commands starting w/ ' ' to history
+#     - useful if you want to run a command with secrets
+#     - ref - https://superuser.com/a/352858
 #   - `hist_ignore_all_dups` - treat '#', '~' & '^' as glob patterns
 #   - `hist_reduce_blanks` - dedupe & remove lines differing only in whitespace
 #   - `share_history` - sync history between simultaneous shells on prompt load
-setopt auto_cd extended_glob interactive_comments local_options \
-  hist_ignore_all_dups hist_reduce_blanks share_history
+setopt auto_cd extended_glob interactive_comments local_options
+setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
