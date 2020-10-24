@@ -11,8 +11,10 @@
     { path = "~/.gitconfig.local"; }
     { path = "~/.gitconfig.work"; condition = "gitdir:~/work/"; }
   ];
+
   # TODO: confirm what this does
   lfs.enable = true;
+
   extraConfig = {
     advice = {
       # disable help messages
@@ -110,6 +112,19 @@
       defaultBranch = "main";
     };
   };
+
+  # ref - https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
+  attributes = [
+    "*.css   diff=css"
+    "*.html  diff=html"
+    "*.go    diff=golang"
+    "*.py    diff=python"
+    "*.md    diff=markdown"
+    "*.rb    diff=ruby"
+    "*.rake  diff=ruby"
+    "*.rs    diff=rust"
+  ];
+
   ignores = [
     # Python
     ".mypy_cache"
