@@ -2,6 +2,7 @@ augroup filetype_gitcommit
   autocmd!
   autocmd FileType gitcommit set textwidth=72 " wrap @ 72 characters
   autocmd Filetype gitcommit set colorcolumn=73
+  autocmd FileType gitcommit syntax match gitcommitComment "^;.*"
 augroup END
 
 augroup filetype_make
