@@ -1,14 +1,10 @@
 " <<<< using vim plug  >>>>
 " ref - https://github.com/junegunn/vim-plug
 
-" <<<< automatic installation >>>>
-" https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+" TODO: use XDG_CONFIG_SHARE
+call plug#begin("$HOME/.local/share/nvim/plugged")
 
 " <<<<<<<< plugins >>>>>>>>
-
-" TODO: figure out how to specify nested expansion, save in variable?
-" if empty(glob("${XDG_DATA_HOME:-${HOME}/.local/share}/nvim/site/autoload/plug.vim"))
-call plug#begin("$HOME/.local/share/nvim/plugged")
 
 " a multipurpose client for language servers (e.g. intellisense, compilation
 " errors, formatting), linters, formatters (e.g. prettier or black) and various
