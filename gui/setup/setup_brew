@@ -1,7 +1,8 @@
 #! /usr/bin/env zsh
 
 # check that DOTFILES variable is defined
-source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
+check_dotfiles_path="${0:A:h}/../../infra/setup/check_dotfiles_variable.sh"
+source "$check_dotfiles_path:a" # resolve `../..` to valid path
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
