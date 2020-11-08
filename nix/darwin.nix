@@ -48,7 +48,6 @@ in
 
   # user environment management via home-manager
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
-  imports = [ <home-manager/nix-darwin> ];
   home-manager.users."${USER}" = import ./home.nix;
   home-manager.useUserPackages = true;
 
