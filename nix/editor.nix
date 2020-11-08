@@ -100,9 +100,6 @@ in
     tmux-complete-vim
   ];
 
-  vimAlias = true;
-  vimdiffAlias = true;
-
   # sets `g:node_host_prog='${nodePackages.neovim}/bin/neovim-node-host`
   # ref - https://github.com/NixOS/nixpkgs/blob/e7b9fc42c8bf284ba6886aacdb81c9af8495f0de/pkgs/applications/editors/neovim/wrapper.nix#L68-L75
   withNodeJs = true;
