@@ -92,10 +92,24 @@ setup_nix_darwin() {
 
   maybe_install_nix_darwin || return 1
 
+  maybe_setup_home_manager_channel || return 1
+
+  # TODO: confirm that this is actually necessary
+  maybe_add_channel_distributed_tooling_to_nix_path
+
   # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
   darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin.nix"
 
   success '`nix-darwin` setup complete'
+}
+
+maybe_add_channel_distributed_tooling_to_nix_path() {
+  echo "$NIX_PATH" | grep --quiet "$HOME/.nix-defexpr/channels" && {
+    return 0
+  }
+
+  # make frameworks managed via channels (nix-darwin, home-manager) available
+  export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 }
 
 maybe_install_home_manager() {
@@ -107,8 +121,8 @@ maybe_install_home_manager() {
   # install home manager - https://github.com/rycee/home-manager#installation
   maybe_setup_home_manager_channel
 
-  # make home-manager available (also done on each shell load in zshrc)
-  export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+  # TODO: confirm that this is actually necessary
+  maybe_add_channel_distributed_tooling_to_nix_path
 
   # symlink $DOTfiLES/nix/home.nix config in place before first generation
   # TODO: see if I can declaratively manage this in Nix
@@ -200,8 +214,6 @@ maybe_install_nix_darwin() {
  command is not invokable. Please fix any issues and try again."
     return 1
   }
-
-  maybe_setup_home_manager_channel
 }
 
 maybe_setup_home_manager_channel() {
