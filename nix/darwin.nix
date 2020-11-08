@@ -2,6 +2,9 @@
 
 # configuration for `nix-darwin`
 # ref - https://github.com/lnl7/
+let
+  USER = "${builtins.getEnv "USER"}";
+in
 {
   # TODO: add keyboard shortcuts - https://github.com/LnL7/nix-darwin/pull/189
 
@@ -46,7 +49,7 @@
   # user environment management via home-manager
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
   imports = [ <home-manager/nix-darwin> ];
-  home-manager.users.nathan = import ./home.nix;
+  home-manager.users."${USER}" = import ./home.nix;
   home-manager.useUserPackages = true;
 
   # protect `nix-direnv` dev environments from being garbage collected
@@ -65,7 +68,7 @@
   # TODO: confirm I don't also need this in user packages below
   nix.package = pkgs.nixFlakes;
 
-  nix.trustedUsers = [ "nathan" ];
+  nix.trustedUsers = [ USER ];
 
   # create /etc/zshrc that loads the nix-darwin environment
   # TODO: test if this is necessary
@@ -100,9 +103,9 @@
 
 
 
-  users.users.nathan = {
-    home = "/Users/nathan";
-    description = "Nathan Shelly";
+  users.users."${USER}" = {
+    home = "/Users/${USER}";
+    description = "Current user";
     packages = with pkgs; [
       alacritty
       asciinema

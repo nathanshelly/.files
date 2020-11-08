@@ -2,8 +2,8 @@
 
 let
   # TODO: make this dynamic
-  USERNAME = "nathan";
-  HOME = "/Users/${USERNAME}";
+  USER = "${builtins.getEnv "USER"}";
+  HOME = "/Users/${USER}";
   DOTFILES = "${HOME}/.files";
   INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists "${HOME}/.nathan";
 in
