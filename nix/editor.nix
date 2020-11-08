@@ -19,8 +19,6 @@ in
   # ];
 
   plugins = with pkgs.vimPlugins; [
-    vim-plug
-
     # fuzzy finder
     # configuration in ./fzf.vim over ./plugin_config.vim due to complexity
     fzf-vim
