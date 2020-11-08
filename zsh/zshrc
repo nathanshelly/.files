@@ -124,5 +124,8 @@ setopt no_extended_glob
 setopt auto_cd interactive_comments local_options
 setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
+# make frameworks managed via channels (nix-darwin, home-manager) available
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
