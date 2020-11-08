@@ -63,7 +63,7 @@ function set_up_miscellaneus() {
   fast-theme \"$DOTFILES/zsh/zle-fsh-theme-overlay.ini\";"
 
   info "Installing plugins"
-  zsh -i -c "$final_zsh_setup_commands" > /dev/null
+  zsh --interactive -c "$final_zsh_setup_commands" > /dev/null
 }
 set_up_miscellaneus
 
