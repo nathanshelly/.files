@@ -126,6 +126,8 @@ setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
 # make frameworks managed via channels (nix-darwin, home-manager) available
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+# make nix-darwin use the config in this repo
+export NIX_PATH=darwin-config=$DOTFILES/nix/darwin.nix${NIX_PATH:+:}$NIX_PATH
 
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
