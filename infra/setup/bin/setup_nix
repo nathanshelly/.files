@@ -16,6 +16,8 @@ main() {
 
   setup_nix_darwin || exit 1 # only runs on macOS (darwin)
 
+  setup_flakes || echo "Failed to install flakes"
+
   success '`nix` (and various pieces) setup complete'
 }
 
@@ -101,6 +103,10 @@ setup_nix_darwin() {
   darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin.nix"
 
   success '`nix-darwin` setup complete'
+}
+
+setup_flakes() {
+  nix-env --install -A nixpkgs.nixFlakes || return 1
 }
 
 maybe_add_channel_distributed_tooling_to_nix_path() {
