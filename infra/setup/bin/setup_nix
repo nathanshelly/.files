@@ -100,7 +100,7 @@ setup_nix_darwin() {
   maybe_add_channel_distributed_tooling_to_nix_path
 
   # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
-  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin.nix" && {
+  darwin-rebuild switch --flake "$DOTFILES" --show-trace --impure && {
     # TODO: enter new shell here?
     # zsh --interactive
 
