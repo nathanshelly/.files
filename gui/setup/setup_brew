@@ -1,22 +1,23 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 # check that DOTFILES variable is defined
-check_dotfiles_path="${0:A:h}/../../infra/setup/check_dotfiles_variable.sh"
-source "$check_dotfiles_path:a" # resolve `../..` to valid path
+# shellcheck disable=SC1090
+source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
 "$DOTFILES/infra/scripts/is_macos.sh" || {
-  info "these dotfiles don't use \`brew\` in Linux environments"
-  info 'skipping install'
+  info "these dotfiles don't use \`brew\` in Linux environments - skipping"
   return
 }
 
 command -v brew > /dev/null && {
+  # shellcheck disable=SC2016
   info '`brew` installed, skipping installation'
   return
 }
 
+# shellcheck disable=SC2016
 info '`brew` not installed, installing now...'
 
 # installation - https://brew.sh/
