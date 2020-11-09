@@ -15,11 +15,11 @@ main() {
   # TODO: confirm that this is actually necessary
   maybe_add_channel_distributed_tooling_to_nix_path
 
+  setup_flakes || echo "Failed to install flakes"
+
   maybe_setup_home_manager || exit 1
 
   maybe_setup_nix_darwin || exit 1 # only runs on macOS (darwin)
-
-  setup_flakes || echo "Failed to install flakes"
 
   success '`nix` (and various pieces) setup complete'
 }
@@ -99,6 +99,7 @@ maybe_setup_nix_darwin() {
 
   maybe_setup_home_manager_channel || return 1
 
+  info 'setting up first generation'
   # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
   darwin-rebuild switch --flake "$DOTFILES" --show-trace --impure && {
     # TODO: enter new shell here?
@@ -110,6 +111,8 @@ maybe_setup_nix_darwin() {
 
 setup_flakes() {
   nix-env --install -A nixpkgs.nixFlakes || return 1
+
+  # TODO: make just installed Nix 3.0 available
 }
 
 maybe_add_channel_distributed_tooling_to_nix_path() {
@@ -177,6 +180,14 @@ restore_default_system_files() {
   [ -f "$zshrc.bak" ] && sudo mv "$zshrc.bak" "$zshrc"
 }
 
+recreate_channels() {
+  info 'Using `sudo` to recreate channels owned by root'
+
+  # ref - https://github.com/LnL7/nix-darwin/issues/234
+  sudo rm -rf ~/.nix-defexpr
+  nix-channel --update
+}
+
 maybe_install_nix_darwin() {
   command -v darwin-rebuild > /dev/null && {
     info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
@@ -196,16 +207,20 @@ maybe_install_nix_darwin() {
 
   # backup_default_system_files
 
+  # TODO: avoid recreating channels here
+  recreate_channels
+
   # TODO: handle interactive prompts, pass flags to answer questions?
-  # TODO: avoid using `sudo`? maybe will become irrelevant with flakes
   info 'Running `nix-darwin` installer'
-  source "${TMPDIR}/result/bin/darwin-installer" || {
+  if "${TMPDIR}/result/bin/darwin-installer"; then
+    success '`nix-darwin` installed'
+  else
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
 
     # restore_default_system_files
 
     return 1
-  }
+  fi
 
   # make just installed `darwin-rebuild` command available in current script
   [ -f /etc/zshenv ] && source /etc/zshenv
