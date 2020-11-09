@@ -30,4 +30,5 @@ sh -c "curl --create-dirs \
 
 info 'installing vim plugins'
 # install vim plugins
+# TODO: make sure neovim is executable by this point
 nvim -c PlugInstall -c qa
