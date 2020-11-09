@@ -12,3 +12,5 @@ Brewfile.lock.json
 zsh/local.zsh
 # ignore unused Alfred settings
 **/Alfred.alfredpreferences/remote
+# build artifacts from nix
+result
