@@ -18,7 +18,8 @@ main() {
 
 os_specific_apply_command() {
   if "$DOTFILES/infra/scripts/is_macos.sh"; then
-    darwin-rebuild switch
+    # TODO: figure out passing in home-manager input from flake
+    darwin-rebuild switch --flake ~/.files --impure --show-trace
   else # TODO: account for NixOS when supported in the future
     home-manager switch
   fi
