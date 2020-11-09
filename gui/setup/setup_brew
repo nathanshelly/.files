@@ -27,8 +27,7 @@ brew analytics off # disable analytics
 
 # fix permissions issues for `compinit` caused by Homebrew messing with things
 function fix_permissions_issue() {
-  local final_zsh_setup_commands
-
+  local fix_permissions_commands
 
   # fix permissions on `/user/local/share/*` folder that Homebrew's installer
   # messes with
