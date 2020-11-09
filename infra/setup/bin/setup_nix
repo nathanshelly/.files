@@ -15,13 +15,25 @@ main() {
   # TODO: confirm that this is actually necessary
   maybe_add_channel_distributed_tooling_to_nix_path
 
-  setup_flakes || echo "Failed to install flakes"
-
   maybe_setup_home_manager || exit 1
 
   maybe_setup_nix_darwin || exit 1 # only runs on macOS (darwin)
 
+  setup_flakes || echo "Failed to install flakes"
+
+  apply_first_generation || echo "Failed to apply first generation"
+
   success '`nix` (and various pieces) setup complete'
+}
+
+apply_first_generation() {
+  info 'setting up first generation'
+
+  "$DOTFILES/nix/apply" && {
+    # TODO: enter new shell here?
+    # zsh --interactive
+    success "Successfully applied first generation!"
+  }
 }
 
 setup_nix() {
@@ -99,14 +111,7 @@ maybe_setup_nix_darwin() {
 
   maybe_setup_home_manager_channel || return 1
 
-  info 'setting up first generation'
-  # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
-  darwin-rebuild switch --flake "$DOTFILES" --show-trace --impure && {
-    # TODO: enter new shell here?
-    # zsh --interactive
-
-    success '`nix-darwin` setup complete'
-  }
+  success '`nix-darwin` setup complete'
 }
 
 setup_flakes() {
