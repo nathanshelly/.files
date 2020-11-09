@@ -198,7 +198,7 @@ maybe_install_nix_darwin() {
 
   # TODO: handle interactive prompts, pass flags to answer questions?
   # TODO: avoid using `sudo`? maybe will become irrelevant with flakes
-  info 'Using `sudo` to run the `nix-darwin` installer'
+  info 'Running `nix-darwin` installer'
   source "${TMPDIR}/result/bin/darwin-installer" || {
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
 
