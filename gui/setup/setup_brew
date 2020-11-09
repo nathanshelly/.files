@@ -35,8 +35,8 @@ function fix_permissions_issue() {
   # ref - https://stackoverflow.com/a/43544733
   final_zsh_setup_commands="\
   autoload -U compaudit;\
-  compaudit | xargs chown -R \"$(whoami)\";\
-  compaudit | xargs chmod go-w;"
+  compaudit | xargs chown -R \"$(whoami)\" > /dev/null;\
+  compaudit | xargs chmod go-w > /dev/null;"
 
   # TODO: run conditionally
   info "Fixing completions permission issue"
