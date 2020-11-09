@@ -14,5 +14,10 @@
     darwinConfigurations."smino" = nix-darwin.lib.darwinSystem {
       modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
     };
+    # technically `nix-darwin` looks for a config specified by hostname
+    # (not sure when, if ever, that's different from $HOST)
+    darwinConfigurations."${builtins.getEnv "HOST"}" = nix-darwin.lib.darwinSystem {
+      modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
+    };
   };
 }
