@@ -1,5 +1,6 @@
 #! /usr/bin/env zsh
 
+# TODO: understand this better
 # add back initizialization of compinit
 autoload -U compinit
 compinit

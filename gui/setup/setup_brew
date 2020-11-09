@@ -34,11 +34,14 @@ function fix_permissions_issue() {
   # messes with
   # ref - https://stackoverflow.com/a/43544733
   final_zsh_setup_commands="\
+  autoload -U compaudit;\
   compaudit | xargs chown -R \"$(whoami)\";\
   compaudit | xargs chmod go-w;"
 
   # TODO: run conditionally
   info "Fixing completions permission issue"
-  zsh --interactive -c "$final_zsh_setup_commands" > /dev/null
+  # `--no-rcs` to avoid running `compinit` and triggering warnings that we're
+  # about to fix
+  zsh --no-rcs -c "$final_zsh_setup_commands" > /dev/null
 }
 fix_permissions_issue
