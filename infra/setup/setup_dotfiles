@@ -24,13 +24,16 @@ main() {
   "$DOTFILES/infra/setup/bin/symlink"
 
   # TODO: test if available for future setup steps
-  "$DOTFILES/infra/setup/bin/setup_nix" || {
+  source "$DOTFILES/infra/setup/bin/setup_nix" || {
     # shellcheck disable=SC2016
     echo '`nix` installation failed.'
     # shellcheck disable=SC2016
     echo 'Try opening a new shell and rerunning `$DOTFILES/infra/setup/bin/setup_nix`'
     exit 1
   }
+
+  # # TODO: figure out less hacky solution for making
+  # source $HOME/.config/.zshrc
 
   # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
   "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
