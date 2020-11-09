@@ -1,8 +1,8 @@
-################### END OF HOME-MANAGER DECLARED ZSH CONFIG ####################
+###################### END OF HOME-MANAGER DECLARED ZSHRC ######################
 
 ################################################################################
 
-######################### START OF BESPOKE ZSH CONFIG ##########################
+########################### START OF BESPOKE ZSHRC #############################
 
 # This zshrc sources files in $DOTFILES/zsh & any `.zsh` files in the directory
 # specified by "$DOTFILES" (set to `$HOME/.files` in `$DOTFILES/zsh/zshenv`)
@@ -112,7 +112,6 @@ setopt no_extended_glob
 # - `auto_cd` - type a bare path to perform `cd <path>`
 #   - `$ ~/.files<Enter>` will `cd` to `~/.files`
 #   - `$ ..<Enter>` will `cd` up a directory
-# - `extended_glob` - expansion & globbing
 # - `interactive_comments` - allow comments at the command line (zle)
 # - `local_options` - reset any options on script return
 # - history
@@ -122,7 +121,7 @@ setopt no_extended_glob
 #   - `hist_ignore_all_dups` - treat '#', '~' & '^' as glob patterns
 #   - `hist_reduce_blanks` - dedupe & remove lines differing only in whitespace
 #   - `share_history` - sync history between simultaneous shells on prompt load
-setopt auto_cd extended_glob interactive_comments local_options
+setopt auto_cd interactive_comments local_options
 setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
 # any last local overrides, gitignored to avoid checking in

@@ -35,6 +35,11 @@ in
     # TODO: experiment with `tmux` module
     ".tmux.conf".source = "${DOTFILES}/tmux/tmux.conf";
 
+    # manage nix configuration
+    # "${config.xdg.configHome}/nix/nix.conf".text = ''
+    #   # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
+    #   experimental-features = nix-command flakes
+    # '';
     ##### neovim #####
     # extra configuration for `coc.nvim` plugin
     "${config.xdg.configHome}/nvim/coc-settings.json".source = "${DOTFILES}/neovim/coc-settings.jsonc";
@@ -53,6 +58,11 @@ in
     then (import ./nathan.nix).programs.ssh
     else {}
   );
+
+  # avoid errors building man pages by disabling them
+  # similar previous bug - https://github.com/nix-community/home-manager/issues/254
+  # TODO: test if manpages have been fixed on unstable and remove this
+  manual.manpages.enable = false;
 
   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.command-not-found.enable
   programs.command-not-found.enable = true;

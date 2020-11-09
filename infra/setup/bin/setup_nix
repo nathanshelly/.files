@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-# shellcheck disable=SC1090,SC2016
+# shellcheck disable=SC1090,SC1091,SC2016
 
 # check that DOTFILES variable is defined
 source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
@@ -165,17 +165,21 @@ maybe_install_nix_darwin() {
 
   info "setting up nix-darwin"
 
-  pushd "${TMPDIR}" || {
+  pushd "${TMPDIR}" > /dev/null || {
     fail 'failed to push tmp directory'
     return 1
   }
 
-  nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+  nix-build \
+    https://github.com/LnL7/nix-darwin/archive/master.tar.gz \
+    -A installer > /dev/null
 
   # backup_default_system_files
 
   # TODO: handle interactive prompts, pass flags to answer questions?
-  source "${TMPDIR}/result/bin/darwin-installer" || {
+  # TODO: avoid using `sudo`? maybe will become irrelevant with flakes
+  info 'Using `sudo` to run the `nix-darwin` installer'
+  sudo "${TMPDIR}/result/bin/darwin-installer" || {
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
 
     # restore_default_system_files
@@ -183,7 +187,10 @@ maybe_install_nix_darwin() {
     return 1
   }
 
-  popd || {
+  # make just installed `darwin-rebuild` command available in current script
+  [ -f /etc/zshenv ] && source /etc/zshenv
+
+  popd > /dev/null || {
     fail 'probably not really an issue: failed to pop directory'
     return 1
   }
