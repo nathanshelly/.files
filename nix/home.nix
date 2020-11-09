@@ -38,6 +38,14 @@ in
     else {}
   );
 
+  # avoid errors building man pages by disabling them
+  # similar previous bug - https://github.com/nix-community/home-manager/issues/254
+  # TODO: test if manpages have been fixed on unstable and remove this
+  manual.manpages.enable = false;
+
+  # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.command-not-found.enable
+  programs.command-not-found.enable = true;
+
   # configures shell hook to initialize direnv for zsh + nix-direnv integration
   # refs:
   # - https://rycee.gitlab.io/home-manager/options.html#opt-programs.direnv.enable
