@@ -33,7 +33,7 @@ function fix_permissions_issue() {
   # fix permissions on `/user/local/share/*` folder that Homebrew's installer
   # messes with
   # ref - https://stackoverflow.com/a/43544733
-  final_zsh_setup_commands="\
+  fix_permissions_commands="\
   autoload -U compaudit;\
   compaudit | xargs chown -R \"$(whoami)\" > /dev/null;\
   compaudit | xargs chmod go-w > /dev/null;"
@@ -42,6 +42,6 @@ function fix_permissions_issue() {
   info "Fixing completions permission issue"
   # `--no-rcs` to avoid running `compinit` and triggering warnings that we're
   # about to fix
-  zsh --no-rcs -c "$final_zsh_setup_commands" > /dev/null
+  zsh --no-rcs -c "$fix_permissions_commands" > /dev/null
 }
 fix_permissions_issue
