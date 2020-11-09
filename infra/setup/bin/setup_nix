@@ -12,9 +12,12 @@ main() {
 
   setup_nix || exit 1
 
-  setup_home_manager || exit 1
+  # TODO: confirm that this is actually necessary
+  maybe_add_channel_distributed_tooling_to_nix_path
 
-  setup_nix_darwin || exit 1 # only runs on macOS (darwin)
+  maybe_setup_home_manager || exit 1
+
+  maybe_setup_nix_darwin || exit 1 # only runs on macOS (darwin)
 
   setup_flakes || echo "Failed to install flakes"
 
@@ -64,7 +67,7 @@ setup_nix() {
   success '`nix` installed'
 }
 
-setup_home_manager() {
+maybe_setup_home_manager() {
   "$DOTFILES/infra/scripts/is_macos.sh" && {
     info "skipping \`home-manager\` installation on macOS system - managed via
  \`home-manager\` module in \`nix-darwin\` config on macOS"
@@ -86,7 +89,7 @@ setup_home_manager() {
 
 # manages macOS-specific config
 # ref - https://github.com/LnL7/nix-darwin#install
-setup_nix_darwin() {
+maybe_setup_nix_darwin() {
   "$DOTFILES/infra/scripts/is_macos.sh" || {
     info 'skipping `nix-darwin` installation on non-macOS system'
     return 0
@@ -95,9 +98,6 @@ setup_nix_darwin() {
   maybe_install_nix_darwin || return 1
 
   maybe_setup_home_manager_channel || return 1
-
-  # TODO: confirm that this is actually necessary
-  maybe_add_channel_distributed_tooling_to_nix_path
 
   # ref - https://github.com/LnL7/nix-darwin/wiki/Changing-the-configuration.nix-location
   darwin-rebuild switch --flake "$DOTFILES" --show-trace --impure && {
@@ -129,9 +129,6 @@ maybe_install_home_manager() {
 
   # install home manager - https://github.com/rycee/home-manager#installation
   maybe_setup_home_manager_channel
-
-  # TODO: confirm that this is actually necessary
-  maybe_add_channel_distributed_tooling_to_nix_path
 
   # symlink $DOTfiLES/nix/home.nix config in place before first generation
   # TODO: see if I can declaratively manage this in Nix
