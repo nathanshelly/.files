@@ -56,8 +56,16 @@
   nix.extraOptions = ''
     keep-derivations = true
     keep-outputs = true
+    # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
+    experimental-features = nix-command flakes ca-references
   '';
 
+  # enable flakes, an experimental Nix feature
+  # https://zimbatm.com/NixFlakes/#other-systems
+  # TODO: confirm I don't also need this in user packages below
+  nix.package = pkgs.nixFlakes;
+
+  nix.trustedUsers = [ "nathan" ];
 
   # create /etc/zshrc that loads the nix-darwin environment
   # TODO: test if this is necessary
@@ -98,19 +106,14 @@
     packages = with pkgs; [
       alacritty
       asciinema
-      bandwhich
       bat
       bazel
       darwin.trash # TODO: understand behavior on non-Darwin system
-      direnv
       dust
       exa
       exiftool
       fd
       ffmpeg-full
-      fzf
-      git
-      git-lfs
       gitAndTools.delta
       gitAndTools.gh
       gitAndTools.tig
@@ -136,7 +139,6 @@
       vim
       watchexec
       yarn
-      zsh
     ];
     # TODO: understand how to get this to work
     # shell = pkgs.zsh;
