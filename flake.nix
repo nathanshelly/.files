@@ -12,12 +12,15 @@
 
   outputs = { self, nix-darwin, nixpkgs, home-manager }: {
     darwinConfigurations."smino" = nix-darwin.lib.darwinSystem {
-      modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
+      modules = [ ./nix/darwin.nix ];
+      # modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
     };
     # technically `nix-darwin` looks for a config specified by hostname
     # (not sure when, if ever, that's different from $HOST)
+    # TODO: figure out how to actually make generic/universal config
     darwinConfigurations."${builtins.getEnv "HOST"}" = nix-darwin.lib.darwinSystem {
-      modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
+      modules = [ ./nix/darwin.nix ];
+      # modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
     };
   };
 }
