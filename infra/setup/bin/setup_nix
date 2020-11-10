@@ -116,10 +116,14 @@ maybe_setup_nix_darwin() {
 
 # TODO: remove when switching to flakes-based installer
 setup_flakes() {
+  info 'Using `sudo` to backup /etc/nix/nix.conf -> /etc/nix/nix.conf.bak'
+  sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.bak
+
   # needed to enable flakes experimental feature in `/etc/nix/nix.conf`
-  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin.nix" && {
-    success 'Set experimental features in `/etc/nix/nix.conf`'
-  }
+  # TODO: confirm if this is actually needed
+  # darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin.nix" && {
+  #   success 'Set experimental features in `/etc/nix/nix.conf`'
+  # }
 
   nix-env --install -A nixpkgs.nixFlakes || return 1
 
