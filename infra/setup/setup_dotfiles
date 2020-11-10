@@ -32,6 +32,10 @@ main() {
     exit 1
   }
 
+  # TODO: try separating this into two different setup scripts?
+  # one base setup
+  # one final pieces?
+
   # # TODO: figure out less hacky solution for making
   # source $HOME/.config/.zshrc
 
