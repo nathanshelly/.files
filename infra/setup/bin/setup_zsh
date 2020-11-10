@@ -60,7 +60,8 @@ function set_up_miscellaneus() {
   # apply ZLE syntax highlighting overrides to FSH plugin
   # `zinit self-update` is a recommended post-install step which runs `zcompile`
   # to squeeze out the last bit of performance
-  # TODO: make this less black boxy
+
+  # TODO: make this actually work on fresh install or remove entirely
   final_zsh_setup_commands="\
   zinit self-update;\
   fast-theme \"$DOTFILES/zsh/zle-fsh-theme-overlay.ini\";"
