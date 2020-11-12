@@ -44,10 +44,10 @@ EOF
 
   info "setting up gitconfig @ $destination"
 
-  user ' - What is your git author name?'
+  user 'what is your git author name?'
   # `-e` uses `readline`
   read -re git_author_name
-  user ' - What is your git author email?'
+  user 'what is your git author email?'
   read -re git_author_email
 
   # `-e <script>` applies given script to input
