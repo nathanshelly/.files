@@ -238,7 +238,7 @@ maybe_install_nix_darwin() {
   fi
 
   # make just installed `darwin-rebuild` command available in current script
-  [ -f /etc/zshenv ] && source /etc/zshenv
+  [ -f /etc/static/zshrc ] && source /etc/static/zshrc
 
   popd > /dev/null || {
     fail 'probably not really an issue: failed to pop directory'
