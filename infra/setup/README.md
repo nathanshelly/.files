@@ -5,7 +5,7 @@
 These commands include steps only run when setting up a new computer and only if you want to use ssh.
 
 ```bash
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/github -C "your_email@example.com"
+ssh-keygen -f ~/.ssh/github -t ed25519 -C "your_email@example.com"
 # copy to clipboard on macOS
 cat "$HOME/.ssh/github.pub" | pbcopy
 
