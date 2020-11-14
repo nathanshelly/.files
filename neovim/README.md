@@ -257,10 +257,10 @@ Agnostic of plugin management method.
   - [`vim-jsx-typescript`](https://github.com/peitalin/vim-jsx-typescript) - `jsx` highlighting for [`React`](https://reactjs.org)
   - ['vim-styled-components'](https://github.com/styled-components/vim-styled-components) - highlighting inside `css'...'` (\` not ', but can't escape \` inside \`\`)
     > ```javascript
-    > // highlights `...` code
+    > // highlights `...` code as `css` even inside `js` files
     > css`
     >   ...
-    > `;
+    > `
     > ```
 
 ### [`vim_only.vim`](./vim_only.vim)

@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
-# configuration for `nix-darwin`
-# ref - https://github.com/lnl7/
+# configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
 let
   USER = "${builtins.getEnv "USER"}";
 in
@@ -20,6 +19,7 @@ in
 
   # use a custom config location
   # ref - https://github.com/lnl7/nix-darwin/wiki/Changing-the-configuration.nix-location
+  # TODO: remove w/ flakes
   environment = {
     darwinConfig = "$HOME/.files/nix/darwin.nix";
 
