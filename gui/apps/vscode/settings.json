@@ -205,8 +205,5 @@
   "trailing-spaces.highlightCurrentLine": false,
   // <<<<<< vs icons >>>>>>
   "vsicons.dontShowNewVersionMessage": true,
-  "python.defaultInterpreterPath": "/Users/nathan/.nix-profile/bin/python",
-  // ######### rust-analyzer ##########
-  "rust-analyzer.updates.channel": "nightly",
-  "rust-analyzer.serverPath": "rust-analyzer"
+  "python.defaultInterpreterPath": "/Users/nathan/.nix-profile/bin/python"
 }
