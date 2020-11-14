@@ -16,9 +16,9 @@
   lfs.enable = true;
 
   extraConfig = {
+    # disable help messages to reduce verbosity
+    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-advice
     advice = {
-      # disable help messages
-      # https://git-scm.com/docs/git-config#Documentation/git-config.txt-advice
       addEmptyPathspec = false;
       commitBeforeMerge = false;
       detachedHead = false;

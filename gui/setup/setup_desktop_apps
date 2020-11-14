@@ -59,13 +59,13 @@ you have previously installed them. (y/any other key)"
 
   # Xcode - https://apps.apple.com/us/app/xcode/id497799835
   mas install 497799835
+  # accept license so that installed components are usable
+  sudo xcodebuild -license accept
+
   # Super Easy Timer (paid, $5) - https://apps.apple.com/us/app/super-easy-timer/id1353137878
   mas install 1353137878
   # Time Out (in-app purchases) - https://apps.apple.com/us/app/time-out-break-reminders/id402592703
   mas install 402592703
-
-  # TODO: verify this is still necessary
-  # sudo xcodebuild -license accept
 }
 
 # handle any arguments/flags
