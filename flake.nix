@@ -10,6 +10,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  # TODO: understand if `nixpkgs` argument here is 20.09 or following nix-darwin
   outputs = { self, nix-darwin, nixpkgs, home-manager }: {
     darwinConfigurations."smino" = nix-darwin.lib.darwinSystem {
       modules = [ ./nix/darwin.nix ];
