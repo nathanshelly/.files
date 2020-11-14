@@ -9,5 +9,4 @@ Various setup scripts
 - [`setup_neovim`](./setup_neovim) - set up [`neovim`](https://neovim.io/) text editor
 - [`setup_work`](./setup_work) - add work-specific configuration (currently just a work-specific gitconfig (name & email))
 - [`symlink`](./symlink) - symlink all necessary config files to their respective locations (e.g. `$DOTFILES/neovim/init.vim` -> "\$HOME/.config/nvim/init.vim")
-- [`unsetup_work`](./unsetup_work) - remove work config (delete any locally generated files and revert relevant commits)
 - [`setup_zsh`](./setup_zsh) - adds [`zsh`](http://zsh.sourceforge.net/) to `/etc/shells`, sets it to the default shell, and loads `zsh` to install plugins & finish installation
