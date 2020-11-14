@@ -183,7 +183,6 @@
 
   // ######### general ##########
   "extensions.autoUpdate": true,
-
   // ######### rust-analyzer ##########
   // use version of `rust-analyzer` on path
   "rust-analyzer.server.path": "rust-analyzer",
