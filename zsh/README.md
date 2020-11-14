@@ -31,6 +31,7 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`keymap.zsh`](#keymapzsh) - enable `vim` mode for [`zsh` line editor (`zle`)](http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html) and define related keymappings
 - [`local.zsh`](#localzsh) - local (computer-specific) overrides (gitignored & sourced only if it exists)
 - [`manydots.zsh`](#manydotszsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
+- [`path.zsh`](#pathzsh) - configure `$PATH`
 - [`plugins.zsh`](#pluginszsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
 - [`prompt.zsh`](#promptzsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
 - [`secrets.zsh`](#secretszsh) - store secrets such as API tokens (gitignored & sourced only if it exists)
@@ -97,6 +98,12 @@ Add a `zle` widget to facilitate specifying relative directories multiple levels
 
 Each `.` typed past `..` increases the level. For example, `cd ...` becomes `cd ../..`. Typing `.` again gives you `cd ../../..`.
 
+### [`path.zsh`](./path.zsh)
+
+Enable and configure `$PATH`.
+
+Uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;`. Ensures `$path` array contains each entry only once (like a set) with `typeset -u path`
+
 ### [`plugins.zsh`](./plugins.zsh)
 
 Enable and configure plugins.
@@ -111,7 +118,7 @@ Currently using [`powerlevel10k`](https://github.com/romkatv/powerlevel10k). `po
 
 Appearance:
 
-![prompt](https://user-images.githubusercontent.com/9750687/74062058-49ce2e00-49a2-11ea-96a7-808db84e7844.png "prompt")
+![prompt](https://user-images.githubusercontent.com/9750687/74062058-49ce2e00-49a2-11ea-96a7-808db84e7844.png 'prompt')
 
 ### [`secrets.zsh`](./secrets.zsh)
 
@@ -135,6 +142,7 @@ Defines `$DOTFILES` which specifies path to the root of this repo. Used througho
 
 Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and autoload any functions in `functions` folders throughout this repo. Here is the loading order:
 
+1. [`path.zsh`](./path.zsh)
 1. [`secrets.zsh`](./secrets.zsh) - only if this file exists
 1. [`completion.zsh`](./completion.zsh)
 1. [`keymap.zsh`](./keymap.zsh)

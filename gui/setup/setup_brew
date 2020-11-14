@@ -24,20 +24,18 @@ info '`brew` not installed, installing now...'
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # fix permissions issues for `compinit` caused by Homebrew messing with things
-function fix_permissions_issue() {
+# TODO: run conditionally
+fix_permissions_issue() {
   local fix_permissions_commands
 
   # fix permissions on `/user/local/share/*` folder that Homebrew's installer
   # messes with
-  # ref - https://stackoverflow.com/a/43544733
-  # maybe do something from here? https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
-  # TODO: confirm that chmod command fixes things as expected
+  #
+  # refs
+  # - https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+  # - https://stackoverflow.com/a/43544733
   fix_permissions_commands="chmod -R go-w \"$(brew --prefix)/share\";"
-  # autoload -U compaudit;\
-  # compaudit | xargs chown -R \"$(whoami)\" > /dev/null;\
-  # compaudit | xargs chmod go-w > /dev/null;"
 
-  # TODO: run conditionally
   info "Fixing completions permission issue"
   # `--no-rcs` to avoid running `compinit` and triggering warnings that we're
   # about to fix

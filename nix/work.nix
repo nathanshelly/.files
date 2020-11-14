@@ -1,6 +1,5 @@
 let
-  USERNAME = "nathan";
-  HOME = "/Users/${USERNAME}";
+  HOME = "${builtins.getEnv "HOME"}";
   GOPATH = "${HOME}/work/go";
 in
 {
