@@ -1,11 +1,6 @@
 # git
 
-## [`gitconfig`](./gitconfig) & [`gitignore`](./gitignore)
-
-A few of the notable configs set here:
-
-- `ff = only` - only perform fast-forward merges (a `git pull` that would result in a merge instead fails).
-- `[advice]` - turn off git advice to reduce verbosity
+See `gitconfig` & `gitignore` declared via Nix in [`$DOTFILES/nix/git.nix`](../../nix/git.nix).
 
 ## [`gitconfig.template`](./gitconfig.template)
 

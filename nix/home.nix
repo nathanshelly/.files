@@ -1,11 +1,9 @@
 { config, pkgs, ... }:
 
 let
-  # TODO: make this dynamic
-  USER = "${builtins.getEnv "USER"}";
-  HOME = "/Users/${USER}";
+  HOME = "${builtins.getEnv "HOME"}";
   DOTFILES = "${HOME}/.files";
-  INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists "${HOME}/.nathan";
+  SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists "${HOME}/.nathan";
 in
 {
   # TODO: create issue to look into gpg signing
@@ -46,15 +44,17 @@ in
     # custom colorscheme
     "${config.xdg.configHome}/nvim/colors/n.vim".source = "${DOTFILES}/neovim/colors/n.vim";
   } // (
-    if INSTALL_NATHAN_SPECIFIC_CONFIG then (import ./nathan.nix).home.file else {}
+    if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG
+    then (import ./nathan.nix).home.file
+    else {}
   ) // (
-    if pkgs.stdenv.isDarwin && INSTALL_NATHAN_SPECIFIC_CONFIG
+    if pkgs.stdenv.isDarwin && SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG
     then (import ./gui.nix).home.file
     else {}
   );
 
   programs.ssh = (
-    if INSTALL_NATHAN_SPECIFIC_CONFIG
+    if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG
     then (import ./nathan.nix).programs.ssh
     else {}
   );
@@ -100,9 +100,7 @@ in
 
     # TODO: apply conditionally based on user config, rewritten in nix
     defaultKeymap = "viins";
-    dotDir = ".config/zsh";
 
-    # TODO: switch these to append the contents of the file instead of sourcing
     initExtra = builtins.readFile "${DOTFILES}/zsh/zshrc";
     envExtra = builtins.readFile "${DOTFILES}/zsh/zshenv";
 
