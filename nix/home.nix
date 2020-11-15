@@ -64,9 +64,6 @@ in
   # TODO: test if manpages have been fixed on unstable and remove this
   manual.manpages.enable = false;
 
-  # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.command-not-found.enable
-  programs.command-not-found.enable = true;
-
   # configures shell hook to initialize direnv for zsh + nix-direnv integration
   # refs:
   # - https://rycee.gitlab.io/home-manager/options.html#opt-programs.direnv.enable
@@ -101,7 +98,11 @@ in
     # TODO: apply conditionally based on user config, rewritten in nix
     defaultKeymap = "viins";
 
-    initExtra = builtins.readFile "${DOTFILES}/zsh/zshrc";
+    initExtra = builtins.concatStringsSep "\n" [
+      (builtins.readFile "${DOTFILES}/zsh/zshrc")
+      # TODO: see if there's a better way to do this
+      "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
+    ];
     envExtra = builtins.readFile "${DOTFILES}/zsh/zshenv";
 
     shellAliases = {
