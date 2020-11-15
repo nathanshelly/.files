@@ -75,6 +75,14 @@ in
     # configure $HOME/.config/direnv/direnvrc to source nix-direnv initialization
     # ref - https://github.com/nix-community/nix-direnv#via-home-manager
     enableNixDirenvIntegration = true;
+
+    stdlib = ''
+      use_flake() {
+        watch_file flake.nix
+        watch_file flake.lock
+        eval "$(nix print-dev-env --profile "$(direnv_layout_dir)/flake-profile")"
+      }
+    '';
   };
 
   # TODO: understand exactly what this does
