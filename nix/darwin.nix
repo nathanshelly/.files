@@ -50,7 +50,7 @@ in
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
   # imports = [ inputs.home-manager.darwinModules.home-manager ];
   # # TODO: remove when switching to flake-based nix-darwin installer
-  # imports = [ <home-manager/nix-darwin> ];
+  imports = [ <home-manager/nix-darwin> ];
   home-manager.users."${USER}" = import ./home.nix;
   home-manager.useUserPackages = true;
 
