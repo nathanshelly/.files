@@ -3,7 +3,7 @@
 
   inputs = {
     # TODO: switch to unstable once macOS Big Sur support has landed
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-20.03-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-20.09-darwin";
 
     home-manager.url = "github:nix-community/home-manager/master";
     # set home-manager's nipxkgs input to the nixpkgs specified in this flake
