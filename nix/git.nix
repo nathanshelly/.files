@@ -2,8 +2,21 @@
   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.git.enable
   enable = true;
 
-  # TODO: enable when switching to a more recent version of home manager
-  # delta.enable = true;
+  delta = {
+    enable = true;
+    # https://github.com/dandavison/delta#configuration
+    options = {
+      # TODO: allow dyanmic dark/light theme setting
+      syntax-theme = "TwoDark";
+      plus-style = "syntax #1c3428";
+      plus-emph-style = "syntax #37664e";
+      minus-style = "syntax #390423";
+      minus-emph-style = "syntax #af0d6c";
+      tabs = 2;
+      hunk-style = "plain";
+      highlight-removed = true;
+    };
+  };
 
   includes = [
     # local overrides of `git` identity (author name & email)
