@@ -6,38 +6,16 @@ let
   SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists "${HOME}/.nathan";
 in
 {
-  # TODO: create issue to look into gpg signing
-  # https://rycee.gitlab.io/home-manager/options.html#opt-programs.git.signing
-
-  # TODO: test exactly what path this affects - path to home-manager config?
-  # https://rycee.gitlab.io/home-manager/options.html#opt-programs.home-manager.path
-
-  # TODO: manage fonts via fontconfig?
-  # fonts.fontconfig.enable = true
-
-  # TODO: figure out how to conditionally apply personal overrides
-  # check existence of `$HOME/.nathan` file?
-  # figure out how to spread attribute sets - "import ./nathan.nix"
-
   # TODO: conditionally spread work zsh config
   home.sessionVariables = if builtins.pathExists "${HOME}/work"
   then (import ./work.nix).home.sessionVariables
   else {};
 
-  # TODO: conditionally apply gui config
-  # figure out how to spread attribute sets - "import ./gui.nix"
-
   # creates symlinks to immutable copies of the source file in /nix/store
   # form: "<target>".source = "<source>"
   home.file = {
-    # TODO: experiment with `tmux` module
     ".tmux.conf".source = "${DOTFILES}/tmux/tmux.conf";
 
-    # manage nix configuration
-    # "${config.xdg.configHome}/nix/nix.conf".text = ''
-    #   # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
-    #   experimental-features = nix-command flakes
-    # '';
     ##### neovim #####
     # extra configuration for `coc.nvim` plugin
     "${config.xdg.configHome}/nvim/coc-settings.json".source = "${DOTFILES}/neovim/coc-settings.jsonc";
@@ -59,24 +37,20 @@ in
     else {}
   );
 
-  # avoid errors building man pages by disabling them
-  # similar previous bug - https://github.com/nix-community/home-manager/issues/254
-  # TODO: test if manpages have been fixed on unstable and remove this
-  manual.manpages.enable = false;
-
   # configures shell hook to initialize direnv for zsh + nix-direnv integration
   # refs:
   # - https://rycee.gitlab.io/home-manager/options.html#opt-programs.direnv.enable
   # - direnv - https://direnv.net/
   programs.direnv = {
     enable = true;
-    # TODO: confirm that this is unnecessary
-    enableZshIntegration = true;
+
     # configure $HOME/.config/direnv/direnvrc to source nix-direnv initialization
     # ref - https://github.com/nix-community/nix-direnv#via-home-manager
     enableNixDirenvIntegration = true;
 
     stdlib = ''
+      # add experimental flake integration
+      # ref - https://zimbatm.com/NixFlakes/#direnv-integration
       use_flake() {
         watch_file flake.nix
         watch_file flake.lock
@@ -84,10 +58,6 @@ in
       }
     '';
   };
-
-  # TODO: understand exactly what this does
-  # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.dircolors.enable
-  programs.dircolors.enable = true;
 
   # sources completions and key-bindings in interactive zsh sessions
   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.fzf.enable

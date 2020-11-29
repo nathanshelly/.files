@@ -126,3 +126,5 @@ setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
+
+############################ END OF BESPOKE ZSHRC ##############################
