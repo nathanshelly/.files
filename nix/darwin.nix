@@ -3,6 +3,8 @@
 # configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
 let
   USER = "${builtins.getEnv "USER"}";
+  SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists
+    "${builtins.getEnv "HOME"}/.nathan";
 in
 {
   # TODO: add keyboard shortcuts - https://github.com/LnL7/nix-darwin/pull/189
@@ -10,70 +12,54 @@ in
   # TODO: - package & install natasha-codes font
   # https://daiderd.com/nix-darwin/manual/index.html#opt-fonts.enableFontDir
 
-  # TODO: maybe set up nix-index for command not found helper?
-  #   - https://github.com/bennofs/nix-index
-  #   - https://daiderd.com/nix-darwin/manual/index.html#opt-programs.nix-index.enable
-
   # TODO: tmux/vim/zsh - maybe in home-manager instead? any way to use both?
   # - https://daiderd.com/nix-darwin/manual/index.html#opt-programs.tmux.enable
 
-  # use a custom config location
-  # ref - https://github.com/lnl7/nix-darwin/wiki/Changing-the-configuration.nix-location
-  # TODO: remove w/ flakes
   environment = {
+    # use a custom config location
+    # ref - https://github.com/lnl7/nix-darwin/wiki/Changing-the-configuration.nix-location
+    # TODO: remove w/ flakes
     darwinConfig = "$HOME/.files/nix/darwin.nix";
 
-    # TODO
-    # refs:
-    # - https://discourse.nixos.org/t/using-nix-to-install-login-shell-on-non-nixos-platform/2807/2
-    # - https://github.com/rycee/home-manager/issues/1226
-    # environment.systemPackages = [ pkgs.zsh ];
-    # shells = [
-    #   # TODO: figure out how to reference user packages
-    #   # config.users.users.nathan.packages.zsh
-    # ];
+    # TODO: figure out how to add user-profile `zsh`
+    shells = [ pkgs.zsh ];
 
-    # TODO: understand how this is possibly supposed to work
-    # check existence of `$HOME/.nathan` file?
-    # figure out how to spread attribute sets
     # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.systemPath
-    # environment.systemPath = import ./work.nix
-    # systemPath = [] ++ (
-    #   if builtins.pathExists "${builtins.getEnv "HOME"}/work"
-    #   then (import ./work.nix).darwin.environment.systemPath
-    #   else []
-    # );
+    systemPath = [] ++ (
+      if builtins.pathExists "${builtins.getEnv "HOME"}/work"
+      then (import ./work.nix).darwin.environment.systemPath
+      else []
+    );
   };
 
 
   # user environment management via home-manager
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
-  # imports = [ inputs.home-manager.darwinModules.home-manager ];
   # # TODO: remove when switching to flake-based nix-darwin installer
-  imports = [ <home-manager/nix-darwin> ];
+  # imports = [ <home-manager/nix-darwin> ];
   home-manager.users."${USER}" = import ./home.nix;
   home-manager.useUserPackages = true;
 
-  # protect `nix-direnv` dev environments from being garbage collected
-  # ref - https://github.com/nix-community/nix-direnv#via-home-manager
-  #
-  # manual - https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
-  nix.extraOptions = ''
-    keep-derivations = true
-    keep-outputs = true
-    # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
-    experimental-features = nix-command flakes ca-references
-  '';
+  nix = {
+    # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
+    extraOptions = ''
+      # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
+      experimental-features = nix-command flakes ca-references
 
-  # enable flakes, an experimental Nix feature
-  # https://zimbatm.com/NixFlakes/#other-systems
-  # TODO: confirm I don't also need this in user packages below
-  nix.package = pkgs.nixFlakes;
+      # protect `nix-direnv` dev environments from being garbage collected
+      # ref - https://github.com/nix-community/nix-direnv#via-home-manager
+      keep-derivations = true
+      keep-outputs = true
+    '';
 
-  nix.trustedUsers = [ USER ];
+    # enable flakes, an experimental Nix feature
+    # https://zimbatm.com/NixFlakes/#other-systems
+    package = pkgs.nixFlakes;
 
-  # create /etc/zshrc that loads the nix-darwin environment
-  # TODO: test if this is necessary
+    trustedUsers = [ USER ];
+  };
+
+  # create /etc/zshrc that activates the nix-darwin environment on shell load
   programs.zsh.enable = true;
 
   # auto upgrade nix package and the daemon service
@@ -93,32 +79,30 @@ in
 
     NSGlobalDomain._HIHideMenuBar = true;
 
-    # TODO: use below defaults once upgraded
-    # https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults.NSGlobalDomain.com.apple.trackpad.scaling
-    # system.defaults.NSGlobalDomain.com.apple.sound.beep.volume = 0;
-    # system.defaults.NSGlobalDomain.com.apple.trackpad.scaling = 3; # max speed
-    # system.defaults.NSGlobalDomain.com.apple.trackpad.scaling = 3;
+    # TODO understand why I can't seem to set these
+    # NSGlobalDomain."com.apple.sound.beep.volume" = null;
+    # NSGlobalDomain."com.apple.trackpad.scaling" = 3; # max speed
+
     NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
     NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
     screencapture.location = "$HOME/Downloads";
   };
 
-
-
   users.users."${USER}" = {
+    # home key here requed for home-manager config to apply
     home = "/Users/${USER}";
-    description = "Current user";
     packages = with pkgs; [
       alacritty
       asciinema
       bat
       bazel
-      darwin.trash # TODO: understand behavior on non-Darwin system
+      darwin.trash
       dust
       exa
       exiftool
       fd
       ffmpeg-full
+      gitAndTools.delta
       gitAndTools.gh
       gitAndTools.tig
       gnumake
@@ -132,7 +116,6 @@ in
       nodejs
       python3
       ripgrep
-      rnix-lsp
       rsync
       shellcheck
       shfmt
@@ -145,15 +128,17 @@ in
       watchexec
       yarn
     ];
-    # TODO: understand how to get this to work
-    # shell = pkgs.zsh;
   };
 
-  users.users.test = {
-    home = "/Users/test";
-    description = "Test User";
-    shell = pkgs.zsh;
-  };
+  # TODO: extend nix-darwin to allow shell setting w/o user recreation
+  # users = if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG
+  # then {
+  #   knownUsers = [ USER ];
+  #   "${USER}" = {
+  #     shell = pkgs.zsh;
+  #     uid = 501;
+  #   };
+  # } else {};
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
