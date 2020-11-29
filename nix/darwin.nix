@@ -119,7 +119,6 @@ in
       exiftool
       fd
       ffmpeg-full
-      gitAndTools.delta
       gitAndTools.gh
       gitAndTools.tig
       gnumake
