@@ -25,8 +25,7 @@
     { path = "~/.gitconfig.work"; condition = "gitdir:~/work/"; }
   ];
 
-  # TODO: confirm what this does
-  lfs.enable = true;
+  lfs.enable = true; # set up optional handy config for LFS
 
   extraConfig = {
     # disable help messages to reduce verbosity
@@ -78,6 +77,11 @@
       # https://www.git-tower.com/help/guides/faq-and-tips/faq/unicode-filenames/mac
       precomposeUnicode = true;
     };
+    diff = {
+      # https://git-scm.com/docs/git-diff#Documentation/git-diff.txt---color-movedltmodegt
+      colorMoved = "dimmed-zebra";
+      colorMovedWS = "allow-indentation-change";
+    };
     help = {
       # automatically correct and execute mistyped commands
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-helpautoCorrect
@@ -119,12 +123,6 @@
       # properly sort semver tags (`v-0.9.1x` after `v-0.9.9`)
       # https://stackoverflow.com/a/22634649
       sort = "version:refname";
-    };
-    "filter \"lfs\"" = {
-      clean = "git-lfs clean -- %f";
-      smudge = "git-lfs smudge -- %f";
-      process = "git-lfs filter-process";
-      required = true;
     };
     init = {
       defaultBranch = "main";
