@@ -3,6 +3,8 @@
   enable = true;
 
   delta = {
+    # TODO: figure out why this config still needs `delta` in the user packages
+    # but only when in a tmux session
     enable = true;
     # https://github.com/dandavison/delta#configuration
     options = {

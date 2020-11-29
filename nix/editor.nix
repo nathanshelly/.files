@@ -9,14 +9,13 @@ in
 
   extraConfig = builtins.readFile "${DOTFILES}/neovim/init.vim";
 
-  # TODO: test this
+  # TODO: figure out what's not working here
   extraPython3Packages = ps: with ps; [ black ];
 
-  # TODO: move neovim-specific packages here form ./darwin.nix after upgrading
-  # home-manager version
-  # extraPackages = with pkgs; [
-  #   rnix-lsp
-  # ];
+  # packages used only for nvim, these are not added to $PATH
+  extraPackages = with pkgs; [
+    rnix-lsp
+  ];
 
   plugins = with pkgs.vimPlugins; [
     # fuzzy finder

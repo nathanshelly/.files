@@ -31,7 +31,6 @@ brew install "yqrashawn/goku/goku"
 Finally run the following command from anywhere to apply the config:
 
 ```console
-~/.files on goku
 ❯ GOKU_EDN_CONFIG_FILE="$DOTFILES/gui/apps/karabiner/karabiner.edn" goku
 Done!
 ```
