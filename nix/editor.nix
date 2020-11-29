@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs>, ... }:
+{ pkgs, ... }:
 
 let
   DOTFILES = "${builtins.getEnv "HOME"}/.files";
