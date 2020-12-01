@@ -17,13 +17,8 @@ main() {
 
   printf "%bstarting dotfiles setup%b" "$teal_highlight" "$clear_highlight"
 
-  # symlink config files to their correct locations
-  # done early so that other installation steps can make use of these files (for
-  # example, setting up home-manager for the first time in `setup_nix` requires
-  # `$DOTFILES/nix/home.nix` to be symlinked appropriately)
-  "$DOTFILES/infra/setup/bin/symlink"
-
   # TODO: test if available for future setup steps
+  # shellcheck disable=SC1090
   source "$DOTFILES/infra/setup/bin/setup_nix" || {
     # shellcheck disable=SC2016
     echo '`nix` installation failed.'
