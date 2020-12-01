@@ -9,14 +9,17 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
-user "set up neovim? (y/any other key)"
+# interactively confirm that neovim should be set up in non-headless install
+[[ -z $DOTFILES_SETUP_HEADLESS ]] && {
+  user "set up neovim? (y/any other key)"
 
-read -r -n 1 maybe_continue < /dev/tty
-echo # avoid writing on same line as user input
+  read -r -n 1 maybe_continue < /dev/tty
+  echo # avoid writing on same line as user input
 
-[[ $maybe_continue != 'y' ]] && {
-  info "skipping neovim setup"
-  exit 1
+  [[ $maybe_continue != 'y' ]] && {
+    info "skipping neovim setup"
+    exit 0
+  }
 }
 
 # shellcheck disable=SC2016
