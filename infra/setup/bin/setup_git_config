@@ -15,6 +15,12 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 main() {
   parse_input "$@"
 
+  [[ -z $DOTFILES_SETUP_HEADLESS ]] || {
+    # this script cannot be run headless, bail for that mode of install
+    info "skipping git config setup in headless mode"
+    return 0
+  }
+
   [[ -z $destination ]] && {
     cat << EOF
 error: the following arguments were not provided

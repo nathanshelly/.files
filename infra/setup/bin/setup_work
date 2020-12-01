@@ -9,6 +9,9 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
 
+# skip interactive work setup on headless setup
+[[ -z $DOTFILES_SETUP_HEADLESS ]] || return 0
+
 [ -f "$HOME/.gitconfig.work" ] && {
   info "skipping work setup since $HOME/.gitconfig.work already exists"
   exit 0

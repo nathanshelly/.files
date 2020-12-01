@@ -4,7 +4,7 @@
 # - http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
 # targets without immediate file dependencies
-.PHONY: all check fix format gui help lint nix setup symlink
+.PHONY: all check fix format gui help lint nix setup headless-setup symlink
 .DEFAULT_GOAL := help
 
 lint:
@@ -18,6 +18,9 @@ check: lint
 
 fix: format
 	./infra/actions/shellcheck --fix
+
+headless-setup:
+	./infra/setup/setup_dotfiles --headless
 
 setup:
 	./infra/setup/setup_dotfiles

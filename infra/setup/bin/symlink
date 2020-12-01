@@ -13,6 +13,9 @@ main() {
 
   local overwrite_all=false backup_all=false skip_all=false
 
+  # accept existing files silently when running headless
+  [[ -z $DOTFILES_SETUP_HEADLESS ]] || skip_all=true
+
   link_base_files
   [[ $INSTALL_NATHAN_SYMLINKS == true ]] && link_nathan_files
   [[ $INSTALL_GUI_SYMLINKS == true ]] && link_gui_files

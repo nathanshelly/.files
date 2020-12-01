@@ -1,17 +1,19 @@
 #! /usr/bin/env bash
 
-# check that DOTFILES variable is defined
-# relative path handling is tricky and never foolproof
-# refs
-#   - http://mywiki.wooledge.org/BashFAQ/028
-#   - https://stackoverflow.com/questions/6659689/referring-to-a-file-relative-to-executing-script
-# shellcheck disable=SC1090
-source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
-
 main() {
   local teal_highlight clear_highlight
   teal_highlight='\x1b[38;5;006m'
   clear_highlight='\x1b[0m\n\n'
+
+  parse_input "$@"
+
+  # check that DOTFILES variable is defined
+  # relative path handling is tricky and never foolproof
+  # refs
+  #   - http://mywiki.wooledge.org/BashFAQ/028
+  #   - https://stackoverflow.com/questions/6659689/referring-to-a-file-relative-to-executing-script
+  # shellcheck disable=SC1090
+  source "${BASH_SOURCE%/*}/check_dotfiles_variable.sh"
 
   printf "%bstarting dotfiles setup%b" "$teal_highlight" "$clear_highlight"
 
@@ -56,6 +58,21 @@ main() {
   printf "%bsetup finished! 🎉%b" "$teal_highlight" "$clear_highlight"
 
   zsh --interactive
+}
+
+parse_input() {
+  for opt in "$@"; do
+    case $opt in
+      --headless)
+        export DOTFILES_SETUP_HEADLESS=true
+        ;;
+      --*)
+        # shellcheck disable=SC2016
+        printf 'invalid flag passed to `setup_dotfiles`'
+        exit 1
+        ;;
+    esac
+  done
 }
 
 main "$@"
