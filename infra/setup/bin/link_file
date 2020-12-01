@@ -22,6 +22,9 @@ link_file() {
   local overwrite='' backup='' skip='' action=''
   local overwrite_all=false backup_all=false skip_all=false
 
+  # accept existing files silently when running headless
+  [[ -z $DOTFILES_SETUP_HEADLESS ]] || skip_all=true
+
   if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]; then
     if [ "$overwrite_all" == "false" ] \
       && [ "$backup_all" == "false" ] \

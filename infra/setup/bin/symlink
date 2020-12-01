@@ -11,11 +11,6 @@ main() {
 
   header "<< Symlinking >>"
 
-  local overwrite_all=false backup_all=false skip_all=false
-
-  # accept existing files silently when running headless
-  [[ -z $DOTFILES_SETUP_HEADLESS ]] || skip_all=true
-
   [[ $INSTALL_GUI_SYMLINKS == true ]] && link_gui_files
 
   return 0
