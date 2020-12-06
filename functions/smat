@@ -3,11 +3,11 @@
 # render given args with best available command
 render_args() {
   # use `mdcat` when passed a single markdown file
+  # TODO: use `mdcat` w/ multiple files all are `*.md`
   [[ -z $2 ]] && [[ $1 =~ \.md$ ]] && command -v mdcat > /dev/null && {
-    # display markdown file using `mdcat` w/ a pager
-    # TODO: use `--paginate` flag once released
-    # ref - https://github.com/lunaryorn/mdcat/issues/152
-    mdcat "$1" | less --no-init --quit-if-one-screen --raw-control-chars
+    # `--paginate` applies the pager defined in $PAGER (or $MDCAT_PAGER w/ a
+    # default of `less --raw-control-characters`)
+    mdcat --paginate "$1"
     return
   }
 
