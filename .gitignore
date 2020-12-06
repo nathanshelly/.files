@@ -1,14 +1,22 @@
 # scratch files
 temp.*
+
 # tokens, credentials, etc.
 secrets.*
+
 # any built targets (e.g. rust analyzer language server)
 target
+
 # `brew bundle` "lock" file - not actually for reproducible installs, mostly a
 # debugging tool
 # ref - https://github.com/Homebrew/homebrew-bundle/pull/552
 Brewfile.lock.json
+
 # local overrides
 zsh/local.zsh
+
 # ignore unused Alfred settings
 **/Alfred.alfredpreferences/remote
+
+# build artifacts from nix
+result
