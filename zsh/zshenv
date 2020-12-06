@@ -24,6 +24,12 @@ main() {
 
   export DIRENV_LOG_FORMAT= # silence direnv
 
+  # set default pager
+  # - `--no-init` - leaves output on screen instead of clearing
+  # - `--quit-if-one-screen` - behaves as if there were no pager if output fits
+  # - `--raw-control-characters` - render control characrers correctly (https://unix.stackexchange.com/a/280420)
+  export PAGER="less --no-init --quit-if-one-screen --raw-control-chars"
+
   # colored paging (enables colored man pages)
   # ref - https://github.com/sorin-ionescu/prezto/blob/cfeb8cd6c9f60c2a928f4c706d0137c7de2ef106/modules/environment/init.zsh#L59-L67
   export LESS_TERMCAP_mb=$'\E[01;31m'      # begins blinking
