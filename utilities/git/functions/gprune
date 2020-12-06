@@ -6,6 +6,13 @@
 # installed uses `hub sync` command to sync all local branches with their
 # remotes.
 
+# TODO: figure out what seems to have changed in git to break this/switch to
+# `git-gone` (which also doesn't # work on my machine, probably the same issue?
+#
+# quick testing on nathanshelly/sandbox seems to suggest that git treats remotes
+# differently than it used where deleting a branch and pulling no longer
+# maintains a record of the local branch pointing to that deleted branch
+
 if command -v hub > /dev/null; then
   # shellcheck disable=SC2016
   hub sync > /dev/null 2>&1 || echo '`hub sync` failed'
