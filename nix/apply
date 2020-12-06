@@ -21,8 +21,8 @@ os_specific_apply_command() {
     # `--impure` allows access to environment variables
     # trade-off between purely reproducible config and one that can adjust
     # based off environment
-    darwin-rebuild switch --flake "$DOTFILES" --show-trace --impure
-  else # TODO: account for NixOS when supported in the future
+    darwin-rebuild switch --flake "$DOTFILES" --impure # --show-trace
+  else                                                 # TODO: account for NixOS when supported in the future
     home-manager switch
   fi
 }

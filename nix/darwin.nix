@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
 
 # configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
 let
@@ -88,47 +88,51 @@ in
     screencapture.location = "$HOME/Downloads";
   };
 
-  users.users."${USER}" = {
-    # home key here requed for home-manager config to apply
-    home = "/Users/${USER}";
-    packages = with pkgs; [
-      alacritty
-      asciinema
-      bat
-      bazel
-      darwin.trash
-      dust
-      exa
-      exiftool
-      fd
-      ffmpeg-full
-      gitAndTools.delta
-      gitAndTools.gh
-      gitAndTools.tig
-      gnumake
-      gnupg
-      hyperfine
-      jq
-      lua # z.lua dependency
-      mdcat
-      ncurses
-      nix-index
-      nodejs
-      python3
-      ripgrep
-      rsync
-      shellcheck
-      shfmt
-      syncthing
-      tldr
-      tmux
-      tokei
-      tree
-      vim
-      watchexec
-      yarn
-    ];
-  };
+  # users.users."${USER}" = {
+  #   # home key here requed for home-manager config to apply
+  #   home = "/Users/${USER}";
+  #   packages = with pkgs; [
+  #     alacritty
+  #     asciinema
+  #     bat
+  #     bazel
+  #     bottom
+  #     darwin.trash
+  #     dust
+  #     exa
+  #     exiftool
+  #     fd
+  #     ffmpeg-full
+  #     gitAndTools.delta
+  #     gitAndTools.gh
+  #     gitAndTools.tig
+  #     gnumake
+  #     gnupg
+  #     hyperfine
+  #     jq
+  #     lua # z.lua dependency
+  #     # nixpkgs-unstable.glow
+  #     ncurses
+  #     nix-index
+  #     nodejs
+  #     nushell
+  #     python3
+  #     ripgrep
+  #     rsync
+  #     shellcheck
+  #     shfmt
+  #     syncthing
+  #     # tool for viewing small, community-maintained help pages similar to `man`
+  #     # `tealdeer` is a faster reimplemntation of the original `tldr`
+  #     tealdeer
+  #     tmux
+  #     tokei
+  #     tree
+  #     vim
+  #     watchexec
+  #     yarn
+  #   ];
+  # };
 
   # TODO: extend nix-darwin to allow shell setting w/o user recreation
   # users = if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG

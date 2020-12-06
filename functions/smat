@@ -2,12 +2,11 @@
 
 # render given args with best available command
 render_args() {
-  # use `mdcat` when passed a single markdown file
-  # TODO: use `mdcat` w/ multiple files all are `*.md`
-  [[ -z $2 ]] && [[ $1 =~ \.md$ ]] && command -v mdcat > /dev/null && {
-    # `--paginate` applies the pager defined in $PAGER (or $MDCAT_PAGER w/ a
-    # default of `less --raw-control-characters`)
-    mdcat --paginate "$1"
+  # use `glow` when passed a single markdown file
+  # TODO: use `glow` w/ multiple files all are `*.md`
+  [[ -z $2 ]] && [[ $1 =~ \.md$ ]] && command -v glow > /dev/null && {
+    # `--pager` applies the pager defined in $PAGER (default of `less -R`)
+    glow --pager "$1"
     return
   }
 
