@@ -47,16 +47,6 @@ in
     # configure $HOME/.config/direnv/direnvrc to source nix-direnv initialization
     # ref - https://github.com/nix-community/nix-direnv#via-home-manager
     enableNixDirenvIntegration = true;
-
-    stdlib = ''
-      # add experimental flake integration
-      # ref - https://zimbatm.com/NixFlakes/#direnv-integration
-      use_flake() {
-        watch_file flake.nix
-        watch_file flake.lock
-        eval "$(nix print-dev-env --profile "$(direnv_layout_dir)/flake-profile")"
-      }
-    '';
   };
 
   # sources completions and key-bindings in interactive zsh sessions
