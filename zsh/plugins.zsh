@@ -60,6 +60,8 @@ command -v lua > /dev/null && {
   zinit light skywind3000/z.lua
 }
 
+zinit light Aloxaf/fzf-tab
+
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -86,5 +88,11 @@ bindkey '^w' vi-forward-word
 # << keymappings >>
 bindkey '^u' history-substring-search-up
 bindkey '^y' history-substring-search-down
+
+# <<<< fzf-tab >>>>
+# ref - https://github.com/Aloxaf/fzf-tab/wiki/Configuration
+
+# override '/` default
+zstyle ':fzf-tab:*' continuous-trigger '+'
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugin config >>>>>>>>>>>>>>>>>>>>>>>>>>>>
