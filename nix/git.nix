@@ -67,12 +67,6 @@
       # ref - https://duan.ca/2020/04/13/git-commit-comment/
       commentChar = ";";
 
-      # marks `~/.gitignore` (if it exists) as a global ignore file applying to all
-      # `git` repos throughout your machine (unrelated to the `.gitignore` at the
-      # root of this repo - `$DOTFILES/.gitignore`)
-      # https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreexcludesFile
-      excludesFile = "~/.gitignore";
-
       # pager = <set in zsh/dynamic_env_vars.zsh>
 
       # ensures unicode compatibility between macOS, Windows & Linux
@@ -153,7 +147,6 @@
     "logs"
     "*.log"
     "npm-debug.log"
-    "*"
 
     # Folder view configuration files
     ".DS_Store"

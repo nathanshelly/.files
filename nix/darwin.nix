@@ -85,7 +85,7 @@ in
 
     NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
     NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
-    screencapture.location = "$HOME/Downloads";
+    screencapture.location = "$HOME/tmp";
   };
 
   users.users."${USER}" = {
@@ -113,7 +113,6 @@ in
       mdcat
       ncurses
       nix-index
-      nodejs
       python3
       ripgrep
       rsync
