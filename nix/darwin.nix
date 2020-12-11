@@ -112,6 +112,7 @@ in
       lua # z.lua dependency
       mdcat
       ncurses
+      nodejs
       nix-index
       python3
       ripgrep
