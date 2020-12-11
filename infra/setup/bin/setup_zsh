@@ -10,6 +10,9 @@ zsh_path="$(command -v zsh)"
 
 info "Setting up zsh"
 
+# TODO: remove `path_helper` macOS utility
+
+# TODO: move this setup into nix-darwin config
 # add `zsh` to allowed shells if not already added
 grep -q "$zsh_path" /etc/shells || {
   info "Using sudo access to add '$zsh_path' to /etc/shells"

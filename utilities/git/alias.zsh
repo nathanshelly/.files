@@ -77,3 +77,5 @@ alias gu='git reset HEAD~'
 # uses `gwp<command>` ("with pager" mnemonic) to avoid `--no-pager`
 alias gwpl='git_log_base'
 alias gwplv='git_log_verbose_base'
+
+alias cc="git log --format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"

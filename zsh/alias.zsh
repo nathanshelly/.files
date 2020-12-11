@@ -18,7 +18,10 @@ alias dre="darwin-rebuild edit"
 alias drs="darwin-rebuild switch"
 
 # repo root
-command -v git > /dev/null && alias rr="git rev-parse --show-toplevel"
+command -v git > /dev/null && {
+  alias g=git
+  alias rr="git rev-parse --show-toplevel"
+}
 
 command -v trash > /dev/null && alias t=trash # macOS trash command
 
