@@ -8,6 +8,8 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 info "Setting up zsh"
 
+# TODO: remove `path_helper` macOS utility
+
 # TODO: move this setup into nix-darwin config
 # add `zsh` to allowed shells if not already added
 function maybe_add_active_zsh_to_allowed_shells() {
