@@ -110,7 +110,6 @@
       "statusBar.background": "#3e8c9b",
       "statusBar.foreground": "#dbdddd",
       "editor.background": "#232323",
-      "editorGroup.background": "#232323",
       "editorGroupHeader.noTabsBackground": "#232323",
       "editorGroupHeader.tabsBackground": "#232323",
       "tab.activeBackground": "#303030",
@@ -192,20 +191,12 @@
   // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
   // <<<<<< general >>>>>>
   "extensions.autoUpdate": true,
-  // <<<<<< project >>>>>>
-  "projectManager.openInNewWindowWhenClickingInStatusBar": true,
   // <<<<<< scroll off >>>>>>
-  "scrolloff.alwaysCenter": true,
   "python.venvPath": "~/envs/python",
   // linting
   "python.linting.enabled": true,
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": false,
-  // <<<<<< trailng spaces >>>>>>
-  "trailing-spaces.highlightCurrentLine": false,
-  // <<<<<< vs icons >>>>>>
-  "vsicons.dontShowNewVersionMessage": true,
-  "python.defaultInterpreterPath": "/Users/nathan/.nix-profile/bin/python",
   // ######### rust-analyzer ##########
   "rust-analyzer.updates.channel": "nightly",
   "rust-analyzer.serverPath": "rust-analyzer"
