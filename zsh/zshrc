@@ -122,14 +122,6 @@ setopt no_extended_glob
 setopt auto_cd interactive_comments local_options
 setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
-# TODO: handle this more cleanly somewhere else?
-# if `asdf` installation exists source it
-[ -f "$HOME/.asdf/asdf.sh" ] && {
-  source "$HOME/.asdf/asdf.sh"
-  # TODO: come up with less hacky/awful solution here
-  PATH="/etc/profiles/per-user/nathan/bin:$PATH"
-}
-
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
 
