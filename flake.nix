@@ -14,19 +14,9 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nix-darwin, nixpkgs, home-manager }:
-    {
-      # the default config, not specific to any of my machines
-      darwinConfigurations.default = nix-darwin.lib.darwinSystem {
-        modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
-      };
-
-      # my machines
-      darwinConfigurations."smino" = nix-darwin.lib.darwinSystem {
-        modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
-      };
-      darwinConfigurations."nathan-shelly-od-mac" = nix-darwin.lib.darwinSystem {
-        modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
-      };
+  outputs = { self, nix-darwin, nixpkgs, home-manager }: {
+    darwinConfigurations.default = nix-darwin.lib.darwinSystem {
+      modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
     };
+  };
 }
