@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+
+let
+  USER = "${builtins.getEnv "USER"}";
+in
 {
   nix = {
     # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
@@ -12,7 +16,7 @@
 
     # add ourself as trusted user so that we can run experimental commands
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.trustedUsers
-    trustedUsers = [ builtins.getEnv "USER" ];
+    trustedUsers = [ USER ];
   };
 
   # create /etc/zshrc that activates the nix-darwin environment on shell load
