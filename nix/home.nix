@@ -2,6 +2,7 @@
 
 let
   HOME = "${builtins.getEnv "HOME"}";
+  USER = "${builtins.getEnv "USER"}";
   DOTFILES = "${HOME}/.files";
   SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists "${HOME}/.nathan";
 in
@@ -94,5 +95,5 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "20.03";
+  home.stateVersion = "20.09";
 }
