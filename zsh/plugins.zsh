@@ -60,7 +60,11 @@ command -v lua > /dev/null && {
   zinit light skywind3000/z.lua
 }
 
+# TODO: understand weird behavior I'm seeing with this
 zinit light Aloxaf/fzf-tab
+
+# suggests aliases when a matching command is run
+zinit light MichaelAquilina/zsh-you-should-use
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
