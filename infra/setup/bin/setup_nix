@@ -121,7 +121,7 @@ setup_flakes() {
 
   # needed to enable flakes experimental feature in `/etc/nix/nix.conf`
   # TODO: confirm if this is actually needed
-  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin.nix" && {
+  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin-first-generation.nix" && {
     success 'Set experimental features in `/etc/nix/nix.conf`'
   }
 
