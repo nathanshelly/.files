@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+# TODO: remove as many pieces as possible from this horrifying install chain
+# install Nix -> install nix-darwin -> install nix with flakes -> build system with flakes using nix-darwin
+
 # shellcheck disable=SC1090,SC1091,SC2016
 
 # check that DOTFILES variable is defined
@@ -10,16 +13,11 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 main() {
   info 'setting up `nix` (manages these dotfiles)'
 
-  setup_nix || exit 1
+  maybe_setup_nix || exit 1
 
-  # TODO: confirm that this is actually necessary
-  maybe_add_channel_distributed_tooling_to_nix_path
+  maybe_install_nix_darwin || exit 1 # only runs on macOS (darwin)
 
-  maybe_setup_home_manager || exit 1
-
-  maybe_setup_nix_darwin || exit 1 # only runs on macOS (darwin)
-
-  setup_flakes || echo "Failed to setup flakes"
+  maybe_setup_flakes || echo "Failed to setup flakes"
 
   apply_first_flake_generation || echo "Failed to apply flake generation"
 
@@ -36,11 +34,11 @@ apply_first_flake_generation() {
   }
 }
 
-setup_nix() {
-  command -v nix-env > /dev/null && {
+maybe_setup_nix() {
+  if command -v nix > /dev/null || command -v nix-env /dev/null; then
     info 'skipping `nix` installation since `nix-env` is invokable'
     return 0
-  }
+  fi
 
   # macOS (as of Catalina) makes the root (`/`) read-only
   # `nix` can work around this by creating a "synthetic" directory at `/nix` and
@@ -60,7 +58,8 @@ setup_nix() {
   # daemon?
   # TODO: explain why multiuser and differences w/ single-user install
   # https://nixos.org/nix/manual/#sect-multi-user-installation
-  sh <(curl -L https://nixos.org/nix/install) \
+  # pipe in `true` to automatically accept all prompts
+  true | sh <(curl -L https://nixos.org/nix/install) \
     --daemon \
     "$MAC_INSTALLATION_FLAGS"
 
@@ -79,138 +78,14 @@ setup_nix() {
   success '`nix` installed'
 }
 
-maybe_setup_home_manager() {
-  "$DOTFILES/infra/scripts/is_macos.sh" && {
-    info "skipping \`home-manager\` installation on macOS system - managed via
- \`home-manager\` module in \`nix-darwin\` config on macOS"
-    return 0
-  }
-
-  info "setting up home-manager"
-
-  maybe_install_home_manager || return 1
-
-  # switch to home-manager config
-  home-manager switch || {
-    fail '`home-manager` setup failed on `home-manager switch`'
-    return 1
-  }
-
-  success '`home-manager` setup complete'
-}
-
 # manages macOS-specific config
 # ref - https://github.com/LnL7/nix-darwin#install
-maybe_setup_nix_darwin() {
+maybe_install_nix_darwin() {
   "$DOTFILES/infra/scripts/is_macos.sh" || {
     info 'skipping `nix-darwin` installation on non-macOS system'
     return 0
   }
 
-  maybe_install_nix_darwin || return 1
-
-  maybe_setup_home_manager_channel || return 1
-
-  success '`nix-darwin` setup complete'
-}
-
-# TODO: remove when switching to flakes-based installer
-setup_flakes() {
-  info 'Using `sudo` to backup /etc/nix/nix.conf -> /etc/nix/nix.conf.bak'
-  sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.bak
-
-  # needed to enable flakes experimental feature in `/etc/nix/nix.conf`
-  # TODO: confirm if this is actually needed
-  darwin-rebuild switch -I darwin-config="$HOME/.files/nix/darwin-first-generation.nix" && {
-    success 'Set experimental features in `/etc/nix/nix.conf`'
-  }
-
-  nix-env --install -A nixpkgs.nixFlakes || return 1
-
-  # TODO: make just installed Nix 3.0 available
-}
-
-maybe_add_channel_distributed_tooling_to_nix_path() {
-  echo "$NIX_PATH" | grep --quiet "$HOME/.nix-defexpr/channels" && {
-    return 0
-  }
-
-  # make frameworks managed via channels (nix-darwin, home-manager) available
-  export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-}
-
-maybe_install_home_manager() {
-  command -v home-manager > /dev/null || {
-    info 'skipping `home-manager` installation since `home-manager` is invokable'
-    return 0
-  }
-
-  # install home manager - https://github.com/rycee/home-manager#installation
-  maybe_setup_home_manager_channel
-
-  # symlink $DOTfiLES/nix/home.nix config in place before first generation
-  # TODO: see if I can declaratively manage this in Nix
-  mkdir -p "$HOME/.config/nix"
-  "$DOTFILES/infra/setup/bin/link_file" \
-    "$DOTFILES/nix/home.nix" \
-    "$HOME/.config/nix/home.nix"
-
-  # install & create first generation
-  nix-shell '<home-manager>' -A install
-
-  command -v home-manager > /dev/null || {
-    fail "\`home-manager\` installation finished but the \`home-manager\`
- command is not invokable. Please fix any issues and try again."
-    return 1
-  }
-}
-
-backup_default_system_files() {
-  info 'Using `sudo` to backup /etc/nix/nix.conf, /etc/zprofile & /etc/zshrc'
-
-  # move `/etc` files so that nix-darwin can set up it's own copies
-  #
-  # TODO: maybe make this workaround unnecessary?
-  #
-  # refs:
-  # - https://github.com/LnL7/nix-darwin/issues/158#issuecomment-560969421
-  # - https://github.com/LnL7/nix-darwin/issues/46
-  # - https://github.com/LnL7/nix-darwin/issues/2
-  "$DOTFILES/infra/setup/bin/backup_file" "/etc/nix/nix.conf"
-  "$DOTFILES/infra/setup/bin/backup_file" "/etc/zprofile"
-  "$DOTFILES/infra/setup/bin/backup_file" "/etc/zshrc"
-}
-
-restore_default_system_files() {
-  info 'Using `sudo` to restore /etc/nix/nix.conf, /etc/zprofile & /etc/zshrc'
-
-  local nix_conf, zprofile, zshrc
-
-  nix_conf="/etc/nix/nix.conf"
-  zprofile="/etc/zprofile"
-  zshrc="/etc/zshrc"
-
-  [ -f "$nix_conf.bak" ] && sudo mv "$nix_conf.bak" "$nix_conf"
-  [ -f "$zprofile.bak" ] && sudo mv "$zprofile.bak" "$zprofile"
-  [ -f "$zshrc.bak" ] && sudo mv "$zshrc.bak" "$zshrc"
-}
-
-recreate_channels() {
-  info 'Using `sudo` to recreate channels owned by root'
-
-  # ref - https://github.com/LnL7/nix-darwin/issues/234
-  sudo rm -rf ~/.nix-defexpr
-  nix-channel --update
-}
-
-restore_default_system_files() {
-  info 'Using `sudo` to restore /etc/nix/nix.conf, /etc/zprofile & /etc/zshrc'
-  sudo mv /etc/nix/nix.conf.backup-before-nix-darwin /etc/nix/nix.conf
-  sudo mv /etc/zprofile.backup-before-nix-darwin /etc/zprofile
-  sudo mv /etc/zshrc.backup-before-nix-darwin /etc/zshrc
-}
-
-maybe_install_nix_darwin() {
   command -v darwin-rebuild > /dev/null && {
     info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
     return 0
@@ -227,20 +102,13 @@ maybe_install_nix_darwin() {
     https://github.com/LnL7/nix-darwin/archive/master.tar.gz \
     -A installer > /dev/null
 
-  # backup_default_system_files
-
-  # TODO: avoid recreating channels here
-  recreate_channels
-
-  # TODO: handle interactive prompts, pass flags to answer questions?
   info 'Running `nix-darwin` installer'
+  # TODO: handle interactive prompts, pass flags to answer questions?
+  # why doesn't piping in `true` not work?
   if "${TMPDIR}/result/bin/darwin-installer"; then
     success '`nix-darwin` installed'
   else
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
-
-    # restore_default_system_files
-
     return 1
   fi
 
@@ -259,16 +127,34 @@ maybe_install_nix_darwin() {
   }
 }
 
-maybe_setup_home_manager_channel() {
-  # shellcheck disable=SC2210
-  grep --quiet "home-manager" "$HOME/.nix-channels" > /dev/null 2>&1 || {
-    # add channel for home-manager module
-    # ref - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
-    nix-channel --add \
-      https://github.com/rycee/home-manager/archive/master.tar.gz \
-      home-manager
-    nix-channel --update
+# TODO: remove when switching to flakes-based installer
+maybe_setup_flakes() {
+  local nix_flake_error_message
+  nix_flake_error_message=$(mktemp)
+  nix flake 2> "$nix_flake_error_message"
+
+  # if you have flakes: `'nix flake' requires a sub-command.`
+  # if you don't:       `'flake' is not a recognised command`
+  grep --quiet 'requires a sub-command' < "$nix_flake_error_message" && {
+    info 'skipping flakes setup since the flake command is already enabled'
+    return 0
   }
+
+  if [[ -f /etc/nix/nix.conf ]] && ! grep --quiet flakes < /etc/nix/nix.conf; then
+    info 'Using `sudo` to backup /etc/nix/nix.conf -> /etc/nix/nix.conf.bak'
+    sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.bak
+  fi
+
+  # setup nix w/ flakes via `darwin-rebuild`
+  # `darwin-first-generation.nix` is a simplified config whose primary purpose is to
+  # set up flakes
+  darwin-rebuild switch \
+    -I darwin-config="$HOME/.files/nix/darwin-first-generation.nix" \
+    -I darwin="$HOME/.nix-defexpr/channels" && {
+    success 'Established first generation. Nix flakes now available.'
+  }
+
+  echo "NIX version: $(nix --version)"
 }
 
 main "$@"
