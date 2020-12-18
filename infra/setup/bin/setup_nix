@@ -11,27 +11,24 @@ source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 source "$DOTFILES/infra/scripts/prompts.sh"
 
 main() {
+  "$DOTFILES/infra/scripts/is_macos.sh" || {
+    info 'Nix setup is currently only supported on macOS'
+    return 0
+  }
+
   info 'setting up `nix` (manages these dotfiles)'
 
   maybe_setup_nix || exit 1
 
   maybe_install_nix_darwin || exit 1 # only runs on macOS (darwin)
 
+  # use just-installed `nix-darwin` to rebuild system with flakes support
   maybe_setup_flakes || echo "Failed to setup flakes"
 
+  # use nix-darwin to rebuild system with just-setup flake support
   apply_first_flake_generation || echo "Failed to apply flake generation"
 
   success '`nix` (and various pieces) setup complete'
-}
-
-apply_first_flake_generation() {
-  info 'setting up first flake generation'
-
-  "$DOTFILES/nix/apply" && {
-    # TODO: enter new shell here?
-    # zsh --interactive
-    success "Successfully applied first flake generation!"
-  }
 }
 
 maybe_setup_nix() {
@@ -54,15 +51,15 @@ maybe_setup_nix() {
   }
 
   # `--daemon` enables multiuser install
-  # on multiuser install no need to source `nix` activation script, done by
-  # daemon?
   # TODO: explain why multiuser and differences w/ single-user install
   # https://nixos.org/nix/manual/#sect-multi-user-installation
+  #
   # pipe in `true` to automatically accept all prompts
   true | sh <(curl -L https://nixos.org/nix/install) \
     --daemon \
     "$MAC_INSTALLATION_FLAGS"
 
+  # TODO: confirm this is needed
   # initialize `nix` for next steps - same lines added to /etc/zshrc by installer
   if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
     # shellcheck disable=SC1091
@@ -81,11 +78,6 @@ maybe_setup_nix() {
 # manages macOS-specific config
 # ref - https://github.com/LnL7/nix-darwin#install
 maybe_install_nix_darwin() {
-  "$DOTFILES/infra/scripts/is_macos.sh" || {
-    info 'skipping `nix-darwin` installation on non-macOS system'
-    return 0
-  }
-
   command -v darwin-rebuild > /dev/null && {
     info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
     return 0
@@ -113,7 +105,7 @@ maybe_install_nix_darwin() {
   fi
 
   # make just installed `darwin-rebuild` command available in current script
-  [ -f /etc/static/zshrc ] && source /etc/static/zshrc
+  [ -f /etc/static/bashrc ] && source /etc/static/bashrc
 
   popd > /dev/null || {
     fail 'probably not really an issue: failed to pop directory'
@@ -125,6 +117,8 @@ maybe_install_nix_darwin() {
  command is not invokable. Please fix any issues and try again."
     return 1
   }
+
+  success '`nix-darwin` setup complete'
 }
 
 # TODO: remove when switching to flakes-based installer
@@ -155,6 +149,16 @@ maybe_setup_flakes() {
   }
 
   echo "NIX version: $(nix --version)"
+}
+
+apply_first_flake_generation() {
+  info 'setting up first flake generation'
+
+  "$DOTFILES/nix/apply" && {
+    # TODO: enter new shell here?
+    # zsh --interactive
+    success "Successfully applied first flake generation!"
+  }
 }
 
 main "$@"
