@@ -81,10 +81,11 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-python',
   \ 'coc-rust-analyzer',
-  \ 'coc-sh',
   \ 'coc-tsserver',
   \ 'coc-vimlsp',
 \ ]
+" TODO: investigate issues with this
+" \ 'coc-sh',
 
 " trigger key for going to the next snippet position,
 " applied in insert and select mode.
