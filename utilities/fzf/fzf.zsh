@@ -80,13 +80,14 @@ fzf_opts=(
   --reverse --cycle
   "${_fzf_preview_window}" --height 95%
   --bind ctrl-space:toggle-preview
+  --bind ctrl-s:toggle-sort
+  --bind ctrl-a:select-all
   --bind ctrl-j:down
   --bind ctrl-k:up
-  --bind ctrl-d:half-page-down
-  --bind ctrl-u:half-page-up
-  --bind ctrl-s:toggle-sort
   --bind ctrl-e:preview-down
   --bind ctrl-y:preview-up
+  --bind ctrl-d:preview-page-down
+  --bind ctrl-u:preview-page-up
 )
 
 export FZF_DEFAULT_OPTS="${fzf_opts[*]}"
