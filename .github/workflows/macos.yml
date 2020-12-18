@@ -1,0 +1,11 @@
+name: big sur
+
+on: [push]
+
+jobs:
+  big-sur:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run setup
+        run: make headless-setup

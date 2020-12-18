@@ -1,0 +1,11 @@
+name: macos
+
+on: [push]
+
+jobs:
+  macos:
+    runs-on: macos-11.0
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run setup
+        run: make headless-setup
