@@ -104,6 +104,12 @@ maybe_install_nix_darwin() {
     https://github.com/LnL7/nix-darwin/archive/master.tar.gz \
     -A installer > /dev/null
 
+  # TODO: avoid needing this
+  # ref - https://github.com/LnL7/nix-darwin/issues/234
+  info 'Using `sudo` to recreate channels owned by root'
+  sudo rm -rf ~/.nix-defexpr
+  nix-channel --update
+
   info 'Running `nix-darwin` installer'
   # TODO: handle interactive prompts, pass flags to answer questions?
   # why doesn't piping in `true` not work?
