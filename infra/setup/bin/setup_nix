@@ -34,10 +34,10 @@ main() {
   maybe_install_nix_darwin || exit 1 # only runs on macOS (darwin)
 
   # use just-installed `nix-darwin` to rebuild system with flakes support
-  maybe_setup_flakes || echo "Failed to setup flakes"
+  maybe_setup_flakes || exit 1
 
   # use nix-darwin to rebuild system with just-setup flake support
-  apply_first_flake_generation || echo "Failed to apply flake generation"
+  apply_first_flake_generation || fail "Failed to apply flake generation"
 
   success '`nix` (and various pieces) setup complete'
 }
@@ -65,8 +65,8 @@ maybe_install_nix() {
   # TODO: explain why multiuser and differences w/ single-user install
   # https://nixos.org/nix/manual/#sect-multi-user-installation
   #
-  # pipe in `yes` to disable tty and automatically accept all prompts
-  yes | sh <(curl -L https://nixos.org/nix/install) \
+  # pipe in `true` to automatically accept all prompts
+  true | sh <(curl -L https://nixos.org/nix/install) \
     --daemon \
     "$MAC_INSTALLATION_FLAGS"
 
@@ -160,7 +160,7 @@ maybe_setup_flakes() {
   # `darwin-first-generation.nix` is a simplified config whose primary purpose is to
   # set up flakes
   darwin-rebuild switch \
-    -I darwin-config="$HOME/.files/nix/darwin-first-generation.nix" \
+    -I darwin-config="$DOTFILES/nix/darwin-first-generation.nix" \
     -I darwin="$HOME/.nix-defexpr/channels" && {
     success 'Established first generation. Nix flakes now available.'
   }
@@ -171,11 +171,15 @@ maybe_setup_flakes() {
 apply_first_flake_generation() {
   info 'setting up first flake generation'
 
-  "$DOTFILES/nix/apply" && {
+  if "$DOTFILES/nix/apply"; then
     # TODO: enter new shell here?
     # zsh --interactive
     success "Successfully applied first flake generation!"
-  }
+    return 0
+  else
+    fail "Failed to setup flakes"
+    return 1
+  fi
 }
 
 main "$@"

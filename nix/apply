@@ -11,8 +11,10 @@ main() {
 
   if os_specific_apply_command; then
     success "applied config"
+    return 0
   else
     fail "failed to apply config"
+    return 1
   fi
 }
 
