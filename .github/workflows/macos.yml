@@ -1,9 +1,9 @@
-name: big sur
+name: macos
 
 on: [push]
 
 jobs:
-  big-sur:
+  macos:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
