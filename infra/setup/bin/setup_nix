@@ -18,7 +18,7 @@ main() {
 
   info 'setting up `nix` (manages these dotfiles)'
 
-  maybe_setup_nix || exit 1
+  maybe_install_nix || exit 1
 
   maybe_install_nix_darwin || exit 1 # only runs on macOS (darwin)
 
@@ -31,7 +31,7 @@ main() {
   success '`nix` (and various pieces) setup complete'
 }
 
-maybe_setup_nix() {
+maybe_install_nix() {
   if command -v nix > /dev/null || command -v nix-env /dev/null; then
     info 'skipping `nix` installation since `nix-env` is invokable'
     return 0
@@ -54,17 +54,17 @@ maybe_setup_nix() {
   # TODO: explain why multiuser and differences w/ single-user install
   # https://nixos.org/nix/manual/#sect-multi-user-installation
   #
-  # pipe in `true` to automatically accept all prompts
-  true | sh <(curl -L https://nixos.org/nix/install) \
+  # pipe in `yes` to disable tty and automatically accept all prompts
+  yes | sh <(curl -L https://nixos.org/nix/install) \
     --daemon \
     "$MAC_INSTALLATION_FLAGS"
 
-  # TODO: confirm this is needed
-  # initialize `nix` for next steps - same lines added to /etc/zshrc by installer
-  if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-    # shellcheck disable=SC1091
-    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-  fi
+  # # TODO: confirm this is needed
+  # # initialize `nix` for next steps - same lines added to /etc/zshrc by installer
+  # if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  #   # shellcheck disable=SC1091
+  #   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+  # fi
 
   command -v nix-env > /dev/null || {
     fail "Nix installation finished but the \`nix-env\` binary is not available.
@@ -97,7 +97,8 @@ maybe_install_nix_darwin() {
   info 'Running `nix-darwin` installer'
   # TODO: handle interactive prompts, pass flags to answer questions?
   # why doesn't piping in `true` not work?
-  if "${TMPDIR}/result/bin/darwin-installer"; then
+  # pipe in `yes` to disable tty and automatically accept all prompts
+  if yes | "${TMPDIR}/result/bin/darwin-installer"; then
     success '`nix-darwin` installed'
   else
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
