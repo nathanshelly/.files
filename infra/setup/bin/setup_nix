@@ -8,7 +8,18 @@
 # check that DOTFILES variable is defined
 source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
-source "$DOTFILES/infra/scripts/prompts.sh"
+source "$DOTFILES/infra/scripts/prompts.sh" || {
+  # define simple fallbacks if prompts script can't be sourced
+  info() {
+    printf "%s\n" "$@"
+  }
+  fail() {
+    printf "failure: %s\n" "$@"
+  }
+  success() {
+    printf "success: %s\n" "$@"
+  }
+}
 
 main() {
   "$DOTFILES/infra/scripts/is_macos.sh" || {
