@@ -17,6 +17,12 @@
         user = "nshelly";
         identityFile = "~/.ssh/gpubox";
       };
+      "nix-docker" = {
+        user = "root";
+        hostname = "127.0.0.1";
+        port = 3022;
+        identityFile = "/etc/nix/docker_rsa";
+      };
     };
   };
 

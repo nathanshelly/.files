@@ -96,6 +96,9 @@ in
       asciinema
       bat
       bazel
+      # TODO: understand why I can't install `bottom` (https://github.com/ClementTsang/bottom)
+      # `nix search nixpkgs bottom` shows pkgs.legacyPackages.x86_64-darwin.bottom
+      # bottom
       darwin.trash
       dust
       exa
