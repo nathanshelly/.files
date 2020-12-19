@@ -59,12 +59,11 @@ maybe_install_nix() {
     --daemon \
     "$MAC_INSTALLATION_FLAGS"
 
-  # # TODO: confirm this is needed
-  # # initialize `nix` for next steps - same lines added to /etc/zshrc by installer
-  # if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  #   # shellcheck disable=SC1091
-  #   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-  # fi
+  # initialize `nix` for next steps - same lines added to /etc/zshrc by installer
+  if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    # shellcheck disable=SC1091
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+  fi
 
   command -v nix-env > /dev/null || {
     fail "Nix installation finished but the \`nix-env\` binary is not available.
