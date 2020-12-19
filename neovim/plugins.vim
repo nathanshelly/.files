@@ -44,6 +44,11 @@ Plug 'rhysd/git-messenger.vim'
 " note: opens most recent blob so only works if you are downstream of remote
 Plug 'ruanyl/vim-gh-line'
 
+
+" TODO: determine marginal value of this plugin
+" TODO: understand why `.envrc` filetype is still bash and also not highlighted
+" Plug 'direnv/direnv.vim'
+
 " << colors/syntax/languages >>
 
 " statusline color scheme
