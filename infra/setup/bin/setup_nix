@@ -37,7 +37,7 @@ main() {
   maybe_setup_flakes || exit 1
 
   # use nix-darwin to rebuild system with just-setup flake support
-  apply_first_flake_generation || fail "Failed to apply flake generation"
+  apply_first_flake_generation || exit 1
 
   success '`nix` (and various pieces) setup complete'
 }
@@ -113,8 +113,8 @@ maybe_install_nix_darwin() {
   info 'Running `nix-darwin` installer'
   # TODO: handle interactive prompts, pass flags to answer questions?
   # why doesn't piping in `true` not work?
-  # pipe in `yes` to disable tty and automatically accept all prompts
-  if yes | "${TMPDIR}/result/bin/darwin-installer"; then
+  # TODO: test piping `yes` to disable tty and automatically accept all prompts
+  if "${TMPDIR}/result/bin/darwin-installer"; then
     success '`nix-darwin` installed'
   else
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
@@ -177,7 +177,7 @@ apply_first_flake_generation() {
     success "Successfully applied first flake generation!"
     return 0
   else
-    fail "Failed to setup flakes"
+    fail "Failed to apply flake generation"
     return 1
   fi
 }
