@@ -38,6 +38,7 @@ in
   # # TODO: remove when switching to flake-based nix-darwin installer
   # imports = [ <home-manager/nix-darwin> ];
   home-manager.users."${USER}" = import ./home.nix;
+  home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
   nix = {
