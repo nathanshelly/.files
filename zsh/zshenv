@@ -34,6 +34,14 @@ main() {
   export LESS_TERMCAP_ue=$'\E[0m'          # ends underline
   export LESS_TERMCAP_us=$'\E[01;32m'      # begins underline
 
+  # colors to use when highlighting `ls` output
+  # https://geoff.greer.fm/lscolors/
+  #
+  # Linux
+  export CLICOLOR=1 # enable colors at all
+  export LS_COLORS="di=34:ln=35:so=36:pi=31:ex=32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43";
+  export LSCOLORS="exfxgxbxcxegedabagacad" # BSD
+
   # << work-specific >>
   [ -d "$HOME/work" ] && {
     export GOPATH="$HOME/work/go"

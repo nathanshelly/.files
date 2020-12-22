@@ -11,3 +11,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # `yes` - select first item on initial tab
 # `select` - highlight options in tab-complete
 zstyle ':completion:*' menu yes select
+
+# use LS_COLORS for zsh completions
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
