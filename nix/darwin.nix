@@ -124,7 +124,9 @@ in
       alacritty
       asciinema
       bat
-      bazel
+      # TODO: add this back when I can compile unstable on macOS
+      # bazel
+      cachix
       # TODO: understand why I can't install `bottom` (https://github.com/ClementTsang/bottom)
       # `nix search nixpkgs bottom` shows pkgs.legacyPackages.x86_64-darwin.bottom
       # bottom
