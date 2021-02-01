@@ -8,6 +8,8 @@ main() {
     dynamically_determine_dotfiles # see function at end of file
   fi
 
+  "$DOTFILES/infra/scripts/component_enabled.sh" 'zsh' || return 0
+
   # XDG directory specification
   # ref - https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
   export XDG_CONFIG_HOME="$HOME/.config"
