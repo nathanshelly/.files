@@ -21,7 +21,7 @@
         user = "root";
         hostname = "127.0.0.1";
         port = 3022;
-        identityFile = "/etc/nix/docker_rsa";
+        identityFile = "~/.ssh/docker_rsa";
       };
     };
   };
