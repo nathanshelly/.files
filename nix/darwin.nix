@@ -21,6 +21,22 @@ in
     # TODO: remove w/ flakes
     darwinConfig = "$HOME/.files/nix/darwin.nix";
 
+    # avoid needing to enter `sudo` password on `make apply` (`darwin-rebuild`)
+    # https://github.com/LnL7/nix-darwin/issues/165#issuecomment-749682749
+    etc."sudoers.d/10-nix-commands".text = let
+      commands = [
+        "/run/current-system/sw/bin/darwin-rebuild"
+        "/run/current-system/sw/bin/nix*"
+        "/run/current-system/sw/bin/ln"
+        "/nix/store/*/activate"
+        "/bin/launchctl"
+      ];
+      commandsString = builtins.concatStringsSep ", " commands;
+    in
+      ''
+        %admin ALL=(ALL:ALL) NOPASSWD: ${commandsString}
+      '';
+
     # TODO: figure out how to add user-profile `zsh`
     shells = [ pkgs.zsh ];
 
