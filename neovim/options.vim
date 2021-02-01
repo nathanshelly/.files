@@ -65,6 +65,9 @@ set mouse=a
 " - http://vim.wikia.com/wiki/Indenting_source_code
 " - https://tedlogan.com/techblog3.html
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+" `<` & `>` will match the indentation of the file
+" https://vimtricks.com/p/ensuring-aligned-indentation/
+set shiftround
 
 " wrap on linebreak (show as much as possible)
 " ref - http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
