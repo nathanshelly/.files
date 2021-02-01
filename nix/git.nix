@@ -83,6 +83,9 @@
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-helpautoCorrect
       autoCorrect = -1; # negative value executes command immediately
     };
+    init = {
+      defaultBranch = "main";
+    };
     pager = {
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pagerltcmdgt
       diff = true;
@@ -120,10 +123,15 @@
       # https://stackoverflow.com/a/22634649
       sort = "version:refname";
     };
-    init = {
-      defaultBranch = "main";
-    };
-  };
+  } // (
+    # TODO: continue testing this
+    # would prefer simply to put this in `~/.gitconfig.work` but unfortunately
+    # `gazelle update-repos` is run outside the `~/work` scope which means it
+    # ignores `~/.gitconfig.work`
+    if builtins.pathExists "${builtins.getEnv "HOME"}/work"
+    then (import ./work.nix).goAuthHandling
+    else {}
+  );
 
   # ref - https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
   attributes = [
