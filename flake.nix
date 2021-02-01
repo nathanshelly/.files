@@ -13,6 +13,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  # read thru this - https://github.com/malob/nixpkgs/blob/master/flake.nix
   outputs = { self, nix-darwin, nixpkgs, home-manager }: {
     darwinConfigurations.default = nix-darwin.lib.darwinSystem {
       modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
