@@ -58,6 +58,18 @@ in
   home-manager.useUserPackages = true;
 
   nix = {
+    buildMachines = [
+      {
+        hostName = "nix-docker";
+        system = "x86_64-linux";
+        maxJobs = 1;
+        speedFactor = 2;
+        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+        mandatoryFeatures = [];
+      }
+    ];
+    distributedBuilds = true;
+
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
     extraOptions = ''
       # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
