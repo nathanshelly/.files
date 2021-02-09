@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+# TODO: handle packages whose binary is different from the package name
+# e.g. `, ripgrep` fails since the binary is actually `rg`. I think the best
+# experience here would be to let the user select from a list of the binaries in
+# the corresponding `/bin` directory (or just select it if there's only one)
+
+command="$1"
+args=("${@:2}")
+
+# use stable darwin packages to take advantage of caching
+flake=github:nixos/nixpkgs/nixpkgs-20.09-darwin
+
+nix run "$flake#$command" -- "${args[@]}"

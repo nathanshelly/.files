@@ -80,6 +80,8 @@ in
       l = "exa";
       la = "exa --all";
       ll = "exa --long --all";
+
+      "," = "comma";
     };
   };
 
