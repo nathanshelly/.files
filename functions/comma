@@ -6,6 +6,22 @@
 # the corresponding `/bin` directory (or just select it if there's only one)
 
 command="$1"
+
+[[ -z $command ]] && {
+  cat << EOF
+error: the following arguments were not provided
+
+  <PACKAGE>
+
+See all valid packages @ https://search.nixos.org/packages
+
+USAGE:
+
+  comma <PACKAGE>
+EOF
+  return 1
+}
+
 args=("${@:2}")
 
 # use stable darwin packages to take advantage of caching
