@@ -24,7 +24,11 @@ EOF
 
 args=("${@:2}")
 
-# use stable darwin packages to take advantage of caching
-flake=github:nixos/nixpkgs/nixpkgs-20.09-darwin
+# use stable package set to take advantage of caching
+# list of channels (corresponds to flakes) - https://status.nixos.org/
+flake=github:nixos/nixpkgs/nixpkgs-20.09
+
+# use darwin packages on macOS
+"$DOTFILES/infra/scripts/is_macos.sh" && flake="$flake-darwin"
 
 nix run "$flake#$command" -- "${args[@]}"
