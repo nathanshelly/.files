@@ -14,6 +14,7 @@ in
   home.sessionVariables = {
     AWS_PROFILE = "od-eng";
     GOPATH = "${GOPATH}";
+    CURRENT_USER_EMAIL = "nathan.shelly@opendoor.com";
     OD_CURRENT_USER_EMAIL = "nathan.shelly@opendoor.com";
     VAULT_ADDR = https://vault.services.opendoor.com:8200;
   };
