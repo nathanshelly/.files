@@ -159,6 +159,7 @@ in
       tokei
       tree
       vim
+      vivid
       watchexec
       yarn
     ];
