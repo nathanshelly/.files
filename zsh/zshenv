@@ -36,22 +36,26 @@ main() {
   export LESS_TERMCAP_ue=$'\E[0m'          # ends underline
   export LESS_TERMCAP_us=$'\E[01;32m'      # begins underline
 
-  # colors to use when highlighting `ls` output
-  # https://geoff.greer.fm/lscolors/
-  #
-  # Linux
-  export CLICOLOR=1 # enable colors at all
-  export LS_COLORS="di=34:ln=35:so=36:pi=31:ex=32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43";
-  export LSCOLORS="exfxgxbxcxegedabagacad" # BSD
+  dynamically_set_lscolors
+}
 
-  # << work-specific >>
-  [ -d "$HOME/work" ] && {
-    export GOPATH="$HOME/work/go"
-    export VAULT_ADDR=https://vault.services.opendoor.com:8200
-    export ANDROID_HOME="$HOME/Library/Android/sdk" # for android studio
-    export OD_CURRENT_USER_EMAIL="nathan.shelly@opendoor.com"
-  }
-  # << end work-specific >>
+# colors to use when highlighting `ls` output
+dynamically_set_lscolors() {
+  export CLICOLOR=1 # enable colors at all
+
+  if command -v vivid > /dev/null; then
+    # TODO: use one-dark theme added in https://github.com/sharkdp/vivid/pull/51
+    # whenever a new release is cut - https://github.com/sharkdp/vivid/releases
+    export LS_COLORS="$(vivid generate snazzy)"
+  else
+    # https://geoff.greer.fm/lscolors/
+    export LS_COLORS="di=34:ln=35:so=36:pi=31:ex=32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43";
+  fi
+
+  # Note: BSD `ls` (which is the default on macOS) uses `LSCOLORS` instead of
+  # `LS_COLORS`. Add `LSCOLORS` (generated from the same
+  # https://geoff.greer.fm/lscolors/) as a fallback for any BSD `ls` usage
+  export LSCOLORS="exfxgxbxcxegedabagacad"
 }
 
 # dynamically determine path to `.files` repo
