@@ -3,7 +3,7 @@
 # deletes all branches whose remote no longer exists
 # based on `git branch -vv` output matching `origin/.*: gone]`
 
-git fetch --all \
+git fetch --all --prune \
   | git branch -vv \
   | grep 'origin/.*: gone]' \
   | awk '{print $1}' \
