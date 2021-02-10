@@ -1,17 +1,10 @@
 #! /usr/bin/env bash
 
 # deletes all branches whose remote no longer exists
+# based on `git branch -vv` output matching `origin/.*: gone]`
 
-# Based on `git branch -vv` output matching `origin/.*: gone]`. If `hub` is
-# installed uses `hub sync` command to sync all local branches with their
-# remotes.
-
-if command -v hub > /dev/null; then
-  # shellcheck disable=SC2016
-  hub sync > /dev/null 2>&1 || echo '`hub sync` failed'
-else
-  # shellcheck disable=SC2016
-  echo 'Install `hub` to sync all local branches with their remotes'
-fi
-
-git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+git fetch --all \
+  | git branch -vv \
+  | grep 'origin/.*: gone]' \
+  | awk '{print $1}' \
+  | xargs git branch -D
