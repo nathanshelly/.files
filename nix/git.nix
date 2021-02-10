@@ -78,6 +78,7 @@
       colorMoved = "dimmed-zebra";
       colorMovedWS = "allow-indentation-change";
     };
+    fetch.prune = true;
     help = {
       # automatically correct and execute mistyped commands
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-helpautoCorrect
@@ -100,7 +101,7 @@
     push = {
       # `git push` treated as `git push remote <current-checkout-out-branch-name>`
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault
-      default = "current";
+      default = "upstream";
       # push annotated tags missing from remote
       # equivalent of typing `git push --follow-tags`
       # https://git-scm.com/docs/git-push#Documentation/git-push.txt---follow-tags
