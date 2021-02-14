@@ -198,6 +198,6 @@
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": false,
   // ######### rust-analyzer ##########
-  "rust-analyzer.updates.channel": "nightly",
+  // use version of `rust-analyzer` on path
   "rust-analyzer.serverPath": "rust-analyzer"
 }
