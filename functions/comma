@@ -24,11 +24,18 @@ EOF
 
 args=("${@:2}")
 
-# use stable package set to take advantage of caching
+# pin to specific commit (as of 2/14) to take advantage of caching
 # list of channels (corresponds to flakes) - https://status.nixos.org/
-flake=github:nixos/nixpkgs/nixpkgs-20.09
-
-# use darwin packages on macOS
-"$DOTFILES/infra/scripts/is_macos.sh" && flake="$flake-darwin"
+#
+# TODO: use version specified/pinned in `flake.nix|lock`
+if "$DOTFILES/infra/scripts/is_macos.sh"; then
+  # `nixpkgs-20.09-darwin` branch
+  # https://github.com/NixOS/nixpkgs/commit/387bf54ac5af5970277066a68e43ef9d88d7823a
+  flake="github:nixos/nixpkgs?rev=387bf54ac5af5970277066a68e43ef9d88d7823a"
+else
+  # `release-20.09` branch
+  # https://github.com/NixOS/nixpkgs/commit/6d19fa61ea4f8b590935cc7f1c60839fe9ad0ba6
+  flake="github:nixos/nixpkgs?rev=6d19fa61ea4f8b590935cc7f1c60839fe9ad0ba6"
+fi
 
 nix run "$flake#$command" -- "${args[@]}"
