@@ -131,6 +131,7 @@ in
       # bottom
       cachix
       darwin.trash
+      deno
       dust
       exa
       exiftool
