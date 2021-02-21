@@ -2,6 +2,7 @@
 
 # configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
 let
+  DOTFILES_USE_GUI = "${builtins.getEnv "DOTFILES_USE_GUI"}";
   USER = "${builtins.getEnv "USER"}";
   SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists
     "${builtins.getEnv "HOME"}/.nathan";
@@ -48,6 +49,63 @@ in
     );
   };
 
+  homebrew =
+    if "${DOTFILES_USE_GUI}" == "true" then
+      {
+        enable = true;
+
+        # uninstalls formulae & casks that are not listed in the brewfile
+        # cleanup = "zap";
+
+        # prevents homebrew from generating useless lock files
+        global.noLock = true;
+
+        casks = [
+          "1password"
+          "alfred"
+          "alt-tab"
+          "backblaze"
+          "bartender"
+          "contexts"
+          "daisydisk"
+          "fantastical"
+          "firefox"
+          "firefox-nightly"
+          "flux"
+          "google-chrome"
+          "google-backup-and-sync"
+          "istat-menus"
+          "iterm2"
+          "karabiner-elements"
+          "keycastr"
+          "microsoft-edge"
+          "monitorcontrol"
+          "mpv"
+          "notion"
+          "private-internet-access"
+          "postman"
+          "rectangle"
+          "signal"
+          "slack"
+          "sound-control"
+          "spotify"
+          "steermouse"
+          "tempo"
+          "ueli"
+          "visual-studio-code"
+          "vlc"
+        ];
+        masApps = if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG then {
+          # https://apps.apple.com/us/app/xcode/id497799835
+          "Xcode" = 497799835;
+
+          # (paid, $5) https://apps.apple.com/us/app/super-easy-timer/id1353137878
+          "Super Easy Timer" = 1353137878;
+
+          # (in-app purchases) https://apps.apple.com/us/app/time-out-break-reminders/id402592703
+          "Time Out" = 402592703;
+        } else {};
+      } else {};
 
   # user environment management via home-manager
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
@@ -116,6 +174,8 @@ in
     NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
     screencapture.location = "$HOME/tmp";
   };
+
+  users.nix.configureBuildUsers = true;
 
   users.users."${USER}" = {
     # home key here requed for home-manager config to apply
