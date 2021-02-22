@@ -81,6 +81,8 @@ in
       "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
       # TODO: definitely do this in a less hacky way
       "file='/Users/nathan/work/go/src/github.com/opendoor-labs/code/scripts/infra/sourced_on_shell_load.sh' && [ -f $file ] && source \"$file\""
+      # TODO: try and extend this to `nix develop` & `nix run` commands
+      "any-nix-shell zsh --info-right | source /dev/stdin"
     ];
     envExtra = builtins.readFile "${DOTFILES}/zsh/zshenv";
 

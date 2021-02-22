@@ -182,6 +182,7 @@ in
     home = "/Users/${USER}";
     packages = with pkgs; [
       alacritty
+      any-nix-shell
       asciinema
       bat
       # TODO: add this back when I can compile unstable on macOS
