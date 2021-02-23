@@ -79,6 +79,8 @@ in
       (builtins.readFile "${DOTFILES}/zsh/zshrc")
       # TODO: see if there's a better way to do this
       "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
+      # TODO: definitely do this in a less hacky way
+      "file='/Users/nathan/work/go/src/github.com/opendoor-labs/code/scripts/infra/sourced_on_shell_load.sh' && [ -f $file ] && source \"$file\""
     ];
     envExtra = builtins.readFile "${DOTFILES}/zsh/zshenv";
 
