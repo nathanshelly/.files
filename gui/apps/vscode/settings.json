@@ -199,5 +199,24 @@
   "python.linting.pylintEnabled": false,
   // ######### rust-analyzer ##########
   // use version of `rust-analyzer` on path
-  "rust-analyzer.serverPath": "rust-analyzer"
+  "rust-analyzer.serverPath": "rust-analyzer",
+  // ######### github prs ##########
+  "githubPullRequests.queries": [
+    {
+      "label": "Waiting For My Review",
+      "query": "is:open review-requested:${user}"
+    },
+    {
+      "label": "Assigned To Me",
+      "query": "is:open assignee:${user}"
+    },
+    {
+      "label": "Created By Me",
+      "query": "is:open author:${user}"
+    },
+    {
+      "label": "Mentioned Me",
+      "query": "is:open mentions:${user}"
+    }
+  ]
 }
