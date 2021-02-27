@@ -1,3 +1,5 @@
+USER:
+
 {
   homebrew = {
     enable = true;
@@ -45,7 +47,7 @@
     ];
   };
 
-  home-manager.users."${builtins.getEnv "USER"}" = {
+  home-manager.users.${USER} = {
     # someday may manage other gui configs via nix but immutability prevents
     # editing settings via the gui which is a dealbreaker for me at the moment
     home.file = {

@@ -1,8 +1,5 @@
-{ pkgs, ... }:
+{ pathToDotfiles, pkgs, ... }:
 
-let
-  DOTFILES = "${builtins.getEnv "HOME"}/.files";
-in
 {
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.neovim.enable
   enable = true;
@@ -10,7 +7,7 @@ in
   # TODO: consider wrapping neovim package for runtime dependencies
   # https://git.sr.ht/~rycwo/workspace/blob/39844721282d5a81710b026b71b907c3df20140c/nixos/user/pkgs/neovim/default.nix
 
-  extraConfig = builtins.readFile "${DOTFILES}/neovim/init.vim";
+  extraConfig = builtins.readFile "${pathToDotfiles}/neovim/init.vim";
 
   # TODO: figure out what's not working here
   extraPython3Packages = ps: with ps; [ black ];

@@ -43,7 +43,7 @@ apply-gui:
 
 # set up abstractions for me-specific application
 n:
-	./nix/apply nathan
+	./nix/apply n
 
 nw:
 	./nix/apply work

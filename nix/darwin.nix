@@ -1,9 +1,8 @@
+USER:
+
 { config, pkgs, ... }:
 
 # configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
-let
-  USER = "${builtins.getEnv "USER"}";
-in
 {
   # TODO: add keyboard shortcuts - https://github.com/LnL7/nix-darwin/pull/189
 
@@ -43,7 +42,6 @@ in
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
   # # TODO: remove when switching to flake-based nix-darwin installer
   # imports = [ <home-manager/nix-darwin> ];
-  home-manager.users."${USER}" = import ./home.nix;
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 

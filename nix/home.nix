@@ -1,21 +1,18 @@
+pathToDotfiles:
+
 { config, pkgs, ... }:
 
-let
-  HOME = "${builtins.getEnv "HOME"}";
-  USER = "${builtins.getEnv "USER"}";
-  DOTFILES = "${HOME}/.files";
-in
 {
   # creates symlinks to immutable copies of the source file in /nix/store
   # form: "<target>".source = "<source>"
   home.file = {
-    ".tmux.conf".source = "${DOTFILES}/tmux/tmux.conf";
+    ".tmux.conf".source = "${pathToDotfiles}/tmux/tmux.conf";
 
     ##### neovim #####
     # extra configuration for `coc.nvim` plugin
-    "${config.xdg.configHome}/nvim/coc-settings.json".source = "${DOTFILES}/neovim/coc-settings.jsonc";
+    "${config.xdg.configHome}/nvim/coc-settings.json".source = "${pathToDotfiles}/neovim/coc-settings.jsonc";
     # custom colorscheme
-    "${config.xdg.configHome}/nvim/colors/n.vim".source = "${DOTFILES}/neovim/colors/n.vim";
+    "${config.xdg.configHome}/nvim/colors/n.vim".source = "${pathToDotfiles}/neovim/colors/n.vim";
   };
 
   # avoid errors building man pages by disabling them
@@ -47,7 +44,7 @@ in
   # let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
-  programs.neovim = import ./editor.nix pkgs;
+  programs.neovim = import ./editor.nix { inherit pathToDotfiles pkgs; };
 
   programs.zsh = {
     enable = true;
@@ -56,13 +53,13 @@ in
     defaultKeymap = "viins";
 
     initExtra = builtins.concatStringsSep "\n" [
-      (builtins.readFile "${DOTFILES}/zsh/zshrc")
+      (builtins.readFile "${pathToDotfiles}/zsh/zshrc")
       # TODO: see if there's a better way to do this
       "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
       # TODO: try and extend this to `nix develop` & `nix run` commands
       "any-nix-shell zsh --info-right | source /dev/stdin"
     ];
-    envExtra = builtins.readFile "${DOTFILES}/zsh/zshenv";
+    envExtra = builtins.readFile "${pathToDotfiles}/zsh/zshenv";
 
     shellAliases = {
       # `exa` - prettier replacement for `ls`

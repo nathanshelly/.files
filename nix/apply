@@ -22,12 +22,19 @@ os_specific_apply_command() {
   config="$1"
 
   if "$DOTFILES/infra/scripts/is_macos.sh"; then
+    local maybe_verbose
+    if [ -z "$VERBOSE" ]; then
+      maybe_verbose=
+    else
+      maybe_verbose="--show-trace"
+    fi
+
     # `--impure` allows access to environment variables
     # trade-off between purely reproducible config and one that can adjust
     # based off environment
     # TODO: figure out passing in home-manager input from flake
     # TODO: make machine specific configurations?
-    darwin-rebuild switch --flake "$DOTFILES#${config:-default}" --impure --show-trace
+    darwin-rebuild switch --flake "$DOTFILES#${config:-default}" --impure $maybe_verbose
   else # TODO: account for NixOS when supported in the future
     home-manager switch
   fi

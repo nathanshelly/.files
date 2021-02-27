@@ -16,23 +16,36 @@
   # read thru this - https://github.com/malob/nixpkgs/blob/master/flake.nix
   outputs = { self, nix-darwin, nixpkgs, home-manager }: {
     darwinConfigurations = let
-      generateConfig = { additionalModules ? [] }: nix-darwin.lib.darwinSystem {
-        modules = [
-          home-manager.darwinModules.home-manager
-          ./nix/darwin.nix
-        ] ++ additionalModules;
-      };
+      generateConfig =
+        { additionalModules ? []
+        , includeGui ? false
+        , includeWork ? false
+        , HOME ? builtins.getEnv "HOME"
+        , USER ? builtins.getEnv "USER"
+        }: nix-darwin.lib.darwinSystem {
+          # inputs = { flake = self; };
+          modules = [
+            home-manager.darwinModules.home-manager
+            # TODO: do this more elegantly
+            {
+              home-manager.users.${USER} = import ./nix/home.nix self.outPath;
+            }
+            (import ./nix/darwin.nix USER)
+            (if includeGui then (import ./nix/gui.nix USER) else {})
+            (if USER == "nathan" then (import ./nix/nathan.nix USER) else {})
+            (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else {})
+          ] ++ additionalModules;
+        };
     in
       {
         default = generateConfig {};
 
-        gui = generateConfig { additionalModules = [ ./nix/gui.nix ]; };
+        gui = generateConfig { includeGui = true; };
 
-        nathan = generateConfig { additionalModules = [ ./nix/nathan.nix ]; };
+        n = generateConfig { USER = "nathan"; };
+        nathan = generateConfig { USER = "nathan"; };
 
-        work = generateConfig {
-          additionalModules = [ ./nix/nathan.nix ./nix/work.nix ];
-        };
+        work = generateConfig { includeWork = true; USER = "nathan"; };
       };
   };
 }

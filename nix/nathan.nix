@@ -1,3 +1,5 @@
+USER:
+
 {
   homebrew.masApps = {
     # https://apps.apple.com/us/app/xcode/id497799835
@@ -10,7 +12,7 @@
     "Time Out" = 402592703;
   };
 
-  home-manager.users."${builtins.getEnv "USER"}" = {
+  home-manager.users.${USER} = {
     # https://rycee.gitlab.io/home-manager/options.html#opt-programs.ssh.enable
     programs.ssh = {
       enable = true;

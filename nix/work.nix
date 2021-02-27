@@ -1,5 +1,6 @@
+{ HOME, USER }:
+
 let
-  HOME = "${builtins.getEnv "HOME"}";
   GOPATH = "${HOME}/work/go";
 in
 {
@@ -9,7 +10,7 @@ in
     "${HOME}/.krew/bin"
   ];
 
-  home-manager.users."${builtins.getEnv "USER"}" = {
+  home-manager.users.${USER} = {
     programs.git = {
       extraConfig = {
         # TODO: continue testing this
