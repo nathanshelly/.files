@@ -12,10 +12,15 @@
   # TODO: figure out what's not working here
   extraPython3Packages = ps: with ps; [ black ];
 
+
   # packages used only for nvim, these are not added to $PATH
   extraPackages = with pkgs; [
     rnix-lsp
   ];
+
+  # Use Neovim nightly (0.5.0) package provided by Nix Flake in Neovim repo, and made available via
+  # an overlay, see `../flake.nix`.
+  package = pkgs.neovim-nightly;
 
   plugins = with pkgs.vimPlugins; [
     # fuzzy finder

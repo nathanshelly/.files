@@ -4,30 +4,42 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    darwin.url = "github:lnl7/nix-darwin/master";
+    # set nix-darwin's nipxkgs input to the nixpkgs specified in this flake
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager/master";
     # set home-manager's nipxkgs input to the nixpkgs specified in this flake
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-darwin.url = "github:lnl7/nix-darwin/master";
-    # set nix-darwin's nipxkgs input to the nixpkgs specified in this flake
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    neovim.url = "github:neovim/neovim?dir=contrib";
+    neovim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # read thru this - https://github.com/malob/nixpkgs/blob/master/flake.nix
-  outputs = { self, nix-darwin, nixpkgs, home-manager }: {
+
+  outputs = { self, darwin, home-manager, nixpkgs, ... }@inputs: {
     darwinConfigurations = let
+      nixpkgsConfig = {
+        config = { allowUnfree = true; };
+        # TODO: understand overlays better
+        overlays = self.overlays;
+      };
+
       generateConfig =
         { additionalModules ? []
         , includeGui ? false
         , includeWork ? false
         , HOME ? builtins.getEnv "HOME"
         , USER ? builtins.getEnv "USER"
-        }: nix-darwin.lib.darwinSystem {
-          # inputs = { flake = self; };
+        }: darwin.lib.darwinSystem {
+
           modules = [
             home-manager.darwinModules.home-manager
-            # TODO: do this more elegantly
             {
+              nixpkgs = nixpkgsConfig;
+
+              # TODO: do this more elegantly
               home-manager.users.${USER} = import ./nix/home.nix self.outPath;
             }
             (import ./nix/darwin.nix USER)
@@ -47,5 +59,13 @@
 
         work = generateConfig { includeWork = true; USER = "nathan"; };
       };
+
+    overlays = with inputs; [
+      (
+        final: prev: {
+          neovim-nightly = neovim.packages.${prev.stdenv.system}.neovim;
+        }
+      )
+    ];
   };
 }
