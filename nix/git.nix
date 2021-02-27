@@ -20,12 +20,9 @@
     };
   };
 
-  includes = [
-    # local overrides of `git` identity (author name & email)
-    # https://git-scm.com/docs/git-config#_includes
-    { path = "~/.gitconfig.local"; }
-    { path = "~/.gitconfig.work"; condition = "gitdir:~/work/"; }
-  ];
+  # local overrides of `git` identity (author name & email)
+  # https://git-scm.com/docs/git-config#_includes
+  includes = [ { path = "~/.gitconfig.local"; } ];
 
   lfs.enable = true; # set up optional handy config for LFS
 
@@ -124,15 +121,7 @@
       # https://stackoverflow.com/a/22634649
       sort = "version:refname";
     };
-  } // (
-    # TODO: continue testing this
-    # would prefer simply to put this in `~/.gitconfig.work` but unfortunately
-    # `gazelle update-repos` is run outside the `~/work` scope which means it
-    # ignores `~/.gitconfig.work`
-    if builtins.pathExists "${builtins.getEnv "HOME"}/work"
-    then (import ./work.nix).goAuthHandling
-    else {}
-  );
+  };
 
   # ref - https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
   attributes = [

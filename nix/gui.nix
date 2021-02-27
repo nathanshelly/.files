@@ -1,41 +1,89 @@
 {
-  # someday may manage other gui configs via nix but immutability prevents
-  # editing settings via the gui which is a dealbreaker for me at the moment
-  home.file = {
-    ".xvimrc".text = ''
-      " Options
+  homebrew = {
+    enable = true;
 
-      set wrap
-      set number
+    # uninstalls formulae & casks that are not listed in the brewfile
+    # cleanup = "zap";
 
-      set incsearch
-      set hlsearch
+    # prevents homebrew from generating useless lock files
+    global.noLock = true;
 
-      set ignorecase
-      set smartcase
+    casks = [
+      "1password"
+      "alfred"
+      "alt-tab"
+      "backblaze"
+      "bartender"
+      "contexts"
+      "daisydisk"
+      "fantastical"
+      "firefox"
+      "firefox-nightly"
+      "flux"
+      "google-chrome"
+      "google-backup-and-sync"
+      "istat-menus"
+      "iterm2"
+      "karabiner-elements"
+      "keycastr"
+      "microsoft-edge"
+      "monitorcontrol"
+      "mpv"
+      "notion"
+      "private-internet-access"
+      "postman"
+      "rectangle"
+      "signal"
+      "slack"
+      "sound-control"
+      "spotify"
+      "steermouse"
+      "tempo"
+      "ueli"
+      "visual-studio-code"
+      "vlc"
+    ];
+  };
 
-      " Mappings
+  home-manager.users."${builtins.getEnv "USER"}" = {
+    # someday may manage other gui configs via nix but immutability prevents
+    # editing settings via the gui which is a dealbreaker for me at the moment
+    home.file = {
+      ".xvimrc".text = ''
+        " Options
 
-      inoremap jk <esc>
+        set wrap
+        set number
 
-      nnoremap J }
-      vnoremap J }
-      nnoremap K {
-      vnoremap K {
+        set incsearch
+        set hlsearch
 
-      nnoremap z $
-      vnoremap z $h
-      nnoremap Z ^
-      vnoremap Z ^
+        set ignorecase
+        set smartcase
 
-      nmap == :xcmenucmd Re-Indent<CR>
-      vmap = :xcmenucmd Re-Indent<CR>
+        " Mappings
 
-      nmap <C-i> :xcmenucmd Go Forward<CR>
-      nmap <C-o> :xcmenucmd Go Back<CR>
+        inoremap jk <esc>
 
-      nmap <C-z> :xcmenucmd Open in Next Editor<CR>
-      nmap <C-q> :xcmenucmd Close Editor<CR>:xcmenucmd Move Focus to Next Editor<CR>
-    '';
+        nnoremap J }
+        vnoremap J }
+        nnoremap K {
+        vnoremap K {
+
+        nnoremap z $
+        vnoremap z $h
+        nnoremap Z ^
+        vnoremap Z ^
+
+        nmap == :xcmenucmd Re-Indent<CR>
+        vmap = :xcmenucmd Re-Indent<CR>
+
+        nmap <C-i> :xcmenucmd Go Forward<CR>
+        nmap <C-o> :xcmenucmd Go Back<CR>
+
+        nmap <C-z> :xcmenucmd Open in Next Editor<CR>
+        nmap <C-q> :xcmenucmd Close Editor<CR>:xcmenucmd Move Focus to Next Editor<CR>
+      '';
+    };
   };
 }

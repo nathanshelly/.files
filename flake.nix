@@ -15,8 +15,24 @@
 
   # read thru this - https://github.com/malob/nixpkgs/blob/master/flake.nix
   outputs = { self, nix-darwin, nixpkgs, home-manager }: {
-    darwinConfigurations.default = nix-darwin.lib.darwinSystem {
-      modules = [ home-manager.darwinModules.home-manager ./nix/darwin.nix ];
-    };
+    darwinConfigurations = let
+      generateConfig = { additionalModules }: nix-darwin.lib.darwinSystem {
+        modules = [
+          home-manager.darwinModules.home-manager
+          ./nix/darwin.nix
+        ] ++ additionalModules;
+      };
+    in
+      {
+        default = generateConfig {};
+
+        gui = generateConfig { additionalModules = [ ./nix/gui.nix ]; };
+
+        nathan = generateConfig { additionalModules = [ ./nix/nathan.nix ]; };
+
+        work = generateConfig {
+          additionalModules = [ ./nix/nathan.nix ./nix/work.nix ];
+        };
+      };
   };
 }

@@ -2,10 +2,7 @@
 
 # configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
 let
-  DOTFILES_USE_GUI = "${builtins.getEnv "DOTFILES_USE_GUI"}";
   USER = "${builtins.getEnv "USER"}";
-  SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists
-    "${builtins.getEnv "HOME"}/.nathan";
 in
 {
   # TODO: add keyboard shortcuts - https://github.com/LnL7/nix-darwin/pull/189
@@ -40,72 +37,7 @@ in
 
     # TODO: figure out how to add user-profile `zsh`
     shells = [ pkgs.zsh ];
-
-    # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-environment.systemPath
-    systemPath = [] ++ (
-      if builtins.pathExists "${builtins.getEnv "HOME"}/work"
-      then (import ./work.nix).darwin.environment.systemPath
-      else []
-    );
   };
-
-  homebrew =
-    if "${DOTFILES_USE_GUI}" == "true" then
-      {
-        enable = true;
-
-        # uninstalls formulae & casks that are not listed in the brewfile
-        # cleanup = "zap";
-
-        # prevents homebrew from generating useless lock files
-        global.noLock = true;
-
-        casks = [
-          "1password"
-          "alfred"
-          "alt-tab"
-          "backblaze"
-          "bartender"
-          "contexts"
-          "daisydisk"
-          "fantastical"
-          "firefox"
-          "firefox-nightly"
-          "flux"
-          "google-chrome"
-          "google-backup-and-sync"
-          "istat-menus"
-          "iterm2"
-          "karabiner-elements"
-          "keycastr"
-          "microsoft-edge"
-          "monitorcontrol"
-          "mpv"
-          "notion"
-          "private-internet-access"
-          "postman"
-          "rectangle"
-          "signal"
-          "slack"
-          "sound-control"
-          "spotify"
-          "steermouse"
-          "tempo"
-          "ueli"
-          "visual-studio-code"
-          "vlc"
-        ];
-        masApps = if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG then {
-          # https://apps.apple.com/us/app/xcode/id497799835
-          "Xcode" = 497799835;
-
-          # (paid, $5) https://apps.apple.com/us/app/super-easy-timer/id1353137878
-          "Super Easy Timer" = 1353137878;
-
-          # (in-app purchases) https://apps.apple.com/us/app/time-out-break-reminders/id402592703
-          "Time Out" = 402592703;
-        } else {};
-      } else {};
 
   # user environment management via home-manager
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
@@ -203,9 +135,12 @@ in
       gitAndTools.tig
       gnumake
       gnupg
+      httpie
       hyperfine
       jq
       lua # z.lua dependency
+      kubectx
+      kubernetes
       mdcat
       ncurses
       nodejs
@@ -215,6 +150,7 @@ in
       rsync
       shellcheck
       shfmt
+      stern
       syncthing
       tldr
       tmux
@@ -226,16 +162,6 @@ in
       yarn
     ];
   };
-
-  # TODO: extend nix-darwin to allow shell setting w/o user recreation
-  # users = if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG
-  # then {
-  #   knownUsers = [ USER ];
-  #   "${USER}" = {
-  #     shell = pkgs.zsh;
-  #     uid = 501;
-  #   };
-  # } else {};
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

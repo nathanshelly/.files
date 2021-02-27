@@ -38,6 +38,16 @@ all:
 apply:
 	./nix/apply
 
+apply-gui:
+	./nix/apply gui
+
+# set up abstractions for me-specific application
+n:
+	./nix/apply nathan
+
+nw:
+	./nix/apply work
+
 help:
 	@echo 'make help'
 	@echo '		show this help message'
@@ -45,6 +55,12 @@ help:
 	@echo '		set up dotfiles'
 	@echo 'make apply'
 	@echo '		apply latest config'
+	@echo 'make apply-gui'
+	@echo '		apply gui config'
+	@echo 'make n'
+	@echo '		apply Nathan-specific config'
+	@echo 'make work'
+	@echo '		apply (Nathan & work)-specific config'
 	@echo 'make nix'
 	@echo '		set up nix'
 	@echo 'make gui'

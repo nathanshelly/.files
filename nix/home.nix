@@ -4,14 +4,8 @@ let
   HOME = "${builtins.getEnv "HOME"}";
   USER = "${builtins.getEnv "USER"}";
   DOTFILES = "${HOME}/.files";
-  SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG = builtins.pathExists "${HOME}/.nathan";
 in
 {
-  # TODO: conditionally spread work zsh config
-  home.sessionVariables = if builtins.pathExists "${HOME}/work"
-  then (import ./work.nix).home.sessionVariables
-  else {};
-
   # creates symlinks to immutable copies of the source file in /nix/store
   # form: "<target>".source = "<source>"
   home.file = {
@@ -22,21 +16,7 @@ in
     "${config.xdg.configHome}/nvim/coc-settings.json".source = "${DOTFILES}/neovim/coc-settings.jsonc";
     # custom colorscheme
     "${config.xdg.configHome}/nvim/colors/n.vim".source = "${DOTFILES}/neovim/colors/n.vim";
-  } // (
-    if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG
-    then (import ./nathan.nix).home.file
-    else {}
-  ) // (
-    if pkgs.stdenv.isDarwin && SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG
-    then (import ./gui.nix).home.file
-    else {}
-  );
-
-  programs.ssh = (
-    if SHOULD_INSTALL_NATHAN_SPECIFIC_CONFIG
-    then (import ./nathan.nix).programs.ssh
-    else {}
-  );
+  };
 
   # avoid errors building man pages by disabling them
   # similar previous bug - https://github.com/nix-community/home-manager/issues/254
@@ -79,8 +59,6 @@ in
       (builtins.readFile "${DOTFILES}/zsh/zshrc")
       # TODO: see if there's a better way to do this
       "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
-      # TODO: definitely do this in a less hacky way
-      "file='/Users/nathan/work/go/src/github.com/opendoor-labs/code/scripts/infra/sourced_on_shell_load.sh' && [ -f $file ] && source \"$file\""
       # TODO: try and extend this to `nix develop` & `nix run` commands
       "any-nix-shell zsh --info-right | source /dev/stdin"
     ];
@@ -94,6 +72,7 @@ in
       ll = "exa --long --all";
 
       "," = "comma";
+      "k" = "kubectl";
     };
   };
 
