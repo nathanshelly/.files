@@ -150,3 +150,17 @@ nnoremap <leader>ch :ColorHighlight<CR>
 
 " highlight only color codes, not color names - '#ffffff' not 'white'
 let g:colorizer_colornames = 0
+
+" <<<< treesitter >>>>
+
+" ref - https://github.com/nvim-treesitter/nvim-treesitter#modules
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  -- "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+  highlight = { enable = true },
+  incremental_selection = { enable = true },
+  indent = { enable = true },
+  playground = { enable = true }
+}
+EOF

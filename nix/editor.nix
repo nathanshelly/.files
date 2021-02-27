@@ -88,13 +88,7 @@
     # << colors/syntax/languages >>
 
     # statusline color scheme
-    onehalf
-
-    # language pack
-    vim-polyglot
-
-    # individual languages/syntax
-    vim-markdown
+    # onehalf
 
     # TODO: allow unsupported systems?
     # insert color from color picker

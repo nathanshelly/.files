@@ -57,10 +57,6 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 " jsonc filetype - JSON w/ comments
 Plug 'neoclide/jsonc.vim'
 
-" individual languages/syntax
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
 " highlight color codes with their color
 " run `:ColorHighlight` to see #FF00AA with a hot pink background
 Plug 'chrisbra/Colorizer'
@@ -68,5 +64,9 @@ Plug 'chrisbra/Colorizer'
 " TODO: allow unsupported systems?
 " insert color from color picker
 Plug 'kabbamine/vCoolor.vim'
+
+" We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 call plug#end()
