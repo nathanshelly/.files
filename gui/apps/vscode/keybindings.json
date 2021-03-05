@@ -1,43 +1,17 @@
 [
-  // <<<< keybindings from Sasha pairing >>>>
-  // TODO: combine these more cleanly
-  // Relies on the Vim plugin and the workbench.list.automaticKeyboardNavigation setting in settings.json.
+  {"key": "alt+o", "command": "workbench.action.output.toggleOutput"},
+  {"key": "alt+m", "command": "workbench.actions.view.problems"},
+  {"key": "alt+x", "command": "workbench.action.terminal.toggleTerminal"},
   {
-    "key": "o",
-    "command": "list.select",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+    "key": "alt+x",
+    "command": "workbench.action.terminal.focus",
+    "when": "!terminalFocus"
   },
-  // Quick-select and navigate sidebar/editor. Cmd+Shift+<key> will focus a panel/editor/terminal. "Focusing" a view
-  // while it is already focused will toggle the sidebar.
-  //
-  // J -> Editor
-  // E -> Explorer
-  // F -> Search
-  // Z -> Terminal
-  {
-    "win": "ctrl+shift+j",
-    "key": "cmd+shift+j",
-    "command": "workbench.action.focusActiveEditorGroup"
-  },
-  {
-    "win": "ctrl+shift+z",
-    "key": "cmd+shift+z",
-    "command": "workbench.action.terminal.toggleTerminal"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "-workbench.action.switchWindow"
-  },
-
-  // <<<<<< remove defaults >>>>>>
-  {"key": "alt+cmd+p", "command": "-projectManager.listProjects"},
-  {"key": "cmd+t", "command": "-workbench.action.showAllSymbols"},
-  {
-    "key": "escape escape",
-    "command": "-workbench.action.exitZenMode",
-    "when": "inZenMode"
-  },
-  // <<<< end of keybindings from Sasha pairing >>>>
+  {"key": "alt+d", "command": "workbench.debug.action.toggleRepl"},
+  {"key": "cmd+e", "command": "workbench.action.focusActiveEditorGroup"},
+  {"key": "alt+s", "command": "workbench.action.focusSideBar"},
+  {"key": "cmd+alt+s", "command": "workbench.action.toggleSidebarVisibility"},
+  {"key": "alt+p", "command": "workbench.action.focusPanel"},
 
   // <<<<<< general >>>>>>
   {"key": "alt+z", "command": "workbench.action.toggleZenMode"},
@@ -84,10 +58,11 @@
     "when": "explorerViewletVisible && filesExplorerFocus"
   },
   {"key": "cmd+alt+shift+s", "command": "workbench.action.files.saveAll"},
-
-  // <<<<<< project manager >>>>>>
-  {"key": "alt+ctrl+p", "command": "projectManager.listProjects"},
-  {"key": "alt+ctrl+s", "command": "projectManager.saveProject"},
+  {
+    "key": "ctrl+s",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
 
   // <<<<<< file explorer navigation >>>>>>
   {
@@ -129,59 +104,6 @@
   {"key": "alt+1", "command": "workbench.action.focusFirstEditorGroup"},
   {"key": "alt+2", "command": "workbench.action.focusSecondEditorGroup"},
   {"key": "alt+3", "command": "workbench.action.focusThirdEditorGroup"},
-
-  // <<<<<< folding >>>>>>
-  {"key": "cmd+alt+[", "command": "editor.fold", "when": "editorTextFocus"},
-  {
-    "key": "cmd+alt+shift+[",
-    "command": "editor.foldAll",
-    "when": "editorTextFocus"
-  },
-  {"key": "cmd+alt+]", "command": "editor.unfold", "when": "editorTextFocus"},
-  {
-    "key": "cmd+alt+shift+]",
-    "command": "editor.unfoldAll",
-    "when": "editorTextFocus"
-  },
-
-  // <<<<<< block travel >>>>>>
-  {
-    "key": "alt+up",
-    "command": "block-travel.jumpUp",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+shift+up",
-    "command": "block-travel.selectUp",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+down",
-    "command": "block-travel.jumpDown",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+shift+down",
-    "command": "block-travel.selectDown",
-    "when": "editorTextFocus"
-  },
-
-  // <<<<<< declaration/implementation viewing >>>>>>
-  {
-    "key": "cmd+ctrl+e",
-    "command": "editor.action.goToDeclaration",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "cmd+ctrl+v",
-    "command": "editor.action.previewDeclaration",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "cmd+ctrl+s",
-    "command": "editor.action.referenceSearch.trigger",
-    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-  },
 
   // <<<<<< debug >>>>>>
   {"key": "alt+b", "command": "editor.debug.action.toggleBreakpoint"},
@@ -258,40 +180,71 @@
     "when": "terminalFocus"
   },
 
-  // have all arrow keys clear to not use them
+  // ######### vim ##########
+  // relies on VSCodeVim &
+  // `workbench.list.automaticKeyboardNavigation: false` in settings.json
   {
-    "key": "up",
-    "command": "workbench.action.terminal.clear",
-    "when": "terminalFocus"
+    "key": "o",
+    "command": "list.select",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+  },
+  // Quick-select and navigate sidebar/editor. Cmd+Shift+<key> will focus a panel/editor/terminal. "Focusing" a view
+  // while it is already focused will toggle the sidebar.
+  //
+  // J -> Editor
+  // E -> Explorer
+  // F -> Search
+  // Z -> Terminal
+  {
+    "win": "ctrl+shift+j",
+    "key": "cmd+shift+j",
+    "command": "workbench.action.focusActiveEditorGroup"
   },
   {
-    "key": "left",
-    "command": "workbench.action.terminal.clear",
-    "when": "terminalFocus"
+    "win": "ctrl+shift+z",
+    "key": "cmd+shift+z",
+    "command": "workbench.action.terminal.toggleTerminal"
   },
   {
-    "key": "right",
-    "command": "workbench.action.terminal.clear",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "down",
-    "command": "workbench.action.terminal.clear",
-    "when": "terminalFocus"
+    "key": "ctrl+w",
+    "command": "-workbench.action.switchWindow"
   },
 
-  // <<<<<< panel toggling >>>>>>
-  {"key": "alt+o", "command": "workbench.action.output.toggleOutput"},
-  {"key": "alt+m", "command": "workbench.actions.view.problems"},
-  {"key": "alt+x", "command": "workbench.action.terminal.toggleTerminal"},
+  // <<<<<< remove defaults >>>>>>
+  {"key": "cmd+t", "command": "-workbench.action.showAllSymbols"},
   {
-    "key": "alt+x",
-    "command": "workbench.action.terminal.focus",
-    "when": "!terminalFocus"
+    "key": "escape escape",
+    "command": "-workbench.action.exitZenMode",
+    "when": "inZenMode"
   },
-  {"key": "alt+d", "command": "workbench.debug.action.toggleRepl"},
-  {"key": "cmd+e", "command": "workbench.action.focusActiveEditorGroup"},
-  {"key": "alt+s", "command": "workbench.action.focusSideBar"},
-  {"key": "cmd+alt+s", "command": "workbench.action.toggleSidebarVisibility"},
-  {"key": "alt+p", "command": "workbench.action.focusPanel"}
+  {
+    "key": "alt+up",
+    "command": "block-travel.jumpUp",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+shift+up",
+    "command": "block-travel.selectUp",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+down",
+    "command": "block-travel.jumpDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+shift+down",
+    "command": "block-travel.selectDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "-issue.createIssueFromFile",
+    "when": "resourceScheme == 'newIssue' && config.files.autoSave != 'off'"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  }
 ]

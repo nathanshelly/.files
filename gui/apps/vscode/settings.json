@@ -1,5 +1,4 @@
 {
-  // <<<< settings from Sasha pairing >>>>
   // TODO: combine these more cleanly
   "editor.fontSize": 14,
   // Disable moving to MRU tab after closing
@@ -20,37 +19,10 @@
   "problems.showCurrentInStatus": true,
   // Ignore the freaking extension recommendations
   "extensions.ignoreRecommendations": true,
-  // Disable VSCode keyboard nav in lists in favor of Vim plugin's
+  // Disable VSCode keyboard nav in lists in favor of Vim plugin
   "workbench.list.automaticKeyboardNavigation": false,
   "editor.lineNumbers": "relative",
-  "vim.hlsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.visualstar": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j", "k"],
-      "after": ["<Esc>"]
-    }
-  ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["C-o"],
-      "commands": ["workbench.action.navigateBack"]
-    },
-    {
-      "before": ["C-i"],
-      "commands": ["workbench.action.navigateForward"]
-    },
-    {
-      "before": ["'"],
-      "after": ["$"]
-    },
-    {
-      "before": ["\""],
-      "after": ["^"]
-    }
-  ],
-  // <<<< end of settings from Sasha pairing >>>>
+
   // <<<<<< workbench >>>>>>
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
@@ -110,6 +82,7 @@
       "statusBar.background": "#3e8c9b",
       "statusBar.foreground": "#dbdddd",
       "editor.background": "#232323",
+      "editor.findMatchHighlightBackground": "#479eaf94",
       "editorGroupHeader.noTabsBackground": "#232323",
       "editorGroupHeader.tabsBackground": "#232323",
       "tab.activeBackground": "#303030",
@@ -186,20 +159,35 @@
     "workbench.action.maximizeEditor",
     "workbench.action.toggleZenMode"
   ],
+
+  // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
+  // <<<<<<<<<<<< languages >>>>>>>>>>>>>
+  // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
+
+  // ######### jsonc ##########
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ######### python ##########
+  "[python]": {
+    "editor.formatOnSave": false
+  },
+  "python.venvPath": "~/envs/python",
+  "python.linting.enabled": false,
+  "python.defaultInterpreterPath": "python",
+
   // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
   // <<<<<<<<<<<< extensions >>>>>>>>>>>>
   // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
-  // <<<<<< general >>>>>>
+
+  // ######### general ##########
   "extensions.autoUpdate": true,
-  // <<<<<< scroll off >>>>>>
-  "python.venvPath": "~/envs/python",
-  // linting
-  "python.linting.enabled": true,
-  "python.linting.mypyEnabled": true,
-  "python.linting.pylintEnabled": false,
+
   // ######### rust-analyzer ##########
   // use version of `rust-analyzer` on path
-  "rust-analyzer.serverPath": "rust-analyzer",
+  "rust-analyzer.server.path": "rust-analyzer",
+
   // ######### github prs ##########
   "githubPullRequests.queries": [
     {
@@ -218,5 +206,44 @@
       "label": "Mentioned Me",
       "query": "is:open mentions:${user}"
     }
+  ],
+
+  // ######### vim ##########
+
+  // #### native vim settings ####
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+
+  // #### vscodevim custom settings ####
+  "vim.replaceWithRegister": true,
+  "vim.sneak": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.useSystemClipboard": true,
+
+  // #### keybindings ####
+  "vim.insertModeKeyBindings": [{"before": ["j", "k"], "after": ["<Esc>"]}],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["C-o"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["C-i"],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {"before": ["'"], "after": ["$"]},
+    {"before": ["\""], "after": ["^"]},
+    {"before": ["<leader>", "w"], "commands": [":w"]},
+    {"before": ["<leader>", "h", "n"], "commands": [":nohl"]}
+  ],
+  // TODO: figure out how to deal with this disabling deleting/changing
+  // `"` or `'` via vim-surround
+  "vim.operatorPendingModeKeyBindings": [
+    {"before": ["'"], "after": ["$"]},
+    {"before": ["\""], "after": ["^"]}
+  ],
+  "vim.visualModeKeyBindings": [
+    {"before": ["'"], "after": ["$"]},
+    {"before": ["\""], "after": ["^"]}
   ]
 }
