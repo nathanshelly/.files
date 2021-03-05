@@ -133,6 +133,7 @@ USER:
       gitAndTools.tig
       gnumake
       gnupg
+      gnused
       httpie
       hyperfine
       jq
