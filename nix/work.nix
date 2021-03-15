@@ -37,7 +37,9 @@ in
 
     # TODO: definitely do this in a less hacky way
     programs.zsh.initExtra = ''
-      file='/Users/nathan/work/go/src/github.com/opendoor-labs/code/scripts/infra/sourced_on_shell_load.sh' && [ -f $file ] && source "$file"
+      OD_CODE_ROOT="/Users/nathan/work/go/src/github.com/opendoor-labs/code"
+      OD_TOOL_SOURCE_SCRIPT="$OD_CODE_ROOT/scripts/infra/sourced_on_shell_load.sh"
+      [ -f "$OD_TOOL_SOURCE_SCRIPT" ] && source "$OD_TOOL_SOURCE_SCRIPT"
     '';
   };
 }
