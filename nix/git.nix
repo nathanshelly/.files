@@ -102,7 +102,7 @@
     push = {
       # `git push` treated as `git push remote <current-checkout-out-branch-name>`
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault
-      default = "upstream";
+      default = "current";
       # push annotated tags missing from remote
       # equivalent of typing `git push --follow-tags`
       # https://git-scm.com/docs/git-push#Documentation/git-push.txt---follow-tags
