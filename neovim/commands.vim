@@ -40,3 +40,7 @@ if has('macunix')
   endfunction
   nnoremap gx :call OpenURLUnderCursor()<CR>
 endif
+
+" define line highlight color
+" ref: https://vimtricks.com/p/highlight-specific-lines/
+highlight LineHighlight ctermbg=lightgray guibg=#4a0640
