@@ -15,18 +15,10 @@ call plug#begin("$HOME/.local/share/nvim/plugged")
 " - https://github.com/nix-community/home-manager/issues/1531
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
-" << autocompletion >>
+" << utilities >>
 
 " Neovim markdown previewer (opens preview in browser)
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-
-" git information (blame, diff) in Vim
-" note: `sran.vim` is a dependency of `git-p.nvim`
-Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
-Plug 'iamcco/git-p.nvim'
-
-" show git commit for line under cursor (`<leader>gm`)
-Plug 'rhysd/git-messenger.vim'
 
 " fuzzy finder
 " configuration is in ./fzf.vim instead of ./plugin_config.vim due to complexity
@@ -40,14 +32,29 @@ Plug 'rhysd/git-messenger.vim'
 " TODO: check that this fork stays up to date with upstream
 " Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
 
-" open current line in github
-" note: opens most recent blob so only works if you are downstream of remote
-Plug 'ruanyl/vim-gh-line'
-
-
 " TODO: determine marginal value of this plugin
 " TODO: understand why `.envrc` filetype is still bash and also not highlighted
 " Plug 'direnv/direnv.vim'
+
+" We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" filetype detection for many languages
+Plug 'sheerun/vim-polyglot'
+
+" << git >>
+
+" git information (blame, diff) in Vim
+" note: `sran.vim` is a dependency of `git-p.nvim`
+Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
+Plug 'iamcco/git-p.nvim'
+
+" show git commit for line under cursor (`<leader>gm`)
+Plug 'rhysd/git-messenger.vim'
+
+" open current line in github
+" note: opens most recent blob so only works if you are downstream of remote
+Plug 'ruanyl/vim-gh-line'
 
 " << colors/syntax/languages >>
 
@@ -64,9 +71,5 @@ Plug 'chrisbra/Colorizer'
 " TODO: allow unsupported systems?
 " insert color from color picker
 Plug 'kabbamine/vCoolor.vim'
-
-" We recommend updating the parsers on update
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 
 call plug#end()

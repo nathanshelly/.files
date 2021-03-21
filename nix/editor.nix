@@ -23,13 +23,20 @@
   package = pkgs.neovim-nightly;
 
   plugins = with pkgs.vimPlugins; [
-    # fuzzy finder
-    # configuration in ./fzf.vim over ./plugin_config.vim due to complexity
-    fzf-vim
-
     # << motions/operators >>
 
     # << operators >>
+
+    # replace - `<register>gr<motion>`, replaces motion text with contents of given
+    # register (unnamed register (`_`) if none given)
+    ReplaceWithRegister
+
+    # tpope - comment code - `gc<motion>`
+    vim-commentary
+
+    # sort w/ `gs<motion>`
+    # e.g. `gs2k` sorts down two lines (current + 2 below)
+    vim-sort-motion
 
     # edit surrounding characters
     #
@@ -44,18 +51,22 @@
     #     `"`s into `{}` -> `{word}`
     #
     # See further usage examples - https://github.com/tpope/vim-surround
-    vim-surround
+    {
+      plugin = vim-surround;
+      config = ''
+        " <<<< vim-surround >>>>
+        " ref - https://github.com/tpope/vim-surround#surroundvim
 
-    # tpope - comment code - `gc<motion>`
-    vim-commentary
+        " << keymap >>
 
-    # replace - `<register>gr<motion>`, replaces motion text with contents of given
-    # register (unnamed register (`_`) if none given)
-    ReplaceWithRegister
+        " add keystrokes to surround with `<>`
+        " e.g. `ysss` surrounds the current line w/ `<>` w/o spaces, `yssS` surrounds w/
+        " `<>` w/ spaces
+        let g:surround_{char2nr('s')} = "<\r>"
+        let g:surround_{char2nr('S')} = "< \r >"
 
-    # sort w/ `gs<motion>`
-    # e.g. `gs2k` sorts down two lines (current + 2 below)
-    vim-sort-motion
+      '';
+    }
 
     # < text objects >
 
@@ -71,19 +82,61 @@
 
     # << utilities >>
 
-    # git wrapper
-    vim-fugitive
-
-    # file explorer
-    nerdtree
-    # {
-    # 'on':  'NERDTreeToggle' }
-
-    # repeats plugin actions (vim-commentary,  vim-surround, etc.)
-    vim-repeat
+    # fuzzy finder
+    # configuration in ./fzf.vim over ./plugin_config.vim due to complexity
+    fzf-vim
 
     # status line
     lightline-vim
+
+    # file explorer
+    {
+      plugin = nerdtree;
+      config = ''
+        " ref - https://github.com/scrooloose/nerdtree#faq-here-and-in-the-wiki
+        noremap <c-n> :NERDTreeToggle<CR>
+
+        " highlight current file in tree
+        noremap <leader>ntf :NERDTreeFind<CR>
+      '';
+    }
+
+    {
+      # perform highlighting, incremental selection, indentation and folding via
+      # the far more efficient treesitter AST
+      plugin = nvim-treesitter;
+      config = ''
+        " ref - https://github.com/nvim-treesitter/nvim-treesitter#modules
+        lua <<EOF
+        require'nvim-treesitter.configs'.setup {
+          -- "all", "maintained" (parsers with maintainers), or a list of languages
+          ensure_installed = "maintained",
+          highlight = { enable = true },
+          incremental_selection = { enable = true },
+          indent = { enable = true },
+          playground = { enable = true }
+        }
+        EOF
+      '';
+    }
+
+    {
+      plugin = nvim-treesitter-context;
+      config = ''
+        " toggle on/off
+        nnoremap <leader>cd :TSContextDisable<CR>
+        nnoremap <leader>ce :TSContextEnable<CR>
+      '';
+    }
+
+    # provide completions from tmux panes
+    tmux-complete-vim
+
+    # git wrapper
+    vim-fugitive
+
+    # repeats plugin actions (vim-commentary,  vim-surround, etc.)
+    vim-repeat
 
     # << colors/syntax/languages >>
 
@@ -94,8 +147,22 @@
     # insert color from color picker
     # vCoolor-vim
 
-    # provide completions from tmux panes
-    tmux-complete-vim
+    # TODO: understand why this doesn't seem to work
+    # filetype detection for most languages */
+    # {
+    #   plugin = vim-polyglot;
+    #   config = ''
+    #     " disable `markdown` to use `tpope/vim-markdown`
+    #     "
+    #     " TODO: try to avoid loading unnecessary syntax highlighting
+    #     " https://github.com/sheerun/vim-polyglot#troubleshooting
+    #     let g:polyglot_disabled = [
+    #       \ 'autoindent',
+    #       \ 'markdown',
+    #       \ 'vim'
+    #     \]
+    #   '';
+    # }
   ];
 
   # sets `g:node_host_prog='${nodePackages.neovim}/bin/neovim-node-host`

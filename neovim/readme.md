@@ -228,7 +228,6 @@ Agnostic of plugin management method.
 #### notable configuration
 
 - `<leader>gd` to display diff at current line
-- `<leader>jg` to trigger Goyo (minimal writing mode)
 - statusline appearance (using [`lightline`](https://github.com/itchyny/lightline.vim)
 - `<leader>mp` to launch `MarkdownPreview`
 - disable vim-polyglot's Markdown support to use `vim-markdown` for Markdown files

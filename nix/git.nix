@@ -46,6 +46,10 @@
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-branchautoSetupRebase
       autosetuprebase = "always";
     };
+    "color \"diff\"" = {
+      oldMoved = 212;
+      newMoved = 135;
+    };
     "color \"status\"" = {
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorstatusltslotgt
       added = 045;
