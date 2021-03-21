@@ -26,18 +26,6 @@ augroup filetype_python
   autocmd Filetype python set textwidth=88
 augroup END
 
-augroup filetype_vim
-  autocmd!
-  autocmd Filetype vim set textwidth=80
-  autocmd BufRead,BufNewFile *.nvim	setlocal filetype=vim
-augroup END
-
-" TODO: avoid needing to do this manually
-augroup filetype_nix
-  autocmd!
-  autocmd BufRead,BufNewFile *.nix	setlocal filetype=nix
-augroup END
-
 augroup filetype_json
   autocmd!
   " mark json files as jsonc by default
