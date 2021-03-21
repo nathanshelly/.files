@@ -2,6 +2,8 @@
   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.git.enable
   enable = true;
 
+  # syntax highlighted fancy pager
+  # ref: https://github.com/dandavison/delta
   delta = {
     # TODO: figure out why this config still needs `delta` in the user packages
     # but only when in a tmux session
@@ -63,8 +65,6 @@
       # comment character from `#` -> `;` to enable Markdown `#` headings
       # ref - https://duan.ca/2020/04/13/git-commit-comment/
       commentChar = ";";
-
-      # pager = <set in zsh/dynamic_env_vars.zsh>
 
       # ensures unicode compatibility between macOS, Windows & Linux
       # https://www.git-tower.com/help/guides/faq-and-tips/faq/unicode-filenames/mac

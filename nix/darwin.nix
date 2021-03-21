@@ -40,10 +40,10 @@ USER:
 
   # user environment management via home-manager
   # - https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
-  # # TODO: remove when switching to flake-based nix-darwin installer
-  # imports = [ <home-manager/nix-darwin> ];
+  # - https://nix-community.github.io/home-manager/nix-darwin-options.html
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "bak";
 
   nix = {
     buildMachines = [
@@ -153,6 +153,7 @@ USER:
       syncthing
       tldr
       tmux
+      tree-sitter
       tokei
       tree
       vim
