@@ -24,3 +24,19 @@ fun! AltCommand(path, vim_command)
     exec a:vim_command . " " . l:alternate
   endif
 endfun
+
+" Temporary workaround to enable open URL under cursor via `gx`
+" https://github.com/vim/vim/issues/4738#issuecomment-798790444
+if has('macunix')
+  function! OpenURLUnderCursor()
+    let s:uri = expand('<cWORD>')
+    let s:uri = matchstr(s:uri, '[a-z]*:\/\/[^ >,;()]*')
+    let s:uri = substitute(s:uri, '?', '\\?', '')
+    let s:uri = shellescape(s:uri, 1)
+    if s:uri != ''
+      silent exec "!open '".s:uri."'"
+      :redraw!
+    endif
+  endfunction
+  nnoremap gx :call OpenURLUnderCursor()<CR>
+endif
