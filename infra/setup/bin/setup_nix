@@ -151,6 +151,8 @@ maybe_setup_flakes() {
     return 0
   }
 
+  info "setting up flakes"
+
   if [[ -f /etc/nix/nix.conf ]] && ! grep --quiet flakes < /etc/nix/nix.conf; then
     info 'Using `sudo` to backup /etc/nix/nix.conf -> /etc/nix/nix.conf.bak'
     sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.bak
@@ -159,13 +161,19 @@ maybe_setup_flakes() {
   # setup nix w/ flakes via `darwin-rebuild`
   # `darwin-first-generation.nix` is a simplified config whose primary purpose is to
   # set up flakes
-  darwin-rebuild switch \
-    -I darwin-config="$DOTFILES/nix/darwin-first-generation.nix" \
-    -I darwin="$HOME/.nix-defexpr/channels" && {
+  if
+    darwin-rebuild \
+      -I darwin="$HOME/.nix-defexpr/channels" \
+      -I darwin-config="$DOTFILES/nix/darwin-first-generation.nix" \
+      switch
+  then
     success 'Established first generation. Nix flakes now available.'
-  }
+  else
+    fail "Failed to set up first flake generation."
+    return 1
+  fi
 
-  echo "NIX version: $(nix --version)"
+  info "Checking \`nix\` version after flake setup: $(nix --version)"
 }
 
 apply_first_flake_generation() {
