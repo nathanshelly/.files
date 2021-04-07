@@ -19,6 +19,8 @@ in
     trustedUsers = [ USER ];
   };
 
+  users.nix.configureBuildUsers = true;
+
   # create /etc/zshrc that activates the nix-darwin environment on shell load
   programs.zsh.enable = true;
 
