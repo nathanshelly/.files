@@ -63,6 +63,8 @@ endfunction
 
 nnoremap <leader>mp :MarkdownPreview<CR>
 
+" <<<< nvim-treesitter >>>>
+
 " TODO: remove this once nvim-treesitter version in `nixpkgs` updated
 " ref - https://github.com/nvim-treesitter/nvim-treesitter#modules
 lua <<EOF
@@ -75,6 +77,11 @@ require'nvim-treesitter.configs'.setup {
   playground = { enable = true }
 }
 EOF
+
+" <<<< investigate.vim >>>>
+" ref - https://github.com/keith/investigate.vim#dash
+
+let g:investigate_use_dash=1
 
 " <<<<<< end of utilities >>>>>>
 
@@ -99,14 +106,9 @@ let g:vcoolor_disable_mappings = 1
 let g:vcoolor_map = '<m-c>' " already the default, added here just for context
 
 " <<<< Colorizer >>>>
-" ref - https://github.com/chrisbra/Colorizer
+" ref - https://github.com/norcalli/nvim-colorizer.lua
 
-" automatically highlight in css files
-autocmd BufNewFile,BufRead *.css :ColorHighlight!
+lua require'colorizer'.setup()
 
-" highlight manually via shortcut
-nnoremap <leader>ch :ColorHighlight<CR>
-
-" highlight only color codes, not color names - '#ffffff' not 'white'
-let g:colorizer_colornames = 0
-
+" toggle highlighting
+nnoremap <leader>ct :ColorizerToggle<CR>

@@ -27,6 +27,7 @@ USER:
       "istat-menus"
       "iterm2"
       "karabiner-elements"
+      "kap"
       "keycastr"
       "microsoft-edge"
       "monitorcontrol"

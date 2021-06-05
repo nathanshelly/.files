@@ -48,3 +48,9 @@ augroup direnv
   " `.envrc-*` files are ~bash - https://github.com/direnv/direnv#how-it-works
   autocmd BufNewFile,BufRead *envrc* setlocal filetype=bash
 augroup END
+
+augroup nvim
+  autocmd!
+  " `.nvim` files should have `.vim` highlighting
+  autocmd BufNewFile,BufRead *.nvim setlocal filetype=vim
+augroup END

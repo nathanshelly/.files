@@ -49,6 +49,8 @@ pathToDotfiles:
   programs.zsh = {
     enable = true;
 
+    # TODO: try this - https://github.com/nix-community/home-manager/issues/1338
+
     # TODO: apply conditionally based on user config, rewritten in nix
     defaultKeymap = "viins";
 

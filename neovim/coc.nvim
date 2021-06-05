@@ -85,9 +85,8 @@ let g:coc_global_extensions = [
   \ 'coc-svelte',
   \ 'coc-tsserver',
   \ 'coc-vimlsp',
+  \ 'coc-yaml',
 \ ]
-" TODO: investigate issues with this
-" \ 'coc-sh',
 
 " trigger key for going to the next snippet position,
 " applied in insert and select mode.

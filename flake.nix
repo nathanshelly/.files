@@ -14,6 +14,10 @@
 
     neovim.url = "github:neovim/neovim?dir=contrib";
     neovim.inputs.nixpkgs.follows = "nixpkgs";
+
+    # TODO: investigate https://github.com/cachix/pre-commit-hooks.nix#nix-flakes-support
+    # inputs.pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    # inputs.flake-utils.url = "github:numtide/flake-utils";
   };
 
   # read thru this - https://github.com/malob/nixpkgs/blob/master/flake.nix

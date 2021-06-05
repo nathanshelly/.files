@@ -128,9 +128,9 @@ USER:
       exiftool
       fd
       ffmpeg-full
-      gitAndTools.delta
-      gitAndTools.gh
-      gitAndTools.tig
+      delta
+      gh
+      tig
       gnumake
       gnupg
       gnused
@@ -147,11 +147,13 @@ USER:
       python3
       ripgrep
       rsync
+      ruplacer
       shellcheck
       shfmt
       stern
       syncthing
       tldr
+      terraform-lsp
       tmux
       tree-sitter
       tokei

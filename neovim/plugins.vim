@@ -65,11 +65,13 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'neoclide/jsonc.vim'
 
 " highlight color codes with their color
-" run `:ColorHighlight` to see #FF00AA with a hot pink background
-Plug 'chrisbra/Colorizer'
+Plug 'norcalli/nvim-colorizer.lua'
 
 " TODO: allow unsupported systems?
 " insert color from color picker
 Plug 'kabbamine/vCoolor.vim'
+
+" jump to documentation
+Plug 'keith/investigate.vim'
 
 call plug#end()

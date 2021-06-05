@@ -22,6 +22,7 @@
     "rust",
     "sh",
     "svelte",
+    "terraform",
     "typescript",
     "typescriptreact"
   ],
@@ -80,6 +81,11 @@
     "nix": {
       "command": "rnix-lsp",
       "filetypes": ["nix"]
+    },
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
     }
   },
 

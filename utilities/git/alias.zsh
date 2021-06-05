@@ -53,7 +53,12 @@ alias gm='git merge'
 
 alias gpl='git pull'
 alias gpla='git pull --all'
-alias gps='git push'
+# sets the default tracking branch to `origin` so that `git pull` can fetch from
+# that remote. There does not currently appear to be a way to get the same
+# behavior via a setting in git config
+#
+# ref - https://stackoverflow.com/questions/17847213/how-to-configure-git-push-to-automatically-set-upstream-without-u
+alias gps='git push --set-upstream origin'
 alias gpsd='git push --dry-run'
 
 alias gr='git rebase --interactive'

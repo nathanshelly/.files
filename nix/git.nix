@@ -41,11 +41,6 @@
       statusHints = false;
       waitingForEditor = false;
     };
-    branch = {
-      # make `pull` use rebase, not merge
-      # https://git-scm.com/docs/git-config#Documentation/git-config.txt-branchautoSetupRebase
-      autosetuprebase = "always";
-    };
     "color \"diff\"" = {
       oldMoved = 212;
       newMoved = 135;

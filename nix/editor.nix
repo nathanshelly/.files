@@ -101,24 +101,25 @@
       '';
     }
 
-    {
-      # perform highlighting, incremental selection, indentation and folding via
-      # the far more efficient treesitter AST
-      plugin = nvim-treesitter;
-      config = ''
-        " ref - https://github.com/nvim-treesitter/nvim-treesitter#modules
-        lua <<EOF
-        require'nvim-treesitter.configs'.setup {
-          -- "all", "maintained" (parsers with maintainers), or a list of languages
-          ensure_installed = "maintained",
-          highlight = { enable = true },
-          incremental_selection = { enable = true },
-          indent = { enable = true },
-          playground = { enable = true }
-        }
-        EOF
-      '';
-    }
+    # TODO: move to here after figuring out bugs
+    # {
+    #   # perform highlighting, incremental selection, indentation and folding via
+    #   # the far more efficient treesitter AST
+    #   plugin = nvim-treesitter;
+    #   config = ''
+    #     " ref - https://github.com/nvim-treesitter/nvim-treesitter#modules
+    #     lua <<EOF
+    #     require'nvim-treesitter.configs'.setup {
+    #       -- "all", "maintained" (parsers with maintainers), or a list of languages
+    #       ensure_installed = "maintained",
+    #       highlight = { enable = true },
+    #       incremental_selection = { enable = true },
+    #       indent = { enable = true },
+    #       playground = { enable = true }
+    #     }
+    #     EOF
+    #   '';
+    # }
 
     {
       plugin = nvim-treesitter-context;
