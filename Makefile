@@ -49,7 +49,7 @@ nw:
 	./nix/apply work
 
 update-input:
-	nix flake update --update-input nixpkgs --update-input darwin --update-input home-manager --update-input neovim
+	nix flake update
 
 help:
 	@echo 'make help'
