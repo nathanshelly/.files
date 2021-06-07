@@ -121,14 +121,14 @@
     #   '';
     # }
 
-    {
-      plugin = nvim-treesitter-context;
-      config = ''
-        " toggle on/off
-        nnoremap <leader>cd :TSContextDisable<CR>
-        nnoremap <leader>ce :TSContextEnable<CR>
-      '';
-    }
+    # {
+    #   plugin = nvim-treesitter-context;
+    #   config = ''
+    #     " toggle on/off
+    #     nnoremap <leader>cd :TSContextDisable<CR>
+    #     nnoremap <leader>ce :TSContextEnable<CR>
+    #   '';
+    # }
 
     # provide completions from tmux panes
     tmux-complete-vim
