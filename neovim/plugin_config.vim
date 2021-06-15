@@ -71,10 +71,10 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = "maintained",
-  highlight = { enable = true },
-  incremental_selection = { enable = true },
-  indent = { enable = true },
-  playground = { enable = true }
+  highlight = { enable = true, disable = { "elixir" } },
+  incremental_selection = { enable = true, disable = { "elixir" } },
+  indent = { enable = true, disable = { "elixir" } },
+  playground = { enable = true, disable = { "elixir" } },
 }
 EOF
 
