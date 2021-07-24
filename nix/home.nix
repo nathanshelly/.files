@@ -32,7 +32,7 @@ pathToDotfiles:
 
     # configure $HOME/.config/direnv/direnvrc to source nix-direnv initialization
     # ref - https://github.com/nix-community/nix-direnv#via-home-manager
-    enableNixDirenvIntegration = true;
+    nix-direnv.enable = true;
   };
 
   # sources completions and key-bindings in interactive zsh sessions
