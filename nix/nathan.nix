@@ -10,6 +10,9 @@ USER:
 
     # (in-app purchases) https://apps.apple.com/us/app/time-out-break-reminders/id402592703
     "Time Out" = 402592703;
+
+    # (in-app purchases) https://apps.apple.com/us/app/tailscale/id1475387142
+    "Tailscale" = 1475387142;
   };
 
   home-manager.users.${USER} = {
