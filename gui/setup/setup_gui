@@ -1,11 +1,12 @@
 #! /usr/bin/env bash
 
+# shellcheck disable=SC1090,1091
+
 # check that DOTFILES variable is defined
 # relative path handling is tricky and never foolproof
 # refs
 #   - http://mywiki.wooledge.org/BashFAQ/028
 #   - https://stackoverflow.com/questions/6659689/referring-to-a-file-relative-to-executing-script
-# shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 
 # source so that `brew` is usable in the current shell for the next steps

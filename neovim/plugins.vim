@@ -74,4 +74,7 @@ Plug 'kabbamine/vCoolor.vim'
 " jump to documentation
 Plug 'keith/investigate.vim'
 
+" jump to documentation
+Plug 'tpope/vim-abolish'
+
 call plug#end()

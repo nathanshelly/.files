@@ -112,7 +112,9 @@ USER:
     home = "/Users/${USER}";
     packages = with pkgs; [
       alacritty
+      # TODO: https://github.com/haslersn/any-nix-shell#zsh
       any-nix-shell
+      awscli
       asciinema
       bat
       # TODO: add this back when I can compile unstable on macOS

@@ -103,7 +103,8 @@
 			"hideMainWindowOnBlur": true,
 			"hotKey": {
 				"key": "Space",
-				"modifier": "Command"
+				"modifier": "CommandOrControl",
+				"secondModifier": "-"
 			},
 			"language": "English",
 			"logExecution": true,
@@ -113,7 +114,11 @@
 			"rescanIntervalInSeconds": 300,
 			"showAlwaysOnPrimaryDisplay": false,
 			"showTrayIcon": true,
-			"decimalSeparator": "."
+			"decimalSeparator": ".",
+			"lastWindowPosition": {
+				"x": 980,
+				"y": 490
+			}
 		},
 		"mdfindOptions": {
 			"debounceDelay": 250,

@@ -20,7 +20,6 @@ USER:
       "daisydisk"
       "fantastical"
       "firefox"
-      "firefox-nightly"
       "flux"
       "google-chrome"
       "google-backup-and-sync"
