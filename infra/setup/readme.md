@@ -14,7 +14,7 @@ cat "$HOME/.ssh/github.pub" | pbcopy
 # to clone dotfiles to `$HOME/.files`
 cd $HOME
 # install `git` on new macOS machine
-[ "$(uname)" == "Darwin" ] && xcode-select --install
+[ "$(uname)" = "Darwin" ] && xcode-select --install
 # now clone this repo and run setup
 GIT_SSH_COMMAND="ssh -i ~/.ssh/github" git clone git@github.com:nathanshelly/.files.git
 cd .files
