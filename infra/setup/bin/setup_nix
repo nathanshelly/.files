@@ -163,7 +163,7 @@ maybe_setup_flakes() {
   # set up flakes
   if
     darwin-rebuild \
-      -I darwin="$HOME/.nix-defexpr/channels" \
+      -I darwin="$HOME/.nix-defexpr/channels/darwin" \
       -I darwin-config="$DOTFILES/nix/darwin-first-generation.nix" \
       switch
   then

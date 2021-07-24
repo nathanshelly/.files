@@ -13,7 +13,7 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 command -v brew > /dev/null && {
   # shellcheck disable=SC2016
-  info '`brew` installed, skipping installation'
+  info '`brew` installed and executable, skipping installation'
   return
 }
 
@@ -22,6 +22,20 @@ info '`brew` not installed, installing now...'
 
 # installation - https://brew.sh/
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+brew_command="brew"
+
+command -v "$brew_command" > /dev/null || {
+  expected_brew_path="/usr/local/bin/brew"
+
+  [ -x "$expected_brew_path" ] || {
+    printf "\`brew\` is not in \$PATH and there is no executable file at the \
+expected path: %s. Bailing." "$expected_brew_path"
+    return 1
+  }
+
+  brew_command="$expected_brew_path"
+}
 
 # fix permissions issues for `compinit` caused by Homebrew messing with things
 # TODO: run conditionally
@@ -34,7 +48,7 @@ fix_permissions_issue() {
   # refs
   # - https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
   # - https://stackoverflow.com/a/43544733
-  fix_permissions_commands="chmod -R go-w \"$(brew --prefix)/share\";"
+  fix_permissions_commands="chmod -R go-w \"$($brew_command --prefix)/share\";"
 
   info "Fixing completions permission issue"
   # `--no-rcs` to avoid running `compinit` and triggering warnings that we're
@@ -43,4 +57,4 @@ fix_permissions_issue() {
 }
 fix_permissions_issue
 
-brew analytics off # disable analytics
+$brew_command analytics off # disable analytics
