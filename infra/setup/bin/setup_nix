@@ -100,6 +100,7 @@ maybe_install_nix_darwin() {
     return 1
   }
 
+  info "building nix-darwin installer"
   nix-build \
     https://github.com/LnL7/nix-darwin/archive/master.tar.gz \
     -A installer > /dev/null
@@ -178,6 +179,11 @@ maybe_setup_flakes() {
 
 apply_first_flake_generation() {
   info 'setting up first flake generation'
+
+  if [[ -f /etc/shells ]]; then
+    info 'Using `sudo` to backup /etc/shells -> /etc/shells.bak'
+    sudo mv /etc/shells /etc/shells.bak
+  fi
 
   if "$DOTFILES/nix/apply"; then
     # TODO: enter new shell here?
