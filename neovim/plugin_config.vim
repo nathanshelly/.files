@@ -108,7 +108,12 @@ let g:vcoolor_map = '<m-c>' " already the default, added here just for context
 " <<<< Colorizer >>>>
 " ref - https://github.com/norcalli/nvim-colorizer.lua
 
-lua require'colorizer'.setup()
+" TODO: understand why `lua require'colorizer'.setup()` requires `set
+" termguicolors` within the same file
+if (has("termguicolors"))
+  set termguicolors
+  lua require'colorizer'.setup()
+endif
 
 " toggle highlighting
 nnoremap <leader>ct :ColorizerToggle<CR>
