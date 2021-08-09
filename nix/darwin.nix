@@ -140,12 +140,16 @@ USER:
       hyperfine
       jq
       lua # z.lua dependency
+      krew
       kubectx
       kubernetes
+      magic-wormhole
       mdcat
+      minikube
       ncurses
-      nodejs
       nix-index
+      nodejs
+      nushell
       python3
       ripgrep
       rsync
