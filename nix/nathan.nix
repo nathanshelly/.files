@@ -5,6 +5,9 @@ USER:
     # https://apps.apple.com/us/app/xcode/id497799835
     "Xcode" = 497799835;
 
+    # (free) https://apps.apple.com/us/app/super-easy-timer/id1353137878
+    "Meeter" = 1510445899;
+
     # (paid, $5) https://apps.apple.com/us/app/super-easy-timer/id1353137878
     "Super Easy Timer" = 1353137878;
 

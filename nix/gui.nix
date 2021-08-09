@@ -18,6 +18,7 @@ USER:
       "bartender"
       "contexts"
       "daisydisk"
+      "discord"
       "fantastical"
       "firefox"
       "flux"
