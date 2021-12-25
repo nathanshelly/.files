@@ -138,6 +138,7 @@ USER:
       gnused
       httpie
       hyperfine
+      jiq
       jq
       lua # z.lua dependency
       krew

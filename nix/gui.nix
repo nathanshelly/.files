@@ -38,7 +38,6 @@ USER:
       "rectangle"
       "signal"
       "slack"
-      "sound-control"
       "spotify"
       "steermouse"
       "tempo"

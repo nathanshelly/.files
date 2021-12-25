@@ -44,6 +44,7 @@ function maybe_set_active_zsh_as_default() {
 
   [ "$default_shell" = "$active_zsh_path" ] && return 0
 
+  # TODO: skip `chsh` in CI/manually enter newer zsh
   info "Using sudo access to change default shell to '$active_zsh_path' \
 (current default is '$default_shell')"
   chsh -s "$active_zsh_path" && {
