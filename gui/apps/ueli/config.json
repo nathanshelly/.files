@@ -104,7 +104,7 @@
 			"hotKey": {
 				"key": "Space",
 				"modifier": "CommandOrControl",
-				"secondModifier": "-"
+				"secondModifier": "Shift"
 			},
 			"language": "English",
 			"logExecution": true,
@@ -116,8 +116,8 @@
 			"showTrayIcon": true,
 			"decimalSeparator": ".",
 			"lastWindowPosition": {
-				"x": 980,
-				"y": 490
+				"x": 1420,
+				"y": 1735
 			}
 		},
 		"mdfindOptions": {

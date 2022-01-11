@@ -93,12 +93,6 @@
   // TODO: re-enable these
   /* "eslint.autoFix": true, */
   /* "eslint.autoFixOnSave": true, */
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
 
   // <<<< python >>>>
   // ref - https://github.com/neoclide/coc-python#options
@@ -125,6 +119,8 @@
   // <<<< tsserver >>>>
   // ref - https://github.com/neoclide/coc-tsserver#configuration-options
   "tsserver.enableJavascript": false,
+  "tsserver.log": "verbose",
+  "tsserver.trace.server": "verbose",
 
   // <<<< rust-analyzer >>>>
 
@@ -137,5 +133,5 @@
   // refs
   // - https://github.com/fannheyward/coc-rust-analyzer/issues/237
   // - https://github.com/fannheyward/coc-rust-analyzer/commit/f41b29df0f26697932f364cb83f9aab2cf2a30e5
-  "rust-analyzer.serverPath": "rust-analyzer"
+  "rust-analyzer.server.path": "rust-analyzer"
 }

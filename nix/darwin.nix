@@ -114,7 +114,7 @@ USER:
       alacritty
       # TODO: https://github.com/haslersn/any-nix-shell#zsh
       any-nix-shell
-      awscli
+      # awscli2
       asciinema
       bat
       # TODO: add this back when I can compile unstable on macOS
@@ -123,6 +123,7 @@ USER:
       # `nix search nixpkgs bottom` shows pkgs.legacyPackages.x86_64-darwin.bottom
       # bottom
       cachix
+      caddy
       darwin.trash
       deno
       dust
@@ -146,6 +147,7 @@ USER:
       magic-wormhole
       mdcat
       minikube
+      miniserve
       ncurses
       nix-index
       nodejs

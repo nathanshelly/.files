@@ -8,6 +8,7 @@ in
   environment.systemPath = [
     "${GOPATH}/bin"
     "${HOME}/.krew/bin"
+    "${HOME}/.poetry/bin"
   ];
 
   home-manager.users.${USER} = {

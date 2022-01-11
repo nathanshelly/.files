@@ -50,4 +50,14 @@ prevent_apps_restarting_on_login() {
   sudo chmod 000 ~/Library/Preferences/ByHost/com.apple.loginwindow*
 }
 
+# prevent spotlight from indexing/using resources
+# ref - https://apple.stackexchange.com/a/46537
+prevent_spotlight_indexing() {
+  # disable spotlight altogether
+  sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+
+  # disable indexing
+  sudo mdutil -a -i off
+}
+
 main "$@"

@@ -103,7 +103,7 @@
             [:!QWEf "open -a 'Finder'"]
             [:!QWEs "open -a 'Slack'"]
             [:!QWEt "open -a 'iTerm'"] ;; terminal
-            [:!QWEv "open -a 'zoom.us'"] ;; video chatting app
+            [:!QWEv "open -a 'Google Chrome'"] ;; video chatting app
             [:!QWEw "open -a 'Notion'"]]} ;; writings
 
    ;; `Cmd-l` is handy in browsers for accessing the URL bar

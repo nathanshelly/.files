@@ -48,9 +48,9 @@ set scrolloff=10
 " enable mouse
 set mouse=a
 
-" TODO: document
-set foldmethod=syntax
-set nofoldenable
+" manually create folds
+" ref - https://unix.stackexchange.com/a/336537
+set foldmethod=manual
 
 " indentation
 " tabstop - # of columns a tab counts for
