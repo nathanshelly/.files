@@ -19,7 +19,7 @@ docker run --name dot --interactive --tty nathanshelly/dotfiles:latest
 docker run -it --mount src=<dir-to-mount>,target=/external,type=bind nathanshelly/dotfiles:latest
 ```
 
-> Note: the `latest` tag is kept up to date with `HEAD` of the [`docker` branch](https://github.com/nathanshelly/.files/tree/docker) through automated builds (with about a 2.5 hour delay between pushes to `HEAD` and [deploys on Docker Hub](https://hub.docker.com/repository/docker/nathanshelly/dotfiles/builds)
+> Note: the `latest` tag is kept up to date with `HEAD` of the [`docker` branch](https://github.com/nathanshelly/.files/tree/docker) through automated builds (with about a 2.5 hour delay between pushes to `HEAD` and [deploys on Docker Hub](https://hub.docker.com/repository/docker/nathanshelly/dotfiles/builds). As of March 2021 this branch hasn't been updated for a while. Once [#111](https://github.com/nathanshelly/.files/pull/111) lands it should be easier to update going forward.
 
 > Note II: if you want to use `sudo` inside the container for any reason you'll need to open a `root` shell into the running process from another shell by running the below (per this [StackOverflow post](https://stackoverflow.com/questions/28721699/root-password-inside-a-docker-container)):
 
@@ -32,7 +32,6 @@ docker exec --user 0 --interactive --tty dot zsh
 
 ## differences from `main`/`macOS` setup
 
-This setup mostly replicates the behavior of these dotfiles on macOS with a few differences:
+This setup mostly replicates the behavior of these dotfiles on macOS.
 
-- no casks (not supported on Linux) and a few less formulae (either macOS-specific like `trash`)
-- multiple items removed from [`setup_bits_and_pieces`](../../../infra/setup/bin/setup_bits_and_pieces) (`poetry`, "Super Easy Timer")
+Among the few differences are no casks (or `mas` apps like Super Easy Timer) as they are not supported on Linux and a few less formulae (for example macOS-specific utilities like `trash`).

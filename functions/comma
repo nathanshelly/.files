@@ -1,0 +1,41 @@
+#! /usr/bin/env bash
+
+# TODO: handle packages whose binary is different from the package name
+# e.g. `, ripgrep` fails since the binary is actually `rg`. I think the best
+# experience here would be to let the user select from a list of the binaries in
+# the corresponding `/bin` directory (or just select it if there's only one)
+
+command="$1"
+
+[[ -z $command ]] && {
+  cat << EOF
+error: the following arguments were not provided
+
+  <PACKAGE>
+
+See all valid packages @ https://search.nixos.org/packages
+
+USAGE:
+
+  comma <PACKAGE>
+EOF
+  return 1
+}
+
+args=("${@:2}")
+
+# pin to specific commit (as of 2/14) to take advantage of caching
+# list of channels (corresponds to flakes) - https://status.nixos.org/
+#
+# TODO: use version specified/pinned in `flake.nix|lock`
+if "$DOTFILES/infra/scripts/is_macos.sh"; then
+  # `nixpkgs-20.09-darwin` branch
+  # https://github.com/NixOS/nixpkgs/commit/387bf54ac5af5970277066a68e43ef9d88d7823a
+  flake="github:nixos/nixpkgs?rev=387bf54ac5af5970277066a68e43ef9d88d7823a"
+else
+  # `release-20.09` branch
+  # https://github.com/NixOS/nixpkgs/commit/6d19fa61ea4f8b590935cc7f1c60839fe9ad0ba6
+  flake="github:nixos/nixpkgs?rev=6d19fa61ea4f8b590935cc7f1c60839fe9ad0ba6"
+fi
+
+nix run "$flake#$command" -- "${args[@]}"

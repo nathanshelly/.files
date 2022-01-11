@@ -1,3 +1,9 @@
+##################### END OF HOME-MANAGER DECLARED ZSHENV ######################
+
+################################################################################
+
+########################## START OF BESPOKE ZSHENV #############################
+
 main() {
   # set DOTFILES env var (statically if possible for speed, else dynamically)
   if [ -d "$HOME/.files" ]; then

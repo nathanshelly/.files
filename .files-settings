@@ -1,5 +1,4 @@
 {
-  "asdf": false,
   "editor": "nvim",
   "fzf": true,
   "git-aliases": true,

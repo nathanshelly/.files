@@ -2,6 +2,7 @@ augroup filetype_gitcommit
   autocmd!
   autocmd FileType gitcommit set textwidth=72 " wrap @ 72 characters
   autocmd Filetype gitcommit set colorcolumn=73
+  autocmd FileType gitcommit syntax match gitcommitComment "^;.*"
 augroup END
 
 augroup filetype_make
@@ -25,12 +26,6 @@ augroup filetype_python
   autocmd Filetype python set textwidth=88
 augroup END
 
-augroup filetype_vim
-  autocmd!
-  autocmd Filetype vim set textwidth=80
-  autocmd BufRead,BufNewFile *.nvim		setfiletype vim
-augroup END
-
 augroup filetype_json
   autocmd!
   " mark json files as jsonc by default
@@ -52,4 +47,10 @@ augroup direnv
   autocmd!
   " `.envrc-*` files are ~bash - https://github.com/direnv/direnv#how-it-works
   autocmd BufNewFile,BufRead *envrc* setlocal filetype=bash
+augroup END
+
+augroup nvim
+  autocmd!
+  " `.nvim` files should have `.vim` highlighting
+  autocmd BufNewFile,BufRead *.nvim setlocal filetype=vim
 augroup END

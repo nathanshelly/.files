@@ -4,7 +4,7 @@
 # - http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
 # targets without immediate file dependencies
-.PHONY: all check fix format gui help lint nix setup headless-setup symlink
+.PHONY: all check fix format gui help lint nix headless-setup setup
 .DEFAULT_GOAL := help
 
 lint:
@@ -28,30 +28,44 @@ setup:
 nix:
 	./infra/setup/bin/setup_nix
 
-symlink:
-	./infra/setup/bin/symlink
-
 gui:
 	./gui/setup/setup_gui
-
-# config specific to my use cases
-nathan:
-	./infra/setup/bin/symlink --nathan
-	./infra/setup/bin/setup_macos_settings
 
 all:
 	./infra/setup/setup_dotfiles
 	./gui/setup/setup_gui
+
+apply:
+	./nix/apply
+
+apply-gui:
+	./nix/apply gui
+
+# set up abstractions for me-specific application
+n:
+	./nix/apply n
+
+nw:
+	./nix/apply work
+
+update-input:
+	nix flake update
 
 help:
 	@echo 'make help'
 	@echo '		show this help message'
 	@echo 'make setup'
 	@echo '		set up dotfiles'
+	@echo 'make apply'
+	@echo '		apply latest config'
+	@echo 'make apply-gui'
+	@echo '		apply gui config'
+	@echo 'make n'
+	@echo '		apply Nathan-specific config'
+	@echo 'make work'
+	@echo '		apply (Nathan & work)-specific config'
 	@echo 'make nix'
 	@echo '		set up nix'
-	@echo 'make symlink'
-	@echo '		symlink config files (like .zshrc) to their appropriate locations'
 	@echo 'make gui'
 	@echo '		set up gui parts of config'
 	@echo 'make all'

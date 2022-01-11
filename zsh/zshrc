@@ -1,7 +1,18 @@
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+###################### END OF HOME-MANAGER DECLARED ZSHRC ######################
+
+################################################################################
+
+########################### START OF BESPOKE ZSHRC #############################
+
 # This zshrc sources files in $DOTFILES/zsh & any `.zsh` files in the directory
-# specified by "$DOTFILES" (set to `$HOME/.files` in `./zshenv`)
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# specified by "$DOTFILES" (set to `$HOME/.files` in `$DOTFILES/zsh/zshenv`)
+
+# Note: script sourcing order matters (particularly with `nix`)
+#
+# This script will run after `.zshenv` (gaining access to any env vars created)
+#
+# refs:
+# - https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/#zsh_configuration_files
 
 # <<<< guards >>>>
 
@@ -9,16 +20,6 @@
   echo '$DOTFILES not defined, `.zshenv` must not have run. Bailing on `.zshrc`'
   return 1
 }
-
-# << zsh history >>
-# cannot be set in `zshenv` as the default `/etc/zshrc` overrides these values
-HISTSIZE=100000 # number of lines of history kept by the shell
-SAVEHIST=$HISTSIZE # number of lines saved to $HISTFILE
-
-# $PATH configuration
-# perform early so that executables are available for enabled check and future
-# config files
-source "$DOTFILES/zsh/path.zsh"
 
 "$DOTFILES/infra/scripts/component_enabled.sh" 'zsh' || return 0
 
@@ -102,9 +103,6 @@ for config_file in $config_files; do source "$config_file"; done
 unset config_files config_file
 setopt no_extended_glob
 
-# source asdf to give it final say on package versions
-source "$DOTFILES/zsh/asdf.zsh"
-
 # apply options, overriding any set for script purposes
 #
 # ref - http://zsh.sourceforge.net/Doc/Release/Options.html
@@ -112,7 +110,6 @@ source "$DOTFILES/zsh/asdf.zsh"
 # - `auto_cd` - type a bare path to perform `cd <path>`
 #   - `$ ~/.files<Enter>` will `cd` to `~/.files`
 #   - `$ ..<Enter>` will `cd` up a directory
-# - `extended_glob` - expansion & globbing
 # - `interactive_comments` - allow comments at the command line (zle)
 # - `local_options` - reset any options on script return
 # - history
@@ -122,30 +119,10 @@ source "$DOTFILES/zsh/asdf.zsh"
 #   - `hist_ignore_all_dups` - treat '#', '~' & '^' as glob patterns
 #   - `hist_reduce_blanks` - dedupe & remove lines differing only in whitespace
 #   - `share_history` - sync history between simultaneous shells on prompt load
-setopt auto_cd extended_glob interactive_comments local_options
+setopt auto_cd interactive_comments local_options
 setopt hist_ignore_space hist_ignore_all_dups hist_reduce_blanks share_history
 
 # any last local overrides, gitignored to avoid checking in
 [ -f "$DOTFILES/zsh/local.zsh" ] && source "$DOTFILES/zsh/local.zsh"
 
-# initialize `nix`
-# this code should be added to the corresponding `etc` file for your shell, e.g.
-# `/etc/bashrc` or `/etc/zshrc`. For some reason it seems like `macOS` may
-# overwrite these changes on a system update. For that reason add it here as
-# well (duplicate sourcing isn't an issue as the script bails immediately if run
-# previously)
-# ref - https://discourse.nixos.org/t/post-macos-install-env-var-settings-for-zsh/4597/7
-# TODO: make sure this is the best way to handle this
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-
-# make `home-manager` available for use
-# ref - https://github.com/rycee/home-manager#installation
-# TODO: remove if this becomes unnecessary
-# tracking issue - https://github.com/NixOS/nix/issues/2033
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-
-# initialize direnv
-# ref - https://direnv.net/docs/hook.html#zsh
-eval "$(direnv hook zsh)"
+############################ END OF BESPOKE ZSHRC ##############################

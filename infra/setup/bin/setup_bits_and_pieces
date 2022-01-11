@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 
+# shellcheck disable=SC1090,SC2016
+
 # check that DOTFILES variable is defined
-# shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
@@ -23,12 +24,17 @@ setup_tmux_terminfo() {
   }
 
   # compile `tmux-256color.info` using modern `ncurses`
-  "infocmp" "tmux-256color" > "${TMPDIR}tmux-256color.info"
+  infocmp "tmux-256color" > "${TMPDIR}tmux-256color.info" || {
+    fail 'Failed to compile `tmux-256color` terminfo, bailing on terminfo setup'
+    return 1
+  }
   # then install the compiled entry to the system `terminfo` database
   # shellcheck disable=SC2016
-  info 'Using `sudo` to install `tmux-256color` `terminfo` entry'
+  info 'Installing `tmux-256color` `terminfo` entry'
   # install to system database
-  /usr/bin/tic -xe "tmux-256color" "${TMPDIR}tmux-256color.info"
+  /usr/bin/tic -xe "tmux-256color" "${TMPDIR}tmux-256color.info" && {
+    success 'Installed `tmux-256color` terminfo'
+  }
 }
 
 # prevent macOS from reopening apps on restart by preventing storing of session

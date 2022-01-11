@@ -85,6 +85,7 @@ let g:coc_global_extensions = [
   \ 'coc-svelte',
   \ 'coc-tsserver',
   \ 'coc-vimlsp',
+  \ 'coc-yaml',
 \ ]
 
 " trigger key for going to the next snippet position,

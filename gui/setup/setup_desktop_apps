@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 
+# shellcheck disable=SC1090,1091
+
 # check that DOTFILES variable is defined
-# shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 
 source "$DOTFILES/infra/scripts/prompts.sh"
@@ -36,36 +37,9 @@ main() {
   }
 
   info 'setting up desktop apps (casks)'
-  brew bundle --file "$DOTFILES/gui/apps/Brewfile" --verbose
+  make apply-gui
   success "set up casks"
   # << end casks setup >>
-
-  setup_mas_apps
-}
-
-# TODO: separate out more cleanly, fix up rough spots (xcode auth)
-setup_mas_apps() {
-  user "set up Mac App Store apps (Xcode, Super Easy Timer, and Time Out)? \
-This requires being signed in to the app store and will only install apps if \
-you have previously installed them. (y/any other key)"
-
-  read -r -s -n 1 maybe_continue < /dev/tty
-  [[ $maybe_continue != 'y' ]] && {
-    info "skipping Mac App Store apps"
-    exit 0
-  }
-
-  command -v mas > /dev/null || brew install "mas"
-
-  # Xcode - https://apps.apple.com/us/app/xcode/id497799835
-  mas install 497799835
-  # Super Easy Timer (paid, $5) - https://apps.apple.com/us/app/super-easy-timer/id1353137878
-  mas install 1353137878
-  # Time Out (in-app purchases) - https://apps.apple.com/us/app/time-out-break-reminders/id402592703
-  mas install 402592703
-
-  # TODO: verify fixes Xcode installation issue
-  sudo xcodebuild -license accept
 }
 
 # handle any arguments/flags

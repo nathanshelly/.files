@@ -56,10 +56,6 @@ Notable aliases:
 - `f` - [`rg`](https://github.com/BurntSushi/ripgrep). Similar to `e`, provides a generic command regardless of backing program.
 - `t` - [`trash`](https://github.com/sindresorhus/trash), a utility to move files/folders to the trash (instead of deleting permanently) on macOS for recoverability
 
-### [`asdf.zsh`](./asdf.zsh)
-
-Initialize the [`asdf`](https://asdf-vm.com) version manager.
-
 ### [`completion.zsh`](./completion.zsh)
 
 Initialize completion. Uses a cache with a refresh every 20 hours to speed up shell load.
@@ -142,26 +138,21 @@ Define environment variables, loaded before any other file in this folder.
 
 Defines `$DOTFILES` which specifies path to the root of this repo. Used throughout `zsh` configuration.
 
-This file symlinked to `$HOME/.zshenv` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)
-
 ### [`zshrc`](./zshrc)
 
 Source every `*.zsh` in `$DOTFILES` (NOT just `.zsh` files in this folder) and autoload any functions in `functions` folders throughout this repo. Here is the loading order:
 
+1. [`path.zsh`](./path.zsh)
 1. [`secrets.zsh`](./secrets.zsh) - only if this file exists
 1. [`completion.zsh`](./completion.zsh)
 1. [`keymap.zsh`](./keymap.zsh)
 1. [`manydots.zsh`](./manydots.zsh)
-1. [`path.zsh`](./path.zsh)
 1. [`dynamic_env_vars.zsh`](./dynamic_env_vars.zsh)
 1. [`functions.zsh`](./functions.zsh)
 1. [`alias.zsh`](./alias.zsh)
 1. [`plugins.zsh`](./plugins.zsh)
 1. [`prompt.zsh`](./prompt.zsh)
 1. all `.zsh` files throughout this repository (`$DOTFILES/**/*.zsh`) excluding those in `$DOTFILES/zsh` (this directory).
-1. [`asdf.zsh`](./asdf.zsh)
 1. [`local.zsh`](./local.zsh) - only if this file exists
 
 `zshrc` itself is loaded after `zshenv` based on `zsh`'s [startup file loading order](http://zsh.sourceforge.net/Intro/intro_3.html).
-
-This file symlinked to `$HOME/.zshrc` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink)

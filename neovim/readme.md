@@ -148,8 +148,6 @@ Source every other `*.vim` file in this folder to set up config.
 
 Requires `$DOTFILES` environment variable to be appropriately set (see `$DOTFILES` defining in [`zshenv`](../zsh/zshenv)).
 
-This file symlinked to `$HOME/.config/nvim/init.vim` by [`$DOTFILES/infra/setup/bin/symlink`](../infra/setup/bin/symlink).
-
 ### [`keymap.vim`](./keymap.vim)
 
 Define keymappings.
@@ -230,7 +228,6 @@ Agnostic of plugin management method.
 #### notable configuration
 
 - `<leader>gd` to display diff at current line
-- `<leader>jg` to trigger Goyo (minimal writing mode)
 - statusline appearance (using [`lightline`](https://github.com/itchyny/lightline.vim)
 - `<leader>mp` to launch `MarkdownPreview`
 - disable vim-polyglot's Markdown support to use `vim-markdown` for Markdown files
@@ -259,9 +256,9 @@ Agnostic of plugin management method.
   - [`vim-jsx-typescript`](https://github.com/peitalin/vim-jsx-typescript) - `jsx` highlighting for [`React`](https://reactjs.org)
   - ['vim-styled-components'](https://github.com/styled-components/vim-styled-components) - highlighting inside `css'...'` (\` not ', but can't escape \` inside \`\`)
     > ```javascript
-    > // highlights `...` code
+    > // highlights `...` code as `css` even inside `js` files
     > css`
-    >   ...;
+    >   ...
     > `
     > ```
 

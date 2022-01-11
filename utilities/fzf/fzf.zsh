@@ -14,22 +14,6 @@ command -v fzf > /dev/null || return
 
 "$DOTFILES/infra/scripts/component_enabled.sh" 'fzf' || return 0
 
-# get location of `fzf` config files via `fzf-share` executable
-# takes ~4ms as timed by `hyperfine`
-FZF_SHARE="$(fzf-share)"
-
-# <<<< completion >>>>
-# Note: `$-` lists options set in current shell
-# ref - https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
-[[ $- == *i* ]] && [ -f $FZF_SHARE/completion.zsh ] && {
-  source "$FZF_SHARE/completion.zsh" 2>/dev/null
-}
-
-# set up default key bindings (see config below for more details)
-[ -f $FZF_SHARE/key-bindings.zsh ] && {
-  source "$FZF_SHARE/key-bindings.zsh"
-}
-
 # use `fd` for `**` path & directory completion if installed
 command -v fd > /dev/null && {
   # path completion - `$1` is the base path to start traversal
@@ -46,7 +30,7 @@ command -v fd > /dev/null && {
 # <<<< config >>>>
 
 # NOTE: corresponding widgets defined in `./functions` &
-# `$FZF_SHARE/key-bindings.zsh`
+# `$(fzf-share)/key-bindings.zsh`
 
 # << zsh functions -> widgets >>
 # zsh requires explicit marking of functions that will be mapped as widgets

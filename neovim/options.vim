@@ -1,13 +1,6 @@
 " prevent swap files
 set noswapfile
 
-" workaround to make terminal neovim autoread files when focus is gained
-" ref - https://github.com/neovim/neovim/issues/1936#issuecomment-309311829
-augroup autoread_workaround
-  autocmd!
-  autocmd FocusGained * :checktime
-augroup END
-
 " save on buffer switch
 set autowriteall
 
@@ -15,8 +8,8 @@ set autowriteall
 set nobackup nowritebackup
 
 " shorter timeouts
-" updatetime - length of time from last key press to fire CursorHold &
-" CursorHoldI autocmd events
+" updatetime - length of time from last key press to fire `CursorHold` &
+" `CursorHoldI` autocmd events
 set timeoutlen=1000 ttimeoutlen=0 updatetime=300
 
 " be less verbose (especially redundant due to status line)
@@ -40,7 +33,6 @@ augroup absolute_number_in_help_pages
 augroup end
 
 " absolute number in insert mode, otherwise hybrid
-" TODO: handle exiting insert mode w/ C-c?
 " ref - https://jeffkreeftmeijer.com/vim-number/
 augroup numbertoggle
   autocmd!
@@ -55,6 +47,10 @@ set scrolloff=10
 
 " enable mouse
 set mouse=a
+
+" TODO: document
+set foldmethod=syntax
+set nofoldenable
 
 " indentation
 " tabstop - # of columns a tab counts for

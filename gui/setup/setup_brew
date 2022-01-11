@@ -7,14 +7,13 @@ source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
 source "$DOTFILES/infra/scripts/prompts.sh"
 
 "$DOTFILES/infra/scripts/is_macos.sh" || {
-  info "these dotfiles don't use \`brew\` in Linux environments"
-  info 'skipping install'
+  info "these dotfiles don't use \`brew\` in Linux environments - skipping"
   return
 }
 
 command -v brew > /dev/null && {
   # shellcheck disable=SC2016
-  info '`brew` installed, skipping installation'
+  info '`brew` installed and executable, skipping installation'
   return
 }
 
@@ -24,12 +23,38 @@ info '`brew` not installed, installing now...'
 # installation - https://brew.sh/
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-# fix permissions issues for `compinit` caused by Homebrew messing with things
-#
-# ref - https://stackoverflow.com/a/43544733
-#
-# TODO: run conditionally
-compaudit | xargs chown -R "$(whoami)"
-compaudit | xargs chmod go-w
+brew_command="brew"
 
-brew analytics off # disable analytics
+command -v "$brew_command" > /dev/null || {
+  expected_brew_path="/usr/local/bin/brew"
+
+  [ -x "$expected_brew_path" ] || {
+    printf "\`brew\` is not in \$PATH and there is no executable file at the \
+expected path: %s. Bailing." "$expected_brew_path"
+    return 1
+  }
+
+  brew_command="$expected_brew_path"
+}
+
+# fix permissions issues for `compinit` caused by Homebrew messing with things
+# TODO: run conditionally
+fix_permissions_issue() {
+  local fix_permissions_commands
+
+  # fix permissions on `/user/local/share/*` folder that Homebrew's installer
+  # messes with
+  #
+  # refs
+  # - https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+  # - https://stackoverflow.com/a/43544733
+  fix_permissions_commands="chmod -R go-w \"$($brew_command --prefix)/share\";"
+
+  info "Fixing completions permission issue"
+  # `--no-rcs` to avoid running `compinit` and triggering warnings that we're
+  # about to fix
+  zsh --no-rcs -c "$fix_permissions_commands" > /dev/null
+}
+fix_permissions_issue
+
+$brew_command analytics off # disable analytics
