@@ -60,6 +60,8 @@
         , HOME ? builtins.getEnv "HOME"
         , USER ? builtins.getEnv "USER"
         }: darwin.lib.darwinSystem {
+          # default to x86_64 versions run through rosetta
+          system = "x86_64-darwin";
 
           modules = [
             home-manager.darwinModules.home-manager
