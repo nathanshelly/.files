@@ -56,6 +56,25 @@
       {
         default = generateConfig {};
 
+        # arm
+        m1 = darwin.lib.darwinSystem {
+
+          modules = [
+            home-manager.darwinModules.home-manager
+            {
+              nixpkgs = nixpkgsConfig;
+
+              # TODO: do this more elegantly
+              home-manager.users.${USER} = import ./nix/home.nix self.outPath;
+            }
+            (import ./nix/darwin.nix USER)
+            (if includeGui then (import ./nix/gui.nix USER) else {})
+            (if USER == "nathan" then (import ./nix/nathan.nix USER) else {})
+            (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else {})
+          ];
+        };
+
+
         gui = generateConfig { includeGui = true; };
 
         n = generateConfig { USER = "nathan"; };

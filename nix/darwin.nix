@@ -1,8 +1,13 @@
 USER:
 
-{ config, pkgs, ... }:
+{ config, pkgs, m1Ize, ... }:
 
-# configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
+let
+  # ref: https://github.com/LnL7/nix-darwin/issues/334#issuecomment-858727911
+  m1Pkgs = m1Ize pkgs config;
+in
+
+  # configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
 {
   # TODO: add keyboard shortcuts - https://github.com/LnL7/nix-darwin/pull/189
 
@@ -62,6 +67,7 @@ USER:
     extraOptions = ''
       # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
       experimental-features = nix-command flakes ca-references
+      extra-platforms = aarch64-darwin x86_64-darwin
 
       # protect `nix-direnv` dev environments from being garbage collected
       # ref - https://github.com/nix-community/nix-direnv#via-home-manager
@@ -126,7 +132,7 @@ USER:
       darwin.trash
       deno
       dust
-      exa
+      m1Pkgs.exa
       exiftool
       fd
       ffmpeg-full

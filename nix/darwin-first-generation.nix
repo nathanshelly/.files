@@ -8,7 +8,10 @@ in
   nix = {
     # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
-    extraOptions = ''experimental-features = nix-command flakes ca-references'';
+    extraOptions = ''
+      experimental-features = nix-command flakes ca-references
+      extra-platforms = aarch64-darwin x86_64-darwin
+    '';
 
     # enable flakes, an experimental Nix feature
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.package
