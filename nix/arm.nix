@@ -71,6 +71,8 @@ in
       experimental-features = nix-command flakes ca-references
       extra-platforms = aarch64-darwin x86_64-darwin
 
+      system = aarch64-darwin
+
       # protect `nix-direnv` dev environments from being garbage collected
       # ref - https://github.com/nix-community/nix-direnv#via-home-manager
       keep-derivations = true
