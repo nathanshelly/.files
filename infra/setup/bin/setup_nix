@@ -66,7 +66,7 @@ maybe_install_nix() {
   # https://nixos.org/nix/manual/#sect-multi-user-installation
   #
   # pipe in `true` to automatically accept all prompts
-  true | sh <(curl -L https://releases.nixos.org/nix/nix-2.4pre-rc1/install) \
+  true | sh <(curl -L https://nixos.org/nix/install) \
     --daemon \
     "$MAC_INSTALLATION_FLAGS"
 
