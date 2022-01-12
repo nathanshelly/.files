@@ -70,7 +70,7 @@
               home-manager.users.${USER} = import ./nix/home.nix self.outPath;
             }
             (
-              (import ./nix/darwin.nix USER) {
+              (import ./nix/arm.nix USER) {
                 m1Ize = (
                   pkgs: config: import nixpkgs {
                     system = "aarch64-darwin";
