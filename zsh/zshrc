@@ -47,6 +47,13 @@ source "$DOTFILES/zsh/manydots.zsh"
 # note: some files here also define dependencies for later files so the ordering
 # in this section matters (unlike in the previous two sections)
 
+
+# add `brew` and installed formulae to $PATH
+apple_silicon_brew_path="/opt/homebrew/bin/brew"
+[ -x "$apple_silicon_brew_path" ] || {
+  eval "$("$apple_silicon_brew_path" shellenv)"
+}
+
 source "$DOTFILES/zsh/dynamic_env_vars.zsh"
 
 source "$DOTFILES/zsh/functions.zsh"
