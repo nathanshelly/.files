@@ -69,19 +69,20 @@
               # TODO: do this more elegantly
               home-manager.users.${USER} = import ./nix/home.nix self.outPath;
             }
-            (import ./nix/darwin.nix USER)
+            (
+              (import ./nix/darwin.nix USER) {
+                m1Ize = (
+                  pkgs: config: import nixpkgs {
+                    system = "aarch64-darwin";
+                    overlays = config.nixpkgs.overlays;
+                  }
+                );
+              }
+            )
             (if includeGui then (import ./nix/gui.nix USER) else {})
             (if USER == "nathan" then (import ./nix/nathan.nix USER) else {})
             (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else {})
           ] ++ additionalModules;
-          specialArgs = {
-            m1Ize = (
-              pkgs: config: import nixpkgs {
-                system = "aarch64-darwin";
-                overlays = config.nixpkgs.overlays;
-              }
-            );
-          };
         };
     in
       {

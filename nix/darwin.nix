@@ -1,6 +1,8 @@
 USER:
 
-{ config, pkgs, m1Ize, ... }:
+{ m1Ize }:
+
+{ config, pkgs, ... }:
 
 let
   # ref: https://github.com/LnL7/nix-darwin/issues/334#issuecomment-858727911
