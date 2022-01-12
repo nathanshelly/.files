@@ -32,7 +32,7 @@ In a sign of `zsh`'s mainstreamness Apple is switching to `zsh` for its default 
 - [`local.zsh`](#localzsh) - local (computer-specific) overrides (gitignored & sourced only if it exists)
 - [`manydots.zsh`](#manydotszsh) - add a `zle` widget to facilitate specifying relative directories multiple levels above the current directory (transforms `...` -> `../..`)
 - [`path.zsh`](#pathzsh) - configure `$PATH`
-- [`plugins.zsh`](#pluginszsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma/zinit).
+- [`plugins.zsh`](#pluginszsh) - enable and configure plugins. Managed by [`zinit`](https://github.com/zdharma-continuum/zinit).
 - [`prompt.zsh`](#promptzsh) - configure prompt appearance (currently [`powerlevel10k`](https://github.com/romkatv/powerlevel10k))
 - [`secrets.zsh`](#secretszsh) - store secrets such as API tokens (gitignored & sourced only if it exists)
 - [`zle-fsh-theme-overlay.ini`](#zle-fsh-theme-overlayini) - an overlay to customize syntax highlighting
@@ -108,7 +108,7 @@ Uses `zsh`'s handy mapping of `$path` array -> `$PATH` string concatened with `;
 
 Enable and configure plugins.
 
-Managed by [`zinit`](https://github.com/zdharma/zinit).
+Managed by [`zinit`](https://github.com/zdharma-continuum/zinit).
 
 ### [`prompt.zsh`](./prompt.zsh)
 
@@ -130,7 +130,7 @@ This file is not checked in to version control (ignored in `$DOTFILES/.gitignore
 
 Customize ZLE syntax highlighting.
 
-The default comment highlighting is unreadable on my terminal theme. This overlay fixes that following the advice [here](https://github.com/zdharma/fast-syntax-highlighting/issues/138#issuecomment-502383578).
+The default comment highlighting is unreadable on my terminal theme.
 
 ### [`zshenv`](./zshenv)
 

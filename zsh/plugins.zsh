@@ -3,8 +3,8 @@
 # this file uses `zinit` to manage `zsh` plugins
 #
 # refs:
-# - http://zdharma.org/zinit/wiki/INTRODUCTION/
-# - https://github.com/zdharma/zinit#zinit-wiki
+# - https://github.com/zdharma-continuum/zinit/
+# - https://github.com/zdharma-continuum/zinit/wiki
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start of plugins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -21,23 +21,18 @@
 # - lucid - skip `Loaded ...` message
 #
 # refs:
-# - https://github.com/zdharma/zinit#ice-modifiers
-# - http://zdharma.org/zinit/wiki/INTRODUCTION/#some_ice-modifiers
+# - https://github.com/zdharma-continuum/zinit#ice-modifiers
 
-# ref - search zsh-autosuggestions
-# http://zdharma.org/zinit/wiki/GALLERY/#plugins
 zinit ice wait lucid atload"!_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
 # note: any plugins that define widgets the syntax highlighting might need to
 # color (such as `zsh-autosuggestions`) must be loaded prior
 # ref - search fast-syntax-highlighting
-# http://zdharma.org/zinit/wiki/GALLERY/#plugins
 #
-# TODO: enable asynchronous loading once this issue is resolved
-# https://github.com/zdharma/fast-syntax-highlighting/issues/177
+# TODO: try enabling asynchronous loading once
 # zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 # synchronize system clipboard
 # theoretically you might need to source this after other keymappings, have not

@@ -62,16 +62,16 @@ source "$DOTFILES/zsh/functions.zsh"
 source "$DOTFILES/zsh/alias.zsh"
 
 # <<<< plugins >>>>
-# managed via `zinit` - https://github.com/zdharma/zinit
+# managed via `zinit` - https://github.com/zdharma-continuum/zinit
 # see more details in $DOTFILES/zsh/plugins.zsh
 # below installer hunk added to this file (instead of internal to
 # $DOTFILES/zsh/plugins.zsh) so that `zinit` avoids redundantly appending it
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma-continuum/zinit)…%f"
     command mkdir -p $HOME/.zinit
-    command git clone https://github.com/zdharma/zinit $HOME/.zinit/bin && \
+    command git clone https://github.com/zdharma-continuum/zinit $HOME/.zinit/bin && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%F" || \
         print -P "%F{160}▓▒░ The clone has failed.%F"
 fi
