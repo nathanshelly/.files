@@ -8,7 +8,7 @@ source "$DOTFILES/infra/scripts/prompts.sh"
 
 main() {
   local config
-  config="${1:-appleSilicon}"
+  config="${1:-arm}"
 
   info "applying '$config' config"
 
