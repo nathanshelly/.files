@@ -12,8 +12,8 @@
     # set home-manager's nipxkgs input to the nixpkgs specified in this flake
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    neovim.url = "github:neovim/neovim?dir=contrib";
-    neovim.inputs.nixpkgs.follows = "nixpkgs";
+    # neovim.url = "github:neovim/neovim?dir=contrib";
+    # neovim.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: investigate https://github.com/cachix/pre-commit-hooks.nix#nix-flakes-support
     # inputs.pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
