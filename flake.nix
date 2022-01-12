@@ -106,7 +106,8 @@
         work = generateConfig { includeWork = true; USER = "nathan"; };
       };
 
-    # overlays = with inputs; [
+    overlays = [];
+    # with inputs; [
     #   (
     #     final: prev: {
     #       neovim-nightly = neovim.packages.${prev.stdenv.system}.neovim;
