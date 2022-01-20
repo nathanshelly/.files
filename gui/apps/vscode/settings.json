@@ -245,5 +245,6 @@
     {"before": ["'"], "after": ["$"]},
     {"before": ["\""], "after": ["^"]}
   ],
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.editor.untitled.hint": "hidden"
 }

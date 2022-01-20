@@ -50,7 +50,7 @@ source "$DOTFILES/zsh/manydots.zsh"
 
 # add `brew` and installed formulae to $PATH
 apple_silicon_brew_path="/opt/homebrew/bin/brew"
-[ -x "$apple_silicon_brew_path" ] || {
+[ -x "$apple_silicon_brew_path" ] && {
   eval "$("$apple_silicon_brew_path" shellenv)"
 }
 

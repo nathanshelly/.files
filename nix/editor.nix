@@ -20,7 +20,7 @@
 
   # Use Neovim nightly (0.5.0) package provided by Nix Flake in Neovim repo, and made available via
   # an overlay, see `../flake.nix`.
-  package = pkgs.neovim;
+  # package = pkgs.neovim;
 
   plugins = with pkgs.vimPlugins; [
     # << motions/operators >>

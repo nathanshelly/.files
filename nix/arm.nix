@@ -7,6 +7,7 @@ USER:
 let
   # ref: https://github.com/LnL7/nix-darwin/issues/334#issuecomment-858727911
   m1Pkgs = m1Ize pkgs config;
+  brewBinPrefix = if pkgs.system == "aarch64-darwin" then "/opt/homebrew/bin" else "/usr/local/bin";
 in
 
   # configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
@@ -24,6 +25,12 @@ in
     # ref - https://github.com/lnl7/nix-darwin/wiki/Changing-the-configuration.nix-location
     # TODO: remove w/ flakes
     darwinConfig = "$HOME/.files/nix/darwin.nix";
+
+    shellInit = ''
+        eval "$(${brewBinPrefix}/brew shellenv)"
+    '';
+
+
 
     # avoid needing to enter `sudo` password on `make apply` (`darwin-rebuild`)
     # https://github.com/LnL7/nix-darwin/issues/165#issuecomment-749682749
@@ -68,7 +75,7 @@ in
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
     extraOptions = ''
       # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
-      experimental-features = nix-command flakes ca-references
+      experimental-features = nix-command flakes
       extra-platforms = aarch64-darwin x86_64-darwin
 
       system = aarch64-darwin
@@ -124,7 +131,7 @@ in
       alacritty
       # TODO: https://github.com/haslersn/any-nix-shell#zsh
       any-nix-shell
-      awscli
+      # awscli
       asciinema
       bat
       # TODO: add this back when I can compile unstable on macOS
@@ -171,7 +178,7 @@ in
       syncthing
       tldr
       terraform-lsp
-      tmux
+      m1Pkgs.tmux
       tree-sitter
       tokei
       tree

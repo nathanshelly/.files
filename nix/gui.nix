@@ -1,11 +1,18 @@
-USER:
+{ nixpkgs, USER }:
 
+let
+  brewBinPrefix = "/opt/homebrew/bin"; # if nixpkgs.system == "aarch64-darwin" then "/opt/homebrew/bin" else "/usr/local/bin";
+in
 {
   homebrew = {
     enable = true;
 
     # uninstalls formulae & casks that are not listed in the brewfile
     # cleanup = "zap";
+    
+    #
+    brewPrefix = brewBinPrefix;
+
 
     # prevents homebrew from generating useless lock files
     global.noLock = true;
@@ -23,7 +30,7 @@ USER:
       "firefox"
       "flux"
       "google-chrome"
-      "google-backup-and-sync"
+      "google-drive"
       "istat-menus"
       "iterm2"
       "karabiner-elements"
@@ -34,7 +41,7 @@ USER:
       "mpv"
       "notion"
       "private-internet-access"
-      "postman"
+      #"postman"
       "rectangle"
       "signal"
       "slack"

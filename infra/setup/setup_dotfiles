@@ -43,7 +43,7 @@ main() {
   "$DOTFILES/infra/setup/bin/setup_zsh"
 
   # load neovim for the first time to install plugins
-  "$DOTFILES/infra/setup/bin/setup_neovim"
+  #"$DOTFILES/infra/setup/bin/setup_neovim"
 
   # set up various pieces too small for their own files
   # see the file in question for each piece

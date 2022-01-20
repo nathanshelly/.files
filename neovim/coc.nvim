@@ -79,7 +79,7 @@ let g:coc_global_extensions = [
   \ 'coc-markdownlint',
   \ 'coc-marketplace',
   \ 'coc-prettier',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-rust-analyzer',
   \ 'coc-sh',
   \ 'coc-svelte',

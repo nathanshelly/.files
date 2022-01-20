@@ -84,7 +84,7 @@ Languages currently used:
 | ----------- | ----------------------------------------------------------------------- |
 | bash (& sh) | [`coc-sh`](https://github.com/josa42/coc-sh)                            |
 | go          | [`coc-go`](https://github.com/josa42/coc-go)                            |
-| python      | [`coc-python`](https://github.com/neoclide/coc-python)                  |
+| python      | [`coc-pyrigh`](https://github.com/fannheyward/coc-pyright)              |
 | rust        | [`coc-rust-analyzer`](https://github.com/fannheyward/coc-rust-analyzer) |
 | typescript  | [`coc-tsserver`](https://github.com/neoclide/coc-tsserver)              |
 

@@ -148,6 +148,7 @@ USER:
       nix-index
       python3
       ripgrep
+      rnix-lsp
       rsync
       ruplacer
       shellcheck

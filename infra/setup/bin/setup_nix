@@ -185,7 +185,7 @@ apply_first_flake_generation() {
     sudo mv /etc/shells /etc/shells.bak
   fi
 
-  if "$DOTFILES/nix/apply"; then
+  if "$DOTFILES"/nix/apply arm; then
     # TODO: enter new shell here?
     # zsh --interactive
     success "Successfully applied first flake generation!"

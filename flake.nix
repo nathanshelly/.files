@@ -49,7 +49,7 @@
               home-manager.users.${USER} = import ./nix/home.nix self.outPath;
             }
             (import ./nix/darwin.nix USER)
-            (if includeGui then (import ./nix/gui.nix USER) else {})
+            (if includeGui then (import ./nix/gui.nix { inherit nixpkgs USER; } ) else {})
             (if USER == "nathan" then (import ./nix/nathan.nix USER) else {})
             (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else {})
           ] ++ additionalModules;
@@ -83,7 +83,7 @@
                 );
               }
             )
-            (if includeGui then (import ./nix/gui.nix USER) else {})
+            (if includeGui then (import ./nix/gui.nix { inherit nixpkgs USER; }) else {})
             (if USER == "nathan" then (import ./nix/nathan.nix USER) else {})
             (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else {})
           ] ++ additionalModules;
@@ -92,7 +92,11 @@
       {
         default = generateConfig {};
 
-        # arm
+        # currently exactly the same
+        arm = generateArmConfig {
+          includeGui = true;
+          includeWork = true;
+        };
         m1 = generateArmConfig {
           includeGui = true;
           includeWork = true;
