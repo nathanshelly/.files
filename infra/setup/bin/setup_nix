@@ -115,7 +115,8 @@ maybe_install_nix_darwin() {
   # TODO: handle interactive prompts, pass flags to answer questions?
   # why doesn't piping in `true` not work?
   # TODO: test piping `yes` to disable tty and automatically accept all prompts
-  if "${TMPDIR}/result/bin/darwin-installer"; then
+  # ref: https://github.com/LnL7/nix-darwin/issues/278#issuecomment-769325254
+  if yes | "${TMPDIR}/result/bin/darwin-installer"; then
     success '`nix-darwin` installed'
   else
     fail '`nix-darwin` installer failed. Please fix any issues and try again.'
