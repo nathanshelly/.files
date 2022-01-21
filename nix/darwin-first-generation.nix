@@ -9,7 +9,7 @@ in
     # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
     extraOptions = ''
-      experimental-features = nix-command flakes ca-references
+      experimental-features = nix-command flakes
       extra-platforms = aarch64-darwin x86_64-darwin
     '';
 

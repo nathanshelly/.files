@@ -61,7 +61,7 @@ USER:
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
     extraOptions = ''
       # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
-      experimental-features = nix-command flakes ca-references
+      experimental-features = nix-command flakes
 
       # protect `nix-direnv` dev environments from being garbage collected
       # ref - https://github.com/nix-community/nix-direnv#via-home-manager

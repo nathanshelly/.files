@@ -48,19 +48,6 @@ maybe_install_nix() {
     return 0
   fi
 
-  # macOS (as of Catalina) makes the root (`/`) read-only
-  # `nix` can work around this by creating a "synthetic" directory at `/nix` and
-  # mounting a separate volume which holds the actual contents
-  #
-  # As the ref below points out, "unencrypted" is a bit of a misnomer. Any Mac
-  # with a T2 chip will still be encrypted at rest
-  #
-  # ref - https://nixos.org/nix/manual/#sect-macos-installation
-  local MAC_INSTALLATION_FLAGS
-  "$DOTFILES/infra/scripts/is_macos.sh" && {
-    MAC_INSTALLATION_FLAGS='--darwin-use-unencrypted-nix-store-volume'
-  }
-
   # `--daemon` enables multiuser install
   # TODO: explain why multiuser and differences w/ single-user install
   # https://nixos.org/nix/manual/#sect-multi-user-installation
