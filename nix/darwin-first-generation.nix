@@ -15,7 +15,7 @@ in
 
     # enable flakes, an experimental Nix feature
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.package
-    package = pkgs.nixFlakes;
+    # package = pkgs.nixFlakes;
 
     # add ourself as trusted user so that we can run experimental commands
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.trustedUsers

@@ -88,7 +88,11 @@ maybe_install_nix_darwin() {
   info "building nix-darwin installer"
   nix-build \
     https://github.com/LnL7/nix-darwin/archive/master.tar.gz \
-    -A installer > /dev/null
+    -A installer > /dev/null || {
+    fail "failed to build \`nix-darwin\` installer. Please fix any issues and
+try again."
+    return 1
+  }
 
   # TODO: avoid needing this
   # ref - https://github.com/LnL7/nix-darwin/issues/234
