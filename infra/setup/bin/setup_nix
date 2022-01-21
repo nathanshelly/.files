@@ -53,9 +53,7 @@ maybe_install_nix() {
   # https://nixos.org/nix/manual/#sect-multi-user-installation
   #
   # pipe in `true` to automatically accept all prompts
-  true | sh <(curl -L https://nixos.org/nix/install) \
-    --daemon \
-    "$MAC_INSTALLATION_FLAGS"
+  true | sh <(curl -L https://nixos.org/nix/install) --daemon
 
   # initialize `nix` for next steps - same lines added to /etc/zshrc by installer
   if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
