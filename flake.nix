@@ -95,7 +95,7 @@
         # currently exactly the same
         arm = generateArmConfig {
           includeGui = true;
-          includeWork = true;
+          #includeWork = true;
         };
         m1 = generateArmConfig {
           includeGui = true;

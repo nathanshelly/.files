@@ -23,12 +23,10 @@ info '`brew` not installed, installing now...'
 # installation - https://brew.sh/
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-
 "$DOTFILES/infra/scripts/is_apple_silicon.sh" && {
   # add just installed `brew` to $PATH
   eval "$(/opt/homebrew/bin/brew shellenv)"
 }
-
 
 brew_command="brew"
 

@@ -17,6 +17,17 @@ main() {
 
   printf "%bstarting dotfiles setup%b" "$teal_highlight" "$clear_highlight"
 
+  "$DOTFILES/infra/scripts/is_apple_silicon.sh" && {
+    # TODO: conditionally install rosetta by checking existence of
+    # `/usr/libexec/rosetta` here when able to test on new machine
+    #
+    # refs:
+    # - https://apple.stackexchange.com/a/427996
+    # - https://forums.macrumors.com/threads/is-there-a-way-to-uninstall-rosetta-from-m1.2300470/
+    printf "on Apple Silicon Mac, installing Rosetta"
+    softwareupdate --install-rosetta --agree-to-license
+  }
+
   # TODO: test if available for future setup steps
   # shellcheck disable=SC1091
   source "$DOTFILES/infra/setup/bin/setup_nix" || {
@@ -31,7 +42,7 @@ main() {
   # one base setup
   # one final pieces?
 
-  # # TODO: figure out less hacky solution for making
+  # # TODO: figure out less hacky solution for making nix available?
   # source $HOME/.config/.zshrc
 
   # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
@@ -43,7 +54,7 @@ main() {
   "$DOTFILES/infra/setup/bin/setup_zsh"
 
   # load neovim for the first time to install plugins
-  #"$DOTFILES/infra/setup/bin/setup_neovim"
+  "$DOTFILES/infra/setup/bin/setup_neovim"
 
   # set up various pieces too small for their own files
   # see the file in question for each piece
