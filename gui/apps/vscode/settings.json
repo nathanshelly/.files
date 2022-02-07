@@ -175,7 +175,6 @@
   },
   "python.venvPath": "~/envs/python",
   "python.linting.enabled": false,
-  "python.defaultInterpreterPath": "python",
 
   // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
   // <<<<<<<<<<<< extensions >>>>>>>>>>>>

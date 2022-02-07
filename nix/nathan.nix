@@ -2,12 +2,9 @@ USER:
 
 {
   homebrew.masApps = {
-    # https://apps.apple.com/us/app/xcode/id497799835
-    # TODO: re-evaluate whether I want to install this
-    # "Xcode" = 497799835;
-
+    # TODO: conditionally install for work config
     # (free) https://apps.apple.com/us/app/super-easy-timer/id1353137878
-    "Meeter" = 1510445899;
+    # "Meeter" = 1510445899;
 
     # (paid, $5) https://apps.apple.com/us/app/super-easy-timer/id1353137878
     "Super Easy Timer" = 1353137878;

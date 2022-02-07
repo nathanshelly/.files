@@ -9,7 +9,7 @@ in
 
     # uninstalls formulae & casks that are not listed in the brewfile
     # cleanup = "zap";
-    
+
     #
     brewPrefix = brewBinPrefix;
 
@@ -34,7 +34,6 @@ in
       "istat-menus"
       "iterm2"
       "karabiner-elements"
-      "kap"
       "keycastr"
       "microsoft-edge"
       "monitorcontrol"
@@ -48,6 +47,7 @@ in
       "spotify"
       "steermouse"
       "tempo"
+      "topnotch"
       "ueli"
       "visual-studio-code"
       "vlc"
