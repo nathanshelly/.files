@@ -17,6 +17,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
 " << utilities >>
 
+" github copilot AI help
+Plug 'github/copilot.vim'
+
 " Neovim markdown previewer (opens preview in browser)
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 

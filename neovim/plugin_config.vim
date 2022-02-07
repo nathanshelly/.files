@@ -83,6 +83,10 @@ EOF
 
 let g:investigate_use_dash=1
 
+" <<<< github copilot >>>>>
+imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
 " <<<<<< end of utilities >>>>>>
 
 " <<<<<< colors/syntax/languages >>>>>>
