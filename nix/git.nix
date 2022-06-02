@@ -24,7 +24,7 @@
 
   # local overrides of `git` identity (author name & email)
   # https://git-scm.com/docs/git-config#_includes
-  includes = [ { path = "~/.gitconfig.local"; } ];
+  includes = [{ path = "~/.gitconfig.local"; }];
 
   lfs.enable = true; # set up optional handy config for LFS
 
@@ -92,7 +92,7 @@
     pull = {
       # allows only fast-forward merges (no creation of a merge commit)
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pullff
-      ff = "only";
+      rebase = true;
     };
     push = {
       # `git push` treated as `git push remote <current-checkout-out-branch-name>`

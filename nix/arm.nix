@@ -10,7 +10,7 @@ let
   brewBinPrefix = if pkgs.system == "aarch64-darwin" then "/opt/homebrew/bin" else "/usr/local/bin";
 in
 
-  # configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
+# configuration for `nix-darwin` - https://github.com/lnl7/nix-darwin
 {
   # TODO: add keyboard shortcuts - https://github.com/LnL7/nix-darwin/pull/189
 
@@ -27,23 +27,24 @@ in
     darwinConfig = "$HOME/.files/nix/darwin.nix";
 
     shellInit = ''
-        eval "$(${brewBinPrefix}/brew shellenv)"
+      eval "$(${brewBinPrefix}/brew shellenv)"
     '';
 
 
 
     # avoid needing to enter `sudo` password on `make apply` (`darwin-rebuild`)
     # https://github.com/LnL7/nix-darwin/issues/165#issuecomment-749682749
-    etc."sudoers.d/10-nix-commands".text = let
-      commands = [
-        "/run/current-system/sw/bin/darwin-rebuild"
-        "/run/current-system/sw/bin/nix*"
-        "/run/current-system/sw/bin/ln"
-        "/nix/store/*/activate"
-        "/bin/launchctl"
-      ];
-      commandsString = builtins.concatStringsSep ", " commands;
-    in
+    etc."sudoers.d/10-nix-commands".text =
+      let
+        commands = [
+          "/run/current-system/sw/bin/darwin-rebuild"
+          "/run/current-system/sw/bin/nix*"
+          "/run/current-system/sw/bin/ln"
+          "/nix/store/*/activate"
+          "/bin/launchctl"
+        ];
+        commandsString = builtins.concatStringsSep ", " commands;
+      in
       ''
         %admin ALL=(ALL:ALL) NOPASSWD: ${commandsString}
       '';
@@ -67,7 +68,7 @@ in
         maxJobs = 1;
         speedFactor = 2;
         supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-        mandatoryFeatures = [];
+        mandatoryFeatures = [ ];
       }
     ];
     distributedBuilds = true;
@@ -133,59 +134,63 @@ in
       any-nix-shell
       # awscli
       asciinema
-      bat
+      dust
+      ffmpeg-full
+      delta
+      magic-wormhole
+      watchexec
+
+      # m1Pkgs
+
+      m1Pkgs.bash
+      m1Pkgs.bat
       # TODO: add this back when I can compile unstable on macOS
       # bazel
       # TODO: understand why I can't install `bottom` (https://github.com/ClementTsang/bottom)
       # `nix search nixpkgs bottom` shows pkgs.legacyPackages.x86_64-darwin.bottom
       # bottom
-      cachix
-      darwin.trash
-      deno
-      dust
+      m1Pkgs.cachix
+      m1Pkgs.darwin.trash
+      m1Pkgs.deno
       m1Pkgs.exa
-      exiftool
-      fd
-      ffmpeg-full
-      delta
-      gh
-      tig
-      gnumake
-      gnupg
-      gnused
-      httpie
-      hyperfine
-      jiq
-      jq
-      lua # z.lua dependency
-      krew
-      kubectx
-      kubernetes
-      magic-wormhole
-      mdcat
-      minikube
-      ncurses
-      nix-index
-      nodejs
-      nushell
-      python3
-      ripgrep
-      rsync
-      ruplacer
-      shellcheck
-      shfmt
-      stern
-      syncthing
-      tldr
-      terraform-lsp
+      m1Pkgs.exiftool
+      m1Pkgs.fd
+      m1Pkgs.gh
+      m1Pkgs.tig
+      m1Pkgs.gnumake
+      m1Pkgs.gnupg
+      m1Pkgs.gnused
+      m1Pkgs.httpie
+      m1Pkgs.hyperfine
+      m1Pkgs.jiq
+      m1Pkgs.jq
+      m1Pkgs.lua # z.lua dependency
+      m1Pkgs.krew
+      m1Pkgs.kubectx
+      m1Pkgs.kubernetes
+      m1Pkgs.mdcat
+      m1Pkgs.minikube
+      m1Pkgs.ncurses
+      m1Pkgs.nix-index
+      m1Pkgs.nodejs
+      m1Pkgs.nushell
+      m1Pkgs.python3
+      m1Pkgs.ripgrep
+      m1Pkgs.rsync
+      m1Pkgs.ruplacer
+      m1Pkgs.shellcheck
+      m1Pkgs.shfmt
+      m1Pkgs.stern
+      m1Pkgs.syncthing
+      m1Pkgs.tealdeer
+      m1Pkgs.terraform-lsp
       m1Pkgs.tmux
-      tree-sitter
-      tokei
-      tree
-      vim
-      vivid
-      watchexec
-      yarn
+      m1Pkgs.tree-sitter
+      m1Pkgs.tokei
+      m1Pkgs.tree
+      m1Pkgs.vim
+      m1Pkgs.vivid
+      m1Pkgs.yarn
     ];
   };
 

@@ -40,7 +40,6 @@
   "editor.rulers": [80, 100, 120],
   "editor.cursorBlinking": "smooth",
   "editor.cursorStyle": "line-thin",
-  "editor.renderIndentGuides": true,
   "editor.renderLineHighlight": "gutter",
   // font
   "editor.fontFamily": "Natasha I",
@@ -219,7 +218,7 @@
   "vim.useSystemClipboard": true,
 
   // #### keybindings ####
-  "vim.insertModeKeyBindings": [{"before": ["j", "k"], "after": ["<Esc>"]}],
+  "vim.insertModeKeyBindings": [{ "before": ["j", "k"], "after": ["<Esc>"] }],
   "vim.normalModeKeyBindings": [
     {
       "before": ["C-o"],
@@ -229,21 +228,28 @@
       "before": ["C-i"],
       "commands": ["workbench.action.navigateForward"]
     },
-    {"before": ["'"], "after": ["$"]},
-    {"before": ["\""], "after": ["^"]},
-    {"before": ["<leader>", "w"], "commands": [":w"]},
-    {"before": ["<leader>", "h", "n"], "commands": [":nohl"]}
+    { "before": ["'"], "after": ["$"] },
+    { "before": ["\""], "after": ["^"] },
+    { "before": ["<leader>", "w"], "commands": [":w"] },
+    { "before": ["<leader>", "h", "n"], "commands": [":nohl"] }
   ],
   // TODO: figure out how to deal with this disabling deleting/changing
   // `"` or `'` via vim-surround
   "vim.operatorPendingModeKeyBindings": [
-    {"before": ["'"], "after": ["$"]},
-    {"before": ["\""], "after": ["^"]}
+    { "before": ["'"], "after": ["$"] },
+    { "before": ["\""], "after": ["^"] }
   ],
   "vim.visualModeKeyBindings": [
-    {"before": ["'"], "after": ["$"]},
-    {"before": ["\""], "after": ["^"]}
+    { "before": ["'"], "after": ["$"] },
+    { "before": ["\""], "after": ["^"] }
   ],
   "security.workspace.trust.untrustedFiles": "open",
-  "workbench.editor.untitled.hint": "hidden"
+  "workbench.editor.untitled.hint": "hidden",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.guides.indentation": true
 }

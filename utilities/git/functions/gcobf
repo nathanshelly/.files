@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+
+# force move branch to current HEAD & check it out
+
+[[ -z $1 ]] && {
+  cat << EOF
+error: the following arguments were not provided
+
+  <BRANCH-NAME>
+
+USAGE:
+
+  gcobf <BRANCH-NAME>...
+EOF
+  return 1
+}
+
+git branch --force "$1" && git checkout "$1"

@@ -72,6 +72,9 @@ pathToDotfiles:
 
       "," = "comma";
       "k" = "kubectl";
+      "kns" = "kubectl -n staging";
+      "knq" = "kubectl -n qa";
+      "knp" = "kubectl -n production";
     };
   };
 

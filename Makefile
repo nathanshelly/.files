@@ -48,6 +48,9 @@ n:
 nw:
 	./nix/apply work
 
+arm:
+	./nix/apply arm
+
 update-input:
 	nix flake update
 

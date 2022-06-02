@@ -17,6 +17,8 @@ in
     # prevents homebrew from generating useless lock files
     global.noLock = true;
 
+    # how to make these install arm versions?
+    # just run in correct bash environment?
     casks = [
       "1password"
       "alfred"

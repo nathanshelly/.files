@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "https:\/\/github.com\/pulls?q=is%3Apr+reviewed-by%3Anathanshelly+archived%3Afalse",
+    "uid" : "5B225294-3D69-4DDD-95E9-87602392B196",
+    "name" : "GitHub Reviewed PRs",
+    "keyword" : "ghrp"
+  }
+}
