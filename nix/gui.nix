@@ -49,7 +49,7 @@ in
       "spotify"
       "steermouse"
       "tempo"
-      "topnotch"
+      # "topnotch"
       "ueli"
       "visual-studio-code"
       "vlc"

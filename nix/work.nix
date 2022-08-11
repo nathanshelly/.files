@@ -8,6 +8,7 @@ in
   environment.systemPath = [
     "${GOPATH}/bin"
     "${HOME}/.krew/bin"
+    "${HOME}/.bun/bin"
   ];
 
   home-manager.users.${USER} = {
@@ -40,6 +41,8 @@ in
       OD_CODE_ROOT="/Users/nathan/work/go/src/github.com/opendoor-labs/code"
       OD_TOOL_SOURCE_SCRIPT="$OD_CODE_ROOT/scripts/infra/sourced_on_shell_load.sh"
       [ -f "$OD_TOOL_SOURCE_SCRIPT" ] && source "$OD_TOOL_SOURCE_SCRIPT"
+
+      source $GOPATH/src/github.com/opendoor-labs/code/scripts/bin/ec2_script.sh
     '';
   };
 }

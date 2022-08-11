@@ -22,9 +22,7 @@
     "rust",
     "sh",
     "svelte",
-    "terraform",
-    "typescript",
-    "typescriptreact"
+    "terraform"
   ],
   // "coc.preferences.jumpCommand": "drop", // or something else
 

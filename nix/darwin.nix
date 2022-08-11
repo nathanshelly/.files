@@ -20,16 +20,17 @@ USER:
 
     # avoid needing to enter `sudo` password on `make apply` (`darwin-rebuild`)
     # https://github.com/LnL7/nix-darwin/issues/165#issuecomment-749682749
-    etc."sudoers.d/10-nix-commands".text = let
-      commands = [
-        "/run/current-system/sw/bin/darwin-rebuild"
-        "/run/current-system/sw/bin/nix*"
-        "/run/current-system/sw/bin/ln"
-        "/nix/store/*/activate"
-        "/bin/launchctl"
-      ];
-      commandsString = builtins.concatStringsSep ", " commands;
-    in
+    etc."sudoers.d/10-nix-commands".text =
+      let
+        commands = [
+          "/run/current-system/sw/bin/darwin-rebuild"
+          "/run/current-system/sw/bin/nix*"
+          "/run/current-system/sw/bin/ln"
+          "/nix/store/*/activate"
+          "/bin/launchctl"
+        ];
+        commandsString = builtins.concatStringsSep ", " commands;
+      in
       ''
         %admin ALL=(ALL:ALL) NOPASSWD: ${commandsString}
       '';
@@ -53,7 +54,7 @@ USER:
         maxJobs = 1;
         speedFactor = 2;
         supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-        mandatoryFeatures = [];
+        mandatoryFeatures = [ ];
       }
     ];
     distributedBuilds = true;
@@ -144,9 +145,10 @@ USER:
       kubernetes
       mdcat
       ncurses
-      nodejs
+      # nodejs
+      nodejs-16_x
       nix-index
-      python3
+      # python3
       ripgrep
       rnix-lsp
       rsync

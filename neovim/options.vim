@@ -108,3 +108,6 @@ set shortmess+=a
 " to search lowercase sensitive -> /word\C (`\C` can be anywhere)
 set ignorecase
 set smartcase
+
+" TODO: test this out
+" set cmdheight=0

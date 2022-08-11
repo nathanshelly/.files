@@ -23,79 +23,80 @@
   # read thru this - https://github.com/malob/nixpkgs/blob/master/flake.nix
 
   outputs = { self, darwin, home-manager, nixpkgs, ... }@inputs: {
-    darwinConfigurations = let
-      nixpkgsConfig = {
-        config = { allowUnfree = true; };
-        # TODO: understand overlays better
-        overlays = self.overlays;
-      };
-
-      generateConfig =
-        { additionalModules ? []
-        , includeGui ? false
-        , includeWork ? false
-        , HOME ? builtins.getEnv "HOME"
-        , USER ? builtins.getEnv "USER"
-        }: darwin.lib.darwinSystem {
-          # default to x86_64 versions run through rosetta
-          system = "x86_64-darwin";
-
-          modules = [
-            home-manager.darwinModules.home-manager
-            {
-              nixpkgs = nixpkgsConfig;
-
-              # TODO: do this more elegantly
-              home-manager.users.${USER} = import ./nix/home.nix self.outPath;
-            }
-            (import ./nix/darwin.nix USER)
-            (if includeGui then (import ./nix/gui.nix { inherit nixpkgs USER; } ) else {})
-            (if USER == "nathan" then (import ./nix/nathan.nix USER) else {})
-            (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else {})
-          ] ++ additionalModules;
+    darwinConfigurations =
+      let
+        nixpkgsConfig = {
+          config = { allowUnfree = true; };
+          # TODO: understand overlays better
+          overlays = self.overlays;
         };
 
-      generateArmConfig =
-        { additionalModules ? []
-        , includeGui ? false
-        , includeWork ? false
-        , HOME ? builtins.getEnv "HOME"
-        , USER ? builtins.getEnv "USER"
-        }: darwin.lib.darwinSystem {
-          # default to x86_64 versions run through rosetta
-          system = "x86_64-darwin";
+        generateConfig =
+          { additionalModules ? [ ]
+          , includeGui ? false
+          , includeWork ? false
+          , HOME ? builtins.getEnv "HOME"
+          , USER ? builtins.getEnv "USER"
+          }: darwin.lib.darwinSystem {
+            # default to x86_64 versions run through rosetta
+            system = "x86_64-darwin";
 
-          modules = [
-            home-manager.darwinModules.home-manager
-            {
-              nixpkgs = nixpkgsConfig;
+            modules = [
+              home-manager.darwinModules.home-manager
+              {
+                nixpkgs = nixpkgsConfig;
 
-              # TODO: do this more elegantly
-              home-manager.users.${USER} = import ./nix/home.nix self.outPath;
-            }
-            (
-              (import ./nix/arm.nix USER) {
-                m1Ize = (
-                  pkgs: config: import nixpkgs {
-                    system = "aarch64-darwin";
-                    overlays = config.nixpkgs.overlays;
-                  }
-                );
+                # TODO: do this more elegantly
+                home-manager.users.${USER} = import ./nix/home.nix self.outPath;
               }
-            )
-            (if includeGui then (import ./nix/gui.nix { inherit nixpkgs USER; }) else {})
-            (if USER == "nathan" then (import ./nix/nathan.nix USER) else {})
-            (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else {})
-          ] ++ additionalModules;
-        };
-    in
+              (import ./nix/darwin.nix USER)
+              (if includeGui then (import ./nix/gui.nix { inherit nixpkgs USER; }) else { })
+              (if USER == "nathan" then (import ./nix/nathan.nix USER) else { })
+              (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else { })
+            ] ++ additionalModules;
+          };
+
+        generateArmConfig =
+          { additionalModules ? [ ]
+          , includeGui ? false
+          , includeWork ? false
+          , HOME ? builtins.getEnv "HOME"
+          , USER ? builtins.getEnv "USER"
+          }: darwin.lib.darwinSystem {
+            # default to x86_64 versions run through rosetta
+            system = "x86_64-darwin";
+
+            modules = [
+              home-manager.darwinModules.home-manager
+              {
+                nixpkgs = nixpkgsConfig;
+
+                # TODO: do this more elegantly
+                home-manager.users.${USER} = import ./nix/home.nix self.outPath;
+              }
+              (
+                (import ./nix/arm.nix USER) {
+                  m1Ize = (
+                    pkgs: config: import nixpkgs {
+                      system = "aarch64-darwin";
+                      overlays = config.nixpkgs.overlays;
+                    }
+                  );
+                }
+              )
+              (if includeGui then (import ./nix/gui.nix { inherit nixpkgs USER; }) else { })
+              (if USER == "nathan" then (import ./nix/nathan.nix USER) else { })
+              (if includeWork then (import ./nix/work.nix { inherit HOME USER; }) else { })
+            ] ++ additionalModules;
+          };
+      in
       {
-        default = generateConfig {};
+        default = generateConfig { };
 
         # currently exactly the same
         arm = generateArmConfig {
           includeGui = true;
-          #includeWork = true;
+          includeWork = true;
         };
         m1 = generateArmConfig {
           includeGui = true;
@@ -110,7 +111,7 @@
         work = generateConfig { includeWork = true; USER = "nathan"; };
       };
 
-    overlays = [];
+    overlays = [ ];
     # with inputs; [
     #   (
     #     final: prev: {

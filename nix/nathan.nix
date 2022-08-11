@@ -41,6 +41,21 @@ USER:
           port = 3022;
           identityFile = "~/.ssh/docker_rsa";
         };
+        "i-*" = {
+          user = "ubuntu";
+          proxyCommand = "bash -c 'AWS_PROFILE=rdi-dev aws ssm start-session --target %h --document-name AWS-StartSSHSession'";
+          forwardAgent = true;
+          identityFile = "~/.ssh/github";
+          # localForwards = [{
+          #   bind.port = 64464;
+          #   host.address = "localhost";
+          #   host.port = 64464;
+          # }];
+          extraOptions = {
+            StrictHostKeyChecking = "no";
+            LocalForward = "64464 localhost:64464";
+          };
+        };
       };
     };
 

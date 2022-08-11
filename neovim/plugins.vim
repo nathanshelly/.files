@@ -6,6 +6,8 @@ call plug#begin("$HOME/.local/share/nvim/plugged")
 
 " <<<<<<<< plugins >>>>>>>>
 
+Plug 'github/copilot.vim'
+
 " a multipurpose client for language servers (e.g. intellisense, compilation
 " errors, formatting), linters, formatters (e.g. prettier or black) and various
 " other external shell programs (e.g. shellcheck)

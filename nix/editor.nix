@@ -10,7 +10,7 @@
   extraConfig = builtins.readFile "${pathToDotfiles}/neovim/init.vim";
 
   # TODO: figure out what's not working here
-  extraPython3Packages = ps: with ps; [ black ];
+  # extraPython3Packages = ps: with ps; [ black ];
 
 
   # packages used only for nvim, these are not added to $PATH

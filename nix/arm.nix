@@ -134,13 +134,11 @@ in
       any-nix-shell
       # awscli
       asciinema
-      dust
       ffmpeg-full
       delta
+      # kubernetes
       magic-wormhole
       watchexec
-
-      # m1Pkgs
 
       m1Pkgs.bash
       m1Pkgs.bat
@@ -152,10 +150,12 @@ in
       m1Pkgs.cachix
       m1Pkgs.darwin.trash
       m1Pkgs.deno
+      m1Pkgs.du-dust
       m1Pkgs.exa
       m1Pkgs.exiftool
       m1Pkgs.fd
       m1Pkgs.gh
+      m1Pkgs.jira-cli-go
       m1Pkgs.tig
       m1Pkgs.gnumake
       m1Pkgs.gnupg
@@ -167,7 +167,6 @@ in
       m1Pkgs.lua # z.lua dependency
       m1Pkgs.krew
       m1Pkgs.kubectx
-      m1Pkgs.kubernetes
       m1Pkgs.mdcat
       m1Pkgs.minikube
       m1Pkgs.ncurses
@@ -178,6 +177,7 @@ in
       m1Pkgs.ripgrep
       m1Pkgs.rsync
       m1Pkgs.ruplacer
+      m1Pkgs.sad
       m1Pkgs.shellcheck
       m1Pkgs.shfmt
       m1Pkgs.stern
