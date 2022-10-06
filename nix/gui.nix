@@ -18,7 +18,6 @@ in
     global.noLock = true;
 
     casks = [
-      "1password"
       "alfred"
       "alt-tab"
       "backblaze"
@@ -27,9 +26,7 @@ in
       "daisydisk"
       "discord"
       "fantastical"
-      "firefox"
       "flux"
-      "google-chrome"
       "google-drive"
       "istat-menus"
       "iterm2"
@@ -46,7 +43,6 @@ in
       "slack"
       "spotify"
       "steermouse"
-      "tempo"
       "topnotch"
       "ueli"
       "visual-studio-code"
