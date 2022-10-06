@@ -11,12 +11,19 @@ inoremap <silent><expr> <c-s> coc#refresh()
 " confirm completion w/ <c-space>
 " `<c-g>u` means break undo chain at current position
 " TODO: make space a completion character when an option is selected
-inoremap <expr> <c-space> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<c-space>"
+inoremap <silent><expr> <c-space> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " move up and down preview window
 " TODO: understand why `pumvisible` behavior seems different here vs `<c-space>`
-inoremap <expr> <c-k> "\<c-n>"
-inoremap <expr> <c-l> "\<c-p>"
+"
+inoremap <silent><expr> <c-k>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ coc#refresh()
+inoremap <silent><expr> <c-l>
+      \ coc#pum#visible() ? coc#pum#prev(1):
+      \ coc#refresh()
+
 " inoremap <expr> <c-k> pumvisible() ? "\<C-n>" : "\<c-k>"
 " inoremap <expr> <c-l> pumvisible() ? "\<C-p>" : "\<c-l>"
 

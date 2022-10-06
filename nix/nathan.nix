@@ -19,7 +19,7 @@ USER:
   home-manager.users.${USER} = {
     # https://rycee.gitlab.io/home-manager/options.html#opt-programs.ssh.enable
     programs.ssh = {
-      enable = true;
+      enable = false;
 
       matchBlocks = {
         "github.com" = {

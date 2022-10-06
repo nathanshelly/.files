@@ -26,8 +26,6 @@
   // <<<<<< workbench >>>>>>
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
-  // Use a new empty file at startup
-  "workbench.startupEditor": "newUntitledFile",
   // Disable the "file preview" feature
   "workbench.editor.enablePreview": false,
   "workbench.activityBar.visible": false,
@@ -251,5 +249,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.guides.indentation": true
+  "editor.guides.indentation": true,
+  "workbench.startupEditor": "none"
 }

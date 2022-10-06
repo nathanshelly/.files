@@ -126,7 +126,7 @@ USER:
       cachix
       darwin.trash
       deno
-      dust
+      du-dust
       exa
       exiftool
       fd

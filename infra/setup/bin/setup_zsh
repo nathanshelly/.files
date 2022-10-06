@@ -30,6 +30,8 @@ maybe_add_active_zsh_to_allowed_shells
 function maybe_set_active_zsh_as_default() {
   local active_zsh_path default_shell
 
+  # TODO: handle non-arm zsh version installed by home manager
+
   if "$DOTFILES/infra/scripts/is_macos.sh"; then
     # avoids following symlinks
     # reports the expected default shell: /etc/profiles/per-user/$USER/bin/zsh

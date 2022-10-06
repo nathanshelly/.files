@@ -2,12 +2,18 @@
 
 # shellcheck disable=SC1090,1091
 
+file $(which bash)
+
 # check that DOTFILES variable is defined
 # relative path handling is tricky and never foolproof
 # refs
 #   - http://mywiki.wooledge.org/BashFAQ/028
 #   - https://stackoverflow.com/questions/6659689/referring-to-a-file-relative-to-executing-script
 source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
+
+# TODO: force below commands to run in arm
+# why doesn't terminal open in arm by default?
+# `arch -arm64e /bin/zsh`
 
 # source so that `brew` is usable in the current shell for the next steps
 source "$DOTFILES/gui/setup/setup_brew" || {

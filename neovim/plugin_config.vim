@@ -70,7 +70,8 @@ nnoremap <leader>mp :MarkdownPreview<CR>
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
+  ensure_installed = { "c", "bash", "cpp", "dockerfile", "go", "html", "javascript", "jsdoc", "json", "json5", "jsonc", "lua", "make", "markdown", "markdown_inline", "make", "nix", "pug", "python", "ruby", "rust", "sql", "svelte", "swift", "tsx", "typescript", "vim", "yaml" },
+  auto_install = true,
   highlight = { enable = true, disable = { "elixir" } },
   incremental_selection = { enable = true, disable = { "elixir" } },
   indent = { enable = true, disable = { "elixir" } },
@@ -84,8 +85,8 @@ EOF
 let g:investigate_use_dash=1
 
 " <<<< github copilot >>>>>
-imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
+" imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
 
 " <<<<<< end of utilities >>>>>>
 

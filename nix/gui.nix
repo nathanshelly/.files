@@ -48,7 +48,6 @@ in
       "slack"
       "spotify"
       "steermouse"
-      "tempo"
       # "topnotch"
       "ueli"
       "visual-studio-code"

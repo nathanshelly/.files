@@ -20,7 +20,6 @@
     "nix",
     "python",
     "rust",
-    "sh",
     "svelte",
     "terraform"
   ],

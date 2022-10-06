@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+file $(which bash)
+
 # check that DOTFILES variable is defined
 # shellcheck disable=SC1090
 source "${BASH_SOURCE%/*}/../../infra/setup/check_dotfiles_variable.sh"
