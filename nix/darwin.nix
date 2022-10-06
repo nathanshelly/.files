@@ -57,6 +57,9 @@ USER:
         mandatoryFeatures = [ ];
       }
     ];
+
+    configureBuildUsers = true;
+
     distributedBuilds = true;
 
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
@@ -72,9 +75,9 @@ USER:
 
     # enable flakes, an experimental Nix feature
     # https://zimbatm.com/NixFlakes/#other-systems
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
 
-    trustedUsers = [ USER ];
+    settings.trusted-users = [ USER ];
   };
 
   # create /etc/zshrc that activates the nix-darwin environment on shell load
@@ -105,8 +108,6 @@ USER:
     NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
     screencapture.location = "$HOME/tmp";
   };
-
-  users.nix.configureBuildUsers = true;
 
   users.users."${USER}" = {
     # home key here requed for home-manager config to apply

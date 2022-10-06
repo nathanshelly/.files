@@ -6,23 +6,20 @@ let
 in
 {
   nix = {
+    configureBuildUsers = true;
+
     # enable flakes - https://zimbatm.com/NixFlakes/#other-systems
     # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.extraOptions
+    # TODO: remove these?
     extraOptions = ''
       experimental-features = nix-command flakes
       extra-platforms = aarch64-darwin x86_64-darwin
     '';
 
-    # enable flakes, an experimental Nix feature
-    # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.package
-    # package = pkgs.nixFlakes;
-
     # add ourself as trusted user so that we can run experimental commands
-    # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.trustedUsers
-    trustedUsers = [ USER ];
+    # https://daiderd.com/nix-darwin/manual/index.html#opt-nix.settings.trusted-users
+    settings.trusted-users = [ USER ];
   };
-
-  users.nix.configureBuildUsers = true;
 
   # create /etc/zshrc that activates the nix-darwin environment on shell load
   programs.zsh.enable = true;

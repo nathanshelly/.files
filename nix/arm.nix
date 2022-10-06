@@ -89,10 +89,18 @@ in
 
     # enable flakes, an experimental Nix feature
     # https://zimbatm.com/NixFlakes/#other-systems
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
 
-    trustedUsers = [ USER ];
+    settings.trusted-users = [ USER ];
   };
+
+  # allow using TouchID to authenticate `sudo`
+  #
+  # TODO: support `tmux` via `pam-reattatch`
+  # ref: https://github.com/LnL7/nix-darwin/pull/228#issuecomment-1212769786
+  #
+  # ref: https://github.com/LnL7/nix-darwin/pull/228
+  security.pam.enableSudoTouchIdAuth = true;
 
   # create /etc/zshrc that activates the nix-darwin environment on shell load
   programs.zsh.enable = true;
@@ -122,8 +130,6 @@ in
     NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
     screencapture.location = "$HOME/tmp";
   };
-
-  users.nix.configureBuildUsers = true;
 
   users.users."${USER}" = {
     # home key here requed for home-manager config to apply
@@ -183,7 +189,7 @@ in
       m1Pkgs.stern
       m1Pkgs.syncthing
       m1Pkgs.tealdeer
-      m1Pkgs.terraform-lsp
+      # m1Pkgs.terraform-lsp
       m1Pkgs.tmux
       m1Pkgs.tree-sitter
       m1Pkgs.tokei

@@ -2,8 +2,6 @@
 
 # shellcheck disable=SC1090,1091
 
-file $(which bash)
-
 # check that DOTFILES variable is defined
 # relative path handling is tricky and never foolproof
 # refs

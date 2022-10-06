@@ -15,7 +15,7 @@ in
 
 
     # prevents homebrew from generating useless lock files
-    global.noLock = true;
+    global.lockfiles = false;
 
     # how to make these install arm versions?
     # just run in correct bash environment?
