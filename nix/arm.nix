@@ -191,6 +191,7 @@ in
       m1Pkgs.sad
       m1Pkgs.shellcheck
       m1Pkgs.shfmt
+      m1Pkgs.silicon
       m1Pkgs.stern
       m1Pkgs.sumneko-lua-language-server
       m1Pkgs.syncthing

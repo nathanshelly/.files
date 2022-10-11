@@ -9,7 +9,7 @@ endif
 " load custom colorscheme, failing silently if it doesn't exist
 " `n` colorscheme definition @ $DOTFILES/neovim/colors/n.vim
 " silent! colorscheme n
-silent colorscheme tokyonight
+" silent colorscheme tokyonight
 
 " << miscellaneous >>
 

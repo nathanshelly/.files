@@ -26,7 +26,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " file explorer tree
 Plug 'nvim-tree/nvim-tree.lua'
 
-
+" generate screenshots of code
+Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh' }
 
 " fuzzy finder
 " configuration is in ./fzf.vim instead of ./plugin_config.vim due to complexity
@@ -79,6 +80,8 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 " Plug 'feline-nvim/feline.nvim'
 " Plug 'Hitesh-Aggarwal/feline_one_monokai.nvim'
 
+" TODO: test icons w/ lightline
+" Plug 'itchyny/lightline.vim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 

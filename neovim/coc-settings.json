@@ -7,8 +7,8 @@
 //
 // can also be done manually:
 // `ln -s $DOTFILES/neovim/coc-settings.json $HOME/.config/nvim/coc-settings.json`
+// "coc.preferences.bracketEnterImprove", // how is this supposed to work
 {
-  // "coc.preferences.bracketEnterImprove", // how is this supposed to work
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "graphql",
@@ -84,7 +84,8 @@
       "initializationOptions": {}
     },
     // TODO: demystify the schema here
-    // TODO: see if I can autocomplete from a schema here
+    // TODO II: see if I can autocomplete from a schema here
+    // TODO III: look @ https://github.com/neovim/nvim-lspconfig/issues/319 before switching to native lsp
     "lua": {
       "command": "lua-language-server",
       "rootPatterns": [".git"],
