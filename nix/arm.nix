@@ -183,10 +183,16 @@ in
       m1Pkgs.ripgrep
       m1Pkgs.rsync
       m1Pkgs.ruplacer
+      m1Pkgs.rust-analyzer
+      # TODO: look into overlays
+      # ref: https://nixos.wiki/wiki/Rust
+      m1Pkgs.rustc
+      m1Pkgs.cargo
       m1Pkgs.sad
       m1Pkgs.shellcheck
       m1Pkgs.shfmt
       m1Pkgs.stern
+      m1Pkgs.sumneko-lua-language-server
       m1Pkgs.syncthing
       m1Pkgs.tealdeer
       # m1Pkgs.terraform-lsp

@@ -44,7 +44,7 @@ The biggest reason I'm currently sticking with `neovim` is `vim`'s primary conce
 ## skimmable list of files
 
 - [`alias.zsh`](#aliaszsh) - define shell-level aliases (e.g. `emp <file>` to trigger `:MarkdownPreview` on opening (only works on `.md` files))
-- [`coc-settings.jsonc` and `coc.nvim`](#coc-settingsjsonc-and-cocnvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc-settings.jsonc` is similar to `settings.json` for `VSCode`.
+- [`coc-settings.json` and `coc.nvim`](#coc-settingsjson-and-cocnvim) - configure [`coc.nvim`](https://github.com/neoclide/coc.nvim). `coc-settings.json` is similar to `settings.json` for `VSCode`.
 - [`colors.vim`](#colorsvim) - configure colors, (e.g. enable true color, set dark background, set color scheme)
 - [`colorschemes`](#colorschemes) - custom colorschemes (sole scheme at the moment is a fork of OneHalfDark)
 - [`commands.vim`](#commandsvim) - add commands, used exclusively through keymappings (e.g. `<leader>tw` executes `TrimWhitespace` which trims extraneous whitespace from the current file)
@@ -66,7 +66,7 @@ Define shell-level aliases.
 - `enc <file>` - open file w/o config. Mnemonic - `edit no config`.
 - `emp <file>` - open file (must be `*.md`) and immediately trigger `MarkdownPreview` (must have [`MarkdownPreview`](https://github.com/iamcco/markdown-preview.nvim) plugin installed). Mnemonic - `edit MarkdownPreview`.
 
-### [`coc-settings.jsonc`](./coc-settings.jsonc) and [`coc.nvim`](./coc.nvim)
+### [`coc-settings.json`](./coc-settings.json) and [`coc.nvim`](./coc.nvim)
 
 Configure [`Conquer of Completion` (`coc`)](https://github.com/neoclide/coc.nvim).
 

@@ -51,6 +51,14 @@
     #     `"`s into `{}` -> `{word}`
     #
     # See further usage examples - https://github.com/tpope/vim-surround
+    #
+    # TODO: look into replacing w/ nvim-surround or mini.surround
+    # refs:
+    # - https://github.com/kylechui/nvim-surround
+    # - https://github.com/echasnovski/mini.nvim
+    # - https://github.com/kylechui/nvim-surround/discussions/53
+    # - https://github.com/machakann/vim-sandwich#textobj-sandwich
+    # - https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     {
       plugin = vim-surround;
       config = ''
@@ -87,19 +95,7 @@
     fzf-vim
 
     # status line
-    lightline-vim
-
-    # file explorer
-    {
-      plugin = nerdtree;
-      config = ''
-        " ref - https://github.com/scrooloose/nerdtree#faq-here-and-in-the-wiki
-        noremap <c-n> :NERDTreeToggle<CR>
-
-        " highlight current file in tree
-        noremap <leader>ntf :NERDTreeFind<CR>
-      '';
-    }
+    # lightline-vim
 
     # TODO: move to here after figuring out bugs
     # {

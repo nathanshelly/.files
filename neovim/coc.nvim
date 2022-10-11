@@ -65,6 +65,10 @@ nmap <silent> gfc <Plug>(coc-fix-current)
 
 " extensions
 "
+" TODO: re-evaluate which language-servers I want to install via coc-nvim vs
+" native lsp
+" ref: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+"
 " ref - https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 "
 " can also install through plugin manager, here's an example w/ vim plug

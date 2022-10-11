@@ -10,6 +10,11 @@ pathToDotfiles:
 
     ##### neovim #####
     # extra configuration for `coc.nvim` plugin
+    # TODO: figure out a way to avoid hardcoding `.files`
+    # TODO II: figure out why this is different from custom colorscheme below
+    # TODO III: create minimal repro here
+    # "${config.xdg.configHome}/nvim/coc-settings.json".source = "${pathToDotfiles}/neovim/coc-settings.json";
+    # "${config.xdg.configHome}/nvim/coc-settings.json".source = "${config.home.homeDirectory}/.files/neovim/coc-settings.json";
     "${config.xdg.configHome}/nvim/coc-settings.json".source = "${pathToDotfiles}/neovim/coc-settings.jsonc";
     # custom colorscheme
     "${config.xdg.configHome}/nvim/colors/n.vim".source = "${pathToDotfiles}/neovim/colors/n.vim";

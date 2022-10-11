@@ -250,5 +250,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.guides.indentation": true,
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "editor.stickyScroll.enabled": true
 }

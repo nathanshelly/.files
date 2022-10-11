@@ -6,8 +6,6 @@ call plug#begin("$HOME/.local/share/nvim/plugged")
 
 " <<<<<<<< plugins >>>>>>>>
 
-Plug 'github/copilot.vim'
-
 " a multipurpose client for language servers (e.g. intellisense, compilation
 " errors, formatting), linters, formatters (e.g. prettier or black) and various
 " other external shell programs (e.g. shellcheck)
@@ -20,10 +18,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 " << utilities >>
 
 " github copilot AI help
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 " Neovim markdown previewer (opens preview in browser)
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
+" file explorer tree
+Plug 'nvim-tree/nvim-tree.lua'
+
+
 
 " fuzzy finder
 " configuration is in ./fzf.vim instead of ./plugin_config.vim due to complexity
@@ -44,6 +47,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " We recommend updating the parsers on update
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" show scope lines
+Plug 'nvim-treesitter/nvim-treesitter-context'
+
 " filetype detection for many languages
 Plug 'sheerun/vim-polyglot'
 
@@ -63,14 +69,24 @@ Plug 'ruanyl/vim-gh-line'
 
 " << colors/syntax/languages >>
 
+" color scheme
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
 " statusline color scheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+" statusline
+" Plug 'feline-nvim/feline.nvim'
+" Plug 'Hitesh-Aggarwal/feline_one_monokai.nvim'
+
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " jsonc filetype - JSON w/ comments
 Plug 'neoclide/jsonc.vim'
 
-" highlight color codes with their color
-Plug 'norcalli/nvim-colorizer.lua'
+" " highlight color codes with their color
+Plug 'brenoprata10/nvim-highlight-colors'
 
 " TODO: allow unsupported systems?
 " insert color from color picker
