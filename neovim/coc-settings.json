@@ -83,6 +83,8 @@
       "filetypes": ["terraform"],
       "initializationOptions": {}
     },
+    // TODO: demystify the schema here
+    // TODO: see if I can autocomplete from a schema here
     "lua": {
       "command": "lua-language-server",
       "rootPatterns": [".git"],
