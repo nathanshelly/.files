@@ -101,12 +101,8 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
           },
         },
       },
-      renderer = {
-        group_empty = true,
-      },
-      filters = {
-        dotfiles = true,
-      },
+      renderer = { group_empty = true },
+      filters = { dotfiles = true },
     })
     -- end
     -- # file explorer
@@ -121,6 +117,22 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     --   '';
     -- }
 
+    -- <<<< which-key.nvim >>>>
+    -- TODO: configure this - https://github.com/folke/which-key.nvim#%EF%B8%8F-configuration
+    require("which-key").setup {}
+
+    --
+    -- require("notify").setup()
+
+    -- -- <<<< noice.nvim >>>>
+    -- -- TODO: configure - https://github.com/folke/noice.nvim#%EF%B8%8F-configuration
+    -- require("noice").setup()
+
+    -- <<<< todo-comments.nvim >>>>
+    require("todo-comments").setup()
+
+    -- <<<< trouble >>>>
+    require("trouble").setup()
 
     -- <<<<<< end of utilities >>>>>>
 
@@ -170,12 +182,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 
       --- You can override specific highlights to use other groups or a hex color
       --- function will be called with a Highlights and ColorScheme table
-      on_highlights = function(highlights, colors)
-        highlights.DiagnosticError = {
-          fg = "#db4b4b",
-          bg = colors.bg_highlight
-        }
-      end,
+      on_highlights = function(highlights, colors) end,
     })
     vim.cmd [[colorscheme tokyonight]]
 

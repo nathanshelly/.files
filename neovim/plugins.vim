@@ -54,6 +54,24 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 " filetype detection for many languages
 Plug 'sheerun/vim-polyglot'
 
+" help bake keyboard shortcuts into muscle memory
+" TODO: configure further
+Plug 'folke/which-key.nvim'
+
+" requirements for `noice` below
+Plug 'MunifTanjim/nui.nvim'
+Plug 'rcarriga/nvim-notify'
+" experimental UI for notifications/diagnostics/error messages
+Plug 'folke/noice.nvim'
+
+" requirement below
+Plug 'nvim-lua/plenary.nvim'
+" TODO management
+Plug 'folke/todo-comments.nvim'
+
+" pretty diagnostics, errors listing, etc.
+Plug 'folke/trouble.nvim'
+
 " << git >>
 
 " git information (blame, diff) in Vim
