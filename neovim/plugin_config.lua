@@ -122,20 +122,19 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 
     -- <<<< which-key.nvim >>>>
     -- TODO: configure this - https://github.com/folke/which-key.nvim#%EF%B8%8F-configuration
-    require("which-key").setup {}
+    -- require("which-key").setup {}
 
-    --
-    -- require("notify").setup()
-
-    -- -- <<<< noice.nvim >>>>
-    -- -- TODO: configure - https://github.com/folke/noice.nvim#%EF%B8%8F-configuration
-    -- require("noice").setup()
+    -- <<<< noice.nvim >>>>
+    -- TODO: configure - https://github.com/folke/noice.nvim#%EF%B8%8F-configuration
+    -- https://github.com/folke/noice.nvim/wiki/Configuration-Recipes
+    require("noice").setup()
 
     -- <<<< todo-comments.nvim >>>>
     require("todo-comments").setup()
 
     -- <<<< trouble >>>>
-    require("trouble").setup()
+    -- asdf
+
 
     -- <<<<<< end of utilities >>>>>>
 

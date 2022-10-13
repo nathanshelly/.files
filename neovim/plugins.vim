@@ -40,6 +40,7 @@ Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh' }
 " use the canonical 'junegunn/fzf.vim` repo: `Plug 'junegunn/fzf.vim'`
 " TODO: check that this fork stays up to date with upstream
 " Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 
 " TODO: determine marginal value of this plugin
 " TODO: understand why `.envrc` filetype is still bash and also not highlighted
@@ -76,8 +77,8 @@ Plug 'folke/trouble.nvim'
 
 " git information (blame, diff) in Vim
 " note: `sran.vim` is a dependency of `git-p.nvim`
-Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
-Plug 'iamcco/git-p.nvim'
+" Plug 'iamcco/sran.nvim', { 'do': { -> sran#util#install() } }
+" Plug 'iamcco/git-p.nvim'
 
 " show git commit for line under cursor (`<leader>gm`)
 Plug 'rhysd/git-messenger.vim'
