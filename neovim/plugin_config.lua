@@ -45,6 +45,9 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     end
 
     -- <<<< feline-nvim >>>>
+
+    -- echo copy(g:)->filter('v:key =~# "^WebDev"')
+
     require 'nvim-web-devicons'.setup {}
     require('lualine').setup({
       options = { theme = 'tokyonight' },

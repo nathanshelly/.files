@@ -160,6 +160,7 @@ in
       m1Pkgs.exa
       m1Pkgs.exiftool
       m1Pkgs.fd
+      m1Pkgs.fontforge
       m1Pkgs.gh
       m1Pkgs.jira-cli-go
       m1Pkgs.tig
