@@ -1,8 +1,9 @@
 ;; using goku - https://github.com/yqrashawn/GokuRakuJoudo
 ;; see more context/usage instructions in the readme - ../README.md
 ;; refs
-;; - edn spec https://github.com/edn-format/edn
-;; - https://gist.github.com/kaushikgopal/ff7a92bbc887e59699c804b59074a126
+;; - tutorial: https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md
+;; - excellent documentation of varoius keys: https://gist.github.com/kaushikgopal/ff7a92bbc887e59699c804b59074a126
+;; - edn spec: https://github.com/edn-format/edn
  {:profiles
   {:Default
    {:default true
@@ -32,7 +33,7 @@
                             "com\\.spotify\\.client"]
                  :terminals ["^com\\.googlecode\\.iterm2$"
                              "^io\\.alacritty$"
-                             "^com\\.apple\\.Terminal$",
+                             "^com\\.apple\\.Terminal$"
                              "^com\\.microsoft\\.VSCode$"]}
 
 
@@ -105,6 +106,17 @@
             [:!QWEt "open -a 'iTerm'"] ;; terminal
             [:!QWEv "open -a 'zoom.us'"] ;; video chatting app
             [:!QWEw "open -a 'Notion'"]]} ;; writings
+
+
+   {:des   "F3 to keyboard brightness down"
+    :rules [{:from        {:key_code :f3}
+             :to          [{:apple_vendor_top_case_key_code :illumination_down}]
+             :type        :basic}]}
+
+   {:des   "F4 to keyboard brightness up"
+    :rules [{:from        {:key_code :f4}
+             :to          [{:apple_vendor_top_case_key_code :illumination_up}]
+             :type        :basic}]}
 
    ;; `Cmd-l` is handy in browsers for accessing the URL bar
    ;; this file elsewhere binds `Cmd-l` to `Cmd-➡ ` so use `Option-d` to access
