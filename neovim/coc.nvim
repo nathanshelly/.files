@@ -149,5 +149,17 @@ function! s:show_documentation()
   endif
 endfunction
 
+" TODO: understand how this is supposed to work and preserve in coq.nvim
+" ref: https://github.com/neoclide/coc.nvim/issues/3289
+inoremap <silent> <C-v> <C-r>=ShowDoc()<CR><C-e>
+function! ShowDoc() abort
+  let winid = get(g:, 'coc_last_float_win', -1)
+  if winid != -1
+    let bufnr = winbufnr(winid)
+    exe 'below sb '.bufnr
+  endif
+  return ''
+endfunction
+
 " << commands >>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile

@@ -53,6 +53,31 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
       options = { theme = 'tokyonight' },
     })
 
+    -- TODO: investigate using noice w/ lualine
+    -- sections = {
+    --   lualine_x = {
+    --     {
+    --       require("noice").api.statusline.message.get_hl,
+    --       cond = require("noice").api.statusline.message.has,
+    --     },
+    --     {
+    --       require("noice").api.statusline.command.get,
+    --       cond = require("noice").api.statusline.command.has,
+    --       color = { fg = "#ff9e64" },
+    --     },
+    --     {
+    --       require("noice").api.statusline.mode.get,
+    --       cond = require("noice").api.statusline.mode.has,
+    --       color = { fg = "#ff9e64" },
+    --     },
+    --     {
+    --       require("noice").api.statusline.search.get,
+    --       cond = require("noice").api.statusline.search.has,
+    --       color = { fg = "#ff9e64" },
+    --     },
+    --   },
+    -- },
+
     -- <<<< lightline >>>>
     -- ref - https://github.com/itchyny/lightline.vim#colorscheme-configuration
     -- let g:lightline = {
@@ -127,14 +152,39 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     -- <<<< noice.nvim >>>>
     -- TODO: configure - https://github.com/folke/noice.nvim#%EF%B8%8F-configuration
     -- https://github.com/folke/noice.nvim/wiki/Configuration-Recipes
+    -- TODO: load this conditionally
+    -- if vim.g.loaded_noice then
     require("noice").setup()
+    -- end
+
+    -- <<<< telescope.nvim >>>>
+    --
+    -- TODO: investigate - https://github.com/cljoly/telescope-repo.nvim
+    if vim.g.loaded_telescope then
+      -- TODO: figure out how to load extensions
+      local telescope = require('telescope');
+      -- ref: https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-setup-and-configuration
+      telescope.setup({
+        extensions = {
+          fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+          },
+          noice = {}
+        }
+      })
+      telescope.load_extension('fzf');
+      telescope.load_extension('noice');
+
+      vim.api.nvim_set_keymap('n', '<c-t>', ':Telescope<cr>', { noremap = true })
+      vim.api.nvim_set_keymap('n', '<c-p>', ':Telescope find_files<cr>', { noremap = true })
+    end
 
     -- <<<< todo-comments.nvim >>>>
     require("todo-comments").setup()
-
-    -- <<<< trouble >>>>
-    -- asdf
-
 
     -- <<<<<< end of utilities >>>>>>
 

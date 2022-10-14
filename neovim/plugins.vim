@@ -24,6 +24,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " file explorer tree
+" TODO: investigate - https://github.com/ms-jpq/chadtree
 Plug 'nvim-tree/nvim-tree.lua'
 
 " generate screenshots of code
@@ -41,6 +42,17 @@ Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh' }
 " TODO: check that this fork stays up to date with upstream
 " Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+" #TODO: use nix or some other tool to install binary vs build from source
+" ref: https://github.com/nvim-telescope/telescope-fzf-native.nvim#installation
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+" coq.nvim - completion engine
+" takes in sources like LSPs | snippets and allows filtering/completion on them
+" TODO: revisit when switching to native lsp
+" TODO II: compare to https://github.com/hrsh7th/nvim-cmp & https://github.com/noib3/nvim-completion
+" TODO III: test out copilot - https://github.com/ms-jpq/coq_nvim/issues/379
+" TODO IV: check if this is an issue - https://github.com/ms-jpq/coq_nvim/issues/462
+" Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 
 " TODO: determine marginal value of this plugin
 " TODO: understand why `.envrc` filetype is still bash and also not highlighted

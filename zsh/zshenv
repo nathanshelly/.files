@@ -5,6 +5,12 @@
 ########################## START OF BESPOKE ZSHENV #############################
 
 main() {
+  # TODO: maybe conditionally check terminfo before setting this? or see if I
+  # can set that w/ nix so it all comes together
+  #
+  # TODO II: move to `programs.tmux.terminal` from home-manager
+  export TERM='tmux256-color'
+
   # set DOTFILES env var (statically if possible for speed, else dynamically)
   if [ -d "$HOME/.files" ]; then
    # to avoid unnecessary overhead assume the `$HOME/.files` directory contains
