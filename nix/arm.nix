@@ -172,6 +172,7 @@ in
       m1Pkgs.lua # z.lua dependency
       m1Pkgs.krew
       m1Pkgs.kubectx
+      m1Pkgs.manix
       m1Pkgs.mdcat
       m1Pkgs.minikube
       m1Pkgs.ncurses

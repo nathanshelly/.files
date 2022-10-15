@@ -9,7 +9,7 @@ main() {
   # can set that w/ nix so it all comes together
   #
   # TODO II: move to `programs.tmux.terminal` from home-manager
-  export TERM='tmux256-color'
+  export TERM='tmux-256color'
 
   # set DOTFILES env var (statically if possible for speed, else dynamically)
   if [ -d "$HOME/.files" ]; then

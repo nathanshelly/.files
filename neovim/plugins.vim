@@ -41,10 +41,29 @@ Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh' }
 " use the canonical 'junegunn/fzf.vim` repo: `Plug 'junegunn/fzf.vim'`
 " TODO: check that this fork stays up to date with upstream
 " Plug 'sashaweiss/fzf.vim', { 'branch': 'preview_fix' }
+"
+
+" fuzzy filter everything
+" TODO: investigate these extensions
+" * https://github.com/chip/telescope-software-licenses.nvim
+" * https://github.com/nvim-telescope/telescope-packer.nvim
+" * https://github.com/nvim-telescope/telescope-dap.nvim
+" * https://github.com/nvim-telescope/telescope-dap.nvim
+"
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 " #TODO: use nix or some other tool to install binary vs build from source
 " ref: https://github.com/nvim-telescope/telescope-fzf-native.nvim#installation
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'xiyaowong/telescope-emoji.nvim'
+Plug 'ghassan0/telescope-glyph.nvim'
+Plug 'nvim-telescope/telescope-github.nvim'
+Plug 'pwntester/octo.nvim'
+Plug 'HUAHUAI23/telescope-session.nvim'
+
+" tmp
+" Plug 'chip/telescope-code-fence.nvim', { 'do': 'make install' }
+
+Plug 'arjunmahishi/flow.nvim'
 
 " coq.nvim - completion engine
 " takes in sources like LSPs | snippets and allows filtering/completion on them

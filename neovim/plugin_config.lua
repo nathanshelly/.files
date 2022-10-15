@@ -166,6 +166,12 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
       -- ref: https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-setup-and-configuration
       telescope.setup({
         extensions = {
+          emoji = {
+            action = function(emoji)
+              vim.fn.setreg("e", emoji.value)
+              vim.api.nvim_put({ emoji.value }, 'c', false, true)
+            end,
+          },
           fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
@@ -173,15 +179,37 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
+          glyph = {
+            action = function(glyph)
+              vim.fn.setreg("g", glyph.value)
+              vim.api.nvim_put({ glyph.value }, 'c', false, true)
+            end,
+          },
           noice = {}
         }
       })
       telescope.load_extension('fzf');
       telescope.load_extension('noice');
+      telescope.load_extension("emoji")
+      telescope.load_extension("glyph")
+      telescope.load_extension("gh")
+      -- telescope.load_extension("telescope-code-fence")
+      telescope.load_extension("xray23")
+
+      require "octo".setup()
 
       vim.api.nvim_set_keymap('n', '<c-t>', ':Telescope<cr>', { noremap = true })
+      vim.api.nvim_set_keymap('n', '<c-b>', ':Telescope buffers<cr>', { noremap = true })
+      vim.api.nvim_set_keymap('n', '<c-g>', ':Telescope git_files<cr>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<c-p>', ':Telescope find_files<cr>', { noremap = true })
     end
+
+    require('flow').setup {
+      output = {
+        buffer = true,
+        split_cmd = '20split',
+      },
+    }
 
     -- <<<< todo-comments.nvim >>>>
     require("todo-comments").setup()
