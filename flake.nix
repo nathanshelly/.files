@@ -23,7 +23,7 @@
   # read thru this - https://github.com/malob/nixpkgs/blob/master/flake.nix
 
   outputs = { self, darwin, home-manager, nixpkgs, ... }@inputs: {
-    darwinConfigurations =
+    linuxConfigurations =
       let
         nixpkgsConfig = {
           config = { allowUnfree = true; };
