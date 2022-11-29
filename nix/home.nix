@@ -41,7 +41,7 @@ pathToDotfiles:
 
   #   # sources completions and key-bindings in interactive zsh sessions
   #   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.fzf.enable
-  # programs.fzf.enable = true;
+  programs.fzf.enable = true;
 
   # programs.git = import ./git.nix;
 
