@@ -41,14 +41,14 @@ pathToDotfiles:
 
   #   # sources completions and key-bindings in interactive zsh sessions
   #   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.fzf.enable
-  programs.fzf.enable = true;
+  # programs.fzf.enable = true;
 
-  programs.git = import ./git.nix;
+  # programs.git = import ./git.nix;
 
   # let Home Manager install and manage itself
-  # programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 
-  programs.neovim = import ./editor.nix { inherit pathToDotfiles; };
+  # programs.neovim = import ./editor.nix { inherit pathToDotfiles; };
 
   #   programs.zsh = {
   #     enable = true;
