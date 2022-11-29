@@ -2,10 +2,18 @@ pathToDotfiles:
 
 # { config, pkgs, ... }:
 
+{ HOME, USER }:
+
 {
   # home-manager specific
   home.username = "nathan";
   home.homeDirectory = "/home/ubuntu";
+
+  home.sessionVariables = {
+    CURRENT_USER_EMAIL = "nathan.shelly@opendoor.com";
+    OD_CURRENT_USER_EMAIL = "nathan.shelly@opendoor.com";
+    VAULT_ADDR = "https://vault.services.opendoor.com:8200";
+  };
 
   # creates symlinks to immutable copies of the source file in /nix/store
   # form: "<target>".source = "<source>"
@@ -50,37 +58,37 @@ pathToDotfiles:
 
   # programs.neovim = import ./editor.nix { inherit pathToDotfiles; };
 
-  #   programs.zsh = {
-  #     enable = true;
+  programs.zsh = {
+    enable = true;
 
-  #     # TODO: try this - https://github.com/nix-community/home-manager/issues/1338
+    #     # TODO: try this - https://github.com/nix-community/home-manager/issues/1338
 
-  #     # TODO: apply conditionally based on user config, rewritten in nix
-  #     defaultKeymap = "viins";
+    #     # TODO: apply conditionally based on user config, rewritten in nix
+    #     defaultKeymap = "viins";
 
-  #     initExtra = builtins.concatStringsSep "\n" [
-  #       (builtins.readFile "${pathToDotfiles}/zsh/zshrc")
-  #       # TODO: see if there's a better way to do this
-  #       "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
-  #       # TODO: try and extend this to `nix develop` & `nix run` commands
-  #       "any-nix-shell zsh --info-right | source /dev/stdin"
-  #     ];
-  #     envExtra = builtins.readFile "${pathToDotfiles}/zsh/zshenv";
+    #     initExtra = builtins.concatStringsSep "\n" [
+    #       (builtins.readFile "${pathToDotfiles}/zsh/zshrc")
+    #       # TODO: see if there's a better way to do this
+    #       "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
+    #       # TODO: try and extend this to `nix develop` & `nix run` commands
+    #       "any-nix-shell zsh --info-right | source /dev/stdin"
+    #     ];
+    #     envExtra = builtins.readFile "${pathToDotfiles}/zsh/zshenv";
 
-  #     shellAliases = {
-  #       # `exa` - prettier replacement for `ls`
-  #       # options - https://github.com/ogham/exa#options
-  #       l = "exa";
-  #       la = "exa --all";
-  #       ll = "exa --long --all";
+    #     shellAliases = {
+    #       # `exa` - prettier replacement for `ls`
+    #       # options - https://github.com/ogham/exa#options
+    #       l = "exa";
+    #       la = "exa --all";
+    #       ll = "exa --long --all";
 
-  #       "," = "comma";
-  #       "k" = "kubectl";
-  #       "kns" = "kubectl -n staging";
-  #       "knq" = "kubectl -n qa";
-  #       "knp" = "kubectl -n production";
-  #     };
-  #   };
+    #       "," = "comma";
+    #       "k" = "kubectl";
+    #       "kns" = "kubectl -n staging";
+    #       "knq" = "kubectl -n qa";
+    #       "knp" = "kubectl -n production";
+    #     };
+  };
 
   # this machine-specific value should correspond to the nix version at the time
   # home-manager was first used to set up that machine

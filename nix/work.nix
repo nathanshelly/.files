@@ -33,7 +33,7 @@ in
       GOPATH = "${GOPATH}";
       CURRENT_USER_EMAIL = "nathan.shelly@opendoor.com";
       OD_CURRENT_USER_EMAIL = "nathan.shelly@opendoor.com";
-      VAULT_ADDR = https://vault.services.opendoor.com:8200;
+      VAULT_ADDR = "https://vault.services.opendoor.com:8200";
     };
 
     # TODO: definitely do this in a less hacky way

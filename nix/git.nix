@@ -29,6 +29,18 @@
   lfs.enable = true; # set up optional handy config for LFS
 
   extraConfig = {
+    # TODO: continue testing this
+    # would prefer simply to put this in `~/.gitconfig.work` but
+    # unfortunately `gazelle update-repos` is run outside the `~/work`
+    # scope which means it ignores `~/.gitconfig.work`
+    "url \"git@github.com:opendoor-labs\"" = {
+      insteadOf = "https://github.com/opendoor-labs";
+    };
+
+    includes = [
+      { path = "~/.gitconfig.work"; condition = "gitdir:~/work/"; }
+    ];
+
     # disable help messages to reduce verbosity
     # https://git-scm.com/docs/git-config#Documentation/git-config.txt-advice
     advice = {
