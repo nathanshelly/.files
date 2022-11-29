@@ -7,7 +7,7 @@
   # TODO: consider wrapping neovim package for runtime dependencies
   # https://git.sr.ht/~rycwo/workspace/blob/39844721282d5a81710b026b71b907c3df20140c/nixos/user/pkgs/neovim/default.nix
 
-  extraConfig = builtins.readFile "${pathToDotfiles}/neovim/init.vim";
+  # extraConfig = builtins.readFile "${pathToDotfiles}/neovim/init.vim";
 
   # TODO: figure out what's not working here
   # extraPython3Packages = ps: with ps; [ black ];
@@ -168,5 +168,5 @@
 
   # sets `g:node_host_prog='${nodePackages.neovim}/bin/neovim-node-host`
   # ref - https://github.com/NixOS/nixpkgs/blob/e7b9fc42c8bf284ba6886aacdb81c9af8495f0de/pkgs/applications/editors/neovim/wrapper.nix#L68-L75
-  withNodeJs = true;
+  # withNodeJs = true;
 }
