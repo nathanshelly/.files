@@ -46,7 +46,7 @@ pathToDotfiles:
   programs.git = import ./git.nix;
 
   # let Home Manager install and manage itself
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 
   programs.neovim = import ./editor.nix { inherit pathToDotfiles; };
 
