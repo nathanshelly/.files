@@ -200,6 +200,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 
       vim.api.nvim_set_keymap('n', '<c-t>', ':Telescope<cr>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<c-b>', ':Telescope buffers<cr>', { noremap = true })
+      vim.api.nvim_set_keymap('n', '<c-f>', ':Telescope live_grep<cr>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<c-g>', ':Telescope git_files<cr>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<c-p>', ':Telescope find_files<cr>', { noremap = true })
     end

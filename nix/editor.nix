@@ -15,7 +15,7 @@
 
   # packages used only for nvim, these are not added to $PATH
   extraPackages = with pkgs; [
-    rnix-lsp
+    nil
   ];
 
   # Use Neovim nightly (0.5.0) package provided by Nix Flake in Neovim repo, and made available via

@@ -146,12 +146,12 @@ USER:
       kubernetes
       mdcat
       ncurses
+      nil
       # nodejs
       nodejs-16_x
       nix-index
       # python3
       ripgrep
-      rnix-lsp
       rsync
       ruplacer
       shellcheck

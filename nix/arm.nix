@@ -176,7 +176,9 @@ in
       m1Pkgs.mdcat
       m1Pkgs.minikube
       m1Pkgs.ncurses
+      m1Pkgs.nil
       m1Pkgs.nix-index
+      m1Pkgs.nixpkgs-fmt
       m1Pkgs.nodejs
       m1Pkgs.nushell
       m1Pkgs.python3

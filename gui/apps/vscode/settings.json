@@ -26,6 +26,8 @@
   // <<<<<< workbench >>>>>>
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
+  // Use a new empty file at startup
+  "workbench.startupEditor": "newUntitledFile",
   // Disable the "file preview" feature
   "workbench.editor.enablePreview": false,
   "workbench.activityBar.visible": false,
@@ -172,6 +174,7 @@
   },
   "python.venvPath": "~/envs/python",
   "python.linting.enabled": false,
+  "python.defaultInterpreterPath": "python",
 
   // <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
   // <<<<<<<<<<<< extensions >>>>>>>>>>>>
@@ -249,7 +252,5 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.guides.indentation": true,
-  "workbench.startupEditor": "none",
-  "editor.stickyScroll.enabled": true
+  "editor.guides.indentation": true
 }
