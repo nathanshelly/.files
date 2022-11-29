@@ -24,7 +24,7 @@
 
   # local overrides of `git` identity (author name & email)
   # https://git-scm.com/docs/git-config#_includes
-  includes = [ { path = "~/.gitconfig"; } ];
+  includes = [{ path = "~/.gitconfig"; }];
 
   lfs.enable = true; # set up optional handy config for LFS
 

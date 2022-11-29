@@ -22,22 +22,15 @@ source "$DOTFILES/infra/scripts/prompts.sh" || {
 }
 
 main() {
-  "$DOTFILES/infra/scripts/is_macos.sh" || {
-    info 'Nix setup is currently only supported on macOS'
-    return 0
-  }
-
   info 'setting up `nix` (manages these dotfiles)'
 
   maybe_install_nix || exit 1
-
-  maybe_install_nix_darwin || exit 1 # only runs on macOS (darwin)
 
   # use just-installed `nix-darwin` to rebuild system with flakes support
   maybe_setup_flakes || exit 1
 
   # use nix-darwin to rebuild system with just-setup flake support
-  apply_first_flake_generation || exit 1
+  maybe_install_home_manager || exit 1
 
   success '`nix` (and various pieces) setup complete'
 }
@@ -70,65 +63,6 @@ maybe_install_nix() {
   success '`nix` installed'
 }
 
-# manages macOS-specific config
-# ref - https://github.com/LnL7/nix-darwin#install
-maybe_install_nix_darwin() {
-  command -v darwin-rebuild > /dev/null && {
-    info 'skipping `nix-darwin` installation since `darwin-rebuild` is invokable'
-    return 0
-  }
-
-  info "setting up nix-darwin"
-
-  pushd "${TMPDIR}" > /dev/null || {
-    fail 'failed to push tmp directory'
-    return 1
-  }
-
-  info "building nix-darwin installer"
-  nix-build \
-    https://github.com/LnL7/nix-darwin/archive/master.tar.gz \
-    -A installer > /dev/null || {
-    fail "failed to build \`nix-darwin\` installer. Please fix any issues and
-try again."
-    return 1
-  }
-
-  # TODO: avoid needing this
-  # ref - https://github.com/LnL7/nix-darwin/issues/234
-  info 'Using `sudo` to recreate channels owned by root'
-  sudo rm -rf ~/.nix-defexpr
-  nix-channel --update
-
-  info 'Running `nix-darwin` installer'
-  # TODO: handle interactive prompts, pass flags to answer questions?
-  # why doesn't piping in `true` not work?
-  # TODO: test piping `yes` to disable tty and automatically accept all prompts
-  # ref: https://github.com/LnL7/nix-darwin/issues/278#issuecomment-769325254
-  if yes | "${TMPDIR}/result/bin/darwin-installer"; then
-    success '`nix-darwin` installed'
-  else
-    fail '`nix-darwin` installer failed. Please fix any issues and try again.'
-    return 1
-  fi
-
-  # make just installed `darwin-rebuild` command available in current script
-  [ -f /etc/static/bashrc ] && source /etc/static/bashrc
-
-  popd > /dev/null || {
-    fail 'probably not really an issue: failed to pop directory'
-    return 1
-  }
-
-  command -v darwin-rebuild > /dev/null || {
-    fail "\`nix-darwin\` installation finished but the \`darwin-rebuild\`
- command is not invokable. Please fix any issues and try again."
-    return 1
-  }
-
-  success '`nix-darwin` setup complete'
-}
-
 # TODO: remove when switching to flakes-based installer
 maybe_setup_flakes() {
   local nix_flake_error_message
@@ -147,43 +81,71 @@ maybe_setup_flakes() {
   if [[ -f /etc/nix/nix.conf ]] && ! grep --quiet flakes < /etc/nix/nix.conf; then
     info 'Using `sudo` to backup /etc/nix/nix.conf -> /etc/nix/nix.conf.bak'
     sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.bak
+    sudo cp /etc/nix/nix.conf.bak /etc/nix/nix.conf
+    echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
   fi
 
-  # setup nix w/ flakes via `darwin-rebuild`
-  # `darwin-first-generation.nix` is a simplified config whose primary purpose is to
-  # set up flakes
-  if
-    darwin-rebuild \
-      -I darwin="$HOME/.nix-defexpr/channels/darwin" \
-      -I darwin-config="$DOTFILES/nix/darwin-first-generation.nix" \
-      switch
-  then
-    success 'Established first generation. Nix flakes now available.'
-  else
-    fail "Failed to set up first flake generation."
-    return 1
-  fi
+  # if
+  #   darwin-rebuild \
+  #     -I darwin="$HOME/.nix-defexpr/channels/darwin" \
+  #     -I darwin-config="$DOTFILES/nix/darwin-first-generation.nix" \
+  #     switch
+  # then
+  #   success 'Established first generation. Nix flakes now available.'
+  # else
+  #   fail "Failed to set up first flake generation."
+  #   return 1
+  # fi
 
   info "Checking \`nix\` version after flake setup: $(nix --version)"
 }
 
-apply_first_flake_generation() {
-  info 'setting up first flake generation'
-
-  if [[ -f /etc/shells ]]; then
-    info 'Using `sudo` to backup /etc/shells -> /etc/shells.bak'
-    sudo mv /etc/shells /etc/shells.bak
-  fi
-
-  if "$DOTFILES"/nix/apply arm; then
-    # TODO: enter new shell here?
-    # zsh --interactive
-    success "Successfully applied first flake generation!"
+# manages macOS-specific config
+# ref - https://github.com/LnL7/nix-darwin#install
+maybe_install_home_manager() {
+  command -v home-manager > /dev/null && {
+    info 'skipping `home-manager` installation since `home-manager` is invokable'
     return 0
+  }
+
+  info "setting up home-manager"
+
+  pushd "${TMPDIR}" > /dev/null || {
+    fail 'failed to push tmp directory'
+    return 1
+  }
+
+  info "building home-manager installer"
+  nix build "$DOTFILES/nix#homeConfigurations.nathan.activationPackage" || {
+    fail "failed to build \`home-manager\` installer. Please fix any issues and
+try again."
+    return 1
+  }
+
+  info 'Running `home-manager` installer'
+  # TODO: handle interactive prompts, pass flags to answer questions?
+  # why doesn't piping in `true` not work?
+  # TODO: test piping `yes` to disable tty and automatically accept all prompts
+  # ref: https://github.com/LnL7/nix-darwin/issues/278#issuecomment-769325254
+  if yes | "${TMPDIR}/result/activate"; then
+    success '`home-manager` installed'
   else
-    fail "Failed to apply flake generation"
+    fail '`home-manager` installer failed. Please fix any issues and try again.'
     return 1
   fi
+
+  popd > /dev/null || {
+    fail 'probably not really an issue: failed to pop directory'
+    return 1
+  }
+
+  command -v home-manager > /dev/null || {
+    fail "\`home-manager\` installation finished but the \`home-manager\`
+ command is not invokable. Please fix any issues and try again."
+    return 1
+  }
+
+  success '`home-manager` setup complete'
 }
 
 main "$@"

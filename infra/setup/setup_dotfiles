@@ -46,7 +46,7 @@ main() {
   # source $HOME/.config/.zshrc
 
   # generate user-specific gitconfig (name & email) @ `$HOME/.gitconfig.local`
-  "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
+  # "$DOTFILES/infra/setup/bin/setup_git_config" "$HOME/.gitconfig.local" --skip-existing
 
   # set up our shell (`zsh`)
   # this adds `zsh` to our allowed shells and sets it as the default. Then it
@@ -58,10 +58,10 @@ main() {
 
   # set up various pieces too small for their own files
   # see the file in question for each piece
-  "$DOTFILES/infra/setup/bin/setup_bits_and_pieces"
+  # "$DOTFILES/infra/setup/bin/setup_bits_and_pieces"
 
   # optionally set up work-specific config (confirms via user prompt)
-  "$DOTFILES/infra/setup/bin/setup_work"
+  # "$DOTFILES/infra/setup/bin/setup_work"
 
   printf "%bstarting new shell, happy coding!%b" "$teal_highlight" "$clear_highlight"
   printf "%bsetup finished! 🎉%b" "$teal_highlight" "$clear_highlight"
