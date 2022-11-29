@@ -1,6 +1,6 @@
 pathToDotfiles:
 
-# { config, pkgs, ... }:
+{ pkgs, ... }:
 
 { HOME, USER }:
 
@@ -8,6 +8,50 @@ pathToDotfiles:
   # home-manager specific
   home.username = "nathan";
   home.homeDirectory = "/home/ubuntu";
+  home.packages = with pkgs; [
+      # TODO: https://github.com/haslersn/any-nix-shell#zsh
+      any-nix-shell
+      awscli
+      bat
+      deno
+      du-dust
+      exa
+      exiftool
+      fd
+      # delta
+      gh
+      tig
+      httpie
+      hyperfine
+      jq
+      lua # z.lua dependency
+      kubectx
+      kubernetes
+      mdcat
+      ncurses
+      nil
+      # nodejs
+      nodejs-16_x
+      nix-index
+      # python3
+      ripgrep
+      rsync
+      ruplacer
+      shellcheck
+      shfmt
+      stern
+      syncthing
+      tldr
+      terraform-lsp
+      tmux
+      tree-sitter
+      tokei
+      tree
+      vim
+      vivid
+      watchexec
+      yarn
+  ];
 
   home.sessionVariables = {
     CURRENT_USER_EMAIL = "nathan.shelly@opendoor.com";
@@ -27,36 +71,31 @@ pathToDotfiles:
     # "${config.xdg.configHome}/nvim/colors/n.vim".source = "${pathToDotfiles}/neovim/colors/n.vim";
   };
 
-  #   # avoid errors building man pages by disabling them
-  #   # similar previous bug - https://github.com/nix-community/home-manager/issues/254
-  #   # TODO: test if manpages have been fixed on unstable and remove this
-  #   manual.manpages.enable = false;
+  # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.command-not-found.enable
+  programs.command-not-found.enable = true;
 
-  #   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.command-not-found.enable
-  #   programs.command-not-found.enable = true;
+  # configures shell hook to initialize direnv for zsh + nix-direnv integration
+  # refs:
+  # - https://rycee.gitlab.io/home-manager/options.html#opt-programs.direnv.enable
+  # - direnv - https://direnv.net/
+  programs.direnv = {
+    enable = true;
 
-  #   # configures shell hook to initialize direnv for zsh + nix-direnv integration
-  #   # refs:
-  #   # - https://rycee.gitlab.io/home-manager/options.html#opt-programs.direnv.enable
-  #   # - direnv - https://direnv.net/
-  #   programs.direnv = {
-  #     enable = true;
-
-  #     # configure $HOME/.config/direnv/direnvrc to source nix-direnv initialization
-  #     # ref - https://github.com/nix-community/nix-direnv#via-home-manager
-  #     nix-direnv.enable = true;
-  #   };
+    # configure $HOME/.config/direnv/direnvrc to source nix-direnv initialization
+    # ref - https://github.com/nix-community/nix-direnv#via-home-manager
+    nix-direnv.enable = true;
+  };
 
   #   # sources completions and key-bindings in interactive zsh sessions
   #   # ref - https://rycee.gitlab.io/home-manager/options.html#opt-programs.fzf.enable
   programs.fzf.enable = true;
 
-  # programs.git = import ./git.nix;
+  programs.git = import ./git.nix;
 
   # let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
-  # programs.neovim = import ./editor.nix { inherit pathToDotfiles; };
+  programs.neovim = import ./editor.nix { inherit pathToDotfiles; };
 
   programs.zsh = {
     enable = true;
