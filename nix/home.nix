@@ -62,7 +62,7 @@ pathToDotfiles:
   # creates symlinks to immutable copies of the source file in /nix/store
   # form: "<target>".source = "<source>"
   home.file = {
-    # ".tmux.conf".source = "${pathToDotfiles}/tmux/tmux.conf";
+    ".tmux.conf".source = "${pathToDotfiles}/tmux/tmux.conf";
 
     # ##### neovim #####
     # # extra configuration for `coc.nvim` plugin
@@ -95,39 +95,47 @@ pathToDotfiles:
   # let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
-  programs.neovim = import ./editor.nix { inherit pathToDotfiles; };
+  programs.neovim = import ./editor.nix { inherit pathToDotfiles pkgs; };
 
-  programs.zsh = {
-    enable = true;
+    programs.zsh = {
+      enable = true;
 
-    #     # TODO: try this - https://github.com/nix-community/home-manager/issues/1338
+      # TODO: try this - https://github.com/nix-community/home-manager/issues/1338
 
-    #     # TODO: apply conditionally based on user config, rewritten in nix
-    #     defaultKeymap = "viins";
+      # TODO: apply conditionally based on user config, rewritten in nix
+      defaultKeymap = "viins";
 
-    #     initExtra = builtins.concatStringsSep "\n" [
-    #       (builtins.readFile "${pathToDotfiles}/zsh/zshrc")
-    #       # TODO: see if there's a better way to do this
-    #       "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
-    #       # TODO: try and extend this to `nix develop` & `nix run` commands
-    #       "any-nix-shell zsh --info-right | source /dev/stdin"
-    #     ];
-    #     envExtra = builtins.readFile "${pathToDotfiles}/zsh/zshenv";
+      initExtra = builtins.concatStringsSep "\n" [
+        (builtins.readFile "${pathToDotfiles}/zsh/zshrc")
+        # TODO: see if there's a better way to do this
+        "source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh"
+        # TODO: try and extend this to `nix develop` & `nix run` commands
+        "any-nix-shell zsh --info-right | source /dev/stdin"
+        ''
+        OD_CODE_ROOT="/Users/nathan/work/go/src/github.com/opendoor-labs/code"
+        OD_TOOL_SOURCE_SCRIPT="$OD_CODE_ROOT/scripts/infra/sourced_on_shell_load.sh"
+        [ -f "$OD_TOOL_SOURCE_SCRIPT" ] && source "$OD_TOOL_SOURCE_SCRIPT"
 
-    #     shellAliases = {
-    #       # `exa` - prettier replacement for `ls`
-    #       # options - https://github.com/ogham/exa#options
-    #       l = "exa";
-    #       la = "exa --all";
-    #       ll = "exa --long --all";
+        EC2_SCRIPT_PATH="$GOPATH/src/github.com/opendoor-labs/code/scripts/bin/ec2_script.sh"
+        [ -f "$EC2_SCRIPT_PATH" ] && source "$EC2_SCRIPT_PATH"
+        ''
+      ];
+      envExtra = builtins.readFile "${pathToDotfiles}/zsh/zshenv";
 
-    #       "," = "comma";
-    #       "k" = "kubectl";
-    #       "kns" = "kubectl -n staging";
-    #       "knq" = "kubectl -n qa";
-    #       "knp" = "kubectl -n production";
-    #     };
-  };
+      shellAliases = {
+        # `exa` - prettier replacement for `ls`
+        # options - https://github.com/ogham/exa#options
+        l = "exa";
+        la = "exa --all";
+        ll = "exa --long --all";
+
+        "," = "comma";
+        "k" = "kubectl";
+        "kns" = "kubectl -n staging";
+        "knq" = "kubectl -n qa";
+        "knp" = "kubectl -n production";
+      };
+    };
 
   # this machine-specific value should correspond to the nix version at the time
   # home-manager was first used to set up that machine

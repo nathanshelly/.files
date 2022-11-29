@@ -24,7 +24,7 @@
 
   # local overrides of `git` identity (author name & email)
   # https://git-scm.com/docs/git-config#_includes
-  includes = [{ path = "~/.gitconfig.local"; }];
+  includes = [ { path = "~/.gitconfig"; } ];
 
   lfs.enable = true; # set up optional handy config for LFS
 
@@ -36,10 +36,6 @@
     "url \"git@github.com:opendoor-labs\"" = {
       insteadOf = "https://github.com/opendoor-labs";
     };
-
-    includes = [
-      { path = "~/.gitconfig.work"; condition = "gitdir:~/work/"; }
-    ];
 
     # disable help messages to reduce verbosity
     # https://git-scm.com/docs/git-config#Documentation/git-config.txt-advice

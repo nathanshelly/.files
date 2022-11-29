@@ -37,8 +37,8 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 # synchronize system clipboard
 # theoretically you might need to source this after other keymappings, have not
 # yet seen a need for enforcing that
-zinit ice wait lucid
-zinit light kutsan/zsh-system-clipboard
+# zinit ice wait lucid
+# zinit light kutsan/zsh-system-clipboard
 
 # similar to `jk/`, convenient when query already typed out
 # ref - https://github.com/zsh-users/zsh-history-substring-search
