@@ -7,7 +7,7 @@
   # TODO: consider wrapping neovim package for runtime dependencies
   # https://git.sr.ht/~rycwo/workspace/blob/39844721282d5a81710b026b71b907c3df20140c/nixos/user/pkgs/neovim/default.nix
 
-  extraConfig = builtins.readFile "${pathToDotfiles}/neovim/init.vim";
+  extraConfig = (builtins.readFile "${pathToDotfiles}/neovim/init.vim");
 
   # TODO: figure out what's not working here
   # extraPython3Packages = ps: with ps; [ black ];
@@ -22,6 +22,12 @@
   # package = pkgs.neovim;
 
   plugins = with pkgs.vimPlugins; [
+    nvim-treesitter.withAllGrammars
+
+    # show scope lines
+    nvim-treesitter-context
+
+
     # << motions/operators >>
 
     # << operators >>

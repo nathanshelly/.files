@@ -14,11 +14,11 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     -- <<<<<< utilities >>>>>>
 
     -- TODO: support conditional loading
-    require('silicon').setup({
-      -- TODO: tweak these
-      font = 'Natasha I=16',
-      -- theme = 'Monokai Extended',
-    })
+    -- require('silicon').setup({
+    --   -- TODO: tweak these
+    --   font = 'Natasha I=16',
+    --   -- theme = 'Monokai Extended',
+    -- })
 
     -- <<<< nvim-treesitter >>>>
 
@@ -29,14 +29,6 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
       -- TODO: remove this once nvim-treesitter version in `nixpkgs` updated
       -- ref - https://github.com/nvim-treesitter/nvim-treesitter#modules
       require 'nvim-treesitter.configs'.setup {
-        -- "all", "maintained" (parsers with maintainers), or a list of languages
-        ensure_installed = {
-          "c", "bash", "cpp", "dockerfile", "go", "html", "javascript", "jsdoc",
-          "json", "json5", "jsonc", "lua", "make", "markdown",
-          "markdown_inline", "make", "nix", "pug", "python", "ruby", "rust",
-          "sql", "svelte", "swift", "tsx", "typescript", "vim", "yaml"
-        },
-        auto_install = true,
         highlight = { enable = true, disable = { "elixir" } },
         incremental_selection = { enable = true, disable = { "elixir" } },
         indent = { enable = true, disable = { "elixir" } },

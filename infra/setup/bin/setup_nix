@@ -81,8 +81,12 @@ maybe_setup_flakes() {
   if [[ -f /etc/nix/nix.conf ]] && ! grep --quiet flakes < /etc/nix/nix.conf; then
     info 'Using `sudo` to backup /etc/nix/nix.conf -> /etc/nix/nix.conf.bak'
     sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.bak
-    sudo cp /etc/nix/nix.conf.bak /etc/nix/nix.conf
-    echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+
+    local nix_conf
+    nix_conf=$(mktemp)
+    cat /etc/nix/nix.conf.bak > "$nix_conf"
+    echo "experimental-features = nix-command flakes" >> "$nix_conf"
+    sudo mv "$nix_conf" /etc/nix/nix.conf
   fi
 
   # if
@@ -110,7 +114,9 @@ maybe_install_home_manager() {
 
   info "setting up home-manager"
 
-  pushd "${TMPDIR}" > /dev/null || {
+  local BUILD_DIR
+  BUILD_DIR=$(dirname $(mktemp))
+  pushd "$BUILD_DIR" > /dev/null || {
     fail 'failed to push tmp directory'
     return 1
   }
@@ -122,12 +128,17 @@ try again."
     return 1
   }
 
+  if [[ -f ~/.zshrc ]]; then
+    info 'Using `sudo` to backup ~/.zshrc -> ~/.zshrc.bak'
+    sudo mv ~/.zshrc ~/.zshrc.bak
+  fi
+
   info 'Running `home-manager` installer'
   # TODO: handle interactive prompts, pass flags to answer questions?
   # why doesn't piping in `true` not work?
   # TODO: test piping `yes` to disable tty and automatically accept all prompts
   # ref: https://github.com/LnL7/nix-darwin/issues/278#issuecomment-769325254
-  if yes | "${TMPDIR}/result/activate"; then
+  if yes | "$BUILD_DIR/result/activate"; then
     success '`home-manager` installed'
   else
     fail '`home-manager` installer failed. Please fix any issues and try again.'

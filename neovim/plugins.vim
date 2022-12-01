@@ -77,12 +77,6 @@ Plug 'arjunmahishi/flow.nvim'
 " TODO: understand why `.envrc` filetype is still bash and also not highlighted
 " Plug 'direnv/direnv.vim'
 
-" We recommend updating the parsers on update
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" show scope lines
-Plug 'nvim-treesitter/nvim-treesitter-context'
-
 " filetype detection for many languages
 Plug 'sheerun/vim-polyglot'
 
