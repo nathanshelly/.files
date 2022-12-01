@@ -27,7 +27,6 @@
     # show scope lines
     nvim-treesitter-context
 
-
     # << motions/operators >>
 
     # << operators >>

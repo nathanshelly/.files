@@ -23,7 +23,11 @@ command -v git > /dev/null && {
   alias rr="git rev-parse --show-toplevel"
 }
 
-command -v trash > /dev/null && alias t=trash # macOS trash command
+if command -v trash > /dev/null; then
+  alias t=trash # macOS trash command
+else
+  alias t="rm -rf"
+fi
 
 # alias `shfmt` to apply default args
 # `-i 2` -> indent with 2 spaces
