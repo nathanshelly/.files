@@ -38,6 +38,10 @@ main() {
     exit 1
   }
 
+
+  # TODO: install Nix then run below for 2-step installation
+  # nix --extra-experimental-features "nix-command flakes" build github:nathanshelly/.files/opendoor-rdi?dir=nix#homeConfigurations.nathan.activationPakcage
+
   # TODO: try separating this into two different setup scripts?
   # one base setup
   # one final pieces?
