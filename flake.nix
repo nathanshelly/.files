@@ -18,7 +18,6 @@
           ];
           RUST_LOG = "info";
           RUST_SRC_PATH = rustPlatform.rustLibSrc;
-          RUST_SRC_PATH = "";
         };
     });
 
