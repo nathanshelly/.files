@@ -28,6 +28,13 @@ main() {
     softwareupdate --install-rosetta --agree-to-license
   }
 
+  # TODO: figure out more elegant solution here
+  # source so that `brew` is usable in the current shell for the next steps
+  source "$DOTFILES/gui/setup/setup_brew" || {
+    echo 'Homebrew installation failed. Please fix any errors and try again.'
+    exit 1
+  }
+
   # TODO: test if available for future setup steps
   # shellcheck disable=SC1091
   source "$DOTFILES/infra/setup/bin/setup_nix" || {
