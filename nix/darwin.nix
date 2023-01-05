@@ -113,6 +113,7 @@ USER:
     # home key here requed for home-manager config to apply
     home = "/Users/${USER}";
     packages = with pkgs; [
+      _1password
       alacritty
       # TODO: https://github.com/haslersn/any-nix-shell#zsh
       any-nix-shell
