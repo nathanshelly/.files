@@ -9,7 +9,7 @@
 	<key>AllowClipboardAccess</key>
 	<true/>
 	<key>Command</key>
-	<string>/bin/zsh</string>
+	<string></string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>modified_one_dark</key>
@@ -570,13 +570,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.20312860608100891</real>
+				<real>0.85650634765625</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.1734282374382019</real>
+				<real>0.67869289141257583</real>
 				<key>Red Component</key>
-				<real>0.1565571129322052</real>
+				<real>0.5776869747787714</real>
 			</dict>
 			<key>Ansi 9 Color</key>
 			<dict>
@@ -1023,6 +1023,8 @@
 				<key>Red Component</key>
 				<real>0.0</real>
 			</dict>
+			<key>Minimum Contrast</key>
+			<real>0.0</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>

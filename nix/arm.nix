@@ -108,6 +108,13 @@ in
   # auto upgrade nix package and the daemon service
   services.nix-daemon.enable = true;
 
+  # run tailscale service
+  services.tailscale.enable = true;
+  services.tailscale.package = m1Pkgs.tailscale;
+  services.tailscale.domain = "nathanshelly.github";
+  # TODO: try true here
+  services.tailscale.magicDNS.enable = false;
+
   #######################
   # macOS settings config
   # ref - https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults..GlobalPreferences.com.apple.sound.beep.sound
@@ -197,6 +204,7 @@ in
       m1Pkgs.stern
       m1Pkgs.sumneko-lua-language-server
       m1Pkgs.syncthing
+      m1Pkgs.tailscale
       m1Pkgs.tealdeer
       # m1Pkgs.terraform-lsp
       m1Pkgs.tmux
@@ -205,6 +213,7 @@ in
       m1Pkgs.tree
       m1Pkgs.vim
       m1Pkgs.vivid
+      m1Pkgs.xxh
       m1Pkgs.yarn
     ];
   };

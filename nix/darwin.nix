@@ -126,6 +126,7 @@ USER:
       # `nix search nixpkgs bottom` shows pkgs.legacyPackages.x86_64-darwin.bottom
       # bottom
       cachix
+      comma
       darwin.trash
       deno
       du-dust
@@ -168,6 +169,7 @@ USER:
       vim
       vivid
       watchexec
+      xxh
       yarn
     ];
   };

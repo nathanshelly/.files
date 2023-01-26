@@ -245,5 +245,7 @@
     {"before": ["'"], "after": ["$"]},
     {"before": ["\""], "after": ["^"]}
   ],
-  "editor.guides.indentation": true
+  "editor.guides.indentation": true,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "security.workspace.trust.untrustedFiles": "open"
 }
