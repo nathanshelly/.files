@@ -247,5 +247,6 @@
   ],
   "editor.guides.indentation": true,
   "editor.unicodeHighlight.nonBasicASCII": false,
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "githubPullRequests.pullBranch": "never"
 }

@@ -77,9 +77,11 @@
               (
                 (import ./nix/arm.nix USER) {
                   m1Ize = (
+                    # TODO: use flake nixpkgs vs this import
                     pkgs: config: import nixpkgs {
                       system = "aarch64-darwin";
                       overlays = config.nixpkgs.overlays;
+                      config = { allowUnfree = true; };
                     }
                   );
                 }
@@ -97,6 +99,7 @@
         arm = generateArmConfig {
           includeGui = true;
           includeWork = true;
+          USER = "nathan";
         };
         m1 = generateArmConfig {
           includeGui = true;

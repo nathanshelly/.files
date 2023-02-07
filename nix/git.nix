@@ -26,8 +26,17 @@
   # https://git-scm.com/docs/git-config#_includes
   includes = [{ path = "~/.gitconfig.local"; }];
 
-  lfs.enable = true; # set up optional handy config for LFS
 
+  # [user]
+  #   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMgSNWmZn4+qYF/HtSutoay85MBQ0Vh4sMi7EV+bvs5B
+  # [gpg]
+  #   format = ssh
+  # [gpg "ssh"]
+  #   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+  # [commit]
+  #   gpgsign = true
+
+  lfs.enable = true; # set up optional handy config for LFS
   extraConfig = {
     # disable help messages to reduce verbosity
     # https://git-scm.com/docs/git-config#Documentation/git-config.txt-advice

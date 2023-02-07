@@ -10,9 +10,7 @@ in
     # uninstalls formulae & casks that are not listed in the brewfile
     # cleanup = "zap";
 
-    #
     brewPrefix = brewBinPrefix;
-
 
     # prevents homebrew from generating useless lock files
     global.lockfiles = false;
@@ -21,6 +19,18 @@ in
     # just run in correct bash environment?
     casks = [
       "1password"
+      # try creating a custom module? this may only work because Linux doesn't have
+      # the same `/usr/local/bin/` directory requirement
+      # ref: https://github.com/NixOS/nixpkgs/blob/nixos-22.11/nixos/modules/programs/_1password.nix
+      # command -v op && {
+      #   # support "Connect with 1Password CLI` in GUI app
+      #   # TODO: revisit value of this connection
+      #   # TODO: make this cross-plat?
+      #   mkdir -p "/usr/local/bin"
+      #   info "Linking 1Password CLI"
+      #   "$DOTFILES/infra/setup/bin/link_file" "$(which op)" "/usr/local/bin/op"
+      # }
+      "1password-cli"
       "alfred"
       "alt-tab"
       "backblaze"

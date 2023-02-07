@@ -11,6 +11,15 @@ main() {
 
   header "<< Symlinking >>"
 
+  # symlink for cleaner ssh config
+  # ref: https://developer.1password.com/docs/ssh/get-started/#step-4-configure-your-ssh-or-git-client
+  # TODO: do this cleaner somehow
+  mkdir -p "$HOME/.1password"
+  info "Linking 1Password SSH agent"
+  "$DOTFILES/infra/setup/bin/link_file" \
+    "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" \
+    "$HOME/.1password/agent.sock"
+
   [[ $INSTALL_GUI_SYMLINKS == true ]] && link_gui_files
 
   return 0
