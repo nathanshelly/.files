@@ -50,11 +50,6 @@ USER:
         "i-*" = {
           # identityFile = "~/.ssh/github";
           forwardAgent = true;
-          # localForwards = [{
-          #   bind.port = 64464;
-          #   host.address = "localhost";
-          #   host.port = 64464;
-          # }];
           proxyCommand = "bash -c 'AWS_PROFILE=rdi-dev aws ssm start-session --target %h --document-name AWS-StartSSHSession'";
           serverAliveInterval = 60;
           serverAliveCountMax = 10;
@@ -62,7 +57,6 @@ USER:
           extraOptions = {
             IdentityAgent = "~/.1password/agent.sock";
             StrictHostKeyChecking = "no";
-            LocalForward = "64464 localhost:64464";
           };
         };
       };
