@@ -26,16 +26,6 @@
   # https://git-scm.com/docs/git-config#_includes
   includes = [{ path = "~/.gitconfig.local"; }];
 
-
-  # [user]
-  #   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMgSNWmZn4+qYF/HtSutoay85MBQ0Vh4sMi7EV+bvs5B
-  # [gpg]
-  #   format = ssh
-  # [gpg "ssh"]
-  #   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-  # [commit]
-  #   gpgsign = true
-
   lfs.enable = true; # set up optional handy config for LFS
   extraConfig = {
     # disable help messages to reduce verbosity
@@ -63,6 +53,7 @@
       remoteBranch = 159;
       untracked = 004;
     };
+    commit.gpgsign = true;
     core = {
       # maintains original EOL characters on checkout, normalizes CLRF -> LF endings
       # on commit
@@ -84,6 +75,13 @@
       colorMovedWS = "allow-indentation-change";
     };
     fetch.prune = true;
+    # sign commits w/ `gpg` via `ssh` key
+    # ref: https://developer.1password.com/docs/ssh/git-commit-signing#step-1-configure-git-commit-signing-with-ssh
+    gpg = {
+      format = "ssh";
+      # TODO: make platform-agnostic
+      ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+    };
     help = {
       # automatically correct and execute mistyped commands
       # https://git-scm.com/docs/git-config#Documentation/git-config.txt-helpautoCorrect
@@ -129,6 +127,8 @@
       # https://stackoverflow.com/a/22634649
       sort = "version:refname";
     };
+    # TODO: generate dynamically from file someday?
+    user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMgSNWmZn4+qYF/HtSutoay85MBQ0Vh4sMi7EV+bvs5B";
   };
 
   # ref - https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more

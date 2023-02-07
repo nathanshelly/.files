@@ -36,7 +36,7 @@ main() {
   # precedence over `ssh/config`
   # ref: https://developer.1password.com/docs/ssh/get-started/#step-4-configure-your-ssh-or-git-client
   # TODO: move this into nix
-  export SSH_AUTH_SOCK="~/.1password/agent.sock"
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
   # set default pager
   # - `--no-init` - leaves output on screen instead of clearing

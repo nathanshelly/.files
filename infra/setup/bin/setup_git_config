@@ -62,6 +62,14 @@ EOF
     "$DOTFILES/utilities/git/gitconfig.template" \
     > "$destination"
 
+  user 'if you want to configure gpg signing via ssh: what is your public key?'
+  read -re git_public_key_for_signing
+
+  [ -z "$git_public_key_for_signing" ] || {
+    # indent one level
+    echo "  signingkey = $git_public_key_for_signing" >> "$destination"
+  }
+
   success "created gitconfig @ $destination"
 }
 
