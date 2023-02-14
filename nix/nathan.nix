@@ -5,7 +5,7 @@ USER:
     masApps = {
       # TODO: conditionally install for work config
       # (free) https://apps.apple.com/us/app/super-easy-timer/id1353137878
-      # "Meeter" = 1510445899;
+      "Meeter" = 1510445899;
 
       # (paid, $5) https://apps.apple.com/us/app/super-easy-timer/id1353137878
       "Super Easy Timer" = 1353137878;
