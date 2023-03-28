@@ -126,6 +126,8 @@
     #   '';
     # }
 
+    nvim-treesitter-refactor
+
     # provide completions from tmux panes
     tmux-complete-vim
 

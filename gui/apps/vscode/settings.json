@@ -170,7 +170,8 @@
 
   // ######### python ##########
   "[python]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.formatOnType": true
   },
   "python.venvPath": "~/envs/python",
   "python.linting.enabled": false,
@@ -248,5 +249,6 @@
   "editor.guides.indentation": true,
   "editor.unicodeHighlight.nonBasicASCII": false,
   "security.workspace.trust.untrustedFiles": "open",
-  "githubPullRequests.pullBranch": "never"
+  "githubPullRequests.pullBranch": "never",
+  "git.openRepositoryInParentFolders": "always"
 }

@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
       -- theme = 'Monokai Extended',
     })
 
-    -- <<<< nvim-treesitter >>>>
+    -- <<<< nvim- >>>>
 
     -- only call setup steps if plugin installed
     -- this variable set on load, see following command to list global variables
@@ -41,6 +41,33 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
         incremental_selection = { enable = true, disable = { "elixir" } },
         indent = { enable = true, disable = { "elixir" } },
         playground = { enable = true, disable = { "elixir" } },
+
+        -- requires additional plugin installed. any way to check that the
+        -- relevant plugin has been installed?
+        refactor = {
+          highlight_definitions = {
+            enable = true,
+            -- Set to false if you have an `updatetime` of ~100.
+            clear_on_cursor_move = true,
+          },
+          smart_rename = {
+            enable = true,
+            keymaps = {
+              smart_rename = "grf",
+            },
+          },
+          navigation = {
+            enable = true,
+            keymaps = {
+              goto_definition = "gnd",
+              list_definitions = "gnD",
+              list_definitions_toc = "gO",
+              -- <Option|Alt-*|#>
+              goto_next_usage = "<a-*>",
+              goto_previous_usage = "<a-#>",
+            },
+          },
+        },
       }
     end
 
@@ -152,9 +179,27 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     -- <<<< noice.nvim >>>>
     -- TODO: configure - https://github.com/folke/noice.nvim#%EF%B8%8F-configuration
     -- https://github.com/folke/noice.nvim/wiki/Configuration-Recipes
+    -- ref: https://github.com/folke/noice.nvim#-installation
     -- TODO: load this conditionally
     -- if vim.g.loaded_noice then
-    require("noice").setup()
+    require("noice").setup({
+      sp = {
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      -- you can enable a preset for easier configuration
+      presets = {
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
+        long_message_to_split = true, -- long messages will be sent to a split
+        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false, -- add a border to hover docs and signature help
+      },
+    })
     -- end
 
     -- <<<< telescope.nvim >>>>

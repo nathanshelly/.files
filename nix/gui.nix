@@ -58,7 +58,7 @@ in
       "slack"
       "spotify"
       "steermouse"
-      # "topnotch"
+      "topnotch"
       "ueli"
       "visual-studio-code"
       "vlc"
